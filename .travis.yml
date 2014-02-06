@@ -9,8 +9,7 @@ before_script:
 # whitelist
 branches:
   only:
-    - master
-    - dev_ios
+    - ios
 
 script:
   - xctool -workspace MyGuide.xcworkspace -scheme MyGuide -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
