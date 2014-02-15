@@ -1,0 +1,18 @@
+﻿<xapCache source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\Bin\Debug\MyGuide_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="2014-02-15 02:17:10">
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\obj\Debug\MyGuide.dll" archivePath="MyGuide.dll" lastWriteTime="2014-02-15 02:17:07" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="2014-02-15 01:11:34" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="2014-02-15 01:11:33" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="2014-02-15 01:11:33" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="2014-02-15 01:11:33" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="2014-02-15 01:11:33" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="2014-02-15 01:19:58" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\Bin\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="2014-02-15 01:11:34" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\Bin\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="2014-02-15 01:11:33" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\packages\Caliburn.Micro.1.5.2\lib\wp8\Caliburn.Micro.dll" archivePath="Caliburn.Micro.dll" lastWriteTime="2014-02-15 01:13:49" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\packages\Caliburn.Micro.1.5.2\lib\wp8\Caliburn.Micro.Extensions.dll" archivePath="Caliburn.Micro.Extensions.dll" lastWriteTime="2014-02-15 01:13:49" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\packages\Caliburn.Micro.1.5.2\lib\wp8\System.Windows.Interactivity.dll" archivePath="System.Windows.Interactivity.dll" lastWriteTime="2014-02-15 01:13:49" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\packages\Caliburn.Micro.1.5.2\lib\wp8\Caliburn.Micro.xml" archivePath="Caliburn.Micro.xml" lastWriteTime="2014-02-15 01:13:49" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\packages\Caliburn.Micro.1.5.2\lib\wp8\Caliburn.Micro.Extensions.xml" archivePath="Caliburn.Micro.Extensions.xml" lastWriteTime="2014-02-15 01:13:49" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\packages\Caliburn.Micro.1.5.2\lib\wp8\System.Windows.Interactivity.xml" archivePath="System.Windows.Interactivity.xml" lastWriteTime="2014-02-15 01:13:49" />
+  <file source="C:\Users\Mikolaj\Documents\GitHub\MyGuide\MyGuide\MyGuide\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="2014-02-15 01:23:52" />
+</xapCache>
