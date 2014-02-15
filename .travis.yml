@@ -1,20 +1,34 @@
 language: objective-c
-
 rvm: 1.9.3
 
-before_script:
-  - brew update
-  - brew upgrade xctool
-  
-# whitelist
 branches:
   only:
-    - ios
+  - ios
+
+env:
+  global:
+  - BLS_TMP="tmp_build"
+  - APP_NAME="MyGuide"
+  - PROFILE_NAME="MyGuide_Ad_Hoc"
+  - 'DEVELOPER_NAME="iPhone Distribution: BLStream (XTRY58ZV6V)"'
+  - secure: hTAdx35RZaaEqjMekv3qB48FlTJ+FeRwOUmja26RyTdByaek0TwsmStDiznl4DaAbUkB79LE3lZ0tOEF77blXYUZ7u3QsDyq234FfT5iqb13ZHpJrT78araXNleT5YATbqjTroYoD0Kuia4V28H5W+obToN7bT0/aDMSKo2JvVg=
+  - secure: 6tARUuPe2G0z6ehv7eEgFZMJ7zuRSua7FeNs6wWESgPSXc4ow/GTKV8GDOroOaDZErZobehUfMvnI7FPz/WxLEzURVgnp3yr8NRiQ3sNYlRe+G3CbK7FwhO5NWzCWg+Sg1hOH+cRCATQx/ne12ZN+bL4kybnC+fvQ0pcRB9KwsQ=
+
+before_script:
+- brew update
+- brew upgrade xctool
+- ./scripts/add-key.sh
 
 script:
-  - xctool -workspace MyGuide.xcworkspace -scheme MyGuide -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - xctool test -workspace MyGuide.xcworkspace -scheme MyGuideTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool analyze -only MyGuide -workspace MyGuide.xcworkspace -scheme MyGuide -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool test -workspace MyGuide.xcworkspace -scheme MyGuideTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool -workspace MyGuide.xcworkspace -scheme MyGuide -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
+
+after_success:
+- ./scripts/sign-and-upload.sh
+after_script:
+- ./scripts/remove-key.sh
 
 notifications:
   email:
-    - rafal.korzynski@blstream.com
+  - rafal.korzynski@blstream.com
