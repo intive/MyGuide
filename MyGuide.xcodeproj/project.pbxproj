@@ -403,7 +403,7 @@
 				GCC_PREFIX_HEADER = "MyGuide/MyGuide-Prefix.pch";
 				INFOPLIST_FILE = "MyGuide/MyGuide-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "B3976575-F286-47B4-BD3B-D569F4382A65";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
