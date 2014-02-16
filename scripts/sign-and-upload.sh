@@ -32,8 +32,8 @@ if [ ! -z "$BLS_TF_TEAM_TOKEN" ] && [ ! -z "$BLS_TF_API_TOKEN" ]; then
   curl http://testflightapp.com/api/builds.json \
     -F file="@$OUTPUTDIR/$APP_NAME.ipa" \
     -F dsym="@$OUTPUTDIR/$APP_NAME.app.dSYM.zip" \
-    -F api_token="$TESTFLIGHT_API_TOKEN" \
-    -F team_token="$TESTFLIGHT_TEAM_TOKEN" \
+    -F api_token="$BLS_TF_API_TOKEN" \
+    -F team_token="$BLS_TF_TEAM_TOKEN" \
     -F distribution_lists='Internal' \
     -F notes="$RELEASE_NOTES"
 fi

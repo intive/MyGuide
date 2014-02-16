@@ -1,4 +1,8 @@
 #!/bin/sh
+# removing files "./" protection
+BLS_TMP="${BLS_TMP//[[:space:]]/}"
+BLS_TMP="${BLS_TMP:=__tmp}"
+
 mkdir -p ./$BLS_TMP
 
 openssl aes-256-cbc -k "$BLS_ENCRYPTION_SECRET" -in scripts/profile/$PROFILE_NAME.mobileprovision.enc -d -a -out ./$BLS_TMP/$PROFILE_NAME.mobileprovision
