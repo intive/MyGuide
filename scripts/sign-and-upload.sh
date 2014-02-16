@@ -24,7 +24,7 @@ zip -r -9 "$OUTPUTDIR/$APP_NAME.app.dSYM.zip" "$OUTPUTDIR/$APP_NAME.app.dSYM"
 RELEASE_DATE=`date '+%d-%m-%Y %H:%M:%S'`
 RELEASE_NOTES="Build: $TRAVIS_BUILD_NUMBER\nUploaded: $RELEASE_DATE"
 
-if [ ! -z "$TESTFLIGHT_TEAM_TOKEN" ] && [ ! -z "$TESTFLIGHT_API_TOKEN" ]; then
+if [ ! -z "$BLS_TF_TEAM_TOKEN" ] && [ ! -z "$BLS_TF_API_TOKEN" ]; then
   echo ""
   echo "***************************"
   echo "* Uploading to Testflight *"
