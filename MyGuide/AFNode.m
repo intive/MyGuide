@@ -10,13 +10,27 @@
 
 @implementation AFNode
 
-- (id)initWithLatitude:(double)latitude andLongitude:(double)longitude{
+- (id)init{
+    self = [super init];
+    if(self){
+        _latitude = 0;
+        _longitude = 0;
+    }
+    return self;
+}
+- (id)initWithLatitude:(NSString *)latitude andLongitude:(NSString *)longitude{
     self = [super init];
     if(self){
         _latitude = latitude;
         _longitude = longitude;
     }
     return self;
+}
+- (void)setLatitude:(NSString *)latitude{
+    _latitude = latitude;
+}
+- (void)setLongitude:(NSString *)longitude{
+    _longitude = longitude;
 }
 
 @end

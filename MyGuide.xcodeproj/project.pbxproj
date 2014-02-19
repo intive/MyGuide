@@ -27,6 +27,7 @@
 		844D5F0C18B414060018C970 /* AFParsedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0B18B414060018C970 /* AFParsedData.m */; };
 		844D5F0F18B41CEE0018C970 /* AFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0E18B41CEE0018C970 /* AFXMLParser.m */; };
 		844D5F1118B41F470018C970 /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 844D5F1018B41F470018C970 /* data.xml */; };
+		844D5F1418B53EE20018C970 /* AFJunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F1318B53EE20018C970 /* AFJunction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		844D5F0D18B41CEE0018C970 /* AFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLParser.h; sourceTree = "<group>"; };
 		844D5F0E18B41CEE0018C970 /* AFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLParser.m; sourceTree = "<group>"; };
 		844D5F1018B41F470018C970 /* data.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = data.xml; path = "XML files/data.xml"; sourceTree = "<group>"; };
+		844D5F1218B53EE20018C970 /* AFJunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJunction.h; sourceTree = "<group>"; };
+		844D5F1318B53EE20018C970 /* AFJunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJunction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,8 @@
 				844D5F0418B400E70018C970 /* AFWay.m */,
 				844D5F0718B411F70018C970 /* AFNode.h */,
 				844D5F0818B411F70018C970 /* AFNode.m */,
+				844D5F1218B53EE20018C970 /* AFJunction.h */,
+				844D5F1318B53EE20018C970 /* AFJunction.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844D5F1418B53EE20018C970 /* AFJunction.m in Sources */,
 				844D5F0C18B414060018C970 /* AFParsedData.m in Sources */,
 				3D5EF61F189637C000233B64 /* ViewController.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,

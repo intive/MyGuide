@@ -1,36 +1,36 @@
 //
-//  AFAnimal.m
+//  AFJunction.m
 //  MyGuide
 //
-//  Created by afilipowicz on 18.02.2014.
+//  Created by afilipowicz on 19.02.2014.
 //  Copyright (c) 2014 BLStream - Rafał Korżyński. All rights reserved.
 //
 
-#import "AFAnimal.h"
+#import "AFJunction.h"
 
-@implementation AFAnimal
+@implementation AFJunction
 
 - (id)init{
     self = [super init];
     if(self){
         _coordinates = [[AFNode alloc] init];
-        _name = [[NSString alloc] init];
+        _waysArray = [[NSArray alloc] init];
     }
     return self;
 }
-- (id)initWithPosition:(AFNode *)coordinates andName:(NSString *)name{
+- (id)initWithCoordinates:(AFNode *)coordinates andWaysArray:(NSArray *)waysArray{
     self = [super init];
     if(self){
         _coordinates = coordinates;
-        _name = name;
+        _waysArray = waysArray;
     }
     return self;
 }
 - (void)setCoordinates:(AFNode *)coordinates{
     _coordinates = coordinates;
 }
-- (void)setName:(NSString *)name{
-    _name = name;
+- (void)setWaysArray:(NSArray *)waysArray{
+    _waysArray = waysArray;
 }
 
 @end

@@ -1,8 +1,8 @@
-w<root>
+<root>
 	<animals>
 		<animal lat="51.1052072" lon="17.0754498">Żyrafa</animal>
 		<animal lat="51.1050185" lon="17.0759970">Struś</animal>
-		<animal lat="51.1046625" lon="17.0771680">lew angolański</animal>
+		<animal lat="51.1046625" lon="17.0771680">Lew angolański</animal>
 		<animal lat="51.1053988" lon="17.0737940">Zebra</animal>
 		<animal lat="51.1031447" lon="17.0756473">Żubr</animal>
 		<animal lat="51.1042875" lon="17.0786295">Gnu białobrode</animal>

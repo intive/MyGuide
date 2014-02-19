@@ -23,18 +23,7 @@
     
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[self getXMLData]];
     [parser setDelegate:self];
-
-//    ??
-    
-//    [parser setShouldProcessNamespaces:NO];
-//    [parser setShouldReportNamespacePrefixes:NO];
-//    [parser setShouldResolveExternalEntities:NO];
     [parser parse];
-    
-    
-    
-    AFParsedData *sharedData = [AFParsedData sharedParsedData];
-    [sharedData setAnimalsArray:_animalsArray andWaysArray:_waysArray];
 }
 
 
@@ -49,63 +38,87 @@
     NSLog(@"Error parsing XML: %@", errorString);
     _errorParsing=YES;
 }
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
-                                                                                                    qualifiedName:(NSString *)qName
-                                                                                                    attributes:(NSDictionary *)attributeDict{
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
+                                     namespaceURI:(NSString *)namespaceURI
+                                     qualifiedName:(NSString *)qName
+                                     attributes:(NSDictionary *)attributeDict{
+    
     _currentElement = [elementName copy];
     _elementValue = [[NSMutableString alloc] init];
     
-    if ([elementName isEqualToString:@"animal"]) {
-        // *************************************************************                TODO            *****************************
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
+    if ([elementName isEqualToString:@"animals"]) {
+        _animalsArray = [[NSMutableArray alloc] init];
+    }
+    else if ([elementName isEqualToString:@"ways"]) {
+        _waysArray = [[NSMutableArray alloc] init];
+    }
+    else if ([elementName isEqualToString:@"junctions"]) {
+        _junctionsArray = [[NSMutableArray alloc] init];
+    }
+    else if ([elementName isEqualToString:@"animal"]) {
+        AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:@"lat"] andLongitude:[attributeDict valueForKey:@"lon"]];
+        _currentAnimal = [[AFAnimal alloc] init];
+        [_currentAnimal setCoordinates:tempNode];
     }
     else if ([elementName isEqualToString:@"way"]) {
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
+        _currentWay = [[AFWay alloc] init];
+        _nodesArray = [[NSMutableArray alloc] init];
+        [_currentWay setWayID:[attributeDict valueForKey:@"id"]];
     }
     else if ([elementName isEqualToString:@"node"]) {
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                                                            *
-        // *************************************************************                TODO            *****************************
+        _currentNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:@"lat"] andLongitude:[attributeDict valueForKey:@"lon"]];
     }
-    
+    else if ([elementName isEqualToString:@"junction"]) {
+        AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:@"lat"] andLongitude:[attributeDict valueForKey:@"lon"]];
+        _waysArray = [[NSMutableArray alloc] init];
+        _currentJunction = [[AFJunction alloc] init];
+        [_currentJunction setCoordinates:tempNode];
+    }
 }
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string{
     [_elementValue appendString:string];
 }
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
+                                     namespaceURI:(NSString *)namespaceURI
+                                     qualifiedName:(NSString *)qName{
     
-    // *************************************************************                TODO            *****************************
-    if ([elementName isEqualToString:@"animal"]) {
-    //    [articles addObject:[item copy]];                                                                                     *
-    } else {
-    //    [item setObject:_elementValue forKey:elementName];                                                                    *
+    if ([elementName isEqualToString:@"animals"]) {
+        AFParsedData *sharedData = [AFParsedData sharedParsedData];
+        [sharedData setAnimalsArray:_animalsArray];
+        _animalsArray = nil;
     }
-    // *************************************************************                TODO            *****************************
-    
+    else if ([elementName isEqualToString:@"ways"]) {
+        AFParsedData *sharedData = [AFParsedData sharedParsedData];
+        [sharedData setWaysArray:_waysArray];
+        _nodesArray = nil;
+    }
+    else if ([elementName isEqualToString:@"junctions"]) {
+        AFParsedData *sharedData = [AFParsedData sharedParsedData];
+        [sharedData setJunctionsArray:_junctionsArray];
+        _junctionsArray = nil;
+    }
+    else if ([elementName isEqualToString:@"animal"]) {
+        [_currentAnimal setName:_elementValue];
+        [_animalsArray addObject:_currentAnimal];
+    }
+    else if ([elementName isEqualToString:@"way"]) {
+        if(_nodesArray != nil)[_currentWay setNodesArray:_nodesArray];
+        [_waysArray addObject:_currentWay];
+    }
+    else if ([elementName isEqualToString:@"node"]) {
+        [_nodesArray addObject:_currentNode];
+    }
+    else if ([elementName isEqualToString:@"junction"]) {
+        [_currentJunction setWaysArray:_waysArray];
+        [_junctionsArray addObject:_currentJunction];
+    }
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-    
-    if (_errorParsing == YES)
+    if (_errorParsing == NO)
     {
         NSLog(@"Parsing complete.");
     } else {
         NSLog(@"An error occurred during XML processing.");
     }
-    
 }
 @end

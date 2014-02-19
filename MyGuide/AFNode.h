@@ -10,9 +10,12 @@
 
 @interface AFNode : NSObject
 
-@property (nonatomic, readonly) double latitude;
-@property (nonatomic, readonly) double longitude;
+@property (nonatomic, readonly) NSString *latitude;
+@property (nonatomic, readonly) NSString *longitude;
 
-- (id)initWithLatitude:(double)latitude andLongitude:(double)longitude;
+- (id)init;
+- (id)initWithLatitude:(NSString *)latitude andLongitude:(NSString *)longitude;
+- (void)setLatitude:(NSString *)latitude;
+- (void)setLongitude:(NSString *)longitude;
 
 @end

@@ -12,8 +12,12 @@
 
 @property (nonatomic, readonly) NSArray *animalsArray;
 @property (nonatomic, readonly) NSArray *waysArray;
+@property (nonatomic, readonly) NSArray *junctionsArray;
 
 + (id)sharedParsedData;
-- (void)setAnimalsArray:(NSArray *)animalsArray andWaysArray:(NSArray *)waysArray;
+
+- (void)setAnimalsArray:(NSArray *)animalsArray;
+- (void)setWaysArray:(NSArray *)waysArray;
+- (void)setJunctionsArray:(NSArray *)junctionsArray;
 
 @end

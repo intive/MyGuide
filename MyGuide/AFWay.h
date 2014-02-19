@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import "AFNode.h"
 
 @interface AFWay : NSObject
 
-@property (nonatomic, readonly) long wayID;
+@property (nonatomic, readonly) NSString *wayID;
 @property (nonatomic, readonly) NSArray *nodesArray;
 
-- (id)initWithID:(long)wayID andNodesArray:(NSArray *)nodesArray;
+- (id)init;
+- (id)initWithID:(NSString *)wayID andNodesArray:(NSArray *)nodesArray;
+- (void)setWayID:(NSString *)wayID;
+- (void)setNodesArray:(NSArray *)nodesArray;
 
 @end

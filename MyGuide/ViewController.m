@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "AFParsedData.h"
+#import "AFXMLParser.h"
+
 
 @interface ViewController ()
 
@@ -18,20 +21,21 @@
 {
     [super viewDidLoad];
     
-    // **************************************************
-    // **************************************************
+    // **************************************************************
+    // **************************************************************
     //
-    // HERE CAN GO ANY TEST IMPLEMENTATION ON PARSER ETC.
+    // HERE CAN GO ANY NSLog BASED TEST IMPLEMENTATION ON PARSER ETC.
     //
-    // **************************************************
-    // **************************************************
-
+    // **************************************************************
+    // **************************************************************
+    
+    AFXMLParser *parser = [[AFXMLParser alloc] init];
+    [parser parse];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

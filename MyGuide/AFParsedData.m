@@ -21,12 +21,20 @@
 - (id)init{
     if(!self){
         self = [super init];
+        _animalsArray = [[NSArray alloc] init];
+        _waysArray = [[NSArray alloc] init];
+        _junctionsArray = [[NSArray alloc] init];
     }
     return self;
 }
-- (void)setAnimalsArray:(NSArray *)animalsArray andWaysArray:(NSArray *)waysArray{
+- (void)setAnimalsArray:(NSArray *)animalsArray{
     _animalsArray = animalsArray;
+}
+- (void)setWaysArray:(NSArray *)waysArray{
     _waysArray = waysArray;
+}
+- (void)setJunctionsArray:(NSArray *)junctionsArray{
+    _junctionsArray = junctionsArray;
 }
 
 @end
