@@ -17,5 +17,10 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
     public MainActivityTest() {
         super("com.blstream.myguide", MainActivity.class);
     }
+    
+    /** Should always be run, if not they may have been errors with importing the project. */
+    public void testShouldAlwaysPass() {
+        assertTrue(true);
+    }
 
 }
