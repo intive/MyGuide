@@ -17,6 +17,11 @@
 
 @implementation ViewController
 
+- (void)parseXML:(id)object
+{
+    AFXMLParser *parser = [[AFXMLParser alloc] init];
+    [parser parse];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -29,8 +34,8 @@
     // **************************************************************
     // **************************************************************
     
-    AFXMLParser *parser = [[AFXMLParser alloc] init];
-    [parser parse];
+    
+    [self performSelectorInBackground:@selector(parseXML:) withObject:nil];
 }
 
 - (void)didReceiveMemoryWarning
