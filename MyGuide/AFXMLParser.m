@@ -13,15 +13,21 @@
 
 #pragma mark - general methods
 
-- (NSData *)getXMLData{
+- (NSData *)getDataXML{
     NSBundle *bundle = [NSBundle mainBundle];
     NSData *data = [NSData dataWithContentsOfFile:[bundle pathForResource:@"data" ofType:@"xml"]];
+    return data;
+}
+- (NSData *)getOptionsXML{
+#warning METHOD FOR FUTURE options.xml USE    /// af-19.02
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSData *data = nil;
     return data;
 }
 - (void)parse{
     _errorParsing = NO;
     
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[self getXMLData]];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[self getDataXML]];
     [parser setDelegate:self];
     [parser parse];
 }
@@ -46,6 +52,8 @@
     _currentElement = [elementName copy];
     _elementValue = [[NSMutableString alloc] init];
     
+    
+#warning ADD MORE CONDITONS IN FUTURE DOWN HERE    /// af-19.02
     if ([elementName isEqualToString:@"animals"]) {
         _animalsArray = [[NSMutableArray alloc] init];
     }
@@ -82,6 +90,8 @@
                                      namespaceURI:(NSString *)namespaceURI
                                      qualifiedName:(NSString *)qName{
     
+    
+#warning ADD MORE CONDITONS IN FUTURE DOWN HERE    /// af-19.02
     if ([elementName isEqualToString:@"animals"]) {
         AFParsedData *sharedData = [AFParsedData sharedParsedData];
         [sharedData setAnimalsArray:_animalsArray];
