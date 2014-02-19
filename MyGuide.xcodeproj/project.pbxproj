@@ -21,6 +21,12 @@
 		3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
 		3D5EF632189637C000233B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF630189637C000233B64 /* InfoPlist.strings */; };
 		3D5EF634189637C000233B64 /* MyGuideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF633189637C000233B64 /* MyGuideTests.m */; };
+		844D5F0218B400D30018C970 /* AFAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0118B400D30018C970 /* AFAnimal.m */; };
+		844D5F0518B400E70018C970 /* AFWay.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0418B400E70018C970 /* AFWay.m */; };
+		844D5F0918B411F70018C970 /* AFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0818B411F70018C970 /* AFNode.m */; };
+		844D5F0C18B414060018C970 /* AFParsedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0B18B414060018C970 /* AFParsedData.m */; };
+		844D5F0F18B41CEE0018C970 /* AFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0E18B41CEE0018C970 /* AFXMLParser.m */; };
+		844D5F1118B41F470018C970 /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 844D5F1018B41F470018C970 /* data.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,17 @@
 		3D5EF62F189637C000233B64 /* MyGuideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyGuideTests-Info.plist"; sourceTree = "<group>"; };
 		3D5EF631189637C000233B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3D5EF633189637C000233B64 /* MyGuideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGuideTests.m; sourceTree = "<group>"; };
+		844D5F0018B400D30018C970 /* AFAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimal.h; sourceTree = "<group>"; };
+		844D5F0118B400D30018C970 /* AFAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimal.m; sourceTree = "<group>"; };
+		844D5F0318B400E70018C970 /* AFWay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFWay.h; sourceTree = "<group>"; };
+		844D5F0418B400E70018C970 /* AFWay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFWay.m; sourceTree = "<group>"; };
+		844D5F0718B411F70018C970 /* AFNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNode.h; sourceTree = "<group>"; };
+		844D5F0818B411F70018C970 /* AFNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNode.m; sourceTree = "<group>"; };
+		844D5F0A18B414060018C970 /* AFParsedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFParsedData.h; sourceTree = "<group>"; };
+		844D5F0B18B414060018C970 /* AFParsedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFParsedData.m; sourceTree = "<group>"; };
+		844D5F0D18B41CEE0018C970 /* AFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLParser.h; sourceTree = "<group>"; };
+		844D5F0E18B41CEE0018C970 /* AFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLParser.m; sourceTree = "<group>"; };
+		844D5F1018B41F470018C970 /* data.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = data.xml; path = "XML files/data.xml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +135,12 @@
 				3D5EF61D189637C000233B64 /* ViewController.h */,
 				3D5EF61E189637C000233B64 /* ViewController.m */,
 				3D5EF620189637C000233B64 /* Images.xcassets */,
+				844D5F0618B400EF0018C970 /* Models */,
 				3D5EF60F189637C000233B64 /* Supporting Files */,
+				844D5F0A18B414060018C970 /* AFParsedData.h */,
+				844D5F0B18B414060018C970 /* AFParsedData.m */,
+				844D5F0D18B41CEE0018C970 /* AFXMLParser.h */,
+				844D5F0E18B41CEE0018C970 /* AFXMLParser.m */,
 			);
 			path = MyGuide;
 			sourceTree = "<group>";
@@ -126,6 +148,7 @@
 		3D5EF60F189637C000233B64 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				844D5F1018B41F470018C970 /* data.xml */,
 				3D5EF610189637C000233B64 /* MyGuide-Info.plist */,
 				3D5EF611189637C000233B64 /* InfoPlist.strings */,
 				3D5EF614189637C000233B64 /* main.m */,
@@ -150,6 +173,19 @@
 				3D5EF630189637C000233B64 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		844D5F0618B400EF0018C970 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				844D5F0018B400D30018C970 /* AFAnimal.h */,
+				844D5F0118B400D30018C970 /* AFAnimal.m */,
+				844D5F0318B400E70018C970 /* AFWay.h */,
+				844D5F0418B400E70018C970 /* AFWay.m */,
+				844D5F0718B411F70018C970 /* AFNode.h */,
+				844D5F0818B411F70018C970 /* AFNode.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844D5F1118B41F470018C970 /* data.xml in Resources */,
 				3D5EF621189637C000233B64 /* Images.xcassets in Resources */,
 				3D5EF613189637C000233B64 /* InfoPlist.strings in Resources */,
 				3D5EF61C189637C000233B64 /* Main.storyboard in Resources */,
@@ -269,8 +306,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844D5F0C18B414060018C970 /* AFParsedData.m in Sources */,
 				3D5EF61F189637C000233B64 /* ViewController.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
+				844D5F0518B400E70018C970 /* AFWay.m in Sources */,
+				844D5F0218B400D30018C970 /* AFAnimal.m in Sources */,
+				844D5F0F18B41CEE0018C970 /* AFXMLParser.m in Sources */,
+				844D5F0918B411F70018C970 /* AFNode.m in Sources */,
 				3D5EF615189637C000233B64 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

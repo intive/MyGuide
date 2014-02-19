@@ -17,7 +17,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    // **************************************************
+    // **************************************************
+    //
+    // HERE CAN GO ANY TEST IMPLEMENTATION ON PARSER ETC.
+    //
+    // **************************************************
+    // **************************************************
+
 }
 
 - (void)didReceiveMemoryWarning
