@@ -1,5 +1,5 @@
 //
-//  AFSharedParsedData.m
+//  AFParsedData.m
 //  MyGuide
 //
 //  Created by afilipowicz on 18.02.2014.
