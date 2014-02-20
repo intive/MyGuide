@@ -90,20 +90,18 @@
                                      namespaceURI:(NSString *)namespaceURI
                                      qualifiedName:(NSString *)qName{
     
-    
+    AFParsedData *sharedData = [AFParsedData sharedParsedData];
+
 #warning ADD MORE CONDITONS IN FUTURE DOWN HERE    /// af-19.02
     if ([elementName isEqualToString:@"animals"]) {
-        AFParsedData *sharedData = [AFParsedData sharedParsedData];
         [sharedData setAnimalsArray:_animalsArray];
         _animalsArray = nil;
     }
     else if ([elementName isEqualToString:@"ways"]) {
-        AFParsedData *sharedData = [AFParsedData sharedParsedData];
         [sharedData setWaysArray:_waysArray];
         _nodesArray = nil;
     }
     else if ([elementName isEqualToString:@"junctions"]) {
-        AFParsedData *sharedData = [AFParsedData sharedParsedData];
         [sharedData setJunctionsArray:_junctionsArray];
         _junctionsArray = nil;
     }
