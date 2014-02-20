@@ -18,12 +18,6 @@
     NSData *data = [NSData dataWithContentsOfFile:[bundle pathForResource:@"data" ofType:@"xml"]];
     return data;
 }
-- (NSData *)getOptionsXML{
-#warning METHOD FOR FUTURE options.xml USE    /// af-19.02
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSData *data = nil;
-    return data;
-}
 - (void)parse{
     _errorParsing = NO;
     
@@ -36,12 +30,12 @@
 #pragma mark - parser delegate methods
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser{
-    NSLog(@"File found. Parsing started.");
+    NSLog(@"File found. Parsing data started.");
 }
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     
     NSString *errorString = [NSString stringWithFormat:@"Error code %i", [parseError code]];
-    NSLog(@"Error parsing XML: %@", errorString);
+    NSLog(@"Error parsing data XML: %@", errorString);
     _errorParsing=YES;
 }
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
@@ -53,7 +47,6 @@
     _elementValue = [[NSMutableString alloc] init];
     
     
-#warning ADD MORE CONDITONS IN FUTURE DOWN HERE    /// af-19.02
     if ([elementName isEqualToString:@"animals"]) {
         _animalsArray = [[NSMutableArray alloc] init];
     }
@@ -92,7 +85,6 @@
     
     AFParsedData *sharedData = [AFParsedData sharedParsedData];
 
-#warning ADD MORE CONDITONS IN FUTURE DOWN HERE    /// af-19.02
     if ([elementName isEqualToString:@"animals"]) {
         [sharedData setAnimalsArray:_animalsArray];
         _animalsArray = nil;
@@ -124,7 +116,7 @@
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
     if (_errorParsing == NO)
     {
-        NSLog(@"Parsing complete.");
+        NSLog(@"Parsing data complete.");
     } else {
         NSLog(@"An error occurred during XML processing.");
     }

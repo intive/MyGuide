@@ -14,7 +14,6 @@
 
 @interface AFXMLParser : NSObject <NSXMLParserDelegate>
 
-#warning ADD FUTURE PROPERTIES  DOWN HERE       /// af-19.02
 @property (nonatomic, readonly) NSMutableArray *animalsArray;
 @property (nonatomic, readonly) NSMutableArray *waysArray;
 @property (nonatomic, readonly) NSMutableArray *junctionsArray;
@@ -29,7 +28,6 @@
 @property (nonatomic, readonly) BOOL errorParsing;
 
 - (NSData *)getDataXML;
-- (NSData *)getOptionsXML;
 - (void)parse;
 
 @end

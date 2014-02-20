@@ -17,7 +17,7 @@
 
 @implementation ViewController
 
-- (void)parseXML:(id)object
+- (void)parseDataXML:(id)object
 {
     AFXMLParser *parser = [[AFXMLParser alloc] init];
     [parser parse];
@@ -26,16 +26,8 @@
 {
     [super viewDidLoad];
     
-    // **************************************************************
-    // **************************************************************
-    //
-    // HERE CAN GO ANY NSLog BASED TEST IMPLEMENTATION ON PARSER ETC.
-    //
-    // **************************************************************
-    // **************************************************************
     
-    
-    [self performSelectorInBackground:@selector(parseXML:) withObject:nil];
+    [self performSelectorInBackground:@selector(parseDataXML:) withObject:nil];
 }
 
 - (void)didReceiveMemoryWarning
