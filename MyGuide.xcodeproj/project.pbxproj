@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0507435A18B6A3AC00AC4FB1 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0507435818B6A3AC00AC4FB1 /* config.xml */; };
+		0507436218B6A3C100AC4FB1 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0507435E18B6A3C100AC4FB1 /* Settings.m */; };
+		0507436318B6A3C100AC4FB1 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0507436018B6A3C100AC4FB1 /* SettingsParser.m */; };
 		3D5EF609189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF60B189637C000233B64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60A189637C000233B64 /* CoreGraphics.framework */; };
 		3D5EF60D189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
@@ -34,6 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0507435818B6A3AC00AC4FB1 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
+		0507435C18B6A3C100AC4FB1 /* SettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsParser.h; sourceTree = "<group>"; };
+		0507435E18B6A3C100AC4FB1 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		0507435F18B6A3C100AC4FB1 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		0507436018B6A3C100AC4FB1 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
 		3D5EF605189637C000233B64 /* MyGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5EF608189637C000233B64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3D5EF60A189637C000233B64 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +87,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0507435618B6A39F00AC4FB1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0507435C18B6A3C100AC4FB1 /* SettingsParser.h */,
+				0507435E18B6A3C100AC4FB1 /* Settings.m */,
+				0507435F18B6A3C100AC4FB1 /* Settings.h */,
+				0507436018B6A3C100AC4FB1 /* SettingsParser.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0507435718B6A3AC00AC4FB1 /* XML files */ = {
+			isa = PBXGroup;
+			children = (
+				0507435818B6A3AC00AC4FB1 /* config.xml */,
+			);
+			path = "XML files";
+			sourceTree = "<group>";
+		};
 		3D5EF5FC189637C000233B64 = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +144,9 @@
 				3D5EF61A189637C000233B64 /* Main.storyboard */,
 				3D5EF61D189637C000233B64 /* ViewController.h */,
 				3D5EF61E189637C000233B64 /* ViewController.m */,
+				0507435618B6A39F00AC4FB1 /* Settings */,
 				3D5EF620189637C000233B64 /* Images.xcassets */,
+				0507435718B6A3AC00AC4FB1 /* XML files */,
 				3D5EF60F189637C000233B64 /* Supporting Files */,
 			);
 			path = MyGuide;
@@ -231,6 +260,7 @@
 				3D5EF621189637C000233B64 /* Images.xcassets in Resources */,
 				3D5EF613189637C000233B64 /* InfoPlist.strings in Resources */,
 				3D5EF61C189637C000233B64 /* Main.storyboard in Resources */,
+				0507435A18B6A3AC00AC4FB1 /* config.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +280,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D5EF61F189637C000233B64 /* ViewController.m in Sources */,
+				0507436318B6A3C100AC4FB1 /* SettingsParser.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
+				0507436218B6A3C100AC4FB1 /* Settings.m in Sources */,
 				3D5EF615189637C000233B64 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +492,7 @@
 				3D5EF639189637C000233B64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D5EF63A189637C000233B64 /* Build configuration list for PBXNativeTarget "MyGuideTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +501,7 @@
 				3D5EF63C189637C000233B64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
