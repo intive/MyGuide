@@ -12,14 +12,14 @@
 NSString * const CONFIG_FILE_NAME = @"config";
 
 @implementation SettingsParser {
-    NSMutableString *cacheElement;
-    Settings *settings;
+    NSMutableString *_cacheElement;
+    Settings *_settings;
 }
 
 - (id) init {
     self = [super init];
     if(self) {
-        settings = [Settings sharedSettingsData];
+        _settings = [Settings sharedSettingsData];
     }
     return self;
 }
@@ -46,11 +46,11 @@ NSString * const CONFIG_FILE_NAME = @"config";
                                         qualifiedName:   (NSString *)     qName
                                         attributes:      (NSDictionary *) attributeDict
 {
-    cacheElement = [[NSMutableString alloc] init];
+    _cacheElement = [[NSMutableString alloc] init];
 }
 
 - (void) parser: (NSXMLParser *) parser foundCharacters: (NSString *) string {
-    [cacheElement appendString: string];
+    [_cacheElement appendString: string];
 }
 
 - (void) parser: (NSXMLParser *) parser didEndElement:  (NSString *) elementName
@@ -59,8 +59,8 @@ NSString * const CONFIG_FILE_NAME = @"config";
 {
     if ([elementName isEqualToString: @"configuration"]) return;
     
-    NSLog(@"Injecting %@ with value \"%@\" to settings.", elementName, cacheElement);
-    [settings injectDataWithName: elementName andValue: cacheElement];
+    NSLog(@"Injecting %@ with value \"%@\" to settings.", elementName, _cacheElement);
+    [_settings injectDataWithName: elementName andValue: _cacheElement];
 }
 
 - (void) parserDidEndDocument:(NSXMLParser *) parser {
