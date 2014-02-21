@@ -12,11 +12,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.blstream.myguide" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7db96509-dbab-4178-890a-3f306a2e48f3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values-de/strings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values-pl/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-    </list>
+    <list default="true" id="7db96509-dbab-4178-890a-3f306a2e48f3" name="Default" comment="" />
     <ignored path="MyGuide.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
