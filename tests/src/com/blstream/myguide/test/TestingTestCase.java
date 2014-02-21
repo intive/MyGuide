@@ -1,4 +1,4 @@
-package com.blstream.myguide.tests;
+package com.blstream.myguide.test;
 
 import android.test.InstrumentationTestCase;
 
