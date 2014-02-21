@@ -5,10 +5,10 @@
     android:orientation="vertical" >
     
     <TextView
-        android:id="@+id/title_about"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtvTitleSightseeing"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tickets_and_times"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/sightseeing"
+        style="@style/header_text" />
 
 </LinearLayout>

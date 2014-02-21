@@ -2,7 +2,7 @@
 <resources>
     <!-- English language version -->
     <string name="app_name">MyGuide</string>
-    <string name="header_main_screen">Welcome to the guide\n\tWroclaw Zoo</string>
+    <string name="header_main_screen">Welcome to the guide\nWroclaw Zoo</string>
     <string name="close">Close</string>
     <string name="tickets_and_times">Tickets and times</string>
     <string name="how_to_get">How to get</string>
