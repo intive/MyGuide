@@ -4,6 +4,9 @@ rvm: 1.9.3
 branches:
   only:
   - ios
+  except:
+  - android 
+  - windows_phone
 
 env:
   global:
@@ -34,3 +37,9 @@ after_script:
 notifications:
   email:
   - rafal.korzynski@blstream.com
+  - afilipowicz.4@gmail.com
+  - squixy.sln@gmail.com
+  - tkozik@outlook.com
+  - warcholkuba@gmail.com
+  - Wojciech.Filipczak@wp.pl
+  - kfwojtyla@gmail.com
