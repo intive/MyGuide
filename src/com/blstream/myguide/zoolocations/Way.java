@@ -2,6 +2,8 @@ package com.blstream.myguide.zoolocations;
 
 import java.util.ArrayList;
 
+/** This class contains way's id and locations of its nodes.
+ * */
 public class Way {
 	
 	private int id;

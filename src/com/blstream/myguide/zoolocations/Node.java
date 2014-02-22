@@ -1,5 +1,7 @@
 package com.blstream.myguide.zoolocations;
 
+/** This class contains two coordinates (latitude and longitude) of some point in the zoo.
+ * */
 public class Node {
 
 	private double latitude;	

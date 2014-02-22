@@ -2,6 +2,8 @@ package com.blstream.myguide.zoolocations;
 
 import java.util.ArrayList;
 
+/** This class contains location of junction and list of ways which cross there.
+ * */
 public class Junction {
 	
 	private Node node;

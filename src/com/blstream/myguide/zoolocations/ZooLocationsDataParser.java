@@ -20,6 +20,10 @@ public class ZooLocationsDataParser {
 	private ArrayList<Junction> junctions;
 	private TreeMap<Integer, Way> waysMap;
 	
+	/** This function parses chosen xml file and returns data saved in {@link ZooLocationData} object.  
+	 * @param is InputStream of xml file
+	 * @return parsed data from xml file
+	 *  */
 	public ZooLocationsData parse(InputStream in) throws XmlPullParserException, IOException {	
 		animals = new ArrayList<Animal>();
 		ways = new ArrayList<Way>();

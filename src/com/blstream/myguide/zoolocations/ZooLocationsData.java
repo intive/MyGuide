@@ -2,6 +2,10 @@ package com.blstream.myguide.zoolocations;
 
 import java.util.ArrayList;
 
+
+/**This class contains informations about animals, ways and ways'
+ * junctions and theirs locations in the zoo parsed from xml file.
+ * */
 public class ZooLocationsData {
 
 	private ArrayList<Animal> animals;
