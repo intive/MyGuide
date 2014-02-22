@@ -7,9 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "AFParsedData.h"
-#import "AFXMLParser.h"
-
 
 @interface ViewController ()
 
@@ -17,17 +14,9 @@
 
 @implementation ViewController
 
-- (void)parseDataXML:(id)object
-{
-    AFXMLParser *parser = [[AFXMLParser alloc] init];
-    [parser parse];
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    [self performSelectorInBackground:@selector(parseDataXML:) withObject:nil];
 }
 
 - (void)didReceiveMemoryWarning

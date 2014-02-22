@@ -137,13 +137,11 @@
 				3D5EF61A189637C000233B64 /* Main.storyboard */,
 				3D5EF61D189637C000233B64 /* ViewController.h */,
 				3D5EF61E189637C000233B64 /* ViewController.m */,
+				845C752C18B91CA60045EE7D /* Singletons */,
 				3D5EF620189637C000233B64 /* Images.xcassets */,
 				844D5F0618B400EF0018C970 /* Models */,
 				3D5EF60F189637C000233B64 /* Supporting Files */,
-				844D5F0A18B414060018C970 /* AFParsedData.h */,
-				844D5F0B18B414060018C970 /* AFParsedData.m */,
-				844D5F0D18B41CEE0018C970 /* AFXMLParser.h */,
-				844D5F0E18B41CEE0018C970 /* AFXMLParser.m */,
+				845C752B18B91C7F0045EE7D /* Parsers */,
 			);
 			path = MyGuide;
 			sourceTree = "<group>";
@@ -191,6 +189,24 @@
 				844D5F1318B53EE20018C970 /* AFJunction.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		845C752B18B91C7F0045EE7D /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				844D5F0D18B41CEE0018C970 /* AFXMLParser.h */,
+				844D5F0E18B41CEE0018C970 /* AFXMLParser.m */,
+			);
+			name = Parsers;
+			sourceTree = "<group>";
+		};
+		845C752C18B91CA60045EE7D /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				844D5F0A18B414060018C970 /* AFParsedData.h */,
+				844D5F0B18B414060018C970 /* AFParsedData.m */,
+			);
+			name = Singletons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

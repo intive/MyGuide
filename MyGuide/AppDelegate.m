@@ -7,11 +7,21 @@
 //
 
 #import "AppDelegate.h"
+#import "AFParsedData.h"
+#import "AFXMLParser.h"
 
 @implementation AppDelegate
+#pragma mark - Parsing methods
+- (void)parseDataXML:(id)object
+{
+    AFXMLParser *parser = [[AFXMLParser alloc] init];
+    [parser parse];
+}
 
+#pragma mark - Application methods
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self performSelectorInBackground:@selector(parseDataXML:) withObject:nil];
     // Override point for customization after application launch.
     return YES;
 }
