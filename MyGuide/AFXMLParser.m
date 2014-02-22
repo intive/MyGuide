@@ -35,9 +35,6 @@ static NSString *kXmlId = @"id";
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[self getDataXML]];
     [parser setDelegate:self];
     [parser parse];
-    
-    AFParsedData *lol = [AFParsedData sharedParsedData];
-    NSLog(@"%li %li %li", (unsigned long)[lol.animalsArray count], (unsigned long)[lol.waysArray count], (unsigned long)[lol.junctionsArray count]);
 }
 
 
