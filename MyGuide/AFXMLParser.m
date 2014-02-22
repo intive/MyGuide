@@ -35,18 +35,21 @@ static NSString *kXmlId = @"id";
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[self getDataXML]];
     [parser setDelegate:self];
     [parser parse];
+    
+    AFParsedData *lol = [AFParsedData sharedParsedData];
+    NSLog(@"%li %li %li", (unsigned long)[lol.animalsArray count], (unsigned long)[lol.waysArray count], (unsigned long)[lol.junctionsArray count]);
 }
 
 
 #pragma mark - parser delegate methods
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser{
-    NSLog(@"File found. Parsing data started.");
+    NSLog(@"File found. Parsing data.xml started.");
 }
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     
     NSString *errorString = [NSString stringWithFormat:@"Error code %li", (long)[parseError code]];
-    NSLog(@"Error while parsing data XML: %@", errorString);
+    NSLog(@"Error while parsing data.xml: %@", errorString);
     _parsingError=YES;
 }
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
@@ -127,9 +130,9 @@ static NSString *kXmlId = @"id";
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
     if (_parsingError == NO)
     {
-        NSLog(@"Parsing data complete.");
+        NSLog(@"Parsing data.xml complete.");
     } else {
-        NSLog(@"An error occurred during XML processing.");
+        NSLog(@"An error occurred during data.xml processing.");
     }
 }
 @end

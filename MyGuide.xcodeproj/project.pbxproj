@@ -20,7 +20,6 @@
 		3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
 		3D5EF632189637C000233B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF630189637C000233B64 /* InfoPlist.strings */; };
-		3D5EF634189637C000233B64 /* MyGuideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF633189637C000233B64 /* MyGuideTests.m */; };
 		844D5F0218B400D30018C970 /* AFAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0118B400D30018C970 /* AFAnimal.m */; };
 		844D5F0518B400E70018C970 /* AFWay.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0418B400E70018C970 /* AFWay.m */; };
 		844D5F0918B411F70018C970 /* AFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0818B411F70018C970 /* AFNode.m */; };
@@ -28,6 +27,7 @@
 		844D5F0F18B41CEE0018C970 /* AFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0E18B41CEE0018C970 /* AFXMLParser.m */; };
 		844D5F1118B41F470018C970 /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 844D5F1018B41F470018C970 /* data.xml */; };
 		844D5F1418B53EE20018C970 /* AFJunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F1318B53EE20018C970 /* AFJunction.m */; };
+		84F184A218B9537200658238 /* MyGuideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF633189637C000233B64 /* MyGuideTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -343,7 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D5EF634189637C000233B64 /* MyGuideTests.m in Sources */,
+				84F184A218B9537200658238 /* MyGuideTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +464,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BLStream (XTRY58ZV6V)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyGuide/MyGuide-Prefix.pch";
 				INFOPLIST_FILE = "MyGuide/MyGuide-Info.plist";
@@ -480,6 +484,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BLStream (XTRY58ZV6V)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyGuide/MyGuide-Prefix.pch";
 				INFOPLIST_FILE = "MyGuide/MyGuide-Info.plist";
@@ -492,6 +500,7 @@
 		3D5EF63B189637C000233B64 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyGuide.app/MyGuide";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -515,6 +524,7 @@
 		3D5EF63C189637C000233B64 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyGuide.app/MyGuide";
 				FRAMEWORK_SEARCH_PATHS = (
