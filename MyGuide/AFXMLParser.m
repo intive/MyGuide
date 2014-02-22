@@ -9,6 +9,17 @@
 #import "AFXMLParser.h"
 #import "AFParsedData.h"
 
+static NSString *kXmlAnimals = @"animals";
+static NSString *kXmlWays = @"ways";
+static NSString *kXmlJunctions = @"junctions";
+static NSString *kXmlAnimal = @"animal";
+static NSString *kXmlWay = @"way";
+static NSString *kXmlNode = @"node";
+static NSString *kXmlJunction = @"junction";
+static NSString *kXmlLatitude = @"lat";
+static NSString *kXmlLongitude = @"lon";
+static NSString *kXmlId = @"id";
+
 @implementation AFXMLParser
 
 #pragma mark - general methods
@@ -19,7 +30,7 @@
     return data;
 }
 - (void)parse{
-    _errorParsing = NO;
+    _parsingError = NO;
     
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[self getDataXML]];
     [parser setDelegate:self];
@@ -34,9 +45,9 @@
 }
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     
-    NSString *errorString = [NSString stringWithFormat:@"Error code %i", [parseError code]];
-    NSLog(@"Error parsing data XML: %@", errorString);
-    _errorParsing=YES;
+    NSString *errorString = [NSString stringWithFormat:@"Error code %li", (long)[parseError code]];
+    NSLog(@"Error while parsing data XML: %@", errorString);
+    _parsingError=YES;
 }
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
                                      namespaceURI:(NSString *)namespaceURI
@@ -47,30 +58,30 @@
     _elementValue = [[NSMutableString alloc] init];
     
     
-    if ([elementName isEqualToString:@"animals"]) {
+    if ([elementName isEqualToString:kXmlAnimals]) {
         _animalsArray = [[NSMutableArray alloc] init];
     }
-    else if ([elementName isEqualToString:@"ways"]) {
+    else if ([elementName isEqualToString:kXmlWays]) {
         _waysArray = [[NSMutableArray alloc] init];
     }
-    else if ([elementName isEqualToString:@"junctions"]) {
+    else if ([elementName isEqualToString:kXmlJunctions]) {
         _junctionsArray = [[NSMutableArray alloc] init];
     }
-    else if ([elementName isEqualToString:@"animal"]) {
-        AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:@"lat"] andLongitude:[attributeDict valueForKey:@"lon"]];
+    else if ([elementName isEqualToString:kXmlAnimal]) {
+        AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
         _currentAnimal = [[AFAnimal alloc] init];
         [_currentAnimal setCoordinates:tempNode];
     }
-    else if ([elementName isEqualToString:@"way"]) {
+    else if ([elementName isEqualToString:kXmlWay]) {
         _currentWay = [[AFWay alloc] init];
         _nodesArray = [[NSMutableArray alloc] init];
-        [_currentWay setWayID:[attributeDict valueForKey:@"id"]];
+        [_currentWay setWayID:[attributeDict valueForKey:kXmlId]];
     }
-    else if ([elementName isEqualToString:@"node"]) {
-        _currentNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:@"lat"] andLongitude:[attributeDict valueForKey:@"lon"]];
+    else if ([elementName isEqualToString:kXmlNode]) {
+        _currentNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
     }
-    else if ([elementName isEqualToString:@"junction"]) {
-        AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:@"lat"] andLongitude:[attributeDict valueForKey:@"lon"]];
+    else if ([elementName isEqualToString:kXmlJunction]) {
+        AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
         _waysArray = [[NSMutableArray alloc] init];
         _currentJunction = [[AFJunction alloc] init];
         [_currentJunction setCoordinates:tempNode];
@@ -85,36 +96,36 @@
     
     AFParsedData *sharedData = [AFParsedData sharedParsedData];
 
-    if ([elementName isEqualToString:@"animals"]) {
+    if ([elementName isEqualToString:kXmlAnimals]) {
         [sharedData setAnimalsArray:_animalsArray];
         _animalsArray = nil;
     }
-    else if ([elementName isEqualToString:@"ways"]) {
+    else if ([elementName isEqualToString:kXmlWays]) {
         [sharedData setWaysArray:_waysArray];
         _nodesArray = nil;
     }
-    else if ([elementName isEqualToString:@"junctions"]) {
+    else if ([elementName isEqualToString:kXmlJunctions]) {
         [sharedData setJunctionsArray:_junctionsArray];
         _junctionsArray = nil;
     }
-    else if ([elementName isEqualToString:@"animal"]) {
+    else if ([elementName isEqualToString:kXmlAnimal]) {
         [_currentAnimal setName:_elementValue];
         [_animalsArray addObject:_currentAnimal];
     }
-    else if ([elementName isEqualToString:@"way"]) {
+    else if ([elementName isEqualToString:kXmlWay]) {
         if(_nodesArray != nil)[_currentWay setNodesArray:_nodesArray];
         [_waysArray addObject:_currentWay];
     }
-    else if ([elementName isEqualToString:@"node"]) {
+    else if ([elementName isEqualToString:kXmlNode]) {
         [_nodesArray addObject:_currentNode];
     }
-    else if ([elementName isEqualToString:@"junction"]) {
+    else if ([elementName isEqualToString:kXmlJunction]) {
         [_currentJunction setWaysArray:_waysArray];
         [_junctionsArray addObject:_currentJunction];
     }
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-    if (_errorParsing == NO)
+    if (_parsingError == NO)
     {
         NSLog(@"Parsing data complete.");
     } else {

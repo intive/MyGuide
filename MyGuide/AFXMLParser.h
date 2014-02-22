@@ -25,7 +25,7 @@
 
 @property (nonatomic, readonly) NSString *currentElement;
 @property (nonatomic, readonly) NSMutableString *elementValue;  // suff between angled brackets in xml element e.g. ( <element>stuff</element> )
-@property (nonatomic, readonly) BOOL errorParsing;
+@property (nonatomic, readonly) BOOL parsingError;
 
 - (NSData *)getDataXML;
 - (void)parse;
