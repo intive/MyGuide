@@ -2,11 +2,11 @@ language: objective-c
 rvm: 1.9.3
 
 branches:
-  only:
-  - ios
   except:
   - android 
   - windows_phone
+  only:
+  - ios
 
 env:
   global:
@@ -27,7 +27,7 @@ before_script:
 script:
 - xctool analyze -only MyGuide -workspace MyGuide.xcworkspace -scheme MyGuide -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - xctool test -workspace MyGuide.xcworkspace -scheme MyGuideTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-- xctool -workspace MyGuide.xcworkspace -scheme MyGuide -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
+- ./scripts/build-release.sh
 
 after_success:
 - ./scripts/sign-and-upload.sh
