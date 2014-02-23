@@ -20,13 +20,21 @@
 		3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
 		3D5EF632189637C000233B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF630189637C000233B64 /* InfoPlist.strings */; };
-		844D5F0218B400D30018C970 /* AFAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0118B400D30018C970 /* AFAnimal.m */; };
-		844D5F0518B400E70018C970 /* AFWay.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0418B400E70018C970 /* AFWay.m */; };
-		844D5F0918B411F70018C970 /* AFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0818B411F70018C970 /* AFNode.m */; };
-		844D5F0C18B414060018C970 /* AFParsedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0B18B414060018C970 /* AFParsedData.m */; };
-		844D5F0F18B41CEE0018C970 /* AFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F0E18B41CEE0018C970 /* AFXMLParser.m */; };
 		844D5F1118B41F470018C970 /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 844D5F1018B41F470018C970 /* data.xml */; };
-		844D5F1418B53EE20018C970 /* AFJunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 844D5F1318B53EE20018C970 /* AFJunction.m */; };
+		84DD034E18BA8C3200DE7178 /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD034D18BA8C3200DE7178 /* SettingsParserTest.m */; };
+		84DD035B18BA8C7A00DE7178 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84DD035818BA8C7A00DE7178 /* config.xml */; };
+		84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */; };
+		84DD036618BA8F4900DE7178 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DD036518BA8E6800DE7178 /* libOCMock.a */; };
+		84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2A18BA917800A2F720 /* AFAnimal.m */; };
+		84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2C18BA917800A2F720 /* AFJunction.m */; };
+		84DDCB3318BA917800A2F720 /* AFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2E18BA917800A2F720 /* AFNode.m */; };
+		84DDCB3418BA917800A2F720 /* AFWay.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB3018BA917800A2F720 /* AFWay.m */; };
+		84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB3718BA919600A2F720 /* AFXMLParser.m */; };
+		84DDCB3D18BA919600A2F720 /* SettingParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB3918BA919600A2F720 /* SettingParserDelegate.m */; };
+		84DDCB3E18BA919600A2F720 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB3B18BA919600A2F720 /* SettingsParser.m */; };
+		84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4118BA91A100A2F720 /* AFParsedData.m */; };
+		84DDCB4518BA91A100A2F720 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4318BA91A100A2F720 /* Settings.m */; };
+		84DDCB4A18BA944800A2F720 /* DataParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4918BA944800A2F720 /* DataParserTests.m */; };
 		84F184A218B9537200658238 /* MyGuideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF633189637C000233B64 /* MyGuideTests.m */; };
 /* End PBXBuildFile section */
 
@@ -60,19 +68,37 @@
 		3D5EF62F189637C000233B64 /* MyGuideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyGuideTests-Info.plist"; sourceTree = "<group>"; };
 		3D5EF631189637C000233B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3D5EF633189637C000233B64 /* MyGuideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGuideTests.m; sourceTree = "<group>"; };
-		844D5F0018B400D30018C970 /* AFAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimal.h; sourceTree = "<group>"; };
-		844D5F0118B400D30018C970 /* AFAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimal.m; sourceTree = "<group>"; };
-		844D5F0318B400E70018C970 /* AFWay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFWay.h; sourceTree = "<group>"; };
-		844D5F0418B400E70018C970 /* AFWay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFWay.m; sourceTree = "<group>"; };
-		844D5F0718B411F70018C970 /* AFNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNode.h; sourceTree = "<group>"; };
-		844D5F0818B411F70018C970 /* AFNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNode.m; sourceTree = "<group>"; };
-		844D5F0A18B414060018C970 /* AFParsedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFParsedData.h; sourceTree = "<group>"; };
-		844D5F0B18B414060018C970 /* AFParsedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFParsedData.m; sourceTree = "<group>"; };
-		844D5F0D18B41CEE0018C970 /* AFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLParser.h; sourceTree = "<group>"; };
-		844D5F0E18B41CEE0018C970 /* AFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLParser.m; sourceTree = "<group>"; };
 		844D5F1018B41F470018C970 /* data.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = data.xml; path = "XML files/data.xml"; sourceTree = "<group>"; };
-		844D5F1218B53EE20018C970 /* AFJunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJunction.h; sourceTree = "<group>"; };
-		844D5F1318B53EE20018C970 /* AFJunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJunction.m; sourceTree = "<group>"; };
+		84DD034D18BA8C3200DE7178 /* SettingsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsParserTest.m; path = Parsers/SettingsParserTest.m; sourceTree = "<group>"; };
+		84DD035818BA8C7A00DE7178 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = "XML files/config.xml"; sourceTree = "<group>"; };
+		84DD035918BA8C7A00DE7178 /* XMLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLFetcher.h; path = "XML files/XMLFetcher.h"; sourceTree = "<group>"; };
+		84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLFetcher.m; path = "XML files/XMLFetcher.m"; sourceTree = "<group>"; };
+		84DD035F18BA8E6800DE7178 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		84DD036018BA8E6800DE7178 /* OCMArg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		84DD036118BA8E6800DE7178 /* OCMConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		84DD036218BA8E6800DE7178 /* OCMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		84DD036318BA8E6800DE7178 /* OCMockObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		84DD036418BA8E6800DE7178 /* OCMockRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
+		84DD036518BA8E6800DE7178 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		84DDCB2918BA917800A2F720 /* AFAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimal.h; sourceTree = "<group>"; };
+		84DDCB2A18BA917800A2F720 /* AFAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimal.m; sourceTree = "<group>"; };
+		84DDCB2B18BA917800A2F720 /* AFJunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJunction.h; sourceTree = "<group>"; };
+		84DDCB2C18BA917800A2F720 /* AFJunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJunction.m; sourceTree = "<group>"; };
+		84DDCB2D18BA917800A2F720 /* AFNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNode.h; sourceTree = "<group>"; };
+		84DDCB2E18BA917800A2F720 /* AFNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNode.m; sourceTree = "<group>"; };
+		84DDCB2F18BA917800A2F720 /* AFWay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFWay.h; sourceTree = "<group>"; };
+		84DDCB3018BA917800A2F720 /* AFWay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFWay.m; sourceTree = "<group>"; };
+		84DDCB3618BA919600A2F720 /* AFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLParser.h; sourceTree = "<group>"; };
+		84DDCB3718BA919600A2F720 /* AFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLParser.m; sourceTree = "<group>"; };
+		84DDCB3818BA919600A2F720 /* SettingParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingParserDelegate.h; sourceTree = "<group>"; };
+		84DDCB3918BA919600A2F720 /* SettingParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingParserDelegate.m; sourceTree = "<group>"; };
+		84DDCB3A18BA919600A2F720 /* SettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsParser.h; sourceTree = "<group>"; };
+		84DDCB3B18BA919600A2F720 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
+		84DDCB4018BA91A100A2F720 /* AFParsedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFParsedData.h; sourceTree = "<group>"; };
+		84DDCB4118BA91A100A2F720 /* AFParsedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFParsedData.m; sourceTree = "<group>"; };
+		84DDCB4218BA91A100A2F720 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		84DDCB4318BA91A100A2F720 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		84DDCB4918BA944800A2F720 /* DataParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataParserTests.m; path = Parsers/DataParserTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DD036618BA8F4900DE7178 /* libOCMock.a in Frameworks */,
 				3D5EF628189637C000233B64 /* XCTest.framework in Frameworks */,
 				3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */,
 				3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */,
@@ -121,6 +148,7 @@
 		3D5EF607189637C000233B64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84DD035D18BA8E6800DE7178 /* OCMock */,
 				3D5EF608189637C000233B64 /* Foundation.framework */,
 				3D5EF60A189637C000233B64 /* CoreGraphics.framework */,
 				3D5EF60C189637C000233B64 /* UIKit.framework */,
@@ -137,11 +165,12 @@
 				3D5EF61A189637C000233B64 /* Main.storyboard */,
 				3D5EF61D189637C000233B64 /* ViewController.h */,
 				3D5EF61E189637C000233B64 /* ViewController.m */,
-				845C752C18B91CA60045EE7D /* Singletons */,
+				84DDCB3F18BA91A100A2F720 /* Singletons */,
+				84DDCB3518BA919600A2F720 /* Parsers */,
+				84DDCB4618BA91CB00A2F720 /* XML files */,
+				84DDCB2818BA917800A2F720 /* Models */,
 				3D5EF620189637C000233B64 /* Images.xcassets */,
-				844D5F0618B400EF0018C970 /* Models */,
 				3D5EF60F189637C000233B64 /* Supporting Files */,
-				845C752B18B91C7F0045EE7D /* Parsers */,
 			);
 			path = MyGuide;
 			sourceTree = "<group>";
@@ -149,7 +178,6 @@
 		3D5EF60F189637C000233B64 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				844D5F1018B41F470018C970 /* data.xml */,
 				3D5EF610189637C000233B64 /* MyGuide-Info.plist */,
 				3D5EF611189637C000233B64 /* InfoPlist.strings */,
 				3D5EF614189637C000233B64 /* main.m */,
@@ -162,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				3D5EF633189637C000233B64 /* MyGuideTests.m */,
+				84DDCB4918BA944800A2F720 /* DataParserTests.m */,
+				84DD034D18BA8C3200DE7178 /* SettingsParserTest.m */,
 				3D5EF62E189637C000233B64 /* Supporting Files */,
 			);
 			path = MyGuideTests;
@@ -176,37 +206,77 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		844D5F0618B400EF0018C970 /* Models */ = {
+		84DD035D18BA8E6800DE7178 /* OCMock */ = {
 			isa = PBXGroup;
 			children = (
-				844D5F0018B400D30018C970 /* AFAnimal.h */,
-				844D5F0118B400D30018C970 /* AFAnimal.m */,
-				844D5F0318B400E70018C970 /* AFWay.h */,
-				844D5F0418B400E70018C970 /* AFWay.m */,
-				844D5F0718B411F70018C970 /* AFNode.h */,
-				844D5F0818B411F70018C970 /* AFNode.m */,
-				844D5F1218B53EE20018C970 /* AFJunction.h */,
-				844D5F1318B53EE20018C970 /* AFJunction.m */,
+				84DD035E18BA8E6800DE7178 /* headers */,
+				84DD036518BA8E6800DE7178 /* libOCMock.a */,
 			);
-			name = Models;
+			name = OCMock;
+			path = Frameworks/OCMock;
 			sourceTree = "<group>";
 		};
-		845C752B18B91C7F0045EE7D /* Parsers */ = {
+		84DD035E18BA8E6800DE7178 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				844D5F0D18B41CEE0018C970 /* AFXMLParser.h */,
-				844D5F0E18B41CEE0018C970 /* AFXMLParser.m */,
+				84DD035F18BA8E6800DE7178 /* NSNotificationCenter+OCMAdditions.h */,
+				84DD036018BA8E6800DE7178 /* OCMArg.h */,
+				84DD036118BA8E6800DE7178 /* OCMConstraint.h */,
+				84DD036218BA8E6800DE7178 /* OCMock.h */,
+				84DD036318BA8E6800DE7178 /* OCMockObject.h */,
+				84DD036418BA8E6800DE7178 /* OCMockRecorder.h */,
 			);
-			name = Parsers;
+			path = headers;
 			sourceTree = "<group>";
 		};
-		845C752C18B91CA60045EE7D /* Singletons */ = {
+		84DDCB2818BA917800A2F720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				844D5F0A18B414060018C970 /* AFParsedData.h */,
-				844D5F0B18B414060018C970 /* AFParsedData.m */,
+				84DDCB2918BA917800A2F720 /* AFAnimal.h */,
+				84DDCB2A18BA917800A2F720 /* AFAnimal.m */,
+				84DDCB2B18BA917800A2F720 /* AFJunction.h */,
+				84DDCB2C18BA917800A2F720 /* AFJunction.m */,
+				84DDCB2D18BA917800A2F720 /* AFNode.h */,
+				84DDCB2E18BA917800A2F720 /* AFNode.m */,
+				84DDCB2F18BA917800A2F720 /* AFWay.h */,
+				84DDCB3018BA917800A2F720 /* AFWay.m */,
 			);
-			name = Singletons;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		84DDCB3518BA919600A2F720 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				84DDCB3618BA919600A2F720 /* AFXMLParser.h */,
+				84DDCB3718BA919600A2F720 /* AFXMLParser.m */,
+				84DDCB3818BA919600A2F720 /* SettingParserDelegate.h */,
+				84DDCB3918BA919600A2F720 /* SettingParserDelegate.m */,
+				84DDCB3A18BA919600A2F720 /* SettingsParser.h */,
+				84DDCB3B18BA919600A2F720 /* SettingsParser.m */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		84DDCB3F18BA91A100A2F720 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				84DDCB4018BA91A100A2F720 /* AFParsedData.h */,
+				84DDCB4118BA91A100A2F720 /* AFParsedData.m */,
+				84DDCB4218BA91A100A2F720 /* Settings.h */,
+				84DDCB4318BA91A100A2F720 /* Settings.m */,
+			);
+			path = Singletons;
+			sourceTree = "<group>";
+		};
+		84DDCB4618BA91CB00A2F720 /* XML files */ = {
+			isa = PBXGroup;
+			children = (
+				84DD035818BA8C7A00DE7178 /* config.xml */,
+				84DD035918BA8C7A00DE7178 /* XMLFetcher.h */,
+				84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */,
+				844D5F1018B41F470018C970 /* data.xml */,
+			);
+			name = "XML files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +363,7 @@
 				3D5EF621189637C000233B64 /* Images.xcassets in Resources */,
 				3D5EF613189637C000233B64 /* InfoPlist.strings in Resources */,
 				3D5EF61C189637C000233B64 /* Main.storyboard in Resources */,
+				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,14 +398,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844D5F1418B53EE20018C970 /* AFJunction.m in Sources */,
-				844D5F0C18B414060018C970 /* AFParsedData.m in Sources */,
+				84DDCB3E18BA919600A2F720 /* SettingsParser.m in Sources */,
+				84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */,
+				84DDCB4518BA91A100A2F720 /* Settings.m in Sources */,
+				84DDCB3D18BA919600A2F720 /* SettingParserDelegate.m in Sources */,
+				84DDCB3318BA917800A2F720 /* AFNode.m in Sources */,
+				84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */,
+				84DDCB3418BA917800A2F720 /* AFWay.m in Sources */,
+				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
+				84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */,
 				3D5EF61F189637C000233B64 /* ViewController.m in Sources */,
+				84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
-				844D5F0518B400E70018C970 /* AFWay.m in Sources */,
-				844D5F0218B400D30018C970 /* AFAnimal.m in Sources */,
-				844D5F0F18B41CEE0018C970 /* AFXMLParser.m in Sources */,
-				844D5F0918B411F70018C970 /* AFNode.m in Sources */,
 				3D5EF615189637C000233B64 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +419,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F184A218B9537200658238 /* MyGuideTests.m in Sources */,
+				84DDCB4A18BA944800A2F720 /* DataParserTests.m in Sources */,
+				84DD034E18BA8C3200DE7178 /* SettingsParserTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +591,22 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/Frameworks/OCMock/headers",
+				);
 				INFOPLIST_FILE = "MyGuideTests/MyGuideTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/afilipowicz/Desktop/MyGuide/Frameworks/OCMock,
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"$(SRCROOT)/Frameworks/OCMock/libOCMock.a",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -534,7 +626,22 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyGuide/MyGuide-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/Frameworks/OCMock/headers",
+				);
 				INFOPLIST_FILE = "MyGuideTests/MyGuideTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/afilipowicz/Desktop/MyGuide/Frameworks/OCMock,
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"$(SRCROOT)/Frameworks/OCMock/libOCMock.a",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

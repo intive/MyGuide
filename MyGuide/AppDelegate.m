@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "AFParsedData.h"
 #import "AFXMLParser.h"
+#import "SettingsParser.h"
+
 
 @implementation AppDelegate
 #pragma mark - Parsing methods
@@ -17,12 +19,17 @@
     AFXMLParser *parser = [[AFXMLParser alloc] init];
     [parser parse];
 }
+- (void) loadSettings: (id) object {
+    SettingsParser *parser = [[SettingsParser alloc] init];
+    [parser loadSettings];
+}
 
 #pragma mark - Application methods
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self performSelectorInBackground:@selector(parseDataXML:) withObject:nil];
-    // Override point for customization after application launch.
+    [self performSelectorInBackground:@selector(loadSettings:) withObject:nil];
+
     return YES;
 }
 							
