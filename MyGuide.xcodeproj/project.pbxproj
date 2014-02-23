@@ -16,15 +16,15 @@
 		3D5EF61C189637C000233B64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF61A189637C000233B64 /* Main.storyboard */; };
 		3D5EF61F189637C000233B64 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF61E189637C000233B64 /* ViewController.m */; };
 		3D5EF621189637C000233B64 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF620189637C000233B64 /* Images.xcassets */; };
-		3D5EF628189637C000233B64 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
 		3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
 		3D5EF632189637C000233B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF630189637C000233B64 /* InfoPlist.strings */; };
+		842D3E2218BAA3EE006962B6 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DD036518BA8E6800DE7178 /* libOCMock.a */; };
 		844D5F1118B41F470018C970 /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 844D5F1018B41F470018C970 /* data.xml */; };
+		84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
 		84DD034E18BA8C3200DE7178 /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD034D18BA8C3200DE7178 /* SettingsParserTest.m */; };
 		84DD035B18BA8C7A00DE7178 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84DD035818BA8C7A00DE7178 /* config.xml */; };
 		84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */; };
-		84DD036618BA8F4900DE7178 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DD036518BA8E6800DE7178 /* libOCMock.a */; };
 		84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2A18BA917800A2F720 /* AFAnimal.m */; };
 		84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2C18BA917800A2F720 /* AFJunction.m */; };
 		84DDCB3318BA917800A2F720 /* AFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2E18BA917800A2F720 /* AFNode.m */; };
@@ -116,9 +116,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84DD036618BA8F4900DE7178 /* libOCMock.a in Frameworks */,
-				3D5EF628189637C000233B64 /* XCTest.framework in Frameworks */,
+				84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */,
 				3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */,
+				842D3E2218BAA3EE006962B6 /* libOCMock.a in Frameworks */,
 				3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,18 +169,6 @@
 				84DDCB3518BA919600A2F720 /* Parsers */,
 				84DDCB4618BA91CB00A2F720 /* XML files */,
 				84DDCB2818BA917800A2F720 /* Models */,
-				844D5F0A18B414060018C970 /* AFParsedData.h */,
-				844D5F0B18B414060018C970 /* AFParsedData.m */,
-				844D5F0018B400D30018C970 /* AFAnimal.h */,
-				844D5F0118B400D30018C970 /* AFAnimal.m */,
-				844D5F0318B400E70018C970 /* AFWay.h */,
-				844D5F0418B400E70018C970 /* AFWay.m */,
-				844D5F0718B411F70018C970 /* AFNode.h */,
-				844D5F0818B411F70018C970 /* AFNode.m */,
-				844D5F1218B53EE20018C970 /* AFJunction.h */,
-				844D5F0D18B41CEE0018C970 /* AFXMLParser.h */,
-				844D5F0E18B41CEE0018C970 /* AFXMLParser.m */,
-				844D5F1318B53EE20018C970 /* AFJunction.m */,
 				3D5EF620189637C000233B64 /* Images.xcassets */,
 				3D5EF60F189637C000233B64 /* Supporting Files */,
 			);
@@ -202,8 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				3D5EF633189637C000233B64 /* MyGuideTests.m */,
-				84DDCB4918BA944800A2F720 /* DataParserTests.m */,
-				84DD034D18BA8C3200DE7178 /* SettingsParserTest.m */,
+				84C266A318BAA15300588D63 /* Parsers tests */,
 				3D5EF62E189637C000233B64 /* Supporting Files */,
 			);
 			path = MyGuideTests;
@@ -216,6 +203,15 @@
 				3D5EF630189637C000233B64 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84C266A318BAA15300588D63 /* Parsers tests */ = {
+			isa = PBXGroup;
+			children = (
+				84DDCB4918BA944800A2F720 /* DataParserTests.m */,
+				84DD034D18BA8C3200DE7178 /* SettingsParserTest.m */,
+			);
+			name = "Parsers tests";
 			sourceTree = "<group>";
 		};
 		84DD035D18BA8E6800DE7178 /* OCMock */ = {
@@ -611,12 +607,10 @@
 				INFOPLIST_FILE = "MyGuideTests/MyGuideTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/afilipowicz/Desktop/MyGuide/Frameworks/OCMock,
+					/Users/afilipowicz/Documents/XcodeProjects/iOS/MyGuide/Frameworks/OCMock,
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-framework",
-					XCTest,
 					"$(SRCROOT)/Frameworks/OCMock/libOCMock.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -646,12 +640,10 @@
 				INFOPLIST_FILE = "MyGuideTests/MyGuideTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/afilipowicz/Desktop/MyGuide/Frameworks/OCMock,
+					/Users/afilipowicz/Documents/XcodeProjects/iOS/MyGuide/Frameworks/OCMock,
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-framework",
-					XCTest,
 					"$(SRCROOT)/Frameworks/OCMock/libOCMock.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
