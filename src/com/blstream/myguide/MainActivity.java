@@ -2,20 +2,19 @@ package com.blstream.myguide;
 
 import android.app.Activity;
 import android.os.Bundle;
-
 import android.util.Log;
+
+import android.support.v7.app.ActionBarActivity;
 
 import com.blstream.myguide.zoolocations.*;
 
-public class MainActivity extends Activity
-{
+public class MainActivity extends ActionBarActivity {
 	
     private final static String LOG_TAG = "zoolocations";
     
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
@@ -31,3 +30,4 @@ public class MainActivity extends Activity
     }
     
 }
+
