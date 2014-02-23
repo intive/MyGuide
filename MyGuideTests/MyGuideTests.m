@@ -40,6 +40,7 @@ static unsigned long vJunctionsAmount = 20;
     [super tearDown];
 }
 
+#pragma mark - general tests
 - (void)testIfDataFileExists
 {
     NSBundle *bundle = [NSBundle mainBundle];
@@ -68,6 +69,7 @@ static unsigned long vJunctionsAmount = 20;
 {
     XCTAssertEqual((unsigned long)[_sharedData.junctionsArray count], vJunctionsAmount, @"The amount of junctions (%lu) is not equal to the one expected on 22.02.2014 (%lu)", (unsigned long)[_sharedData.junctionsArray count], vJunctionsAmount);
 }
+#pragma mark - detail tests
 - (void)testIfEachAnimalHasAName
 {
     bool check = NO;
@@ -82,16 +84,16 @@ static unsigned long vJunctionsAmount = 20;
     bool check = NO;
     for(AFAnimal *animal in _sharedData.animalsArray)
     {
-        if(animal.coordinates == nil) check = YES;
+        if([animal.coordinates.latitude length] == 0 || [animal.coordinates.longitude length] == 0) check = YES;
     }
-    XCTAssertFalse(check, @"There is an animal without a name");
+    XCTAssertFalse(check, @"There is an animal without coordinates");
 }
 - (void)testIfEachWayHasAnID
 {
     bool check = NO;
     for(AFWay *way in _sharedData.waysArray)
     {
-        if(way.wayID == nil) check = YES;
+        if([way.wayID length] == 0) check = YES;
     }
     XCTAssertFalse(check, @"There is a way without an ID");
 }
@@ -135,7 +137,7 @@ static unsigned long vJunctionsAmount = 20;
     bool check = NO;
     for(AFJunction *junction in _sharedData.junctionsArray)
     {
-        if(junction.coordinates == nil) check = YES;
+        if([junction.coordinates.latitude length] == 0 || [junction.coordinates.longitude length] == 0) check = YES;
     }
     XCTAssertFalse(check, @"There is a junction without coordinates");
 }
@@ -150,18 +152,21 @@ static unsigned long vJunctionsAmount = 20;
 }
 - (void)testIfEachWayInWaysArrayOfEachJunctionHasAValidID
 {
-    bool check = YES;
+    bool majorCheck = YES;
+    bool minorCheck = YES;
     for(AFJunction *junction in _sharedData.junctionsArray)
     {
-        for(AFWay *way in junction.waysArray)
-        {
-            for(AFWay *way2 in _sharedData.waysArray)
+            for(AFWay *way in junction.waysArray)
             {
-                if([way.wayID isEqualToString: way2.wayID]) check = NO;
+                    minorCheck = YES;
+                    for(AFWay *way2 in _sharedData.waysArray)
+                    {
+                        if([way.wayID isEqualToString: way2.wayID]) minorCheck = NO;
+                    }
+                if(minorCheck == YES) majorCheck = NO;
             }
-        }
     }
-    XCTAssertFalse(check, @"There is a way with an invalid ID within ways array of a certain junction");
+    XCTAssertTrue(majorCheck, @"There is a way with an invalid ID within ways array of a certain junction");
 
 }
 

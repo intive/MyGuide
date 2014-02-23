@@ -74,7 +74,7 @@ static NSString *kXmlId = @"id";
     }
     else if ([elementName isEqualToString:kXmlWay]) {
         _currentWay = [[AFWay alloc] init];
-        _nodesArray = [[NSMutableArray alloc] init];
+        _nodesArray = nil;
         [_currentWay setWayID:[attributeDict valueForKey:kXmlId]];
     }
     else if ([elementName isEqualToString:kXmlNode]) {
@@ -82,7 +82,7 @@ static NSString *kXmlId = @"id";
     }
     else if ([elementName isEqualToString:kXmlJunction]) {
         AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
-        _waysArray = [[NSMutableArray alloc] init];
+        _waysArray = nil;
         _currentJunction = [[AFJunction alloc] init];
         [_currentJunction setCoordinates:tempNode];
     }
@@ -113,14 +113,18 @@ static NSString *kXmlId = @"id";
         [_animalsArray addObject:_currentAnimal];
     }
     else if ([elementName isEqualToString:kXmlWay]) {
+        if(_waysArray == nil) _waysArray = [[NSMutableArray alloc] init];
         if(_nodesArray != nil)[_currentWay setNodesArray:_nodesArray];
+        else _currentWay.nodesArray = nil;
         [_waysArray addObject:_currentWay];
     }
     else if ([elementName isEqualToString:kXmlNode]) {
+        if(_nodesArray == nil) _nodesArray = [[NSMutableArray alloc] init];
         [_nodesArray addObject:_currentNode];
     }
     else if ([elementName isEqualToString:kXmlJunction]) {
-        [_currentJunction setWaysArray:_waysArray];
+        if(_waysArray != nil)[_currentJunction setWaysArray:_waysArray];
+        else _currentJunction.waysArray = nil;
         [_junctionsArray addObject:_currentJunction];
     }
 }
