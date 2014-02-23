@@ -13,12 +13,19 @@ import android.util.Xml;
 
 public class ZooLocationsDataParser {
 	
-	private final static String LOG_TAG = "zoolocations"; 
+	public static final String EXCEPTION_COORDINATE_MISSING = "At least one of coordinates is missing.";
+	public static final String EXCEPTION_LATITUDE_FORMAT = "Attribute lat is not a Double";
+	public static final String EXCEPTION_LONGITUDE_FORMAT = "Attribute id is missing.";
+	public static final String EXCEPTION_ID_MISSING = "Attribute lat is not a Double";
+	public static final String EXCEPTION_ID_FORMAT = "Attribute id is not an Integer";
+	
+	private static final String LOG_TAG = "zoolocations"; 
 	
 	private ArrayList<Animal> animals;
 	private ArrayList<Way> ways;
 	private ArrayList<Junction> junctions;
 	private TreeMap<Integer, Way> waysMap;
+	
 	
 	/** This function parses chosen xml file and returns data saved in {@link ZooLocationData} object.  
 	 * @param is InputStream of xml file
@@ -86,17 +93,17 @@ public class ZooLocationsDataParser {
 		String longitudeStr = parser.getAttributeValue(null, "lon");
 		Double latitude, longitude;
 		if (latitudeStr == null || longitudeStr == null) {
-			throw new XmlPullParserException("At least one of coordinates is missing.");
+			throw new XmlPullParserException(EXCEPTION_COORDINATE_MISSING);
 		}
 		try {
 			latitude = Double.parseDouble(latitudeStr);
 		} catch (NumberFormatException e) {
-			throw new XmlPullParserException("Atrribute lat is not a Double");
+			throw new XmlPullParserException(EXCEPTION_LATITUDE_FORMAT);
 		}
 		try {
 			longitude = Double.parseDouble(longitudeStr);
 		} catch (NumberFormatException e) {
-			throw new XmlPullParserException("Atrribute lon is not a Double");
+			throw new XmlPullParserException(EXCEPTION_LONGITUDE_FORMAT);
 		}
 		return new Node(latitude, longitude);
 	}
@@ -153,12 +160,12 @@ public class ZooLocationsDataParser {
 		String idStr = parser.getAttributeValue(null, "id");
 		int id;
 		if (idStr == null) {
-			throw new XmlPullParserException("Attribute id is missing.");
+			throw new XmlPullParserException(EXCEPTION_ID_MISSING);
 		}
 		try {
 			id = Integer.parseInt(idStr);
 		} catch (NumberFormatException e) {
-			throw new XmlPullParserException("Atrribute id is not a Integer");
+			throw new XmlPullParserException(EXCEPTION_ID_FORMAT);
 		}
 		return id;
 	}
