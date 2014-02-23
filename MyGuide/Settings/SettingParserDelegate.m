@@ -21,7 +21,7 @@
     return self;
 }
 
-- (void) parserDidStartDocument:(NSXMLParser *) parser { NSLog(@"Loading settings from file..."); }
+- (void) parserDidStartDocument:(NSXMLParser *) parser { MWLogInfo(@"Loading settings from file..."); }
 
 - (void) parser: (NSXMLParser *) parser didStartElement: (NSString *)     elementName
                                            namespaceURI: (NSString *)     namespaceURI
@@ -45,5 +45,5 @@ foundCharacters: (NSString *)    string
     if(_callback) _callback(elementName, _cacheElement);
 }
 
-- (void) parserDidEndDocument:(NSXMLParser *) parser { NSLog(@"Settings loaded!"); }
+- (void) parserDidEndDocument:(NSXMLParser *) parser { MWLogInfo(@"Settings loaded!"); }
 @end

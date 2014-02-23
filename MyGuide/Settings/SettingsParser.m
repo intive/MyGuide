@@ -34,7 +34,7 @@ NSString * const CONFIG_FILE_NAME = @"config";
     Settings *settings = [Settings sharedSettingsData];
     return ^(NSString *name, NSMutableString *value) {
         if ([name isEqualToString: @"configuration"]) return;
-        NSLog(@"Injecting %@ with value \"%@\" to settings.", name, value);
+        MWLogInfo(@"Injecting %@ with value \"%@\" to settings.", name, value);
         [settings injectDataWithName: name andValue: value];
     };
 }

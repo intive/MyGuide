@@ -14,13 +14,18 @@
 		0510F48718BA0E6C007DA4D3 /* SettingParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0510F48618BA0E6C007DA4D3 /* SettingParserDelegate.m */; };
 		05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */; };
 		05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DA78D418B969BF005D6C5F /* libOCMock.a */; };
+		05E375C918BA872B00A31630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C418BA872B00A31630 /* main.m */; };
+		05E375CA18BA872B00A31630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C418BA872B00A31630 /* main.m */; };
+		05E375CB18BA872B00A31630 /* MWLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C618BA872B00A31630 /* MWLogging.m */; };
+		05E375CC18BA872B00A31630 /* MWLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C618BA872B00A31630 /* MWLogging.m */; };
+		05E375CE18BA872B00A31630 /* MyGuide-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05E375C718BA872B00A31630 /* MyGuide-Info.plist */; };
+		05E375CF18BA8A4E00A31630 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF61A189637C000233B64 /* Main.storyboard */; };
+		05E375D018BA8A5E00A31630 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF630189637C000233B64 /* InfoPlist.strings */; };
+		05E375D118BA8A6400A31630 /* MyGuideTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF62F189637C000233B64 /* MyGuideTests-Info.plist */; };
 		3D5EF609189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF60B189637C000233B64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60A189637C000233B64 /* CoreGraphics.framework */; };
 		3D5EF60D189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
-		3D5EF613189637C000233B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF611189637C000233B64 /* InfoPlist.strings */; };
-		3D5EF615189637C000233B64 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF614189637C000233B64 /* main.m */; };
 		3D5EF619189637C000233B64 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF618189637C000233B64 /* AppDelegate.m */; };
-		3D5EF61C189637C000233B64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF61A189637C000233B64 /* Main.storyboard */; };
 		3D5EF61F189637C000233B64 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF61E189637C000233B64 /* ViewController.m */; };
 		3D5EF621189637C000233B64 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF620189637C000233B64 /* Images.xcassets */; };
 		3D5EF628189637C000233B64 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
@@ -58,14 +63,16 @@
 		05DA78D218B969BF005D6C5F /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
 		05DA78D318B969BF005D6C5F /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		05DA78D418B969BF005D6C5F /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		05E375C418BA872B00A31630 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
+		05E375C518BA872B00A31630 /* MWLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MWLogging.h; path = "Supporting Files/MWLogging.h"; sourceTree = "<group>"; };
+		05E375C618BA872B00A31630 /* MWLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MWLogging.m; path = "Supporting Files/MWLogging.m"; sourceTree = "<group>"; };
+		05E375C718BA872B00A31630 /* MyGuide-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MyGuide-Info.plist"; path = "Supporting Files/MyGuide-Info.plist"; sourceTree = "<group>"; };
+		05E375C818BA872B00A31630 /* MyGuide-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyGuide-Prefix.pch"; path = "Supporting Files/MyGuide-Prefix.pch"; sourceTree = "<group>"; };
 		3D5EF605189637C000233B64 /* MyGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5EF608189637C000233B64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3D5EF60A189637C000233B64 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3D5EF60C189637C000233B64 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		3D5EF610189637C000233B64 /* MyGuide-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyGuide-Info.plist"; sourceTree = "<group>"; };
 		3D5EF612189637C000233B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3D5EF614189637C000233B64 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3D5EF616189637C000233B64 /* MyGuide-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyGuide-Prefix.pch"; sourceTree = "<group>"; };
 		3D5EF617189637C000233B64 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3D5EF618189637C000233B64 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3D5EF61B189637C000233B64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -208,10 +215,12 @@
 		3D5EF60F189637C000233B64 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3D5EF610189637C000233B64 /* MyGuide-Info.plist */,
+				05E375C418BA872B00A31630 /* main.m */,
+				05E375C518BA872B00A31630 /* MWLogging.h */,
+				05E375C618BA872B00A31630 /* MWLogging.m */,
+				05E375C718BA872B00A31630 /* MyGuide-Info.plist */,
+				05E375C818BA872B00A31630 /* MyGuide-Prefix.pch */,
 				3D5EF611189637C000233B64 /* InfoPlist.strings */,
-				3D5EF614189637C000233B64 /* main.m */,
-				3D5EF616189637C000233B64 /* MyGuide-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -315,9 +324,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05E375D118BA8A6400A31630 /* MyGuideTests-Info.plist in Resources */,
+				05E375D018BA8A5E00A31630 /* InfoPlist.strings in Resources */,
+				05E375CF18BA8A4E00A31630 /* Main.storyboard in Resources */,
 				3D5EF621189637C000233B64 /* Images.xcassets in Resources */,
-				3D5EF613189637C000233B64 /* InfoPlist.strings in Resources */,
-				3D5EF61C189637C000233B64 /* Main.storyboard in Resources */,
 				0507435A18B6A3AC00AC4FB1 /* config.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D5EF632189637C000233B64 /* InfoPlist.strings in Resources */,
+				05E375CE18BA872B00A31630 /* MyGuide-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,8 +368,9 @@
 				0507436318B6A3C100AC4FB1 /* SettingsParser.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
 				0507436218B6A3C100AC4FB1 /* Settings.m in Sources */,
-				3D5EF615189637C000233B64 /* main.m in Sources */,
 				0510F48718BA0E6C007DA4D3 /* SettingParserDelegate.m in Sources */,
+				05E375CB18BA872B00A31630 /* MWLogging.m in Sources */,
+				05E375C918BA872B00A31630 /* main.m in Sources */,
 				0510F48418BA07FB007DA4D3 /* XMLFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +380,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D5EF634189637C000233B64 /* MyGuideTests.m in Sources */,
+				05E375CC18BA872B00A31630 /* MWLogging.m in Sources */,
+				05E375CA18BA872B00A31630 /* main.m in Sources */,
 				05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,8 +504,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BLStream (XTRY58ZV6V)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MyGuide/MyGuide-Prefix.pch";
-				INFOPLIST_FILE = "MyGuide/MyGuide-Info.plist";
+				GCC_PREFIX_HEADER = "MyGuide/Supporting Files/MyGuide-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/MyGuide/Supporting Files/MyGuide-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/squixy/Dropbox/Programowanie/iOS/MyGuide/Frameworks/OCMock,
@@ -510,8 +524,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BLStream (XTRY58ZV6V)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MyGuide/MyGuide-Prefix.pch";
-				INFOPLIST_FILE = "MyGuide/MyGuide-Info.plist";
+				GCC_PREFIX_HEADER = "MyGuide/Supporting Files/MyGuide-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/MyGuide/Supporting Files/MyGuide-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/squixy/Dropbox/Programowanie/iOS/MyGuide/Frameworks/OCMock,
