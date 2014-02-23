@@ -13,7 +13,7 @@ NSString * const CONFIG_FILE_NAME = @"config";
 
 @implementation SettingsParser {
     NSMutableString *_cacheElement;
-    Settings *_settings;
+    Settings        *_settings;
 }
 
 - (id) init {
@@ -31,7 +31,7 @@ NSString * const CONFIG_FILE_NAME = @"config";
 }
 
 - (void) loadSettings {
-    NSData *configData = [self getOptionsXML];
+    NSData  *configData = [self getOptionsXML];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData: configData];
     [parser setDelegate: self];
     [parser parse];
