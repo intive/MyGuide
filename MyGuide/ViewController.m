@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "SettingsParser.h"
 
 @interface ViewController ()
 
@@ -18,12 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self performSelectorInBackground:@selector(loadSettings:) withObject:nil];
-}
-
-- (void) loadSettings: (id) object {
-    SettingsParser *parser = [[SettingsParser alloc] init];
-    [parser loadSettings];
 }
 
 @end
