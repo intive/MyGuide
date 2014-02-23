@@ -35,7 +35,7 @@
 
 - (void) injectDataWithName: (NSString*) name andValue: (NSString*) value {
     if ([name isEqualToString:       @"lang_fallback"]) {
-        _languageFallback = value;
+        _languageFallback = [self normalize: value];
     }
     else if ([name isEqualToString:  @"internal_object_radius"]) {
         _innerRadius = [value integerValue];
@@ -43,6 +43,10 @@
     else if ([name isEqualToString:  @"external_object_radius"]) {
         _externalRadius = [value integerValue];
     }
+}
+
+- (NSString*) normalize: (NSString*) aString {
+    return [aString stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 @end

@@ -15,21 +15,15 @@
 
 @implementation ViewController
 
-- (void) loadSettings: (id) object {
-    SettingsParser *parser = [[SettingsParser alloc] init];
-    [parser loadSettings];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self performSelectorInBackground:@selector(loadSettings:) withObject:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) loadSettings: (id) object {
+    SettingsParser *parser = [[SettingsParser alloc] init];
+    [parser loadSettings];
 }
 
 @end

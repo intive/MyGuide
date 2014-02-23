@@ -13,6 +13,6 @@
 @property (nonatomic, readonly) NSInteger externalRadius;
 @property (nonatomic, readonly) NSString  *languageFallback;
 
-+ (id) sharedSettingsData;
++ (id)   sharedSettingsData;
 - (void) injectDataWithName: (NSString*) name andValue: (NSString*) value;
 @end

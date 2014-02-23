@@ -10,6 +10,8 @@
 		0507435A18B6A3AC00AC4FB1 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0507435818B6A3AC00AC4FB1 /* config.xml */; };
 		0507436218B6A3C100AC4FB1 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0507435E18B6A3C100AC4FB1 /* Settings.m */; };
 		0507436318B6A3C100AC4FB1 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0507436018B6A3C100AC4FB1 /* SettingsParser.m */; };
+		0510F48418BA07FB007DA4D3 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0510F48318BA07FB007DA4D3 /* XMLFetcher.m */; };
+		0510F48718BA0E6C007DA4D3 /* SettingParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0510F48618BA0E6C007DA4D3 /* SettingParserDelegate.m */; };
 		05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */; };
 		05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DA78D418B969BF005D6C5F /* libOCMock.a */; };
 		3D5EF609189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
@@ -44,6 +46,10 @@
 		0507435E18B6A3C100AC4FB1 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		0507435F18B6A3C100AC4FB1 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		0507436018B6A3C100AC4FB1 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
+		0510F48218BA07FB007DA4D3 /* XMLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLFetcher.h; sourceTree = "<group>"; };
+		0510F48318BA07FB007DA4D3 /* XMLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLFetcher.m; sourceTree = "<group>"; };
+		0510F48518BA0E6C007DA4D3 /* SettingParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingParserDelegate.h; sourceTree = "<group>"; };
+		0510F48618BA0E6C007DA4D3 /* SettingParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingParserDelegate.m; sourceTree = "<group>"; };
 		05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParserTest.m; sourceTree = "<group>"; };
 		05DA78CE18B969BF005D6C5F /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		05DA78CF18B969BF005D6C5F /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
@@ -105,6 +111,8 @@
 				0507435E18B6A3C100AC4FB1 /* Settings.m */,
 				0507435F18B6A3C100AC4FB1 /* Settings.h */,
 				0507436018B6A3C100AC4FB1 /* SettingsParser.m */,
+				0510F48518BA0E6C007DA4D3 /* SettingParserDelegate.h */,
+				0510F48618BA0E6C007DA4D3 /* SettingParserDelegate.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -113,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				0507435818B6A3AC00AC4FB1 /* config.xml */,
+				0510F48218BA07FB007DA4D3 /* XMLFetcher.h */,
+				0510F48318BA07FB007DA4D3 /* XMLFetcher.m */,
 			);
 			path = "XML files";
 			sourceTree = "<group>";
@@ -348,6 +358,8 @@
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
 				0507436218B6A3C100AC4FB1 /* Settings.m in Sources */,
 				3D5EF615189637C000233B64 /* main.m in Sources */,
+				0510F48718BA0E6C007DA4D3 /* SettingParserDelegate.m in Sources */,
+				0510F48418BA07FB007DA4D3 /* XMLFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

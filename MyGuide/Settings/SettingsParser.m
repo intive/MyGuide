@@ -7,63 +7,35 @@
 //
 
 #import "SettingsParser.h"
-#import "Settings.h"
 
 NSString * const CONFIG_FILE_NAME = @"config";
 
 @implementation SettingsParser {
-    NSMutableString *_cacheElement;
-    Settings        *_settings;
+    SettingParserDelegateCallback _callback;
 }
 
 - (id) init {
     self = [super init];
     if(self) {
-        _settings = [Settings sharedSettingsData];
+        _callback = [self buildCallbackBlock];
     }
     return self;
 }
 
-- (NSData *) getOptionsXML {
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *path   = [bundle pathForResource: CONFIG_FILE_NAME ofType: @"xml"];
-    return [NSData dataWithContentsOfFile: path];
-}
-
 - (void) loadSettings {
-    NSData  *configData = [self getOptionsXML];
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData: configData];
-    [parser setDelegate: self];
+    NSData                *configData = [XMLFetcher fetchDataFromXML: CONFIG_FILE_NAME];
+    NSXMLParser           *parser     = [[NSXMLParser alloc] initWithData: configData];
+    SettingParserDelegate *delegate   = [[SettingParserDelegate alloc] initWithCallback: _callback];
+    [parser setDelegate: delegate];
     [parser parse];
 }
 
-- (void) parserDidStartDocument:(NSXMLParser *) parser {
-    NSLog(@"Loading settings from file...");
-}
-
-- (void) parser: (NSXMLParser *) parser didStartElement: (NSString *)     elementName
-                                        namespaceURI:    (NSString *)     namespaceURI
-                                        qualifiedName:   (NSString *)     qName
-                                        attributes:      (NSDictionary *) attributeDict
-{
-    _cacheElement = [[NSMutableString alloc] init];
-}
-
-- (void) parser: (NSXMLParser *) parser foundCharacters: (NSString *) string {
-    [_cacheElement appendString: string];
-}
-
-- (void) parser: (NSXMLParser *) parser didEndElement:  (NSString *) elementName
-                                        namespaceURI:   (NSString *) namespaceURI
-                                        qualifiedName:  (NSString *) qName
-{
-    if ([elementName isEqualToString: @"configuration"]) return;
-    
-    NSLog(@"Injecting %@ with value \"%@\" to settings.", elementName, _cacheElement);
-    [_settings injectDataWithName: elementName andValue: _cacheElement];
-}
-
-- (void) parserDidEndDocument:(NSXMLParser *) parser {
-    NSLog(@"Settings loaded!");
+- (SettingParserDelegateCallback) buildCallbackBlock {
+    Settings *settings = [Settings sharedSettingsData];
+    return ^(NSString *name, NSMutableString *value) {
+        if ([name isEqualToString: @"configuration"]) return;
+        NSLog(@"Injecting %@ with value \"%@\" to settings.", name, value);
+        [settings injectDataWithName: name andValue: value];
+    };
 }
 @end
