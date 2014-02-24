@@ -1,0 +1,6 @@
+branches:
+  except:
+  - android
+  - windows_phone
+  only:
+  - ios
