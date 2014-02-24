@@ -45,7 +45,6 @@ public class ParserHelper {
 		else {
 			is = new FileInputStream(file);
 		}
-		Log.d(LOG_TAG, "Stream = " + is.toString());
 		return is;
 	}
 	
