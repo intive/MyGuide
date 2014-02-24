@@ -12,6 +12,6 @@
 #import "XMLFetcher.h"
 
 extern NSString * const CONFIG_FILE_NAME;
-@interface SettingsParser : NSObject <NSXMLParserDelegate>
+@interface SettingsParser : NSObject
 - (void) loadSettings;
 @end
