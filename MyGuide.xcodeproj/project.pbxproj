@@ -11,7 +11,6 @@
 		0507436218B6A3C100AC4FB1 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0507435E18B6A3C100AC4FB1 /* Settings.m */; };
 		0507436318B6A3C100AC4FB1 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0507436018B6A3C100AC4FB1 /* SettingsParser.m */; };
 		0510F48418BA07FB007DA4D3 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0510F48318BA07FB007DA4D3 /* XMLFetcher.m */; };
-		0510F48718BA0E6C007DA4D3 /* SettingParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0510F48618BA0E6C007DA4D3 /* SettingParserDelegate.m */; };
 		05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */; };
 		05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DA78D418B969BF005D6C5F /* libOCMock.a */; };
 		05E375C918BA872B00A31630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C418BA872B00A31630 /* main.m */; };
@@ -53,8 +52,6 @@
 		0507436018B6A3C100AC4FB1 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
 		0510F48218BA07FB007DA4D3 /* XMLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLFetcher.h; sourceTree = "<group>"; };
 		0510F48318BA07FB007DA4D3 /* XMLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLFetcher.m; sourceTree = "<group>"; };
-		0510F48518BA0E6C007DA4D3 /* SettingParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingParserDelegate.h; sourceTree = "<group>"; };
-		0510F48618BA0E6C007DA4D3 /* SettingParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingParserDelegate.m; sourceTree = "<group>"; };
 		05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParserTest.m; sourceTree = "<group>"; };
 		05DA78CE18B969BF005D6C5F /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		05DA78CF18B969BF005D6C5F /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
@@ -118,8 +115,6 @@
 				0507435E18B6A3C100AC4FB1 /* Settings.m */,
 				0507435F18B6A3C100AC4FB1 /* Settings.h */,
 				0507436018B6A3C100AC4FB1 /* SettingsParser.m */,
-				0510F48518BA0E6C007DA4D3 /* SettingParserDelegate.h */,
-				0510F48618BA0E6C007DA4D3 /* SettingParserDelegate.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -368,7 +363,6 @@
 				0507436318B6A3C100AC4FB1 /* SettingsParser.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
 				0507436218B6A3C100AC4FB1 /* Settings.m in Sources */,
-				0510F48718BA0E6C007DA4D3 /* SettingParserDelegate.m in Sources */,
 				05E375CB18BA872B00A31630 /* MWLogging.m in Sources */,
 				05E375C918BA872B00A31630 /* main.m in Sources */,
 				0510F48418BA07FB007DA4D3 /* XMLFetcher.m in Sources */,
@@ -547,7 +541,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MyGuide/MyGuide-Prefix.pch";
+				GCC_PREFIX_HEADER = "MyGuide/Supporting Files/MyGuide-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -587,7 +581,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MyGuide/MyGuide-Prefix.pch";
+				GCC_PREFIX_HEADER = "MyGuide/Supporting Files/MyGuide-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
