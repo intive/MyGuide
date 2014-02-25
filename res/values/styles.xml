@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <style name="Main_Theme" parent="android:Theme.Holo.Light.NoActionBar">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:colorBackground">@color/gray</item>
+    </style>
+    
+    <style name="welcome_image">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+    
+    <style name="header_text" parent="centred_text">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="centred_text">
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    
+</resources>

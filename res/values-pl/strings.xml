@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Polish language version  -->
+    <string name="app_name">MyGuide</string>
+    <string name="header_main_screen">Witamy w przewodniku\nZoo Wrocław</string>
+    <string name="close">Zamknij</string>
+    <string name="tickets_and_times">Bilety i godziny</string>
+    <string name="how_to_get">Dojazd</string>
+    <string name="sightseeing">Zwiedzaj</string>
+    <string name="options">Opcje</string>
+</resources>

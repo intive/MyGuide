@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Deutschland language version -->
+    <string name="app_name">MyGuide</string>
+    <string name="header_main_screen">Willkommen in der Führungs\nWroclaw Zoo</string>
+    <string name="close">Schließen</string>
+    <string name="tickets_and_times">Tickets und Zeiten</string>
+    <string name="how_to_get">Auffahrt</string>
+    <string name="sightseeing">Besichtigen</string>
+    <string name="options">Optionen</string>
+</resources>
