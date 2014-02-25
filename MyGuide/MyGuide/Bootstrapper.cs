@@ -1,10 +1,12 @@
 ﻿using Caliburn.Micro;
+using Caliburn.Micro.BindableAppBar;
 using MyGuide.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace MyGuide
 {
@@ -48,6 +50,10 @@ namespace MyGuide
 
         private static void AddCustomConventions()
         {
+            ConventionManager.AddElementConvention<BindableAppBarButton>(
+                Control.IsEnabledProperty, "DataContext", "Click");
+            ConventionManager.AddElementConvention<BindableAppBarMenuItem>(
+                Control.IsEnabledProperty, "DataContext", "Click");
         }
     }
 }
