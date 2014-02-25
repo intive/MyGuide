@@ -13,10 +13,33 @@ namespace MyGuide.ViewModels
         // To get acces to OnNavigateTo/From override methods from base class
         // ex. public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
 
+        public MainPageViewModel()
+            : base(null)
+        {
+            if (Execute.InDesignMode)
+                LoadDesignData();
+        }
+
         public MainPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
+            // Uncomment to use design time data as test data
+            // LoadDesignData();
         }
+
+        #region Properties
+
+        private string _welcomeText;
+
+        public string WelcomeText
+        {
+            get { return _welcomeText; }
+            set { _welcomeText = value; NotifyOfPropertyChange(() => WelcomeText); }
+        }
+
+        #endregion Properties
+
+        #region Commands
 
         public void ShowSightsee()
         {
@@ -28,6 +51,13 @@ namespace MyGuide.ViewModels
 
         public void ShowTravelDirections()
         {
+        }
+
+        #endregion Commands
+
+        private void LoadDesignData()
+        {
+            WelcomeText = DesignData.LoremImpusGenerator.Generate(5);
         }
     }
 }
