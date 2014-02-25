@@ -45,6 +45,7 @@
             </ScrollViewer>
         </Grid>
 
+        <!--AppBar - bindable replacement of standard ApplicationBar-->
         <bindappbar:BindableAppBar x:Name="AppBar">
             <bindappbar:BindableAppBarButton
                 x:Name="ShowTickets"

@@ -14,7 +14,6 @@ namespace MyGuide.ViewModels
         // ex. public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
 
         public MainPageViewModel()
-            : base(null)
         {
             if (Execute.InDesignMode)
                 LoadDesignData();
