@@ -1,7 +1,7 @@
+
 package com.blstream.myguide.zoolocations;
 
-/** This class contains animal name and its location in the zoo.
-*/
+/** This class contains animal name and its location in the zoo. */
 public class Animal {
 
 	private String name;
@@ -11,7 +11,7 @@ public class Animal {
 		this.name = name;
 		this.node = node;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -23,7 +23,7 @@ public class Animal {
 	public String getName() {
 		return name;
 	}
-	
+
 	public Node getNode() {
 		return node;
 	}
