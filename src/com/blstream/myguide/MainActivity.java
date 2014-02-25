@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.options_menu:
                 goOptions();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
