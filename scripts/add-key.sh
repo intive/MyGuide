@@ -1,4 +1,10 @@
 #!/bin/sh
+
+if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
+  echo "This is a pull request. No encription will be done."
+  exit 0
+fi
+
 # removing files "./" protection
 BLS_TMP="${BLS_TMP//[[:space:]]/}"
 BLS_TMP="${BLS_TMP:=__tmp}"

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SettingsParser.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
