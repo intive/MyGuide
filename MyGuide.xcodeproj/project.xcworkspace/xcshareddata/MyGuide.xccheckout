@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3DEC0D9C-77CD-4D34-8EBC-DD33CE84A573</string>
+	<string>F5D9D953-438C-43BD-B77B-B075E191E00C</string>
 	<key>IDESourceControlProjectName</key>
 	<string>MyGuide</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>07EA11D2-3D9A-4B2D-9B9E-7941B4F8030C</key>
-		<string>https://github.com/blstream/MyGuide.git</string>
+		<key>EFE24F5E-DFCE-4E84-8782-CAC7A66FC256</key>
+		<string>https://github.com/Baervan/MyGuide.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>MyGuide.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>07EA11D2-3D9A-4B2D-9B9E-7941B4F8030C</key>
+		<key>EFE24F5E-DFCE-4E84-8782-CAC7A66FC256</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/blstream/MyGuide.git</string>
+	<string>https://github.com/Baervan/MyGuide.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>07EA11D2-3D9A-4B2D-9B9E-7941B4F8030C</string>
+	<string>EFE24F5E-DFCE-4E84-8782-CAC7A66FC256</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>07EA11D2-3D9A-4B2D-9B9E-7941B4F8030C</string>
+			<string>EFE24F5E-DFCE-4E84-8782-CAC7A66FC256</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MyGuide</string>
 		</dict>
