@@ -61,7 +61,7 @@ namespace MyGuide.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MyGuide.
+        ///   Looks up a localized string similar to My Guide.
         /// </summary>
         public static string ApplicationTitle {
             get {

@@ -24,13 +24,21 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}" />
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" />
+        <StackPanel Grid.Row="0" Margin="12,3,0,30">
+            <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Mode=OneWay, Source={StaticResource LocalizedStrings}}" Margin="12,0" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBlock Text="{Binding LocalizedResources.Welcome, Mode=OneWay, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="237*" />
+                <RowDefinition Height="370*" />
+            </Grid.RowDefinitions>
+            <Image Source="/Assets/ZooWroclawLogo.jpg" Stretch="UniformToFill" />
+            <ScrollViewer Grid.Row="1">
+                <TextBlock TextWrapping="Wrap" Text="TextBlock" />
+            </ScrollViewer>
         </Grid>
 
         <bindableAppBar:BindableAppBar x:Name="AppBar">
