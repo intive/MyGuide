@@ -9,19 +9,13 @@ import java.util.TreeMap;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import android.util.Log;
 import android.util.Xml;
 
 /** Class containing function parsing xml file and messages for exceptions. */
 public class ZooLocationsDataParser {
 
-	public static final String EXCEPTION_COORDINATE_MISSING = "At least one of coordinates is missing.";
-	public static final String EXCEPTION_LATITUDE_FORMAT = "Attribute lat is not a Double";
-	public static final String EXCEPTION_LONGITUDE_FORMAT = "Attribute id is missing.";
-	public static final String EXCEPTION_ID_MISSING = "Attribute lat is not a Double";
-	public static final String EXCEPTION_ID_FORMAT = "Attribute id is not an Integer";
+	public static final String EXCEPTION_WAY_NOT_FOUND = "A way from junction was not found within ways tag.";
 
-	private static final String LOG_TAG = "zoolocations";
 	private static final String ENCODING = "UTF-8";
 
 	private ArrayList<Animal> animals;
@@ -32,7 +26,7 @@ public class ZooLocationsDataParser {
 	/**
 	 * This function parses chosen xml file and returns data saved in
 	 * {@link ZooLocationData} object. If there are ways in junction tag which
-	 * are not defined in ways tag, function logs it.
+	 * are not defined in ways tag, function throws exception.
 	 * 
 	 * @param is InputStream of xml file
 	 * @return parsed data from xml file
@@ -80,7 +74,7 @@ public class ZooLocationsDataParser {
 				if (way != null) {
 					waysInJunction.add(way);
 				} else {
-					Log.wtf(LOG_TAG, "Way of id " + w.getId() + " does not exist in parsed xml");
+					throw new XmlPullParserException(EXCEPTION_WAY_NOT_FOUND);
 				}
 			}
 			junctionsWithWays.add(new Junction(j.getNode(), waysInJunction));
@@ -113,19 +107,8 @@ public class ZooLocationsDataParser {
 			IOException {
 		String latitudeStr = parser.getAttributeValue(null, "lat");
 		String longitudeStr = parser.getAttributeValue(null, "lon");
-		Double latitude, longitude;
-		if (latitudeStr == null || longitudeStr == null) { throw new XmlPullParserException(
-				EXCEPTION_COORDINATE_MISSING); }
-		try {
-			latitude = Double.parseDouble(latitudeStr);
-		} catch (NumberFormatException e) {
-			throw new XmlPullParserException(EXCEPTION_LATITUDE_FORMAT);
-		}
-		try {
-			longitude = Double.parseDouble(longitudeStr);
-		} catch (NumberFormatException e) {
-			throw new XmlPullParserException(EXCEPTION_LONGITUDE_FORMAT);
-		}
+		double latitude = Double.parseDouble(latitudeStr);
+		double longitude = Double.parseDouble(longitudeStr);
 		return new Node(latitude, longitude);
 	}
 
@@ -179,13 +162,7 @@ public class ZooLocationsDataParser {
 
 	private int readAttributeId(XmlPullParser parser) throws XmlPullParserException, IOException {
 		String idStr = parser.getAttributeValue(null, "id");
-		int id;
-		if (idStr == null) { throw new XmlPullParserException(EXCEPTION_ID_MISSING); }
-		try {
-			id = Integer.parseInt(idStr);
-		} catch (NumberFormatException e) {
-			throw new XmlPullParserException(EXCEPTION_ID_FORMAT);
-		}
+		int id = Integer.parseInt(idStr);
 		return id;
 	}
 
@@ -222,12 +199,6 @@ public class ZooLocationsDataParser {
 			String name = parser.getName();
 			if (name.equals("way")) {
 				waysInJunction.add(readWay(parser));
-				/*
-				 * int wayId = readWay(parser).getId(); Way way =
-				 * waysMap.get(wayId); if (way != null) { ways.add(way); } else
-				 * { Log.wtf(LOG_TAG,"Way of id "+
-				 * wayId+" does not exist in parsed xml"); }
-				 */
 			} else {
 				skip(parser);
 			}

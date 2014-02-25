@@ -77,7 +77,7 @@ public class ParserHelperTestCase extends AndroidTestCase {
 		ParserHelperNotDebug ph = new ParserHelperNotDebug();
 		InputStream is = null;
 		Exception e = null;
-		
+
 		// when
 		try {
 			is = ph.openXml(this.getContext(), null);
@@ -90,7 +90,7 @@ public class ParserHelperTestCase extends AndroidTestCase {
 				e = e2;
 			}
 		}
-		
+
 		// then
 		assertNull(e);
 		assertNotNull(is);
@@ -106,7 +106,7 @@ public class ParserHelperTestCase extends AndroidTestCase {
 		ParserHelperDebug ph = new ParserHelperDebug();
 		InputStream is = null;
 		Exception e = null;
-		
+
 		// when
 		try {
 			File dir = getContext().getCacheDir();
@@ -121,7 +121,7 @@ public class ParserHelperTestCase extends AndroidTestCase {
 				e = e2;
 			}
 		}
-		
+
 		// then
 		assertNull(e);
 		assertNotNull(is);
@@ -133,13 +133,13 @@ public class ParserHelperTestCase extends AndroidTestCase {
 	 * set to debug.
 	 */
 	public void testOpenXmlFromFileInReleaseBuild() {
-		
+
 		// given
 		ParserHelperNotDebug ph = new ParserHelperNotDebug();
 		InputStream is = null;
 		Exception e = null;
-		
-		//when
+
+		// when
 		try {
 			File dir = getContext().getCacheDir();
 			File file = File.createTempFile("test2", "xml", dir);
@@ -153,7 +153,7 @@ public class ParserHelperTestCase extends AndroidTestCase {
 				e = e2;
 			}
 		}
-		
+
 		// then
 		assertNull(e);
 		assertNotNull(is);

@@ -25,7 +25,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	private static final int JUNCTIONS = 20;
 
 	/** Checks if tag <animals> is well parsed. */
-	public void testParsingAnimals()  {
+	public void testParsingAnimals() {
 		// given
 		String xmlText = "<root><animals>"
 				+ "<animal lat=\"51.1052072\" lon=\"17.0754498\">Żyrafa</animal>"
@@ -35,7 +35,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		InputStream is = null;
 		ZooLocationsData data = null;
 		Exception e = null;
-		
+
 		// when
 		try {
 			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
@@ -49,7 +49,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 				e = e2;
 			}
 		}
-		
+
 		// then
 		assertNull(e);
 		assertEquals(2, data.getAnimals().size());
@@ -81,7 +81,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		InputStream is = null;
 		ZooLocationsData data = null;
 		Exception e = null;
-		
+
 		// when
 		try {
 			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
@@ -150,7 +150,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		InputStream is = null;
 		ZooLocationsData data = null;
 		Exception e = null;
-		
+
 		// when
 		try {
 			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
@@ -165,7 +165,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 			}
 		}
 
-		//then
+		// then
 		assertNull(e);
 		assertEquals(0, data.getAnimals().size());
 		assertEquals(3, data.getWays().size());
@@ -192,7 +192,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		InputStream is = null;
 		ZooLocationsData data = null;
 		Exception e = null;
-		
+
 		// when
 		try {
 			is = this.getContext().getResources().openRawResource(R.raw.data);
@@ -206,7 +206,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 				e = e2;
 			}
 		}
-		
+
 		// then
 		assertNull(e);
 		assertEquals(ANIMALS, data.getAnimals().size());
@@ -215,20 +215,19 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	}
 
 	/**
-	 * Chceck if parser throws XmlPullParserException with adequate message in
-	 * case of lack of lat attribute where it is needed.
+	 * Checks if parser throws XmlPullParserException with adequate message when
+	 * there is a way in junctions tag but not in ways tag.
 	 */
-	public void testMissingLatitude() {
+	public void testJunctionWithBadWay() {
 		// given
-		String xmlText = "<root><animals>"
-				+ "<animal lon=\"17.0754498\">Żyrafa</animal>"
-				+ "<animal lat=\"51.1050185\" lon=\"17.0759970\">Struś</animal>"
-				+ "</animals></root>";
+		String xmlText = "<root><junctions><junction lat=\"51.1054430\" lon=\"17.0773945\">"
+				+ "<way id=\"123456\"/>"
+				+ "</junction></junctions></root>";
 		ZooLocationsDataParser parser = new ZooLocationsDataParser();
 		InputStream is = null;
 		XmlPullParserException exception = null;
 		Exception e = null;
-		
+
 		// when
 		try {
 			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
@@ -244,200 +243,10 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 				e = e2;
 			}
 		}
-		
-		//then
-		assertNull(e);
-		assertNotNull(exception);
-		assertEquals(ZooLocationsDataParser.EXCEPTION_COORDINATE_MISSING, exception.getMessage());
-	}
 
-	/**
-	 * Chceck if parser throws XmlPullParserException with adequate message in
-	 * case of lack of lon attribute where it is needed.
-	 */
-	public void testMissingLongitude() {
-		//given
-		String xmlText = "<root><animals>"
-				+ "<animal lat=\"51.1052072\" lon=\"17.0754498\">Żyrafa</animal>"
-				+ "<animal lat=\"51.1050185\">Struś</animal>"
-				+ "</animals></root>";
-		ZooLocationsDataParser parser = new ZooLocationsDataParser();
-		InputStream is = null;
-		XmlPullParserException exception = null;
-		Exception e = null;
-
-		//when
-		try {
-			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
-			parser.parse(is);
-		} catch (XmlPullParserException exc) {
-			exception = exc;
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
-		
-		//then
-		assertNull(e);
-		assertNotNull(exception);
-		assertEquals(ZooLocationsDataParser.EXCEPTION_COORDINATE_MISSING, exception.getMessage());
-	}
-
-	/**
-	 * Chceck if parser throws XmlPullParserException with adequate message in
-	 * case of bad format of lat attribute (it is not a double).
-	 */
-	public void testLatitudeBadFormat() {
-		// given
-		String xmlText = "<root><animals>"
-				+ "<animal lat=\"ala123\" lon=\"17.0754498\">Żyrafa</animal>"
-				+ "<animal lat=\"51.1050185\" lon=\"17.0759970\">Struś</animal>"
-				+ "</animals></root>";
-
-		ZooLocationsDataParser parser = new ZooLocationsDataParser();
-		InputStream is = null;
-		XmlPullParserException exception = null;
-		Exception e = null;
-		
-		// when
-		try {
-			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
-			parser.parse(is);
-		} catch (XmlPullParserException exc) {
-			exception = exc;
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
-		
 		// then
 		assertNull(e);
 		assertNotNull(exception);
-		assertEquals(ZooLocationsDataParser.EXCEPTION_LATITUDE_FORMAT, exception.getMessage());
+		assertEquals(ZooLocationsDataParser.EXCEPTION_WAY_NOT_FOUND, exception.getMessage());
 	}
-
-	/**
-	 * Chceck if parser throws XmlPullParserException with adequate message in
-	 * case of bad format of lon attribute (it is not a double).
-	 */
-	public void testLongitudeBadFormat() {
-		// given
-		String xmlText = "<root><animals>"
-				+ "<animal lat=\"51.1052072\" lon=\"kot098\">Żyrafa</animal>"
-				+ "<animal lat=\"51.1050185\" lon=\"17.0759970\">Struś</animal>"
-				+ "</animals></root>";
-		ZooLocationsDataParser parser = new ZooLocationsDataParser();
-		InputStream is = null;
-		XmlPullParserException exception = null;
-		Exception e = null;
-		
-		// when
-		try {
-			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
-			parser.parse(is);
-		} catch (XmlPullParserException exc) {
-			exception = exc;
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
-		// then
-		assertNull(e);
-		assertNotNull(exception);
-		assertEquals(ZooLocationsDataParser.EXCEPTION_LONGITUDE_FORMAT, exception.getMessage());
-	}
-
-	/**
-	 * Chceck if parser throws XmlPullParserException with adequate message in
-	 * case of lack of id attribute where it is needed.
-	 */
-	public void testMissingId() {
-		// given
-		String xmlText = "<root><ways>"
-				+ "<way>"
-				+ "<node lat=\"51.1054430\" lon=\"17.0773945\" />"
-				+ "<node lat=\"51.1054595\" lon=\"17.0774086\" />"
-				+ "</way>"
-				+ "</ways></root>";
-		ZooLocationsDataParser parser = new ZooLocationsDataParser();
-		InputStream is = null;
-		XmlPullParserException exception = null;
-		Exception e = null;
-		
-		// when
-		try {
-			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
-			parser.parse(is);
-		} catch (XmlPullParserException exc) {
-			exception = exc;
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
-		
-		// then
-		assertNull(e);
-		assertNotNull(exception);
-		assertEquals(ZooLocationsDataParser.EXCEPTION_ID_MISSING, exception.getMessage());
-	}
-
-	/**
-	 * Chceck if parser throws XmlPullParserException with adequate message in
-	 * case of bad format of id attribute (it is not an integer).
-	 */
-	public void testIdBadFormat() {
-		// given
-		String xmlText = "<root><ways>"
-				+ "<way id=\"123.456\">"
-				+ "<node lat=\"51.1054430\" lon=\"17.0773945\" />"
-				+ "<node lat=\"51.1054595\" lon=\"17.0774086\" />"
-				+ "</way>"
-				+ "</ways></root>";
-		ZooLocationsDataParser parser = new ZooLocationsDataParser();
-		InputStream is = null;
-		XmlPullParserException exception = null;
-		Exception e = null;
-		
-		// when
-		try {
-			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
-			parser.parse(is);
-		} catch (XmlPullParserException exc) {
-			exception = exc;
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
-		
-		// then
-		assertNull(e);
-		assertNotNull(exception);
-		assertEquals(ZooLocationsDataParser.EXCEPTION_ID_FORMAT, exception.getMessage());
-	}
-
 }
