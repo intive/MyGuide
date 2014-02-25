@@ -6,10 +6,14 @@ buildscript {
         classpath 'com.android.tools.build:gradle:0.8.+'
     }
 }
+
 apply plugin: 'android'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    compile "com.android.support:support-v4:18.0.+"
+//    compile fileTree(dir: 'libs', include: '*.jar')  // left for the better future
+
+    instrumentTestCompile fileTree(dir: "tests/libs", include: '*.jar')
 }
 
 android {
@@ -25,10 +29,16 @@ android {
             renderscript.srcDirs = ['src']
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
+            
+            instrumentTest {
+                java.srcDirs = ['tests/src']
+                res.srcDirs = ['tests/res']
+                assets.srcDirs = ['assets']
+            }
         }
 
         // Move the tests to tests/java, tests/res, etc...
-        instrumentTest.setRoot('tests')
+//        instrumentTest.setRoot('tests')
 
         // Move the build types to build-types/<type>
         // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
