@@ -8,16 +8,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-public class MainActivity extends Activity
-{
+public class MainActivity extends Activity {
+
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
     
+
     /** Sets options menu. Called when options button is first clicked.*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,4 +61,6 @@ public class MainActivity extends Activity
     	Intent intent = new Intent(this, OptionsActivity.class);
     	startActivity(intent);
     }
+
 }
+
