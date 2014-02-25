@@ -502,7 +502,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MyGuide/Supporting Files/MyGuide-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/squixy/Dropbox/Programowanie/iOS/MyGuide/Frameworks/OCMock,
+					Frameworks/OCMock,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -522,7 +522,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MyGuide/Supporting Files/MyGuide-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/squixy/Dropbox/Programowanie/iOS/MyGuide/Frameworks/OCMock,
+					Frameworks/OCMock,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -554,7 +554,7 @@
 				INFOPLIST_FILE = "MyGuideTests/MyGuideTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/squixy/Dropbox/Programowanie/iOS/MyGuide/Frameworks/OCMock,
+					Frameworks/OCMock,
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -590,7 +590,7 @@
 				INFOPLIST_FILE = "MyGuideTests/MyGuideTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/squixy/Dropbox/Programowanie/iOS/MyGuide/Frameworks/OCMock,
+					Frameworks/OCMock,
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
