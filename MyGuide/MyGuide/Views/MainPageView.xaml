@@ -32,7 +32,17 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
         </Grid>
+
         <bindableAppBar:BindableAppBar x:Name="AppBar">
+            <bindableAppBar:BindableAppBarButton
+                x:Name="ShowTickets"
+                Text="{Binding LocalizedResources.TicketsAndHours, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+            <bindableAppBar:BindableAppBarButton
+                x:Name="ShowTravelDirections"
+                Text="{Binding LocalizedResources.TravelDirections, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+            <bindableAppBar:BindableAppBarButton
+                x:Name="ShowSightsee"
+                Text="{Binding LocalizedResources.Sightsee, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
         </bindableAppBar:BindableAppBar>
     </Grid>
 </views:PageViewBase>

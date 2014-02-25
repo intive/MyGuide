@@ -50,6 +50,7 @@ namespace MyGuide
 
         private static void AddCustomConventions()
         {
+            // More about BindableAppBar: https://github.com/kamranayub/CaliburnBindableAppBar
             ConventionManager.AddElementConvention<BindableAppBarButton>(
                 Control.IsEnabledProperty, "DataContext", "Click");
             ConventionManager.AddElementConvention<BindableAppBarMenuItem>(
