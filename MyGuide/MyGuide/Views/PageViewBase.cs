@@ -20,19 +20,19 @@ namespace MyGuide.Views
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            ViewModelBase viewModel = _getViewModel();
+            ViewModelBase viewModel = GetViewModel();
             viewModel.OnNavigatedFrom(e.NavigationMode);
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ViewModelBase viewModel = _getViewModel();
+            ViewModelBase viewModel = GetViewModel();
             viewModel.OnNavigatedTo(e.NavigationMode, _isNewPageInstance);
             _isNewPageInstance = false;
         }
 
-        private ViewModelBase _getViewModel()
+        private ViewModelBase GetViewModel()
         {
             var viewModel = this.DataContext as ViewModelBase;
             if (viewModel != null)
