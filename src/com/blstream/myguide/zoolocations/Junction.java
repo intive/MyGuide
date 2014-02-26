@@ -8,27 +8,27 @@ import java.util.ArrayList;
  */
 public class Junction {
 
-	private Node node;
-	private ArrayList<Way> ways;
+	private Node mNode;
+	private ArrayList<Way> mWays;
 
 	public Junction(Node node, ArrayList<Way> ways) {
-		this.node = node;
-		this.ways = ways;
+		mNode = node;
+		mWays = ways;
 	}
 
 	public void setWays(ArrayList<Way> ways) {
-		this.ways = ways;
+		mWays = ways;
 	}
 
 	public void setNode(Node node) {
-		this.node = node;
+		mNode = node;
 	}
 
 	public ArrayList<Way> getWays() {
-		return ways;
+		return mWays;
 	}
 
 	public Node getNode() {
-		return node;
+		return mNode;
 	}
 }

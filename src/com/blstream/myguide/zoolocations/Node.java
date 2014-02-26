@@ -7,27 +7,27 @@ package com.blstream.myguide.zoolocations;
  */
 public class Node {
 
-	private double latitude;
-	private double longitude;
+	private double mLatitude;
+	private double mLongitude;
 
 	public Node(double latitude, double longitude) {
-		this.latitude = latitude;
-		this.longitude = longitude;
+		mLatitude = latitude;
+		mLongitude = longitude;
 	}
 
 	public void setLatitude(double latitude) {
-		this.latitude = latitude;
+		mLatitude = latitude;
 	}
 
 	public void setLongitude(double longitude) {
-		this.longitude = longitude;
+		mLongitude = longitude;
 	}
 
 	public double getLatitude() {
-		return latitude;
+		return mLatitude;
 	}
 
 	public double getLongitude() {
-		return longitude;
+		return mLongitude;
 	}
 }

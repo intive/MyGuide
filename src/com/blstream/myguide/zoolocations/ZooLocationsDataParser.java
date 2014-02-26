@@ -14,14 +14,19 @@ import android.util.Xml;
 /** Class containing function parsing xml file and messages for exceptions. */
 public class ZooLocationsDataParser {
 
-	public static final String EXCEPTION_WAY_NOT_FOUND = "A way from junction was not found within ways tag.";
+	public static class WayNotFoundException extends XmlPullParserException {
+
+		public WayNotFoundException(String mes) {
+			super(mes);
+		}
+	}
 
 	private static final String ENCODING = "UTF-8";
 
-	private ArrayList<Animal> animals;
-	private ArrayList<Way> ways;
-	private ArrayList<Junction> junctions;
-	private TreeMap<Integer, Way> waysMap;
+	private ArrayList<Animal> mAnimals;
+	private ArrayList<Way> mWays;
+	private ArrayList<Junction> mJunctions;
+	private TreeMap<Integer, Way> mWaysMap;
 
 	/**
 	 * This function parses chosen xml file and returns data saved in
@@ -32,10 +37,10 @@ public class ZooLocationsDataParser {
 	 * @return parsed data from xml file
 	 */
 	public ZooLocationsData parse(InputStream in) throws XmlPullParserException, IOException {
-		animals = new ArrayList<Animal>();
-		ways = new ArrayList<Way>();
-		junctions = new ArrayList<Junction>();
-		waysMap = new TreeMap<Integer, Way>();
+		mAnimals = new ArrayList<Animal>();
+		mWays = new ArrayList<Way>();
+		mJunctions = new ArrayList<Junction>();
+		mWaysMap = new TreeMap<Integer, Way>();
 
 		XmlPullParser parser = Xml.newPullParser();
 		parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
@@ -43,11 +48,10 @@ public class ZooLocationsDataParser {
 		parser.nextTag();
 		readRoot(parser);
 
-		return new ZooLocationsData(animals, ways, junctions);
+		return new ZooLocationsData(mAnimals, mWays, mJunctions);
 	}
 
 	private void readRoot(XmlPullParser parser) throws XmlPullParserException, IOException {
-
 		parser.require(XmlPullParser.START_TAG, null, "root");
 
 		while (parser.next() != XmlPullParser.END_TAG) {
@@ -55,11 +59,11 @@ public class ZooLocationsDataParser {
 				continue;
 			}
 			String name = parser.getName();
-			if (name.equals("animals")) {
+			if ("animals".equals(name)) {
 				readAnimals(parser);
-			} else if (name.equals("ways")) {
+			} else if ("ways".equals(name)) {
 				readWays(parser);
-			} else if (name.equals("junctions")) {
+			} else if ("junctions".equals(name)) {
 				readJunctions(parser);
 			} else {
 				skip(parser);
@@ -67,19 +71,19 @@ public class ZooLocationsDataParser {
 		}
 
 		ArrayList<Junction> junctionsWithWays = new ArrayList<Junction>();
-		for (Junction j : junctions) {
+		for (Junction j : mJunctions) {
 			ArrayList<Way> waysInJunction = new ArrayList<Way>();
 			for (Way w : j.getWays()) {
-				Way way = waysMap.get(w.getId());
+				Way way = mWaysMap.get(w.getId());
 				if (way != null) {
 					waysInJunction.add(way);
 				} else {
-					throw new XmlPullParserException(EXCEPTION_WAY_NOT_FOUND);
+					throw new WayNotFoundException("Way has not found in parsed xml");
 				}
 			}
 			junctionsWithWays.add(new Junction(j.getNode(), waysInJunction));
 		}
-		junctions = junctionsWithWays;
+		mJunctions = junctionsWithWays;
 	}
 
 	private void readAnimals(XmlPullParser parser) throws XmlPullParserException, IOException {
@@ -89,8 +93,8 @@ public class ZooLocationsDataParser {
 				continue;
 			}
 			String name = parser.getName();
-			if (name.equals("animal")) {
-				animals.add(readAnimal(parser));
+			if ("animal".equals(name)) {
+				mAnimals.add(readAnimal(parser));
 			} else {
 				skip(parser);
 			}
@@ -128,10 +132,10 @@ public class ZooLocationsDataParser {
 				continue;
 			}
 			String name = parser.getName();
-			if (name.equals("way")) {
+			if ("way".equals(name)) {
 				Way way = readWay(parser);
-				ways.add(way);
-				waysMap.put(way.getId(), way);
+				mWays.add(way);
+				mWaysMap.put(way.getId(), way);
 			} else {
 				skip(parser);
 			}
@@ -151,7 +155,7 @@ public class ZooLocationsDataParser {
 				continue;
 			}
 			String name = parser.getName();
-			if (name.equals("node")) {
+			if ("node".equals(name)) {
 				nodes.add(readNode(parser));
 			} else {
 				skip(parser);
@@ -179,8 +183,8 @@ public class ZooLocationsDataParser {
 				continue;
 			}
 			String name = parser.getName();
-			if (name.equals("junction")) {
-				junctions.add(readJunction(parser));
+			if ("junction".equals(name)) {
+				mJunctions.add(readJunction(parser));
 			} else {
 				skip(parser);
 			}
@@ -197,7 +201,7 @@ public class ZooLocationsDataParser {
 				continue;
 			}
 			String name = parser.getName();
-			if (name.equals("way")) {
+			if ("way".equals(name)) {
 				waysInJunction.add(readWay(parser));
 			} else {
 				skip(parser);

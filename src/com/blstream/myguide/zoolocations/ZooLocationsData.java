@@ -9,39 +9,39 @@ import java.util.ArrayList;
  */
 public class ZooLocationsData {
 
-	private ArrayList<Animal> animals;
-	private ArrayList<Way> ways;
-	private ArrayList<Junction> junctions;
+	private ArrayList<Animal> mAnimals;
+	private ArrayList<Way> mWays;
+	private ArrayList<Junction> mJunctions;
 
 	public ZooLocationsData(ArrayList<Animal> animals, ArrayList<Way> ways,
 			ArrayList<Junction> junctions) {
-		this.animals = animals;
-		this.ways = ways;
-		this.junctions = junctions;
+		mAnimals = animals;
+		mWays = ways;
+		mJunctions = junctions;
 	}
 
 	public ArrayList<Animal> getAnimals() {
-		return animals;
+		return mAnimals;
 	}
 
 	public ArrayList<Way> getWays() {
-		return ways;
+		return mWays;
 	}
 
 	public ArrayList<Junction> getJunctions() {
-		return junctions;
+		return mJunctions;
 	}
 
 	public void setAnimals(ArrayList<Animal> animals) {
-		this.animals = animals;
+		mAnimals = animals;
 	}
 
 	public void setWays(ArrayList<Way> ways) {
-		this.ways = ways;
+		mWays = ways;
 	}
 
 	public void setJunctions(ArrayList<Junction> junctions) {
-		this.junctions = junctions;
+		mJunctions = junctions;
 	}
 
 }

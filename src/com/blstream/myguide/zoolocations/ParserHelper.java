@@ -19,7 +19,7 @@ import com.blstream.myguide.R;
  **/
 public class ParserHelper {
 
-	private final static String LOG_TAG = "zoolocations";
+	private static final String LOG_TAG = ParserHelper.class.getSimpleName();
 
 	/**
 	 * Check if build type of application is set to debug.
@@ -76,8 +76,11 @@ public class ParserHelper {
 			is = openXml(ctx, file);
 			data = parser.parse(is);
 		} finally {
-			is.close();
+			if (is != null) {
+				is.close();
+			}
 		}
+
 		return data;
 	}
 }

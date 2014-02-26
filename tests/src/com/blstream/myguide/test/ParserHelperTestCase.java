@@ -43,27 +43,16 @@ public class ParserHelperTestCase extends AndroidTestCase {
 	 * Checks if ParserHelper can open xml from resources when application build
 	 * is set to debug.
 	 */
-	public void testOpenXmlFromResInDebugBuild() {
+	public void testOpenXmlFromResInDebugBuild() throws IOException {
 		// given
 		ParserHelperDebug ph = new ParserHelperDebug();
 		InputStream is = null;
-		Exception e = null;
 
 		// when
-		try {
-			is = ph.openXml(this.getContext(), null);
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
+		is = ph.openXml(this.getContext(), null);
+		is.close();
 
 		// then
-		assertNull(e);
 		assertNotNull(is);
 		assertTrue(is instanceof AssetInputStream);
 	}
@@ -72,27 +61,16 @@ public class ParserHelperTestCase extends AndroidTestCase {
 	 * Checks if ParserHelper can open xml from resources when application build
 	 * is not set to debug.
 	 */
-	public void testOpenXmlFromResInReleaseBuild() {
+	public void testOpenXmlFromResInReleaseBuild() throws IOException {
 		// given
 		ParserHelperNotDebug ph = new ParserHelperNotDebug();
 		InputStream is = null;
-		Exception e = null;
 
 		// when
-		try {
-			is = ph.openXml(this.getContext(), null);
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
+		is = ph.openXml(this.getContext(), null);
+		is.close();
 
 		// then
-		assertNull(e);
 		assertNotNull(is);
 		assertTrue(is instanceof AssetInputStream);
 	}
@@ -101,29 +79,18 @@ public class ParserHelperTestCase extends AndroidTestCase {
 	 * Checks if ParserHelper can open chosen file when application build is set
 	 * to debug.
 	 */
-	public void testOpenXmlFromFileInDebugBuild() {
+	public void testOpenXmlFromFileInDebugBuild() throws IOException {
 		// given
 		ParserHelperDebug ph = new ParserHelperDebug();
 		InputStream is = null;
-		Exception e = null;
 
 		// when
-		try {
-			File dir = getContext().getCacheDir();
-			File file = File.createTempFile("test1", "xml", dir);
-			is = ph.openXml(this.getContext(), file);
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
+		File dir = getContext().getCacheDir();
+		File file = File.createTempFile("test1", "xml", dir);
+		is = ph.openXml(this.getContext(), file);
+		is.close();
 
 		// then
-		assertNull(e);
 		assertNotNull(is);
 		assertTrue(is instanceof FileInputStream);
 	}
@@ -132,30 +99,19 @@ public class ParserHelperTestCase extends AndroidTestCase {
 	 * Checks if ParserHelper can open chosen file when application build is not
 	 * set to debug.
 	 */
-	public void testOpenXmlFromFileInReleaseBuild() {
+	public void testOpenXmlFromFileInReleaseBuild() throws IOException {
 
 		// given
 		ParserHelperNotDebug ph = new ParserHelperNotDebug();
 		InputStream is = null;
-		Exception e = null;
 
 		// when
-		try {
-			File dir = getContext().getCacheDir();
-			File file = File.createTempFile("test2", "xml", dir);
-			is = ph.openXml(this.getContext(), file);
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
+		File dir = getContext().getCacheDir();
+		File file = File.createTempFile("test2", "xml", dir);
+		is = ph.openXml(this.getContext(), file);
+		is.close();
 
 		// then
-		assertNull(e);
 		assertNotNull(is);
 		assertTrue(is instanceof AssetInputStream);
 	}

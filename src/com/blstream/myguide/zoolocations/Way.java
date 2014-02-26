@@ -8,27 +8,27 @@ import java.util.ArrayList;
  */
 public class Way {
 
-	private int id;
-	private ArrayList<Node> nodes;
+	private int mId;
+	private ArrayList<Node> mNodes;
 
 	public Way(int id, ArrayList<Node> nodes) {
-		this.id = id;
-		this.nodes = nodes;
+		mId = id;
+		mNodes = nodes;
 	}
 
 	public int getId() {
-		return id;
+		return mId;
 	}
 
 	public ArrayList<Node> getNodes() {
-		return nodes;
+		return mNodes;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		mId = id;
 	}
 
 	public void setNodes(ArrayList<Node> nodes) {
-		this.nodes = nodes;
+		mNodes = nodes;
 	}
 }

@@ -17,32 +17,34 @@ import com.blstream.myguide.zoolocations.ZooLocationsData;
  */
 public class ParseXmlTask extends AsyncTask<File, Void, Boolean> {
 
-	private final String LOG_TAG = "zoolocations";
-	private ProgressDialog progressDialog;
-	private Context ctx;
-	private ZooLocationsData data;
+	private static final String LOG_TAG = ParseXmlTask.class.getSimpleName();
+
+	private ProgressDialog mProgressDialog;
+	private Context mCtx;
+	private ZooLocationsData mData;
 
 	public ParseXmlTask(Context ctx) {
-		this.ctx = ctx;
-		this.data = null;
-		this.progressDialog = new ProgressDialog(ctx);
-		this.progressDialog.setTitle(R.string.progress_dialog_title);
-		this.progressDialog.setMessage(ctx.getResources().getString(
+		mCtx = ctx;
+		mData = null;
+		mProgressDialog = new ProgressDialog(mCtx);
+		mProgressDialog.setTitle(R.string.progress_dialog_title);
+		mProgressDialog.setMessage(mCtx.getResources().getString(
 				R.string.progress_dialog_message));
 	}
 
 	@Override
 	protected void onPreExecute() {
-		this.progressDialog.show();
+		mProgressDialog.show();
 	}
 
 	@Override
 	protected Boolean doInBackground(File... file) {
 		ParserHelper ph = new ParserHelper();
 		try {
-			this.data = ph.parse(ctx, file[0]);
+			mData = ph.parse(mCtx, file[0]);
 			return true;
 		} catch (Exception e) {
+			Log.d(LOG_TAG, e.toString());
 			return false;
 		}
 	}
@@ -50,13 +52,11 @@ public class ParseXmlTask extends AsyncTask<File, Void, Boolean> {
 	@Override
 	protected void onPostExecute(Boolean success) {
 		if (success) {
-			Log.i(LOG_TAG, "animals: " + this.data.getAnimals().size());
-			Log.i(LOG_TAG, "ways: " + this.data.getWays().size());
-			Log.i(LOG_TAG, "junctions: " + this.data.getJunctions().size());
-		} else {
-			Log.i(LOG_TAG, "Bad xml with data.");
+			Log.i(LOG_TAG, "animals: " + mData.getAnimals().size());
+			Log.i(LOG_TAG, "ways: " + mData.getWays().size());
+			Log.i(LOG_TAG, "junctions: " + mData.getJunctions().size());
 		}
-		progressDialog.dismiss();
+		mProgressDialog.dismiss();
 	}
 
 }

@@ -4,28 +4,27 @@ package com.blstream.myguide.zoolocations;
 /** This class contains animal name and its location in the zoo. */
 public class Animal {
 
-	private String name;
-	private Node node;
+	private String mName;
+	private Node mNode;
 
 	public Animal(String name, Node node) {
-		this.name = name;
-		this.node = node;
+		mName = name;
+		mNode = node;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		mName = name;
 	}
 
 	public void setNode(Node node) {
-		this.node = node;
+		mNode = node;
 	}
 
 	public String getName() {
-		return name;
+		return mName;
 	}
 
 	public Node getNode() {
-		return node;
+		return mNode;
 	}
-
 }

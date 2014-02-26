@@ -3,6 +3,7 @@ package com.blstream.myguide.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.IOException;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -25,7 +26,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	private static final int JUNCTIONS = 20;
 
 	/** Checks if tag <animals> is well parsed. */
-	public void testParsingAnimals() {
+	public void testParsingAnimals() throws IOException, XmlPullParserException {
 		// given
 		String xmlText = "<root><animals>"
 				+ "<animal lat=\"51.1052072\" lon=\"17.0754498\">Żyrafa</animal>"
@@ -34,24 +35,13 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		ZooLocationsDataParser parser = new ZooLocationsDataParser();
 		InputStream is = null;
 		ZooLocationsData data = null;
-		Exception e = null;
 
 		// when
-		try {
-			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
-			data = parser.parse(is);
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
+		is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
+		data = parser.parse(is);
+		is.close();
 
 		// then
-		assertNull(e);
 		assertEquals(2, data.getAnimals().size());
 		assertEquals(0, data.getWays().size());
 		assertEquals(0, data.getJunctions().size());
@@ -64,7 +54,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	}
 
 	/** Checks if tag <ways> is well parsed. */
-	public void testParsingWays() {
+	public void testParsingWays() throws IOException, XmlPullParserException {
 		// given
 		String xmlText = "<root><ways>"
 				+ "<way id=\"32997558\">"
@@ -80,24 +70,13 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		ZooLocationsDataParser parser = new ZooLocationsDataParser();
 		InputStream is = null;
 		ZooLocationsData data = null;
-		Exception e = null;
 
 		// when
-		try {
-			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
-			data = parser.parse(is);
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
+		is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
+		data = parser.parse(is);
+		is.close();
 
 		// then
-		assertNull(e);
 		assertEquals(0, data.getAnimals().size());
 		assertEquals(2, data.getWays().size());
 		assertEquals(0, data.getJunctions().size());
@@ -117,7 +96,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	}
 
 	/** Checks if tag <junctions> is well parsed. */
-	public void testParsingJunctions() {
+	public void testParsingJunctions() throws IOException, XmlPullParserException {
 		// given
 		String xmlText = "<root><ways>"
 				+ "<way id=\"32997558\">"
@@ -149,24 +128,13 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		ZooLocationsDataParser parser = new ZooLocationsDataParser();
 		InputStream is = null;
 		ZooLocationsData data = null;
-		Exception e = null;
 
 		// when
-		try {
-			is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
-			data = parser.parse(is);
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
+		is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
+		data = parser.parse(is);
+		is.close();
 
 		// then
-		assertNull(e);
 		assertEquals(0, data.getAnimals().size());
 		assertEquals(3, data.getWays().size());
 		assertEquals(2, data.getJunctions().size());
@@ -186,29 +154,18 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	 * Checks if xml from userstory is well parsed (check if amount of animals,
 	 * ways and junctions are good).
 	 */
-	public void testParsingXmlFromUserStory() {
+	public void testParsingXmlFromUserStory() throws IOException, XmlPullParserException {
 		// given
 		ZooLocationsDataParser parser = new ZooLocationsDataParser();
 		InputStream is = null;
 		ZooLocationsData data = null;
-		Exception e = null;
 
 		// when
-		try {
-			is = this.getContext().getResources().openRawResource(R.raw.data);
-			data = parser.parse(is);
-		} catch (Exception e1) {
-			e = e1;
-		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
-		}
+		is = this.getContext().getResources().openRawResource(R.raw.data);
+		data = parser.parse(is);
+		is.close();
 
 		// then
-		assertNull(e);
 		assertEquals(ANIMALS, data.getAnimals().size());
 		assertEquals(WAYS, data.getWays().size());
 		assertEquals(JUNCTIONS, data.getJunctions().size());
@@ -218,7 +175,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	 * Checks if parser throws XmlPullParserException with adequate message when
 	 * there is a way in junctions tag but not in ways tag.
 	 */
-	public void testJunctionWithBadWay() {
+	public void testJunctionWithBadWay() throws IOException {
 		// given
 		String xmlText = "<root><junctions><junction lat=\"51.1054430\" lon=\"17.0773945\">"
 				+ "<way id=\"123456\"/>"
@@ -226,7 +183,6 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		ZooLocationsDataParser parser = new ZooLocationsDataParser();
 		InputStream is = null;
 		XmlPullParserException exception = null;
-		Exception e = null;
 
 		// when
 		try {
@@ -234,19 +190,12 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 			parser.parse(is);
 		} catch (XmlPullParserException exc) {
 			exception = exc;
-		} catch (Exception e1) {
-			e = e1;
 		} finally {
-			try {
-				is.close();
-			} catch (Exception e2) {
-				e = e2;
-			}
+			is.close();
 		}
 
 		// then
-		assertNull(e);
 		assertNotNull(exception);
-		assertEquals(ZooLocationsDataParser.EXCEPTION_WAY_NOT_FOUND, exception.getMessage());
+		assertTrue(exception instanceof ZooLocationsDataParser.WayNotFoundException);
 	}
 }
