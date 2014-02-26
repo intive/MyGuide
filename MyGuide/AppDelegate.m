@@ -7,18 +7,31 @@
 //
 
 #import "AppDelegate.h"
+#import "AFParsedData.h"
+#import "AFXMLParser.h"
+#import "SettingsParser.h"
+
 
 @implementation AppDelegate
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+#pragma mark - Parsing methods
+- (void)parseDataXML:(id)object
 {
-    [self performSelectorInBackground:@selector(loadSettings:) withObject:nil];
-    return YES;
+    AFXMLParser *parser = [[AFXMLParser alloc] init];
+    [parser parse];
 }
-
 - (void) loadSettings: (id) object {
     SettingsParser *parser = [[SettingsParser alloc] init];
     [parser loadSettings];
 }
+
+#pragma mark - Application methods
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [self performSelectorInBackground:@selector(parseDataXML:) withObject:nil];
+    [self performSelectorInBackground:@selector(loadSettings:) withObject:nil];
+
+    return YES;
+}
+
 
 @end
