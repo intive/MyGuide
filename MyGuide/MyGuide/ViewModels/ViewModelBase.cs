@@ -10,7 +10,12 @@ namespace MyGuide.ViewModels
 {
     public class ViewModelBase : PropertyChangedBase
     {
-        private INavigationService _navigation;
+        protected INavigationService _navigation;
+
+        public ViewModelBase()
+        {
+            _navigation = null;
+        }
 
         public ViewModelBase(INavigationService navigationService)
         {

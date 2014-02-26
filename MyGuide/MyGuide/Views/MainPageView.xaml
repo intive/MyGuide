@@ -2,6 +2,9 @@
     x:Class="MyGuide.Views.MainPageView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bindappbar="clr-namespace:Caliburn.Micro.BindableAppBar;assembly=Caliburn.Micro.BindableAppBar"
+    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+    xmlns:vm="clr-namespace:MyGuide.ViewModels"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:views="clr-namespace:MyGuide.Views"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
@@ -13,7 +16,9 @@
     SupportedOrientations="Portrait"
     Orientation="Portrait"
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    d:DataContext="{d:DesignInstance Type=vm:MainPageViewModel, IsDesignTimeCreatable=True}"
+    cal:Bind.AtDesignTime="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -23,13 +28,34 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}" />
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" />
+        <StackPanel Grid.Row="0" Margin="12,3,0,30">
+            <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Mode=OneWay, Source={StaticResource LocalizedStrings}}" Margin="12,0" Style="{StaticResource PhoneTextNormalStyle}" />
+            <TextBlock Text="{Binding LocalizedResources.Welcome, Mode=OneWay, Source={StaticResource LocalizedStrings}}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Image Source="/Assets/ZooWroclawLogo.jpg" />
+            <ScrollViewer Grid.Row="1" Margin="0,20,0,0">
+                <TextBlock x:Name="WelcomeText" TextWrapping="Wrap" Text="TextBlock" />
+            </ScrollViewer>
         </Grid>
+
+        <!--AppBar - bindable replacement of standard ApplicationBar-->
+        <bindappbar:BindableAppBar x:Name="AppBar">
+            <bindappbar:BindableAppBarButton
+                x:Name="ShowTickets"
+                Text="{Binding LocalizedResources.TicketsAndHours, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+            <bindappbar:BindableAppBarButton
+                x:Name="ShowTravelDirections"
+                Text="{Binding LocalizedResources.TravelDirections, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+            <bindappbar:BindableAppBarButton
+                x:Name="ShowSightsee"
+                Text="{Binding LocalizedResources.Sightsee, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+        </bindappbar:BindableAppBar>
     </Grid>
 </views:PageViewBase>
