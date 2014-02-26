@@ -13,8 +13,8 @@
 - (id)init{
     self = [super init];
     if(self){
-        _latitude = 0;
-        _longitude = 0;
+        _latitude = nil;
+        _longitude = nil;
     }
     return self;
 }
