@@ -32,6 +32,9 @@ namespace MyGuide
                 container.RegisterPhoneServices(RootFrame);
 
             container.PerRequest<MainPageViewModel>();
+            container.PerRequest<AboutZooPageViewModel>();
+            container.PerRequest<OptionsPageViewModel>();
+            container.PerRequest<SightseeingPageViewModel>();
 
             //All VM should be add to this container, e.g. container.PerRequest<AnotherViewModel>();
 
