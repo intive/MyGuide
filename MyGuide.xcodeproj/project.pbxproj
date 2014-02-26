@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0507435A18B6A3AC00AC4FB1 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0507435818B6A3AC00AC4FB1 /* config.xml */; };
 		0507436218B6A3C100AC4FB1 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0507435E18B6A3C100AC4FB1 /* Settings.m */; };
 		0507436318B6A3C100AC4FB1 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0507436018B6A3C100AC4FB1 /* SettingsParser.m */; };
-		0510F48418BA07FB007DA4D3 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0510F48318BA07FB007DA4D3 /* XMLFetcher.m */; };
 		05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */; };
 		05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DA78D418B969BF005D6C5F /* libOCMock.a */; };
 		05E375C918BA872B00A31630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C418BA872B00A31630 /* main.m */; };
@@ -30,10 +28,8 @@
 		3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
 		3D5EF632189637C000233B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF630189637C000233B64 /* InfoPlist.strings */; };
-		842D3E2218BAA3EE006962B6 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DD036518BA8E6800DE7178 /* libOCMock.a */; };
 		844D5F1118B41F470018C970 /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 844D5F1018B41F470018C970 /* data.xml */; };
 		84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
-		84DD034E18BA8C3200DE7178 /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD034D18BA8C3200DE7178 /* SettingsParserTest.m */; };
 		84DD035B18BA8C7A00DE7178 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84DD035818BA8C7A00DE7178 /* config.xml */; };
 		84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */; };
 		84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2A18BA917800A2F720 /* AFAnimal.m */; };
@@ -41,10 +37,7 @@
 		84DDCB3318BA917800A2F720 /* AFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2E18BA917800A2F720 /* AFNode.m */; };
 		84DDCB3418BA917800A2F720 /* AFWay.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB3018BA917800A2F720 /* AFWay.m */; };
 		84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB3718BA919600A2F720 /* AFXMLParser.m */; };
-		84DDCB3D18BA919600A2F720 /* SettingParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB3918BA919600A2F720 /* SettingParserDelegate.m */; };
-		84DDCB3E18BA919600A2F720 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB3B18BA919600A2F720 /* SettingsParser.m */; };
 		84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4118BA91A100A2F720 /* AFParsedData.m */; };
-		84DDCB4518BA91A100A2F720 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4318BA91A100A2F720 /* Settings.m */; };
 		84DDCB4A18BA944800A2F720 /* DataParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4918BA944800A2F720 /* DataParserTests.m */; };
 		84F184A218B9537200658238 /* MyGuideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF633189637C000233B64 /* MyGuideTests.m */; };
 /* End PBXBuildFile section */
@@ -60,13 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0507435818B6A3AC00AC4FB1 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		0507435C18B6A3C100AC4FB1 /* SettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsParser.h; sourceTree = "<group>"; };
 		0507435E18B6A3C100AC4FB1 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		0507435F18B6A3C100AC4FB1 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		0507436018B6A3C100AC4FB1 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
-		0510F48218BA07FB007DA4D3 /* XMLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLFetcher.h; sourceTree = "<group>"; };
-		0510F48318BA07FB007DA4D3 /* XMLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLFetcher.m; sourceTree = "<group>"; };
 		05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParserTest.m; sourceTree = "<group>"; };
 		05DA78CE18B969BF005D6C5F /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		05DA78CF18B969BF005D6C5F /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
@@ -97,17 +87,9 @@
 		3D5EF631189637C000233B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3D5EF633189637C000233B64 /* MyGuideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGuideTests.m; sourceTree = "<group>"; };
 		844D5F1018B41F470018C970 /* data.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = data.xml; path = "XML files/data.xml"; sourceTree = "<group>"; };
-		84DD034D18BA8C3200DE7178 /* SettingsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsParserTest.m; path = Parsers/SettingsParserTest.m; sourceTree = "<group>"; };
 		84DD035818BA8C7A00DE7178 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = "XML files/config.xml"; sourceTree = "<group>"; };
 		84DD035918BA8C7A00DE7178 /* XMLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLFetcher.h; path = "XML files/XMLFetcher.h"; sourceTree = "<group>"; };
 		84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLFetcher.m; path = "XML files/XMLFetcher.m"; sourceTree = "<group>"; };
-		84DD035F18BA8E6800DE7178 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
-		84DD036018BA8E6800DE7178 /* OCMArg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
-		84DD036118BA8E6800DE7178 /* OCMConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
-		84DD036218BA8E6800DE7178 /* OCMock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
-		84DD036318BA8E6800DE7178 /* OCMockObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
-		84DD036418BA8E6800DE7178 /* OCMockRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
-		84DD036518BA8E6800DE7178 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		84DDCB2918BA917800A2F720 /* AFAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAnimal.h; sourceTree = "<group>"; };
 		84DDCB2A18BA917800A2F720 /* AFAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAnimal.m; sourceTree = "<group>"; };
 		84DDCB2B18BA917800A2F720 /* AFJunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJunction.h; sourceTree = "<group>"; };
@@ -118,15 +100,9 @@
 		84DDCB3018BA917800A2F720 /* AFWay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFWay.m; sourceTree = "<group>"; };
 		84DDCB3618BA919600A2F720 /* AFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLParser.h; sourceTree = "<group>"; };
 		84DDCB3718BA919600A2F720 /* AFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLParser.m; sourceTree = "<group>"; };
-		84DDCB3818BA919600A2F720 /* SettingParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingParserDelegate.h; sourceTree = "<group>"; };
-		84DDCB3918BA919600A2F720 /* SettingParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingParserDelegate.m; sourceTree = "<group>"; };
-		84DDCB3A18BA919600A2F720 /* SettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsParser.h; sourceTree = "<group>"; };
-		84DDCB3B18BA919600A2F720 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
 		84DDCB4018BA91A100A2F720 /* AFParsedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFParsedData.h; sourceTree = "<group>"; };
 		84DDCB4118BA91A100A2F720 /* AFParsedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFParsedData.m; sourceTree = "<group>"; };
-		84DDCB4218BA91A100A2F720 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		84DDCB4318BA91A100A2F720 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
-		84DDCB4918BA944800A2F720 /* DataParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataParserTests.m; path = Parsers/DataParserTests.m; sourceTree = "<group>"; };
+		84DDCB4918BA944800A2F720 /* DataParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataParserTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,9 +122,7 @@
 			files = (
 				84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */,
 				05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */,
-				3D5EF628189637C000233B64 /* XCTest.framework in Frameworks */,
 				3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */,
-				842D3E2218BAA3EE006962B6 /* libOCMock.a in Frameworks */,
 				3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,20 +141,11 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		0507435718B6A3AC00AC4FB1 /* XML files */ = {
-			isa = PBXGroup;
-			children = (
-				0507435818B6A3AC00AC4FB1 /* config.xml */,
-				0510F48218BA07FB007DA4D3 /* XMLFetcher.h */,
-				0510F48318BA07FB007DA4D3 /* XMLFetcher.m */,
-			);
-			path = "XML files";
-			sourceTree = "<group>";
-		};
 		05DA78BE18B968E5005D6C5F /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
 				05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */,
+				84DDCB4918BA944800A2F720 /* DataParserTests.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -230,7 +195,6 @@
 		3D5EF607189637C000233B64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84DD035D18BA8E6800DE7178 /* OCMock */,
 				05DA78CC18B969BF005D6C5F /* OCMock */,
 				3D5EF608189637C000233B64 /* Foundation.framework */,
 				3D5EF60A189637C000233B64 /* CoreGraphics.framework */,
@@ -254,7 +218,6 @@
 				84DDCB2818BA917800A2F720 /* Models */,
 				0507435618B6A39F00AC4FB1 /* Settings */,
 				3D5EF620189637C000233B64 /* Images.xcassets */,
-				0507435718B6A3AC00AC4FB1 /* XML files */,
 				3D5EF60F189637C000233B64 /* Supporting Files */,
 			);
 			path = MyGuide;
@@ -278,7 +241,6 @@
 			children = (
 				05DA78BE18B968E5005D6C5F /* Parsers */,
 				3D5EF633189637C000233B64 /* MyGuideTests.m */,
-				84C266A318BAA15300588D63 /* Parsers tests */,
 				3D5EF62E189637C000233B64 /* Supporting Files */,
 			);
 			path = MyGuideTests;
@@ -291,38 +253,6 @@
 				3D5EF630189637C000233B64 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		84C266A318BAA15300588D63 /* Parsers tests */ = {
-			isa = PBXGroup;
-			children = (
-				84DDCB4918BA944800A2F720 /* DataParserTests.m */,
-				84DD034D18BA8C3200DE7178 /* SettingsParserTest.m */,
-			);
-			name = "Parsers tests";
-			sourceTree = "<group>";
-		};
-		84DD035D18BA8E6800DE7178 /* OCMock */ = {
-			isa = PBXGroup;
-			children = (
-				84DD035E18BA8E6800DE7178 /* headers */,
-				84DD036518BA8E6800DE7178 /* libOCMock.a */,
-			);
-			name = OCMock;
-			path = Frameworks/OCMock;
-			sourceTree = "<group>";
-		};
-		84DD035E18BA8E6800DE7178 /* headers */ = {
-			isa = PBXGroup;
-			children = (
-				84DD035F18BA8E6800DE7178 /* NSNotificationCenter+OCMAdditions.h */,
-				84DD036018BA8E6800DE7178 /* OCMArg.h */,
-				84DD036118BA8E6800DE7178 /* OCMConstraint.h */,
-				84DD036218BA8E6800DE7178 /* OCMock.h */,
-				84DD036318BA8E6800DE7178 /* OCMockObject.h */,
-				84DD036418BA8E6800DE7178 /* OCMockRecorder.h */,
-			);
-			path = headers;
 			sourceTree = "<group>";
 		};
 		84DDCB2818BA917800A2F720 /* Models */ = {
@@ -345,10 +275,6 @@
 			children = (
 				84DDCB3618BA919600A2F720 /* AFXMLParser.h */,
 				84DDCB3718BA919600A2F720 /* AFXMLParser.m */,
-				84DDCB3818BA919600A2F720 /* SettingParserDelegate.h */,
-				84DDCB3918BA919600A2F720 /* SettingParserDelegate.m */,
-				84DDCB3A18BA919600A2F720 /* SettingsParser.h */,
-				84DDCB3B18BA919600A2F720 /* SettingsParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -358,8 +284,6 @@
 			children = (
 				84DDCB4018BA91A100A2F720 /* AFParsedData.h */,
 				84DDCB4118BA91A100A2F720 /* AFParsedData.m */,
-				84DDCB4218BA91A100A2F720 /* Settings.h */,
-				84DDCB4318BA91A100A2F720 /* Settings.m */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -457,14 +381,11 @@
 			files = (
 				844D5F1118B41F470018C970 /* data.xml in Resources */,
 				3D5EF621189637C000233B64 /* Images.xcassets in Resources */,
-				3D5EF613189637C000233B64 /* InfoPlist.strings in Resources */,
-				3D5EF61C189637C000233B64 /* Main.storyboard in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				05E375D118BA8A6400A31630 /* MyGuideTests-Info.plist in Resources */,
 				05E375D018BA8A5E00A31630 /* InfoPlist.strings in Resources */,
 				05E375CF18BA8A4E00A31630 /* Main.storyboard in Resources */,
 				3D5EF621189637C000233B64 /* Images.xcassets in Resources */,
-				0507435A18B6A3AC00AC4FB1 /* config.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,10 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84DDCB3E18BA919600A2F720 /* SettingsParser.m in Sources */,
 				84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */,
-				84DDCB4518BA91A100A2F720 /* Settings.m in Sources */,
-				84DDCB3D18BA919600A2F720 /* SettingParserDelegate.m in Sources */,
 				84DDCB3318BA917800A2F720 /* AFNode.m in Sources */,
 				84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */,
 				84DDCB3418BA917800A2F720 /* AFWay.m in Sources */,
@@ -516,7 +434,6 @@
 				0507436218B6A3C100AC4FB1 /* Settings.m in Sources */,
 				05E375CB18BA872B00A31630 /* MWLogging.m in Sources */,
 				05E375C918BA872B00A31630 /* main.m in Sources */,
-				0510F48418BA07FB007DA4D3 /* XMLFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,8 +443,6 @@
 			files = (
 				84F184A218B9537200658238 /* MyGuideTests.m in Sources */,
 				84DDCB4A18BA944800A2F720 /* DataParserTests.m in Sources */,
-				84DD034E18BA8C3200DE7178 /* SettingsParserTest.m in Sources */,
-				3D5EF634189637C000233B64 /* MyGuideTests.m in Sources */,
 				05E375CC18BA872B00A31630 /* MWLogging.m in Sources */,
 				05E375CA18BA872B00A31630 /* main.m in Sources */,
 				05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */,
@@ -721,10 +636,6 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"$(SRCROOT)/Frameworks/OCMock",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
 					"-framework",
 					XCTest,
 					"-ObjC",
@@ -749,7 +660,6 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MyGuide/MyGuide-Prefix.pch";
 				GCC_PREFIX_HEADER = "MyGuide/Supporting Files/MyGuide-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -760,10 +670,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/afilipowicz/Documents/XcodeProjects/iOS/MyGuide/Frameworks/OCMock,
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks/OCMock",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
