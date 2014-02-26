@@ -1,6 +1,6 @@
 package com.blstream.myguide;
 
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,7 +8,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-public class MainActivity extends Activity {
+import com.blstream.myguide.dialog.ConfirmationDialogFragment;
+import com.blstream.myguide.dialog.ConfirmationDialogFragment.ConfirmationDialogHolder;
+
+public class MainActivity extends FragmentActivity implements ConfirmationDialogHolder {
 
     /** Called when the activity is first created. */
     @Override
@@ -62,6 +65,20 @@ public class MainActivity extends Activity {
     	Intent intent = new Intent(this, OptionsActivity.class);
     	startActivity(intent);
     }
+
+    /** Invoke after confirmation about closing an application is made. */
+	@Override
+	public void onDialogConfirm() {
+		super.onBackPressed();
+	}
+	
+    /** Override back-button functionality - show dialog asking about confirmation of closing an application. */	
+	@Override
+	public void onBackPressed() {
+		ConfirmationDialogFragment
+				.newInstance(getResources().getString(R.string.confirmation_exit))
+				.show(getSupportFragmentManager(),ConfirmationDialogFragment.class.getSimpleName() );
+	}
 
 }
 
