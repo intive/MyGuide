@@ -40,12 +40,19 @@ namespace MyGuide.ViewModels
 
         #region Commands
 
-        public void ShowSightsee()
+        public void ShowAboutZoo()
         {
+            _navigation.UriFor<AboutZooPageViewModel>().Navigate();
         }
 
-        public void ShowTickets()
+        public void ShowOptions()
         {
+            _navigation.UriFor<OptionsPageViewModel>().Navigate();
+        }
+
+        public void ShowSightsee()
+        {
+            _navigation.UriFor<SightseeingPageViewModel>().Navigate();
         }
 
         public void ShowTravelDirections()
