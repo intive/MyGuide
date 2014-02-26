@@ -553,10 +553,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BLStream (XTRY58ZV6V)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyGuide/Supporting Files/MyGuide-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/MyGuide/Supporting Files/MyGuide-Info.plist";
@@ -577,10 +573,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: BLStream (XTRY58ZV6V)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyGuide/Supporting Files/MyGuide-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/MyGuide/Supporting Files/MyGuide-Info.plist";
@@ -597,14 +589,12 @@
 		3D5EF63B189637C000233B64 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyGuide.app/MyGuide";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(SRCROOT)/Frameworks/OCMock",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyGuide/Supporting Files/MyGuide-Prefix.pch";
@@ -620,7 +610,7 @@
 				INFOPLIST_FILE = "MyGuideTests/MyGuideTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/afilipowicz/Documents/XcodeProjects/iOS/MyGuide/Frameworks/OCMock,
+					"$(SRCROOT)/Frameworks/OCMock",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -639,14 +629,12 @@
 		3D5EF63C189637C000233B64 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyGuide.app/MyGuide";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(SRCROOT)/Frameworks/OCMock",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyGuide/Supporting Files/MyGuide-Prefix.pch";
@@ -658,7 +646,7 @@
 				INFOPLIST_FILE = "MyGuideTests/MyGuideTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/afilipowicz/Documents/XcodeProjects/iOS/MyGuide/Frameworks/OCMock,
+					"$(SRCROOT)/Frameworks/OCMock",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
