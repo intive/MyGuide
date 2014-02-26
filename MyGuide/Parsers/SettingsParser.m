@@ -11,31 +11,51 @@
 NSString * const CONFIG_FILE_NAME = @"config";
 
 @implementation SettingsParser {
-    SettingParserDelegateCallback _callback;
+    NSMutableString *_cacheElement;
+    Settings        *_settings;
 }
 
 - (id) init {
     self = [super init];
     if(self) {
-        _callback = [self buildCallbackBlock];
+        _settings = [Settings sharedSettingsData];
     }
     return self;
 }
 
 - (void) loadSettings {
-    NSData                *configData = [XMLFetcher fetchDataFromXML: CONFIG_FILE_NAME];
-    NSXMLParser           *parser     = [[NSXMLParser alloc] initWithData: configData];
-    SettingParserDelegate *delegate   = [[SettingParserDelegate alloc] initWithCallback: _callback];
-    [parser setDelegate: delegate];
+    NSData      *configData = [XMLFetcher fetchDataFromXML: CONFIG_FILE_NAME];
+    NSXMLParser *parser     = [[NSXMLParser alloc] initWithData: configData];
+    [parser setDelegate: self];
     [parser parse];
 }
 
-- (SettingParserDelegateCallback) buildCallbackBlock {
-    Settings *settings = [Settings sharedSettingsData];
-    return ^(NSString *name, NSMutableString *value) {
-        if ([name isEqualToString: @"configuration"]) return;
-        NSLog(@"Injecting %@ with value \"%@\" to settings.", name, value);
-        [settings injectDataWithName: name andValue: value];
-    };
+- (void) parserDidStartDocument:(NSXMLParser *) parser { MWLogInfo(@"Loading settings from file..."); }
+
+- (void) parser: (NSXMLParser *)  parser
+didStartElement: (NSString *)     elementName
+   namespaceURI: (NSString *)     namespaceURI
+  qualifiedName: (NSString *)     qName
+     attributes: (NSDictionary *) attributeDict
+{
+    _cacheElement = [[NSMutableString alloc] init];
 }
+
+- (void) parser: (NSXMLParser *) parser
+foundCharacters: (NSString *)    string
+{
+    [_cacheElement appendString: string];
+}
+
+- (void) parser: (NSXMLParser *) parser
+  didEndElement: (NSString *)    elementName
+   namespaceURI: (NSString *)    namespaceURI
+  qualifiedName: (NSString *)    qName
+{
+    if ([elementName isEqualToString: @"configuration"]) return;
+    
+    MWLogInfo(@"Injecting %@ with value \"%@\" to settings.", elementName, _cacheElement);
+    [_settings injectDataWithName: elementName andValue: _cacheElement];}
+
+- (void) parserDidEndDocument:(NSXMLParser *) parser { MWLogInfo(@"Settings loaded!"); }
 @end

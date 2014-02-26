@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SettingParserDelegate.h"
 #import "Settings.h"
 #import "XMLFetcher.h"
 
