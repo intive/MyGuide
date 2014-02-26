@@ -16,23 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testBackground" translatesAutoresizingMaskIntoConstraints="NO" id="4nU-yP-Gfb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4nU-yP-Gfb">
+                                <rect key="frame" x="20" y="20" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="fyL-Fg-yDe"/>
+                                    <constraint firstAttribute="height" constant="120" id="mzU-nc-fx8"/>
+                                </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByE-XG-qDW">
-                                <rect key="frame" x="40" y="101" width="240" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByE-XG-qDW">
+                                <rect key="frame" x="0.0" y="197" width="320" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="YzR-z7-LSk"/>
+                                    <constraint firstAttribute="height" constant="112" id="Jx7-yg-SIe"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyGuide" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8k-ID-7kH">
-                                <rect key="frame" x="125" y="72" width="70" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Witamy w przewodniku ZOO Wrocław" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="178" translatesAutoresizingMaskIntoConstraints="NO" id="A8k-ID-7kH">
+                                <rect key="frame" x="71" y="148" width="178" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -41,16 +45,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ByE-XG-qDW" firstAttribute="top" secondItem="A8k-ID-7kH" secondAttribute="bottom" constant="8" id="2Uq-g8-Lml"/>
-                            <constraint firstItem="A8k-ID-7kH" firstAttribute="leading" secondItem="j8g-Mc-3I2" secondAttribute="leading" constant="125" id="3Au-gK-iML"/>
-                            <constraint firstItem="4nU-yP-Gfb" firstAttribute="leading" secondItem="j8g-Mc-3I2" secondAttribute="leading" id="CUP-pP-T4V"/>
-                            <constraint firstAttribute="trailing" secondItem="A8k-ID-7kH" secondAttribute="trailing" constant="125" id="E8J-2F-Z67"/>
-                            <constraint firstItem="4nU-yP-Gfb" firstAttribute="top" secondItem="j8g-Mc-3I2" secondAttribute="top" id="LW0-lV-hMM"/>
-                            <constraint firstItem="ByE-XG-qDW" firstAttribute="leading" secondItem="j8g-Mc-3I2" secondAttribute="leading" constant="40" id="PBd-bs-jsh"/>
-                            <constraint firstAttribute="trailing" secondItem="4nU-yP-Gfb" secondAttribute="trailing" id="hb7-qT-QKO"/>
-                            <constraint firstItem="A8k-ID-7kH" firstAttribute="top" secondItem="TF5-qt-u7P" secondAttribute="bottom" constant="52" id="ipT-bi-bDd"/>
-                            <constraint firstAttribute="trailing" secondItem="ByE-XG-qDW" secondAttribute="trailing" constant="40" id="kUu-5I-xnx"/>
-                            <constraint firstAttribute="bottom" secondItem="4nU-yP-Gfb" secondAttribute="bottom" id="mgK-gb-HFg"/>
+                            <constraint firstItem="ByE-XG-qDW" firstAttribute="top" secondItem="A8k-ID-7kH" secondAttribute="bottom" priority="750" constant="8" id="2Uq-g8-Lml"/>
+                            <constraint firstItem="A8k-ID-7kH" firstAttribute="leading" secondItem="j8g-Mc-3I2" secondAttribute="leading" constant="71" id="3Au-gK-iML"/>
+                            <constraint firstItem="A8k-ID-7kH" firstAttribute="top" secondItem="4nU-yP-Gfb" secondAttribute="bottom" priority="750" constant="8" id="BOW-cv-KG8"/>
+                            <constraint firstAttribute="trailing" secondItem="A8k-ID-7kH" secondAttribute="trailing" constant="71" id="E8J-2F-Z67"/>
+                            <constraint firstItem="4nU-yP-Gfb" firstAttribute="top" secondItem="j8g-Mc-3I2" secondAttribute="top" constant="20" id="LW0-lV-hMM"/>
+                            <constraint firstItem="ByE-XG-qDW" firstAttribute="leading" secondItem="j8g-Mc-3I2" secondAttribute="leading" id="PBd-bs-jsh"/>
+                            <constraint firstAttribute="centerX" secondItem="4nU-yP-Gfb" secondAttribute="centerX" id="TkY-0h-epu"/>
+                            <constraint firstAttribute="trailing" secondItem="ByE-XG-qDW" secondAttribute="trailing" id="kUu-5I-xnx"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="US1-O4-S7C"/>
@@ -80,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="55" y="98"/>
         </scene>
-        <!--View Controller - Zoo-->
+        <!--View Controller - Dojazd-->
         <scene sceneID="INJ-dq-960">
             <objects>
                 <viewController id="AcO-82-58O" sceneMemberID="viewController">
@@ -92,12 +94,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testBackground" translatesAutoresizingMaskIntoConstraints="NO" id="UC8-nb-zTe">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="UC8-nb-zTe">
+                                <rect key="frame" x="20" y="20" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="Ghi-VX-RDM"/>
+                                    <constraint firstAttribute="height" constant="120" id="qlR-TG-JT7"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info o zoo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9T-8K-J6p">
-                                <rect key="frame" x="122" y="120" width="77" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dojazd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9T-8K-J6p">
+                                <rect key="frame" x="133" y="210" width="54" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -105,22 +111,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="T9T-8K-J6p" firstAttribute="leading" secondItem="6Zv-P1-OtS" secondAttribute="leading" constant="122" id="Grd-BE-Y0v"/>
-                            <constraint firstItem="UC8-nb-zTe" firstAttribute="top" secondItem="6Zv-P1-OtS" secondAttribute="top" id="N8D-1m-p8l"/>
-                            <constraint firstAttribute="trailing" secondItem="T9T-8K-J6p" secondAttribute="trailing" constant="121" id="WAf-Bv-a1x"/>
-                            <constraint firstAttribute="trailing" secondItem="UC8-nb-zTe" secondAttribute="trailing" id="jQU-Ad-UxL"/>
-                            <constraint firstItem="T9T-8K-J6p" firstAttribute="top" secondItem="ovF-sU-jRt" secondAttribute="bottom" constant="100" id="lxu-AQ-Fa1"/>
-                            <constraint firstAttribute="bottom" secondItem="UC8-nb-zTe" secondAttribute="bottom" id="sOi-Qg-SRM"/>
-                            <constraint firstItem="UC8-nb-zTe" firstAttribute="leading" secondItem="6Zv-P1-OtS" secondAttribute="leading" id="xQ6-cO-Ce1"/>
+                            <constraint firstItem="T9T-8K-J6p" firstAttribute="top" secondItem="UC8-nb-zTe" secondAttribute="bottom" constant="70" id="62b-i9-sBD"/>
+                            <constraint firstAttribute="centerX" secondItem="UC8-nb-zTe" secondAttribute="centerX" id="FW4-dH-DA4"/>
+                            <constraint firstItem="T9T-8K-J6p" firstAttribute="leading" secondItem="6Zv-P1-OtS" secondAttribute="leading" constant="133" id="Grd-BE-Y0v"/>
+                            <constraint firstItem="UC8-nb-zTe" firstAttribute="top" secondItem="6Zv-P1-OtS" secondAttribute="top" constant="20" id="N8D-1m-p8l"/>
+                            <constraint firstAttribute="trailing" secondItem="T9T-8K-J6p" secondAttribute="trailing" constant="133" id="WAf-Bv-a1x"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Zoo" id="GpC-QO-gAd"/>
+                    <tabBarItem key="tabBarItem" title="Dojazd" id="GpC-QO-gAd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8z-Ep-XKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="589" y="1091"/>
         </scene>
-        <!--View Controller - Opcje-->
+        <!--View Controller - Zwiedzaj-->
         <scene sceneID="Rwy-Mw-zzh">
             <objects>
                 <viewController id="k7A-NH-zPr" sceneMemberID="viewController">
@@ -132,12 +136,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Y3R-4e-DuV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Y3R-4e-DuV">
+                                <rect key="frame" x="20" y="20" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="8oR-sk-RrX"/>
+                                    <constraint firstAttribute="width" constant="280" id="HwW-a5-6kE"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opcje" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkb-eu-HJy">
-                                <rect key="frame" x="137" y="120" width="46" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zwiedzaj" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkb-eu-HJy">
+                                <rect key="frame" x="126" y="210" width="68" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -145,22 +153,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Fkb-eu-HJy" firstAttribute="leading" secondItem="Xto-8I-Kia" secondAttribute="leading" constant="137" id="DwA-bZ-M91"/>
-                            <constraint firstItem="Fkb-eu-HJy" firstAttribute="top" secondItem="UV8-lu-se9" secondAttribute="bottom" constant="100" id="TxJ-U5-i1B"/>
-                            <constraint firstItem="Y3R-4e-DuV" firstAttribute="leading" secondItem="Xto-8I-Kia" secondAttribute="leading" id="U9S-C4-T80"/>
-                            <constraint firstItem="Y3R-4e-DuV" firstAttribute="top" secondItem="Xto-8I-Kia" secondAttribute="top" id="dGh-oO-Xue"/>
-                            <constraint firstAttribute="bottom" secondItem="Y3R-4e-DuV" secondAttribute="bottom" id="e5B-SJ-f9v"/>
-                            <constraint firstAttribute="trailing" secondItem="Fkb-eu-HJy" secondAttribute="trailing" constant="137" id="x3t-3T-41K"/>
-                            <constraint firstAttribute="trailing" secondItem="Y3R-4e-DuV" secondAttribute="trailing" id="zeO-HT-jZa"/>
+                            <constraint firstItem="Fkb-eu-HJy" firstAttribute="leading" secondItem="Xto-8I-Kia" secondAttribute="leading" constant="126" id="DwA-bZ-M91"/>
+                            <constraint firstItem="Fkb-eu-HJy" firstAttribute="top" secondItem="Y3R-4e-DuV" secondAttribute="bottom" constant="70" id="TOp-Qk-OEh"/>
+                            <constraint firstItem="Y3R-4e-DuV" firstAttribute="top" secondItem="Xto-8I-Kia" secondAttribute="top" constant="20" id="dGh-oO-Xue"/>
+                            <constraint firstAttribute="centerX" secondItem="Y3R-4e-DuV" secondAttribute="centerX" id="waJ-YN-qP9"/>
+                            <constraint firstAttribute="trailing" secondItem="Fkb-eu-HJy" secondAttribute="trailing" constant="126" id="x3t-3T-41K"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Opcje" id="dfN-EF-0Uk"/>
+                    <tabBarItem key="tabBarItem" title="Zwiedzaj" id="dfN-EF-0Uk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1F-GP-lr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="589" y="1759"/>
         </scene>
-        <!--View Controller - Zwiedzaj-->
+        <!--View Controller - Bilety i godziny-->
         <scene sceneID="FX3-eS-iou">
             <objects>
                 <viewController id="YX8-WM-fPD" sceneMemberID="viewController">
@@ -172,12 +178,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testBackground" translatesAutoresizingMaskIntoConstraints="NO" id="fzb-vQ-VHt">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="fzb-vQ-VHt">
+                                <rect key="frame" x="20" y="20" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="A6g-T0-fk3"/>
+                                    <constraint firstAttribute="height" constant="120" id="OAO-hB-dJp"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wybór tras" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHY-GM-l8n">
-                                <rect key="frame" x="118" y="120" width="84" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bilety i godziny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHY-GM-l8n">
+                                <rect key="frame" x="99" y="210" width="122" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -185,16 +195,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fzb-vQ-VHt" firstAttribute="leading" secondItem="aXI-XE-OI2" secondAttribute="leading" id="3dX-0Y-ex4"/>
-                            <constraint firstItem="fzb-vQ-VHt" firstAttribute="top" secondItem="aXI-XE-OI2" secondAttribute="top" id="GWF-Uh-yTi"/>
-                            <constraint firstItem="xHY-GM-l8n" firstAttribute="top" secondItem="Mby-bb-Yg4" secondAttribute="bottom" constant="100" id="eTc-gv-Zx3"/>
-                            <constraint firstItem="xHY-GM-l8n" firstAttribute="leading" secondItem="aXI-XE-OI2" secondAttribute="leading" constant="118" id="gTD-Na-ZCm"/>
-                            <constraint firstAttribute="trailing" secondItem="xHY-GM-l8n" secondAttribute="trailing" constant="118" id="jxV-1o-vmL"/>
-                            <constraint firstAttribute="bottom" secondItem="fzb-vQ-VHt" secondAttribute="bottom" id="s2r-0G-fEC"/>
-                            <constraint firstAttribute="trailing" secondItem="fzb-vQ-VHt" secondAttribute="trailing" id="zeU-eb-qug"/>
+                            <constraint firstItem="fzb-vQ-VHt" firstAttribute="top" secondItem="aXI-XE-OI2" secondAttribute="top" constant="20" id="GWF-Uh-yTi"/>
+                            <constraint firstItem="xHY-GM-l8n" firstAttribute="leading" secondItem="aXI-XE-OI2" secondAttribute="leading" constant="99" id="gTD-Na-ZCm"/>
+                            <constraint firstAttribute="trailing" secondItem="xHY-GM-l8n" secondAttribute="trailing" constant="99" id="jxV-1o-vmL"/>
+                            <constraint firstItem="xHY-GM-l8n" firstAttribute="top" secondItem="fzb-vQ-VHt" secondAttribute="bottom" constant="70" id="ogO-3L-f5y"/>
+                            <constraint firstAttribute="centerX" secondItem="fzb-vQ-VHt" secondAttribute="centerX" id="qjs-Gp-bxR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Zwiedzaj" id="Bdy-Ag-Qpe"/>
+                    <tabBarItem key="tabBarItem" title="Bilety i godziny" id="Bdy-Ag-Qpe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pgw-BG-6Il" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -202,7 +210,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="testBackground" width="320" height="568"/>
+        <image name="logo" width="800" height="442"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
