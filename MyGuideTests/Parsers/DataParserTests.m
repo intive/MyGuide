@@ -13,6 +13,7 @@
 #import "AFWay.h"
 #import "AFNode.h"
 #import "AFJunction.h"
+#import "XMLFetcher.h"
 
 @interface DataParserTests : XCTestCase
 
@@ -43,10 +44,8 @@ static unsigned long vJunctionsAmount = 20;
 #pragma mark - general tests
 - (void)testIfDataFileExists
 {
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSData *data = [NSData dataWithContentsOfFile:[bundle pathForResource:@"data" ofType:@"xml"]];
-    
-    XCTAssertNotNil(data, @"File data.xml does not exist in the main bundle");
+    NSData *data = [XMLFetcher fetchDataFromXML:@"data"];    
+    XCTAssertNotNil(data, @"File data.xml does not exist in the main bundle and the documents folder");
 }
 - (void)testIfDataSingletonIsNotNil
 {
