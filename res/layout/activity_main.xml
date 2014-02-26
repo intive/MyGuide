@@ -41,7 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:text="@string/tickets_and_times" />
+            android:text="@string/tickets_and_times"
+            android:onClick="goAbout" />
 
         <Button
             android:id="@+id/btnHowToGet"
@@ -49,7 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:text="@string/how_to_get" />
+            android:text="@string/how_to_get"
+            android:onClick="goHowToGet" />
 
         <Button
             android:id="@+id/btnSightseeing"
@@ -57,7 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:text="@string/sightseeing" />
+            android:text="@string/sightseeing"
+            android:onClick="goSightseeing" />
     </LinearLayout>
     
 </RelativeLayout>

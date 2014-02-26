@@ -16,5 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.blstream.myguide.AboutActivity" >
+        </activity>
+        <activity android:name="com.blstream.myguide.OptionsActivity" >
+        </activity>
+        <activity android:name="com.blstream.myguide.SightseeingActivity" >
+        </activity>
+        <activity android:name="com.blstream.myguide.HowToGetActivity" >
+        </activity>
     </application>
 </manifest>
