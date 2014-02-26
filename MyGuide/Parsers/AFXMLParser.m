@@ -26,8 +26,6 @@ static NSString *kXmlId = @"id";
 #pragma mark - general methods
 
 - (NSData *)getDataXML{
-//    NSBundle *bundle = [NSBundle mainBundle];
-//    NSData *data = [NSData dataWithContentsOfFile:[bundle pathForResource:@"data" ofType:@"xml"]];
     NSData *data = [XMLFetcher fetchDataFromXML:@"data"];
     return data;
 }
