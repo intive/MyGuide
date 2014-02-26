@@ -81,6 +81,7 @@
 		3D5EF62F189637C000233B64 /* MyGuideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyGuideTests-Info.plist"; sourceTree = "<group>"; };
 		3D5EF631189637C000233B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3D5EF633189637C000233B64 /* MyGuideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGuideTests.m; sourceTree = "<group>"; };
+		723FB6AC18BEB432008C6531 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +404,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3D5EF61B189637C000233B64 /* Base */,
+				723FB6AC18BEB432008C6531 /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
