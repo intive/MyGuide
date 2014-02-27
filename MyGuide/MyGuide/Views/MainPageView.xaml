@@ -48,7 +48,7 @@
         <!--AppBar - bindable replacement of standard ApplicationBar-->
         <bindappbar:BindableAppBar x:Name="AppBar">
             <bindappbar:BindableAppBarButton
-                x:Name="ShowTickets"
+                x:Name="ShowAboutZoo"
                 Text="{Binding LocalizedResources.TicketsAndHours, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowTravelDirections"
@@ -56,6 +56,9 @@
             <bindappbar:BindableAppBarButton
                 x:Name="ShowSightsee"
                 Text="{Binding LocalizedResources.Sightsee, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+            <bindappbar:BindableAppBarMenuItem
+                x:Name="ShowOptions"
+                Text="{Binding LocalizedResources.Options, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
         </bindappbar:BindableAppBar>
     </Grid>
 </views:PageViewBase>
