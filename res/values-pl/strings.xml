@@ -8,4 +8,7 @@
     <string name="how_to_get">Dojazd</string>
     <string name="sightseeing">Zwiedzaj</string>
     <string name="options">Opcje</string>
+
+    <string name="confirmation_default">Kontynuować?</string>
+    <string name="confirmation_exit">Zakończyć działanie aplikacji?</string>
 </resources>
