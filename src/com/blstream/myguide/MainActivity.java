@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 
 import com.blstream.myguide.dialog.ConfirmationDialogFragment;
 import com.blstream.myguide.dialog.ConfirmationDialogFragment.ConfirmationDialogHolder;
@@ -18,6 +19,7 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setUpListeners();
     }
     
 
@@ -42,20 +44,20 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
     }
     
     /** Called when btnGoTickets ("Tickets and times") is clicked. Opens activity with information about the Zoo. */
-    public void goAbout(View view){
+    private void goAbout(){
     	Intent intent = new Intent(this, AboutActivity.class);
     	startActivity(intent);
     }
     
     /** Called when btnSightseeing ("Sightseeing") is clicked. Opens activity with sightseeing chooser screen. */
-    public void goSightseeing(View view){
+    private void goSightseeing(){
     	Intent intent = new Intent(this, SightseeingActivity.class);
     	startActivity(intent);
     }
     
     
     /** Called when btnHowToGet ("How to get") is clicked. Opens activity that shows how to get to the Zoo. */
-    public void goHowToGet(View view){
+    private void goHowToGet(){
     	Intent intent = new Intent(this, HowToGetActivity.class);
     	startActivity(intent);
     }
@@ -65,6 +67,32 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
     	Intent intent = new Intent(this, OptionsActivity.class);
     	startActivity(intent);
     }
+    
+    /** Sets all listeners when Activity opens. */
+    private void setUpListeners(){
+    	this.findViewById(R.id.btnGoTickets).setOnClickListener(mGlobalOnClickListener);
+    	this.findViewById(R.id.btnHowToGet).setOnClickListener(mGlobalOnClickListener);
+    	this.findViewById(R.id.btnSightseeing).setOnClickListener(mGlobalOnClickListener);
+    }
+    
+    /** Global onClickListener for all views. */
+    final OnClickListener mGlobalOnClickListener = new OnClickListener() {
+    	public void onClick(final View v) {
+    		switch(v.getId()) {
+    			case R.id.btnGoTickets:
+    				goAbout();
+    				break;
+                case R.id.btnHowToGet:
+                	goHowToGet();
+                	break;
+                case R.id.btnSightseeing:
+                	goSightseeing();
+                	break;
+                default:
+                	break;
+    		}
+    	}
+    };
 
     /** Invoke after confirmation about closing an application is made. */
 	@Override
