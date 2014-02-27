@@ -1,16 +1,17 @@
 
-package com.blstream.myguide.test;
+package com.blstream.myguide.zoolocations;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.mockito.Mockito;
+
 import android.content.Context;
 import android.content.res.AssetManager.AssetInputStream;
 import android.test.AndroidTestCase;
 
-import com.blstream.myguide.zoolocations.ParserHelper;
 
 /**
  * Class containing tests for ParserHelper. Every test depends on checking if
@@ -20,22 +21,16 @@ import com.blstream.myguide.zoolocations.ParserHelper;
 public class ParserHelperTestCase extends AndroidTestCase {
 
 	public static class ParserHelperDebug extends ParserHelper {
-		public boolean isDebugBuild(Context ctx) {
+		@Override
+		protected boolean isDebugBuild(Context ctx) {
 			return true;
-		}
-
-		public InputStream openXml(Context ctx, File file) throws IOException {
-			return super.openXml(ctx, file);
 		}
 	}
 
 	public static class ParserHelperNotDebug extends ParserHelper {
-		public boolean isDebugBuild(Context context) {
+		@Override
+		protected boolean isDebugBuild(Context context) {
 			return false;
-		}
-
-		public InputStream openXml(Context ctx, File file) throws IOException {
-			return super.openXml(ctx, file);
 		}
 	}
 
@@ -46,6 +41,7 @@ public class ParserHelperTestCase extends AndroidTestCase {
 	public void testOpenXmlFromResInDebugBuild() throws IOException {
 		// given
 		ParserHelperDebug ph = new ParserHelperDebug();
+
 		InputStream is = null;
 
 		// when
@@ -85,7 +81,7 @@ public class ParserHelperTestCase extends AndroidTestCase {
 		InputStream is = null;
 
 		// when
-		File dir = getContext().getCacheDir();
+		File dir = this.getContext().getCacheDir();
 		File file = File.createTempFile("test1", "xml", dir);
 		is = ph.openXml(this.getContext(), file);
 		is.close();
@@ -100,13 +96,12 @@ public class ParserHelperTestCase extends AndroidTestCase {
 	 * set to debug.
 	 */
 	public void testOpenXmlFromFileInReleaseBuild() throws IOException {
-
 		// given
 		ParserHelperNotDebug ph = new ParserHelperNotDebug();
 		InputStream is = null;
 
 		// when
-		File dir = getContext().getCacheDir();
+		File dir = this.getContext().getCacheDir();
 		File file = File.createTempFile("test2", "xml", dir);
 		is = ph.openXml(this.getContext(), file);
 		is.close();

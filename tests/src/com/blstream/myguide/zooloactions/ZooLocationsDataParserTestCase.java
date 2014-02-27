@@ -1,5 +1,5 @@
 
-package com.blstream.myguide.test;
+package com.blstream.myguide.zoolocations;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
