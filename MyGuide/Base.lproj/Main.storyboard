@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uaZ-7t-QDz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uaZ-7t-QDz">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -13,10 +13,10 @@
                         <viewControllerLayoutGuide type="bottom" id="7NC-xG-lJz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="j8g-Mc-3I2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4nU-yP-Gfb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4nU-yP-Gfb">
                                 <rect key="frame" x="20" y="20" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -25,17 +25,17 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ByE-XG-qDW">
-                                <rect key="frame" x="0.0" y="197" width="320" height="76"/>
+                                <rect key="frame" x="0.0" y="197" width="320" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="vV0-1s-1u1"/>
+                                    <constraint firstAttribute="height" constant="112" id="Jx7-yg-SIe"/>
                                 </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Witamy w przewodniku ZOO Wrocław" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="178" translatesAutoresizingMaskIntoConstraints="NO" id="A8k-ID-7kH">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Wrocław ZOO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="178" translatesAutoresizingMaskIntoConstraints="NO" id="A8k-ID-7kH">
                                 <rect key="frame" x="71" y="148" width="178" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -45,7 +45,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ByE-XG-qDW" firstAttribute="top" secondItem="A8k-ID-7kH" secondAttribute="bottom" constant="8" id="2Uq-g8-Lml"/>
+                            <constraint firstItem="ByE-XG-qDW" firstAttribute="top" secondItem="A8k-ID-7kH" secondAttribute="bottom" priority="750" constant="8" id="2Uq-g8-Lml"/>
                             <constraint firstItem="A8k-ID-7kH" firstAttribute="leading" secondItem="j8g-Mc-3I2" secondAttribute="leading" constant="71" id="3Au-gK-iML"/>
                             <constraint firstItem="A8k-ID-7kH" firstAttribute="top" secondItem="4nU-yP-Gfb" secondAttribute="bottom" priority="750" constant="8" id="BOW-cv-KG8"/>
                             <constraint firstAttribute="trailing" secondItem="A8k-ID-7kH" secondAttribute="trailing" constant="71" id="E8J-2F-Z67"/>
@@ -66,7 +66,7 @@
             <objects>
                 <tabBarController definesPresentationContext="YES" id="uaZ-7t-QDz" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" alpha="0.49999999999999961" contentMode="scaleToFill" translucent="NO" id="Kee-xn-f9H">
+                    <tabBar key="tabBar" alpha="0.49999999999999961" contentMode="scaleToFill" id="Kee-xn-f9H">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -82,7 +82,7 @@
             </objects>
             <point key="canvasLocation" x="55" y="98"/>
         </scene>
-        <!--View Controller - Dojazd-->
+        <!--View Controller - Directions-->
         <scene sceneID="INJ-dq-960">
             <objects>
                 <viewController id="AcO-82-58O" sceneMemberID="viewController">
@@ -91,10 +91,10 @@
                         <viewControllerLayoutGuide type="bottom" id="Wm9-s3-5gA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6Zv-P1-OtS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="UC8-nb-zTe">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="UC8-nb-zTe">
                                 <rect key="frame" x="20" y="20" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -102,8 +102,8 @@
                                     <constraint firstAttribute="height" constant="120" id="qlR-TG-JT7"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dojazd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9T-8K-J6p">
-                                <rect key="frame" x="133" y="210" width="54" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Directions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9T-8K-J6p">
+                                <rect key="frame" x="115" y="214" width="90" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -118,13 +118,13 @@
                             <constraint firstAttribute="trailing" secondItem="T9T-8K-J6p" secondAttribute="trailing" constant="133" id="WAf-Bv-a1x"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dojazd" id="GpC-QO-gAd"/>
+                    <tabBarItem key="tabBarItem" title="Directions" id="GpC-QO-gAd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8z-Ep-XKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="589" y="1091"/>
         </scene>
-        <!--View Controller - Zwiedzaj-->
+        <!--View Controller - Explore-->
         <scene sceneID="Rwy-Mw-zzh">
             <objects>
                 <viewController id="k7A-NH-zPr" sceneMemberID="viewController">
@@ -133,10 +133,10 @@
                         <viewControllerLayoutGuide type="bottom" id="O5o-Za-FAd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xto-8I-Kia">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Y3R-4e-DuV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Y3R-4e-DuV">
                                 <rect key="frame" x="20" y="20" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -144,7 +144,7 @@
                                     <constraint firstAttribute="width" constant="280" id="HwW-a5-6kE"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zwiedzaj" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkb-eu-HJy">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkb-eu-HJy">
                                 <rect key="frame" x="126" y="210" width="68" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -160,13 +160,13 @@
                             <constraint firstAttribute="trailing" secondItem="Fkb-eu-HJy" secondAttribute="trailing" constant="126" id="x3t-3T-41K"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Zwiedzaj" id="dfN-EF-0Uk"/>
+                    <tabBarItem key="tabBarItem" title="Explore" id="dfN-EF-0Uk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1F-GP-lr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="589" y="1759"/>
         </scene>
-        <!--View Controller - Bilety i godziny-->
+        <!--View Controller - Tickets and opening times-->
         <scene sceneID="FX3-eS-iou">
             <objects>
                 <viewController id="YX8-WM-fPD" sceneMemberID="viewController">
@@ -175,10 +175,10 @@
                         <viewControllerLayoutGuide type="bottom" id="49I-p7-OrJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aXI-XE-OI2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="fzb-vQ-VHt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="fzb-vQ-VHt">
                                 <rect key="frame" x="20" y="20" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -186,8 +186,8 @@
                                     <constraint firstAttribute="height" constant="120" id="OAO-hB-dJp"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bilety i godziny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHY-GM-l8n">
-                                <rect key="frame" x="99" y="210" width="122" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tickets and opening times" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHY-GM-l8n">
+                                <rect key="frame" x="51" y="205" width="218" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -202,7 +202,7 @@
                             <constraint firstAttribute="centerX" secondItem="fzb-vQ-VHt" secondAttribute="centerX" id="qjs-Gp-bxR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Bilety i godziny" id="Bdy-Ag-Qpe"/>
+                    <tabBarItem key="tabBarItem" title="Tickets and opening times" id="Bdy-Ag-Qpe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pgw-BG-6Il" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
