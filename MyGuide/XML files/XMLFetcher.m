@@ -9,9 +9,22 @@
 #import "XMLFetcher.h"
 
 @implementation XMLFetcher
-+ (NSData *) fetchDataFromXML: (NSString *) fileName {
++ (NSData *) fetchDataFromXML: (NSString *) fileName
+{
+    NSString *fileNameWithExtension = [fileName stringByAppendingPathExtension:@"xml"];
+    NSData *ans;
+    
     NSBundle *bundle = [NSBundle mainBundle];
-    NSString *path   = [bundle pathForResource: fileName ofType: @"xml"];
-    return [NSData dataWithContentsOfFile: path];
+    NSString *bundlePath = [bundle pathForResource:fileName ofType: @"xml"];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = paths[0];
+    documentsPath = [documentsPath stringByAppendingPathComponent:fileNameWithExtension];
+    bool fileExists = [[NSFileManager defaultManager] fileExistsAtPath:documentsPath];
+    
+    if(fileExists) ans = [NSData dataWithContentsOfFile:documentsPath];
+    else ans = [NSData dataWithContentsOfFile:bundlePath];
+    
+    return ans;
 }
 @end

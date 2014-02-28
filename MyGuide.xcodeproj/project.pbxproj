@@ -25,7 +25,7 @@
 		3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
 		3D5EF632189637C000233B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF630189637C000233B64 /* InfoPlist.strings */; };
-		3DDE536318BE3B840062D217 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DDE536218BE3B840062D217 /* Images.xcassets */; };
+		8421D32218BE3B5100B54DC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8421D32118BE3B5100B54DC3 /* Images.xcassets */; };
 		844D5F1118B41F470018C970 /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 844D5F1018B41F470018C970 /* data.xml */; };
 		8460875718BDFA7F00620219 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875618BDFA7F00620219 /* SettingsParser.m */; };
 		8460875A18BDFA8A00620219 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875918BDFA8A00620219 /* Settings.m */; };
@@ -81,7 +81,7 @@
 		3D5EF62F189637C000233B64 /* MyGuideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyGuideTests-Info.plist"; sourceTree = "<group>"; };
 		3D5EF631189637C000233B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3D5EF633189637C000233B64 /* MyGuideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGuideTests.m; sourceTree = "<group>"; };
-		3DDE536218BE3B840062D217 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8421D32118BE3B5100B54DC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		844D5F1018B41F470018C970 /* data.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = data.xml; path = "XML files/data.xml"; sourceTree = "<group>"; };
 		8460875518BDFA7F00620219 /* SettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsParser.h; sourceTree = "<group>"; };
 		8460875618BDFA7F00620219 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
@@ -196,12 +196,12 @@
 		3D5EF60E189637C000233B64 /* MyGuide */ = {
 			isa = PBXGroup;
 			children = (
-				3DDE536218BE3B840062D217 /* Images.xcassets */,
 				3D5EF617189637C000233B64 /* AppDelegate.h */,
 				3D5EF618189637C000233B64 /* AppDelegate.m */,
 				3D5EF61A189637C000233B64 /* Main.storyboard */,
 				3D5EF61D189637C000233B64 /* ViewController.h */,
 				3D5EF61E189637C000233B64 /* ViewController.m */,
+				8421D32118BE3B5100B54DC3 /* Images.xcassets */,
 				84DDCB3F18BA91A100A2F720 /* Singletons */,
 				84DDCB3518BA919600A2F720 /* Parsers */,
 				84DDCB4618BA91CB00A2F720 /* XML files */,
@@ -374,7 +374,7 @@
 				844D5F1118B41F470018C970 /* data.xml in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				05E375D118BA8A6400A31630 /* MyGuideTests-Info.plist in Resources */,
-				3DDE536318BE3B840062D217 /* Images.xcassets in Resources */,
+				8421D32218BE3B5100B54DC3 /* Images.xcassets in Resources */,
 				05E375D018BA8A5E00A31630 /* InfoPlist.strings in Resources */,
 				05E375CF18BA8A4E00A31630 /* Main.storyboard in Resources */,
 			);

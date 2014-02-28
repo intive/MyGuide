@@ -41,12 +41,12 @@ static NSString *kXmlId = @"id";
 #pragma mark - parser delegate methods
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser{
-    NSLog(@"File found. Parsing data.xml started.");
+    MWLogInfo(@"File found. Parsing data.xml started.");
 }
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     
     NSString *errorString = [NSString stringWithFormat:@"Error code %li", (long)[parseError code]];
-    NSLog(@"Error while parsing data.xml: %@", errorString);
+    MWLogError(@"Error while parsing data.xml: %@", errorString);
     _parsingError=YES;
 }
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
@@ -131,9 +131,9 @@ static NSString *kXmlId = @"id";
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
     if (_parsingError == NO)
     {
-        NSLog(@"Parsing data.xml complete.");
+        MWLogInfo(@"Parsing data.xml complete.");
     } else {
-        NSLog(@"An error occurred during data.xml processing.");
+        MWLogInfo(@"An error occurred during data.xml processing.");
     }
 }
 @end
