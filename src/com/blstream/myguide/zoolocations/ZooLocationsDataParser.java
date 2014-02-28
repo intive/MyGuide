@@ -78,7 +78,7 @@ public class ZooLocationsDataParser {
 				if (way != null) {
 					waysInJunction.add(way);
 				} else {
-					throw new WayNotFoundException("Way has not found in parsed xml");
+					throw new WayNotFoundException("id: " + w.getId());
 				}
 			}
 			junctionsWithWays.add(new Junction(j.getNode(), waysInJunction));

@@ -3,7 +3,6 @@ package com.blstream.myguide.zoolocations;
 
 import android.content.pm.ApplicationInfo;
 import android.content.Context;
-import android.util.Log;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,8 +17,6 @@ import com.blstream.myguide.R;
  * application is in debug mode or not) and return result of parsing.
  **/
 public class ParserHelper {
-
-	private static final String LOG_TAG = ParserHelper.class.getSimpleName();
 
 	/**
 	 * Check if build type of application is set to debug.
@@ -44,9 +41,6 @@ public class ParserHelper {
 		boolean debug = isDebugBuild(ctx);
 		InputStream is = null;
 		if (!debug || file == null) {
-			if (file != null) {
-				Log.i(LOG_TAG, "In realease build: Opening res/data.xml");
-			}
 			is = ctx.getResources().openRawResource(R.raw.data);
 		}
 		else {

@@ -6,12 +6,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.mockito.Mockito;
-
 import android.content.Context;
 import android.content.res.AssetManager.AssetInputStream;
 import android.test.AndroidTestCase;
-
 
 /**
  * Class containing tests for ParserHelper. Every test depends on checking if
