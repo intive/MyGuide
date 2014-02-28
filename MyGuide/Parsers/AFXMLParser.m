@@ -131,6 +131,11 @@ static NSString *kXmlId = @"id";
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
     if (_parsingError == NO)
     {
+        AFParsedData *sharedData = [AFParsedData sharedParsedData];
+        MWLogInfo(@"animals count: %d", [sharedData.animalsArray count]);
+        MWLogInfo(@"ways count: %d", [sharedData.waysArray count]);
+        MWLogInfo(@"junctions count: %d", [sharedData.junctionsArray count]);
+
         MWLogInfo(@"Parsing data.xml complete.");
     } else {
         MWLogInfo(@"An error occurred during data.xml processing.");
