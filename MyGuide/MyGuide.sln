@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGuide", "MyGuide\MyGuide.csproj", "{D1D42B46-14C9-4BB3-8924-8728A29F5B69}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGuideTests", "MyGuideTests\MyGuideTests.csproj", "{E5D2586B-10B9-4F2A-9160-DA33D77634E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Logger\Logger.csproj", "{5D1208A4-BCBA-4E32-B773-1F042FA353F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,22 @@ Global
 		{E5D2586B-10B9-4F2A-9160-DA33D77634E3}.Release|x86.ActiveCfg = Release|x86
 		{E5D2586B-10B9-4F2A-9160-DA33D77634E3}.Release|x86.Build.0 = Release|x86
 		{E5D2586B-10B9-4F2A-9160-DA33D77634E3}.Release|x86.Deploy.0 = Release|x86
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Debug|ARM.ActiveCfg = Debug|ARM
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Debug|ARM.Build.0 = Debug|ARM
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Debug|x86.ActiveCfg = Debug|x86
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Debug|x86.Build.0 = Debug|x86
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Release|ARM.ActiveCfg = Release|ARM
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Release|ARM.Build.0 = Release|ARM
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Release|Mixed Platforms.Build.0 = Release|x86
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Release|x86.ActiveCfg = Release|x86
+		{5D1208A4-BCBA-4E32-B773-1F042FA353F2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
