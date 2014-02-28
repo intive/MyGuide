@@ -97,14 +97,17 @@ static NSString *kXmlId = @"id";
     AFParsedData *sharedData = [AFParsedData sharedParsedData];
 
     if ([elementName isEqualToString:kXmlAnimals]) {
+        MWLogInfo(@"animals count: %d", [_animalsArray count]);
         [sharedData setAnimalsArray:_animalsArray];
         _animalsArray = nil;
     }
     else if ([elementName isEqualToString:kXmlWays]) {
+        MWLogInfo(@"ways count: %d", [_waysArray count]);
         [sharedData setWaysArray:_waysArray];
         _nodesArray = nil;
     }
     else if ([elementName isEqualToString:kXmlJunctions]) {
+        MWLogInfo(@"junctions count: %d", [_junctionsArray count]);
         [sharedData setJunctionsArray:_junctionsArray];
         _junctionsArray = nil;
     }
