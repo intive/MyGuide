@@ -11,15 +11,15 @@
 @implementation XMLFetcher
 + (NSData *) fetchDataFromXML: (NSString *) fileName
 {
-    NSString *_fileName = [NSString stringWithFormat:@"/%@.xml", fileName];
+    NSString *fileNameWithExtension = [fileName stringByAppendingPathExtension:@"xml"];
     NSData *ans;
     
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *bundlePath = [bundle pathForResource:fileName ofType: @"xml"];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    paths = [paths arrayByAddingObject:_fileName];
-    NSString *documentsPath = [NSString pathWithComponents:paths];
+    NSString *documentsPath = paths[0];
+    documentsPath = [documentsPath stringByAppendingPathComponent:fileNameWithExtension];
     bool fileExists = [[NSFileManager defaultManager] fileExistsAtPath:documentsPath];
     
     if(fileExists) ans = [NSData dataWithContentsOfFile:documentsPath];
