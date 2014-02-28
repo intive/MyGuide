@@ -5,6 +5,7 @@ import java.io.File;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 
 public class MainActivity extends Activity {
 
@@ -16,7 +17,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		ParseXmlTask task = new ParseXmlTask(this);
-		task.execute((File) null);
+		File file = new File(Environment.getExternalStorageDirectory(),".myguide/data2.xml");
+		task.execute(file);
 	}
 
 }

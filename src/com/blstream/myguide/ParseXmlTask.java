@@ -42,11 +42,16 @@ public class ParseXmlTask extends AsyncTask<File, Void, Boolean> {
 		ParserHelper ph = new ParserHelper();
 		try {
 			mData = ph.parse(mCtx, file[0]);
-			return true;
-		} catch (Exception e) {
-			Log.d(LOG_TAG, e.toString());
-			return false;
+		} catch (Exception e1) {
+			Log.d(LOG_TAG, e1.toString());
+			try {
+				mData = ph.parse(mCtx, null);
+			} catch (Exception e2) {
+				Log.d(LOG_TAG, e2.toString());			
+				return false;
+			}
 		}
+		return true;
 	}
 
 	@Override
