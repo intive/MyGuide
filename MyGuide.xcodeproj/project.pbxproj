@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0507435A18B6A3AC00AC4FB1 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 0507435818B6A3AC00AC4FB1 /* config.xml */; };
+		0507436218B6A3C100AC4FB1 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 0507435E18B6A3C100AC4FB1 /* Settings.m */; };
+		0507436318B6A3C100AC4FB1 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0507436018B6A3C100AC4FB1 /* SettingsParser.m */; };
+		0510F48418BA07FB007DA4D3 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0510F48318BA07FB007DA4D3 /* XMLFetcher.m */; };
 		05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */; };
 		05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DA78D418B969BF005D6C5F /* libOCMock.a */; };
 		05E375C918BA872B00A31630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C418BA872B00A31630 /* main.m */; };
@@ -22,24 +26,12 @@
 		3D5EF60D189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
 		3D5EF619189637C000233B64 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF618189637C000233B64 /* AppDelegate.m */; };
 		3D5EF61F189637C000233B64 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF61E189637C000233B64 /* ViewController.m */; };
+		3D5EF621189637C000233B64 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF620189637C000233B64 /* Images.xcassets */; };
+		3D5EF628189637C000233B64 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
 		3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
 		3D5EF632189637C000233B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF630189637C000233B64 /* InfoPlist.strings */; };
-		3DDE536318BE3B840062D217 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DDE536218BE3B840062D217 /* Images.xcassets */; };
-		844D5F1118B41F470018C970 /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 844D5F1018B41F470018C970 /* data.xml */; };
-		8460875718BDFA7F00620219 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875618BDFA7F00620219 /* SettingsParser.m */; };
-		8460875A18BDFA8A00620219 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875918BDFA8A00620219 /* Settings.m */; };
-		84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
-		84DD035B18BA8C7A00DE7178 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84DD035818BA8C7A00DE7178 /* config.xml */; };
-		84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */; };
-		84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2A18BA917800A2F720 /* AFAnimal.m */; };
-		84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2C18BA917800A2F720 /* AFJunction.m */; };
-		84DDCB3318BA917800A2F720 /* AFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2E18BA917800A2F720 /* AFNode.m */; };
-		84DDCB3418BA917800A2F720 /* AFWay.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB3018BA917800A2F720 /* AFWay.m */; };
-		84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB3718BA919600A2F720 /* AFXMLParser.m */; };
-		84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4118BA91A100A2F720 /* AFParsedData.m */; };
-		84DDCB4A18BA944800A2F720 /* DataParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4918BA944800A2F720 /* DataParserTests.m */; };
-		84F184A218B9537200658238 /* MyGuideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF633189637C000233B64 /* MyGuideTests.m */; };
+		3D5EF634189637C000233B64 /* MyGuideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF633189637C000233B64 /* MyGuideTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0507435818B6A3AC00AC4FB1 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
+		0507435C18B6A3C100AC4FB1 /* SettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsParser.h; sourceTree = "<group>"; };
+		0507435E18B6A3C100AC4FB1 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		0507435F18B6A3C100AC4FB1 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		0507436018B6A3C100AC4FB1 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
+		0510F48218BA07FB007DA4D3 /* XMLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLFetcher.h; sourceTree = "<group>"; };
+		0510F48318BA07FB007DA4D3 /* XMLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLFetcher.m; sourceTree = "<group>"; };
 		05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParserTest.m; sourceTree = "<group>"; };
 		05DA78CE18B969BF005D6C5F /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		05DA78CF18B969BF005D6C5F /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		3D5EF61B189637C000233B64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D5EF61D189637C000233B64 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3D5EF61E189637C000233B64 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3D5EF620189637C000233B64 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3D5EF626189637C000233B64 /* MyGuideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGuideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5EF627189637C000233B64 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3D5EF62F189637C000233B64 /* MyGuideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyGuideTests-Info.plist"; sourceTree = "<group>"; };
@@ -99,8 +99,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */,
 				05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */,
+				3D5EF628189637C000233B64 /* XCTest.framework in Frameworks */,
 				3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */,
 				3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */,
 			);
@@ -109,11 +109,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0507435618B6A39F00AC4FB1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0507435C18B6A3C100AC4FB1 /* SettingsParser.h */,
+				0507435E18B6A3C100AC4FB1 /* Settings.m */,
+				0507435F18B6A3C100AC4FB1 /* Settings.h */,
+				0507436018B6A3C100AC4FB1 /* SettingsParser.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0507435718B6A3AC00AC4FB1 /* XML files */ = {
+			isa = PBXGroup;
+			children = (
+				0507435818B6A3AC00AC4FB1 /* config.xml */,
+				0510F48218BA07FB007DA4D3 /* XMLFetcher.h */,
+				0510F48318BA07FB007DA4D3 /* XMLFetcher.m */,
+			);
+			path = "XML files";
+			sourceTree = "<group>";
+		};
 		05DA78BE18B968E5005D6C5F /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
 				05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */,
-				84DDCB4918BA944800A2F720 /* DataParserTests.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -175,16 +195,14 @@
 		3D5EF60E189637C000233B64 /* MyGuide */ = {
 			isa = PBXGroup;
 			children = (
-				3DDE536218BE3B840062D217 /* Images.xcassets */,
 				3D5EF617189637C000233B64 /* AppDelegate.h */,
 				3D5EF618189637C000233B64 /* AppDelegate.m */,
 				3D5EF61A189637C000233B64 /* Main.storyboard */,
 				3D5EF61D189637C000233B64 /* ViewController.h */,
 				3D5EF61E189637C000233B64 /* ViewController.m */,
-				84DDCB3F18BA91A100A2F720 /* Singletons */,
-				84DDCB3518BA919600A2F720 /* Parsers */,
-				84DDCB4618BA91CB00A2F720 /* XML files */,
-				84DDCB2818BA917800A2F720 /* Models */,
+				0507435618B6A39F00AC4FB1 /* Settings */,
+				3D5EF620189637C000233B64 /* Images.xcassets */,
+				0507435718B6A3AC00AC4FB1 /* XML files */,
 				3D5EF60F189637C000233B64 /* Supporting Files */,
 			);
 			path = MyGuide;
@@ -220,54 +238,6 @@
 				3D5EF630189637C000233B64 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		84DDCB2818BA917800A2F720 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				84DDCB2918BA917800A2F720 /* AFAnimal.h */,
-				84DDCB2A18BA917800A2F720 /* AFAnimal.m */,
-				84DDCB2B18BA917800A2F720 /* AFJunction.h */,
-				84DDCB2C18BA917800A2F720 /* AFJunction.m */,
-				84DDCB2D18BA917800A2F720 /* AFNode.h */,
-				84DDCB2E18BA917800A2F720 /* AFNode.m */,
-				84DDCB2F18BA917800A2F720 /* AFWay.h */,
-				84DDCB3018BA917800A2F720 /* AFWay.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		84DDCB3518BA919600A2F720 /* Parsers */ = {
-			isa = PBXGroup;
-			children = (
-				84DDCB3618BA919600A2F720 /* AFXMLParser.h */,
-				8460875518BDFA7F00620219 /* SettingsParser.h */,
-				8460875618BDFA7F00620219 /* SettingsParser.m */,
-				84DDCB3718BA919600A2F720 /* AFXMLParser.m */,
-			);
-			path = Parsers;
-			sourceTree = "<group>";
-		};
-		84DDCB3F18BA91A100A2F720 /* Singletons */ = {
-			isa = PBXGroup;
-			children = (
-				8460875818BDFA8A00620219 /* Settings.h */,
-				8460875918BDFA8A00620219 /* Settings.m */,
-				84DDCB4018BA91A100A2F720 /* AFParsedData.h */,
-				84DDCB4118BA91A100A2F720 /* AFParsedData.m */,
-			);
-			path = Singletons;
-			sourceTree = "<group>";
-		};
-		84DDCB4618BA91CB00A2F720 /* XML files */ = {
-			isa = PBXGroup;
-			children = (
-				84DD035818BA8C7A00DE7178 /* config.xml */,
-				84DD035918BA8C7A00DE7178 /* XMLFetcher.h */,
-				84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */,
-				844D5F1018B41F470018C970 /* data.xml */,
-			);
-			name = "XML files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,12 +320,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844D5F1118B41F470018C970 /* data.xml in Resources */,
-				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				05E375D118BA8A6400A31630 /* MyGuideTests-Info.plist in Resources */,
-				3DDE536318BE3B840062D217 /* Images.xcassets in Resources */,
 				05E375D018BA8A5E00A31630 /* InfoPlist.strings in Resources */,
 				05E375CF18BA8A4E00A31630 /* Main.storyboard in Resources */,
+				3D5EF621189637C000233B64 /* Images.xcassets in Resources */,
+				0507435A18B6A3AC00AC4FB1 /* config.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,19 +360,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */,
-				8460875718BDFA7F00620219 /* SettingsParser.m in Sources */,
-				8460875A18BDFA8A00620219 /* Settings.m in Sources */,
-				84DDCB3318BA917800A2F720 /* AFNode.m in Sources */,
-				84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */,
-				84DDCB3418BA917800A2F720 /* AFWay.m in Sources */,
-				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
-				84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */,
 				3D5EF61F189637C000233B64 /* ViewController.m in Sources */,
-				84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */,
+				0507436318B6A3C100AC4FB1 /* SettingsParser.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
+				0507436218B6A3C100AC4FB1 /* Settings.m in Sources */,
 				05E375CB18BA872B00A31630 /* MWLogging.m in Sources */,
 				05E375C918BA872B00A31630 /* main.m in Sources */,
+				0510F48418BA07FB007DA4D3 /* XMLFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,8 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F184A218B9537200658238 /* MyGuideTests.m in Sources */,
-				84DDCB4A18BA944800A2F720 /* DataParserTests.m in Sources */,
+				3D5EF634189637C000233B64 /* MyGuideTests.m in Sources */,
 				05E375CC18BA872B00A31630 /* MWLogging.m in Sources */,
 				05E375CA18BA872B00A31630 /* main.m in Sources */,
 				05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */,
