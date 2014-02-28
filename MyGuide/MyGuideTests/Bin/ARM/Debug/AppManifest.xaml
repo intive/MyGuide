@@ -1,0 +1,15 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="MyGuideTests" EntryPointType="MyGuideTests.App" RuntimeVersion="4.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="MyGuideTests" Source="MyGuideTests.dll" />
+    <AssemblyPart x:Name="Microsoft.VisualStudio.TestPlatform.Core" Source="Microsoft.VisualStudio.TestPlatform.Core.dll" />
+    <AssemblyPart x:Name="Microsoft.VisualStudio.TestPlatform.TestExecutor.Core" Source="Microsoft.VisualStudio.TestPlatform.TestExecutor.Core.dll" />
+    <AssemblyPart x:Name="Microsoft.VisualStudio.TestPlatform.UnitTestFramework" Source="Microsoft.VisualStudio.TestPlatform.UnitTestFramework.dll" />
+    <AssemblyPart x:Name="Moq.Silverlight" Source="Moq.Silverlight.dll" />
+    <AssemblyPart x:Name="MyGuide" Source="MyGuide.dll" />
+    <AssemblyPart x:Name="Caliburn.Micro" Source="Caliburn.Micro.dll" />
+    <AssemblyPart x:Name="Caliburn.Micro.Extensions" Source="Caliburn.Micro.Extensions.dll" />
+    <AssemblyPart x:Name="Caliburn.Micro.BindableAppBar" Source="Caliburn.Micro.BindableAppBar.dll" />
+    <AssemblyPart x:Name="Castle.Core" Source="Castle.Core.dll" />
+    <AssemblyPart x:Name="System.Windows.Interactivity" Source="System.Windows.Interactivity.dll" />
+  </Deployment.Parts>
+</Deployment>

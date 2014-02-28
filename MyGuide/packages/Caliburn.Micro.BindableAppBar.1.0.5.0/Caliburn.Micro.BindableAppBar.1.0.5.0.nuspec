@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Caliburn.Micro.BindableAppBar</id>
+    <version>1.0.5.0</version>
+    <title>Caliburn.Micro.BindableAppBar</title>
+    <authors>Kamran Ayub</authors>
+    <owners>Kamran Ayub</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A bindable appbar for Caliburn.Micro and Windows Phone 7.1/8</description>
+    <releaseNotes>Fix BackgroundColor (#10)
+        Get rid of design-time warnings</releaseNotes>
+    <copyright>Copyright ©  2013</copyright>
+    <dependencies>
+      <dependency id="Caliburn.Micro" version="1.5.2" />
+    </dependencies>
+  </metadata>
+</package>

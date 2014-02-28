@@ -1,0 +1,4 @@
+E:\PATRONAGE\MyGuideWP8\MyGuide\MyGuide\Logger\Bin\x86\Debug\Logger.dll
+E:\PATRONAGE\MyGuideWP8\MyGuide\MyGuide\Logger\Bin\x86\Debug\Logger.pdb
+E:\PATRONAGE\MyGuideWP8\MyGuide\MyGuide\Logger\obj\x86\Debug\Logger.dll
+E:\PATRONAGE\MyGuideWP8\MyGuide\MyGuide\Logger\obj\x86\Debug\Logger.pdb

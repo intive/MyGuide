@@ -1,0 +1,10 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="MyGuide" EntryPointType="MyGuide.App" RuntimeVersion="4.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="MyGuide" Source="MyGuide.dll" />
+    <AssemblyPart x:Name="Caliburn.Micro.BindableAppBar" Source="Caliburn.Micro.BindableAppBar.dll" />
+    <AssemblyPart x:Name="Caliburn.Micro" Source="Caliburn.Micro.dll" />
+    <AssemblyPart x:Name="Caliburn.Micro.Extensions" Source="Caliburn.Micro.Extensions.dll" />
+    <AssemblyPart x:Name="System.Windows.Interactivity" Source="System.Windows.Interactivity.dll" />
+    <AssemblyPart Source="pl-PL/MyGuide.resources.dll" />
+  </Deployment.Parts>
+</Deployment>
