@@ -97,17 +97,14 @@ static NSString *kXmlId = @"id";
     AFParsedData *sharedData = [AFParsedData sharedParsedData];
 
     if ([elementName isEqualToString:kXmlAnimals]) {
-        MWLogInfo(@"animals count: %d", [_animalsArray count]);
         [sharedData setAnimalsArray:_animalsArray];
         _animalsArray = nil;
     }
     else if ([elementName isEqualToString:kXmlWays]) {
-        MWLogInfo(@"ways count: %d", [_waysArray count]);
         [sharedData setWaysArray:_waysArray];
         _nodesArray = nil;
     }
     else if ([elementName isEqualToString:kXmlJunctions]) {
-        MWLogInfo(@"junctions count: %d", [_junctionsArray count]);
         [sharedData setJunctionsArray:_junctionsArray];
         _junctionsArray = nil;
     }
@@ -134,6 +131,11 @@ static NSString *kXmlId = @"id";
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
     if (_parsingError == NO)
     {
+        AFParsedData *sharedData = [AFParsedData sharedParsedData];
+        MWLogInfo(@"animals count: %d", [sharedData.animalsArray count]);
+        MWLogInfo(@"ways count: %d", [sharedData.waysArray count]);
+        MWLogInfo(@"junctions count: %d", [sharedData.junctionsArray count]);
+
         MWLogInfo(@"Parsing data.xml complete.");
     } else {
         MWLogInfo(@"An error occurred during data.xml processing.");
