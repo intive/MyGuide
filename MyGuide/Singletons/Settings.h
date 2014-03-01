@@ -12,6 +12,7 @@
 @property (nonatomic, readonly) NSInteger innerRadius;
 @property (nonatomic, readonly) NSInteger externalRadius;
 @property (nonatomic, readonly) NSString  *languageFallback;
+@property (nonatomic, readonly) BOOL      showAnimalsOnMap;
 
 + (id)   sharedSettingsData;
 - (void) injectDataWithName: (NSString*) name andValue: (NSString*) value;

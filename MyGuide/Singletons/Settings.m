@@ -31,6 +31,7 @@
     _innerRadius      = 1;
     _externalRadius   = 2;
     _languageFallback = @"en";
+    _showAnimalsOnMap = YES;
 }
 
 - (void) injectDataWithName: (NSString*) name andValue: (NSString*) value {
@@ -42,6 +43,9 @@
     }
     else if ([name isEqualToString:  @"external_object_radius"]) {
         _externalRadius = [value integerValue];
+    }
+    else if ([name isEqualToString:  @"show_animals"]) {
+        _showAnimalsOnMap = [value boolValue];
     }
 }
 

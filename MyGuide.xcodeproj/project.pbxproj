@@ -10,6 +10,7 @@
 		05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */; };
 		05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DA78D418B969BF005D6C5F /* libOCMock.a */; };
 		05E0209118C1D38000AE76EC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E0209018C1D38000AE76EC /* MapKit.framework */; };
+		05E0209818C23B7100AE76EC /* MKAnnotationAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E0209718C23B7100AE76EC /* MKAnnotationAnimal.m */; };
 		05E375C918BA872B00A31630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C418BA872B00A31630 /* main.m */; };
 		05E375CA18BA872B00A31630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C418BA872B00A31630 /* main.m */; };
 		05E375CB18BA872B00A31630 /* MWLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C618BA872B00A31630 /* MWLogging.m */; };
@@ -63,6 +64,8 @@
 		05DA78D318B969BF005D6C5F /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		05DA78D418B969BF005D6C5F /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		05E0209018C1D38000AE76EC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		05E0209618C23B7100AE76EC /* MKAnnotationAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAnnotationAnimal.h; sourceTree = "<group>"; };
+		05E0209718C23B7100AE76EC /* MKAnnotationAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAnnotationAnimal.m; sourceTree = "<group>"; };
 		05E375C418BA872B00A31630 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
 		05E375C518BA872B00A31630 /* MWLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MWLogging.h; path = "Supporting Files/MWLogging.h"; sourceTree = "<group>"; };
 		05E375C618BA872B00A31630 /* MWLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MWLogging.m; path = "Supporting Files/MWLogging.m"; sourceTree = "<group>"; };
@@ -165,6 +168,15 @@
 			path = headers;
 			sourceTree = "<group>";
 		};
+		05E0209218C1DAFA00AE76EC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				05E0209618C23B7100AE76EC /* MKAnnotationAnimal.h */,
+				05E0209718C23B7100AE76EC /* MKAnnotationAnimal.m */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		3D5EF5FC189637C000233B64 = {
 			isa = PBXGroup;
 			children = (
@@ -206,7 +218,8 @@
 				3D5EF61D189637C000233B64 /* ViewController.h */,
 				3D5EF61E189637C000233B64 /* ViewController.m */,
 				8421D32118BE3B5100B54DC3 /* Images.xcassets */,
-				84DDCB3F18BA91A100A2F720 /* Singletons */,
+				05E0209218C1DAFA00AE76EC /* Map */,
+				84DDCB3F18BA91A100A2F720 /* Storage */,
 				84DDCB3518BA919600A2F720 /* Parsers */,
 				84DDCB4618BA91CB00A2F720 /* XML files */,
 				84DDCB2818BA917800A2F720 /* Models */,
@@ -273,7 +286,7 @@
 			path = Parsers;
 			sourceTree = "<group>";
 		};
-		84DDCB3F18BA91A100A2F720 /* Singletons */ = {
+		84DDCB3F18BA91A100A2F720 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
 				8460875818BDFA8A00620219 /* Settings.h */,
@@ -281,6 +294,7 @@
 				84DDCB4018BA91A100A2F720 /* AFParsedData.h */,
 				84DDCB4118BA91A100A2F720 /* AFParsedData.m */,
 			);
+			name = Storage;
 			path = Singletons;
 			sourceTree = "<group>";
 		};
@@ -429,6 +443,7 @@
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
 				05E375CB18BA872B00A31630 /* MWLogging.m in Sources */,
 				05E375C918BA872B00A31630 /* main.m in Sources */,
+				05E0209818C23B7100AE76EC /* MKAnnotationAnimal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +572,7 @@
 		3D5EF638189637C000233B64 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -570,6 +586,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -577,6 +594,7 @@
 		3D5EF639189637C000233B64 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -590,6 +608,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
