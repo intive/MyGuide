@@ -8,4 +8,10 @@
     <string name="how_to_get">Auffahrt</string>
     <string name="sightseeing">Besichtigen</string>
     <string name="options">Optionen</string>
+    
+	<string name="ok">OK</string>
+	<string name="cancel">Abbrechen</string>
+	
+	<string name="confirmation_default">Fortfahren?</string>
+    <string name="confirmation_exit">Schließen Sie die Anwendung?</string>
 </resources>
