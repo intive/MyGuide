@@ -5,7 +5,7 @@ echo ---
 call "%VS120COMNTOOLS%\..\..\VC\vcvarsall.bat" x86 || goto error
 
 set CURRENT_DIR=%CD%
-
+set EnableNuGetPackageRestore="true"
 
 echo ---
 echo Building
