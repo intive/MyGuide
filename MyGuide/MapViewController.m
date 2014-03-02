@@ -38,8 +38,10 @@
 }
 
 - (void) showAnimals {
-    NSArray *animals = [MKAnnotationAnimal buildAnimalMKAnnotations: _data.animalsArray];
-    [self.mapView addAnnotations: animals];
+    if(_settings.showAnimalsOnMap) {
+        NSArray *animals = [MKAnnotationAnimal buildAnimalMKAnnotations: _data.animalsArray];
+        [self.mapView addAnnotations: animals];
+    }
 }
 
 - (void) centerMap {
