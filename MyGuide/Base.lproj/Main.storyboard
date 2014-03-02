@@ -124,10 +124,10 @@
             </objects>
             <point key="canvasLocation" x="589" y="1091"/>
         </scene>
-        <!--View Controller - Zwiedzaj-->
+        <!--Map View Controller - Zwiedzaj-->
         <scene sceneID="Rwy-Mw-zzh">
             <objects>
-                <viewController id="k7A-NH-zPr" sceneMemberID="viewController">
+                <viewController id="k7A-NH-zPr" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UV8-lu-se9"/>
                         <viewControllerLayoutGuide type="bottom" id="O5o-Za-FAd"/>
@@ -136,31 +136,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Y3R-4e-DuV">
-                                <rect key="frame" x="20" y="20" width="280" height="120"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q3f-u0-kV8">
+                                <rect key="frame" x="0.0" y="0.0" width="328" height="519"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUo-ib-dDN">
+                                <rect key="frame" x="117" y="469" width="183" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="8oR-sk-RrX"/>
-                                    <constraint firstAttribute="width" constant="280" id="HwW-a5-6kE"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zwiedzaj" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkb-eu-HJy">
-                                <rect key="frame" x="126" y="210" width="68" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Center on current location">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="centerOnCurrentLocation:" destination="k7A-NH-zPr" eventType="touchUpInside" id="j1R-WP-MJy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Fkb-eu-HJy" firstAttribute="leading" secondItem="Xto-8I-Kia" secondAttribute="leading" constant="126" id="DwA-bZ-M91"/>
-                            <constraint firstItem="Fkb-eu-HJy" firstAttribute="top" secondItem="Y3R-4e-DuV" secondAttribute="bottom" constant="70" id="TOp-Qk-OEh"/>
-                            <constraint firstItem="Y3R-4e-DuV" firstAttribute="top" secondItem="Xto-8I-Kia" secondAttribute="top" constant="20" id="dGh-oO-Xue"/>
-                            <constraint firstAttribute="centerX" secondItem="Y3R-4e-DuV" secondAttribute="centerX" id="waJ-YN-qP9"/>
-                            <constraint firstAttribute="trailing" secondItem="Fkb-eu-HJy" secondAttribute="trailing" constant="126" id="x3t-3T-41K"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Zwiedzaj" id="dfN-EF-0Uk"/>
+                    <connections>
+                        <outlet property="mapView" destination="q3f-u0-kV8" id="Vaj-wR-6ge"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1F-GP-lr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
