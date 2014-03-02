@@ -121,26 +121,26 @@
     <value>My Guide</value>
   </data>
   <data name="Options" xml:space="preserve">
-    <value>Settings</value>
+    <value>Ustawienia</value>
   </data>
   <data name="ResourceFlowDirection" xml:space="preserve">
     <value>LeftToRight</value>
     <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
   </data>
   <data name="ResourceLanguage" xml:space="preserve">
-    <value>en-US</value>
+    <value>pl-PL</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
   </data>
   <data name="Sightsee" xml:space="preserve">
-    <value>sightsee</value>
+    <value>zwiedzaj</value>
   </data>
   <data name="TicketsAndHours" xml:space="preserve">
-    <value>tickets &amp; opening hours</value>
+    <value>bilety i godziny otwarcia</value>
   </data>
   <data name="TravelDirections" xml:space="preserve">
-    <value>directions</value>
+    <value>dojazd</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Welcome in Wroclaw ZOO guide</value>
+    <value>Witaj w przewodniku ZOO Wrocław</value>
   </data>
 </root>
