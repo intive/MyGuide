@@ -68,6 +68,9 @@
     else if ([name isEqualToString:  @"map_max_height"]) {
         _mapHeight = [value doubleValue];
     }
+    else if ([name isEqualToString:  @"map_max_user_distance"]) {
+        _maxUserDistance = [value doubleValue];
+    }
 }
 
 - (NSString*) normalize: (NSString*) aString {

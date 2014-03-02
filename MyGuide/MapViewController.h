@@ -13,7 +13,7 @@
 #import "AFAnimal.h"
 #import "MKAnnotationAnimal.h"
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 - (IBAction) centerOnCurrentLocation: (id) sender;
 @end

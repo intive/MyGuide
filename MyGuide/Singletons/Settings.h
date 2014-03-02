@@ -10,13 +10,14 @@
 #import <MapKit/MapKit.h>
 
 @interface Settings : NSObject
-@property (nonatomic, readonly) NSInteger  innerRadius;
-@property (nonatomic, readonly) NSInteger  externalRadius;
-@property (nonatomic, readonly) NSString   *languageFallback;
-@property (nonatomic, readonly) BOOL       showAnimalsOnMap;
-@property (nonatomic, readonly) BOOL       showUserPosition;
+@property (nonatomic, readonly) NSInteger innerRadius;
+@property (nonatomic, readonly) NSInteger externalRadius;
+@property (nonatomic, readonly) NSString *languageFallback;
+@property (nonatomic, readonly) BOOL showAnimalsOnMap;
+@property (nonatomic, readonly) BOOL showUserPosition;
 @property (nonatomic, readonly, getter = calculateMapCenter) CLLocationCoordinate2D mapCenter;
 @property (nonatomic, readonly, getter = calculateMapBounds) MKCoordinateRegion     mapBounds;
+@property (atomic, readonly) double maxUserDistance;
 
 + (id)   sharedSettingsData;
 - (void) injectDataWithName: (NSString*) name andValue: (NSString*) value;

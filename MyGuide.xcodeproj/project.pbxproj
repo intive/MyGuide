@@ -24,7 +24,6 @@
 		3D5EF60B189637C000233B64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60A189637C000233B64 /* CoreGraphics.framework */; };
 		3D5EF60D189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
 		3D5EF619189637C000233B64 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF618189637C000233B64 /* AppDelegate.m */; };
-		3D5EF61F189637C000233B64 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF61E189637C000233B64 /* ViewController.m */; };
 		3D5EF629189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF62A189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
 		3D5EF632189637C000233B64 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF630189637C000233B64 /* InfoPlist.strings */; };
@@ -82,8 +81,6 @@
 		3D5EF617189637C000233B64 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3D5EF618189637C000233B64 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3D5EF61B189637C000233B64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3D5EF61D189637C000233B64 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3D5EF61E189637C000233B64 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3D5EF626189637C000233B64 /* MyGuideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGuideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5EF627189637C000233B64 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3D5EF62F189637C000233B64 /* MyGuideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyGuideTests-Info.plist"; sourceTree = "<group>"; };
@@ -220,8 +217,6 @@
 				3D5EF617189637C000233B64 /* AppDelegate.h */,
 				3D5EF618189637C000233B64 /* AppDelegate.m */,
 				3D5EF61A189637C000233B64 /* Main.storyboard */,
-				3D5EF61D189637C000233B64 /* ViewController.h */,
-				3D5EF61E189637C000233B64 /* ViewController.m */,
 				8421D32118BE3B5100B54DC3 /* Images.xcassets */,
 				05E0209218C1DAFA00AE76EC /* Map */,
 				84DDCB3F18BA91A100A2F720 /* Storage */,
@@ -443,7 +438,6 @@
 				84DDCB3418BA917800A2F720 /* AFWay.m in Sources */,
 				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
 				84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */,
-				3D5EF61F189637C000233B64 /* ViewController.m in Sources */,
 				84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
 				05E375CB18BA872B00A31630 /* MWLogging.m in Sources */,
