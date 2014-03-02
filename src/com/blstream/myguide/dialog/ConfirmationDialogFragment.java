@@ -63,14 +63,14 @@ public class ConfirmationDialogFragment extends DialogFragment {
 		} else {
 			builder.setMessage(R.string.confirmation_default);
 		}
-		builder.setPositiveButton(android.R.string.yes,
+		builder.setPositiveButton(R.string.ok,
 					new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int id) {
 							mListener.onDialogConfirm();
 						}
 					})
-				.setNegativeButton(android.R.string.cancel, null);
+				.setNegativeButton(R.string.cancel, null);
 		return builder.create();
 	}
 
