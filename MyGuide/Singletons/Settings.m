@@ -8,7 +8,12 @@
 
 #import "Settings.h"
 
-@implementation Settings
+@implementation Settings {
+    int    _mapWidth;
+    int    _mapHeight;
+    double _zooLat;
+    double _zooLng;
+}
 
 + (id) sharedSettingsData {
     static Settings *sharedData = nil;
@@ -32,6 +37,7 @@
     _externalRadius   = 2;
     _languageFallback = @"en";
     _showAnimalsOnMap = YES;
+    _showUserPosition = YES;
 }
 
 - (void) injectDataWithName: (NSString*) name andValue: (NSString*) value {
@@ -47,10 +53,33 @@
     else if ([name isEqualToString:  @"show_animals"]) {
         _showAnimalsOnMap = [value boolValue];
     }
+    else if ([name isEqualToString:  @"map_show_user_position"]) {
+        _showUserPosition = [value boolValue];
+    }
+    else if ([name isEqualToString:  @"map_zoo_lat"]) {
+        _zooLat = [value doubleValue];
+    }
+    else if ([name isEqualToString:  @"map_zoo_lng"]) {
+        _zooLng = [value doubleValue];
+    }
+    else if ([name isEqualToString:  @"map_max_width"]) {
+        _mapWidth = [value doubleValue];
+    }
+    else if ([name isEqualToString:  @"map_max_height"]) {
+        _mapHeight = [value doubleValue];
+    }
 }
 
 - (NSString*) normalize: (NSString*) aString {
     return [aString stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (CLLocationCoordinate2D) calculateMapCenter {
+    return CLLocationCoordinate2DMake(_zooLat, _zooLng);
+}
+
+- (MKCoordinateRegion) calculateMapBounds {
+    return MKCoordinateRegionMakeWithDistance(self.mapCenter, _mapWidth, _mapHeight);
 }
 
 @end
