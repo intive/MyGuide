@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using Caliburn.Micro.BindableAppBar;
 using MyGuide.ViewModels;
+using MyGuide.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,7 @@ namespace MyGuide
             container.PerRequest<AboutZooPageViewModel>();
             container.PerRequest<OptionsPageViewModel>();
             container.PerRequest<SightseeingPageViewModel>();
+            container.Singleton<IDataServiceModel, DataServiceModel>();
 
             //All VM should be add to this container, e.g. container.PerRequest<AnotherViewModel>();
 
