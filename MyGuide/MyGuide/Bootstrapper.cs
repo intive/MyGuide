@@ -32,6 +32,7 @@ namespace MyGuide
             if (!Execute.InDesignMode)
                 container.RegisterPhoneServices(RootFrame);
 
+
             container.PerRequest<MainPageViewModel>();
             container.PerRequest<AboutZooPageViewModel>();
             container.PerRequest<OptionsPageViewModel>();

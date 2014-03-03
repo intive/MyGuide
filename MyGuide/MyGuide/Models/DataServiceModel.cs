@@ -47,5 +47,6 @@ namespace MyGuide.Models
             return way.Nodes;
         }
 
+
     }
 }

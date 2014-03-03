@@ -24,4 +24,5 @@ namespace MyGuide.DataServices
             return XmlData;
         }
     }
+
 }
