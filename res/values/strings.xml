@@ -2,12 +2,20 @@
 <resources>
     <!-- English language version -->
     <string name="app_name">MyGuide</string>
-    <string name="header_main_screen">Welcome to the guide\n\tWroclaw Zoo</string>
+    <!-- Welcome screen -->
+    <string name="header_main_screen">Welcome to the guide\nWroclaw Zoo</string>
     <string name="close">Close</string>
     <string name="tickets_and_times">Tickets and times</string>
     <string name="how_to_get">How to get</string>
     <string name="sightseeing">Sightseeing</string>
     <string name="options">Options</string>
+    <string name="logo_Description">Zoo Logo</string>
     <string name="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.</string>
-
+    <!-- Dialogs -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+	<string name="confirmation_default">Continue?</string>
+    <string name="confirmation_exit">Close an application?</string>
+	<string name="progress_dialog_title">Please wait</string>
+    <string name="progress_dialog_message">Reading xml file with data.</string>
 </resources>

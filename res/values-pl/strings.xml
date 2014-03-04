@@ -1,11 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Polish language version  -->
     <string name="app_name">MyGuide</string>
-    <string name="header_main_screen">Witamy w przewodniku\n\tZoo Wrocław</string>
+    <!-- Welcome screen -->
+    <string name="header_main_screen">Witamy w przewodniku\nZoo Wrocław</string>
     <string name="close">Zamknij</string>
     <string name="tickets_and_times">Bilety i godziny</string>
     <string name="how_to_get">Dojazd</string>
     <string name="sightseeing">Zwiedzaj</string>
     <string name="options">Opcje</string>
+    <string name="text">pl: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.</string>
+    <!-- Dialogs -->
+    <string name="ok">OK</string>
+    <string name="cancel">Anuluj</string>
+    <string name="confirmation_default">Kontynuować?</string>
+    <string name="confirmation_exit">Zakończyć działanie aplikacji?</string>
 </resources>
