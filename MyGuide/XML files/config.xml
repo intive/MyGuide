@@ -15,6 +15,8 @@
     <!-- Boolean flags to turn on/off some application features -->
     <map_show_animals>true</map_show_animals>
     <map_show_user_position>true</map_show_user_position>
+    <map_show_paths>true</map_show_paths>
+    <map_show_junctions>true</map_show_junctions>
     
     <!-- ZOO coordinates -->
     <map_zoo_lat>51.1051588</map_zoo_lat>

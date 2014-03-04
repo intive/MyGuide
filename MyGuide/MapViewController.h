@@ -11,9 +11,14 @@
 #import "Settings.h"
 #import "AFParsedData.h"
 #import "AFAnimal.h"
+#import "AFWay.h"
+#import "AFJunction.h"
 #import "MKAnnotationAnimal.h"
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate>
+@interface MapViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate, UIToolbarDelegate>
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
 - (IBAction) centerOnCurrentLocation: (id) sender;
+
 @end

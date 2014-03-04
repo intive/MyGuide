@@ -38,6 +38,8 @@
     _languageFallback = @"en";
     _showAnimalsOnMap = YES;
     _showUserPosition = YES;
+    _showPathsOnMap = YES;
+    _showJunctionsOnMap = YES;
 }
 
 - (void) injectDataWithName: (NSString*) name andValue: (NSString*) value {
@@ -55,6 +57,12 @@
     }
     else if ([name isEqualToString:  @"map_show_user_position"]) {
         _showUserPosition = [value boolValue];
+    }
+    else if ([name isEqualToString:  @"map_show_paths"]) {
+        _showPathsOnMap = [value boolValue];
+    }
+    else if ([name isEqualToString:  @"map_show_junctions"]) {
+        _showJunctionsOnMap = [value boolValue];
     }
     else if ([name isEqualToString:  @"map_zoo_lat"]) {
         _zooLat = [value doubleValue];
