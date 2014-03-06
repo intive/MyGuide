@@ -3,7 +3,6 @@
     
     <item
         android:id="@+id/options_menu"
-        android:title="@string/options"
-        android:showAsAction="always"/>
+        android:title="@string/options"/>
 
 </menu>

@@ -40,13 +40,6 @@ public class SightseeingActivity extends Activity{
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
     private void setUpActionBar(View v) {
         mSearchView = (SearchView) v.findViewById(R.id.svSightseeing);
         mImgvSlidingMenu = (ImageView) v.findViewById(R.id.imgvSlidingMenu);
