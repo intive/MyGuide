@@ -14,14 +14,14 @@ namespace MyGuide.DataServices
 {
     public class XmlParser
     {
-        public Root deserializeXml(string dataPath)
+        public Root DeserializeXml(string dataPath)
         {
             XmlSerializer deserializer = new XmlSerializer(typeof(Root));
             TextReader reader = new StreamReader(dataPath);
             object obj = deserializer.Deserialize(reader);
-            Root XmlData = (Root)obj;
+            Root xmlData = (Root)obj;
             reader.Close();
-            return XmlData;
+            return xmlData;
         }
     }
 

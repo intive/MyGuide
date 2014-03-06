@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace MyGuide.Models
 {
-    class DataServiceModel : IDataServiceModel
+    public class DataServiceModel : IDataServiceModel
     {
-        Root Datas;
+        public Root Datas;
         public DataServiceModel()
         {
             XmlParser xmlPars = new XmlParser();
-            Datas = xmlPars.deserializeXml("Data/data.xml");
+            Datas = xmlPars.DeserializeXml("Data/data.xml");
 
             Debug.WriteLine(this.ToString());
             Debug.WriteLine(CollectionsSizes());
@@ -35,7 +35,9 @@ namespace MyGuide.Models
         {
             Animal animal = Datas.AnimalsList.Items.Find(x => x.Name.Equals(name));
             if (animal == null)
+            {
                 return null;
+            }
             return new Node { Latitude = animal.Latitude, Longitude = animal.Longitude };
         }
 
@@ -43,7 +45,9 @@ namespace MyGuide.Models
         {
             Way way = Datas.WaysList.Items.Find(x => x.Id == id);
             if (way == null)
+            {
                 return null;
+            }
             return way.Nodes;
         }
 

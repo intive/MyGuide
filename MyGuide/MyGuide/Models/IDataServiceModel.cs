@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyGuide.Models
 {
-    interface IDataServiceModel
+    public interface IDataServiceModel
     {
         int AnimalsSize();
         int WaysSize();
