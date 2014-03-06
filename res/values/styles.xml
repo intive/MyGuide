@@ -10,7 +10,7 @@
     <style name="Main_Theme_Action_Bar" parent="android:Theme.Holo.Light">
         <item name="android:windowBackground">@color/white</item>
         <item name="android:colorBackground">@color/gray</item>
-
+        <item name="android:windowActionBar">true</item>
     </style>
     
     <style name="welcome_image">
