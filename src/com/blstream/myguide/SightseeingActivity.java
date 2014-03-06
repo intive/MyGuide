@@ -47,13 +47,6 @@ public class SightseeingActivity extends Activity{
         mSearchView.setIconified(false);
         mSearchView.clearFocus();
 
-        mSearchView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                Log.d("doszlo", "zmiaa");
-            }
-        });
-
         int searchPlateId = mSearchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
         View searchPlate = mSearchView.findViewById(searchPlateId);
 
