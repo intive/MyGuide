@@ -13,6 +13,10 @@
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
+    
+#warning @"Remove this in AppStore build - Is used only for Testing"
+        asl_set_filter(NULL, ASL_FILTER_MASK_UPTO(ASL_LEVEL_DEBUG+1));
+        
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
