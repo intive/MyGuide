@@ -49,8 +49,8 @@
       <sourceFolder url="file://$MODULE_DIR$/tests/src" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/tests/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/instrumentTest/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/.git" />
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
@@ -69,5 +69,10 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="support-v4-18.0.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="mockito-all-1.9.5" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="dexmaker-mockito-1.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="dexmaker-1.0-api18patched" level="project" />
   </component>
 </module>
+

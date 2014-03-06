@@ -15,4 +15,16 @@
     <string name="cancel">Abbrechen</string>
     <string name="confirmation_default">Fortfahren?</string>
     <string name="confirmation_exit">Schließen Sie die Anwendung?</string>
+
+    <!--SightSeeing screen -->
+    <string name="search_sightseeing">Suche...</string>
+
+    <!--SightSeeing menu -->
+    <string name="map">Landkarte</string>
+    <string name="animals">Tiere</string>
+    <string name="information">Information</string>
+    <string name="history">Geschichte</string>
+    <string name="gastronomy">Gastronomie</string>
+    <string name="preferences">Präferenzen</string>
+
 </resources>

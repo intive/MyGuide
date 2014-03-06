@@ -18,4 +18,16 @@
     <string name="confirmation_exit">Close an application?</string>
 	<string name="progress_dialog_title">Please wait</string>
     <string name="progress_dialog_message">Reading xml file with data.</string>
+
+    <!--SightSeeing screen -->
+    <string name="search_sightseeing">Search...</string>
+
+    <!--SightSeeing menu -->
+    <string name="map">Map</string>
+    <string name="animals">Animals</string>
+    <string name="information">Informations</string>
+    <string name="history">History</string>
+    <string name="gastronomy">Gastronomy</string>
+    <string name="preferences">Preferences</string>
+
 </resources>

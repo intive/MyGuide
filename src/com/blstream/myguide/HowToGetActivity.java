@@ -3,6 +3,7 @@ package com.blstream.myguide;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.Window;
 
 public class HowToGetActivity extends Activity {
 

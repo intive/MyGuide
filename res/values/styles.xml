@@ -4,6 +4,13 @@
     <style name="Main_Theme" parent="android:Theme.Holo.Light.NoActionBar">
         <item name="android:windowBackground">@color/white</item>
         <item name="android:colorBackground">@color/gray</item>
+
+    </style>
+
+    <style name="Main_Theme_Action_Bar" parent="android:Theme.Holo.Light">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:colorBackground">@color/gray</item>
+
     </style>
     
     <style name="welcome_image">
@@ -12,8 +19,11 @@
         <item name="android:layout_margin">10dp</item>
     </style>
     
+
+    
     <style name="header_text" parent="centred_text">
         <item name="android:textSize">24sp</item>
+
         <item name="android:textStyle">bold</item>
     </style>
     

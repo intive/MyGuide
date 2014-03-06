@@ -3,12 +3,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <TextView
-        android:id="@+id/txtvTitleSightseeing"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sightseeing"
-        style="@style/header_text" />
-
 </LinearLayout>

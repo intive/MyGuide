@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 
 import com.blstream.myguide.dialog.ConfirmationDialogFragment;
 import com.blstream.myguide.dialog.ConfirmationDialogFragment.ConfirmationDialogHolder;
@@ -21,7 +22,7 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		setUpListeners();
 
