@@ -103,6 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\Interfaces\IMessageDialogService.cs" />
     <Compile Include="ViewModels\AboutZooPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\OptionsPageViewModel.cs" />
