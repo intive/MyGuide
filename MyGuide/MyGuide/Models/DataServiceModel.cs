@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MyGuide.Models
 {
@@ -14,10 +16,32 @@ namespace MyGuide.Models
         public DataServiceModel()
         {
             XmlParser xmlPars = new XmlParser();
-            Datas = xmlPars.DeserializeXml("Data/data.xml");
+            try
+            {
+                Datas = xmlPars.DeserializeXml("Data/data.xml");
 
-            Debug.WriteLine(this.ToString());
-            Debug.WriteLine(CollectionsSizes());
+                if (Datas.AnimalsList.Items.Count != 0
+                    && Datas.JunctionsList.Items.Count != 0 
+                    && Datas.WaysList.Items.Count != 0)
+                {
+                    Debug.WriteLine(this.ToString());
+                    Debug.WriteLine(CollectionsSizes());
+                }
+                else
+                {
+                    MessageBox.Show("Some data are missing, please reinstal app.");
+                }
+            }
+            catch (Exception ex)
+            {
+                if(!(ex is FileNotFoundException || ex is InvalidOperationException))
+                {
+                    throw;
+                }
+
+                MessageBox.Show("There is a problem with data, please reinstal app.");
+            }
+
         }
 
        

@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MyGuide.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace MyGuide.ViewModels
                 LoadDesignData();
         }
 
-        public MainPageViewModel(INavigationService navigationService)
+        public MainPageViewModel(INavigationService navigationService, IDataServiceModel dataServiceModel)
             : base(navigationService)
         {
             // Uncomment to use design time data as test data

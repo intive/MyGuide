@@ -120,6 +120,7 @@
     <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestData\IncorrectStructureData.xml" />
     <Content Include="TestData\IncorrectData.xml" />
     <Content Include="TestData\CorrectData.xml" />
   </ItemGroup>

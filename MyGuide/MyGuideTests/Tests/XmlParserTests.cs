@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyGuide.DataServices;
 using MyGuide.Models;
+using System.IO;
 
 namespace MyGuideTests.Tests
 {
@@ -54,15 +55,45 @@ namespace MyGuideTests.Tests
         {
             XmlParser xmlParser = new XmlParser();
             Root parsedData;
-            Root parsedDataCor;
+            
             string incorrectXmlData = "TestData/IncorrectData.xml";
-            string correctXmlData = "TestData/CorrectData.xml";
 
+
+            Assert.ThrowsException<InvalidOperationException>(() => parsedData = xmlParser.DeserializeXml(incorrectXmlData));
+        }
+
+        [TestMethod]
+
+        public void LackXmlDataParser()
+        {
+            XmlParser xmlParser = new XmlParser();
+            Root parsedData;
+            
+            string lackXmlData = "TestData/LackData.xml";
+
+
+            Assert.ThrowsException<FileNotFoundException>(() => parsedData = xmlParser.DeserializeXml(lackXmlData));
+        }
+
+        [TestMethod]
+
+        public void IncorrectStructureXmlDataParser()
+        {
+            XmlParser xmlParser = new XmlParser();
+            Root parsedData;
+            Root correctParsedData;
+
+            string incorrectXmlData = "TestData/IncorrectStructureData.xml";
+            string correctXmlData = "TestData/CorrectData.xml";
+            
 
             parsedData = xmlParser.DeserializeXml(incorrectXmlData);
-            parsedDataCor = xmlParser.DeserializeXml(correctXmlData);
+            correctParsedData = xmlParser.DeserializeXml(correctXmlData);
 
-            Assert.AreEqual(null, parsedData.JunctionsList.Items.First().Latitude);
+            Assert.AreNotEqual(correctParsedData, parsedData);
+
         }
+
+        
     }
 }
