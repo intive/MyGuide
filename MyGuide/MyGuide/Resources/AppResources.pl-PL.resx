@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllowButton" xml:space="preserve">
+    <value>zezwól</value>
+  </data>
   <data name="ApplicationTitle" xml:space="preserve">
     <value>My Guide</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>anuluj</value>
+  </data>
+  <data name="DenayButton" xml:space="preserve">
+    <value>zabroń</value>
+  </data>
+  <data name="NoButton" xml:space="preserve">
+    <value>nie</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Ustawienia</value>
@@ -142,5 +154,8 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Witaj w przewodniku ZOO Wrocław</value>
+  </data>
+  <data name="YesButton" xml:space="preserve">
+    <value>tak</value>
   </data>
 </root>

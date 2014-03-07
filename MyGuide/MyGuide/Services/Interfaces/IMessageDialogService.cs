@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace MyGuide.Services.Interfaces
 {
+    public enum DialogType
+    {
+        YesNo, OkCancel, AllowDenay
+    }
+
     public interface IMessageDialogService
     {
         /// <summary>
-        /// Shows dialog with default OK/Cancel buttons.
+        /// Shows dialog
         /// </summary>
         /// <param name="title">
         /// Dialog title.
@@ -17,11 +22,14 @@ namespace MyGuide.Services.Interfaces
         /// <param name="message">
         /// Dialog message.
         /// </param>
+        /// <param name="dialogType">
+        /// Dialog type.
+        /// </param>
         /// <returns>
-        /// <b>true</b> - OK button was chose
-        /// <b>false</b> - Cancel button was chose
+        /// <b>true</b> - right button was chose
+        /// <b>false</b> - left button was chose
         /// </returns>
-        Task<bool> ShowDialog(string title, string message);
+        Task<bool> ShowDialog(string title, string message, DialogType dialogType);
 
         /// <summary>
         /// Shows dialog with custom buttons.
