@@ -18,7 +18,8 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True"
     d:DataContext="{d:DesignInstance Type=vm:MainPageViewModel, IsDesignTimeCreatable=True}"
-    cal:Bind.AtDesignTime="True">
+    cal:Bind.AtDesignTime="True"
+    cal:Message.Attach="[Event BackKeyPress] = [Action OnClose($eventArgs)]">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">

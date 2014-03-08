@@ -129,6 +129,12 @@
   <data name="DenayButton" xml:space="preserve">
     <value>denay</value>
   </data>
+  <data name="ExitDlgMessage" xml:space="preserve">
+    <value>Are you sure you woud like to close this app?</value>
+  </data>
+  <data name="ExitDlgTitle" xml:space="preserve">
+    <value>Exit</value>
+  </data>
   <data name="NoButton" xml:space="preserve">
     <value>no</value>
   </data>

@@ -1,6 +1,9 @@
 ﻿using Caliburn.Micro;
+using MyGuide.Resources;
+using MyGuide.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +13,7 @@ namespace MyGuide.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        // To get acces to OnNavigateTo/From override methods from base class
-        // ex. public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
+        private IMessageDialogService _msgDialogServ;
 
         public MainPageViewModel()
         {
@@ -19,11 +21,15 @@ namespace MyGuide.ViewModels
                 LoadDesignData();
         }
 
-        public MainPageViewModel(INavigationService navigationService)
+        public MainPageViewModel(
+            INavigationService navigationService,
+            IMessageDialogService msgDialogService)
             : base(navigationService)
         {
             // Uncomment to use design time data as test data
             // LoadDesignData();
+
+            _msgDialogServ = msgDialogService;
         }
 
         #region Properties
@@ -60,6 +66,17 @@ namespace MyGuide.ViewModels
         }
 
         #endregion Commands
+
+        public async void OnClose(CancelEventArgs args)
+        {
+            args.Cancel = true;
+            bool exit = await _msgDialogServ.ShowDialog(AppResources.ExitDlgTitle,
+                AppResources.ExitDlgMessage, DialogType.YesNo);
+            if (exit)
+            {
+                App.Current.Terminate();
+            }
+        }
 
         private void LoadDesignData()
         {

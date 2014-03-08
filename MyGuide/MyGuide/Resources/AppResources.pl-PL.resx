@@ -129,6 +129,12 @@
   <data name="DenayButton" xml:space="preserve">
     <value>zabroń</value>
   </data>
+  <data name="ExitDlgMessage" xml:space="preserve">
+    <value>Czy na pewno chcesz wyjść z tej aplikacji?</value>
+  </data>
+  <data name="ExitDlgTitle" xml:space="preserve">
+    <value>Wyjście</value>
+  </data>
   <data name="NoButton" xml:space="preserve">
     <value>nie</value>
   </data>

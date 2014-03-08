@@ -97,6 +97,24 @@ namespace MyGuide.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you woud like to close this app?.
+        /// </summary>
+        public static string ExitDlgMessage {
+            get {
+                return ResourceManager.GetString("ExitDlgMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string ExitDlgTitle {
+            get {
+                return ResourceManager.GetString("ExitDlgTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to no.
         /// </summary>
         public static string NoButton {
