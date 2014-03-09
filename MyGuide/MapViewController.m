@@ -8,13 +8,19 @@
 
 #import "MapViewController.h"
 
+static const double degreeInRadians = 0.0174532925;
+
 @implementation MapViewController {
     Settings     *_settings;
     AFParsedData *_data;
     UIAlertView  *_alertDistance;
-    BOOL         _showAlert;
+    BOOL          _showAlert;
+    CLLocation   *_zooCenterLocation;
+    MKCoordinateRegion _lastGoodRegion;
+    MKMapCamera  *_lastGoodCamera;
 }
 
+#pragma mark -
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -22,7 +28,8 @@
     _data     = [AFParsedData sharedParsedData];
     _alertDistance = [self buildAlertView];
     _showAlert = YES;
-    
+    _zooCenterLocation = [[CLLocation alloc] initWithLatitude:_settings.zooCenter.latitude longitude:_settings.zooCenter.longitude];
+    _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
     
 //    MKUserTrackingBarButtonItem                           <<<     FIND HOW SHOULD THIS WORK
@@ -80,6 +87,7 @@
     [self.mapView setRegion: _settings.mapBounds animated: YES];
 }
 
+#pragma mark -
 #pragma mark Showing AlertView depending on user distance
 
 - (void) mapView:(MKMapView *) mapView didUpdateUserLocation: (MKUserLocation *) userLocation {
@@ -109,6 +117,7 @@
     _showAlert = NO;
 }
 
+#pragma mark -
 #pragma mark Drawing paths on the map
 
 - (void)drawPath:(NSArray *)nodesArray
@@ -158,5 +167,59 @@
     }
     else return nil;
 }
+
+#pragma mark -
+#pragma mark Limiting scroll and zoom levels
+
+// iOS 6 support code included
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
+    
+    if([[[UIDevice alloc] systemVersion] compare:@"7.0.0" options:NSNumericSearch] == NSOrderedAscending){
+        CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
+        double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
+        if(distanceFromZooCenter <= _settings.centerRadius){
+            _lastGoodRegion = mapView.region;
+        }
+    }
+    else {
+        CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
+        double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
+        if(distanceFromZooCenter <= _settings.centerRadius){
+            _lastGoodCamera = [mapView.camera copy];
+        }
+    }
+}
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+    
+    if([[[UIDevice alloc] systemVersion] compare:@"7.0.0" options:NSNumericSearch] == NSOrderedAscending){
+#warning in comments is the only way I found to keep map rotation after returning to last good region, it is not the best, I would like something way better
+//        _mapView.frame = CGRectMake(-290, 0, 1136, 800);
+        CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
+        double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
+        if(distanceFromZooCenter > _settings.centerRadius){
+            [mapView setRegion:_lastGoodRegion animated:YES];
+//            mapView.transform = CGAffineTransformMakeRotation(mapView.userLocation.heading.magneticHeading * degreeInRadians);
+        }
+        if (mapView.region.span.latitudeDelta > _settings.maxSpan.latitudeDelta || mapView.region.span.longitudeDelta > _settings.maxSpan.longitudeDelta) {
+            [mapView setRegion:_lastGoodRegion animated:YES];
+//            mapView.transform = CGAffineTransformMakeRotation(mapView.userLocation.heading.magneticHeading * degreeInRadians);
+        }
+        if (mapView.region.span.latitudeDelta < _settings.minSpan.latitudeDelta || mapView.region.span.longitudeDelta < _settings.minSpan.longitudeDelta) {
+            [mapView setRegion:_lastGoodRegion animated:YES];
+//            mapView.transform = CGAffineTransformMakeRotation(mapView.userLocation.heading.magneticHeading * degreeInRadians);
+        }
+    }
+    else {
+        CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
+        double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
+        if(distanceFromZooCenter > _settings.centerRadius){
+            [mapView setCamera:_lastGoodCamera animated:YES];
+        }
+        if (mapView.camera.altitude > _settings.cameraMaxAltitude || mapView.camera.altitude < _settings.cameraMinAltitude) {
+            [mapView setCamera: _lastGoodCamera animated:YES];
+        }
+    }
+}
+
 
 @end
