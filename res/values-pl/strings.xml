@@ -17,13 +17,15 @@
     <string name="confirmation_exit">Zakończyć działanie aplikacji?</string>
 
     <!--SightSeeing screen -->
-    <string name="search_sightseeing">Szukaj...</string>
+    <string name="search_sightseeing">Szukaj&#8230;</string>
 
     <!--SightSeeing menu -->
-    <string name="map">Mapa</string>
-    <string name="animals">Zwierzęta</string>
-    <string name="information">Informacje</string>
-    <string name="history">Historia</string>
-    <string name="gastronomy">Gastronomia</string>
-    <string name="preferences">Preferencje</string>
+    <string-array name="nav_drawer_items">
+    	<item name="map">Mapa</item>
+    	<item name="animals">Zwierzęta</item>
+    	<item name="information">Informacja</item>
+    	<item name="history">Historia</item>
+    	<item name="gastronomy">Gastronomia</item>
+    	<item name="preferences">Preferencje</item>
+    </string-array>
 </resources>

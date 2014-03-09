@@ -7,7 +7,7 @@
     android:background="#E1E1E1"
     android:weightSum="1" >
 
-   <ImageView
+	<ImageView
        android:id="@+id/imgvSlidingMenu"
        android:layout_width="wrap_content"
        android:layout_height="match_parent"
@@ -15,6 +15,7 @@
        android:paddingRight="10dp"
        android:paddingLeft="15dp"
        android:background="@drawable/action_bar_icon_selector"
+       android:contentDescription="@string/sliding_icon_Description"
        />
 
     <SearchView
@@ -25,7 +26,6 @@
         android:layout_weight="1"
         />
 
-
     <ImageView
         android:id="@+id/imgvShowRoute"
         android:layout_width="wrap_content"
@@ -34,5 +34,7 @@
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
         android:background="@drawable/action_bar_icon_selector"
+        android:contentDescription="@string/route_icon_Description"
         />
+    
 </LinearLayout>

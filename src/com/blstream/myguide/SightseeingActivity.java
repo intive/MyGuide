@@ -2,56 +2,61 @@ package com.blstream.myguide;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
 public class SightseeingActivity extends Activity{
-
-    private ImageView mImgvSlidingMenu;
+	
+	private ImageView mImgvSlidingMenu;
     private ImageView mImgvShowRoute;
     private SearchView mSearchView;
     private ImageView mSearchViewClose;
-
-    /*public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.menu_main, menu);
-		return true;
-	}*/
+    private ActionBar mActionBar;
     
+    private String[] mDrawerMenuItems;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
+    
+    /** Called when the activity is first created. Sets up ActionBar and NavigationDrawer for the Activity. */
     @Override
     public void onCreate(Bundle savedInstanceState){
-    	Log.d(UI_MODE_SERVICE, "OnCreate");
     
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.activity_sightseeing);
         
-        Log.d(UI_MODE_SERVICE,""+this.getActionBar());
-        if (getActionBar() != null) {
-            getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-            getActionBar().setCustomView(R.layout.action_bar_sightseeing);
-            getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-
-            View v = getActionBar().getCustomView();
-            setUpActionBar(v);
-            setUpActionBarListeners();
+        mActionBar = getActionBar();
+        
+        if (mActionBar != null) {
+        	mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        	mActionBar.setCustomView(R.layout.action_bar_sightseeing);
+        	mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        	
+        	View actionBarCustomView = mActionBar.getCustomView();
+        	setUpActionBar(actionBarCustomView);
+        	setUpActionBarListeners();
         }
+        
+        setUpDrawerListView();
     }
-
+    
+    /** Sets up custom ActionBar. */
     private void setUpActionBar(View v) {
-    	Log.d(UI_MODE_SERVICE, "Setting up action bar");
         mSearchView = (SearchView) v.findViewById(R.id.svSightseeing);
-        mImgvSlidingMenu = (ImageView) v.findViewById(R.id.imgvSlidingMenu);
         mImgvShowRoute = (ImageView) v.findViewById(R.id.imgvShowRoute);
-
+        mImgvSlidingMenu = (ImageView) v.findViewById(R.id.imgvSlidingMenu);
+        
         mSearchView.setQueryHint(getString(R.string.search_sightseeing));
         mSearchView.setIconified(false);
         mSearchView.clearFocus();
@@ -75,9 +80,10 @@ public class SightseeingActivity extends Activity{
             }
         }
     }
-
+    
+    /** Sets up listeners for ActionBar views. */
     private void setUpActionBarListeners() {
-        mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
+    	mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
                 mSearchView.clearFocus();
@@ -85,7 +91,6 @@ public class SightseeingActivity extends Activity{
                 return true;
             }
         });
-
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -104,25 +109,53 @@ public class SightseeingActivity extends Activity{
             }
         });
 
-        mImgvSlidingMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //TODO handle show sliding men
-            }
-        });
-
         mImgvShowRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO handle show route
-
+            	//TODO handle route
             }
+        });
+        
+        mImgvSlidingMenu.setOnClickListener(new View.OnClickListener() {
+        	@Override
+        	public void onClick(View view) {
+        		if(!mDrawerLayout.isDrawerOpen(Gravity.LEFT)) mDrawerLayout.openDrawer(Gravity.LEFT);
+            	else mDrawerLayout.closeDrawer(Gravity.LEFT);
+        	}
         });
     }
 
-
+    /** Sets up NavigationDrawer. */
+    public void setUpDrawerListView(){
+    	
+    	mDrawerMenuItems = getResources().getStringArray(R.array.nav_drawer_items);
+    	mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+    	mDrawerList = (ListView) findViewById(R.id.lvMenuSightseeing);
+    	
+    	mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.sliding_menu_item, mDrawerMenuItems));
+    	
+    	mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, 
+    			R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close);
+    	
+    	mDrawerLayout.setDrawerListener(mDrawerToggle);
+        
+    }
+    
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+ 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+   
     @Override
     public void onBackPressed() {
-            super.onBackPressed();
+    	super.onBackPressed();
     }
 }
