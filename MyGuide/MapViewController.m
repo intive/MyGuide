@@ -174,16 +174,15 @@ static const double degreeInRadians = 0.0174532925;
 // iOS 6 support code included
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
     
+    CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
+    double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
+    
     if([[[UIDevice alloc] systemVersion] compare:@"7.0.0" options:NSNumericSearch] == NSOrderedAscending){
-        CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
-        double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
         if(distanceFromZooCenter <= _settings.centerRadius){
             _lastGoodRegion = mapView.region;
         }
     }
     else {
-        CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
-        double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
         if(distanceFromZooCenter <= _settings.centerRadius){
             _lastGoodCamera = [mapView.camera copy];
         }
@@ -191,11 +190,12 @@ static const double degreeInRadians = 0.0174532925;
 }
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
     
+    CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
+    double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
+    
     if([[[UIDevice alloc] systemVersion] compare:@"7.0.0" options:NSNumericSearch] == NSOrderedAscending){
-#warning in comments is the only way I found to keep map rotation after returning to last good region, it is not the best, I would like something way better
+#warning in comments is the only way I found to keep map rotation after returning to last good region, it is not the best, I would like something way better; plus on iOS 6 maps can't be rotated with two fingers, neither paths nor junctions are drawn and the view is not properly alligned
 //        _mapView.frame = CGRectMake(-290, 0, 1136, 800);
-        CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
-        double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
         if(distanceFromZooCenter > _settings.centerRadius){
             [mapView setRegion:_lastGoodRegion animated:YES];
 //            mapView.transform = CGAffineTransformMakeRotation(mapView.userLocation.heading.magneticHeading * degreeInRadians);
@@ -210,8 +210,6 @@ static const double degreeInRadians = 0.0174532925;
         }
     }
     else {
-        CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
-        double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
         if(distanceFromZooCenter > _settings.centerRadius){
             [mapView setCamera:_lastGoodCamera animated:YES];
         }
