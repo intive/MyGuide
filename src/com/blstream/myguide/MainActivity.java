@@ -27,11 +27,9 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
 
 		ParseXmlTask task = new ParseXmlTask(this);
 		File file = new File(Environment.getExternalStorageDirectory(), ".myguide/data2.xml");
-		task.execute(file);
-
 		File configFile = new File(Environment.getExternalStorageDirectory(), ".myguide/config.xml");
-		ParseXmlSettings ps = new ParseXmlSettings();
-		ps.parsing(this, configFile);
+		task.execute(file, configFile);
+
 	}
 
 	/** Sets options menu. Called when options button is first clicked. */
