@@ -2,17 +2,16 @@ package com.blstream.myguide;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SightseeingActivity extends Activity{
 
@@ -21,12 +20,21 @@ public class SightseeingActivity extends Activity{
     private SearchView mSearchView;
     private ImageView mSearchViewClose;
 
+    /*public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_main, menu);
+		return true;
+	}*/
+    
     @Override
     public void onCreate(Bundle savedInstanceState){
-        requestWindowFeature(Window.FEATURE_ACTION_BAR);
+    	Log.d(UI_MODE_SERVICE, "OnCreate");
+    
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.activity_sightseeing);
-
+        
+        Log.d(UI_MODE_SERVICE,""+this.getActionBar());
         if (getActionBar() != null) {
             getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
             getActionBar().setCustomView(R.layout.action_bar_sightseeing);
@@ -39,6 +47,7 @@ public class SightseeingActivity extends Activity{
     }
 
     private void setUpActionBar(View v) {
+    	Log.d(UI_MODE_SERVICE, "Setting up action bar");
         mSearchView = (SearchView) v.findViewById(R.id.svSightseeing);
         mImgvSlidingMenu = (ImageView) v.findViewById(R.id.imgvSlidingMenu);
         mImgvShowRoute = (ImageView) v.findViewById(R.id.imgvShowRoute);
