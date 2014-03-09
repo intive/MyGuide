@@ -1,44 +1,29 @@
 
 package com.blstream.myguide.settings;
 
-public class Settings {
+import java.util.HashMap;
 
-	private String mLangFallback;
-	private float mInternalRadius;
-	private float mExternalRadius;
+public class Settings extends HashMap<String, String> {
 
-	public Settings() {
+	private static final long serialVersionUID = 1L;
 
+	private String mValue;
+	private int mValueInt;
+	private float mValueFloat;
+
+	public String getValueAsString(String key) {
+		mValue = super.get(key);
+		return mValue;
 	}
 
-	public Settings(String langFallback, float internalRadius, float externalRadius) {
-		mLangFallback = langFallback;
-		mInternalRadius = internalRadius;
-		mExternalRadius = externalRadius;
+	public int getValueAsInt(String key) {
+		mValueInt = Integer.parseInt(super.get(key));
+		return mValueInt;
 	}
 
-	public void setLangFallback(String langFallback) {
-		mLangFallback = langFallback;
-	}
-
-	public void setInternalRadius(float internalRadius) {
-		mInternalRadius = internalRadius;
-	}
-
-	public void setExternalRadius(float externalRadius) {
-		mExternalRadius = externalRadius;
-	}
-
-	public String getLangFallback() {
-		return mLangFallback;
-	}
-
-	public float getInternalRadius() {
-		return mInternalRadius;
-	}
-
-	public float getExternalRadius() {
-		return mExternalRadius;
+	public float getValueAsFloat(String key) {
+		mValueFloat = Float.parseFloat(super.get(key));
+		return mValueFloat;
 	}
 
 }

@@ -3,68 +3,49 @@ package com.blstream.myguide.settings;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
-import android.util.Log;
-import android.util.Xml;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public class SettingsParser {
 
-	private static final String TAG = Settings.class.getSimpleName();
+	private static Settings mSettings;
 
-	private String mLangFallback;
-	private float mInternalRadius;
-	private float mExternalRadius;
+	public Settings parseSettings(InputStream strXML) throws ParserConfigurationException,
+			SAXException, IOException {
 
-	public Settings parseSettings(InputStream is) throws XmlPullParserException, IOException,
-			OutOfMemoryError {
+		mSettings = new Settings();
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = null;
 
-		XmlPullParser xpp = Xml.newPullParser();
-		xpp.setInput(new InputStreamReader(is));
-		xpp.next();
-		int eventType = xpp.getEventType();
-
-		while (eventType != XmlPullParser.END_DOCUMENT) {
-			if (eventType == XmlPullParser.START_TAG) {
-				if ("configuration".equals(xpp.getName())) {
-					xpp.nextTag();
-
-					if ("lang_fallback".equals(xpp.getName())) {
-						if (xpp.next() == XmlPullParser.TEXT) {
-							mLangFallback = xpp.getText();
-							Log.d(TAG, "langFallback: " + mLangFallback);
-						}
-					}
-					xpp.nextTag();
-					xpp.nextTag();
-
-					if ("internal_object_radius".equals(xpp.getName())) {
-						if (xpp.next() == XmlPullParser.TEXT) {
-							mInternalRadius = Float.parseFloat(xpp.getText());
-							Log.d(TAG, "internalRadius: " + mInternalRadius);
-						}
-					}
-					xpp.nextTag();
-					xpp.nextTag();
-
-					if ("external_object_radius".equals(xpp.getName())) {
-						if (xpp.next() == XmlPullParser.TEXT) {
-							mExternalRadius = Float.parseFloat(xpp.getText());
-							Log.d(TAG, "externalRadius: " + mExternalRadius);
-						}
-					}
-
-				}
-
-			}
-			eventType = xpp.next();
+		try {
+			doc = dBuilder.parse(strXML);
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
-		return new Settings(mLangFallback, mInternalRadius, mExternalRadius);
+		doc.getDocumentElement().normalize();
+		Element rootElement = doc.getDocumentElement();
+		NodeList nodes = rootElement.getChildNodes();
 
+		for (int i = 0; i < nodes.getLength(); i++) {
+			Node node = nodes.item(i);
+
+			if (node instanceof Element) {
+				mSettings.put(node.getNodeName(), node.getTextContent());
+			}
+		}
+		return mSettings;
 	}
 
 }

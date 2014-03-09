@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Context;
@@ -30,6 +33,10 @@ public class SettingsHelper {
 				is = new FileInputStream(xml);
 			}
 			settings = parser.parseSettings(is);
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
 		} finally {
 			is.close();
 		}
