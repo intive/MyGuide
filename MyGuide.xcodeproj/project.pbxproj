@@ -277,9 +277,9 @@
 		84DDCB3518BA919600A2F720 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
-				84DDCB3618BA919600A2F720 /* AFXMLParser.h */,
 				8460875518BDFA7F00620219 /* SettingsParser.h */,
 				8460875618BDFA7F00620219 /* SettingsParser.m */,
+				84DDCB3618BA919600A2F720 /* AFXMLParser.h */,
 				84DDCB3718BA919600A2F720 /* AFXMLParser.m */,
 			);
 			path = Parsers;

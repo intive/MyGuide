@@ -8,11 +8,18 @@
 
 #import "Settings.h"
 
+static const double meterInLatitudeDegrees = 1/111250.25112839248;
+static const double meterInLongitudeDegrees = 1/70038.85259649946;
+
 @implementation Settings {
-    int    _mapWidth;
-    int    _mapHeight;
+    int    _mapMaxWidth;
+    int    _mapMaxHeight;
+    int    _mapMinWitdh;
+    int    _mapMinHeigth;
     double _zooLat;
     double _zooLng;
+    double _zooCntrLat;
+    double _zooCntrLon;
 }
 
 + (id) sharedSettingsData {
@@ -71,13 +78,34 @@
         _zooLng = [value doubleValue];
     }
     else if ([name isEqualToString:  @"map_max_width"]) {
-        _mapWidth = [value doubleValue];
+        _mapMaxWidth = [value doubleValue];
     }
     else if ([name isEqualToString:  @"map_max_height"]) {
-        _mapHeight = [value doubleValue];
+        _mapMaxHeight = [value doubleValue];
     }
     else if ([name isEqualToString:  @"map_max_user_distance"]) {
         _maxUserDistance = [value doubleValue];
+    }
+    else if ([name isEqualToString:  @"map_min_width"]) {
+        _mapMinWitdh = [value doubleValue];
+    }
+    else if ([name isEqualToString:  @"map_min_heigth"]) {
+        _mapMinHeigth = [value doubleValue];
+    }
+    else if ([name isEqualToString:  @"map_zoo_center_rad"]) {
+        _centerRadius = [value integerValue];
+    }
+    else if ([name isEqualToString:  @"map_zoo_center_lat"]) {
+        _zooCntrLat = [value doubleValue];
+    }
+    else if ([name isEqualToString:  @"map_zoo_center_lon"]) {
+        _zooCntrLon = [value doubleValue];
+    }
+    else if ([name isEqualToString:  @"map_camera_max_altitude"]) {
+        _cameraMaxAltitude = [value doubleValue];
+    }
+    else if ([name isEqualToString:  @"map_camera_min_altitude"]) {
+        _cameraMinAltitude = [value doubleValue];
     }
 }
 
@@ -88,9 +116,17 @@
 - (CLLocationCoordinate2D) calculateMapCenter {
     return CLLocationCoordinate2DMake(_zooLat, _zooLng);
 }
-
+- (CLLocationCoordinate2D) calculateZooCenter{
+    return CLLocationCoordinate2DMake(_zooCntrLat, _zooCntrLon);
+}
 - (MKCoordinateRegion) calculateMapBounds {
-    return MKCoordinateRegionMakeWithDistance(self.mapCenter, _mapWidth, _mapHeight);
+    return MKCoordinateRegionMakeWithDistance(self.mapCenter, _mapMaxWidth, _mapMaxHeight);
+}
+- (MKCoordinateSpan) calculateMaxSpan {
+    return MKCoordinateSpanMake(_mapMaxWidth * meterInLatitudeDegrees, _mapMaxHeight * meterInLongitudeDegrees);
+}
+- (MKCoordinateSpan) calculateMinSpan {
+    return MKCoordinateSpanMake(_mapMinWitdh * meterInLatitudeDegrees, _mapMinHeigth * meterInLongitudeDegrees);
 }
 
 @end

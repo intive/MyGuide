@@ -8,9 +8,18 @@
 	<!-- Radius outside which the information that user got close to an object disappears -->
 	<external_object_radius>2</external_object_radius>
     
-    <!-- Bounds in meters to restrict map area -->
-    <map_max_width>1000</map_max_width>
-    <map_max_height>1000</map_max_height>
+    <!-- Bounds in meters restricting map area -->
+    <map_max_width>1100</map_max_width>
+    <map_max_height>900</map_max_height>
+    <map_min_width>100</map_min_width>
+    <map_min_heigth>123</map_min_heigth>
+    <map_camera_max_altitude>2651</map_camera_max_altitude>
+    <map_camera_min_altitude>362</map_camera_min_altitude>
+    
+    <!-- Values restricting scrolling -->
+    <map_zoo_center_lat>51.104189</map_zoo_center_lat>
+    <map_zoo_center_lon>17.074825</map_zoo_center_lon>
+    <map_zoo_center_rad>550</map_zoo_center_rad>
     
     <!-- Boolean flags to turn on/off some application features -->
     <map_show_animals>true</map_show_animals>
