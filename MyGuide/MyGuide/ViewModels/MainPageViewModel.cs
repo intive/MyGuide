@@ -23,8 +23,8 @@ namespace MyGuide.ViewModels
 
         public MainPageViewModel(
             INavigationService navigationService,
-            IMessageDialogService msgDialogService)
-            : base(navigationService)
+            IMessageDialogService msgDialogService, IMessageDialogService messageDialogService)
+            : base(navigationService, messageDialogService)
         {
             // Uncomment to use design time data as test data
             // LoadDesignData();
