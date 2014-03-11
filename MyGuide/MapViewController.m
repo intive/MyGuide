@@ -32,8 +32,6 @@ static const double degreeInRadians = 0.0174532925;
     _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
     
-//    MKUserTrackingBarButtonItem                           <<<     FIND HOW SHOULD THIS WORK
-//    MKUserTrackingBarButtonItem *button = [[MKUserTrackingBarButtonItem alloc] initWithMapView:_mapView];
     
     [self showUserPosition];
     [self showAnimals];
@@ -194,19 +192,14 @@ static const double degreeInRadians = 0.0174532925;
     double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
     
     if([[[UIDevice alloc] systemVersion] compare:@"7.0.0" options:NSNumericSearch] == NSOrderedAscending){
-#warning in comments is the only way I found to keep map rotation after returning to last good region, it is not the best, I would like something way better; plus on iOS 6 maps can't be rotated with two fingers, neither paths nor junctions are drawn and the view is not properly alligned
-//        _mapView.frame = CGRectMake(-290, 0, 1136, 800);
         if(distanceFromZooCenter > _settings.centerRadius){
             [mapView setRegion:_lastGoodRegion animated:YES];
-//            mapView.transform = CGAffineTransformMakeRotation(mapView.userLocation.heading.magneticHeading * degreeInRadians);
         }
         if (mapView.region.span.latitudeDelta > _settings.maxSpan.latitudeDelta || mapView.region.span.longitudeDelta > _settings.maxSpan.longitudeDelta) {
             [mapView setRegion:_lastGoodRegion animated:YES];
-//            mapView.transform = CGAffineTransformMakeRotation(mapView.userLocation.heading.magneticHeading * degreeInRadians);
         }
         if (mapView.region.span.latitudeDelta < _settings.minSpan.latitudeDelta || mapView.region.span.longitudeDelta < _settings.minSpan.longitudeDelta) {
             [mapView setRegion:_lastGoodRegion animated:YES];
-//            mapView.transform = CGAffineTransformMakeRotation(mapView.userLocation.heading.magneticHeading * degreeInRadians);
         }
     }
     else {
