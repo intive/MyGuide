@@ -117,8 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllowButton" xml:space="preserve">
+    <value>allow</value>
+  </data>
   <data name="ApplicationTitle" xml:space="preserve">
     <value>My Guide</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="DenayButton" xml:space="preserve">
+    <value>denay</value>
+  </data>
+  <data name="ExitDlgMessage" xml:space="preserve">
+    <value>Are you sure you woud like to close this app?</value>
+  </data>
+  <data name="ExitDlgTitle" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="NoButton" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="OkButton" xml:space="preserve">
+    <value>ok</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Settings</value>
@@ -142,5 +163,8 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome in Wroclaw ZOO guide</value>
+  </data>
+  <data name="YesButton" xml:space="preserve">
+    <value>yes</value>
   </data>
 </root>
