@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
+    android:layout_height="match_parent" >
+
     <LinearLayout
         android:id="@+id/llSightseeingActivityContent"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+
     <ListView
         android:id="@+id/lvMenuSightseeing"
         android:layout_width="140dp"
         android:layout_height="match_parent"
-        android:divider="@color/list_divider"
-        android:background="@color/gray"
-        android:dividerHeight="1dp"
-        android:listSelector="@drawable/menu_list_selector"
         android:layout_gravity="start"
-        android:choiceMode="singleChoice"/>
+        android:background="@color/gray"
+        android:choiceMode="singleChoice"
+        android:divider="@color/list_divider"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/menu_list_selector" />
 
 </android.support.v4.widget.DrawerLayout>

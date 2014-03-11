@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Deutschland language version -->
     <string name="app_name">MyGuide</string>
     <!-- Welcome screen -->
@@ -16,10 +17,10 @@
     <string name="confirmation_default">Fortfahren?</string>
     <string name="confirmation_exit">Schließen Sie die Anwendung?</string>
 
-    <!--SightSeeing screen -->
+    <!-- SightSeeing screen -->
     <string name="search_sightseeing">Suche&#8230;</string>
 
-    <!--SightSeeing menu -->
+    <!-- SightSeeing menu -->
     <string-array name="nav_drawer_items">
         <item name="map">Landkarte</item>
         <item name="animals">Tiere</item>
