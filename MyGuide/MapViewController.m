@@ -33,6 +33,7 @@ static const double degreeInRadians = 0.0174532925;
     self.mapView.delegate = self;
     
 //    MKUserTrackingBarButtonItem                           <<<     FIND HOW SHOULD THIS WORK
+//    MKUserTrackingBarButtonItem *button = [[MKUserTrackingBarButtonItem alloc] initWithMapView:_mapView];
     
     [self showUserPosition];
     [self showAnimals];
@@ -171,7 +172,6 @@ static const double degreeInRadians = 0.0174532925;
 #pragma mark -
 #pragma mark Limiting scroll and zoom levels
 
-// iOS 6 support code included
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
     
     CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
