@@ -124,8 +124,7 @@
             </objects>
             <point key="canvasLocation" x="589" y="1091"/>
         </scene>
-        <!--Map View Controller - Zwiedzaj-->
-        <!--View Controller - Explore-->
+        <!--Map View Controller - Explore-->
         <scene sceneID="Rwy-Mw-zzh">
             <objects>
                 <viewController id="k7A-NH-zPr" customClass="MapViewController" sceneMemberID="viewController">
@@ -144,16 +143,6 @@
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUo-ib-dDN">
                                 <rect key="frame" x="117" y="469" width="183" height="30"/>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Y3R-4e-DuV">
-                                <rect key="frame" x="20" y="20" width="280" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="8oR-sk-RrX"/>
-                                    <constraint firstAttribute="width" constant="280" id="HwW-a5-6kE"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkb-eu-HJy">
-                                <rect key="frame" x="126" y="210" width="68" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Center on current location">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -165,11 +154,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Zwiedzaj" id="dfN-EF-0Uk"/>
+                    <tabBarItem key="tabBarItem" title="Explore" id="dfN-EF-0Uk"/>
                     <connections>
                         <outlet property="mapView" destination="q3f-u0-kV8" id="Vaj-wR-6ge"/>
                     </connections>
-                    <tabBarItem key="tabBarItem" title="Explore" id="dfN-EF-0Uk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1F-GP-lr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
