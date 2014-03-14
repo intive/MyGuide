@@ -18,28 +18,24 @@ import com.blstream.myguide.R;
 
 public class SettingsHelper {
 
-	public Settings parse(Context context, File xml) throws IOException, XmlPullParserException {
+	public Settings parse(Context context, File xml) throws IOException, XmlPullParserException,
+			ParserConfigurationException, SAXException {
 
 		boolean debug = 0 != (context.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE);
 		InputStream is = null;
 		Settings settings = null;
 		SettingsParser parser = new SettingsParser();
 
-		try {
-			if (!debug || xml == null) {
-				is = context.getResources().openRawResource(R.raw.config);
-			}
-			else {
-				is = new FileInputStream(xml);
-			}
-			settings = parser.parseSettings(is);
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
-		} finally {
-			is.close();
+		if (!debug || xml == null) {
+			is = context.getResources().openRawResource(R.raw.config);
 		}
+		else {
+			is = new FileInputStream(xml);
+		}
+		settings = parser.parseSettings(is);
+
+		is.close();
+
 		return settings;
 	}
 }

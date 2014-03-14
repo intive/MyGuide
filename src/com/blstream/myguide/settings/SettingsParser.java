@@ -26,13 +26,7 @@ public class SettingsParser {
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = null;
 
-		try {
-			doc = dBuilder.parse(strXML);
-		} catch (SAXException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		doc = dBuilder.parse(strXML);
 
 		doc.getDocumentElement().normalize();
 		Element rootElement = doc.getDocumentElement();
