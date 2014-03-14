@@ -84,6 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tests\DataServiceModelTest.cs" />
     <Compile Include="Tests\XmlParserTests.cs" />
   </ItemGroup>
   <ItemGroup>

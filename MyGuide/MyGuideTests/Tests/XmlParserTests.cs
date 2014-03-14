@@ -15,9 +15,9 @@ namespace MyGuideTests.Tests
     public class XmlParserTests
     {
         [TestMethod]
-        public void CorrectXmlDataParser()
+        public async void CorrectXmlDataParser()
         {
-            XmlParser xmlParser = new XmlParser();
+            XmlParser <Root> xmlParser = new XmlParser<Root>();
             Root parsedData;
             string correctXmlData = "TestData/CorrectData.xml";
             
@@ -33,7 +33,7 @@ namespace MyGuideTests.Tests
             double junctionLongitude = 17.0742639;
             long junctionWayId = 35948032;
 
-            parsedData = xmlParser.DeserializeXml(correctXmlData);
+            parsedData = await xmlParser.DeserializeXml(correctXmlData);
 
             Assert.AreEqual(animalName,parsedData.AnimalsList.Items.First().Name);
             Assert.AreEqual(animalLatitude, parsedData.AnimalsList.Items.Last().Latitude);
@@ -53,33 +53,33 @@ namespace MyGuideTests.Tests
         
         public void IncorrectXmlDataParser()
         {
-            XmlParser xmlParser = new XmlParser();
+            XmlParser<Root> xmlParser = new XmlParser<Root>();
             Root parsedData;
             
             string incorrectXmlData = "TestData/IncorrectData.xml";
 
 
-            Assert.ThrowsException<InvalidOperationException>(() => parsedData = xmlParser.DeserializeXml(incorrectXmlData));
+            Assert.ThrowsException<InvalidOperationException>(async () => parsedData = await xmlParser.DeserializeXml(incorrectXmlData));
         }
 
         [TestMethod]
 
         public void LackXmlDataParser()
         {
-            XmlParser xmlParser = new XmlParser();
+            XmlParser <Root> xmlParser = new XmlParser <Root>();
             Root parsedData;
             
             string lackXmlData = "TestData/LackData.xml";
 
 
-            Assert.ThrowsException<FileNotFoundException>(() => parsedData = xmlParser.DeserializeXml(lackXmlData));
+            Assert.ThrowsException<FileNotFoundException>(async () => parsedData = await xmlParser.DeserializeXml(lackXmlData));
         }
 
         [TestMethod]
 
-        public void IncorrectStructureXmlDataParser()
+        public async void IncorrectStructureXmlDataParser()
         {
-            XmlParser xmlParser = new XmlParser();
+            XmlParser <Root> xmlParser = new XmlParser <Root>();
             Root parsedData;
             Root correctParsedData;
 
@@ -87,8 +87,8 @@ namespace MyGuideTests.Tests
             string correctXmlData = "TestData/CorrectData.xml";
             
 
-            parsedData = xmlParser.DeserializeXml(incorrectXmlData);
-            correctParsedData = xmlParser.DeserializeXml(correctXmlData);
+            parsedData = await xmlParser.DeserializeXml(incorrectXmlData);
+            correctParsedData = await xmlParser.DeserializeXml(correctXmlData);
 
             Assert.AreNotEqual(correctParsedData, parsedData);
 

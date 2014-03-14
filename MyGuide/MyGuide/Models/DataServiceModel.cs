@@ -13,38 +13,53 @@ namespace MyGuide.Models
     public class DataServiceModel : IDataServiceModel
     {
         public Root Datas;
-        public DataServiceModel()
+ 
+            
+        public async Task Initialize()
         {
-            XmlParser xmlPars = new XmlParser();
+            XmlParser<Root> xmlPars = new XmlParser<Root>();
             try
             {
-                Datas = xmlPars.DeserializeXml("Data/data.xml");
+                Datas = await xmlPars.DeserializeXml("Data/data.xml");
 
                 if (Datas.AnimalsList.Items.Count != 0
-                    && Datas.JunctionsList.Items.Count != 0 
+                    && Datas.JunctionsList.Items.Count != 0
                     && Datas.WaysList.Items.Count != 0)
                 {
                     Debug.WriteLine(this.ToString());
                     Debug.WriteLine(CollectionsSizes());
+                    
                 }
                 else
                 {
-                    MessageBox.Show("Some data are missing, please reinstal app.");
+                    throw new LackOfDataException("Lack of Data");
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 if(!(ex is FileNotFoundException || ex is InvalidOperationException))
                 {
-                    throw;
+                    throw new LackOfDataException("Unknow exception",ex);
                 }
-
-                MessageBox.Show("There is a problem with data, please reinstal app.");
+                else
+                {
+                    if(ex is FileNotFoundException)
+                    {
+                        throw new LackOfDataException("There is not data file", ex);
+                    }
+                    if(ex is InvalidOperationException)
+                    {
+                        throw new LackOfDataException("There are errors in data file",ex);
+                    }
+                }
             }
-
         }
 
-       
+        
+
+
+        
+
 
         public int AnimalsSize() { return Datas.AnimalsList.Items.Count; }
         public int WaysSize() { return Datas.WaysList.Items.Count; }
@@ -76,5 +91,12 @@ namespace MyGuide.Models
         }
 
 
+    }
+
+    public class LackOfDataException : Exception
+    {
+        public LackOfDataException() : base() { }
+        public LackOfDataException(string message) : base(message) { }
+        public LackOfDataException(string message, System.Exception inner) : base(message, inner) { }
     }
 }

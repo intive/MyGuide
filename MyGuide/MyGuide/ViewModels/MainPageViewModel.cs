@@ -13,6 +13,7 @@ namespace MyGuide.ViewModels
     {
         // To get acces to OnNavigateTo/From override methods from base class
         // ex. public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
+       
 
         public MainPageViewModel()
         {
@@ -23,6 +24,7 @@ namespace MyGuide.ViewModels
         public MainPageViewModel(INavigationService navigationService, IDataServiceModel dataServiceModel)
             : base(navigationService)
         {
+           
             // Uncomment to use design time data as test data
             // LoadDesignData();
         }

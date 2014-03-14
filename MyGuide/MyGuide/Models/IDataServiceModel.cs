@@ -9,6 +9,7 @@ namespace MyGuide.Models
 {
     public interface IDataServiceModel
     {
+        Task Initialize();
         int AnimalsSize();
         int WaysSize();
         int JunctionsSize();
