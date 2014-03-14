@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
 using Caliburn.Micro.BindableAppBar;
+using MyGuide.Services;
+using MyGuide.Services.Interfaces;
 using MyGuide.ViewModels;
 using MyGuide.Models;
 using MyGuide.DataServices;
@@ -40,6 +42,7 @@ namespace MyGuide
             container.PerRequest<SightseeingPageViewModel>();
             container.Singleton<IDataServiceModel, DataServiceModel>();
             
+            container.PerRequest<IMessageDialogService, MessageDialogService>();
 
             //All VM should be add to this container, e.g. container.PerRequest<AnotherViewModel>();
 
@@ -58,7 +61,6 @@ namespace MyGuide
 
         private static void AddCustomConventions()
         {
-            // More about BindableAppBar: https://github.com/kamranayub/CaliburnBindableAppBar
             ConventionManager.AddElementConvention<BindableAppBarButton>(
                 Control.IsEnabledProperty, "DataContext", "Click");
             ConventionManager.AddElementConvention<BindableAppBarMenuItem>(
