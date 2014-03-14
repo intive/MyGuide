@@ -41,6 +41,7 @@ namespace MyGuide
             container.PerRequest<OptionsPageViewModel>();
             container.PerRequest<SightseeingPageViewModel>();
             container.Singleton<IDataServiceModel, DataServiceModel>();
+            container.PerRequest<SplashScreenViewModel>();
             
             container.PerRequest<IMessageDialogService, MessageDialogService>();
 

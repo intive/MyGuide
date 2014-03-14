@@ -15,26 +15,27 @@ namespace MyGuide.ViewModels
     public class MainPageViewModel : ViewModelBase
     {
         private IMessageDialogService _msgDialogServ;
-       
+
 
         public MainPageViewModel()
+           
         {
             if (Execute.InDesignMode)
                 LoadDesignData();
         }
 
-            : base(navigationService)
+            
 
         public MainPageViewModel(
             INavigationService navigationService,
-            IMessageDialogService msgDialogService, IMessageDialogService messageDialogService, IDataServiceModel dataServiceModel)
+            IMessageDialogService messageDialogService, IDataServiceModel dataServiceModel)
             : base(navigationService, messageDialogService)
         {
            
             // Uncomment to use design time data as test data
             // LoadDesignData();
 
-            _msgDialogServ = msgDialogService;
+            _msgDialogServ = messageDialogService;
         }
 
         #region Properties

@@ -15,7 +15,7 @@ namespace MyGuideTests.Tests
     public class XmlParserTests
     {
         [TestMethod]
-        public async void CorrectXmlDataParser()
+        public async Task CorrectXmlDataParser()
         {
             XmlParser <Root> xmlParser = new XmlParser<Root>();
             Root parsedData;
@@ -51,33 +51,44 @@ namespace MyGuideTests.Tests
         
         [TestMethod]
         
-        public void IncorrectXmlDataParser()
+        public async Task IncorrectXmlDataParser()
         {
-            XmlParser<Root> xmlParser = new XmlParser<Root>();
-            Root parsedData;
-            
+            XmlParser<Root> xmlParser = new XmlParser<Root>(); 
             string incorrectXmlData = "TestData/IncorrectData.xml";
 
-
-            Assert.ThrowsException<InvalidOperationException>(async () => parsedData = await xmlParser.DeserializeXml(incorrectXmlData));
+            try
+            {
+                await xmlParser.DeserializeXml(incorrectXmlData);
+                Assert.Fail();
+            }
+            catch (InvalidOperationException)
+            {
+                Assert.IsTrue(true);
+            }
         }
 
         [TestMethod]
 
-        public void LackXmlDataParser()
+        public async Task LackXmlDataParser()
         {
             XmlParser <Root> xmlParser = new XmlParser <Root>();
-            Root parsedData;
             
             string lackXmlData = "TestData/LackData.xml";
 
-
-            Assert.ThrowsException<FileNotFoundException>(async () => parsedData = await xmlParser.DeserializeXml(lackXmlData));
+            try
+            {
+                await xmlParser.DeserializeXml(lackXmlData);
+                Assert.Fail();
+            }
+            catch (FileNotFoundException)
+            {
+                Assert.IsTrue(true);
+            }
         }
 
         [TestMethod]
 
-        public async void IncorrectStructureXmlDataParser()
+        public async Task IncorrectStructureXmlDataParser()
         {
             XmlParser <Root> xmlParser = new XmlParser <Root>();
             Root parsedData;

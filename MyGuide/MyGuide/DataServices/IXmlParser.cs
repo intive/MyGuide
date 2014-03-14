@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyGuide.DataServices
 {
-    interface IXmlParser<T>
+    public interface IXmlParser<T>
     {
         Task<T> DeserializeXml(string dataPath);
         string SerializeXml(T objectToSerialize);
