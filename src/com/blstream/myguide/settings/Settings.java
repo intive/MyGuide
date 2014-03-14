@@ -5,6 +5,10 @@ import java.util.HashMap;
 
 public class Settings extends HashMap<String, String> {
 
+	static final String KEY_language = "lang_fallback";
+	static final String KEY_interRadious = "internal_object_radius";
+	static final String KEY_exterRadious = "external_object_radius";
+
 	private static final long serialVersionUID = 1L;
 
 	private String mValue;
