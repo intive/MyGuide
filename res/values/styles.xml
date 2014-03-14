@@ -29,4 +29,13 @@
         <item name="android:layout_margin">5dp</item>
     </style>
 
+    <style name="sliding_menu">
+        <item name="android:layout_gravity">start</item>
+        <item name="android:background">@color/gray</item>
+        <item name="android:choiceMode">singleChoice</item>
+        <item name="android:divider">@color/list_divider</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:listSelector">@drawable/menu_list_selector</item>
+    </style>
+
 </resources>
