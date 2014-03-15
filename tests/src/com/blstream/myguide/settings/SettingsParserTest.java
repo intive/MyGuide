@@ -1,7 +1,12 @@
 
 package com.blstream.myguide.settings;
 
+import java.io.IOException;
 import java.io.InputStream;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import android.test.AndroidTestCase;
 
@@ -9,34 +14,33 @@ import com.blstream.myguide.R;
 
 public class SettingsParserTest extends AndroidTestCase {
 
-	private static final String langFallback = "pl";
-	private static final float internalRadius = 1;
-	private static final float externalRadius = 2;
-	private static final String langTag = "lang_fallback";
-	private static final String interTag = "internal_object_radius";
-	private static final String exterTag = "external_object_radius";
+	private static final String LANG_FALLBACK = "pl";
+	private static final float INTER_RADIOUS = 1;
+	private static final float EXTER_RADIOUS = 2;
+	private static final String TAG_LANG = "lang_fallback";
+	private static final String TAG_INTER_RADIOUS = "internal_object_radius";
+	private static final String TAG_EXTER_RADIOUS = "external_object_radius";
 
-	public void testParsingSettings() {
+	public void testParsingSettings() throws ParserConfigurationException, SAXException,
+			IOException {
+
+		// given
 		SettingsParser parser = new SettingsParser();
 		InputStream is = null;
 		Settings s = null;
 
-		try {
-			is = this.getContext().getResources().openRawResource(R.raw.config);
-			s = parser.parseSettings(is);
+		// when
+		is = this.getContext().getResources().openRawResource(R.raw.config);
+		s = parser.parseSettings(is);
+		is.close();
 
-			is.close();
-
-		} catch (Exception e) {
-			fail(e.toString());
-		}
-
+		// then
 		assertNotNull(is);
 		assertNotNull(s);
-		assertEquals(langFallback, s.get(langTag));
-		assertEquals(langFallback, s.getValueAsString(langTag));
-		assertEquals(internalRadius, s.getValueAsFloat(interTag));
-		assertEquals(externalRadius, s.getValueAsFloat(exterTag));
+		assertEquals(LANG_FALLBACK, s.get(TAG_LANG));
+		assertEquals(LANG_FALLBACK, s.getValueAsString(TAG_LANG));
+		assertEquals(INTER_RADIOUS, s.getValueAsFloat(TAG_INTER_RADIOUS));
+		assertEquals(EXTER_RADIOUS, s.getValueAsFloat(TAG_EXTER_RADIOUS));
 
 	}
 
