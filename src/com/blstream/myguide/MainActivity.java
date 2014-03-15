@@ -4,6 +4,7 @@ package com.blstream.myguide;
 import java.io.File;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
@@ -18,6 +19,9 @@ import com.blstream.myguide.dialog.ConfirmationDialogFragment.ConfirmationDialog
 
 public class MainActivity extends FragmentActivity implements ConfirmationDialogHolder {
 
+	static final String FILE_PATH_DATA = ".myguide/data2.xml";
+	static final String FILE_PATH_CONFIG = ".myguide/config.xml";
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -26,10 +30,18 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
 		setUpListeners();
 
 		ParseXmlTask task = new ParseXmlTask(this);
-		File file = new File(Environment.getExternalStorageDirectory(), ".myguide/data2.xml");
-		File configFile = new File(Environment.getExternalStorageDirectory(), ".myguide/config.xml");
+		File file = new File(Environment.getExternalStorageDirectory(), FILE_PATH_DATA);
+		File configFile = new File(Environment.getExternalStorageDirectory(), FILE_PATH_CONFIG);
 		task.execute(file, configFile);
 
+	}
+
+	/** Called when orientation is changed */
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		setContentView(R.layout.activity_main);
+		setUpListeners();
 	}
 
 	/** Sets options menu. Called when options button is first clicked. */
