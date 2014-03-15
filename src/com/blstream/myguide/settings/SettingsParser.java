@@ -16,21 +16,19 @@ import org.xml.sax.SAXException;
 
 public class SettingsParser {
 
-	private static Settings mSettings;
+	private Settings mSettings;
 
 	public Settings parseSettings(InputStream strXML) throws ParserConfigurationException,
 			SAXException, IOException {
 
 		mSettings = new Settings();
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		Document doc = null;
-
-		doc = dBuilder.parse(strXML);
+		final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		final DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		final Document doc = dBuilder.parse(strXML);
 
 		doc.getDocumentElement().normalize();
-		Element rootElement = doc.getDocumentElement();
-		NodeList nodes = rootElement.getChildNodes();
+		final Element rootElement = doc.getDocumentElement();
+		final NodeList nodes = rootElement.getChildNodes();
 
 		for (int i = 0; i < nodes.getLength(); i++) {
 			Node node = nodes.item(i);
