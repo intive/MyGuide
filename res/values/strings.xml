@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- English language version -->
     <string name="app_name">MyGuide</string>
 
@@ -17,7 +18,7 @@
     <string name="play_services_unavailable">Google Play Services are not available on this device. 
         Some function, including handling maps and location, might be inaccessible. 
         Services can be downloaded directly from Google Play.</string>
-    
+
     <!-- Dialogs -->
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
@@ -25,4 +26,22 @@
     <string name="confirmation_exit">Close an application?</string>
     <string name="progress_dialog_title">Please wait</string>
     <string name="progress_dialog_message">Reading xml file with data.</string>
+
+    <!-- SightSeeing screen -->
+    <string name="search_sightseeing">Search&#8230;</string>
+    <string name="sliding_icon_Description">Opcje</string>
+    <string name="route_icon_Description">Droga</string>
+    <string name="drawer_open">Otwórz menu</string>
+    <string name="drawer_close">Zamknij menu</string>
+
+    <!-- SightSeeing menu -->
+    <string-array name="nav_drawer_items">
+        <item name="map">Map</item>
+        <item name="animals">Animals</item>
+        <item name="information">Informations</item>
+        <item name="history">History</item>
+        <item name="gastronomy">Gastronomy</item>
+        <item name="preferences">Preferences</item>
+    </string-array>
+
 </resources>
