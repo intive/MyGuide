@@ -8,6 +8,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.blstream.myguide.settings.Settings;
+import com.blstream.myguide.settings.SettingsHelper;
 import com.blstream.myguide.zoolocations.ParserHelper;
 import com.blstream.myguide.zoolocations.ZooLocationsData;
 
@@ -22,10 +24,12 @@ public class ParseXmlTask extends AsyncTask<File, Void, Boolean> {
 	private ProgressDialog mProgressDialog;
 	private Context mCtx;
 	private ZooLocationsData mData;
+	private Settings mSettings;
 
 	public ParseXmlTask(Context ctx) {
 		mCtx = ctx;
 		mData = null;
+		mSettings = null;
 		mProgressDialog = new ProgressDialog(mCtx);
 		mProgressDialog.setTitle(R.string.progress_dialog_title);
 		mProgressDialog.setMessage(mCtx.getResources().getString(
@@ -40,12 +44,15 @@ public class ParseXmlTask extends AsyncTask<File, Void, Boolean> {
 	@Override
 	protected Boolean doInBackground(File... file) {
 		ParserHelper ph = new ParserHelper();
+		SettingsHelper sh = new SettingsHelper();
 		try {
 			mData = ph.parse(mCtx, file[0]);
+			mSettings = sh.parse(mCtx, file[1]);
 		} catch (Exception e1) {
 			Log.d(LOG_TAG, e1.toString());
 			try {
 				mData = ph.parse(mCtx, null);
+				mSettings = sh.parse(mCtx, null);
 			} catch (Exception e2) {
 				Log.d(LOG_TAG, e2.toString());
 				return false;
@@ -60,6 +67,10 @@ public class ParseXmlTask extends AsyncTask<File, Void, Boolean> {
 			Log.i(LOG_TAG, "animals: " + mData.getAnimals().size());
 			Log.i(LOG_TAG, "ways: " + mData.getWays().size());
 			Log.i(LOG_TAG, "junctions: " + mData.getJunctions().size());
+
+			for (String key : mSettings.keySet()) {
+				Log.i(LOG_TAG, "SETTINGS::  " + key + ": " + mSettings.get(key));
+			}
 		}
 		mProgressDialog.dismiss();
 	}

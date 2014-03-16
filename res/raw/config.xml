@@ -1,0 +1,10 @@
+<configuration>
+	<!-- Fallback to language if string is not available -->
+	<lang_fallback>pl</lang_fallback>
+
+	<!-- Radius within which the information that user got close to an object appears -->
+	<internal_object_radius>1</internal_object_radius>
+
+	<!-- Radius outside which the information that user got close to an object disappears -->
+	<external_object_radius>2</external_object_radius>
+</configuration>
