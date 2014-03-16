@@ -1,6 +1,8 @@
 
 package com.blstream.myguide.gps;
 
+import java.util.concurrent.TimeUnit;
+
 import android.content.Context;
 import android.location.Location;
 import android.util.Log;
@@ -14,8 +16,8 @@ import android.widget.Toast;
 public class LocationLogger implements LocationUser {
 
 	private Context mContext;
+	private static final long INTERVAL_NS = TimeUnit.SECONDS.toNanos(3);
 	private long mLastLogTimeInNanoseconds;
-	private final long INTERVAL = Long.parseLong("3000000000");
 	private Location mLastLocation;
 
 	public LocationLogger(Context context) {
@@ -30,7 +32,7 @@ public class LocationLogger implements LocationUser {
 					+ "," + Double.toString(location.getLongitude());
 			Log.i(LocationUpdater.class.getSimpleName(), msg);
 			Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
-			mLastLogTimeInNanoseconds = System.nanoTime();
+			updateLastLogInfo(location);
 		}
 	}
 
@@ -46,18 +48,19 @@ public class LocationLogger implements LocationUser {
 		if (location == null) {
 			return false;
 		} else if (mLastLocation == null) {
-			mLastLocation = location;
 			return true;
 		} else if (location.getLatitude() != mLastLocation.getLatitude()
-				|| location.getLongitude() != mLastLocation.getLongitude()) {
-			mLastLocation = location;
-			return true;
-		}
+				|| location.getLongitude() != mLastLocation.getLongitude()) { return true; }
 		return false;
 	}
 
 	private boolean isTimeBetweenLogsExpired() {
-		if (System.nanoTime() - mLastLogTimeInNanoseconds > INTERVAL) { return true; }
+		if (System.nanoTime() - mLastLogTimeInNanoseconds > INTERVAL_NS) { return true; }
 		return false;
+	}
+
+	private void updateLastLogInfo(Location location) {
+		mLastLocation = location;
+		mLastLogTimeInNanoseconds = System.nanoTime();
 	}
 }
