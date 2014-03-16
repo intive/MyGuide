@@ -3,36 +3,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:background="#E1E1E1"
-    android:weightSum="1" >
+    android:orientation="horizontal"
+    android:weightSum="1">
 
-   <ImageView
-       android:id="@+id/imgvSlidingMenu"
-       android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:src="@drawable/ic_drawer"
-       android:paddingRight="10dp"
-       android:paddingLeft="15dp"
-       android:background="@drawable/action_bar_icon_selector"
-       />
+    <ImageView
+        android:id="@+id/imgvSlidingMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/sliding_icon_Description"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/drawer_icon_selector" />
 
     <SearchView
         android:id="@+id/svSightseeing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:focusable="false"
-        android:layout_weight="1"
-        />
-
+        android:layout_weight="1" />
 
     <ImageView
         android:id="@+id/imgvShowRoute"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_location_web_site"
-        android:paddingRight="10dp"
+        android:contentDescription="@string/route_icon_Description"
         android:paddingLeft="10dp"
-        android:background="@drawable/action_bar_icon_selector"
-        />
+        android:paddingRight="10dp"
+        android:src="@drawable/map_icon_selector" />
 </LinearLayout>

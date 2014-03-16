@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/txtvSlidingMenuTextView"
+    android:padding="10dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ListView
-        android:id="@+id/lvMenuSightseeing"
-        android:layout_width="140dp"
-        android:layout_height="match_parent"
-        android:divider="@color/list_divider"
-        android:background="@color/gray"
-        android:dividerHeight="1dp"
-        android:listSelector="@drawable/menu_list_selector"/>
-
-</LinearLayout>
+    android:layout_height="match_parent"/>

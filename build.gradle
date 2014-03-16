@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.8.+'
+        classpath 'com.android.tools.build:gradle:0.9.+'
     }
 }
 
@@ -13,7 +13,7 @@ dependencies {
     compile "com.android.support:support-v4:18.0.+"
 //    compile fileTree(dir: 'libs', include: '*.jar')  // left for the better future
 
-    instrumentTestCompile fileTree(dir: "tests/libs", include: '*.jar')
+    compile fileTree(dir: "tests/libs", include: '*.jar')
 }
 
 android {
@@ -29,7 +29,7 @@ android {
             renderscript.srcDirs = ['src']
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
-            instrumentTest {
+            androidTest {
                 java.srcDirs = ['tests/src']
                 res.srcDirs = ['tests/res']
                 assets.srcDirs = ['assets']
