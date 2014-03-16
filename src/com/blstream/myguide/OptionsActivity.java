@@ -2,7 +2,6 @@ package com.blstream.myguide;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Window;
 
 public class OptionsActivity extends Activity{
 

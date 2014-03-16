@@ -3,17 +3,15 @@ package com.blstream.myguide;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -27,8 +25,6 @@ public class SightseeingActivity extends Activity {
 	private SearchView mSearchView;
 	private ImageView mSearchViewClose;
 	private ActionBar mActionBar;
-
-	private String[] mDrawerMenuItems;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -81,6 +77,8 @@ public class SightseeingActivity extends Activity {
 			TextView searchText = (TextView) searchPlate.findViewById(searchTextId);
 			if (searchText != null) {
 				searchText.setGravity(Gravity.CENTER);
+				searchText.setTextColor(Color.BLACK);
+
 			}
 
 			int search = searchPlate.getContext().getResources()
@@ -90,7 +88,6 @@ public class SightseeingActivity extends Activity {
 				mSearchViewClose.setVisibility(View.GONE);
 			}
 		}
-
 	}
 
 	/** Sets up listeners for ActionBar views. */
@@ -107,17 +104,12 @@ public class SightseeingActivity extends Activity {
 		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String s) {
-				// TODO finding text
-
 				mSearchView.clearFocus();
 				return false;
 			}
 
 			@Override
 			public boolean onQueryTextChange(String s) {
-				// TODO we can crete database for parsed data, then we can use
-				// AutoCompleText of animals when search is use
-
 				return false;
 			}
 		});
@@ -127,7 +119,6 @@ public class SightseeingActivity extends Activity {
 			public void onClick(View view) {
 				mSearchView.clearFocus();
 				mSearchViewClose.setVisibility(View.GONE);
-				// TODO handle route
 			}
 		});
 
@@ -146,8 +137,7 @@ public class SightseeingActivity extends Activity {
 
 	/** Sets up NavigationDrawer. */
 	public void setUpDrawerListView() {
-
-		mDrawerMenuItems = getResources().getStringArray(R.array.nav_drawer_items);
+		String[] mDrawerMenuItems = getResources().getStringArray(R.array.nav_drawer_items);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.lvMenuSightseeing);
 
@@ -167,7 +157,6 @@ public class SightseeingActivity extends Activity {
 				return false;
 			}
 		});
-
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Polish language version  -->
+
+    <!-- Polish language version -->
     <string name="app_name">MyGuide</string>
 
     <!-- Welcome screen -->
@@ -11,16 +12,17 @@
     <string name="sightseeing">Zwiedzaj</string>
     <string name="options">Opcje</string>
     <string name="text">pl: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.</string>
+
     <!-- Dialogs -->
     <string name="ok">OK</string>
     <string name="cancel">Anuluj</string>
     <string name="confirmation_default">Kontynuować?</string>
     <string name="confirmation_exit">Zakończyć działanie aplikacji?</string>
 
-    <!--SightSeeing screen -->
+    <!-- SightSeeing screen -->
     <string name="search_sightseeing">Szukaj&#8230;</string>
 
-    <!--SightSeeing menu -->
+    <!-- SightSeeing menu -->
     <string-array name="nav_drawer_items">
         <item name="map">Mapa</item>
         <item name="animals">Zwierzęta</item>
@@ -29,4 +31,5 @@
         <item name="gastronomy">Gastronomia</item>
         <item name="preferences">Preferencje</item>
     </string-array>
+
 </resources>

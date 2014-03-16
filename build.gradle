@@ -11,6 +11,7 @@ apply plugin: 'android'
 
 dependencies {
     compile "com.android.support:support-v4:18.0.+"
+    compile "com.google.android.gms:play-services:4.2.+"
 //    compile fileTree(dir: 'libs', include: '*.jar')  // left for the better future
 
     compile fileTree(dir: "tests/libs", include: '*.jar')
