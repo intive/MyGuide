@@ -3,7 +3,6 @@ package com.blstream.myguide.gps;
 
 import android.content.Context;
 import android.location.Location;
-import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,14 +14,13 @@ import android.widget.Toast;
 public class LocationLogger implements LocationUser {
 
 	private Context mContext;
-	private Time mLastLogTime;
-	private final int INTERVAL = 3000;
+	private long mLastLogTimeInNanoseconds;
+	private final long INTERVAL = Long.parseLong("3000000000");
 	private Location mLastLocation;
 
 	public LocationLogger(Context context) {
 		mContext = context;
-		mLastLogTime = new Time();
-		mLastLogTime.setToNow();
+		mLastLogTimeInNanoseconds = 0;
 	}
 
 	@Override
@@ -32,7 +30,7 @@ public class LocationLogger implements LocationUser {
 					+ "," + Double.toString(location.getLongitude());
 			Log.i(LocationUpdater.class.getSimpleName(), msg);
 			Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
-			mLastLogTime.setToNow();
+			mLastLogTimeInNanoseconds = System.nanoTime();
 		}
 	}
 
@@ -59,9 +57,7 @@ public class LocationLogger implements LocationUser {
 	}
 
 	private boolean isTimeBetweenLogsExpired() {
-		Time temp = new Time();
-		temp.setToNow();
-		if (temp.toMillis(false) - mLastLogTime.toMillis(false) > INTERVAL) { return true; }
+		if (System.nanoTime() - mLastLogTimeInNanoseconds > INTERVAL) { return true; }
 		return false;
 	}
 }

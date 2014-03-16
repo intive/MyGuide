@@ -11,8 +11,12 @@
     <string name="sightseeing">Sightseeing</string>
     <string name="options">Options</string>
     <string name="logo_Description">Zoo Logo</string>
-    <string name="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.</string>
-    <string name="play_services_unavailable">Google Play service is not available on this device. Some function might be inaccessible.</string>
+    <string name="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. 
+        Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.</string>
+    <string name="play_services_unavailable">Google Play Services are not available on this device. 
+        Some function, including handling maps and location, might be inaccessible. 
+        Services can be downloaded directly from Google Play.</string>
     
     <!-- Dialogs -->
     <string name="ok">OK</string>

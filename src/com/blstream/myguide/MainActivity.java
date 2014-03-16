@@ -34,8 +34,8 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
 		if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
 			LocationUpdater.getInstance(this);
 		} else {
-			Log.i(MainActivity.class.getSimpleName(),
-					"Google Play Service is not available on this device.");
+			Log.w(MainActivity.class.getSimpleName(),
+					"Google Play Services is not available on this device.");
 			PlayServicesErrorDialogFragment dialog = new PlayServicesErrorDialogFragment();
 			dialog.show(getSupportFragmentManager(),
 					PlayServicesErrorDialogFragment.class.getSimpleName());

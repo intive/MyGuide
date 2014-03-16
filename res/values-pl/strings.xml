@@ -10,8 +10,12 @@
     <string name="how_to_get">Dojazd</string>
     <string name="sightseeing">Zwiedzaj</string>
     <string name="options">Opcje</string>
-    <string name="text">pl: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.</string>
-    <string name="play_services_unavailable">Google Play service nie jest dostępne na tym urządzeniu. Niektóre funkcje mogą być wyłączone.</string>
+    <string name="text">pl: Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. 
+        Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.</string>
+    <string name="play_services_unavailable">Usługi Google Play nie są dostępne na tym urządzeniu. 
+        Niektóre funkcje, takie jak obsługa map czy lokalizacji, mogą być wyłączone. 
+        Usługi można pobrać bezpośrednio z Google Play.</string>
 
     <!-- Dialogs -->
     <string name="ok">OK</string>
