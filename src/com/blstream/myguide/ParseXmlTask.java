@@ -71,6 +71,9 @@ public class ParseXmlTask extends AsyncTask<File, Void, Boolean> {
 			for (String key : mSettings.keySet()) {
 				Log.i(LOG_TAG, "SETTINGS::  " + key + ": " + mSettings.get(key));
 			}
+			MyGuideApp mga = (MyGuideApp) (mCtx.getApplicationContext());
+			mga.setData(mData);
+			mga.setSettings(mSettings);
 		}
 		mProgressDialog.dismiss();
 	}

@@ -23,8 +23,14 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
+import com.blstream.myguide.settings.*;
 
 public class SightseeingActivity extends Activity implements OnCameraChangeListener {
+
+	private static final float DEFAULT_MIN_ZOOM = 14.5f;
+	private static final float DEFAULT_MAX_ZOOM = 19.0f;
+	private static final double DEFAULT_START_LAT = 51.1050406;
+	private static final double DEFAULT_START_LON = 17.074053;
 
 	private ImageView mImgvSlidingMenu;
 	private ImageView mImgvShowRoute;
@@ -40,7 +46,6 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	private GoogleMap mMap;
 	private float mMinZoom;
 	private float mMaxZoom;
-	private float mStartZoom;
 	private double mStartCenterLat;
 	private double mStartCenterLon;
 
@@ -69,14 +74,25 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 
 		setUpDrawerListView();
 
-		mMinZoom = 14.5f;
-		mMaxZoom = 19.0f;
-		mStartZoom = 15.5f;
-		mStartCenterLat = 51.1052072;
-		mStartCenterLon = 17.0754498;
-
+		MyGuideApp mga = (MyGuideApp) (this.getApplication());
+		Settings settings = mga.getSettings();
+		try {
+			mStartCenterLat = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LAT));
+			mStartCenterLon = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LON));
+		} catch (Exception e) {
+			mStartCenterLat = DEFAULT_START_LAT;
+			mStartCenterLon = DEFAULT_START_LON;
+		}
+		try {
+			mMinZoom = settings.getValueAsFloat(Settings.KEY_MIN_ZOOM);
+			mMaxZoom = settings.getValueAsFloat(Settings.KEY_MAX_ZOOM);
+		} catch (Exception e) {
+			mMinZoom = DEFAULT_MIN_ZOOM;
+			mMaxZoom = DEFAULT_MAX_ZOOM;
+		}
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mStartCenterLat,mStartCenterLon), mStartZoom));
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mStartCenterLat,
+				mStartCenterLon), mMinZoom));
 		mMap.setOnCameraChangeListener(this);
 	}
 
@@ -182,6 +198,7 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mDrawerToggle.syncState();
 	}
 
+	@Override
 	public void onCameraChange(CameraPosition camera) {
 		if (camera.zoom < mMinZoom) {
 			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
