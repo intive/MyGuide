@@ -7,8 +7,10 @@ import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.ZooLocationsData;
 
 /**
- * @author Rafal Class designed for keeping data which would be avaible from
- *         every class in Application containing context.
+ * Class designed for keeping data which would be avaible from every class in
+ * Application containing context.
+ * 
+ * @author Rafal
  */
 public class MyGuideApp extends Application {
 

@@ -27,7 +27,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class SightseeingActivity extends Activity implements OnCameraChangeListener {
 
-	private static final String LOG_TAG = ParseXmlTask.class.getSimpleName();
+	private static final String LOG_TAG = SightseeingActivity.class.getSimpleName();
+	
 	private static final float DEFAULT_MIN_ZOOM = 14.5f;
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;

@@ -19,5 +19,7 @@
 	
 	<!-- Longitude of point which is on map's center (at the beginning) ("Dziedziniec")-->
 	<start_lon>17.074053</start_lon>
-					
+	
+	<!-- Splash screen minimal duration -->
+	<splash_min_display_time_ms>2500</splash_min_display_time_ms>
 </configuration>
