@@ -339,7 +339,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
-				ORGANIZATIONNAME = "BLStream - Rafał Korżyński";
+				ORGANIZATIONNAME = "- Open Source (Apache 2.0 license)";
 				TargetAttributes = {
 					3D5EF604189637C000233B64 = {
 						DevelopmentTeam = XTRY58ZV6V;
