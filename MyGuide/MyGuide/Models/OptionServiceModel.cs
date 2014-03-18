@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.IsolatedStorage;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using MyGuide.DataServices;
 using Windows.Storage;

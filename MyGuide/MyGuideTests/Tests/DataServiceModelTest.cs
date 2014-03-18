@@ -48,7 +48,7 @@ namespace MyGuideTests.Tests
         public void SizesMethodTest()
         {
             DataServiceModel ds = new DataServiceModel();
-            ds.Datas = correctData;
+            ds.setData( correctData);
             string collectionsSize = "Animals: 1\nWays: 2\nJunctions: 1";
             
             Assert.AreEqual(1, ds.AnimalsSize());
@@ -61,7 +61,7 @@ namespace MyGuideTests.Tests
         public void GetAnimalPositionTest()
         {
             DataServiceModel ds = new DataServiceModel();
-            ds.Datas = correctData;
+            ds.setData(correctData);
             Node correctNode = new Node() { Latitude = 51.11111, Longitude = 12.11111 };
             Node testNode = ds.GetAnimalPosition("Żyrafa");
 
@@ -74,7 +74,7 @@ namespace MyGuideTests.Tests
         public void GetWayListOfNodesTest()
         {
             DataServiceModel ds = new DataServiceModel();
-            ds.Datas = correctData;
+            ds.setData(correctData);
             Node correctNode = new Node() { Latitude = 51.11111, Longitude = 12.11111 };
             List<Node> nodeList = ds.GetWayListOfNodes(11111);
             

@@ -3,16 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace MyGuide.Models
 {
     public class DataServiceModel : IDataServiceModel
     {
-        public Root Datas;
+        Root datas;
  
             
         public async Task Initialize()
@@ -20,11 +17,11 @@ namespace MyGuide.Models
             XmlParser<Root> xmlPars = new XmlParser<Root>();
             try
             {
-                Datas = await xmlPars.DeserializeXml("Data/data.xml");
+                datas = await xmlPars.DeserializeXml("Data/data.xml");
 
-                if (Datas.AnimalsList.Items.Count != 0
-                    && Datas.JunctionsList.Items.Count != 0
-                    && Datas.WaysList.Items.Count != 0)
+                if (datas.AnimalsList.Items.Count != 0
+                    && datas.JunctionsList.Items.Count != 0
+                    && datas.WaysList.Items.Count != 0)
                 {
                     Debug.WriteLine(this.ToString());
                     Debug.WriteLine(CollectionsSizes());
@@ -37,33 +34,38 @@ namespace MyGuide.Models
             }
             catch(Exception ex)
             {
-                if(!(ex is FileNotFoundException || ex is InvalidOperationException))
+             
+                if(ex is FileNotFoundException)         
                 {
-                    throw new LackOfDataException("Unknow exception",ex);
+                    throw new LackOfDataException("There is not data file", ex);
                 }
-                else
-                {
-                    if(ex is FileNotFoundException)
-                    {
-                        throw new LackOfDataException("There is not data file", ex);
-                    }
-                    if(ex is InvalidOperationException)
-                    {
-                        throw new LackOfDataException("There are errors in data file",ex);
-                    }
+                if(ex is InvalidOperationException)
+                {       
+                    throw new LackOfDataException("There are errors in data file",ex);           
                 }
+                
+                throw new LackOfDataException("Unknow exception",ex);
+            
             }
+        }
+
+        
+        public Root getData()
+        {
+            return datas;
+        }
+
+        public void setData(Root datas)
+        {
+            this.datas = datas;
         }
 
         
 
 
-        
-
-
-        public int AnimalsSize() { return Datas.AnimalsList.Items.Count; }
-        public int WaysSize() { return Datas.WaysList.Items.Count; }
-        public int JunctionsSize() { return Datas.JunctionsList.Items.Count; }
+        public int AnimalsSize() { return datas.AnimalsList.Items.Count; }
+        public int WaysSize() { return datas.WaysList.Items.Count; }
+        public int JunctionsSize() { return datas.JunctionsList.Items.Count; }
 
         public string CollectionsSizes()
         {
@@ -72,7 +74,7 @@ namespace MyGuide.Models
 
         public Node GetAnimalPosition(string name)
         {
-            Animal animal = Datas.AnimalsList.Items.Find(x => x.Name.Equals(name));
+            Animal animal = datas.AnimalsList.Items.Find(x => x.Name.Equals(name));
             if (animal == null)
             {
                 return null;
@@ -82,7 +84,7 @@ namespace MyGuide.Models
 
         public List<Node> GetWayListOfNodes(double id)
         {
-            Way way = Datas.WaysList.Items.Find(x => x.Id == id);
+            Way way = datas.WaysList.Items.Find(x => x.Id == id);
             if (way == null)
             {
                 return null;
@@ -93,10 +95,4 @@ namespace MyGuide.Models
 
     }
 
-    public class LackOfDataException : Exception
-    {
-        public LackOfDataException() : base() { }
-        public LackOfDataException(string message) : base(message) { }
-        public LackOfDataException(string message, System.Exception inner) : base(message, inner) { }
-    }
 }

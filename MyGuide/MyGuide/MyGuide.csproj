@@ -102,6 +102,7 @@
     <Compile Include="Models\DataServiceModel.cs" />
     <Compile Include="Models\IDataServiceModel.cs" />
     <Compile Include="Models\IOptionServiceModel.cs" />
+    <Compile Include="Models\LackOfDataException.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\OptionServiceModel.cs" />
     <Compile Include="Models\XmlSerializationOptionModels.cs" />

@@ -4,12 +4,8 @@ using MyGuide.Services;
 using MyGuide.Services.Interfaces;
 using MyGuide.ViewModels;
 using MyGuide.Models;
-using MyGuide.DataServices;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace MyGuide

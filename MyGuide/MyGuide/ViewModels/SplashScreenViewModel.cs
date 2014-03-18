@@ -2,27 +2,17 @@
 using MyGuide.Models;
 using MyGuide.Services.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Navigation;
 
 namespace MyGuide.ViewModels
 {
     public class SplashScreenViewModel : ViewModelBase
     {
-        private IDataServiceModel dataServiceModel;
-        private IMessageDialogService messageDialogService;
-        private INavigationService navigationService;
-        public SplashScreenViewModel(INavigationService _navigationService,
-            IMessageDialogService _messageDialogService,IDataServiceModel _dataServiceModel) : base (_navigationService, _messageDialogService)
+
+        public SplashScreenViewModel(INavigationService navigationService,
+            IMessageDialogService messageDialogService,IDataServiceModel dataServiceModel) : base (navigationService, messageDialogService,dataServiceModel)
         {
-            dataServiceModel = _dataServiceModel;
-            messageDialogService = _messageDialogService;
-            navigationService = _navigationService;
+            
         }
 
         public override async void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
@@ -31,7 +21,7 @@ namespace MyGuide.ViewModels
             string exceptionMessage = "";
             try
             {
-                await dataServiceModel.Initialize();
+                await _dataServiceModel.Initialize();
             }
             catch(LackOfDataException ex)
             {
@@ -41,12 +31,12 @@ namespace MyGuide.ViewModels
             
             if (exceptionOccured)
             {
-                await messageDialogService.ShowDialog("Error",
+                await _messageDialogService.ShowDialog("Error",
                     (string)String.Format("There is a problem with data. Please contact with us. \n{0}", exceptionMessage), "Ok", null);
                 App.Current.Terminate();
             }
             
-            navigationService.UriFor<MainPageViewModel>().Navigate();
+            _navigation.UriFor<MainPageViewModel>().Navigate();
         } 
     }
 }

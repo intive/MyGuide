@@ -2,13 +2,7 @@
 using MyGuide.Models;
 using MyGuide.Resources;
 using MyGuide.Services.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace MyGuide.ViewModels
 {
@@ -29,7 +23,7 @@ namespace MyGuide.ViewModels
         public MainPageViewModel(
             INavigationService navigationService,
             IMessageDialogService messageDialogService, IDataServiceModel dataServiceModel)
-            : base(navigationService, messageDialogService)
+            : base(navigationService, messageDialogService,dataServiceModel)
         {
            
             // Uncomment to use design time data as test data
