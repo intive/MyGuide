@@ -10,8 +10,8 @@ namespace MyGuide.ViewModels
     public class SplashScreenViewModel : ViewModelBase
     {
         public SplashScreenViewModel(INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataService dataServiceModel)
-            : base(navigationService, messageDialogService, dataServiceModel)
+            IMessageDialogService messageDialogService, IDataService dataService)
+            : base(navigationService, messageDialogService, dataService)
         {
         }
 
@@ -21,7 +21,7 @@ namespace MyGuide.ViewModels
             string exceptionMessage = "";
             try
             {
-                await _dataServiceModel.Initialize();
+                await _dataService.Initialize();
             }
             catch (LackOfDataException ex)
             {

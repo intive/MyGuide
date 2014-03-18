@@ -8,7 +8,7 @@ namespace MyGuide.ViewModels
 {
     public class ViewModelBase : PropertyChangedBase
     {
-        protected IDataService _dataServiceModel;
+        protected IDataService _dataService;
         protected IMessageDialogService _messageDialogService;
         protected INavigationService _navigation;
 
@@ -18,10 +18,10 @@ namespace MyGuide.ViewModels
         }
 
         public ViewModelBase(INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataService dataServiceModel)
+            IMessageDialogService messageDialogService, IDataService dataService)
         {
             _navigation = navigationService;
-            _dataServiceModel = dataServiceModel;
+            _dataService = dataService;
             _messageDialogService = messageDialogService;
         }
 

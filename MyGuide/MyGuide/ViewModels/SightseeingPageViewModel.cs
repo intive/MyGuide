@@ -8,8 +8,8 @@ namespace MyGuide.ViewModels
     public class SightseeingPageViewModel : ViewModelBase
     {
         public SightseeingPageViewModel(INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataService dataServiceModel)
-            : base(navigationService, messageDialogService, dataServiceModel)
+            IMessageDialogService messageDialogService, IDataService dataService)
+            : base(navigationService, messageDialogService, dataService)
         {
         }
 
