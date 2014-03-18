@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -16,6 +17,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.blstream.myguide.settings.Settings;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
@@ -23,10 +25,9 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
-import com.blstream.myguide.settings.*;
-
 public class SightseeingActivity extends Activity implements OnCameraChangeListener {
 
+	private static final String LOG_TAG = ParseXmlTask.class.getSimpleName();
 	private static final float DEFAULT_MIN_ZOOM = 14.5f;
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
@@ -51,7 +52,8 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
-	 * NavigationDrawer for the Activity.
+	 * NavigationDrawer for the Activity. Reads settings which are saved in
+	 * MyGuideApp and sets up GoogleMap.
 	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -78,18 +80,33 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		Settings settings = mga.getSettings();
 		try {
 			mStartCenterLat = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LAT));
+		} catch (NumberFormatException e) {
+			Log.w(LOG_TAG, Settings.KEY_START_LAT + " " + e);
+			mStartCenterLat = DEFAULT_START_LAT;
+			mStartCenterLon = DEFAULT_START_LON;
+		}
+		try {
 			mStartCenterLon = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LON));
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
+			Log.w(LOG_TAG, Settings.KEY_START_LON + " " + e);
 			mStartCenterLat = DEFAULT_START_LAT;
 			mStartCenterLon = DEFAULT_START_LON;
 		}
 		try {
 			mMinZoom = settings.getValueAsFloat(Settings.KEY_MIN_ZOOM);
-			mMaxZoom = settings.getValueAsFloat(Settings.KEY_MAX_ZOOM);
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
+			Log.w(LOG_TAG, Settings.KEY_MIN_ZOOM + " " + e);
 			mMinZoom = DEFAULT_MIN_ZOOM;
 			mMaxZoom = DEFAULT_MAX_ZOOM;
 		}
+		try {
+			mMaxZoom = settings.getValueAsFloat(Settings.KEY_MAX_ZOOM);
+		} catch (NumberFormatException e) {
+			Log.w(LOG_TAG, Settings.KEY_MIN_ZOOM + " " + e);
+			mMinZoom = DEFAULT_MIN_ZOOM;
+			mMaxZoom = DEFAULT_MAX_ZOOM;
+		}
+
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mStartCenterLat,
 				mStartCenterLon), mMinZoom));

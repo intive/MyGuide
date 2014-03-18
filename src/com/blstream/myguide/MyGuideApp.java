@@ -3,28 +3,31 @@ package com.blstream.myguide;
 
 import android.app.Application;
 
-import com.blstream.myguide.zoolocations.ZooLocationsData;
 import com.blstream.myguide.settings.Settings;
+import com.blstream.myguide.zoolocations.ZooLocationsData;
 
-/* Rafal's idea (instead of singleton).*/
+/**
+ * @author Rafal Class designed for keeping data which would be avaible from
+ *         every class in Application containing context.
+ */
 public class MyGuideApp extends Application {
 
 	private Settings mSettings = null;
 	private ZooLocationsData mZooData = null;
 
-	protected void setData(ZooLocationsData data) {
+	protected synchronized void setZooData(ZooLocationsData data) {
 		mZooData = data;
 	}
 
-	protected void setSettings(Settings settings) {
+	protected synchronized void setSettings(Settings settings) {
 		mSettings = settings;
 	}
 
-	public ZooLocationsData getData() {
+	public synchronized ZooLocationsData getZooData() {
 		return mZooData;
 	}
 
-	public Settings getSettings() {
+	public synchronized Settings getSettings() {
 		return mSettings;
 	}
 
