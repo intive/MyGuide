@@ -9,7 +9,7 @@ namespace MyGuide.Models
 {
     public class DataServiceModel : IDataServiceModel
     {
-        Root datas;
+        public Root Datas {get;set;}
  
             
         public async Task Initialize()
@@ -17,11 +17,11 @@ namespace MyGuide.Models
             XmlParser<Root> xmlPars = new XmlParser<Root>();
             try
             {
-                datas = await xmlPars.DeserializeXml("Data/data.xml");
+                Datas = await xmlPars.DeserializeXml("Data/data.xml");
 
-                if (datas.AnimalsList.Items.Count != 0
-                    && datas.JunctionsList.Items.Count != 0
-                    && datas.WaysList.Items.Count != 0)
+                if (Datas.AnimalsList.Items.Count != 0
+                    && Datas.JunctionsList.Items.Count != 0
+                    && Datas.WaysList.Items.Count != 0)
                 {
                     Debug.WriteLine(this.ToString());
                     Debug.WriteLine(CollectionsSizes());
@@ -49,23 +49,9 @@ namespace MyGuide.Models
             }
         }
 
-        
-        public Root getData()
-        {
-            return datas;
-        }
-
-        public void setData(Root datas)
-        {
-            this.datas = datas;
-        }
-
-        
-
-
-        public int AnimalsSize() { return datas.AnimalsList.Items.Count; }
-        public int WaysSize() { return datas.WaysList.Items.Count; }
-        public int JunctionsSize() { return datas.JunctionsList.Items.Count; }
+        public int AnimalsSize() { return Datas.AnimalsList.Items.Count; }
+        public int WaysSize() { return Datas.WaysList.Items.Count; }
+        public int JunctionsSize() { return Datas.JunctionsList.Items.Count; }
 
         public string CollectionsSizes()
         {
@@ -74,7 +60,7 @@ namespace MyGuide.Models
 
         public Node GetAnimalPosition(string name)
         {
-            Animal animal = datas.AnimalsList.Items.Find(x => x.Name.Equals(name));
+            Animal animal = Datas.AnimalsList.Items.Find(x => x.Name.Equals(name));
             if (animal == null)
             {
                 return null;
@@ -84,7 +70,7 @@ namespace MyGuide.Models
 
         public List<Node> GetWayListOfNodes(double id)
         {
-            Way way = datas.WaysList.Items.Find(x => x.Id == id);
+            Way way = Datas.WaysList.Items.Find(x => x.Id == id);
             if (way == null)
             {
                 return null;
