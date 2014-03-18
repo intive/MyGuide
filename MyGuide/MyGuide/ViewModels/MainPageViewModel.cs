@@ -1,35 +1,35 @@
 ﻿using Caliburn.Micro;
+using MyGuide.Models;
 using MyGuide.Resources;
 using MyGuide.Services.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace MyGuide.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        private IMessageDialogService _msgDialogServ;
+        
+
 
         public MainPageViewModel()
+           
         {
             if (Execute.InDesignMode)
                 LoadDesignData();
         }
 
+            
+
         public MainPageViewModel(
             INavigationService navigationService,
-            IMessageDialogService msgDialogService, IMessageDialogService messageDialogService)
-            : base(navigationService, messageDialogService)
+            IMessageDialogService messageDialogService, IDataServiceModel dataServiceModel)
+            : base(navigationService, messageDialogService,dataServiceModel)
         {
+           
             // Uncomment to use design time data as test data
             // LoadDesignData();
 
-            _msgDialogServ = msgDialogService;
+         
         }
 
         #region Properties
@@ -70,7 +70,7 @@ namespace MyGuide.ViewModels
         public async void OnClose(CancelEventArgs args)
         {
             args.Cancel = true;
-            bool exit = await _msgDialogServ.ShowDialog(AppResources.ExitDlgTitle,
+            bool exit = await _messageDialogService.ShowDialog(AppResources.ExitDlgTitle,
                 AppResources.ExitDlgMessage, DialogType.YesNo);
             if (exit)
             {

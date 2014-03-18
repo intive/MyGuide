@@ -120,6 +120,9 @@
   <data name="AllowButton" xml:space="preserve">
     <value>zezwól</value>
   </data>
+  <data name="Animals" xml:space="preserve">
+    <value>zwierzęta</value>
+  </data>
   <data name="ApplicationTitle" xml:space="preserve">
     <value>My Guide</value>
   </data>
@@ -135,11 +138,26 @@
   <data name="ExitDlgTitle" xml:space="preserve">
     <value>Wyjście</value>
   </data>
+  <data name="Gastronomy" xml:space="preserve">
+    <value>jedzenie</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>historia</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>informacje</value>
+  </data>
+  <data name="Map" xml:space="preserve">
+    <value>mapa</value>
+  </data>
   <data name="NoButton" xml:space="preserve">
     <value>nie</value>
   </data>
   <data name="Options" xml:space="preserve">
     <value>Ustawienia</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>preferencje</value>
   </data>
   <data name="ResourceFlowDirection" xml:space="preserve">
     <value>LeftToRight</value>

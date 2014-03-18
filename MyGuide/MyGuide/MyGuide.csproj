@@ -95,8 +95,18 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="DataServices\IXmlParser.cs" />
+    <Compile Include="DataServices\XmlParser.cs" />
     <Compile Include="DesignData\LoremImpusGenerator.cs" />
     <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Models\DataServiceModel.cs" />
+    <Compile Include="Models\IDataServiceModel.cs" />
+    <Compile Include="Models\IOptionServiceModel.cs" />
+    <Compile Include="Models\LackOfDataException.cs" />
+    <Compile Include="Models\Node.cs" />
+    <Compile Include="Models\OptionServiceModel.cs" />
+    <Compile Include="Models\XmlSerializationOptionModels.cs" />
+    <Compile Include="Models\XmlSerializationDataModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -109,6 +119,7 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\OptionsPageViewModel.cs" />
     <Compile Include="ViewModels\SightseeingPageViewModel.cs" />
+    <Compile Include="ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AboutZooPageView.xaml.cs">
       <DependentUpon>AboutZooPageView.xaml</DependentUpon>
@@ -122,6 +133,9 @@
     <Compile Include="Views\PageViewBase.cs" />
     <Compile Include="Views\SightseeingPageView.xaml.cs">
       <DependentUpon>SightseeingPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SplashScreenView.xaml.cs">
+      <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SightseeingPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SplashScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,6 +192,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\ZooWroclawLogo.jpg" />
+    <Content Include="Data\config.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\data.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.pl-PL.resx" />
