@@ -14,14 +14,13 @@ namespace MyGuide.DataServices
             return Task.Run(() =>
             {
                 XmlSerializer xmlDeserializer = new XmlSerializer(typeof(T));
-                object obj;
+                
                 using (TextReader reader = new StreamReader(dataPath))
                 {
-                    obj = xmlDeserializer.Deserialize(reader);
-                    
+                    return (T)xmlDeserializer.Deserialize(reader);    
                 }
 
-                return (T)obj;
+                
                 
             });
         }

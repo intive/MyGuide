@@ -70,6 +70,15 @@ namespace MyGuide.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to animals.
+        /// </summary>
+        public static string Animals {
+            get {
+                return ResourceManager.GetString("Animals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Guide.
         /// </summary>
         public static string ApplicationTitle {
@@ -115,6 +124,42 @@ namespace MyGuide.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to food.
+        /// </summary>
+        public static string Gastronomy {
+            get {
+                return ResourceManager.GetString("Gastronomy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to history.
+        /// </summary>
+        public static string History {
+            get {
+                return ResourceManager.GetString("History", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to information.
+        /// </summary>
+        public static string Information {
+            get {
+                return ResourceManager.GetString("Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to map.
+        /// </summary>
+        public static string Map {
+            get {
+                return ResourceManager.GetString("Map", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to no.
         /// </summary>
         public static string NoButton {
@@ -138,6 +183,15 @@ namespace MyGuide.Resources {
         public static string Options {
             get {
                 return ResourceManager.GetString("Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to preferences.
+        /// </summary>
+        public static string Preferences {
+            get {
+                return ResourceManager.GetString("Preferences", resourceCulture);
             }
         }
         

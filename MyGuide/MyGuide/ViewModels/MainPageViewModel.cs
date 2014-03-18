@@ -8,7 +8,7 @@ namespace MyGuide.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        private IMessageDialogService _msgDialogServ;
+        
 
 
         public MainPageViewModel()
@@ -29,7 +29,7 @@ namespace MyGuide.ViewModels
             // Uncomment to use design time data as test data
             // LoadDesignData();
 
-            _msgDialogServ = messageDialogService;
+         
         }
 
         #region Properties
@@ -70,7 +70,7 @@ namespace MyGuide.ViewModels
         public async void OnClose(CancelEventArgs args)
         {
             args.Cancel = true;
-            bool exit = await _msgDialogServ.ShowDialog(AppResources.ExitDlgTitle,
+            bool exit = await _messageDialogService.ShowDialog(AppResources.ExitDlgTitle,
                 AppResources.ExitDlgMessage, DialogType.YesNo);
             if (exit)
             {
