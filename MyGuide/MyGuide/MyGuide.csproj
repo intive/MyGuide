@@ -99,12 +99,12 @@
     <Compile Include="DataServices\XmlParser.cs" />
     <Compile Include="DesignData\LoremImpusGenerator.cs" />
     <Compile Include="LocalizedStrings.cs" />
-    <Compile Include="Models\DataServiceModel.cs" />
-    <Compile Include="Models\IDataServiceModel.cs" />
-    <Compile Include="Models\IOptionServiceModel.cs" />
+    <Compile Include="DataServices\DataService.cs" />
+    <Compile Include="DataServices\IDataService.cs" />
+    <Compile Include="DataServices\IOptionService.cs" />
     <Compile Include="Models\LackOfDataException.cs" />
     <Compile Include="Models\Node.cs" />
-    <Compile Include="Models\OptionServiceModel.cs" />
+    <Compile Include="DataServices\OptionsService.cs" />
     <Compile Include="Models\XmlSerializationOptionModels.cs" />
     <Compile Include="Models\XmlSerializationDataModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
