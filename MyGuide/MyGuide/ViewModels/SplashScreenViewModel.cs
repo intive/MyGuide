@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Services.Interfaces;
 using System;
@@ -8,11 +9,10 @@ namespace MyGuide.ViewModels
 {
     public class SplashScreenViewModel : ViewModelBase
     {
-
         public SplashScreenViewModel(INavigationService navigationService,
-            IMessageDialogService messageDialogService,IDataServiceModel dataServiceModel) : base (navigationService, messageDialogService,dataServiceModel)
+            IMessageDialogService messageDialogService, IDataService dataService)
+            : base(navigationService, messageDialogService, dataService)
         {
-            
         }
 
         public override async void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
@@ -21,22 +21,22 @@ namespace MyGuide.ViewModels
             string exceptionMessage = "";
             try
             {
-                await _dataServiceModel.Initialize();
+                await _dataService.Initialize();
             }
-            catch(LackOfDataException ex)
+            catch (LackOfDataException ex)
             {
                 exceptionOccured = true;
                 exceptionMessage = ex.Message;
             }
-            
+
             if (exceptionOccured)
             {
                 await _messageDialogService.ShowDialog("Error",
                     (string)String.Format("There is a problem with data. Please contact with us. \n{0}", exceptionMessage), "Ok", null);
                 App.Current.Terminate();
             }
-            
+
             _navigation.UriFor<MainPageViewModel>().Navigate();
-        } 
+        }
     }
 }

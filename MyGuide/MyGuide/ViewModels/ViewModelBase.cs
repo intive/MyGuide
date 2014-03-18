@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Services.Interfaces;
 using System.Windows.Navigation;
@@ -7,20 +8,20 @@ namespace MyGuide.ViewModels
 {
     public class ViewModelBase : PropertyChangedBase
     {
-        protected INavigationService _navigation;
+        protected IDataService _dataService;
         protected IMessageDialogService _messageDialogService;
-        protected IDataServiceModel _dataServiceModel;
+        protected INavigationService _navigation;
 
         public ViewModelBase()
         {
             _navigation = null;
-            
         }
 
-        public ViewModelBase(INavigationService navigationService,IMessageDialogService messageDialogService, IDataServiceModel dataServiceModel)
+        public ViewModelBase(INavigationService navigationService,
+            IMessageDialogService messageDialogService, IDataService dataService)
         {
             _navigation = navigationService;
-            _dataServiceModel = dataServiceModel;
+            _dataService = dataService;
             _messageDialogService = messageDialogService;
         }
 

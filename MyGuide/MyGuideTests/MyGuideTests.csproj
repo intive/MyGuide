@@ -86,7 +86,7 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Tests\DummyTests.cs" />
-    <Compile Include="Tests\DataServiceModelTest.cs" />
+    <Compile Include="Tests\DataServiceTest.cs" />
     <Compile Include="Tests\XmlParserTests.cs" />
   </ItemGroup>
   <ItemGroup>

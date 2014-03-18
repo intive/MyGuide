@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Resources;
 using MyGuide.Services.Interfaces;
@@ -8,28 +9,18 @@ namespace MyGuide.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        
-
-
         public MainPageViewModel()
-           
         {
             if (Execute.InDesignMode)
                 LoadDesignData();
         }
 
-            
-
-        public MainPageViewModel(
-            INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataServiceModel dataServiceModel)
-            : base(navigationService, messageDialogService,dataServiceModel)
+        public MainPageViewModel(INavigationService navigationService,
+            IMessageDialogService messageDialogService, IDataService dataService)
+            : base(navigationService, messageDialogService, dataService)
         {
-           
             // Uncomment to use design time data as test data
             // LoadDesignData();
-
-         
         }
 
         #region Properties

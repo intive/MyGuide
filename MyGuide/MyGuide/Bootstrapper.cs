@@ -1,9 +1,11 @@
 ﻿using Caliburn.Micro;
 using Caliburn.Micro.BindableAppBar;
+using MyGuide.DataServices;
+using MyGuide.DataServices.Interfaces;
+using MyGuide.Models;
 using MyGuide.Services;
 using MyGuide.Services.Interfaces;
 using MyGuide.ViewModels;
-using MyGuide.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
@@ -31,14 +33,13 @@ namespace MyGuide
             if (!Execute.InDesignMode)
                 container.RegisterPhoneServices(RootFrame);
 
-
             container.PerRequest<MainPageViewModel>();
             container.PerRequest<AboutZooPageViewModel>();
             container.PerRequest<OptionsPageViewModel>();
             container.PerRequest<SightseeingPageViewModel>();
-            container.Singleton<IDataServiceModel, DataServiceModel>();
+            container.Singleton<IDataService, DataService>();
             container.PerRequest<SplashScreenViewModel>();
-            
+
             container.PerRequest<IMessageDialogService, MessageDialogService>();
 
             //All VM should be add to this container, e.g. container.PerRequest<AnotherViewModel>();
