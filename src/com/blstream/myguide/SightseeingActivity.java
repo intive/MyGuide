@@ -50,6 +50,21 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	private double mStartCenterLat;
 	private double mStartCenterLon;
 
+	private void configureAndDisplayUserPosition() {
+		boolean visible = true;
+		try {
+			// check if location should be hidden
+			visible = !((MyGuideApp) this.getApplication())
+					.getSettings()
+					.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN);
+		} catch (NullPointerException e) {
+			Log.d(LOG_TAG, String.format("No value for '%s' in settings", Settings.KEY_MAP_MY_POSITION_HIDDEN));
+		} finally {
+			Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
+			mMap.setMyLocationEnabled(visible);
+		}
+	}
+	
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
 	 * NavigationDrawer for the Activity. Reads settings which are saved in
@@ -111,6 +126,8 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mStartCenterLat,
 				mStartCenterLon), mMinZoom));
 		mMap.setOnCameraChangeListener(this);
+		
+		this.configureAndDisplayUserPosition();
 	}
 
 	/** Sets up custom ActionBar. */

@@ -19,5 +19,10 @@
 	
 	<!-- Longitude of point which is on map's center (at the beginning) ("Dziedziniec")-->
 	<start_lon>17.074053</start_lon>
-					
+	
+	<!-- (logical) hide user's position on map?
+		lack of this key will, by default, DISPLAY user's location
+	-->
+	<map_my_position_hidden>false</map_my_position_hidden>
 </configuration>
+
