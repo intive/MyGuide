@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using MyGuide.DataServices.Interfaces;
+using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 

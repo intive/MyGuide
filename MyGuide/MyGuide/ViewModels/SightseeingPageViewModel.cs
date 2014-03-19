@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Services.Interfaces;
 
@@ -7,8 +8,8 @@ namespace MyGuide.ViewModels
     public class SightseeingPageViewModel : ViewModelBase
     {
         public SightseeingPageViewModel(INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataServiceModel dataServiceModel)
-            : base(navigationService, messageDialogService, dataServiceModel)
+            IMessageDialogService messageDialogService, IDataService dataService)
+            : base(navigationService, messageDialogService, dataService)
         {
         }
 
@@ -44,6 +45,6 @@ namespace MyGuide.ViewModels
         //{
         //}
 
-        #endregion
+        #endregion Commands
     }
 }
