@@ -110,6 +110,7 @@ public class SightseeingActivity extends Activity {
 
 			@Override
 			public boolean onQueryTextChange(String s) {
+
 				return false;
 			}
 		});
