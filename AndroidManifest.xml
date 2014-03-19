@@ -17,6 +17,7 @@
         android:required="true"/>
 
     <application
+        android:name="com.blstream.myguide.MyGuideApp"
         android:label="@string/app_name"
         android:icon="@drawable/ic_launcher"
         android:theme="@style/Main_Theme"

@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -16,7 +17,21 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-public class SightseeingActivity extends Activity {
+import com.blstream.myguide.settings.Settings;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+
+public class SightseeingActivity extends Activity implements OnCameraChangeListener {
+
+	private static final String LOG_TAG = ParseXmlTask.class.getSimpleName();
+	private static final float DEFAULT_MIN_ZOOM = 14.5f;
+	private static final float DEFAULT_MAX_ZOOM = 19.0f;
+	private static final double DEFAULT_START_LAT = 51.1050406;
+	private static final double DEFAULT_START_LON = 17.074053;
 
 	private ImageView mImgvSlidingMenu;
 	private ImageView mImgvShowRoute;
@@ -29,9 +44,16 @@ public class SightseeingActivity extends Activity {
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 
+	private GoogleMap mMap;
+	private float mMinZoom;
+	private float mMaxZoom;
+	private double mStartCenterLat;
+	private double mStartCenterLon;
+
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
-	 * NavigationDrawer for the Activity.
+	 * NavigationDrawer for the Activity. Reads settings which are saved in
+	 * MyGuideApp and sets up GoogleMap.
 	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +75,42 @@ public class SightseeingActivity extends Activity {
 		}
 
 		setUpDrawerListView();
+
+		MyGuideApp mga = (MyGuideApp) (this.getApplication());
+		Settings settings = mga.getSettings();
+		try {
+			mStartCenterLat = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LAT));
+		} catch (NumberFormatException e) {
+			Log.w(LOG_TAG, Settings.KEY_START_LAT + " " + e);
+			mStartCenterLat = DEFAULT_START_LAT;
+			mStartCenterLon = DEFAULT_START_LON;
+		}
+		try {
+			mStartCenterLon = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LON));
+		} catch (NumberFormatException e) {
+			Log.w(LOG_TAG, Settings.KEY_START_LON + " " + e);
+			mStartCenterLat = DEFAULT_START_LAT;
+			mStartCenterLon = DEFAULT_START_LON;
+		}
+		try {
+			mMinZoom = settings.getValueAsFloat(Settings.KEY_MIN_ZOOM);
+		} catch (NumberFormatException e) {
+			Log.w(LOG_TAG, Settings.KEY_MIN_ZOOM + " " + e);
+			mMinZoom = DEFAULT_MIN_ZOOM;
+			mMaxZoom = DEFAULT_MAX_ZOOM;
+		}
+		try {
+			mMaxZoom = settings.getValueAsFloat(Settings.KEY_MAX_ZOOM);
+		} catch (NumberFormatException e) {
+			Log.w(LOG_TAG, Settings.KEY_MIN_ZOOM + " " + e);
+			mMinZoom = DEFAULT_MIN_ZOOM;
+			mMaxZoom = DEFAULT_MAX_ZOOM;
+		}
+
+		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mStartCenterLat,
+				mStartCenterLon), mMinZoom));
+		mMap.setOnCameraChangeListener(this);
 	}
 
 	/** Sets up custom ActionBar. */
@@ -155,6 +213,16 @@ public class SightseeingActivity extends Activity {
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		mDrawerToggle.syncState();
+	}
+
+	@Override
+	public void onCameraChange(CameraPosition camera) {
+		if (camera.zoom < mMinZoom) {
+			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
+		}
+		else if (camera.zoom > mMaxZoom) {
+			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
+		}
 	}
 
 	@Override
