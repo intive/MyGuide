@@ -7,4 +7,17 @@
 
 	<!-- Radius outside which the information that user got close to an object disappears -->
 	<external_object_radius>2</external_object_radius>
+	
+	<!-- Min zoom level of map -->
+	<min_zoom>14.5</min_zoom>
+	
+	<!-- Max zoom level of map -->
+	<max_zoom>19.0</max_zoom>
+	
+	<!-- Latitude of point which is on map's center (at the beginning) ("Dziedziniec")-->
+	<start_lat>51.1050406</start_lat>
+	
+	<!-- Longitude of point which is on map's center (at the beginning) ("Dziedziniec")-->
+	<start_lon>17.074053</start_lon>
+					
 </configuration>
