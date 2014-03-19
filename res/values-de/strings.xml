@@ -3,6 +3,7 @@
 
     <!-- Deutschland language version -->
     <string name="app_name">MyGuide</string>
+
     <!-- Welcome screen -->
     <string name="header_main_screen">Willkommen in der Führungs\nWroclaw Zoo</string>
     <string name="close">Schließen</string>
@@ -11,6 +12,7 @@
     <string name="sightseeing">Besichtigen</string>
     <string name="options">Optionen</string>
     <string name="text">de: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.</string>
+
     <!-- Dialogs -->
     <string name="ok">OK</string>
     <string name="cancel">Abbrechen</string>
@@ -29,5 +31,4 @@
         <item name="gastronomy">Gastronomie</item>
         <item name="preferences">Präferenzen</item>
     </string-array>
-
 </resources>
