@@ -12,7 +12,7 @@
 + (NSData *) fetchDataFromXML: (NSString *) fileName
 {
     NSString *fileNameWithExtension = [fileName stringByAppendingPathExtension:@"xml"];
-    NSData *ans;
+    NSString *finalPath;
     
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *bundlePath = [bundle pathForResource:fileName ofType: @"xml"];
@@ -22,9 +22,9 @@
     documentsPath = [documentsPath stringByAppendingPathComponent:fileNameWithExtension];
     bool fileExists = [[NSFileManager defaultManager] fileExistsAtPath:documentsPath];
     
-    if(fileExists) ans = [NSData dataWithContentsOfFile:documentsPath];
-    else ans = [NSData dataWithContentsOfFile:bundlePath];
+    if(fileExists) finalPath = documentsPath;
+    else finalPath = bundlePath;
     
-    return ans;
+    return [NSData dataWithContentsOfFile:finalPath];
 }
 @end
