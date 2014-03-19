@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 - (IBAction) centerOnCurrentLocation: (id) sender;
+@property (strong, nonatomic) IBOutlet UIToolbar *mapToolbar;
 
 @end

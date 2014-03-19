@@ -10,14 +10,20 @@
 
 static const double degreeInRadians = 0.0174532925;
 
+@interface MapViewController ()
+
+@property (nonatomic) UIAlertView *alertDistance;
+@property (nonatomic) MKCoordinateRegion lastGoodRegion;
+@property (nonatomic) MKMapCamera *lastGoodCamera;
+@property (nonatomic) CLLocation *zooCenterLocation;
+@property (nonatomic) BOOL showAlert;
+
+@end
+
+
 @implementation MapViewController {
     Settings     *_settings;
     AFParsedData *_data;
-    UIAlertView  *_alertDistance;
-    BOOL          _showAlert;
-    CLLocation   *_zooCenterLocation;
-    MKCoordinateRegion _lastGoodRegion;
-    MKMapCamera  *_lastGoodCamera;
 }
 
 #pragma mark -
@@ -29,9 +35,16 @@ static const double degreeInRadians = 0.0174532925;
     _alertDistance = [self buildAlertView];
     _showAlert = YES;
     _zooCenterLocation = [[CLLocation alloc] initWithLatitude:_settings.zooCenter.latitude longitude:_settings.zooCenter.longitude];
+    
+    _mapView.translatesAutoresizingMaskIntoConstraints = YES;
     _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
+
+    MKUserTrackingBarButtonItem *button = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    NSArray *toolbarItems = [NSArray arrayWithObjects:button, nil];
     
+    self.mapToolbar.items = toolbarItems;
+//    self.mapToolbar.translatesAutoresizingMaskIntoConstraints = YES;
     
     [self showUserPosition];
     [self showAnimals];
@@ -106,10 +119,8 @@ static const double degreeInRadians = 0.0174532925;
     return [userLocation.location distanceFromLocation: zooLocation];
 }
 
-- (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex: (NSInteger) buttonIndex {
-    NSString *title = [alertView buttonTitleAtIndex: buttonIndex];
-    
-    if([title isEqualToString: @"YES"])
+- (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex: (NSInteger) buttonIndex {    
+    if(buttonIndex != alertView.cancelButtonIndex)
     {
         [self.tabBarController setSelectedIndex: 2];
     }
@@ -150,7 +161,7 @@ static const double degreeInRadians = 0.0174532925;
     if ([overlay isKindOfClass:[MKPolyline class]]) {
         MKPolyline *route = overlay;
         MKPolylineRenderer *routeRenderer = [[MKPolylineRenderer alloc] initWithPolyline:route];
-        if(route.pointCount == 2 && (route.points[0].x == route.points[1].x)){
+        if(route.pointCount == 2 && fabs(route.points[0].x - route.points[1].x) < 1e-8){
             routeRenderer.strokeColor = [UIColor blackColor];
             routeRenderer.lineWidth = 5;
         }
@@ -175,7 +186,7 @@ static const double degreeInRadians = 0.0174532925;
     CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
     double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
     
-    if([[[UIDevice alloc] systemVersion] compare:@"7.0.0" options:NSNumericSearch] == NSOrderedAscending){
+    if(floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1){
         if(distanceFromZooCenter <= _settings.centerRadius){
             _lastGoodRegion = mapView.region;
         }
@@ -191,7 +202,8 @@ static const double degreeInRadians = 0.0174532925;
     CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
     double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
     
-    if([[[UIDevice alloc] systemVersion] compare:@"7.0.0" options:NSNumericSearch] == NSOrderedAscending){
+
+    if(floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1){
         if(distanceFromZooCenter > _settings.centerRadius){
             [mapView setRegion:_lastGoodRegion animated:YES];
         }
