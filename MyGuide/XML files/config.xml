@@ -13,7 +13,7 @@
     <map_max_height>900</map_max_height>
     <map_min_width>100</map_min_width>
     <map_min_heigth>123</map_min_heigth>
-    <map_camera_max_altitude>2651</map_camera_max_altitude>
+    <map_camera_max_altitude>2905</map_camera_max_altitude>
     <map_camera_min_altitude>362</map_camera_min_altitude>
     
     <!-- Values restricting scrolling -->

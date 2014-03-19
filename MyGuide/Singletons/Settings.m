@@ -18,8 +18,8 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
     int    _mapMinHeigth;
     double _zooLat;
     double _zooLng;
-    double _zooCntrLat;
-    double _zooCntrLon;
+    double _zooCenterLat;
+    double _zooCenterLon;
 }
 
 + (id) sharedSettingsData {
@@ -96,10 +96,10 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
         _centerRadius = [value integerValue];
     }
     else if ([name isEqualToString:  @"map_zoo_center_lat"]) {
-        _zooCntrLat = [value doubleValue];
+        _zooCenterLat = [value doubleValue];
     }
     else if ([name isEqualToString:  @"map_zoo_center_lon"]) {
-        _zooCntrLon = [value doubleValue];
+        _zooCenterLon = [value doubleValue];
     }
     else if ([name isEqualToString:  @"map_camera_max_altitude"]) {
         _cameraMaxAltitude = [value doubleValue];
@@ -117,7 +117,7 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
     return CLLocationCoordinate2DMake(_zooLat, _zooLng);
 }
 - (CLLocationCoordinate2D) calculateZooCenter{
-    return CLLocationCoordinate2DMake(_zooCntrLat, _zooCntrLon);
+    return CLLocationCoordinate2DMake(_zooCenterLat, _zooCenterLon);
 }
 - (MKCoordinateRegion) calculateMapBounds {
     return MKCoordinateRegionMakeWithDistance(self.mapCenter, _mapMaxWidth, _mapMaxHeight);
