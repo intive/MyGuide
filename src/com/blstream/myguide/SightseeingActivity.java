@@ -78,7 +78,6 @@ public class SightseeingActivity extends Activity {
 			if (searchText != null) {
 				searchText.setGravity(Gravity.CENTER);
 				searchText.setTextColor(Color.BLACK);
-
 			}
 
 			int search = searchPlate.getContext().getResources()
@@ -95,8 +94,7 @@ public class SightseeingActivity extends Activity {
 		mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
 			@Override
 			public boolean onClose() {
-				mSearchView.clearFocus();
-				mSearchViewClose.setVisibility(View.GONE);
+			    clearSearchView();
 				return true;
 			}
 		});
@@ -104,13 +102,14 @@ public class SightseeingActivity extends Activity {
 		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String s) {
-				mSearchView.clearFocus();
+                //TODO handle find animals
+				clearSearchView();
 				return false;
 			}
 
 			@Override
 			public boolean onQueryTextChange(String s) {
-
+                //TODO autocomplete text to show animals
 				return false;
 			}
 		});
@@ -118,16 +117,15 @@ public class SightseeingActivity extends Activity {
 		mImgvShowRoute.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				mSearchView.clearFocus();
-				mSearchViewClose.setVisibility(View.GONE);
+				// TODO handle route
+				clearSearchView();
 			}
 		});
 
 		mImgvSlidingMenu.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				mSearchView.clearFocus();
-				mSearchViewClose.setVisibility(View.GONE);
+				clearSearchView();
 
 				if (!mDrawerLayout.isDrawerOpen(Gravity.LEFT)) mDrawerLayout
 						.openDrawer(Gravity.LEFT);
@@ -153,8 +151,7 @@ public class SightseeingActivity extends Activity {
 		mDrawerLayout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View view, MotionEvent motionEvent) {
-				mSearchView.clearFocus();
-				mSearchViewClose.setVisibility(View.GONE);
+				clearSearchView();
 				return false;
 			}
 		});
@@ -171,5 +168,10 @@ public class SightseeingActivity extends Activity {
 		super.onConfigurationChanged(newConfig);
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
+
+    private void clearSearchView() {
+        mSearchView.clearFocus();
+        mSearchViewClose.setVisibility(View.GONE);
+    }
 
 }

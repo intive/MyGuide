@@ -34,7 +34,11 @@ android {
                 assets.srcDirs = ['assets']
             }
         }
-
+        signingConfigs {
+            debug {
+                storeFile file('debug.keystore')
+            }
+        }
         // Move the tests to tests/java, tests/res, etc...
 //        instrumentTest.setRoot('tests')
 
