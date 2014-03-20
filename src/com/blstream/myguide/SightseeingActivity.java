@@ -1,9 +1,12 @@
 
 package com.blstream.myguide;
 
+import java.util.ArrayList;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -18,12 +21,19 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.blstream.myguide.settings.Settings;
+import com.blstream.myguide.zoolocations.Junction;
+import com.blstream.myguide.zoolocations.Node;
+import com.blstream.myguide.zoolocations.Way;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class SightseeingActivity extends Activity implements OnCameraChangeListener {
 
@@ -32,6 +42,8 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
+	private static final boolean DEFAULT_PATHS_VISIBLE = true;
+	private static final boolean DEFAULT_JUNCTIONS_VISIBLE = true;
 
 	private ImageView mImgvSlidingMenu;
 	private ImageView mImgvShowRoute;
@@ -49,6 +61,12 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	private float mMaxZoom;
 	private double mStartCenterLat;
 	private double mStartCenterLon;
+
+	private boolean mPathsVisible;
+	private ArrayList<Polyline> mZooPaths;
+
+	private boolean mJunctionsVisible;
+	private ArrayList<Circle> mZooJunctions;
 
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
@@ -106,11 +124,87 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 			mMinZoom = DEFAULT_MIN_ZOOM;
 			mMaxZoom = DEFAULT_MAX_ZOOM;
 		}
+		try {
+			mPathsVisible = Boolean.parseBoolean(settings
+					.getValueAsString(Settings.KEY_PATHS_VISIBLE));
+		} catch (NullPointerException e) {
+			Log.w(LOG_TAG, Settings.KEY_PATHS_VISIBLE + " " + e);
+			mPathsVisible = DEFAULT_PATHS_VISIBLE;
+		}
+		try {
+			mJunctionsVisible = Boolean.parseBoolean(settings
+					.getValueAsString(Settings.KEY_JUNCTIONS_VISIBLE));
+		} catch (NullPointerException e) {
+			Log.w(LOG_TAG, Settings.KEY_JUNCTIONS_VISIBLE + " " + e);
+			mJunctionsVisible = DEFAULT_JUNCTIONS_VISIBLE;
+		}
 
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mStartCenterLat,
 				mStartCenterLon), mMinZoom));
 		mMap.setOnCameraChangeListener(this);
+
+		setUpWays();
+		displayAllWays(mPathsVisible);
+
+		setUpJunctions();
+		displayAllJunctions(mJunctionsVisible);
+	}
+
+	/**
+	 * Reads Ways and Nodes from ZooData and draws Polylines on the map
+	 * accordingly.
+	 */
+
+	private void setUpWays() {
+		MyGuideApp mga = (MyGuideApp) (this.getApplication());
+		ArrayList<Way> ways = mga.getZooData().getWays();
+		mZooPaths = new ArrayList<Polyline>();
+		for (Way a : ways) {
+			int numOfNodes = a.getNodes().size();
+			for (int i = 0; i < numOfNodes - 1; i++) {
+				Node current = a.getNodes().get(i);
+				Node next = a.getNodes().get(i + 1);
+				mZooPaths.add(mMap.addPolyline(new PolylineOptions()
+						.add(new LatLng(current.getLatitude(), current.getLongitude()),
+								new LatLng(next.getLatitude(), next.getLongitude()))
+						.width(2)
+						.color(Color.BLACK)));
+			}
+		}
+	}
+
+	/** Determines whatever of not all paths are displayed on the map. */
+	private void displayAllWays(boolean display) {
+		for (Polyline path : mZooPaths) {
+			path.setVisible(display);
+		}
+	}
+
+	/**
+	 * Reads Junctions from ZooData and draws Circles on the map accordingly.
+	 */
+	private void setUpJunctions() {
+		MyGuideApp mga = (MyGuideApp) (this.getApplication());
+		ArrayList<Junction> junctions = mga.getZooData().getJunctions();
+		mZooJunctions = new ArrayList<Circle>();
+		for (Junction a : junctions) {
+			mMap.addCircle(new CircleOptions()
+					.radius(10)
+					.strokeWidth(2)
+					.fillColor(Color.YELLOW)
+					.center(new LatLng(a.getNode().getLatitude(), a
+							.getNode().getLongitude())
+
+					));
+		}
+	}
+
+	/** Determines whatever of not all junctions are displayed on the map. */
+	private void displayAllJunctions(boolean display) {
+		for (Circle junction : mZooJunctions) {
+			junction.setVisible(display);
+		}
 	}
 
 	/** Sets up custom ActionBar. */
