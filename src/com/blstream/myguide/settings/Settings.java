@@ -12,6 +12,7 @@ public class Settings extends HashMap<String, String> {
 	public static final String KEY_MIN_ZOOM = "min_zoom";
 	public static final String KEY_START_LAT = "start_lat";
 	public static final String KEY_START_LON = "start_lon";
+	public static final String KEY_ANIMALS_VISIBLE = "animals_visible";
 	public static final String KEY_MAP_MY_POSITION_HIDDEN = "map_my_position_hidden";
 
 	private static final long serialVersionUID = 1L;
@@ -20,10 +21,6 @@ public class Settings extends HashMap<String, String> {
 	private int mValueInt;
 	private float mValueFloat;
 
-	public boolean getValueAsBoolean(String key) {
-		return Boolean.parseBoolean(super.get(key));
-	}
-	
 	public String getValueAsString(String key) {
 		mValue = super.get(key);
 		return mValue;
@@ -38,4 +35,13 @@ public class Settings extends HashMap<String, String> {
 		mValueFloat = Float.parseFloat(super.get(key));
 		return mValueFloat;
 	}
+
+	public double getValueAsDouble(String key) {
+		return Double.parseDouble(super.get(key));
+	}
+
+	public boolean getValueAsBoolean(String key) {
+		return Boolean.parseBoolean(super.get(key));
+	}
+
 }

@@ -14,15 +14,17 @@
 	<!-- Max zoom level of map -->
 	<max_zoom>19.0</max_zoom>
 	
-	<!-- Latitude of point which is on map's center (at the beginning) ("Dziedziniec")-->
+	<!-- Latitude of point which is on map's center (at the beginning) ("Dzieciniec")-->
 	<start_lat>51.1050406</start_lat>
 	
-	<!-- Longitude of point which is on map's center (at the beginning) ("Dziedziniec")-->
+	<!-- Longitude of point which is on map's center (at the beginning) ("Dzieciniec")-->
 	<start_lon>17.074053</start_lon>
-	
+
+	<!-- Show or hide animal markers on map-->	
+	<animals_visible>true</animals_visible>
+
 	<!-- (logical) hide user's position on map?
 		lack of this key will, by default, DISPLAY user's location
 	-->
 	<map_my_position_hidden>false</map_my_position_hidden>
 </configuration>
-
