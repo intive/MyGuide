@@ -17,18 +17,23 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import com.blstream.myguide.settings.Settings;
+import com.blstream.myguide.zoolocations.*;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class SightseeingActivity extends Activity implements OnCameraChangeListener {
 
 	private static final String LOG_TAG = SightseeingActivity.class.getSimpleName();
-	
+
 	private static final float DEFAULT_MIN_ZOOM = 14.5f;
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
@@ -50,6 +55,8 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	private float mMaxZoom;
 	private double mStartCenterLat;
 	private double mStartCenterLon;
+	private boolean mAnimalsVisible;
+	private ArrayList<Marker> mAnimalMarkers;
 
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
@@ -77,17 +84,27 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 
 		setUpDrawerListView();
 
+		setUpMapSettings();
+		setUpMap();
+		setUpAnimalMarkers();
+
+		displayAnimalMarkers(mAnimalsVisible);
+	}
+
+	private void setUpMapSettings() {
 		MyGuideApp mga = (MyGuideApp) (this.getApplication());
 		Settings settings = mga.getSettings();
+
+		mAnimalsVisible = settings.getValueAsBoolean(Settings.KEY_ANIMALS_VISIBLE);
 		try {
-			mStartCenterLat = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LAT));
+			mStartCenterLat = settings.getValueAsDouble(Settings.KEY_START_LAT);
 		} catch (NumberFormatException e) {
 			Log.w(LOG_TAG, Settings.KEY_START_LAT + " " + e);
 			mStartCenterLat = DEFAULT_START_LAT;
 			mStartCenterLon = DEFAULT_START_LON;
 		}
 		try {
-			mStartCenterLon = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LON));
+			mStartCenterLon = settings.getValueAsDouble(Settings.KEY_START_LON);
 		} catch (NumberFormatException e) {
 			Log.w(LOG_TAG, Settings.KEY_START_LON + " " + e);
 			mStartCenterLat = DEFAULT_START_LAT;
@@ -107,11 +124,30 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 			mMinZoom = DEFAULT_MIN_ZOOM;
 			mMaxZoom = DEFAULT_MAX_ZOOM;
 		}
+	}
 
+	private void setUpMap() {
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mStartCenterLat,
 				mStartCenterLon), mMinZoom));
 		mMap.setOnCameraChangeListener(this);
+	}
+
+	private void setUpAnimalMarkers() {
+		MyGuideApp mga = (MyGuideApp) (this.getApplication());
+		ArrayList<Animal> animals = mga.getZooData().getAnimals();
+		mAnimalMarkers = new ArrayList<Marker>();
+		for (Animal a : animals) {
+			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions()
+					.position(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()))
+					.title(a.getName())));
+		}
+	}
+
+	private void displayAnimalMarkers(boolean display) {
+		for (Marker m : mAnimalMarkers) {
+			m.setVisible(display);
+		}
 	}
 
 	/** Sets up custom ActionBar. */
