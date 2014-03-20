@@ -12,6 +12,7 @@ public class Settings extends HashMap<String, String> {
 	public static final String KEY_MIN_ZOOM = "min_zoom";
 	public static final String KEY_START_LAT = "start_lat";
 	public static final String KEY_START_LON = "start_lon";
+	public static final String KEY_ANIMALS_VISIBLE = "animals_visible";
 
 	private static final long serialVersionUID = 1L;
 
