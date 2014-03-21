@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- English language version -->
@@ -41,6 +41,13 @@
         <item name="history">History</item>
         <item name="gastronomy">Gastronomy</item>
         <item name="preferences">Preferences</item>
+    </string-array>
+
+    <!--Animals description tabs name -->
+    <string-array name="animal_desc_tabs_name">
+        <item name="description">Description</item>
+        <item name="child">For Child</item>
+        <item name="map_view">Map</item>
     </string-array>
 
 </resources>
