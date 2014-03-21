@@ -12,6 +12,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -20,38 +21,21 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.blstream.myguide.settings.Settings;
-import com.blstream.myguide.zoolocations.Junction;
-import com.blstream.myguide.zoolocations.Node;
-import com.blstream.myguide.zoolocations.Way;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
+import java.util.ArrayList;
 
 public class SightseeingActivity extends Activity implements OnCameraChangeListener {
 
-	private static final String LOG_TAG = ParseXmlTask.class.getSimpleName();
+	private static final String LOG_TAG = SightseeingActivity.class.getSimpleName();
 	private static final float DEFAULT_MIN_ZOOM = 14.5f;
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
-	private static final boolean DEFAULT_PATHS_VISIBLE = true;
-	private static final boolean DEFAULT_JUNCTIONS_VISIBLE = true;
 
 	private ImageView mImgvSlidingMenu;
 	private ImageView mImgvShowRoute;
 	private SearchView mSearchView;
 	private ImageView mSearchViewClose;
 	private ActionBar mActionBar;
-
-	private String[] mDrawerMenuItems;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -61,6 +45,8 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	private float mMaxZoom;
 	private double mStartCenterLat;
 	private double mStartCenterLon;
+	private boolean mAnimalsVisible;
+	private ArrayList<Marker> mAnimalMarkers;
 
 	private boolean mPathsVisible;
 	private ArrayList<Polyline> mZooPaths;
@@ -94,17 +80,30 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 
 		setUpDrawerListView();
 
+		setUpMapSettings();
+		setUpMap();
+		setUpAnimalMarkers();
+
+		displayAnimalMarkers(mAnimalsVisible);
+	}
+
+	private void setUpMapSettings() {
 		MyGuideApp mga = (MyGuideApp) (this.getApplication());
 		Settings settings = mga.getSettings();
+
+		mAnimalsVisible = settings.getValueAsBoolean(Settings.KEY_ANIMALS_VISIBLE);
+		mPathsVisible = settings.getValueAsBoolean(Settings.KEY_PATHS_VISIBLE);
+		mJunctionsVisible = settings.getValueAsBoolean(Settings.KEY_JUNCTIONS_VISIBLE);
+
 		try {
-			mStartCenterLat = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LAT));
+			mStartCenterLat = settings.getValueAsDouble(Settings.KEY_START_LAT);
 		} catch (NumberFormatException e) {
 			Log.w(LOG_TAG, Settings.KEY_START_LAT + " " + e);
 			mStartCenterLat = DEFAULT_START_LAT;
 			mStartCenterLon = DEFAULT_START_LON;
 		}
 		try {
-			mStartCenterLon = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LON));
+			mStartCenterLon = settings.getValueAsDouble(Settings.KEY_START_LON);
 		} catch (NumberFormatException e) {
 			Log.w(LOG_TAG, Settings.KEY_START_LON + " " + e);
 			mStartCenterLat = DEFAULT_START_LAT;
@@ -124,21 +123,8 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 			mMinZoom = DEFAULT_MIN_ZOOM;
 			mMaxZoom = DEFAULT_MAX_ZOOM;
 		}
-		try {
-			mPathsVisible = Boolean.parseBoolean(settings
-					.getValueAsString(Settings.KEY_PATHS_VISIBLE));
-		} catch (NullPointerException e) {
-			Log.w(LOG_TAG, Settings.KEY_PATHS_VISIBLE + " " + e);
-			mPathsVisible = DEFAULT_PATHS_VISIBLE;
-		}
-		try {
-			mJunctionsVisible = Boolean.parseBoolean(settings
-					.getValueAsString(Settings.KEY_JUNCTIONS_VISIBLE));
-		} catch (NullPointerException e) {
-			Log.w(LOG_TAG, Settings.KEY_JUNCTIONS_VISIBLE + " " + e);
-			mJunctionsVisible = DEFAULT_JUNCTIONS_VISIBLE;
-		}
 
+	private void setUpMap() {
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mStartCenterLat,
 				mStartCenterLon), mMinZoom));
@@ -202,6 +188,23 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		}
 	}
 
+	private void setUpAnimalMarkers() {
+		MyGuideApp mga = (MyGuideApp) (this.getApplication());
+		ArrayList<Animal> animals = mga.getZooData().getAnimals();
+		mAnimalMarkers = new ArrayList<Marker>();
+		for (Animal a : animals) {
+			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions()
+					.position(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()))
+					.title(a.getName())));
+		}
+	}
+
+	private void displayAnimalMarkers(boolean display) {
+		for (Marker m : mAnimalMarkers) {
+			m.setVisible(display);
+		}
+	}
+
 	/** Sets up custom ActionBar. */
 	private void setUpActionBar(View v) {
 		mSearchView = (SearchView) v.findViewById(R.id.svSightseeing);
@@ -224,6 +227,7 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 			TextView searchText = (TextView) searchPlate.findViewById(searchTextId);
 			if (searchText != null) {
 				searchText.setGravity(Gravity.CENTER);
+				searchText.setTextColor(Color.BLACK);
 			}
 
 			int search = searchPlate.getContext().getResources()
@@ -240,8 +244,7 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
 			@Override
 			public boolean onClose() {
-				mSearchView.clearFocus();
-				mSearchViewClose.setVisibility(View.GONE);
+			    clearSearchView();
 				return true;
 			}
 		});
@@ -249,17 +252,14 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String s) {
-				// TODO finding text
-
-				mSearchView.clearFocus();
+                //TODO handle find animals
+				clearSearchView();
 				return false;
 			}
 
 			@Override
 			public boolean onQueryTextChange(String s) {
-				// TODO we can crete database for parsed data, then we can use
-				// AutoCompleText of animals when search is use
-
+                //TODO autocomplete text to show animals
 				return false;
 			}
 		});
@@ -268,12 +268,15 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 			@Override
 			public void onClick(View view) {
 				// TODO handle route
+				clearSearchView();
 			}
 		});
 
 		mImgvSlidingMenu.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
+				clearSearchView();
+
 				if (!mDrawerLayout.isDrawerOpen(Gravity.LEFT)) mDrawerLayout
 						.openDrawer(Gravity.LEFT);
 				else mDrawerLayout.closeDrawer(Gravity.LEFT);
@@ -283,8 +286,7 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 
 	/** Sets up NavigationDrawer. */
 	public void setUpDrawerListView() {
-
-		mDrawerMenuItems = getResources().getStringArray(R.array.nav_drawer_items);
+		String[] mDrawerMenuItems = getResources().getStringArray(R.array.nav_drawer_items);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.lvMenuSightseeing);
 
@@ -296,6 +298,13 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+		mDrawerLayout.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View view, MotionEvent motionEvent) {
+				clearSearchView();
+				return false;
+			}
+		});
 	}
 
 	@Override
@@ -320,8 +329,9 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-	}
+    private void clearSearchView() {
+        mSearchView.clearFocus();
+        mSearchViewClose.setVisibility(View.GONE);
+    }
+
 }
