@@ -1,12 +1,9 @@
 
 package com.blstream.myguide;
 
-import java.io.File;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,11 +26,8 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
 		setContentView(R.layout.activity_main);
 		setUpListeners();
 
-		ParseXmlTask task = new ParseXmlTask(this);
-		File file = new File(Environment.getExternalStorageDirectory(), FILE_PATH_DATA);
-		File configFile = new File(Environment.getExternalStorageDirectory(), FILE_PATH_CONFIG);
-		task.execute(file, configFile);
-
+		((MyGuideApp) this.getApplication()).getZooData();
+		((MyGuideApp) this.getApplication()).getSettings();
 	}
 
 	/** Called when orientation is changed */

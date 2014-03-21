@@ -19,8 +19,10 @@
 	
 	<!-- Longitude of point which is on map's center (at the beginning) ("Dzieciniec")-->
 	<start_lon>17.074053</start_lon>
-							
+
 	<!-- Show or hide animal markers on map-->	
 	<animals_visible>true</animals_visible>
-					
+
+	<!-- Splash screen minimal duration -->
+	<splash_min_display_time_ms>2500</splash_min_display_time_ms>
 </configuration>
