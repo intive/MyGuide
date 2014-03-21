@@ -54,11 +54,11 @@ static const double degreeInRadians = 0.0174532925;
 }
 
 - (UIAlertView *) buildAlertView {
-    return [[UIAlertView alloc] initWithTitle: @"Too far from the zoo!"
-                                      message: @"You are too far from the zoo. Do you want to show driving directions?"
+    return [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"distanceAlertTitle", nil)
+                                      message: NSLocalizedString(@"distanceAlertMessage", nil)
                                      delegate: self
-                            cancelButtonTitle: @"NO"
-                            otherButtonTitles: @"YES", nil];
+                            cancelButtonTitle: NSLocalizedString(@"NO", nil)
+                            otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
 }
 
 - (IBAction) centerOnCurrentLocation: (id) sender {
