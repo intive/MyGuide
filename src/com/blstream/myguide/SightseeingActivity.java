@@ -58,18 +58,12 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	private ArrayList<Marker> mAnimalMarkers;
 
 	private void configureAndDisplayUserPosition() {
-		boolean visible = true;
-		try {
-			// check if location should be hidden
-			visible = !((MyGuideApp) this.getApplication())
-					.getSettings()
-					.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN);
-		} catch (NullPointerException e) {
-			Log.d(LOG_TAG, String.format("No value for '%s' in settings", Settings.KEY_MAP_MY_POSITION_HIDDEN));
-		} finally {
-			Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
-			mMap.setMyLocationEnabled(visible);
-		}
+		// check if location should be hidden
+		boolean visible = !((MyGuideApp) this.getApplication())
+				.getSettings()
+				.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN);
+		Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
+		mMap.setMyLocationEnabled(visible);
 	}
 	
 	/**
