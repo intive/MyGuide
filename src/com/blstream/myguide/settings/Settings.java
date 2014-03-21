@@ -34,4 +34,13 @@ public class Settings extends HashMap<String, String> {
 		mValueFloat = Float.parseFloat(super.get(key));
 		return mValueFloat;
 	}
+
+	public double getValueAsDouble(String key) {
+		return Double.parseDouble(super.get(key));
+	}
+
+	public boolean getValueAsBoolean(String key) {
+		return Boolean.parseBoolean(super.get(key));
+	}
+
 }

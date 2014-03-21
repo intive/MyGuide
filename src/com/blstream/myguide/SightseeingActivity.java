@@ -37,7 +37,6 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
-	private static final boolean DEFAULT_ANIMALS_VISIBLE = true;
 
 	private ImageView mImgvSlidingMenu;
 	private ImageView mImgvShowRoute;
@@ -83,32 +82,28 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		}
 
 		setUpDrawerListView();
-		
+
 		setUpMapSettings();
 		setUpMap();
 		setUpAnimalMarkers();
-		
+
 		displayAnimalMarkers(mAnimalsVisible);
 	}
 
 	private void setUpMapSettings() {
 		MyGuideApp mga = (MyGuideApp) (this.getApplication());
 		Settings settings = mga.getSettings();
+
+		mAnimalsVisible = settings.getValueAsBoolean(Settings.KEY_ANIMALS_VISIBLE);
 		try {
-			mAnimalsVisible = Boolean.parseBoolean(settings.getValueAsString(Settings.KEY_ANIMALS_VISIBLE));
-		} catch (NullPointerException e) {
-			Log.w(LOG_TAG, Settings.KEY_ANIMALS_VISIBLE + " " + e);
-			mAnimalsVisible = DEFAULT_ANIMALS_VISIBLE;			
-		}
-		try {
-			mStartCenterLat = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LAT));
+			mStartCenterLat = settings.getValueAsDouble(Settings.KEY_START_LAT);
 		} catch (NumberFormatException e) {
 			Log.w(LOG_TAG, Settings.KEY_START_LAT + " " + e);
 			mStartCenterLat = DEFAULT_START_LAT;
 			mStartCenterLon = DEFAULT_START_LON;
 		}
 		try {
-			mStartCenterLon = Double.parseDouble(settings.getValueAsString(Settings.KEY_START_LON));
+			mStartCenterLon = settings.getValueAsDouble(Settings.KEY_START_LON);
 		} catch (NumberFormatException e) {
 			Log.w(LOG_TAG, Settings.KEY_START_LON + " " + e);
 			mStartCenterLat = DEFAULT_START_LAT;
@@ -134,7 +129,7 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mStartCenterLat,
 				mStartCenterLon), mMinZoom));
-		mMap.setOnCameraChangeListener(this);		
+		mMap.setOnCameraChangeListener(this);
 	}
 
 	private void setUpAnimalMarkers() {
@@ -142,12 +137,12 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		ArrayList<Animal> animals = mga.getZooData().getAnimals();
 		mAnimalMarkers = new ArrayList<Marker>();
 		for (Animal a : animals) {
-			mAnimalMarkers.add( mMap.addMarker(new MarkerOptions()
-						.position(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()))
-						.title(a.getName())));
+			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions()
+					.position(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()))
+					.title(a.getName())));
 		}
 	}
-	
+
 	private void displayAnimalMarkers(boolean display) {
 		for (Marker m : mAnimalMarkers) {
 			m.setVisible(display);
