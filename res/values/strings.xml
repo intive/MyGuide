@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- English language version -->
@@ -22,7 +22,8 @@
     <string name="progress_dialog_title">Please wait</string>
     <string name="progress_dialog_message">Reading xml file with data.</string>
 
-    <!-- SightSeeing screen -->
+    <!--SightSeeing screen -->
+
     <string name="search_sightseeing">Search&#8230;</string>
     <string name="sliding_icon_Description">Opcje</string>
     <string name="route_icon_Description">Droga</string>
@@ -37,6 +38,13 @@
         <item name="history">History</item>
         <item name="gastronomy">Gastronomy</item>
         <item name="preferences">Preferences</item>
+    </string-array>
+
+    <!--Animals description tabs name -->
+    <string-array name="animal_desc_tabs_name">
+        <item name="description">Description</item>
+        <item name="child">For Child</item>
+        <item name="map_view">Map</item>
     </string-array>
 
 </resources>

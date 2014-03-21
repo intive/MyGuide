@@ -4,11 +4,13 @@ package com.blstream.myguide;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
@@ -43,8 +45,6 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	private SearchView mSearchView;
 	private ImageView mSearchViewClose;
 	private ActionBar mActionBar;
-
-	private String[] mDrawerMenuItems;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -171,6 +171,7 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 			TextView searchText = (TextView) searchPlate.findViewById(searchTextId);
 			if (searchText != null) {
 				searchText.setGravity(Gravity.CENTER);
+				searchText.setTextColor(Color.BLACK);
 			}
 
 			int search = searchPlate.getContext().getResources()
@@ -187,8 +188,7 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
 			@Override
 			public boolean onClose() {
-				mSearchView.clearFocus();
-				mSearchViewClose.setVisibility(View.GONE);
+			    clearSearchView();
 				return true;
 			}
 		});
@@ -196,17 +196,14 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String s) {
-				// TODO finding text
-
-				mSearchView.clearFocus();
+                //TODO handle find animals
+				clearSearchView();
 				return false;
 			}
 
 			@Override
 			public boolean onQueryTextChange(String s) {
-				// TODO we can crete database for parsed data, then we can use
-				// AutoCompleText of animals when search is use
-
+                //TODO autocomplete text to show animals
 				return false;
 			}
 		});
@@ -215,12 +212,15 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 			@Override
 			public void onClick(View view) {
 				// TODO handle route
+				clearSearchView();
 			}
 		});
 
 		mImgvSlidingMenu.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
+				clearSearchView();
+
 				if (!mDrawerLayout.isDrawerOpen(Gravity.LEFT)) mDrawerLayout
 						.openDrawer(Gravity.LEFT);
 				else mDrawerLayout.closeDrawer(Gravity.LEFT);
@@ -230,8 +230,7 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 
 	/** Sets up NavigationDrawer. */
 	public void setUpDrawerListView() {
-
-		mDrawerMenuItems = getResources().getStringArray(R.array.nav_drawer_items);
+		String[] mDrawerMenuItems = getResources().getStringArray(R.array.nav_drawer_items);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.lvMenuSightseeing);
 
@@ -243,6 +242,13 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+		mDrawerLayout.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View view, MotionEvent motionEvent) {
+				clearSearchView();
+				return false;
+			}
+		});
 	}
 
 	@Override
@@ -267,8 +273,9 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-	}
+    private void clearSearchView() {
+        mSearchView.clearFocus();
+        mSearchViewClose.setVisibility(View.GONE);
+    }
+
 }
