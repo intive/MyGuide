@@ -22,6 +22,10 @@
     <string name="progress_dialog_title">Please wait</string>
     <string name="progress_dialog_message">Reading xml file with data.</string>
 
+    <!-- SplashActivity -->
+    <string name="splash_dialog_error_title">Application error</string>
+    <string name="splash_dialog_error_message">A fatal error occured and application can not be started.</string>
+
     <!-- SightSeeing screen -->
     <string name="search_sightseeing">Search&#8230;</string>
     <string name="sliding_icon_Description">Opcje</string>

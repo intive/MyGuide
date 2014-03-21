@@ -2,7 +2,9 @@
 package com.blstream.myguide;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
+
+import java.util.concurrent.TimeUnit;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -35,22 +39,43 @@ public class SplashActivity extends Activity {
 	private static final String BGTHREAD_STATE_KEY = "/MyGuide/SplashActivity/BackgroundThreadState";
 	private static final String FILE_PATH_DATA = ".myguide/data2.xml";
 	private static final String FILE_PATH_CONFIG = ".myguide/config.xml";
-	private static final int DEFAULT_MIN_DISPLAY_MILLIS = 5000; // milliseconds
+	private static final long DEFAULT_MIN_DISPLAY_MILLIS = TimeUnit.SECONDS.toMillis(5);
 
 	private MyGuideApp mApp;
 
 	private boolean mBackgroundThreadRunning = false;
 
-	protected int mMinDisplayMillis = DEFAULT_MIN_DISPLAY_MILLIS;
+	protected long mMinDisplayMillis = DEFAULT_MIN_DISPLAY_MILLIS;
 
-	private void setMinDisplayTime(int defValue) {
+	private synchronized void notifyBackgroundThreadRunning() {
+		mBackgroundThreadRunning = true;
+	}
+
+	private synchronized void notifyBackgroundThreadIdle() {
+		mBackgroundThreadRunning = false;
+	}
+
+	private AlertDialog newErrorDialog() {
+		return (new AlertDialog.Builder(SplashActivity.this))
+				.setCancelable(false)
+				.setTitle(R.string.splash_dialog_error_title)
+				.setMessage(R.string.splash_dialog_error_message)
+				.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						System.exit(1);
+					}
+				})
+				.create();
+	}
+
+	private void setMinDisplayTime() {
 		try {
 			mMinDisplayMillis = mApp.getSettings().getValueAsInt(Settings.KEY_SPLASH_DURATION);
 		} catch (NumberFormatException e) {
-			mMinDisplayMillis = defValue;
-		} finally {
-			Log.d(LOG_TAG, "minimal splash duration: " + mMinDisplayMillis);
+			mMinDisplayMillis = DEFAULT_MIN_DISPLAY_MILLIS;
 		}
+		Log.d(LOG_TAG, "minimal splash duration: " + mMinDisplayMillis);
 	}
 
 	private boolean isBackgroundThreadRunning(Bundle savedInstanceState) {
@@ -59,63 +84,39 @@ public class SplashActivity extends Activity {
 	}
 
 	private void runBackgroundThread() {
-		final long startTime = System.currentTimeMillis();
+		final long startTime = TimeUnit.NANOSECONDS.toMillis(System.nanoTime());
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				Log.i(LOG_TAG, "Starting background thread");
-				mBackgroundThreadRunning = true; // thread started work
+				notifyBackgroundThreadRunning(); // thread started work
 
 				doInBackground();
 
 				// make sure min display time has elapsed
-				final long duration = System.currentTimeMillis() - startTime;
+				boolean interuppted = false;
+				final long duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime()) - startTime;
 				if (duration < mMinDisplayMillis) {
 					try {
 						Thread.sleep(mMinDisplayMillis - duration);
 					} catch (InterruptedException e) {
 						Thread.interrupted(); // clear interruption flag
+						interuppted = true;
 					}
 				}
 
-				startNextActivity();
-				finishThisActivity();
+				if (!interuppted) {
+					startNextActivity();
+					finishThisActivity();
+				}
 
-				mBackgroundThreadRunning = false; // thread finished work
+				notifyBackgroundThreadIdle(); // thread finished work
 			}
 		}).start();
 	}
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		mApp = (MyGuideApp) this.getApplication();
-
-		setContentView(R.layout.activity_splash);
-
-		/*
-		 * Activity may have been restarted (eg. via orientation change) so need
-		 * to make sure if a background thread has been started before. If not
-		 * then it is really the first startup or previous thread had finished
-		 * its work.
-		 */
-		mBackgroundThreadRunning = isBackgroundThreadRunning(savedInstanceState);
-		Log.d(LOG_TAG,
-				String.format("background thread already running: %s", mBackgroundThreadRunning));
-		if (!mBackgroundThreadRunning) {
-			runBackgroundThread();
-		}
-	}
-
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-
-		outState.putBoolean(BGTHREAD_STATE_KEY, mBackgroundThreadRunning);
-	}
-
-	protected void parseSettingsXML() {
+	private void parseSettingsXML() {
+		// TODO: this method needs UT
 		Log.i(LOG_TAG, "Parsing settings XML");
 
 		SettingsHelper sh = new SettingsHelper();
@@ -146,21 +147,22 @@ public class SplashActivity extends Activity {
 			ee = e;
 		} catch (SAXException e) {
 			ee = e;
-		} finally {
-			if (ee != null) {
-				// reading settings failed, assuming defaults will be used
-				Log.e(LOG_TAG, ee.toString());
-				settings = new Settings();
-			}
+		}
+
+		if (ee != null) {
+			// reading settings failed, assuming defaults will be used
+			Log.e(LOG_TAG, "Parsing settings failed, new instance created", ee);
+			settings = new Settings();
 		}
 
 		mApp.setSettings(settings);
-		this.setMinDisplayTime(DEFAULT_MIN_DISPLAY_MILLIS);
+		setMinDisplayTime();
 
 		Log.i(LOG_TAG, "settings XML parsed");
 	}
 
-	protected void parseDataXML() {
+	private void parseDataXML() {
+		// TODO: this method needs UT
 		Log.i(LOG_TAG, "Parsing data XML");
 
 		ParserHelper ph = new ParserHelper();
@@ -185,18 +187,58 @@ public class SplashActivity extends Activity {
 			ee = e;
 		} catch (XmlPullParserException e) {
 			ee = e;
-		} finally {
-			if (ee != null) {
-				// data should always be valid
-				// controlled application shutdown
-				Log.wtf(LOG_TAG, ee.toString());
-				throw new NullPointerException("Data XML is ugly.");
-			}
+		}
+
+		if (ee != null) {
+			// data should always be valid
+			// controlled application shutdown
+			Log.wtf(LOG_TAG, ee.toString());
+			final Thread bgThread = Thread.currentThread();
+			SplashActivity.this.runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					bgThread.interrupt();
+					newErrorDialog().show();
+				}
+			});
 		}
 
 		mApp.setZooData(data);
 
 		Log.i(LOG_TAG, "data XML parsed");
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		mApp = (MyGuideApp) this.getApplication();
+
+		setContentView(R.layout.activity_splash);
+
+		/*
+		 * Activity may have been restarted (eg. via orientation change) so need
+		 * to make sure if a background thread has been started before. If not
+		 * then it is really the first startup or previous thread had finished
+		 * its work.
+		 */
+		if (isBackgroundThreadRunning(savedInstanceState)) {
+			notifyBackgroundThreadRunning();
+		} else {
+			notifyBackgroundThreadIdle();
+		}
+		Log.d(LOG_TAG,
+				String.format("background thread already running: %s", mBackgroundThreadRunning));
+		if (!mBackgroundThreadRunning) {
+			runBackgroundThread();
+		}
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+
+		outState.putBoolean(BGTHREAD_STATE_KEY, mBackgroundThreadRunning);
 	}
 
 	/**
@@ -208,7 +250,7 @@ public class SplashActivity extends Activity {
 	}
 
 	protected void startNextActivity() {
-		Intent intent = new Intent(this, MainActivity.class);
+		Intent intent = new Intent(this, SightseeingActivity.class);
 		startActivity(intent);
 	}
 
