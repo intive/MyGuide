@@ -24,6 +24,7 @@
     AFParsedData *_data;
 }
 
+#pragma mark -
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -40,6 +41,13 @@
     [self showJunctions];
 }
 
+- (UIAlertView *) buildAlertView {
+    return [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"distanceAlertTitle", nil)
+                                      message: NSLocalizedString(@"distanceAlertMessage", nil)
+                                     delegate: self
+                            cancelButtonTitle: NSLocalizedString(@"NO", nil)
+                            otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
+}
 
 #pragma mark - Initial configuration
 - (void) configureMapView
@@ -65,14 +73,7 @@
     }
 }
 
-- (UIAlertView *) buildAlertView
-{
-    return [[UIAlertView alloc] initWithTitle: @"Too far from the zoo!"
-                                      message: @"You are too far from the zoo. Do you want to show driving directions?"
-                                     delegate: self
-                            cancelButtonTitle: @"NO"
-                            otherButtonTitles: @"YES", nil];
-}
+
 
 - (void) showAnimals
 {
