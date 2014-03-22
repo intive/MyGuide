@@ -16,8 +16,8 @@
 
 + (id)sharedParsedData;
 
-- (void)setAnimalsArray:(NSArray *)animalsArray;
-- (void)setWaysArray:(NSArray *)waysArray;
-- (void)setJunctionsArray:(NSArray *)junctionsArray;
+- (void) setWaysArray:      (NSArray *) waysArray;
+- (void) setAnimalsArray:   (NSArray *) animalsArray;
+- (void) setJunctionsArray: (NSArray *) junctionsArray;
 
 @end

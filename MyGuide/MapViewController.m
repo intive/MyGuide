@@ -8,20 +8,18 @@
 
 #import "MapViewController.h"
 
-static const double degreeInRadians = 0.0174532925;
-
 @interface MapViewController ()
 
-@property (nonatomic) UIAlertView *alertDistance;
 @property (nonatomic) MKCoordinateRegion lastGoodRegion;
+@property (nonatomic) UIAlertView *alertDistance;
 @property (nonatomic) MKMapCamera *lastGoodCamera;
-@property (nonatomic) CLLocation *zooCenterLocation;
+@property (nonatomic) CLLocation  *zooCenterLocation;
 @property (nonatomic) BOOL showAlert;
 
 @end
 
-
-@implementation MapViewController {
+@implementation MapViewController
+{
     Settings     *_settings;
     AFParsedData *_data;
 }
@@ -34,19 +32,9 @@ static const double degreeInRadians = 0.0174532925;
     _data     = [AFParsedData sharedParsedData];
     _alertDistance = [self buildAlertView];
     _showAlert = YES;
-    _zooCenterLocation = [[CLLocation alloc] initWithLatitude:_settings.zooCenter.latitude longitude:_settings.zooCenter.longitude];
-    
-    _mapView.translatesAutoresizingMaskIntoConstraints = YES;
-    _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    self.mapView.delegate = self;
-
-    MKUserTrackingBarButtonItem *button = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
-    NSArray *toolbarItems = [NSArray arrayWithObjects:button, nil];
-    
-    self.mapToolbar.items = toolbarItems;
-//    self.mapToolbar.translatesAutoresizingMaskIntoConstraints = YES;
-    
-    [self showUserPosition];
+    _zooCenterLocation = [[CLLocation alloc] initWithLatitude: _settings.zooCenter.latitude
+                                                    longitude: _settings.zooCenter.longitude];
+    [self configureMapView];
     [self showAnimals];
     [self centerMap];
     [self showPaths];
@@ -59,64 +47,81 @@ static const double degreeInRadians = 0.0174532925;
                                      delegate: self
                             cancelButtonTitle: NSLocalizedString(@"NO", nil)
                             otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
+
+#pragma mark - Initial configuration
+- (void) configureMapView
+{
+    _mapView.translatesAutoresizingMaskIntoConstraints = YES;
+    _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.mapView.delegate = self;
+    
+    [self configureToolbarItems];
+    [self showUserPosition];
 }
 
-- (IBAction) centerOnCurrentLocation: (id) sender {
-    CLLocation *userLocation = self.mapView.userLocation.location;
-    if(userLocation) {
-        [self.mapView setCenterCoordinate: userLocation.coordinate];
-    }
+- (void) configureToolbarItems
+{
+    MKUserTrackingBarButtonItem *button = [[MKUserTrackingBarButtonItem alloc] initWithMapView: self.mapView];
+    self.mapToolbar.items = @[button];
 }
 
-- (void) showUserPosition {
+- (void) showUserPosition
+{
     if(_settings.showUserPosition) {
         [self.mapView setShowsUserLocation: YES];
     }
 }
 
-- (void) showAnimals {
+
+
+- (void) showAnimals
+{
     if(_settings.showAnimalsOnMap) {
         NSArray *animals = [MKAnnotationAnimal buildAnimalMKAnnotations: _data.animalsArray];
         [self.mapView addAnnotations: animals];
     }
 }
 
-- (void)showPaths{
-    if(_settings.showPathsOnMap)
-    {
-        for(AFWay* way in _data.waysArray) [self drawPath:way.nodesArray];
+- (void) showPaths
+{
+    if(_settings.showPathsOnMap) {
+        for(AFWay* way in _data.waysArray) [self drawPath: way.nodesArray];
     }
 }
 
-- (void)showJunctions{
-    if(_settings.showJunctionsOnMap)
-    {
-        for(AFJunction* junction in _data.junctionsArray) [self drawJunction:junction.coordinates];
+- (void) showJunctions
+{
+    if(_settings.showJunctionsOnMap) {
+        for(AFJunction* junction in _data.junctionsArray) [self drawJunction: junction.coordinates];
     }
 }
 
-- (void) centerMap {
+- (void) centerMap
+{
     [self.mapView setRegion: _settings.mapBounds animated: YES];
 }
 
-#pragma mark -
-#pragma mark Showing AlertView depending on user distance
+#pragma mark - Showing AlertView depending on user distance
 
-- (void) mapView:(MKMapView *) mapView didUpdateUserLocation: (MKUserLocation *) userLocation {
+- (void) mapView: (MKMapView *) mapView didUpdateUserLocation: (MKUserLocation *) userLocation
+{
     double distance = [self calculateUserDistance: userLocation];
     if([self shouldShowAlertDistance: distance]) {
         [_alertDistance show];
     }
 }
 
-- (BOOL) shouldShowAlertDistance: (double) distance {
-    return distance > _settings.maxUserDistance && !_alertDistance.visible && _showAlert;
+- (double) calculateUserDistance: (MKUserLocation *) userLocation
+{
+    CLLocationCoordinate2D mapCenter = _settings.mapCenter;
+    CLLocation *zooLocation  = [[CLLocation alloc] initWithLatitude: mapCenter.latitude
+                                                          longitude: mapCenter.longitude];
+    return [userLocation.location distanceFromLocation: zooLocation];
 }
 
-- (double) calculateUserDistance: (MKUserLocation *) userLocation {
-    CLLocationCoordinate2D mapCenter = _settings.mapCenter;
-    CLLocation *zooLocation  = [[CLLocation alloc] initWithLatitude: mapCenter.latitude longitude: mapCenter.longitude];
-    return [userLocation.location distanceFromLocation: zooLocation];
+- (BOOL) shouldShowAlertDistance: (double) distance
+{
+    return distance > _settings.maxUserDistance && !_alertDistance.visible && _showAlert;
 }
 
 - (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex: (NSInteger) buttonIndex {    
@@ -127,25 +132,24 @@ static const double degreeInRadians = 0.0174532925;
     _showAlert = NO;
 }
 
-#pragma mark -
-#pragma mark Drawing paths on the map
+#pragma mark - Drawing paths on the map
 
-- (void)drawPath:(NSArray *)nodesArray
+- (void) drawPath: (NSArray *) nodesArray
 {
     CLLocationCoordinate2D coordinatesArray[[nodesArray count]];
-    int i=0;
+    NSUInteger i = 0;
     for(AFNode* node in nodesArray)
     {
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([node.latitude doubleValue], [node.longitude doubleValue]);
-        coordinatesArray[i] = coordinate;
-        i+=1;
+        coordinatesArray[i++] = coordinate;
     }
     
-    MKPolyline *path = [MKPolyline polylineWithCoordinates:coordinatesArray count:[nodesArray count]];
-    [self.mapView addOverlay:path];
+    MKPolyline *path = [MKPolyline polylineWithCoordinates: coordinatesArray
+                                                     count: [nodesArray count]];
+    [self.mapView addOverlay: path];
 }
 
-#pragma mark Drawing junctions on the map
+#pragma mark - Drawing junctions on the map
 
 - (void)drawJunction:(AFNode *)node
 {
@@ -156,73 +160,77 @@ static const double degreeInRadians = 0.0174532925;
     [self.mapView addOverlay:junction];
 }
 
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+- (MKOverlayRenderer *) mapView: (MKMapView *) mapView rendererForOverlay: (id<MKOverlay>) overlay
 {
     if ([overlay isKindOfClass:[MKPolyline class]]) {
         MKPolyline *route = overlay;
-        MKPolylineRenderer *routeRenderer = [[MKPolylineRenderer alloc] initWithPolyline:route];
+        MKPolylineRenderer *routeRenderer = [[MKPolylineRenderer alloc] initWithPolyline: route];
         if(route.pointCount == 2 && fabs(route.points[0].x - route.points[1].x) < 1e-8){
             routeRenderer.strokeColor = [UIColor blackColor];
             routeRenderer.lineWidth = 5;
         }
         else{
             routeRenderer.strokeColor = [UIColor brownColor];
-            routeRenderer.lineCap = kCGLineCapRound;
-            routeRenderer.lineJoin = kCGLineJoinRound;
-//          routeRenderer.lineDashPattern = @[@20, @10];
-            routeRenderer.lineWidth = 3;
-            routeRenderer.alpha = 0.5;
+            routeRenderer.lineCap     = kCGLineCapRound;
+            routeRenderer.lineJoin    = kCGLineJoinRound;
+            routeRenderer.lineWidth   = 3;
+            routeRenderer.alpha       = 0.5;
         }
         return routeRenderer;
     }
     else return nil;
 }
 
-#pragma mark -
-#pragma mark Limiting scroll and zoom levels
+#pragma mark - Limiting scroll and zoom levels
 
-- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
-    
-    CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
+#define OLD_iOS_VERSION floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1
+
+- (void) mapView: (MKMapView *) mapView regionWillChangeAnimated: (BOOL) animated
+{
+    CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude: mapView.centerCoordinate.latitude
+                                                       longitude: mapView.centerCoordinate.longitude];
     double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
     
-    if(floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1){
-        if(distanceFromZooCenter <= _settings.centerRadius){
+    if(distanceFromZooCenter <= _settings.centerRadius) {
+        if(OLD_iOS_VERSION) {
             _lastGoodRegion = mapView.region;
         }
-    }
-    else {
-        if(distanceFromZooCenter <= _settings.centerRadius){
+        else {
             _lastGoodCamera = [mapView.camera copy];
         }
     }
 }
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
-    
-    CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
-    double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
-    
 
-    if(floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1){
-        if(distanceFromZooCenter > _settings.centerRadius){
-            [mapView setRegion:_lastGoodRegion animated:YES];
+- (void) mapView: (MKMapView *) mapView regionDidChangeAnimated: (BOOL) animated
+{
+    CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude: mapView.centerCoordinate.latitude
+                                                       longitude: mapView.centerCoordinate.longitude];
+    double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
+
+    if(OLD_iOS_VERSION) {
+        if(distanceFromZooCenter > _settings.centerRadius) {
+            [mapView setRegion: _lastGoodRegion animated:YES];
         }
-        if (mapView.region.span.latitudeDelta > _settings.maxSpan.latitudeDelta || mapView.region.span.longitudeDelta > _settings.maxSpan.longitudeDelta) {
-            [mapView setRegion:_lastGoodRegion animated:YES];
+        if (mapView.region.span.latitudeDelta  > _settings.maxSpan.latitudeDelta ||
+            mapView.region.span.longitudeDelta > _settings.maxSpan.longitudeDelta)
+        {
+            [mapView setRegion: _lastGoodRegion animated:YES];
         }
-        if (mapView.region.span.latitudeDelta < _settings.minSpan.latitudeDelta || mapView.region.span.longitudeDelta < _settings.minSpan.longitudeDelta) {
-            [mapView setRegion:_lastGoodRegion animated:YES];
+        if (mapView.region.span.latitudeDelta  < _settings.minSpan.latitudeDelta ||
+            mapView.region.span.longitudeDelta < _settings.minSpan.longitudeDelta)
+        {
+            [mapView setRegion: _lastGoodRegion animated:YES];
         }
     }
     else {
-        if(distanceFromZooCenter > _settings.centerRadius){
-            [mapView setCamera:_lastGoodCamera animated:YES];
+        if(distanceFromZooCenter > _settings.centerRadius) {
+            [mapView setCamera: _lastGoodCamera animated: YES];
         }
-        if (mapView.camera.altitude > _settings.cameraMaxAltitude || mapView.camera.altitude < _settings.cameraMinAltitude) {
+        if (mapView.camera.altitude > _settings.cameraMaxAltitude ||
+            mapView.camera.altitude < _settings.cameraMinAltitude) {
             [mapView setCamera: _lastGoodCamera animated:YES];
         }
     }
 }
-
 
 @end

@@ -10,26 +10,34 @@
 
 @implementation AFJunction
 
-- (id)init{
+- (id) init
+{
     self = [super init];
     if(self){
         _coordinates = [[AFNode alloc] init];
-        _waysArray = [[NSArray alloc] init];
+        _waysArray   = [[NSArray alloc] init];
     }
     return self;
 }
-- (id)initWithCoordinates:(AFNode *)coordinates andWaysArray:(NSArray *)waysArray{
+- (id)initWithCoordinates: (AFNode  *) coordinates
+             andWaysArray: (NSArray *) waysArray
+{
     self = [super init];
-    if(self){
+    
+    if(self) {
         _coordinates = coordinates;
         _waysArray = waysArray;
     }
     return self;
 }
-- (void)setCoordinates:(AFNode *)coordinates{
+
+- (void) setCoordinates: (AFNode *) coordinates
+{
     _coordinates = coordinates;
 }
-- (void)setWaysArray:(NSArray *)waysArray{
+
+- (void) setWaysArray: (NSArray *) waysArray
+{
     _waysArray = waysArray;
 }
 

@@ -17,9 +17,7 @@
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate, UIToolbarDelegate>
 
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
-
-- (IBAction) centerOnCurrentLocation: (id) sender;
+@property (weak, nonatomic)   IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIToolbar *mapToolbar;
 
 @end

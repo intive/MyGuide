@@ -41,7 +41,9 @@
 
  Debug (level 7)     - The lowest priority, and normally not logged except
                        for messages from the kernel.
-
+ 
+ Test (level 8)      - Used for development purpose to display all logs
+                       in console, that can be read by testers.
 
  Note that by default the iOS syslog/console will only record items up
  to level ASL_LEVEL_NOTICE.
@@ -60,6 +62,7 @@
 #endif
 
 #include <asl.h>
+#define ASL_LEVEL_TEST 8
 
 #if MW_COMPILE_TIME_LOG_LEVEL >= ASL_LEVEL_EMERG
 void MWLogEmergency(NSString *format, ...);
@@ -108,4 +111,3 @@ void MWLogDebug(NSString *format, ...);
 #else
 #define MWLogDebug(...)
 #endif
-

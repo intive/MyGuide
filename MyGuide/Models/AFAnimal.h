@@ -11,12 +11,14 @@
 
 @interface AFAnimal : NSObject
 
-@property (nonatomic, readonly) AFNode *coordinates;
+@property (nonatomic, readonly) AFNode   *coordinates;
 @property (nonatomic, readonly) NSString *name;
 
-- (id)init;
-- (id)initWithPosition:(AFNode *)coordinates andName:(NSString *)name;
-- (void)setCoordinates:(AFNode *)coordinates;
-- (void)setName:(NSString *)name;
+- (id) init;
+- (id) initWithPosition: (AFNode   *) coordinates
+                andName: (NSString *) name;
+
+- (void) setCoordinates: (AFNode *) coordinates;
+- (void) setName:      (NSString *) name;
 
 @end

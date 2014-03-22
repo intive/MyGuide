@@ -10,26 +10,34 @@
 
 @implementation AFWay
 
-- (id)init{
+- (id) init
+{
     self = [super init];
-    if(self){
-        _wayID = 0;
+    if(self) {
+        _wayID      = 0;
         _nodesArray = [[NSArray alloc] init];
     }
     return self;
 }
-- (id)initWithID:(NSString *)wayID andNodesArray:(NSArray *)nodesArray{
+
+- (id)   initWithID: (NSString *) wayID
+      andNodesArray: (NSArray  *) nodesArray
+{
     self = [super init];
-    if(self){
-        _wayID = wayID;
+    if(self) {
+        _wayID      = wayID;
         _nodesArray = nodesArray;
     }
     return self;
 }
-- (void)setWayID:(NSString *)wayID{
+
+- (void) setWayID: (NSString *) wayID
+{
     _wayID = wayID;
 }
-- (void)setNodesArray:(NSArray *)nodesArray{
+
+- (void) setNodesArray: (NSArray *) nodesArray
+{
     _nodesArray = nodesArray;
 }
 

@@ -10,7 +10,8 @@
 
 @implementation MKAnnotationAnimal
 
-- (id) initWithAnimal: (AFAnimal *) animal {
+- (id) initWithAnimal: (AFAnimal *) animal
+{
     self = [super init];
     if (self) {
         _coordinate = [self buildCoordinates: animal];
@@ -19,14 +20,16 @@
     return self;
 }
 
-- (CLLocationCoordinate2D) buildCoordinates: (AFAnimal *) animal {
+- (CLLocationCoordinate2D) buildCoordinates: (AFAnimal *) animal
+{
     AFNode* coordinates = animal.coordinates;
     double lat = [coordinates.latitude doubleValue];
     double lng = [coordinates.longitude doubleValue];
     return CLLocationCoordinate2DMake(lat, lng);
 }
 
-+ (NSArray *) buildAnimalMKAnnotations: (NSArray *) animals {
++ (NSArray *) buildAnimalMKAnnotations: (NSArray *) animals
+{
     MKAnnotationAnimal* annotation;
     NSMutableArray* result = [[NSMutableArray alloc] init];
     
