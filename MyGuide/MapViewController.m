@@ -47,6 +47,7 @@
                                      delegate: self
                             cancelButtonTitle: NSLocalizedString(@"NO", nil)
                             otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
+}
 
 #pragma mark - Initial configuration
 - (void) configureMapView
