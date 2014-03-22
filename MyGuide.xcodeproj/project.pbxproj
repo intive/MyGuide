@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		052DA2F118C35D4900FB425E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 052DA2F018C35D4900FB425E /* MapViewController.m */; };
+		05C925D318DDAFAD00C2F746 /* GPS.md in Resources */ = {isa = PBXBuildFile; fileRef = 05C925D218DDAFAD00C2F746 /* GPS.md */; };
 		05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */; };
 		05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DA78D418B969BF005D6C5F /* libOCMock.a */; };
 		05E0209118C1D38000AE76EC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E0209018C1D38000AE76EC /* MapKit.framework */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		052DA2EF18C35D4900FB425E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		052DA2F018C35D4900FB425E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		05C925D218DDAFAD00C2F746 /* GPS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GPS.md; sourceTree = "<group>"; };
 		05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParserTest.m; sourceTree = "<group>"; };
 		05DA78CE18B969BF005D6C5F /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		05DA78CF18B969BF005D6C5F /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
@@ -137,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05C925D118DDAFAD00C2F746 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				05C925D218DDAFAD00C2F746 /* GPS.md */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
 		05DA78BE18B968E5005D6C5F /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +195,7 @@
 				3D5EF62D189637C000233B64 /* MyGuideTests */,
 				3D5EF607189637C000233B64 /* Frameworks */,
 				3D5EF606189637C000233B64 /* Products */,
+				05C925D118DDAFAD00C2F746 /* Documentation */,
 			);
 			sourceTree = "<group>";
 		};
@@ -392,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844D5F1118B41F470018C970 /* data.xml in Resources */,
+				05C925D318DDAFAD00C2F746 /* GPS.md in Resources */,
 				3DE69DA918C7B83400B54509 /* InfoPlist.strings in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				3DDE538818C705B20062D217 /* Main.storyboard in Resources */,
