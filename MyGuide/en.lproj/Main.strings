@@ -1,0 +1,24 @@
+
+/* Class = "IBUITabBarItem"; title = "Tickets and opening hours"; ObjectID = "Bdy-Ag-Qpe"; */
+"Bdy-Ag-Qpe.title" = "Tickets and opening hours";
+
+/* Class = "IBUIBarButtonItem"; title = "Item"; ObjectID = "Cg8-NJ-iWE"; */
+"Cg8-NJ-iWE.title" = "Item";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "E6B-1b-rzE"; */
+"E6B-1b-rzE.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUITabBarItem"; title = "Localization"; ObjectID = "GpC-QO-gAd"; */
+"GpC-QO-gAd.title" = "Localization";
+
+/* Class = "IBUILabel"; text = "Localization"; ObjectID = "T9T-8K-J6p"; */
+"T9T-8K-J6p.text" = "Localization";
+
+/* Class = "IBUILabel"; text = "Welcome to Wrocław ZOO"; ObjectID = "WBF-Mf-8ie"; */
+"WBF-Mf-8ie.text" = "Welcome to Wrocław ZOO";
+
+/* Class = "IBUITabBarItem"; title = "Explore"; ObjectID = "dfN-EF-0Uk"; */
+"dfN-EF-0Uk.title" = "Explore";
+
+/* Class = "IBUILabel"; text = "Tickets and opening hours"; ObjectID = "xHY-GM-l8n"; */
+"xHY-GM-l8n.text" = "Tickets and opening hours";
