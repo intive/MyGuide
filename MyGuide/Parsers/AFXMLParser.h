@@ -14,20 +14,21 @@
 
 @interface AFXMLParser : NSObject <NSXMLParserDelegate>
 
-@property (nonatomic, readonly) NSMutableArray *animalsArray;
-@property (nonatomic, readonly) NSMutableArray *waysArray;
-@property (nonatomic, readonly) NSMutableArray *junctionsArray;
-@property (nonatomic, readonly) NSMutableArray *nodesArray;
-@property (nonatomic, readonly) AFAnimal *currentAnimal;
-@property (nonatomic, readonly) AFWay *currentWay;
-@property (nonatomic, readonly) AFNode *currentNode;
-@property (nonatomic, readonly) AFJunction *currentJunction;
+@property (nonatomic, readonly) NSMutableArray  *animalsArray;
+@property (nonatomic, readonly) NSMutableArray  *waysArray;
+@property (nonatomic, readonly) NSMutableArray  *junctionsArray;
+@property (nonatomic, readonly) NSMutableArray  *nodesArray;
+@property (nonatomic, readonly) NSString        *currentElement;
+@property (nonatomic, readonly) NSMutableString *elementValue;
 
-@property (nonatomic, readonly) NSString *currentElement;
-@property (nonatomic, readonly) NSMutableString *elementValue;  // suff between angled brackets in xml element e.g. ( <element>stuff</element> )
 @property (nonatomic, readonly) BOOL parsingError;
 
-- (NSData *)getDataXML;
-- (void)parse;
+@property (nonatomic, readonly) AFAnimal    *currentAnimal;
+@property (nonatomic, readonly) AFWay       *currentWay;
+@property (nonatomic, readonly) AFNode      *currentNode;
+@property (nonatomic, readonly) AFJunction  *currentJunction;
+
+- (NSData *) getDataXML;
+- (void) parse;
 
 @end
