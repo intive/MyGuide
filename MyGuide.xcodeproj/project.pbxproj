@@ -147,6 +147,13 @@
 			path = Documentation;
 			sourceTree = "<group>";
 		};
+		05C925D418DDBA6000C2F746 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		05DA78BE18B968E5005D6C5F /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +231,7 @@
 		3D5EF60E189637C000233B64 /* MyGuide */ = {
 			isa = PBXGroup;
 			children = (
+				05C925D418DDBA6000C2F746 /* Images */,
 				052DA2EF18C35D4900FB425E /* MapViewController.h */,
 				052DA2F018C35D4900FB425E /* MapViewController.m */,
 				3D5EF617189637C000233B64 /* AppDelegate.h */,

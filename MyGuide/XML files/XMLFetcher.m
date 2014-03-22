@@ -17,7 +17,14 @@
     NSString *pathForFileInDocuments = [pathForDocuments stringByAppendingPathComponent: fileNameWithExtension];
     
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath: pathForFileInDocuments];
+    NSString *finalPath;
     
-    return [NSData dataWithContentsOfFile: fileExists ? pathForFileInDocuments : pathForFileInResources];
+    if(fileExists) {
+        finalPath = pathForFileInDocuments;
+    }
+    else {
+        finalPath = pathForFileInResources;
+    }
+    return [NSData dataWithContentsOfFile: finalPath];
 }
 @end
