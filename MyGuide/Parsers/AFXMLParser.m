@@ -23,11 +23,13 @@ static NSString *kXmlId         = @"id";
 
 @implementation AFXMLParser
 
-- (NSData *) getDataXML {
+- (NSData *) getDataXML
+{
     return [XMLFetcher fetchDataFromXML: @"data"];
 }
 
-- (void)parse{
+- (void) parse
+{
     _parsingError = NO;
     
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData: [self getDataXML]];
@@ -38,21 +40,24 @@ static NSString *kXmlId         = @"id";
 
 #pragma mark - parser delegate methods
 
-- (void) parserDidStartDocument: (NSXMLParser *) parser {
+- (void) parserDidStartDocument: (NSXMLParser *) parser
+{
     MWLogInfo(@"File found. Parsing data.xml started.");
 }
 
-- (void) parser: (NSXMLParser *) parser parseErrorOccurred: (NSError *) parseError {
+- (void)    parser: (NSXMLParser *) parser
+parseErrorOccurred: (NSError *)     parseError
+{
     NSString *errorString = [NSString stringWithFormat:@"Error code %li", (long)[parseError code]];
     MWLogError(@"Error while parsing data.xml: %@", errorString);
     _parsingError = YES;
 }
 
-- (void)parser:(NSXMLParser *)parser didStartElement: (NSString *)     elementName
-                                     namespaceURI:    (NSString *)     namespaceURI
-                                     qualifiedName:   (NSString *)     qName
-                                     attributes:      (NSDictionary *) attributeDict {
-    
+- (void) parser: (NSXMLParser *) parser didStartElement: (NSString *)     elementName
+                                        namespaceURI:    (NSString *)     namespaceURI
+                                        qualifiedName:   (NSString *)     qName
+                                        attributes:      (NSDictionary *) attributeDict
+{
     _currentElement = [elementName copy];
     _elementValue = [[NSMutableString alloc] init];
     
@@ -89,14 +94,15 @@ static NSString *kXmlId         = @"id";
     }
 }
 
-- (void) parser: (NSXMLParser *) parser foundCharacters: (NSString *) string {
+- (void) parser: (NSXMLParser *) parser foundCharacters: (NSString *) string
+{
     [_elementValue appendString:string];
 }
 
 - (void) parser: (NSXMLParser *) parser didEndElement: (NSString *) elementName
                                      namespaceURI:     (NSString *) namespaceURI
-                                     qualifiedName:    (NSString *) qName {
-    
+                                     qualifiedName:    (NSString *) qName
+{
     AFParsedData *sharedData = [AFParsedData sharedParsedData];
 
     if ([elementName isEqualToString: kXmlAnimals]) {
@@ -144,7 +150,8 @@ static NSString *kXmlId         = @"id";
     }
 }
 
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
+- (void) parserDidEndDocument: (NSXMLParser *) parser
+{
     if (!_parsingError) {
         AFParsedData *sharedData = [AFParsedData sharedParsedData];
         MWLogInfo(@"animals count: %d",   [sharedData.animalsArray   count]);

@@ -10,7 +10,8 @@
 
 @implementation AFNode
 
-- (id)init{
+- (id) init
+{
     self = [super init];
     if(self) {
         _latitude  = nil;
@@ -20,7 +21,8 @@
 }
 
 - (id) initWithLatitude: (NSString *) latitude
-           andLongitude: (NSString *) longitude {
+           andLongitude: (NSString *) longitude
+{
     self = [super init];
     if(self) {
         _latitude  = latitude;
@@ -29,11 +31,13 @@
     return self;
 }
 
-- (void) setLatitude: (NSString *) latitude {
+- (void) setLatitude: (NSString *) latitude
+{
     _latitude = latitude;
 }
 
-- (void) setLongitude: (NSString *) longitude {
+- (void) setLongitude: (NSString *) longitude
+{
     _longitude = longitude;
 }
 

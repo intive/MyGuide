@@ -10,7 +10,8 @@
 
 @implementation AFAnimal
 
-- (id)init {
+- (id) init
+{
     self = [super init];
     if(self) {
         _coordinates = [[AFNode alloc] init];
@@ -20,7 +21,8 @@
 }
 
 - (id) initWithPosition: (AFNode   *) coordinates
-                andName: (NSString *) name {
+                andName: (NSString *) name
+{
     self = [super init];
     if(self) {
         _coordinates = coordinates;
@@ -29,11 +31,13 @@
     return self;
 }
 
-- (void) setCoordinates: (AFNode *) coordinates {
+- (void) setCoordinates: (AFNode *) coordinates
+{
     _coordinates = coordinates;
 }
 
-- (void) setName: (NSString *) name {
+- (void) setName: (NSString *) name
+{
     _name = name;
 }
 
