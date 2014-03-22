@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "SWRevealViewController.h"
 
 @interface MapViewController ()
 
@@ -34,6 +35,11 @@
     _showAlert = YES;
     _zooCenterLocation = [[CLLocation alloc] initWithLatitude: _settings.zooCenter.latitude
                                                     longitude: _settings.zooCenter.longitude];
+    
+    _sidebarButton.target    = self.revealViewController;
+    _sidebarButton.action    = @selector(revealToggle:);
+    [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    
     [self configureMapView];
     [self showAnimals];
     [self centerMap];
@@ -72,8 +78,6 @@
         [self.mapView setShowsUserLocation: YES];
     }
 }
-
-
 
 - (void) showAnimals
 {

@@ -7,6 +7,7 @@
 //
 
 #import "SlideMenuViewController.h"
+#import "SWRevealViewController.h"
 
 @implementation SlideMenuViewController {
     NSArray *menuItems;
@@ -34,6 +35,19 @@
 {
     NSString *cellIdentifier = [menuItems objectAtIndex: indexPath.row];
     return [tableView dequeueReusableCellWithIdentifier: cellIdentifier forIndexPath: indexPath];
+}
+
+- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    UINavigationController *destViewController = (UINavigationController*) segue.destinationViewController;
+    destViewController.title = [[menuItems objectAtIndex: indexPath.row] capitalizedString];
+    SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
+    swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
+        UINavigationController* navController = (UINavigationController*) self.revealViewController.frontViewController;
+        [navController setViewControllers: @[dvc] animated: NO ];
+        [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
+    };
 }
 
 @end

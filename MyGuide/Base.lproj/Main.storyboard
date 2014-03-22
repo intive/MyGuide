@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="UC8-nb-zTe">
-                                <rect key="frame" x="20" y="20" width="280" height="120"/>
+                                <rect key="frame" x="15" y="163" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="Ghi-VX-RDM"/>
@@ -26,7 +26,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Localization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9T-8K-J6p">
-                                <rect key="frame" x="114" y="210" width="92" height="21"/>
+                                <rect key="frame" x="109" y="327" width="92" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -34,17 +34,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="T9T-8K-J6p" firstAttribute="top" secondItem="UC8-nb-zTe" secondAttribute="bottom" constant="70" id="62b-i9-sBD"/>
-                            <constraint firstAttribute="centerX" secondItem="UC8-nb-zTe" secondAttribute="centerX" id="FW4-dH-DA4"/>
-                            <constraint firstItem="UC8-nb-zTe" firstAttribute="top" secondItem="6Zv-P1-OtS" secondAttribute="top" constant="20" id="N8D-1m-p8l"/>
-                            <constraint firstAttribute="centerX" secondItem="T9T-8K-J6p" secondAttribute="centerX" id="cw5-jr-PU6"/>
+                            <constraint firstItem="T9T-8K-J6p" firstAttribute="top" secondItem="UC8-nb-zTe" secondAttribute="bottom" constant="44" id="62b-i9-sBD"/>
+                            <constraint firstAttribute="centerX" secondItem="UC8-nb-zTe" secondAttribute="centerX" constant="5" id="FW4-dH-DA4"/>
+                            <constraint firstItem="UC8-nb-zTe" firstAttribute="top" secondItem="6Zv-P1-OtS" secondAttribute="top" constant="163" id="N8D-1m-p8l"/>
+                            <constraint firstAttribute="centerX" secondItem="T9T-8K-J6p" secondAttribute="centerX" constant="5" id="cw5-jr-PU6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Localization" id="GpC-QO-gAd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8z-Ep-XKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183" y="214"/>
+            <point key="canvasLocation" x="-1039" y="-99"/>
         </scene>
         <!--Map View Controller - Explore-->
         <scene sceneID="Rwy-Mw-zzh">
@@ -74,14 +74,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" id="dfN-EF-0Uk"/>
+                    <navigationItem key="navigationItem" id="oGh-e1-68r">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="o8H-0S-uza"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapToolbar" destination="xy3-W9-HAD" id="Das-TO-zeQ"/>
                         <outlet property="mapView" destination="q3f-u0-kV8" id="Vaj-wR-6ge"/>
+                        <outlet property="sidebarButton" destination="o8H-0S-uza" id="mNd-Uq-3nk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1F-GP-lr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="219" y="538"/>
+            <point key="canvasLocation" x="-1071" y="569"/>
         </scene>
         <!--View Controller - Tickets and opening hours-->
         <scene sceneID="FX3-eS-iou">
@@ -96,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="fzb-vQ-VHt">
-                                <rect key="frame" x="20" y="20" width="280" height="120"/>
+                                <rect key="frame" x="20" y="168" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="A6g-T0-fk3"/>
@@ -104,7 +108,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tickets and opening hours" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="122" translatesAutoresizingMaskIntoConstraints="NO" id="xHY-GM-l8n">
-                                <rect key="frame" x="99" y="210" width="122" height="41"/>
+                                <rect key="frame" x="99" y="358" width="122" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -112,7 +116,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fzb-vQ-VHt" firstAttribute="top" secondItem="aXI-XE-OI2" secondAttribute="top" constant="20" id="GWF-Uh-yTi"/>
+                            <constraint firstItem="fzb-vQ-VHt" firstAttribute="top" secondItem="aXI-XE-OI2" secondAttribute="top" constant="168" id="GWF-Uh-yTi"/>
                             <constraint firstItem="xHY-GM-l8n" firstAttribute="leading" secondItem="aXI-XE-OI2" secondAttribute="leading" constant="99" id="gTD-Na-ZCm"/>
                             <constraint firstAttribute="trailing" secondItem="xHY-GM-l8n" secondAttribute="trailing" constant="99" id="jxV-1o-vmL"/>
                             <constraint firstItem="xHY-GM-l8n" firstAttribute="top" secondItem="fzb-vQ-VHt" secondAttribute="bottom" constant="70" id="ogO-3L-f5y"/>
@@ -123,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pgw-BG-6Il" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-601" y="-20"/>
+            <point key="canvasLocation" x="-1425" y="-461"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lhd-Ed-tzD">
@@ -169,6 +173,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="k7A-NH-zPr" kind="custom" customClass="SWRevealViewControllerSegue" id="bDn-LD-z3i"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="animals" id="DVD-R0-Ny8">
                                 <rect key="frame" x="0.0" y="66" width="320" height="44"/>
@@ -201,6 +208,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="AcO-82-58O" kind="custom" customClass="SWRevealViewControllerSegue" trigger="accessoryAction" id="T4K-Sv-ZZn"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="info" id="8uh-Ba-eb7">
                                 <rect key="frame" x="0.0" y="154" width="320" height="44"/>
@@ -217,6 +227,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="YX8-WM-fPD" kind="custom" customClass="SWRevealViewControllerSegue" id="Il2-Nz-Kb9"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="history" id="HDy-9Z-Ysh">
                                 <rect key="frame" x="0.0" y="198" width="320" height="44"/>
@@ -233,6 +246,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="qyY-sJ-4Kb" kind="custom" customClass="SWRevealViewControllerSegue" id="pfO-bf-yUf"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gastronomy" id="KB2-oP-P06">
                                 <rect key="frame" x="0.0" y="242" width="320" height="44"/>
@@ -318,7 +334,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="aL2-aD-Se6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="aL2-aD-Se6">
                                 <rect key="frame" x="20" y="86" width="280" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -372,4 +388,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="5lw-ct-jEd"/>
+    </inferredMetricsTieBreakers>
 </document>
