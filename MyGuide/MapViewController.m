@@ -40,7 +40,6 @@
 }
 
 
-#pragma mark -
 #pragma mark - Initial configuration
 - (void) configureMapView {
     _mapView.translatesAutoresizingMaskIntoConstraints = YES;
@@ -95,8 +94,7 @@
     [self.mapView setRegion: _settings.mapBounds animated: YES];
 }
 
-#pragma mark -
-#pragma mark Showing AlertView depending on user distance
+#pragma mark - Showing AlertView depending on user distance
 
 - (void) mapView: (MKMapView *) mapView didUpdateUserLocation: (MKUserLocation *) userLocation {
     double distance = [self calculateUserDistance: userLocation];
@@ -124,8 +122,7 @@
     _showAlert = NO;
 }
 
-#pragma mark -
-#pragma mark Drawing paths on the map
+#pragma mark - Drawing paths on the map
 
 - (void) drawPath: (NSArray *) nodesArray
 {
@@ -142,8 +139,7 @@
     [self.mapView addOverlay: path];
 }
 
-#pragma mark -
-#pragma mark Drawing junctions on the map
+#pragma mark - Drawing junctions on the map
 
 - (void)drawJunction:(AFNode *)node
 {
@@ -175,8 +171,7 @@
     else return nil;
 }
 
-#pragma mark -
-#pragma mark Limiting scroll and zoom levels
+#pragma mark - Limiting scroll and zoom levels
 
 #define OLD_iOS_VERSION floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1
 
