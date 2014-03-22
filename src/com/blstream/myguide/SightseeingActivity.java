@@ -1,6 +1,6 @@
-
 package com.blstream.myguide;
 
+import java.util.ArrayList;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -18,23 +18,29 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-
 import com.blstream.myguide.settings.Settings;
-import com.blstream.myguide.zoolocations.*;
+import com.blstream.myguide.zoolocations.Animal;
+import com.blstream.myguide.zoolocations.Junction;
+import com.blstream.myguide.zoolocations.Node;
+import com.blstream.myguide.zoolocations.Way;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
-public class SightseeingActivity extends Activity implements OnCameraChangeListener {
+public class SightseeingActivity extends Activity implements
+		OnCameraChangeListener {
 
-	private static final String LOG_TAG = SightseeingActivity.class.getSimpleName();
+	private static final String LOG_TAG = SightseeingActivity.class
+			.getSimpleName();
 	private static final float DEFAULT_MIN_ZOOM = 14.5f;
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
@@ -56,6 +62,12 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	private double mStartCenterLon;
 	private boolean mAnimalsVisible;
 	private ArrayList<Marker> mAnimalMarkers;
+
+	private boolean mPathsVisible;
+	private ArrayList<Polyline> mZooPaths;
+
+	private boolean mJunctionsVisible;
+	private ArrayList<Circle> mZooJunctions;
 
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
@@ -86,15 +98,24 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		setUpMapSettings();
 		setUpMap();
 		setUpAnimalMarkers();
+		setUpWays();
+		setUpJunctions();
 
 		displayAnimalMarkers(mAnimalsVisible);
+		displayAllWays(mPathsVisible);
+		displayAllJunctions(mJunctionsVisible);
 	}
 
 	private void setUpMapSettings() {
 		MyGuideApp mga = (MyGuideApp) (this.getApplication());
 		Settings settings = mga.getSettings();
 
-		mAnimalsVisible = settings.getValueAsBoolean(Settings.KEY_ANIMALS_VISIBLE);
+		mAnimalsVisible = settings
+				.getValueAsBoolean(Settings.KEY_ANIMALS_VISIBLE);
+		mPathsVisible = settings.getValueAsBoolean(Settings.KEY_PATHS_VISIBLE);
+		mJunctionsVisible = settings
+				.getValueAsBoolean(Settings.KEY_JUNCTIONS_VISIBLE);
+
 		try {
 			mStartCenterLat = settings.getValueAsDouble(Settings.KEY_START_LAT);
 		} catch (NumberFormatException e) {
@@ -123,13 +144,74 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 			mMinZoom = DEFAULT_MIN_ZOOM;
 			mMaxZoom = DEFAULT_MAX_ZOOM;
 		}
+
 	}
 
 	private void setUpMap() {
-		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mStartCenterLat,
-				mStartCenterLon), mMinZoom));
+		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
+				.getMap();
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+				mStartCenterLat, mStartCenterLon), mMinZoom));
 		mMap.setOnCameraChangeListener(this);
+	}
+
+	/**
+	 * Reads Ways and Nodes from ZooData and draws Polylines on the map
+	 * accordingly.
+	 */
+
+	private void setUpWays() {
+		MyGuideApp mga = (MyGuideApp) (this.getApplication());
+		ArrayList<Way> ways = mga.getZooData().getWays();
+		mZooPaths = new ArrayList<Polyline>();
+		for (Way a : ways) {
+			int numOfNodes = a.getNodes().size();
+			for (int i = 0; i < numOfNodes - 1; i++) {
+				Node current = a.getNodes().get(i);
+				Node next = a.getNodes().get(i + 1);
+				mZooPaths.add(mMap.addPolyline(new PolylineOptions()
+						.add(new LatLng(current.getLatitude(), current
+								.getLongitude()),
+								new LatLng(next.getLatitude(), next
+										.getLongitude())).width(2)
+						.color(Color.BLACK)));
+			}
+		}
+	}
+
+	/** Determines whatever of not all paths are displayed on the map. */
+	private void displayAllWays(boolean display) {
+		for (Polyline path : mZooPaths) {
+			path.setVisible(display);
+		}
+	}
+
+	/**
+	 * Reads Junctions from ZooData and draws Circles on the map accordingly.
+	 */
+
+	private void setUpJunctions() {
+		MyGuideApp mga = (MyGuideApp) (this.getApplication());
+		ArrayList<Junction> junctions = mga.getZooData().getJunctions();
+		mZooJunctions = new ArrayList<Circle>();
+		for (Junction a : junctions) {
+			mMap.addCircle(new CircleOptions()
+					.radius(10)
+					.strokeWidth(2)
+					.fillColor(Color.YELLOW)
+					.center(new LatLng(a.getNode().getLatitude(), a.getNode()
+							.getLongitude())
+
+					));
+		}
+	}
+
+	/** Determines whatever of not all junctions are displayed on the map. */
+
+	private void displayAllJunctions(boolean display) {
+		for (Circle junction : mZooJunctions) {
+			junction.setVisible(display);
+		}
 	}
 
 	private void setUpAnimalMarkers() {
@@ -137,9 +219,9 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		ArrayList<Animal> animals = mga.getZooData().getAnimals();
 		mAnimalMarkers = new ArrayList<Marker>();
 		for (Animal a : animals) {
-			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions()
-					.position(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()))
-					.title(a.getName())));
+			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions().position(
+					new LatLng(a.getNode().getLatitude(), a.getNode()
+							.getLongitude())).title(a.getName())));
 		}
 	}
 
@@ -168,7 +250,8 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 
 			int searchTextId = searchPlate.getContext().getResources()
 					.getIdentifier("android:id/search_src_text", null, null);
-			TextView searchText = (TextView) searchPlate.findViewById(searchTextId);
+			TextView searchText = (TextView) searchPlate
+					.findViewById(searchTextId);
 			if (searchText != null) {
 				searchText.setGravity(Gravity.CENTER);
 				searchText.setTextColor(Color.BLACK);
@@ -188,25 +271,26 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
 			@Override
 			public boolean onClose() {
-			    clearSearchView();
+				clearSearchView();
 				return true;
 			}
 		});
 
-		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-			@Override
-			public boolean onQueryTextSubmit(String s) {
-                //TODO handle find animals
-				clearSearchView();
-				return false;
-			}
+		mSearchView
+				.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+					@Override
+					public boolean onQueryTextSubmit(String s) {
+						// TODO handle find animals
+						clearSearchView();
+						return false;
+					}
 
-			@Override
-			public boolean onQueryTextChange(String s) {
-                //TODO autocomplete text to show animals
-				return false;
-			}
-		});
+					@Override
+					public boolean onQueryTextChange(String s) {
+						// TODO autocomplete text to show animals
+						return false;
+					}
+				});
 
 		mImgvShowRoute.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -221,16 +305,18 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 			public void onClick(View view) {
 				clearSearchView();
 
-				if (!mDrawerLayout.isDrawerOpen(Gravity.LEFT)) mDrawerLayout
-						.openDrawer(Gravity.LEFT);
-				else mDrawerLayout.closeDrawer(Gravity.LEFT);
+				if (!mDrawerLayout.isDrawerOpen(Gravity.LEFT))
+					mDrawerLayout.openDrawer(Gravity.LEFT);
+				else
+					mDrawerLayout.closeDrawer(Gravity.LEFT);
 			}
 		});
 	}
 
 	/** Sets up NavigationDrawer. */
 	public void setUpDrawerListView() {
-		String[] mDrawerMenuItems = getResources().getStringArray(R.array.nav_drawer_items);
+		String[] mDrawerMenuItems = getResources().getStringArray(
+				R.array.nav_drawer_items);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.lvMenuSightseeing);
 
@@ -238,7 +324,8 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 				R.layout.sliding_menu_item, mDrawerMenuItems));
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close);
+				R.drawable.ic_drawer, R.string.drawer_open,
+				R.string.drawer_close);
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
@@ -261,8 +348,7 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 	public void onCameraChange(CameraPosition camera) {
 		if (camera.zoom < mMinZoom) {
 			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
-		}
-		else if (camera.zoom > mMaxZoom) {
+		} else if (camera.zoom > mMaxZoom) {
 			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
 		}
 	}
@@ -273,9 +359,9 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-    private void clearSearchView() {
-        mSearchView.clearFocus();
-        mSearchViewClose.setVisibility(View.GONE);
-    }
+	private void clearSearchView() {
+		mSearchView.clearFocus();
+		mSearchViewClose.setVisibility(View.GONE);
+	}
 
 }

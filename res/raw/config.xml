@@ -22,5 +22,11 @@
 							
 	<!-- Show or hide animal markers on map-->	
 	<animals_visible>true</animals_visible>
+	
+	<!-- Show or hide paths on map-->	
+	<paths_visible>true</paths_visible>
+	
+	<!-- Show or hide junctions on map-->	
+	<junctions_visible>true</junctions_visible>
 					
 </configuration>
