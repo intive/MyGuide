@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SlideMenuViewController : UIViewController
+@interface SlideMenuViewController : UITableViewController
 
 @end

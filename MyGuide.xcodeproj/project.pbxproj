@@ -12,7 +12,8 @@
 		0533DF0118DE1520001BCB28 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFE18DE1520001BCB28 /* menu.png */; };
 		0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFF18DE1520001BCB28 /* menu@2x.png */; };
 		0533DF0318DE1520001BCB28 /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DF0018DE1520001BCB28 /* nav_bg.png */; };
-		0533DF0618DE3056001BCB28 /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DF0518DE3056001BCB28 /* SlideMenuViewController.m */; };
+		0533DF0918DE333A001BCB28 /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DF0818DE333A001BCB28 /* SlideMenuViewController.m */; };
+		0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DF0B18DE365D001BCB28 /* HomeViewController.m */; };
 		05C925D318DDAFAD00C2F746 /* GPS.md in Resources */ = {isa = PBXBuildFile; fileRef = 05C925D218DDAFAD00C2F746 /* GPS.md */; };
 		05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */; };
 		05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DA78D418B969BF005D6C5F /* libOCMock.a */; };
@@ -66,8 +67,10 @@
 		0533DEFE18DE1520001BCB28 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		0533DEFF18DE1520001BCB28 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		0533DF0018DE1520001BCB28 /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
-		0533DF0418DE3056001BCB28 /* SlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuViewController.h; sourceTree = "<group>"; };
-		0533DF0518DE3056001BCB28 /* SlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuViewController.m; sourceTree = "<group>"; };
+		0533DF0718DE333A001BCB28 /* SlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuViewController.h; sourceTree = "<group>"; };
+		0533DF0818DE333A001BCB28 /* SlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuViewController.m; sourceTree = "<group>"; };
+		0533DF0A18DE365D001BCB28 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		0533DF0B18DE365D001BCB28 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		05C925D218DDAFAD00C2F746 /* GPS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GPS.md; sourceTree = "<group>"; };
 		05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParserTest.m; sourceTree = "<group>"; };
 		05DA78CE18B969BF005D6C5F /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
@@ -271,8 +274,10 @@
 				84DDCB4618BA91CB00A2F720 /* XML files */,
 				84DDCB2818BA917800A2F720 /* Models */,
 				3D5EF60F189637C000233B64 /* Supporting Files */,
-				0533DF0418DE3056001BCB28 /* SlideMenuViewController.h */,
-				0533DF0518DE3056001BCB28 /* SlideMenuViewController.m */,
+				0533DF0718DE333A001BCB28 /* SlideMenuViewController.h */,
+				0533DF0818DE333A001BCB28 /* SlideMenuViewController.m */,
+				0533DF0A18DE365D001BCB28 /* HomeViewController.h */,
+				0533DF0B18DE365D001BCB28 /* HomeViewController.m */,
 			);
 			path = MyGuide;
 			sourceTree = "<group>";
@@ -490,8 +495,9 @@
 				84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */,
 				84DDCB3418BA917800A2F720 /* AFWay.m in Sources */,
 				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
+				0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */,
 				84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */,
-				0533DF0618DE3056001BCB28 /* SlideMenuViewController.m in Sources */,
+				0533DF0918DE333A001BCB28 /* SlideMenuViewController.m in Sources */,
 				84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
 				05E375CB18BA872B00A31630 /* MWLogging.m in Sources */,
