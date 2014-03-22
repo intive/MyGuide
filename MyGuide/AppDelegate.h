@@ -13,7 +13,7 @@
 #import "SettingsParser.h"
 #import "LocationManager.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
