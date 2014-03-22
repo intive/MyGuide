@@ -30,8 +30,6 @@
 	<string>0.2.3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIFileSharingEnabled</key>
-	<true/>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -44,5 +42,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UILaunchImageFile</key>
+	<string>Splashscreen</string>
 </dict>
 </plist>
