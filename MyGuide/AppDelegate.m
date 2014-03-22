@@ -7,12 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "AFParsedData.h"
-#import "AFXMLParser.h"
-#import "SettingsParser.h"
 
-
-@implementation AppDelegate
+@implementation AppDelegate {
+    LocationManager *_locationManager;
+}
 
 - (void) parseDataXML: (id) object
 {
@@ -30,9 +28,11 @@
 {
     [self performSelectorInBackground: @selector(parseDataXML:) withObject: nil];
     [self performSelectorInBackground: @selector(loadSettings:) withObject: nil];
+    
+    _locationManager = [LocationManager sharedLocationManager];
+    [_locationManager requestLocationStatus];
 
     return YES;
 }
-
 
 @end

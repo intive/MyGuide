@@ -20,8 +20,9 @@
 
 @implementation MapViewController
 {
-    Settings     *_settings;
-    AFParsedData *_data;
+    Settings        *_settings;
+    AFParsedData    *_data;
+    LocationManager *_locationManager;
 }
 
 - (void)viewDidLoad
@@ -33,13 +34,15 @@
     _showAlert = YES;
     _zooCenterLocation = [[CLLocation alloc] initWithLatitude: _settings.zooCenter.latitude
                                                     longitude: _settings.zooCenter.longitude];
+    _locationManager = [LocationManager sharedLocationManager];
+    
+    [_locationManager checkLocationStatus];
     [self configureMapView];
     [self showAnimals];
     [self centerMap];
     [self showPaths];
     [self showJunctions];
 }
-
 
 #pragma mark - Initial configuration
 - (void) configureMapView
@@ -67,11 +70,11 @@
 
 - (UIAlertView *) buildAlertView
 {
-    return [[UIAlertView alloc] initWithTitle: @"Too far from the zoo!"
-                                      message: @"You are too far from the zoo. Do you want to show driving directions?"
+    return [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"distanceAlertTitle", nil)
+                                      message: NSLocalizedString(@"distanceAlertMessage", nil)
                                      delegate: self
-                            cancelButtonTitle: @"NO"
-                            otherButtonTitles: @"YES", nil];
+                            cancelButtonTitle: NSLocalizedString(@"NO", nil)
+                            otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
 }
 
 - (void) showAnimals

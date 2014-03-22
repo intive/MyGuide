@@ -1,0 +1,13 @@
+"distanceAlertTitle" = "Zoo jest za daleko!";
+
+"distanceAlertMessage" = "Znajduesz się zbyt daleko od zoo. Czy chcesz zobaczyć jak do niego dojechać?";
+
+"NO" = "NIE";
+
+"YES" = "TAK";
+
+"gpsDisabledLaunchMessage" = "Włączenie GPS poprawi jakość korzystania z aplikacji.";
+
+"gpsDisabledMapMessage" = "Aby zobaczyć swoją pozycję na mapie włącz usługi lokalizacji w ustawieniach urządzenia.";
+
+"gpsDeniedTitle" = "GPS wyłączony";
