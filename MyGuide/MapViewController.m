@@ -25,6 +25,7 @@
     LocationManager *_locationManager;
 }
 
+#pragma mark -
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,6 +45,17 @@
     [self showJunctions];
 }
 
+<<<<<<< HEAD
+=======
+- (UIAlertView *) buildAlertView {
+    return [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"distanceAlertTitle", nil)
+                                      message: NSLocalizedString(@"distanceAlertMessage", nil)
+                                     delegate: self
+                            cancelButtonTitle: NSLocalizedString(@"NO", nil)
+                            otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
+}
+
+>>>>>>> ios
 #pragma mark - Initial configuration
 - (void) configureMapView
 {
@@ -68,6 +80,7 @@
     }
 }
 
+<<<<<<< HEAD
 - (UIAlertView *) buildAlertView
 {
     return [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"distanceAlertTitle", nil)
@@ -76,6 +89,9 @@
                             cancelButtonTitle: NSLocalizedString(@"NO", nil)
                             otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
 }
+=======
+
+>>>>>>> ios
 
 - (void) showAnimals
 {
