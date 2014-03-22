@@ -259,6 +259,8 @@
 			children = (
 				0533DEF718DE0D04001BCB28 /* Library */,
 				05C925D418DDBA6000C2F746 /* Images */,
+				052DA2EF18C35D4900FB425E /* MapViewController.h */,
+				052DA2F018C35D4900FB425E /* MapViewController.m */,
 				3D5EF617189637C000233B64 /* AppDelegate.h */,
 				3D5EF618189637C000233B64 /* AppDelegate.m */,
 				3D5EF61A189637C000233B64 /* Main.storyboard */,
