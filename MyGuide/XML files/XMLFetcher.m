@@ -11,20 +11,13 @@
 @implementation XMLFetcher
 + (NSData *) fetchDataFromXML: (NSString *) fileName
 {
-    NSString *fileNameWithExtension = [fileName stringByAppendingPathExtension:@"xml"];
-    NSString *finalPath;
+    NSString *pathForFileInResources = [[NSBundle mainBundle] pathForResource: fileName ofType: @"xml"];
+    NSString *fileNameWithExtension  = [fileName stringByAppendingPathExtension: @"xml"];
+    NSString *pathForDocuments       = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *pathForFileInDocuments = [pathForDocuments stringByAppendingPathComponent: fileNameWithExtension];
     
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *bundlePath = [bundle pathForResource:fileName ofType: @"xml"];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath: pathForFileInDocuments];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsPath = paths[0];
-    documentsPath = [documentsPath stringByAppendingPathComponent:fileNameWithExtension];
-    bool fileExists = [[NSFileManager defaultManager] fileExistsAtPath:documentsPath];
-    
-    if(fileExists) finalPath = documentsPath;
-    else finalPath = bundlePath;
-    
-    return [NSData dataWithContentsOfFile:finalPath];
+    return [NSData dataWithContentsOfFile: fileExists ? pathForFileInDocuments : pathForFileInResources];
 }
 @end

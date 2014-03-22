@@ -8,7 +8,7 @@
 
 #import "Settings.h"
 
-static const double meterInLatitudeDegrees = 1/111250.25112839248;
+static const double meterInLatitudeDegrees  = 1/111250.25112839248;
 static const double meterInLongitudeDegrees = 1/70038.85259649946;
 
 @implementation Settings {
@@ -40,12 +40,12 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
 }
 
 - (void) initDefaults {
-    _innerRadius      = 1;
-    _externalRadius   = 2;
-    _languageFallback = @"en";
-    _showAnimalsOnMap = YES;
-    _showUserPosition = YES;
-    _showPathsOnMap = YES;
+    _innerRadius        = 1;
+    _externalRadius     = 2;
+    _languageFallback   = @"en";
+    _showAnimalsOnMap   = YES;
+    _showUserPosition   = YES;
+    _showPathsOnMap     = YES;
     _showJunctionsOnMap = YES;
 }
 
