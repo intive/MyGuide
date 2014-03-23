@@ -14,6 +14,7 @@
 #import "AFWay.h"
 #import "AFJunction.h"
 #import "MKAnnotationAnimal.h"
+#import "LocationManager.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate, UIToolbarDelegate>
 
