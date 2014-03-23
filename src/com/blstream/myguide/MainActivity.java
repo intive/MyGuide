@@ -25,9 +25,6 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		setUpListeners();
-
-		((MyGuideApp) this.getApplication()).getZooData();
-		((MyGuideApp) this.getApplication()).getSettings();
 	}
 
 	/** Called when orientation is changed */

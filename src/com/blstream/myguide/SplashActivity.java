@@ -63,7 +63,7 @@ public class SplashActivity extends Activity {
 				.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						System.exit(1);
+						finishThisActivity();
 					}
 				})
 				.create();
@@ -91,23 +91,32 @@ public class SplashActivity extends Activity {
 				Log.i(LOG_TAG, "Starting background thread");
 				notifyBackgroundThreadRunning(); // thread started work
 
-				doInBackground();
+				try {
+					doInBackground();
 
-				// make sure min display time has elapsed
-				boolean interuppted = false;
-				final long duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime()) - startTime;
-				if (duration < mMinDisplayMillis) {
-					try {
-						Thread.sleep(mMinDisplayMillis - duration);
-					} catch (InterruptedException e) {
-						Thread.interrupted(); // clear interruption flag
-						interuppted = true;
+					// make sure min display time has elapsed
+					boolean interuppted = false;
+					final long duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime()) - startTime;
+					if (duration < mMinDisplayMillis) {
+						try {
+							Thread.sleep(mMinDisplayMillis - duration);
+						} catch (InterruptedException e) {
+							Thread.interrupted(); // clear interruption flag
+							interuppted = true;
+						}
 					}
-				}
 
-				if (!interuppted) {
-					startNextActivity();
-					finishThisActivity();
+					if (!interuppted) {
+						startNextActivity();
+						finishThisActivity();
+					}
+				} catch (Exception e) {
+					SplashActivity.this.runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							newErrorDialog().show();
+						}
+					});
 				}
 
 				notifyBackgroundThreadIdle(); // thread finished work
@@ -121,7 +130,6 @@ public class SplashActivity extends Activity {
 
 		SettingsHelper sh = new SettingsHelper();
 		Settings settings = null;
-		Exception ee = null;
 		try {
 			try {
 				// reading settings from external file
@@ -139,19 +147,9 @@ public class SplashActivity extends Activity {
 				sb.append("\t" + key + ": " + settings.get(key) + "\n");
 			}
 			Log.i(LOG_TAG, sb.toString());
-		} catch (IOException e) {
-			ee = e;
-		} catch (XmlPullParserException e) {
-			ee = e;
-		} catch (ParserConfigurationException e) {
-			ee = e;
-		} catch (SAXException e) {
-			ee = e;
-		}
-
-		if (ee != null) {
+		} catch (Exception e) {
 			// reading settings failed, assuming defaults will be used
-			Log.e(LOG_TAG, "Parsing settings failed, new instance created", ee);
+			Log.e(LOG_TAG, "Parsing settings failed, new instance created", e);
 			settings = new Settings();
 		}
 
@@ -167,7 +165,6 @@ public class SplashActivity extends Activity {
 
 		ParserHelper ph = new ParserHelper();
 		ZooLocationsData data = null;
-		Exception ee = null;
 		try {
 			try {
 				// reading data from external file
@@ -183,24 +180,11 @@ public class SplashActivity extends Activity {
 			Log.i(LOG_TAG, "animals: " + data.getAnimals().size());
 			Log.i(LOG_TAG, "ways: " + data.getWays().size());
 			Log.i(LOG_TAG, "junctions: " + data.getJunctions().size());
-		} catch (IOException e) {
-			ee = e;
-		} catch (XmlPullParserException e) {
-			ee = e;
-		}
-
-		if (ee != null) {
+		} catch (Exception e) {
 			// data should always be valid
 			// controlled application shutdown
-			Log.wtf(LOG_TAG, ee.toString());
-			final Thread bgThread = Thread.currentThread();
-			SplashActivity.this.runOnUiThread(new Runnable() {
-				@Override
-				public void run() {
-					bgThread.interrupt();
-					newErrorDialog().show();
-				}
-			});
+			Log.wtf(LOG_TAG, e.toString());
+			throw new DataNotParsedException();
 		}
 
 		mApp.setZooData(data);
@@ -243,6 +227,9 @@ public class SplashActivity extends Activity {
 
 	/**
 	 * Operations to be performed on background thread.
+	 * 
+	 * All uncatched exceptions will trigger an error dialog to appear and eventually kill the
+	 * Activity.
 	 */
 	protected void doInBackground() {
 		this.parseSettingsXML();
@@ -259,3 +246,5 @@ public class SplashActivity extends Activity {
 	}
 
 }
+
+class DataNotParsedException extends NullPointerException {}
