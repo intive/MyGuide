@@ -7,7 +7,6 @@
 //
 
 #import "MapViewController.h"
-#import "SWRevealViewController.h"
 
 @interface MapViewController ()
 
@@ -134,9 +133,20 @@
     return distance > _settings.maxUserDistance && !_alertDistance.visible && _showAlert;
 }
 
+<<<<<<< HEAD:MyGuide/MapViewController.m
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex != alertView.cancelButtonIndex){
         [self.tabBarController setSelectedIndex:2];
+=======
+- (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex: (NSInteger) buttonIndex
+{
+    if(buttonIndex != alertView.cancelButtonIndex)
+    {
+        UIViewController *fakeDrivingLocationController = [[UIViewController alloc] init];
+        fakeDrivingLocationController.view.backgroundColor = [UIColor whiteColor];
+        [self.navigationController pushViewController:fakeDrivingLocationController animated: YES];
+
+>>>>>>> 3c8f875a90870e3db410c9d03d07f24bd1860abd:MyGuide/Map/MapViewController.m
     }
     _showAlert = NO;
 }
@@ -156,7 +166,12 @@
 }
 
 #pragma mark - Drawing junctions on the map
+<<<<<<< HEAD:MyGuide/MapViewController.m
 - (void)drawJunction:(AFNode *)node
+=======
+
+- (void) drawJunction: (AFNode *) node
+>>>>>>> 3c8f875a90870e3db410c9d03d07f24bd1860abd:MyGuide/Map/MapViewController.m
 {
     CLLocationCoordinate2D coordinatesArray[2];
     coordinatesArray[0] = CLLocationCoordinate2DMake([node.latitude doubleValue], [node.longitude doubleValue]);
