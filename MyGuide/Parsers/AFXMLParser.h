@@ -28,7 +28,7 @@
 @property (nonatomic, readonly) AFNode      *currentNode;
 @property (nonatomic, readonly) AFJunction  *currentJunction;
 
-- (NSData *) getDataXML;
-- (void) parse;
+- (NSData *)getDataXML;
+- (void)parse;
 
 @end

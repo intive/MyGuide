@@ -20,8 +20,7 @@
     return self;
 }
 
-- (id) initWithPosition: (AFNode   *) coordinates
-                andName: (NSString *) name
+- (id)initWithPosition:(AFNode *)coordinates andName:(NSString *)name
 {
     self = [super init];
     if(self) {
@@ -31,12 +30,12 @@
     return self;
 }
 
-- (void) setCoordinates: (AFNode *) coordinates
+- (void)setCoordinates:(AFNode *)coordinates
 {
     _coordinates = coordinates;
 }
 
-- (void) setName: (NSString *) name
+- (void)setName:(NSString *)name
 {
     _name = name;
 }

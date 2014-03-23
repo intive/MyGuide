@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface XMLFetcher : NSObject
-+ (NSData *) fetchDataFromXML: (NSString *) fileName;
+
++ (NSData *)fetchDataFromXML:(NSString *)fileName;
+
 @end

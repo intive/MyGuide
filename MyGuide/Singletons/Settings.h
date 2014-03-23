@@ -32,12 +32,15 @@
 @property (nonatomic, readonly, getter = calculateMinSpan)   MKCoordinateSpan       minSpan;
 @property (nonatomic, readonly, getter = calculateMapBounds) MKCoordinateRegion     mapBounds;
 
-+ (id)   sharedSettingsData;
-- (void) injectDataWithName: (NSString*) name andValue: (NSString*) value;
-- (CLLocationCoordinate2D)  calculateMapCenter;
-- (CLLocationCoordinate2D)  calculateZooCenter;
-- (MKCoordinateRegion)      calculateMapBounds;
+
+
 - (MKCoordinateSpan)        calculateMaxSpan;
 - (MKCoordinateSpan)        calculateMinSpan;
+- (MKCoordinateRegion)      calculateMapBounds;
+- (CLLocationCoordinate2D)  calculateMapCenter;
+- (CLLocationCoordinate2D)  calculateZooCenter;
+- (void)injectDataWithName: (NSString*)name andValue:(NSString*)value;
+
++ (id)sharedSettingsData;
 
 @end

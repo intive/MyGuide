@@ -14,22 +14,22 @@
 
 @implementation AppDelegate
 
-- (void) parseDataXML: (id) object
+- (void)parseDataXML:(id)object
 {
     AFXMLParser *parser = [[AFXMLParser alloc] init];
     [parser parse];
 }
 
-- (void) loadSettings: (id) object {
+- (void)loadSettings:(id)object
+{
     SettingsParser *parser = [[SettingsParser alloc] init];
     [parser loadSettings];
 }
 
-- (BOOL)                   application: (UIApplication *) application
-         didFinishLaunchingWithOptions: (NSDictionary  *) launchOptions
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
-    [self performSelectorInBackground: @selector(parseDataXML:) withObject: nil];
-    [self performSelectorInBackground: @selector(loadSettings:) withObject: nil];
+    [self performSelectorInBackground:@selector(parseDataXML:) withObject:nil];
+    [self performSelectorInBackground:@selector(loadSettings:) withObject:nil];
 
     return YES;
 }

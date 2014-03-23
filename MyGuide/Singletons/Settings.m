@@ -23,7 +23,7 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
     double _zooCenterLon;
 }
 
-+ (id) sharedSettingsData
++ (id)sharedSettingsData
 {
     static Settings *sharedData = nil;
     static dispatch_once_t onceToken;
@@ -33,7 +33,7 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
     return sharedData;
 }
 
-- (id) init
+- (id)init
 {
     self = [super init];
     if(self) {
@@ -43,7 +43,8 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
 }
 
 
-- (void) initDefaults {
+- (void)initDefaults
+{
     _innerRadius        = 1;
     _externalRadius     = 2;
     _languageFallback   = @"en";
@@ -53,10 +54,10 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
     _showJunctionsOnMap = YES;
 }
 
-- (void) injectDataWithName: (NSString*) name andValue: (NSString*) value
+- (void)injectDataWithName:(NSString*)name andValue:(NSString*)value
 {
     if ([name isEqualToString:       @"lang_fallback"]) {
-        _languageFallback = [self normalize: value];
+        _languageFallback = [self normalize:value];
     }
     else if ([name isEqualToString:  @"internal_object_radius"]) {
         _innerRadius = [value integerValue];
@@ -114,32 +115,32 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
     }
 }
 
-- (NSString*) normalize: (NSString*) aString
+- (NSString*)normalize:(NSString*)aString
 {
-    return [aString stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return [aString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (CLLocationCoordinate2D) calculateMapCenter
+- (CLLocationCoordinate2D)calculateMapCenter
 {
     return CLLocationCoordinate2DMake(_zooLat, _zooLng);
 }
 
-- (CLLocationCoordinate2D) calculateZooCenter
+- (CLLocationCoordinate2D)calculateZooCenter
 {
     return CLLocationCoordinate2DMake(_zooCenterLat, _zooCenterLon);
 }
 
-- (MKCoordinateRegion) calculateMapBounds
+- (MKCoordinateRegion)calculateMapBounds
 {
     return MKCoordinateRegionMakeWithDistance(self.mapCenter, _mapMaxWidth, _mapMaxHeight);
 }
 
-- (MKCoordinateSpan) calculateMaxSpan
+- (MKCoordinateSpan)calculateMaxSpan
 {
     return MKCoordinateSpanMake(_mapMaxWidth * meterInLatitudeDegrees, _mapMaxHeight * meterInLongitudeDegrees);
 }
 
-- (MKCoordinateSpan) calculateMinSpan
+- (MKCoordinateSpan)calculateMinSpan
 {
     return MKCoordinateSpanMake(_mapMinWitdh * meterInLatitudeDegrees, _mapMinHeigth * meterInLongitudeDegrees);
 }
