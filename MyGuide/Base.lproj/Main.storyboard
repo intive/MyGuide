@@ -5,47 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Localization-->
-        <scene sceneID="INJ-dq-960">
-            <objects>
-                <viewController id="AcO-82-58O" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ovF-sU-jRt"/>
-                        <viewControllerLayoutGuide type="bottom" id="Wm9-s3-5gA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6Zv-P1-OtS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="UC8-nb-zTe">
-                                <rect key="frame" x="15" y="163" width="280" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="Ghi-VX-RDM"/>
-                                    <constraint firstAttribute="height" constant="120" id="qlR-TG-JT7"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Localization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9T-8K-J6p">
-                                <rect key="frame" x="109" y="327" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="T9T-8K-J6p" firstAttribute="top" secondItem="UC8-nb-zTe" secondAttribute="bottom" constant="44" id="62b-i9-sBD"/>
-                            <constraint firstAttribute="centerX" secondItem="UC8-nb-zTe" secondAttribute="centerX" constant="5" id="FW4-dH-DA4"/>
-                            <constraint firstItem="UC8-nb-zTe" firstAttribute="top" secondItem="6Zv-P1-OtS" secondAttribute="top" constant="163" id="N8D-1m-p8l"/>
-                            <constraint firstAttribute="centerX" secondItem="T9T-8K-J6p" secondAttribute="centerX" constant="5" id="cw5-jr-PU6"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Localization" id="GpC-QO-gAd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a8z-Ep-XKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1039" y="-99"/>
-        </scene>
         <!--Map View Controller - Explore-->
         <scene sceneID="Rwy-Mw-zzh">
             <objects>
@@ -85,12 +44,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1F-GP-lr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1071" y="569"/>
+            <point key="canvasLocation" x="-1071" y="539"/>
         </scene>
-        <!--Animal View Controller-->
+        <!--Animals List View Controller-->
         <scene sceneID="8f3-02-r7t">
             <objects>
-                <viewController id="v6K-o8-Tek" customClass="AnimalViewController" sceneMemberID="viewController">
+                <viewController id="v6K-o8-Tek" customClass="AnimalsListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4SE-cy-l9F"/>
                         <viewControllerLayoutGuide type="bottom" id="htu-3g-0k8"/>
@@ -99,15 +58,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VzT-e2-UZs">
-                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="06T-y8-t9z">
-                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for animal" id="VzT-e2-UZs">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="v6K-o8-Tek" id="xd2-Jo-WsX"/>
+                                    </connections>
+                                </searchBar>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -125,55 +87,14 @@
                 <searchDisplayController id="dvk-PK-CXo">
                     <connections>
                         <outlet property="delegate" destination="v6K-o8-Tek" id="Nov-y9-fLG"/>
+                        <outlet property="searchBar" destination="VzT-e2-UZs" id="lvq-LY-uXv"/>
                         <outlet property="searchContentsController" destination="v6K-o8-Tek" id="UuQ-Pf-NUv"/>
                         <outlet property="searchResultsDataSource" destination="v6K-o8-Tek" id="n0L-Dl-hYz"/>
                         <outlet property="searchResultsDelegate" destination="v6K-o8-Tek" id="Hre-tZ-yVq"/>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1973" y="-479"/>
-        </scene>
-        <!--View Controller - Tickets and opening hours-->
-        <scene sceneID="FX3-eS-iou">
-            <objects>
-                <viewController id="YX8-WM-fPD" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Mby-bb-Yg4"/>
-                        <viewControllerLayoutGuide type="bottom" id="49I-p7-OrJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aXI-XE-OI2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="fzb-vQ-VHt">
-                                <rect key="frame" x="20" y="168" width="280" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="A6g-T0-fk3"/>
-                                    <constraint firstAttribute="height" constant="120" id="OAO-hB-dJp"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tickets and opening hours" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="122" translatesAutoresizingMaskIntoConstraints="NO" id="xHY-GM-l8n">
-                                <rect key="frame" x="99" y="358" width="122" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="fzb-vQ-VHt" firstAttribute="top" secondItem="aXI-XE-OI2" secondAttribute="top" constant="168" id="GWF-Uh-yTi"/>
-                            <constraint firstItem="xHY-GM-l8n" firstAttribute="leading" secondItem="aXI-XE-OI2" secondAttribute="leading" constant="99" id="gTD-Na-ZCm"/>
-                            <constraint firstAttribute="trailing" secondItem="xHY-GM-l8n" secondAttribute="trailing" constant="99" id="jxV-1o-vmL"/>
-                            <constraint firstItem="xHY-GM-l8n" firstAttribute="top" secondItem="fzb-vQ-VHt" secondAttribute="bottom" constant="70" id="ogO-3L-f5y"/>
-                            <constraint firstAttribute="centerX" secondItem="fzb-vQ-VHt" secondAttribute="centerX" id="qjs-Gp-bxR"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Tickets and opening hours" id="Bdy-Ag-Qpe"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pgw-BG-6Il" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1425" y="-461"/>
+            <point key="canvasLocation" x="-1071" y="-209"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lhd-Ed-tzD">
@@ -186,7 +107,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="qyY-sJ-4Kb" kind="relationship" relationship="rootViewController" id="5lw-ct-jEd"/>
+                        <segue destination="k7A-NH-zPr" kind="relationship" relationship="rootViewController" id="lUA-99-4r3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qqL-sB-ltz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,9 +177,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="AcO-82-58O" kind="custom" customClass="SWRevealViewControllerSegue" trigger="accessoryAction" id="T4K-Sv-ZZn"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="info" id="8uh-Ba-eb7">
                                 <rect key="frame" x="0.0" y="154" width="320" height="44"/>
@@ -275,9 +193,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="YX8-WM-fPD" kind="custom" customClass="SWRevealViewControllerSegue" id="Il2-Nz-Kb9"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="history" id="HDy-9Z-Ysh">
                                 <rect key="frame" x="0.0" y="198" width="320" height="44"/>
@@ -294,9 +209,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="qyY-sJ-4Kb" kind="custom" customClass="SWRevealViewControllerSegue" id="pfO-bf-yUf"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gastronomy" id="KB2-oP-P06">
                                 <rect key="frame" x="0.0" y="242" width="320" height="44"/>
@@ -364,72 +276,8 @@
             </objects>
             <point key="canvasLocation" x="-2487" y="835"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="Hrl-gb-nIN">
-            <objects>
-                <viewController id="qyY-sJ-4Kb" customClass="HomeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3cg-Rf-nst"/>
-                        <viewControllerLayoutGuide type="bottom" id="MmC-PF-IEd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5ZY-mU-HEd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Wrocław ZOO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="167" translatesAutoresizingMaskIntoConstraints="NO" id="WBF-Mf-8ie">
-                                <rect key="frame" x="77" y="240" width="167" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="aL2-aD-Se6">
-                                <rect key="frame" x="20" y="86" width="280" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="3Gb-PK-VoR"/>
-                                    <constraint firstAttribute="width" constant="280" id="E8l-N1-dZT"/>
-                                </constraints>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6B-1b-rzE">
-                                <rect key="frame" x="0.0" y="289" width="320" height="76"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="Mdf-Z9-D7p"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="E6B-1b-rzE" firstAttribute="leading" secondItem="5ZY-mU-HEd" secondAttribute="leading" id="1Xw-ea-bVb"/>
-                            <constraint firstItem="E6B-1b-rzE" firstAttribute="top" secondItem="WBF-Mf-8ie" secondAttribute="bottom" constant="8" symbolic="YES" id="Cqq-Bj-l3c"/>
-                            <constraint firstAttribute="trailing" secondItem="E6B-1b-rzE" secondAttribute="trailing" id="Dro-tt-op0"/>
-                            <constraint firstItem="E6B-1b-rzE" firstAttribute="centerX" secondItem="aL2-aD-Se6" secondAttribute="centerX" id="M1F-vf-AcA"/>
-                            <constraint firstItem="E6B-1b-rzE" firstAttribute="centerX" secondItem="WBF-Mf-8ie" secondAttribute="centerX" id="ZdF-UG-TcV"/>
-                            <constraint firstItem="aL2-aD-Se6" firstAttribute="top" secondItem="3cg-Rf-nst" secondAttribute="bottom" constant="66" id="ZgK-Df-8Pt"/>
-                            <constraint firstItem="MmC-PF-IEd" firstAttribute="top" secondItem="E6B-1b-rzE" secondAttribute="bottom" constant="159" id="et7-Q5-YCY"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Kmo-p5-Obq">
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="qkz-jh-tCa"/>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="sidebarButton" destination="qkz-jh-tCa" id="uoo-uH-wSi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JtD-BO-d3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1238" y="1233"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="logo" width="400" height="221"/>
         <image name="menu.png" width="28" height="20"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -438,6 +286,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pfO-bf-yUf"/>
+        <segue reference="lUA-99-4r3"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@
 #import "AFWay.h"
 #import "AFJunction.h"
 #import "MKAnnotationAnimal.h"
+#import "SWRevealViewController.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate, UIToolbarDelegate>
 
