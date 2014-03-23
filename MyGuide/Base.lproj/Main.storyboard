@@ -5,47 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Localization-->
-        <scene sceneID="INJ-dq-960">
-            <objects>
-                <viewController id="AcO-82-58O" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ovF-sU-jRt"/>
-                        <viewControllerLayoutGuide type="bottom" id="Wm9-s3-5gA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6Zv-P1-OtS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="UC8-nb-zTe">
-                                <rect key="frame" x="15" y="163" width="280" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="Ghi-VX-RDM"/>
-                                    <constraint firstAttribute="height" constant="120" id="qlR-TG-JT7"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Localization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9T-8K-J6p">
-                                <rect key="frame" x="109" y="327" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="T9T-8K-J6p" firstAttribute="top" secondItem="UC8-nb-zTe" secondAttribute="bottom" constant="44" id="62b-i9-sBD"/>
-                            <constraint firstAttribute="centerX" secondItem="UC8-nb-zTe" secondAttribute="centerX" constant="5" id="FW4-dH-DA4"/>
-                            <constraint firstItem="UC8-nb-zTe" firstAttribute="top" secondItem="6Zv-P1-OtS" secondAttribute="top" constant="163" id="N8D-1m-p8l"/>
-                            <constraint firstAttribute="centerX" secondItem="T9T-8K-J6p" secondAttribute="centerX" constant="5" id="cw5-jr-PU6"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Localization" id="GpC-QO-gAd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a8z-Ep-XKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1039" y="-99"/>
-        </scene>
         <!--Map View Controller - Explore-->
         <scene sceneID="Rwy-Mw-zzh">
             <objects>
@@ -85,49 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1F-GP-lr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1071" y="569"/>
-        </scene>
-        <!--View Controller - Tickets and opening hours-->
-        <scene sceneID="FX3-eS-iou">
-            <objects>
-                <viewController id="YX8-WM-fPD" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Mby-bb-Yg4"/>
-                        <viewControllerLayoutGuide type="bottom" id="49I-p7-OrJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aXI-XE-OI2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="fzb-vQ-VHt">
-                                <rect key="frame" x="20" y="168" width="280" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="A6g-T0-fk3"/>
-                                    <constraint firstAttribute="height" constant="120" id="OAO-hB-dJp"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tickets and opening hours" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="122" translatesAutoresizingMaskIntoConstraints="NO" id="xHY-GM-l8n">
-                                <rect key="frame" x="99" y="358" width="122" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="fzb-vQ-VHt" firstAttribute="top" secondItem="aXI-XE-OI2" secondAttribute="top" constant="168" id="GWF-Uh-yTi"/>
-                            <constraint firstItem="xHY-GM-l8n" firstAttribute="leading" secondItem="aXI-XE-OI2" secondAttribute="leading" constant="99" id="gTD-Na-ZCm"/>
-                            <constraint firstAttribute="trailing" secondItem="xHY-GM-l8n" secondAttribute="trailing" constant="99" id="jxV-1o-vmL"/>
-                            <constraint firstItem="xHY-GM-l8n" firstAttribute="top" secondItem="fzb-vQ-VHt" secondAttribute="bottom" constant="70" id="ogO-3L-f5y"/>
-                            <constraint firstAttribute="centerX" secondItem="fzb-vQ-VHt" secondAttribute="centerX" id="qjs-Gp-bxR"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Tickets and opening hours" id="Bdy-Ag-Qpe"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pgw-BG-6Il" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1425" y="-461"/>
+            <point key="canvasLocation" x="-1109" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lhd-Ed-tzD">
@@ -150,7 +67,6 @@
         <!--Slide Menu View Controller-->
         <scene sceneID="4nv-8U-sab">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oiy-O5-HDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="SidebarController" id="FbL-DY-K0Q" customClass="SlideMenuViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Rxe-9W-Nd2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -208,9 +124,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="AcO-82-58O" kind="custom" customClass="SWRevealViewControllerSegue" trigger="accessoryAction" id="T4K-Sv-ZZn"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="info" id="8uh-Ba-eb7">
                                 <rect key="frame" x="0.0" y="154" width="320" height="44"/>
@@ -227,9 +140,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="YX8-WM-fPD" kind="custom" customClass="SWRevealViewControllerSegue" id="Il2-Nz-Kb9"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="history" id="HDy-9Z-Ysh">
                                 <rect key="frame" x="0.0" y="198" width="320" height="44"/>
@@ -290,6 +200,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="kev-rH-g97"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oiy-O5-HDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1874" y="281"/>
         </scene>
@@ -376,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JtD-BO-d3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1238" y="1233"/>
+            <point key="canvasLocation" x="-1109" y="819"/>
         </scene>
     </scenes>
     <resources>

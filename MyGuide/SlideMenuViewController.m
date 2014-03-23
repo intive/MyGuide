@@ -9,9 +9,13 @@
 #import "SlideMenuViewController.h"
 #import "SWRevealViewController.h"
 
-@implementation SlideMenuViewController {
-    NSArray *menuItems;
-}
+@interface SlideMenuViewController ()
+
+@property (nonatomic, strong) NSArray *menuItems;
+
+@end
+
+@implementation SlideMenuViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -21,19 +25,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    menuItems = @[@"map", @"animals", @"events", @"info", @"history", @"gastronomy", @"preferences"];
+    self.menuItems = @[@"map", @"animals", @"events", @"info", @"history", @"gastronomy", @"preferences"];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section
 {
-    return [menuItems count];
+    return [self.menuItems count];
 }
 
 - (UITableViewCell *) tableView: (UITableView *) tableView cellForRowAtIndexPath: (NSIndexPath *) indexPath
 {
-    NSString *cellIdentifier = [menuItems objectAtIndex: indexPath.row];
+    NSString *cellIdentifier = [self.menuItems objectAtIndex: indexPath.row];
     return [tableView dequeueReusableCellWithIdentifier: cellIdentifier forIndexPath: indexPath];
 }
 
@@ -41,7 +45,7 @@
 {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     UINavigationController *destViewController = (UINavigationController*) segue.destinationViewController;
-    destViewController.title = [[menuItems objectAtIndex: indexPath.row] capitalizedString];
+    destViewController.title = [[self.menuItems objectAtIndex: indexPath.row] capitalizedString];
     SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
     swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
         UINavigationController* navController = (UINavigationController*) self.revealViewController.frontViewController;
