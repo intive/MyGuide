@@ -20,5 +20,6 @@
 
 @property (weak, nonatomic)   IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIToolbar *mapToolbar;
+@property (weak, nonatomic)   IBOutlet UIBarButtonItem *sidebarButton;
 
 @end
