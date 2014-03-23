@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "SWRevealViewController.h"
 
 @interface MapViewController ()
 
@@ -21,8 +22,9 @@
 #pragma mark -
 @implementation MapViewController
 {
-    Settings     *_settings;
-    AFParsedData *_data;
+    Settings        *_settings;
+    AFParsedData    *_data;
+    LocationManager *_locationManager;
 }
 
 - (void)viewDidLoad
@@ -33,6 +35,14 @@
     _alertDistance = [self buildAlertView];
     _showAlert = YES;
     _zooCenterLocation = [[CLLocation alloc] initWithLatitude:_settings.zooCenter.latitude longitude:_settings.zooCenter.longitude];
+
+    _sidebarButton.target    = self.revealViewController;
+    _sidebarButton.action    = @selector(revealToggle:);
+    [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    
+    _locationManager = [LocationManager sharedLocationManager];
+    [_locationManager checkLocationStatus];
+    
     [self configureMapView];
     [self showAnimals];
     [self centerMap];
@@ -40,14 +50,7 @@
     [self showJunctions];
 }
 
-- (UIAlertView *)buildAlertView
-{
-    return [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"distanceAlertTitle", nil)
-                                      message: NSLocalizedString(@"distanceAlertMessage", nil)
-                                     delegate: self
-                            cancelButtonTitle: NSLocalizedString(@"NO", nil)
-                            otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
-}
+
 
 #pragma mark - Initial configuration
 - (void)configureMapView
@@ -74,7 +77,14 @@
     }
 }
 
-
+- (UIAlertView *) buildAlertView
+{
+    return [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"distanceAlertTitle", nil)
+                                      message: NSLocalizedString(@"distanceAlertMessage", nil)
+                                     delegate: self
+                            cancelButtonTitle: NSLocalizedString(@"NO", nil)
+                            otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
+}
 
 - (void)showAnimals
 {

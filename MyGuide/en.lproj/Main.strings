@@ -1,0 +1,27 @@
+
+/* Class = "IBUILabel"; text = "Welcome to Wrocław ZOO"; ObjectID = "A8k-ID-7kH"; */
+"A8k-ID-7kH.text" = "Witamy we Wrocławskim ZOO";
+
+/* Class = "IBUITabBarItem"; title = "Tickets and opening hours"; ObjectID = "Bdy-Ag-Qpe"; */
+"Bdy-Ag-Qpe.title" = "Bilety i godziny otwarcia";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "ByE-XG-qDW"; */
+"ByE-XG-qDW.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUILabel"; text = "Explore"; ObjectID = "Fkb-eu-HJy"; */
+"Fkb-eu-HJy.text" = "Zwiedzaj";
+
+/* Class = "IBUITabBarItem"; title = "Localization"; ObjectID = "GpC-QO-gAd"; */
+"GpC-QO-gAd.title" = "Dojazd";
+
+/* Class = "IBUILabel"; text = "Localization"; ObjectID = "T9T-8K-J6p"; */
+"T9T-8K-J6p.text" = "Dojazd";
+
+/* Class = "IBUITabBarItem"; title = "Home"; ObjectID = "US1-O4-S7C"; */
+"US1-O4-S7C.title" = "Ekran początkowy";
+
+/* Class = "IBUITabBarItem"; title = "Explore"; ObjectID = "dfN-EF-0Uk"; */
+"dfN-EF-0Uk.title" = "Zwiedzaj";
+
+/* Class = "IBUILabel"; text = "Tickets and opening hours"; ObjectID = "xHY-GM-l8n"; */
+"xHY-GM-l8n.text" = "Bilety i godziny otwarcia";
