@@ -8,10 +8,14 @@
 
 #import "AnimalsListViewController.h"
 
-@implementation AnimalsListViewController {
-    NSArray *_animalsArray;
-    NSMutableArray *_filteredAnimalsArray;
-}
+@interface AnimalsListViewController ()
+
+@property (strong, nonatomic) NSArray *_animalsArray;
+@property (strong, nonatomic) NSMutableArray *_filteredAnimalsArray;
+
+@end
+
+@implementation AnimalsListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,8 +46,8 @@
     NSArray *sortDescriptors = [NSArray arrayWithObject: sortDescriptor];
     
     AFParsedData *data = [AFParsedData sharedParsedData];
-    _animalsArray = [data.animalsArray sortedArrayUsingDescriptors:sortDescriptors];
-    _filteredAnimalsArray = [NSMutableArray arrayWithCapacity: [_animalsArray count]];
+    self._animalsArray = [data.animalsArray sortedArrayUsingDescriptors:sortDescriptors];
+    self._filteredAnimalsArray = [NSMutableArray arrayWithCapacity: [self._animalsArray count]];
     
     self.tableView.dataSource = self;
     self.tableView.delegate   = self;
@@ -54,9 +58,9 @@
 - (NSInteger) numberOfSectionsInTableView: (UITableView *) tableView
 {
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [_filteredAnimalsArray count];
+        return [self._filteredAnimalsArray count];
     } else {
-        return [_animalsArray count];
+        return [self._animalsArray count];
     }
 }
 
@@ -74,9 +78,9 @@
     }
     AFAnimal *animal;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        animal = [_filteredAnimalsArray objectAtIndex:indexPath.section];
+        animal = [self._filteredAnimalsArray objectAtIndex:indexPath.section];
     } else {
-        animal = [_animalsArray objectAtIndex:indexPath.section];
+        animal = [self._animalsArray objectAtIndex:indexPath.section];
     }
     cell.textLabel.text = animal.name;
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -87,10 +91,10 @@
 
 - (void) filterContentForSearchText: (NSString*) searchText scope: (NSString*) scope
 {
-    [_filteredAnimalsArray removeAllObjects];
+    [self._filteredAnimalsArray removeAllObjects];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat: @"SELF.name contains[c] %@", searchText];
-    _filteredAnimalsArray = [NSMutableArray arrayWithArray: [_animalsArray filteredArrayUsingPredicate: predicate]];
+    self._filteredAnimalsArray = [NSMutableArray arrayWithArray: [self._animalsArray filteredArrayUsingPredicate: predicate]];
 }
 
 - (BOOL) searchDisplayController: (UISearchDisplayController *) controller
