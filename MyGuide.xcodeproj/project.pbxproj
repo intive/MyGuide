@@ -14,6 +14,7 @@
 		0533DF0318DE1520001BCB28 /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DF0018DE1520001BCB28 /* nav_bg.png */; };
 		0533DF0918DE333A001BCB28 /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DF0818DE333A001BCB28 /* SlideMenuViewController.m */; };
 		0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DF0B18DE365D001BCB28 /* HomeViewController.m */; };
+		055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */; };
 		05C925D318DDAFAD00C2F746 /* GPS.md in Resources */ = {isa = PBXBuildFile; fileRef = 05C925D218DDAFAD00C2F746 /* GPS.md */; };
 		05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C9265818DDDF1800C2F746 /* LocationManager.m */; };
 		05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */; };
@@ -75,6 +76,8 @@
 		0533DF0A18DE365D001BCB28 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		0533DF0B18DE365D001BCB28 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0533DF0E18DE3BF1001BCB28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalsListViewController.h; sourceTree = "<group>"; };
+		055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalsListViewController.m; sourceTree = "<group>"; };
 		05C925D218DDAFAD00C2F746 /* GPS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GPS.md; sourceTree = "<group>"; };
 		05C9265718DDDF1800C2F746 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		05C9265818DDDF1800C2F746 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
@@ -289,6 +292,8 @@
 				0533DF0818DE333A001BCB28 /* SlideMenuViewController.m */,
 				0533DF0A18DE365D001BCB28 /* HomeViewController.h */,
 				0533DF0B18DE365D001BCB28 /* HomeViewController.m */,
+				055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */,
+				055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */,
 			);
 			path = MyGuide;
 			sourceTree = "<group>";
@@ -502,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */,
 				84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */,
 				8460875718BDFA7F00620219 /* SettingsParser.m in Sources */,
 				0533DEFA18DE0D27001BCB28 /* SWRevealViewController.m in Sources */,

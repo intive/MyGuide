@@ -7,7 +7,6 @@
 //
 
 #import "MapViewController.h"
-#import "SWRevealViewController.h"
 
 @interface MapViewController ()
 
