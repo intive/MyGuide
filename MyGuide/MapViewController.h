@@ -14,11 +14,13 @@
 #import "AFWay.h"
 #import "AFJunction.h"
 #import "MKAnnotationAnimal.h"
+#import "SWRevealViewController.h"
 #import "LocationManager.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate, UIToolbarDelegate>
 
 @property (weak, nonatomic)   IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIToolbar *mapToolbar;
+@property (weak, nonatomic)   IBOutlet UIBarButtonItem *sidebarButton;
 
 @end
