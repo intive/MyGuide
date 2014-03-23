@@ -21,11 +21,11 @@
 
 @implementation MapViewController
 {
-    Settings     *_settings;
-    AFParsedData *_data;
+    Settings        *_settings;
+    AFParsedData    *_data;
+    LocationManager *_locationManager;
 }
 
-#pragma mark -
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -35,24 +35,18 @@
     _showAlert = YES;
     _zooCenterLocation = [[CLLocation alloc] initWithLatitude: _settings.zooCenter.latitude
                                                     longitude: _settings.zooCenter.longitude];
-    
     _sidebarButton.target    = self.revealViewController;
     _sidebarButton.action    = @selector(revealToggle:);
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    
+    _locationManager = [LocationManager sharedLocationManager];
+    [_locationManager checkLocationStatus];
     
     [self configureMapView];
     [self showAnimals];
     [self centerMap];
     [self showPaths];
     [self showJunctions];
-}
-
-- (UIAlertView *) buildAlertView {
-    return [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"distanceAlertTitle", nil)
-                                      message: NSLocalizedString(@"distanceAlertMessage", nil)
-                                     delegate: self
-                            cancelButtonTitle: NSLocalizedString(@"NO", nil)
-                            otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
 }
 
 #pragma mark - Initial configuration
@@ -77,6 +71,15 @@
     if(_settings.showUserPosition) {
         [self.mapView setShowsUserLocation: YES];
     }
+}
+
+- (UIAlertView *) buildAlertView
+{
+    return [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"distanceAlertTitle", nil)
+                                      message: NSLocalizedString(@"distanceAlertMessage", nil)
+                                     delegate: self
+                            cancelButtonTitle: NSLocalizedString(@"NO", nil)
+                            otherButtonTitles: NSLocalizedString(@"YES", nil), nil];
 }
 
 - (void) showAnimals
