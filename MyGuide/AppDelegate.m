@@ -12,13 +12,14 @@
     LocationManager *_locationManager;
 }
 
-- (void) parseDataXML: (id) object
+- (void) parseDataXML
 {
     AFXMLParser *parser = [[AFXMLParser alloc] init];
     [parser parse];
 }
 
-- (void) loadSettings: (id) object {
+- (void) loadSettings
+{
     SettingsParser *parser = [[SettingsParser alloc] init];
     [parser loadSettings];
 }
@@ -26,8 +27,11 @@
 - (BOOL)                   application: (UIApplication *) application
          didFinishLaunchingWithOptions: (NSDictionary  *) launchOptions
 {
-    [self performSelectorInBackground: @selector(parseDataXML:) withObject: nil];
-    [self performSelectorInBackground: @selector(loadSettings:) withObject: nil];
+    dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(aQueue, ^{
+        [self parseDataXML];
+        [self loadSettings];
+    });
     
     _locationManager = [LocationManager sharedLocationManager];
     [_locationManager requestLocationStatus];

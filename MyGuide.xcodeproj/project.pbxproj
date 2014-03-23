@@ -258,13 +258,9 @@
 				05E375C618BA872B00A31630 /* MWLogging.m */,
 				05E375C718BA872B00A31630 /* MyGuide-Info.plist */,
 				05E375C818BA872B00A31630 /* MyGuide-Prefix.pch */,
-<<<<<<< HEAD
-				3D5EF611189637C000233B64 /* Localizable.strings */,
-=======
 				842615DC18DC5C2100927285 /* Localizable.strings */,
 				842615E018DC5D8300927285 /* Localizable.strings */,
 				3D5EF611189637C000233B64 /* InfoPlist.strings */,
->>>>>>> ios
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

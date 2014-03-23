@@ -69,7 +69,6 @@
                                               cancelButtonTitle: NSLocalizedString(@"OK", nil)
                                               otherButtonTitles: nil];
     [alertView show];
-    alertView = nil;
 }
 
 @end
