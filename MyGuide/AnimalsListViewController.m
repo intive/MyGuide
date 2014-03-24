@@ -10,8 +10,8 @@
 
 @interface AnimalsListViewController ()
 
-@property (strong, nonatomic) NSArray *_animalsArray;
-@property (strong, nonatomic) NSMutableArray *_filteredAnimalsArray;
+@property (strong, nonatomic) NSArray *animalsArray;
+@property (strong, nonatomic) NSMutableArray *filteredAnimalsArray;
 
 @end
 
@@ -46,8 +46,8 @@
     NSArray *sortDescriptors = [NSArray arrayWithObject: sortDescriptor];
     
     AFParsedData *data = [AFParsedData sharedParsedData];
-    self._animalsArray = [data.animalsArray sortedArrayUsingDescriptors:sortDescriptors];
-    self._filteredAnimalsArray = [NSMutableArray arrayWithCapacity: [self._animalsArray count]];
+    _animalsArray = [data.animalsArray sortedArrayUsingDescriptors:sortDescriptors];
+    _filteredAnimalsArray = [NSMutableArray arrayWithCapacity: [_animalsArray count]];
     
     self.tableView.dataSource = self;
     self.tableView.delegate   = self;
@@ -58,9 +58,9 @@
 - (NSInteger) numberOfSectionsInTableView: (UITableView *) tableView
 {
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [self._filteredAnimalsArray count];
+        return [_filteredAnimalsArray count];
     } else {
-        return [self._animalsArray count];
+        return [_animalsArray count];
     }
 }
 
@@ -78,9 +78,9 @@
     }
     AFAnimal *animal;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
-        animal = [self._filteredAnimalsArray objectAtIndex:indexPath.section];
+        animal = [_filteredAnimalsArray objectAtIndex:indexPath.section];
     } else {
-        animal = [self._animalsArray objectAtIndex:indexPath.section];
+        animal = [_animalsArray objectAtIndex:indexPath.section];
     }
     cell.textLabel.text = animal.name;
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -91,10 +91,10 @@
 
 - (void) filterContentForSearchText: (NSString*) searchText scope: (NSString*) scope
 {
-    [self._filteredAnimalsArray removeAllObjects];
+    [_filteredAnimalsArray removeAllObjects];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat: @"SELF.name contains[c] %@", searchText];
-    self._filteredAnimalsArray = [NSMutableArray arrayWithArray: [self._animalsArray filteredArrayUsingPredicate: predicate]];
+    _filteredAnimalsArray = [NSMutableArray arrayWithArray: [_animalsArray filteredArrayUsingPredicate: predicate]];
 }
 
 - (BOOL) searchDisplayController: (UISearchDisplayController *) controller
