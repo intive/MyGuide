@@ -19,6 +19,10 @@
     <string name="confirmation_default">Kontynuować?</string>
     <string name="confirmation_exit">Zakończyć działanie aplikacji?</string>
 
+    <!-- SplashActivity -->
+    <string name="splash_dialog_error_title">Błąd aplikacji</string>
+    <string name="splash_dialog_error_message">Wystąpił krytyczny wyjątek i aplikacja nie może zostać uruchomiona.</string>
+
     <!-- SightSeeing screen -->
     <string name="search_sightseeing">Szukaj&#8230;</string>
 
