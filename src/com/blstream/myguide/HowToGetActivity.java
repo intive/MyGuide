@@ -1,8 +1,8 @@
 
 package com.blstream.myguide;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.app.Activity;
 
 public class HowToGetActivity extends Activity {
 
@@ -12,5 +12,6 @@ public class HowToGetActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_how_to_get);
 	}
+
 
 }
