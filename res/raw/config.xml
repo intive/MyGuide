@@ -7,4 +7,35 @@
 
 	<!-- Radius outside which the information that user got close to an object disappears -->
 	<external_object_radius>2</external_object_radius>
+	
+	<!-- Min zoom level of map -->
+	<min_zoom>14.5</min_zoom>
+	
+	<!-- Max zoom level of map -->
+	<max_zoom>19.0</max_zoom>
+	
+	<!-- Latitude of point which is on map's center (at the beginning) ("Dzieciniec")-->
+	<start_lat>51.1050406</start_lat>
+	
+	<!-- Longitude of point which is on map's center (at the beginning) ("Dzieciniec")-->
+	<start_lon>17.074053</start_lon>
+
+	<!-- Show or hide animal markers on map-->	
+	<animals_visible>true</animals_visible>
+
+	<!-- Splash screen minimal duration -->
+	<splash_min_display_time_ms>2500</splash_min_display_time_ms>
+
+	<!-- Show or hide paths on map-->	
+	<paths_visible>true</paths_visible>
+	
+	<!-- Show or hide junctions on map-->	
+	<junctions_visible>true</junctions_visible>
+
+	<!-- Desired interval between location updates(in ms)- approximate value-->
+	<gps_interval>1000</gps_interval>
+
+	<!-- Minimal interval between location updates(in ms) - protects from too frequent updates -->
+	<min_gps_interval>500</min_gps_interval>
+
 </configuration>

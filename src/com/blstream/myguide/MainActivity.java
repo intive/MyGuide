@@ -1,14 +1,10 @@
 
 package com.blstream.myguide;
 
-import java.io.File;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,10 +13,6 @@ import android.view.View.OnClickListener;
 
 import com.blstream.myguide.dialog.ConfirmationDialogFragment;
 import com.blstream.myguide.dialog.ConfirmationDialogFragment.ConfirmationDialogHolder;
-import com.blstream.myguide.dialog.PlayServicesErrorDialogFragment;
-import com.blstream.myguide.gps.LocationUpdater;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 
 public class MainActivity extends FragmentActivity implements ConfirmationDialogHolder {
 
@@ -33,23 +25,6 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		setUpListeners();
-
-		// later on checking for GooglePlayServices should be in splash screen
-		if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
-			LocationUpdater.getInstance(this);
-		} else {
-			Log.w(MainActivity.class.getSimpleName(),
-					"Google Play Services is not available on this device.");
-			PlayServicesErrorDialogFragment dialog = new PlayServicesErrorDialogFragment();
-			dialog.show(getSupportFragmentManager(),
-					PlayServicesErrorDialogFragment.class.getSimpleName());
-		}
-
-		ParseXmlTask task = new ParseXmlTask(this);
-		File file = new File(Environment.getExternalStorageDirectory(), FILE_PATH_DATA);
-		File configFile = new File(Environment.getExternalStorageDirectory(), FILE_PATH_CONFIG);
-		task.execute(file, configFile);
-
 	}
 
 	/** Called when orientation is changed */

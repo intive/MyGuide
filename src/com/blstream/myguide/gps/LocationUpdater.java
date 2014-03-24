@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.blstream.myguide.settings.Settings;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
@@ -25,6 +26,10 @@ public class LocationUpdater {
 
 	private static LocationUpdater mLocationUpdater;
 
+	private static final String LOG_TAG = LocationUpdater.class.getSimpleName();
+
+	private static Context mAppContext;
+	private static Settings mSettings;
 	private LocationClient mLocationClient;
 	private LocationRequest mLocationRequest;
 	// List of listeners that bind to LocationUpdater
@@ -32,20 +37,42 @@ public class LocationUpdater {
 	// True, when at least one listener is bind to LocationUpdater
 	private boolean mRrequestingForUpdates;
 
-	private LocationUpdater(Context context) {
+	private LocationUpdater() {
 		mRrequestingForUpdates = false;
-		setLocationRequestFromSettings();
 		mLocationUsers = new ArrayList<LocationUser>();
-		mLocationClient = new LocationClient(context, mConnectionCallbacks,
+		mLocationClient = new LocationClient(mAppContext, mConnectionCallbacks,
 				mOnConnectionFailedListener);
 		mLocationClient.connect();
 	}
 
-	public static LocationUpdater getInstance(Context context) {
+	public static LocationUpdater getInstance() {
 		if (mLocationUpdater == null) {
-			mLocationUpdater = new LocationUpdater(context.getApplicationContext());
+			mLocationUpdater = new LocationUpdater();
 		}
 		return mLocationUpdater;
+	}
+
+	/**
+	 * Must be invoke before creating a singleton. Used to inject
+	 * ApplicationContext.
+	 * 
+	 * @param context of application
+	 */
+	public static void setAppContext(Context context) {
+		if (mAppContext == null) {
+			mAppContext = context.getApplicationContext();
+		}
+	}
+
+	/**
+	 * Must be invoke before creating a singleton. Used to inject settings.
+	 * 
+	 * @param settings used in application
+	 */
+	public static void setSettings(Settings settings) {
+		if (mSettings == null) {
+			mSettings = settings;
+		}
 	}
 
 	/**
@@ -76,23 +103,42 @@ public class LocationUpdater {
 		}
 	}
 
+	/**
+	 * Returns the best most recent location currently available. If a location
+	 * is not available, which should happen very rarely, null will be returned.
+	 * 
+	 * @return current location or null if a location is not available
+	 */
+	public Location getLocation() {
+		if (mLocationClient.isConnected()) {
+			return mLocationClient.getLastLocation();
+		} else {
+			return null;
+		}
+	}
+
 	private void requestUpdates() {
 		if (!mRrequestingForUpdates && !mLocationUsers.isEmpty()) {
-			mLocationClient.requestLocationUpdates(mLocationRequest, mLocationListener);
-			mRrequestingForUpdates = true;
+			if (mLocationRequest == null) {
+				setLocationRequestFromSettings();
+			}
+			if (mLocationClient.isConnected()) {
+				mLocationClient.requestLocationUpdates(mLocationRequest, mLocationListener);
+				mRrequestingForUpdates = true;
+			} else {
+				notifyBinderAboutConnectionProblem();
+				if (!mLocationClient.isConnecting()) {
+					mLocationClient.connect();
+				}
+			}
 		}
 	}
 
 	private void setLocationRequestFromSettings() {
-		// TODO updates settings from options using option parser
-		mLocationRequest = null;
-
-		// temporary it always provide default settings
-		if (mLocationRequest == null) {
-			mLocationRequest = LocationRequest.create();
-			mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY).setInterval(1000)
-					.setFastestInterval(500);
-		}
+		mLocationRequest = LocationRequest.create();
+		mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+				.setInterval(mSettings.getValueAsInt(Settings.KEY_GPS_INTERVAL))
+				.setFastestInterval(mSettings.getValueAsInt(Settings.KEY_MIN_GPS_INTERVAL));
 	}
 
 	private final LocationListener mLocationListener = new LocationListener() {
@@ -108,26 +154,32 @@ public class LocationUpdater {
 		@Override
 		public void onConnected(Bundle arg0) {
 			requestUpdates();
-			Log.d(LocationUpdater.class.getSimpleName(), "Connected to location services.");
+			for (LocationUser e : mLocationUsers) {
+				e.onGpsAvailable();
+			}
+			Log.d(LOG_TAG, "Connected to location services.");
 		}
 
 		@Override
 		public void onDisconnected() {
-			for (LocationUser e : mLocationUsers) {
-				e.onGpsUnavailable();
-			}
-			Log.d(LocationUpdater.class.getSimpleName(), "Disconnect from location services.");
+			notifyBinderAboutConnectionProblem();
+			mRrequestingForUpdates = false;
+			Log.d(LOG_TAG, "Disconnect from location services.");
 		}
 	};
 
 	private final OnConnectionFailedListener mOnConnectionFailedListener = new OnConnectionFailedListener() {
 		@Override
 		public void onConnectionFailed(ConnectionResult arg0) {
-			for (LocationUser e : mLocationUsers) {
-				e.onGpsUnavailable();
-			}
-			Log.d(LocationUpdater.class.getSimpleName(),
-					"An error occure while connecting to location service.");
+			notifyBinderAboutConnectionProblem();
+			mRrequestingForUpdates = false;
+			Log.d(LOG_TAG, "An error occure while connecting to location service.");
 		}
 	};
+
+	private void notifyBinderAboutConnectionProblem() {
+		for (LocationUser e : mLocationUsers) {
+			e.onGpsUnavailable();
+		}
+	}
 }

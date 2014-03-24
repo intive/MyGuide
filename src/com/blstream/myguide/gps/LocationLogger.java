@@ -11,17 +11,26 @@ import android.widget.Toast;
 /**
  * Listener used for log and toast information about new coordinations. To avoid
  * logging to many information it logs coordinates only if the location has been
- * changed and no more then one every 3 sec.
+ * changed.
  */
 public class LocationLogger implements LocationUser {
 
 	private Context mContext;
-	private static final long INTERVAL_NS = TimeUnit.SECONDS.toNanos(3);
+	private long mIntervalInNanoseconds;
 	private long mLastLogTimeInNanoseconds;
 	private Location mLastLocation;
+	private boolean mShowToast;
 
-	public LocationLogger(Context context) {
+	/**
+	 * @param context
+	 * @param intervalInSec number of seconds between logs/toast
+	 * @param showToast if true toast will appears, if false LocationLogger will
+	 *            use only LogCat
+	 */
+	public LocationLogger(Context context, int intervalInSec, boolean showToast) {
 		mContext = context;
+		mIntervalInNanoseconds = TimeUnit.SECONDS.toNanos(intervalInSec);
+		mShowToast = showToast;
 		mLastLogTimeInNanoseconds = 0;
 	}
 
@@ -31,7 +40,9 @@ public class LocationLogger implements LocationUser {
 			String msg = "Location changed: " + Double.toString(location.getLatitude())
 					+ "," + Double.toString(location.getLongitude());
 			Log.i(LocationUpdater.class.getSimpleName(), msg);
-			Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+			if (mShowToast) {
+				Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+			}
 			updateLastLogInfo(location);
 		}
 	}
@@ -55,7 +66,7 @@ public class LocationLogger implements LocationUser {
 	}
 
 	private boolean isTimeBetweenLogsExpired() {
-		if (System.nanoTime() - mLastLogTimeInNanoseconds > INTERVAL_NS) { return true; }
+		if (System.nanoTime() - mLastLogTimeInNanoseconds > mIntervalInNanoseconds) { return true; }
 		return false;
 	}
 

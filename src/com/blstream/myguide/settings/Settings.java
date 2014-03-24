@@ -5,9 +5,19 @@ import java.util.HashMap;
 
 public class Settings extends HashMap<String, String> {
 
-	static final String KEY_LANGUAGE = "lang_fallback";
-	static final String KEY_INNER_RADIOUS = "internal_object_radius";
-	static final String KEY_EXTER_RADIOUS = "external_object_radius";
+	public static final String KEY_LANGUAGE = "lang_fallback";
+	public static final String KEY_INNER_RADIOUS = "internal_object_radius";
+	public static final String KEY_EXTER_RADIOUS = "external_object_radius";
+	public static final String KEY_MAX_ZOOM = "max_zoom";
+	public static final String KEY_MIN_ZOOM = "min_zoom";
+	public static final String KEY_START_LAT = "start_lat";
+	public static final String KEY_START_LON = "start_lon";
+	public static final String KEY_ANIMALS_VISIBLE = "animals_visible";
+	public static final String KEY_SPLASH_DURATION = "splash_min_display_time_ms";
+	public static final String KEY_PATHS_VISIBLE = "paths_visible";
+	public static final String KEY_JUNCTIONS_VISIBLE = "junctions_visible";
+	public static final String KEY_GPS_INTERVAL = "gps_interval";
+	public static final String KEY_MIN_GPS_INTERVAL = "min_gps_interval";
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,6 +38,14 @@ public class Settings extends HashMap<String, String> {
 	public float getValueAsFloat(String key) {
 		mValueFloat = Float.parseFloat(super.get(key));
 		return mValueFloat;
+	}
+
+	public double getValueAsDouble(String key) {
+		return Double.parseDouble(super.get(key));
+	}
+
+	public boolean getValueAsBoolean(String key) {
+		return Boolean.parseBoolean(super.get(key));
 	}
 
 }
