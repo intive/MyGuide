@@ -3,6 +3,7 @@ package com.blstream.myguide;
 import java.util.ArrayList;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -334,6 +337,20 @@ public class SightseeingActivity extends Activity implements
 			public boolean onTouch(View view, MotionEvent motionEvent) {
 				clearSearchView();
 				return false;
+			}
+		});
+		
+		mDrawerList.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				switch(position){
+				case 1:
+					Intent intent = new Intent(getApplicationContext(), AnimalListActivity.class);
+					startActivity(intent);
+					break;
+				}
 			}
 		});
 	}

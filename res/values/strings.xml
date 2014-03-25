@@ -49,5 +49,15 @@
         <item name="child">For Child</item>
         <item name="map_view">Map</item>
     </string-array>
+    
+    <!-- Animal Kingdoms -->
+    <string-array name="animal_kingdoms">
+		<item name="mammals">Mammals</item>
+		<item name="reptiles">Reptiles</item>
+		<item name="mammals">Amphibians</item>
+		<item name="fish">Fish</item>
+		<item name="birds">Birds</item>
+		<item name="invertebrates">Invertebrates</item>
+    </string-array>
 
 </resources>

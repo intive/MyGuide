@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imgvSlidingMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/sliding_icon_Description"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/drawer_icon_selector" />
+
+    <TextView
+        android:id="@+id/textViewAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:text="@string/animal_list_title" />
+
+</LinearLayout>

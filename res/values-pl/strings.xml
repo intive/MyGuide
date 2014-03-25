@@ -35,5 +35,16 @@
         <item name="gastronomy">Gastronomia</item>
         <item name="preferences">Preferencje</item>
     </string-array>
+    
+    <!-- Animal Kingdoms -->
+    <string name="animal_list_title">Zwierzęta</string>
+    <string-array name="animal_kingdoms">
+		<item name="mammals">Ssaki</item>
+		<item name="reptiles">Gady</item>
+		<item name="mammals">Płazy</item>
+		<item name="fish">Ryby</item>
+		<item name="birds">Ptaki</item>
+		<item name="invertebrates">Bezkręgowce</item>
+    </string-array>
 
 </resources>

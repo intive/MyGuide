@@ -52,5 +52,6 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBxrhHgFsNmw3lrreEP7gcGu18wXwo2Aeg" />
+        <activity android:name="AnimalListActivity" android:theme="@style/Main_Theme_Action_Bar"></activity>
     </application>
 </manifest>
