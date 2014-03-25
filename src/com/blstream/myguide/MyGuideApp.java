@@ -3,6 +3,7 @@ package com.blstream.myguide;
 
 import android.app.Application;
 
+import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.ZooLocationsData;
 
@@ -17,12 +18,19 @@ public class MyGuideApp extends Application {
 	private Settings mSettings = null;
 	private ZooLocationsData mZooData = null;
 
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		LocationUpdater.setAppContext(this);
+	}
+
 	protected synchronized void setZooData(ZooLocationsData data) {
 		mZooData = data;
 	}
 
 	protected synchronized void setSettings(Settings settings) {
 		mSettings = settings;
+		LocationUpdater.setSettings(mSettings);
 	}
 
 	public synchronized ZooLocationsData getZooData() {

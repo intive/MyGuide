@@ -1,38 +1,33 @@
 
 package com.blstream.myguide;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-
-import android.os.Bundle;
-import android.os.Environment;
-
-import android.util.Log;
-
 import java.io.File;
 import java.io.IOException;
-
 import java.util.concurrent.TimeUnit;
 
-import javax.xml.parsers.ParserConfigurationException;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
-import org.xml.sax.SAXException;
-import org.xmlpull.v1.XmlPullParserException;
-
+import com.blstream.myguide.dialog.PlayServicesErrorDialogFragment;
+import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.settings.SettingsHelper;
 import com.blstream.myguide.zoolocations.ParserHelper;
 import com.blstream.myguide.zoolocations.ZooLocationsData;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 
 /**
  * Display splash screen while loading assets in the backgroud. Splash will be
  * displayed no shorter than {@link SplashActivity#mMinDisplayMillis}
  * milliseconds.
  */
-public class SplashActivity extends Activity {
+public class SplashActivity extends FragmentActivity {
 
 	private static final String LOG_TAG = SplashActivity.class.getSimpleName();
 
@@ -214,7 +209,21 @@ public class SplashActivity extends Activity {
 		Log.d(LOG_TAG,
 				String.format("background thread already running: %s", mBackgroundThreadRunning));
 		if (!mBackgroundThreadRunning) {
-			runBackgroundThread();
+			if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
+				/*
+				 * Create instance of LocationUpdater to attempt to connect to
+				 * location service. It can be done simultaneously with parsing
+				 * xml data, so just after leaving splashscreen LocationUpdater
+				 * will be connected and ready to use.
+				 */
+				LocationUpdater.getInstance();
+				runBackgroundThread();
+			} else {
+				Log.w(LOG_TAG, "Google Play Services is not available on this device.");
+				PlayServicesErrorDialogFragment dialog = new PlayServicesErrorDialogFragment();
+				dialog.show(getSupportFragmentManager(),
+						PlayServicesErrorDialogFragment.class.getSimpleName());
+			}
 		}
 	}
 

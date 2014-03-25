@@ -1,9 +1,12 @@
+
 package com.blstream.myguide;
 
 import java.util.ArrayList;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,6 +24,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+
+import com.blstream.myguide.gps.LocationLogger;
+import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.Junction;
@@ -30,6 +36,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
@@ -72,6 +79,8 @@ public class SightseeingActivity extends Activity implements
 	private boolean mJunctionsVisible;
 	private ArrayList<Circle> mZooJunctions;
 
+	private LocationLogger mLocationLogger;
+
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
 	 * NavigationDrawer for the Activity. Reads settings which are saved in
@@ -107,6 +116,35 @@ public class SightseeingActivity extends Activity implements
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
+
+		if (isDebugBuild()) {
+			mLocationLogger = new LocationLogger(this, 3, true);
+		}
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		if (isDebugBuild()) {
+			LocationUpdater.getInstance().startUpdating(mLocationLogger);
+		}
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		if (isDebugBuild()) {
+			LocationUpdater.getInstance().stopUpdating(mLocationLogger);
+		}
+	}
+
+	/**
+	 * Check if build type of application is set to debug.
+	 *
+	 * @return true if yes, false if no
+	 */
+	private boolean isDebugBuild() {
+		return (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
 	}
 
 	private void setUpMapSettings() {
@@ -153,6 +191,7 @@ public class SightseeingActivity extends Activity implements
 	private void setUpMap() {
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
+		MapsInitializer.initialize(this);
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 				mStartCenterLat, mStartCenterLon), mMinZoom));
 		mMap.setOnCameraChangeListener(this);
