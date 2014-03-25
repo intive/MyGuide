@@ -19,7 +19,7 @@ pre-defined routes or define single custom position.
 Using GPX path files
 --------------------
 We can use Xcode to simulate entire path. The simplest method is to create GPX 
-file using [path generator](http://www.bikehike.co.uk/mapview.php) and import 
+file using [path generator](http://pifpafpuf.de/cycleroute/map) and import 
 resulting file to Xcode workspace from *Debug->Simulate Location->Add GPX File 
 to Workspace*. Next you have to confirm adding file to workspace, click 
 "Finish" and finally, select new path from Debug->Simulate Location->*Our path 
