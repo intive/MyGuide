@@ -219,8 +219,7 @@ public class SplashActivity extends FragmentActivity {
 				LocationUpdater.getInstance();
 				runBackgroundThread();
 			} else {
-				Log.w(MainActivity.class.getSimpleName(),
-						"Google Play Services is not available on this device.");
+				Log.w(LOG_TAG, "Google Play Services is not available on this device.");
 				PlayServicesErrorDialogFragment dialog = new PlayServicesErrorDialogFragment();
 				dialog.show(getSupportFragmentManager(),
 						PlayServicesErrorDialogFragment.class.getSimpleName());

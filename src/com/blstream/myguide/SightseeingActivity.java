@@ -33,6 +33,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
@@ -187,6 +188,7 @@ public class SightseeingActivity extends Activity implements
 	private void setUpMap() {
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
+		MapsInitializer.initialize(this);
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 				mStartCenterLat, mStartCenterLon), mMinZoom));
 		mMap.setOnCameraChangeListener(this);

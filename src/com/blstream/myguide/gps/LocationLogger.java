@@ -15,6 +15,8 @@ import android.widget.Toast;
  */
 public class LocationLogger implements LocationUser {
 
+	private final static String LOG_TAG = LocationLogger.class.getSimpleName();
+
 	private Context mContext;
 	private long mIntervalInNanoseconds;
 	private long mLastLogTimeInNanoseconds;
@@ -39,7 +41,7 @@ public class LocationLogger implements LocationUser {
 		if (isTimeBetweenLogsExpired() && isLocationDifferent(location)) {
 			String msg = "Location changed: " + Double.toString(location.getLatitude())
 					+ "," + Double.toString(location.getLongitude());
-			Log.i(LocationUpdater.class.getSimpleName(), msg);
+			Log.i(LOG_TAG, msg);
 			if (mShowToast) {
 				Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
 			}
