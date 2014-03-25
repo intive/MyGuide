@@ -198,6 +198,7 @@
     <Content Include="Data\data.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.pl-PL.resx" />
