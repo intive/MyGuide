@@ -31,4 +31,12 @@
         <item name="gastronomy">Gastronomie</item>
         <item name="preferences">Präferenzen</item>
     </string-array>
+
+    <!--Animals description tabs name -->
+    <string-array name="animal_desc_tabs_name">
+        <item name="description">Beschreibung</item>
+        <item name="child">Fur Kinder</item>
+        <item name="map_view">Landkarte</item>
+    </string-array>
+
 </resources>

@@ -1,8 +1,10 @@
 
 package com.blstream.myguide.zoolocations;
 
+import java.io.Serializable;
+
 /** This class contains animal name and its location in the zoo. */
-public class Animal {
+public class Animal implements Serializable{
 
 	private String mName;
 	private Node mNode;

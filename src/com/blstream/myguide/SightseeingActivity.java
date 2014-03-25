@@ -3,7 +3,11 @@ package com.blstream.myguide;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -12,11 +16,14 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -188,7 +195,7 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
 			@Override
 			public boolean onClose() {
-			    clearSearchView();
+				clearSearchView();
 				return true;
 			}
 		});
@@ -196,22 +203,32 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 			@Override
 			public boolean onQueryTextSubmit(String s) {
-                //TODO handle find animals
+				// TODO handle find animals
 				clearSearchView();
 				return false;
 			}
 
 			@Override
 			public boolean onQueryTextChange(String s) {
-                //TODO autocomplete text to show animals
+				// TODO autocomplete text to show animals
+
 				return false;
 			}
 		});
+		/**
+		 * Sample of using AnimalDescriptionAcitivity. Send in itnent animals
+		 * object
+		 */
+		final Intent i = new Intent(SightseeingActivity.this, AnimalDescriptionActivity.class);
+		MyGuideApp mga = (MyGuideApp) (this.getApplication());
+		ArrayList<Animal> animals = mga.getZooData().getAnimals();
+		i.putExtra("TAG", animals.get(0));
 
 		mImgvShowRoute.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				// TODO handle route
+				startActivity(i); // sample
 				clearSearchView();
 			}
 		});
@@ -273,9 +290,9 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-    private void clearSearchView() {
-        mSearchView.clearFocus();
-        mSearchViewClose.setVisibility(View.GONE);
-    }
+	private void clearSearchView() {
+		mSearchView.clearFocus();
+		mSearchViewClose.setVisibility(View.GONE);
+	}
 
 }
