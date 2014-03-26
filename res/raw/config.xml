@@ -32,6 +32,12 @@
 	<!-- Show or hide junctions on map-->	
 	<junctions_visible>true</junctions_visible>
 					
+	<!-- Desired interval between location updates(in ms)- approximate value-->
+	<gps_interval>1000</gps_interval>
+
+	<!-- Minimal interval between location updates(in ms) - protects from too frequent updates -->
+	<min_gps_interval>500</min_gps_interval>
+
 	<!-- (logical) hide user's position on map?
 		lack of this key will, by default, DISPLAY user's location
 	-->
