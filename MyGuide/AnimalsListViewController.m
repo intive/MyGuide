@@ -99,19 +99,11 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [_detailsController setTitle:[[[self.tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
     if(self._filteredAnimalsArray.count != 0){
-        NSLog(@" filtered");
-//        NSUInteger index = [indexPath indexAtPosition:[indexPath length]-1];
-//        [_detailsController setTitle:[[self._filteredAnimalsArray objectAtIndex:index] name]];
-//        NSLog(@" %d %d  %@ %@", indexPath.length, index, [[self._filteredAnimalsArray objectAtIndex:0] name], [[self._filteredAnimalsArray objectAtIndex:1] name]);
+        [_detailsController setTitle:[[self._filteredAnimalsArray objectAtIndex:[indexPath indexAtPosition:0]] name]];
     }
     else{
-        NSLog(@" regular");
-//        NSUInteger index = [indexPath indexAtPosition:[indexPath length]-1];
-//        [_detailsController setTitle:[[self._animalsArray objectAtIndex:index] name]];
-//        NSLog(@" %d %d %@ %@", indexPath.length, index, [[self._filteredAnimalsArray objectAtIndex:0] name], [[self._animalsArray objectAtIndex:1] name]);
-
+        [_detailsController setTitle:[[[self.tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
     }
     [self.navigationController pushViewController:_detailsController animated:YES];
 }
@@ -122,7 +114,7 @@
 
 #pragma mark - Searchable methods
 
-- (void) filterContentForSearchText: (NSString*) searchText scope: (NSString*) scope
+- (void)filterContentForSearchText:(NSString *)searchText scope:(NSString *)scope
 {
     [self._filteredAnimalsArray removeAllObjects];
     
