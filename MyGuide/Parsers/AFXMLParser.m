@@ -23,24 +23,23 @@ static NSString *kXmlId         = @"id";
 
 @implementation AFXMLParser
 
-- (NSData *) getDataXML
+- (NSData *)getDataXML
 {
-    return [XMLFetcher fetchDataFromXML: @"data"];
+    return [XMLFetcher fetchDataFromXML:@"data"];
 }
 
-- (void) parse
+- (void)parse
 {
     _parsingError = NO;
     
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData: [self getDataXML]];
-    [parser setDelegate: self];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[self getDataXML]];
+    [parser setDelegate:self];
     [parser parse];
 }
 
 
 #pragma mark - parser delegate methods
-
-- (void) parserDidStartDocument: (NSXMLParser *) parser
+- (void)parserDidStartDocument:(NSXMLParser *)parser
 {
     MWLogInfo(@"File found. Parsing data.xml started.");
 }
@@ -61,96 +60,93 @@ parseErrorOccurred: (NSError *)     parseError
     _currentElement = [elementName copy];
     _elementValue = [[NSMutableString alloc] init];
     
-    if ([elementName isEqualToString: kXmlAnimals]) {
+    if ([elementName isEqualToString:kXmlAnimals]) {
         _animalsArray = [[NSMutableArray alloc] init];
     }
-    else if ([elementName isEqualToString: kXmlWays]) {
+    else if ([elementName isEqualToString:kXmlWays]) {
         _waysArray = [[NSMutableArray alloc] init];
     }
-    else if ([elementName isEqualToString: kXmlJunctions]) {
+    else if ([elementName isEqualToString:kXmlJunctions]) {
         _junctionsArray = [[NSMutableArray alloc] init];
     }
-    else if ([elementName isEqualToString: kXmlAnimal]) {
-        AFNode *tempNode = [[AFNode alloc] initWithLatitude: [attributeDict valueForKey: kXmlLatitude]
-                                               andLongitude: [attributeDict valueForKey: kXmlLongitude]];
+    else if ([elementName isEqualToString:kXmlAnimal]) {
+        AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
         _currentAnimal = [[AFAnimal alloc] init];
-        [_currentAnimal setCoordinates: tempNode];
+        [_currentAnimal setCoordinates:tempNode];
     }
     else if ([elementName isEqualToString: kXmlWay]) {
         _currentWay = [[AFWay alloc] init];
         _nodesArray = nil;
-        [_currentWay setWayID: [attributeDict valueForKey: kXmlId]];
+        [_currentWay setWayID:[attributeDict valueForKey:kXmlId]];
     }
-    else if ([elementName isEqualToString: kXmlNode]) {
-        _currentNode = [[AFNode alloc] initWithLatitude: [attributeDict valueForKey: kXmlLatitude]
-                                           andLongitude: [attributeDict valueForKey: kXmlLongitude]];
+    else if ([elementName isEqualToString:kXmlNode]) {
+        _currentNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
     }
     else if ([elementName isEqualToString: kXmlJunction]) {
-        AFNode *tempNode = [[AFNode alloc] initWithLatitude: [attributeDict valueForKey: kXmlLatitude]
-                                               andLongitude: [attributeDict valueForKey: kXmlLongitude]];
+        AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
         _waysArray = nil;
         _currentJunction = [[AFJunction alloc] init];
         [_currentJunction setCoordinates:tempNode];
     }
 }
 
-- (void) parser: (NSXMLParser *) parser foundCharacters: (NSString *) string
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
     [_elementValue appendString:string];
 }
 
-- (void) parser: (NSXMLParser *) parser didEndElement: (NSString *) elementName
+- (void)parser:(NSXMLParser *)parser didEndElement:    (NSString *) elementName
                                      namespaceURI:     (NSString *) namespaceURI
                                      qualifiedName:    (NSString *) qName
 {
     AFParsedData *sharedData = [AFParsedData sharedParsedData];
 
-    if ([elementName isEqualToString: kXmlAnimals]) {
-        [sharedData setAnimalsArray: _animalsArray];
+    if ([elementName isEqualToString:kXmlAnimals]) {
+        [sharedData setAnimalsArray:_animalsArray];
         _animalsArray = nil;
     }
-    else if ([elementName isEqualToString: kXmlWays]) {
-        [sharedData setWaysArray: _waysArray];
+    else if ([elementName isEqualToString:kXmlWays]) {
+        [sharedData setWaysArray:_waysArray];
         _nodesArray = nil;
     }
-    else if ([elementName isEqualToString: kXmlJunctions]) {
-        [sharedData setJunctionsArray: _junctionsArray];
+    else if ([elementName isEqualToString:kXmlJunctions]) {
+        [sharedData setJunctionsArray:_junctionsArray];
         _junctionsArray = nil;
     }
-    else if ([elementName isEqualToString: kXmlAnimal]) {
-        [_currentAnimal setName: _elementValue];
-        [_animalsArray addObject: _currentAnimal];
+    else if ([elementName isEqualToString:kXmlAnimal]) {
+        [_currentAnimal setName:_elementValue];
+        [_animalsArray addObject:_currentAnimal];
     }
-    else if ([elementName isEqualToString: kXmlWay]) {
+    else if ([elementName isEqualToString:kXmlWay]) {
         if(_waysArray == nil) {
             _waysArray = [[NSMutableArray alloc] init];
         }
         if(_nodesArray != nil) {
-            [_currentWay setNodesArray: _nodesArray];
+            [_currentWay setNodesArray:_nodesArray];
         }
         else {
             _currentWay.nodesArray = nil;
         }
-        [_waysArray addObject: _currentWay];
+        [_waysArray addObject:_currentWay];
     }
-    else if ([elementName isEqualToString: kXmlNode]) {
+    else if ([elementName isEqualToString:kXmlNode]) {
         if(_nodesArray == nil) {
             _nodesArray = [[NSMutableArray alloc] init];
         }
-        [_nodesArray addObject: _currentNode];
+        [_nodesArray addObject:_currentNode];
     }
-    else if ([elementName isEqualToString: kXmlJunction]) {
+    else if ([elementName isEqualToString:kXmlJunction]) {
         if(_waysArray != nil) {
-            [_currentJunction setWaysArray: _waysArray];
+            [_currentJunction setWaysArray:_waysArray];
         }
         else {
             _currentJunction.waysArray = nil;
         }
-        [_junctionsArray addObject: _currentJunction];
+        [_junctionsArray addObject:_currentJunction];
     }
 }
 
-- (void) parserDidEndDocument: (NSXMLParser *) parser
+- (void)parserDidEndDocument:(NSXMLParser *)parser
 {
     if (!_parsingError) {
         AFParsedData *sharedData = [AFParsedData sharedParsedData];

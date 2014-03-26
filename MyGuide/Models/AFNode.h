@@ -13,11 +13,10 @@
 @property (nonatomic, readonly) NSString *latitude;
 @property (nonatomic, readonly) NSString *longitude;
 
-- (id) init;
-- (id) initWithLatitude: (NSString *) latitude
-           andLongitude: (NSString *) longitude;
+- (id)init;
+- (id)initWithLatitude:(NSString *)latitude andLongitude:(NSString *)longitude;
 
-- (void) setLatitude:  (NSString *) latitude;
-- (void) setLongitude: (NSString *) longitude;
+- (void)setLatitude: (NSString *)latitude;
+- (void)setLongitude:(NSString *)longitude;
 
 @end

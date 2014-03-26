@@ -14,11 +14,10 @@
 @property (nonatomic, readonly) AFNode  *coordinates;
 @property (nonatomic, readonly) NSArray *waysArray;
 
-- (id) init;
-- (id) initWithCoordinates: (AFNode  *) coordinates
-              andWaysArray: (NSArray *) waysArray;
+- (id)init;
+- (id)initWithCoordinates:(AFNode *)coordinates andWaysArray:(NSArray *)waysArray;
 
-- (void) setCoordinates: (AFNode  *) coordinates;
-- (void) setWaysArray:   (NSArray *) waysArray;
+- (void)setCoordinates:(AFNode *)coordinates;
+- (void)setWaysArray:(NSArray *)waysArray;
 
 @end

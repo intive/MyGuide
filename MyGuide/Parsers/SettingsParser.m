@@ -25,15 +25,15 @@ NSString * const CONFIG_FILE_NAME = @"config";
     return self;
 }
 
-- (void) loadSettings
+- (void)loadSettings
 {
-    NSData      *configData = [XMLFetcher fetchDataFromXML: CONFIG_FILE_NAME];
-    NSXMLParser *parser     = [[NSXMLParser alloc] initWithData: configData];
-    [parser setDelegate: self];
+    NSData      *configData = [XMLFetcher fetchDataFromXML:CONFIG_FILE_NAME];
+    NSXMLParser *parser     = [[NSXMLParser alloc] initWithData:configData];
+    [parser setDelegate:self];
     [parser parse];
 }
 
-- (void) parserDidStartDocument:(NSXMLParser *) parser { MWLogInfo(@"Loading settings from file..."); }
+- (void)parserDidStartDocument:(NSXMLParser *)parser { MWLogInfo(@"Loading settings from file..."); }
 
 - (void) parser: (NSXMLParser *)  parser
 didStartElement: (NSString *)     elementName
@@ -44,10 +44,9 @@ didStartElement: (NSString *)     elementName
     _cacheElement = [[NSMutableString alloc] init];
 }
 
-- (void) parser: (NSXMLParser *) parser
-foundCharacters: (NSString *)    string
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    [_cacheElement appendString: string];
+    [_cacheElement appendString:string];
 }
 
 - (void) parser: (NSXMLParser *) parser
@@ -55,10 +54,11 @@ foundCharacters: (NSString *)    string
    namespaceURI: (NSString *)    namespaceURI
   qualifiedName: (NSString *)    qName
 {
-    if ([elementName isEqualToString: @"configuration"]) return;
+    if ([elementName isEqualToString:@"configuration"]) return;
     
     MWLogInfo(@"Injecting %@ with value \"%@\" to settings.", elementName, _cacheElement);
-    [_settings injectDataWithName: elementName andValue: _cacheElement];}
+    [_settings injectDataWithName:elementName andValue: _cacheElement];}
 
-- (void) parserDidEndDocument:(NSXMLParser *) parser { MWLogInfo(@"Settings loaded!"); }
+- (void)parserDidEndDocument:(NSXMLParser *)parser { MWLogInfo(@"Settings loaded!"); }
+
 @end
