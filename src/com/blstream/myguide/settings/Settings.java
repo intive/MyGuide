@@ -18,6 +18,7 @@ public class Settings extends HashMap<String, String> {
 	public static final String KEY_JUNCTIONS_VISIBLE = "junctions_visible";
 	public static final String KEY_GPS_INTERVAL = "gps_interval";
 	public static final String KEY_MIN_GPS_INTERVAL = "min_gps_interval";
+	public static final String KEY_MAP_MY_POSITION_HIDDEN = "map_my_position_hidden";
 
 	private static final long serialVersionUID = 1L;
 

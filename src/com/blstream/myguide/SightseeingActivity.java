@@ -81,6 +81,15 @@ public class SightseeingActivity extends Activity implements
 
 	private LocationLogger mLocationLogger;
 
+	private void configureAndDisplayUserPosition() {
+		// check if location should be hidden
+		boolean visible = !((MyGuideApp) this.getApplication())
+				.getSettings()
+				.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN);
+		Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
+		mMap.setMyLocationEnabled(visible);
+	}
+	
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
 	 * NavigationDrawer for the Activity. Reads settings which are saved in
@@ -195,6 +204,8 @@ public class SightseeingActivity extends Activity implements
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 				mStartCenterLat, mStartCenterLon), mMinZoom));
 		mMap.setOnCameraChangeListener(this);
+		
+		this.configureAndDisplayUserPosition();
 	}
 
 	/**
