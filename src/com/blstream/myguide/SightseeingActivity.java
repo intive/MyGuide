@@ -395,9 +395,14 @@ public class SightseeingActivity extends Activity implements
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
+				Intent intent;
 				switch(position){
+				case 0:
+					intent = new Intent(getApplicationContext(), SightseeingActivity.class);
+					startActivity(intent);
+					break;
 				case 1:
-					Intent intent = new Intent(getApplicationContext(), AnimalListActivity.class);
+					intent = new Intent(getApplicationContext(), AnimalListActivity.class);
 					startActivity(intent);
 					break;
 				}

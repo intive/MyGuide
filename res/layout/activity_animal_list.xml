@@ -9,11 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/gray" >
-        
     </SearchView>
-        
+
     <ListView
-        android:id="@+id/listViewListOfAnimalKingdoms"
+        android:id="@+id/listViewAnimalList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
