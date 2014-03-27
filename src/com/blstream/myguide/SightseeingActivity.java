@@ -27,6 +27,7 @@ import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.Junction;
+import com.blstream.myguide.zoolocations.Language;
 import com.blstream.myguide.zoolocations.Node;
 import com.blstream.myguide.zoolocations.Way;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -86,7 +87,7 @@ public class SightseeingActivity extends Activity implements
 		Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
 		mMap.setMyLocationEnabled(visible);
 	}
-	
+
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
 	 * NavigationDrawer for the Activity. Reads settings which are saved in
@@ -146,7 +147,7 @@ public class SightseeingActivity extends Activity implements
 
 	/**
 	 * Check if build type of application is set to debug.
-	 *
+	 * 
 	 * @return true if yes, false if no
 	 */
 	private boolean isDebugBuild() {
@@ -201,7 +202,7 @@ public class SightseeingActivity extends Activity implements
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 				mStartCenterLat, mStartCenterLon), mMinZoom));
 		mMap.setOnCameraChangeListener(this);
-		
+
 		this.configureAndDisplayUserPosition();
 	}
 
@@ -271,7 +272,7 @@ public class SightseeingActivity extends Activity implements
 		for (Animal a : animals) {
 			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions().position(
 					new LatLng(a.getNode().getLatitude(), a.getNode()
-							.getLongitude())).title(a.getName())));
+							.getLongitude())).title(a.getName(Language.DEFAULT))));
 		}
 	}
 
@@ -356,9 +357,9 @@ public class SightseeingActivity extends Activity implements
 				clearSearchView();
 
 				if (!mDrawerLayout.isDrawerOpen(Gravity.LEFT))
-					mDrawerLayout.openDrawer(Gravity.LEFT);
+				mDrawerLayout.openDrawer(Gravity.LEFT);
 				else
-					mDrawerLayout.closeDrawer(Gravity.LEFT);
+				mDrawerLayout.closeDrawer(Gravity.LEFT);
 			}
 		});
 	}
