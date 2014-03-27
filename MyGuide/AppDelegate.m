@@ -14,13 +14,13 @@
 
 
 
-- (void) parseDataXML
+- (void)parseDataXML
 {
     AFXMLParser *parser = [[AFXMLParser alloc] init];
     [parser parse];
 }
 
-- (void) loadSettings
+- (void)loadSettings
 {
     SettingsParser *parser = [[SettingsParser alloc] init];
     [parser loadSettings];

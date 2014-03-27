@@ -12,7 +12,7 @@
     CLLocationManager *_locationManager;
 }
 
-+ (id) sharedLocationManager
++ (id)sharedLocationManager
 {
     static LocationManager *sharedLocationManager = nil;
     static dispatch_once_t onceToken;
@@ -24,44 +24,46 @@
 
 #pragma mark - Location services
 
-- (void) requestLocationStatus
+- (void)requestLocationStatus
 {
     _locationManager = [[CLLocationManager alloc] init];
     [_locationManager setDelegate: self];
     [_locationManager startUpdatingLocation];
 }
 
-- (void) checkLocationStatus
+- (void)checkLocationStatus
 {
-    [self displayLocationStatus: [CLLocationManager authorizationStatus]
-                    withMessage: NSLocalizedString(@"gpsDisabledLaunchMessage", nil)];
+    [self displayLocationStatus:[CLLocationManager authorizationStatus]
+                    withMessage:NSLocalizedString(@"gpsDisabledLaunchMessage", nil)];
 }
 
 #pragma mark - CLLocationMangerDelegate methods
 
-- (void) locationManager: (CLLocationManager *) manager didFailWithError: (NSError *) error {
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
     [_locationManager stopUpdatingLocation];
 }
 
-- (void) locationManager: (CLLocationManager *) manager didUpdateLocations: (NSArray *) locations {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
     [_locationManager stopUpdatingLocation];
 }
 
-- (void) locationManager: (CLLocationManager *) manager didChangeAuthorizationStatus:(CLAuthorizationStatus) status {
-    [self displayLocationStatus: status
-                    withMessage: NSLocalizedString(@"gpsDisabledMapMessage", nil)];
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    [self displayLocationStatus: status withMessage: NSLocalizedString(@"gpsDisabledMapMessage", nil)];
 }
 
 #pragma mark - Helper methods
 
-- (void) displayLocationStatus: (CLAuthorizationStatus) status withMessage: (NSString *) message
+- (void)displayLocationStatus:(CLAuthorizationStatus)status withMessage:(NSString *)message
 {
     if(status == kCLAuthorizationStatusDenied) {
-        [self showLocationServicesAlert: message];
+        [self showLocationServicesAlert:message];
     }
 }
 
-- (void) showLocationServicesAlert: (NSString *) message
+- (void)showLocationServicesAlert:(NSString *)message
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"gpsDeniedTitle", nil)
                                                         message: message

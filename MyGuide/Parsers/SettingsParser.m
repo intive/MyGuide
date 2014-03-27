@@ -16,7 +16,7 @@ NSString * const CONFIG_FILE_NAME = @"config";
     Settings        *_settings;
 }
 
-- (id) init
+- (id)init
 {
     self = [super init];
     if(self) {
