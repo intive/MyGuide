@@ -3,11 +3,7 @@ package com.blstream.myguide;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.database.Cursor;
-import android.database.MatrixCursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -16,14 +12,11 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
-import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -215,20 +208,11 @@ public class SightseeingActivity extends Activity implements OnCameraChangeListe
 				return false;
 			}
 		});
-		/**
-		 * Sample of using AnimalDescriptionAcitivity. Send in itnent animals
-		 * object
-		 */
-		final Intent i = new Intent(SightseeingActivity.this, AnimalDescriptionActivity.class);
-		MyGuideApp mga = (MyGuideApp) (this.getApplication());
-		ArrayList<Animal> animals = mga.getZooData().getAnimals();
-		i.putExtra("TAG", animals.get(0));
 
 		mImgvShowRoute.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				// TODO handle route
-				startActivity(i); // sample
 				clearSearchView();
 			}
 		});

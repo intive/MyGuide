@@ -12,6 +12,12 @@ import com.blstream.myguide.zoolocations.Animal;
 
 /**
  * Created by Piotrek on 23.03.14.
+ *
+ * Sample of using AnimalDescriptionAcitivity. Send in intent animal Object.
+ * Intent i = new Intent(SampleActivity.thus, AnimalDescriptionActivity.class);
+ *        i.putExtra(BundleConstants.SELECTED_ANIMAL, animal_object);
+ *        startActivity(i);
+ *
  */
 public class AnimalDescriptionActivity extends FragmentActivity {
 
@@ -25,9 +31,9 @@ public class AnimalDescriptionActivity extends FragmentActivity {
 		setContentView(R.layout.activity_animal_description);
 
 		Bundle extras = getIntent().getExtras();
-		if (extras != null) {
+		if (extras != null && extras.containsKey(BundleConstants.SELECTED_ANIMAL)) {
 			// get Animal Object
-			mAnimal = (Animal) extras.getSerializable("TAG");
+			mAnimal = (Animal) extras.getSerializable(BundleConstants.SELECTED_ANIMAL);
 		}
 
 		mActionBar = getActionBar();
