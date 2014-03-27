@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AnimalDetailsViewController.h"
 #import "SWRevealViewController.h"
 #import "AFParsedData.h"
 #import "AFAnimal.h"

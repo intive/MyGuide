@@ -76,7 +76,7 @@
     }
 }
 
-- (UIAlertView *) buildAlertView
+- (UIAlertView *)buildAlertView
 {
     return [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"distanceAlertTitle", nil)
                                       message: NSLocalizedString(@"distanceAlertMessage", nil)
@@ -159,7 +159,7 @@
 }
 
 #pragma mark - Drawing junctions on the map
-- (void) drawJunction: (AFNode *) node
+- (void)drawJunction:(AFNode *)node
 {
     CLLocationCoordinate2D coordinatesArray[2];
     coordinatesArray[0] = CLLocationCoordinate2DMake([node.latitude doubleValue], [node.longitude doubleValue]);
@@ -232,9 +232,15 @@
         if(distanceFromZooCenter > _settings.centerRadius) {
             [mapView setCamera:_lastGoodCamera animated:YES];
         }
-        if (mapView.camera.altitude > _settings.cameraMaxAltitude ||
-            mapView.camera.altitude < _settings.cameraMinAltitude) {
-            [mapView setCamera:_lastGoodCamera animated:YES];
+        if (mapView.camera.altitude > _settings.cameraMaxAltitude) {
+            MKMapCamera *maxAltitudeCamera = [mapView.camera copy];
+            [maxAltitudeCamera setAltitude:2905];
+            [mapView setCamera:maxAltitudeCamera animated:YES];
+        }
+        else if(mapView.camera.altitude < _settings.cameraMinAltitude){
+            MKMapCamera *minAltitudeCamera = [mapView.camera copy];
+            [minAltitudeCamera setAltitude:362];
+            [mapView setCamera:minAltitudeCamera animated:YES];
         }
     }
 }

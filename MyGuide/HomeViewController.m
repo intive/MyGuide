@@ -10,9 +10,9 @@
 
 @implementation HomeViewController
 
-- (id) initWithNibName: (NSString *) nibNameOrNil bundle: (NSBundle *) nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    return [super initWithNibName: nibNameOrNil bundle: nibBundleOrNil];
+    return [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 }
 
 - (void)viewDidLoad
@@ -22,7 +22,7 @@
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
     
-    [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
 @end

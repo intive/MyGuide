@@ -30,18 +30,18 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.menuItems count];
 }
 
-- (UITableViewCell *) tableView: (UITableView *) tableView cellForRowAtIndexPath: (NSIndexPath *) indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = [self.menuItems objectAtIndex: indexPath.row];
-    return [tableView dequeueReusableCellWithIdentifier: cellIdentifier forIndexPath: indexPath];
+    NSString *cellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
+    return [tableView dequeueReusableCellWithIdentifier: cellIdentifier forIndexPath:indexPath];
 }
 
-- (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     UINavigationController *destViewController = (UINavigationController*) segue.destinationViewController;

@@ -44,8 +44,7 @@ static NSString *kXmlId         = @"id";
     MWLogInfo(@"File found. Parsing data.xml started.");
 }
 
-- (void)    parser: (NSXMLParser *) parser
-parseErrorOccurred: (NSError *)     parseError
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
 {
     NSString *errorString = [NSString stringWithFormat:@"Error code %li", (long)[parseError code]];
     MWLogError(@"Error while parsing data.xml: %@", errorString);
