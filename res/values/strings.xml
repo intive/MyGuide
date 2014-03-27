@@ -26,6 +26,9 @@
     <string name="confirmation_exit">Close an application?</string>
     <string name="progress_dialog_title">Please wait</string>
     <string name="progress_dialog_message">Reading xml file with data.</string>
+    <string name="go_to_option">Go to options</string>
+    <string name="start_without_gps">Start without GPS</string>
+    <string name="gps_enable_dialog_msg">Enable GPS to use all application features:</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Application error</string>

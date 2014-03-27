@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -36,9 +37,11 @@ public class LocationUpdater {
 	private ArrayList<LocationUser> mLocationUsers;
 	// True, when at least one listener is bind to LocationUpdater
 	private boolean mRrequestingForUpdates;
+	private boolean mGpsPopupWasShown;
 
 	private LocationUpdater() {
 		mRrequestingForUpdates = false;
+		mGpsPopupWasShown = false;
 		mLocationUsers = new ArrayList<LocationUser>();
 		mLocationClient = new LocationClient(mAppContext, mConnectionCallbacks,
 				mOnConnectionFailedListener);
@@ -50,6 +53,24 @@ public class LocationUpdater {
 			mLocationUpdater = new LocationUpdater();
 		}
 		return mLocationUpdater;
+	}
+
+	public boolean isGpsEnable() {
+		boolean gpsEnable = ((LocationManager) mAppContext
+				.getSystemService(Context.LOCATION_SERVICE))
+				.isProviderEnabled(LocationManager.GPS_PROVIDER);
+		if (gpsEnable) {
+			mGpsPopupWasShown = false;
+		}
+		return gpsEnable;
+	}
+
+	public void markGpsEnableDialogAsShown() {
+		mGpsPopupWasShown = true;
+	}
+
+	public boolean isEnableGpsDialogNeeded() {
+		return (!isGpsEnable() && !mGpsPopupWasShown);
 	}
 
 	/**
@@ -123,8 +144,12 @@ public class LocationUpdater {
 				setLocationRequestFromSettings();
 			}
 			if (mLocationClient.isConnected()) {
-				mLocationClient.requestLocationUpdates(mLocationRequest, mLocationListener);
-				mRrequestingForUpdates = true;
+				if (isGpsEnable()) {
+					mLocationClient.requestLocationUpdates(mLocationRequest, mLocationListener);
+					mRrequestingForUpdates = true;
+				} else {
+					notifyBinderAboutConnectionProblem();
+				}
 			} else {
 				notifyBinderAboutConnectionProblem();
 				if (!mLocationClient.isConnecting()) {
