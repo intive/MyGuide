@@ -43,7 +43,7 @@
 {
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 - (void)prepareNextViewController
 {
@@ -59,7 +59,7 @@
     AFParsedData *data = [AFParsedData sharedParsedData];
 
     _animalsArray = [data.animalsArray sortedArrayUsingDescriptors:sortDescriptors];
-    _filteredAnimalsArray = [NSMutableArray arrayWithCapacity: [_animalsArray count]];
+    _filteredAnimalsArray = [NSMutableArray arrayWithCapacity:_animalsArray.count];
     
     self.tableView.dataSource = self;
     self.tableView.delegate   = self;
@@ -118,8 +118,7 @@
 - (void)filterContentForSearchText:(NSString *)searchText scope:(NSString *)scope
 {
     [_filteredAnimalsArray removeAllObjects];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"SELF.name contains[c] %@", searchText];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"SELF.name contains[cd] %@", searchText];
     _filteredAnimalsArray = [NSMutableArray arrayWithArray: [_animalsArray filteredArrayUsingPredicate: predicate]];
 }
 
