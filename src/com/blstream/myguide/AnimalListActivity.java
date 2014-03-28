@@ -2,7 +2,6 @@ package com.blstream.myguide;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Locale;
 
 import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.ZooLocationsData;
@@ -79,11 +78,4 @@ public class AnimalListActivity extends Activity {
 		return animalNames;
 	}
 	
-	/**
-	 * Checks if device's language is Polish.
-	 * @return
-	 */
-	private boolean isPolish() {
-		return Locale.getDefault().getLanguage().equals("pl");
-	}
 }
