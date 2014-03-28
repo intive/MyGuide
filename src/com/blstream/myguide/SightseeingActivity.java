@@ -398,8 +398,7 @@ public class SightseeingActivity extends Activity implements
 				Intent intent;
 				switch(position){
 				case 0:
-					intent = new Intent(getApplicationContext(), SightseeingActivity.class);
-					startActivity(intent);
+					mDrawerLayout.closeDrawer(Gravity.LEFT);
 					break;
 				case 1:
 					intent = new Intent(getApplicationContext(), AnimalListActivity.class);
