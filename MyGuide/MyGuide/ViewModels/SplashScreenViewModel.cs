@@ -3,6 +3,7 @@ using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Services.Interfaces;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Navigation;
 
 namespace MyGuide.ViewModels
@@ -35,7 +36,7 @@ namespace MyGuide.ViewModels
                     (string)String.Format("There is a problem with data. Please contact with us. \n{0}", exceptionMessage), "Ok", null);
                 App.Current.Terminate();
             }
-
+            await Task.Delay(2000);
             _navigation.UriFor<MainPageViewModel>().Navigate();
         }
     }

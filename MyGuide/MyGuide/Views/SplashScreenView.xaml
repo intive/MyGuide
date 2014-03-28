@@ -18,7 +18,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Margin="0,20,0,0">
         <Grid.Background>
-            <ImageBrush ImageSource="/SplashScreenImage.jpg"
+            <ImageBrush ImageSource="/Assets/SplashScreenImg.jpg"
                     Stretch="Fill"
  />
         </Grid.Background>
