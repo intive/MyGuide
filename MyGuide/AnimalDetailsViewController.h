@@ -11,5 +11,6 @@
 @interface AnimalDetailsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControlOutlet;
+@property (strong, nonatomic) IBOutlet UIImageView *animalImage;
 
 @end

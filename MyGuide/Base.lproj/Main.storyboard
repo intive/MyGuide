@@ -121,10 +121,9 @@
                                 <rect key="frame" x="20" y="62" width="280" height="502"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SFj-n6-zfZ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_adult" translatesAutoresizingMaskIntoConstraints="NO" id="SFj-n6-zfZ">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" red="0.5328357682" green="0.42778748989999998" blue="0.67348931759999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="0Q4-fb-KO4"/>
                                             <constraint firstAttribute="height" constant="200" id="HMP-kF-24Y"/>
@@ -187,12 +186,43 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="animalImage" destination="SFj-n6-zfZ" id="JSY-G0-Ehh"/>
                         <outlet property="segmentedControlOutlet" destination="iSu-gc-aO2" id="6nF-wj-nRm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gob-US-j4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-682" y="-209"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="j3C-cL-4sc">
+            <objects>
+                <viewController storyboardIdentifier="detailsMap" id="92R-66-iBc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Ql-of-wW1"/>
+                        <viewControllerLayoutGuide type="bottom" id="6g8-2p-luf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mob-av-oAB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zns-nO-zs7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zns-nO-zs7" firstAttribute="leading" secondItem="Mob-av-oAB" secondAttribute="leading" id="8im-8w-mqw"/>
+                            <constraint firstAttribute="centerX" secondItem="zns-nO-zs7" secondAttribute="centerX" id="Il2-Ai-aHR"/>
+                            <constraint firstAttribute="bottom" secondItem="zns-nO-zs7" secondAttribute="bottom" id="Tf6-jH-CIw"/>
+                            <constraint firstAttribute="centerY" secondItem="zns-nO-zs7" secondAttribute="centerY" id="k83-gp-Ms7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8m8-C7-cUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-305" y="-209"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lhd-Ed-tzD">
@@ -377,6 +407,7 @@
     </scenes>
     <resources>
         <image name="menu.png" width="28" height="20"/>
+        <image name="placeholder_adult" width="150" height="125"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
