@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSArray *animalsArray;
 @property (strong, nonatomic) NSMutableArray *filteredAnimalsArray;
+@property (strong, nonatomic) AnimalDetailsViewController *detailsController;
 
 @end
 
@@ -25,29 +26,40 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     _tableView.translatesAutoresizingMaskIntoConstraints = YES;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [self initMenuBar];
     [self initTableData];
+    [self prepareNextViewController];
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
-- (void) initMenuBar
+- (void)initMenuBar
 {
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+}
+- (void)prepareNextViewController
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    _detailsController = (AnimalDetailsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"details"];
 }
 
-- (void) initTableData
+- (void)initTableData
 {
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey: @"name" ascending: YES];
-    NSArray *sortDescriptors = [NSArray arrayWithObject: sortDescriptor];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     AFParsedData *data = [AFParsedData sharedParsedData];
+
     _animalsArray = [data.animalsArray sortedArrayUsingDescriptors:sortDescriptors];
-    _filteredAnimalsArray = [NSMutableArray arrayWithCapacity: [_animalsArray count]];
+    _filteredAnimalsArray = [NSMutableArray arrayWithCapacity:_animalsArray.count];
     
     self.tableView.dataSource = self;
     self.tableView.delegate   = self;
@@ -55,7 +67,7 @@
 
 #pragma mark - TableView delegate methods
 
-- (NSInteger) numberOfSectionsInTableView: (UITableView *) tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return [_filteredAnimalsArray count];
@@ -64,17 +76,17 @@
     }
 }
 
-- (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
 }
 
-- (UITableViewCell *) tableView: (UITableView *) tableView cellForRowAtIndexPath: (NSIndexPath *) indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellId = @"MyReuseIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellId];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: cellId];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     AFAnimal *animal;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
@@ -86,21 +98,33 @@
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(_filteredAnimalsArray.count != 0){
+        [_detailsController setTitle:[[_filteredAnimalsArray objectAtIndex:[indexPath indexAtPosition:0]] name]];
+    }
+    else{
+        [_detailsController setTitle:[[[self.tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
+    }
+    [self.navigationController pushViewController:_detailsController animated:YES];
+}
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 #pragma mark - Searchable methods
 
-- (void) filterContentForSearchText: (NSString*) searchText scope: (NSString*) scope
+- (void)filterContentForSearchText:(NSString *)searchText scope:(NSString *)scope
 {
     [_filteredAnimalsArray removeAllObjects];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"SELF.name contains[c] %@", searchText];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"SELF.name contains[cd] %@", searchText];
     _filteredAnimalsArray = [NSMutableArray arrayWithArray: [_animalsArray filteredArrayUsingPredicate: predicate]];
 }
 
-- (BOOL) searchDisplayController: (UISearchDisplayController *) controller
-         shouldReloadTableForSearchString: (NSString *) searchString
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    [self filterContentForSearchText: searchString scope:
+    [self filterContentForSearchText:searchString scope:
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
     return YES;
 }

@@ -10,7 +10,7 @@
 
 @implementation AFAnimal
 
-- (id) init
+- (id)init
 {
     self = [super init];
     if(self) {
