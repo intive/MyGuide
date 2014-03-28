@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xy3-W9-HAD">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xy3-W9-HAD">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -31,6 +31,11 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xy3-W9-HAD" secondAttribute="trailing" id="0Pu-0z-Zwh"/>
+                            <constraint firstAttribute="bottom" secondItem="xy3-W9-HAD" secondAttribute="bottom" id="A0K-rF-5nR"/>
+                            <constraint firstItem="xy3-W9-HAD" firstAttribute="leading" secondItem="Xto-8I-Kia" secondAttribute="leading" id="yzE-a6-ZdQ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" id="dfN-EF-0Uk"/>
                     <navigationItem key="navigationItem" id="oGh-e1-68r">
