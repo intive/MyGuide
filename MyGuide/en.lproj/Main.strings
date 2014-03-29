@@ -1,0 +1,41 @@
+/* Class = "IBUILabel"; text = "Information"; ObjectID = "8iY-Gy-ZWe"; */
+"8iY-Gy-ZWe.text" = "Information";
+
+/* Class = "IBUILabel"; text = "Events"; ObjectID = "Qan-C1-De1"; */
+"Qan-C1-De1.text" = "Events";
+
+/* Class = "IBUISearchBar"; placeholder = "Search for animal"; ObjectID = "VzT-e2-UZs"; */
+"VzT-e2-UZs.placeholder" = "Search for animal";
+
+/* Class = "IBUILabel"; text = "Preferences"; ObjectID = "XwW-SR-asb"; */
+"XwW-SR-asb.text" = "Preferences";
+
+/* Class = "IBUILabel"; text = "Map"; ObjectID = "bJF-YD-tQ1"; */
+"bJF-YD-tQ1.text" = "Map";
+
+/* Class = "IBUITabBarItem"; title = "Explore"; ObjectID = "dfN-EF-0Uk"; */
+"dfN-EF-0Uk.title" = "Explore";
+
+/* Class = "IBUISegmentedControl"; iSu-gc-aO2.segmentTitles[0] = "About"; ObjectID = "iSu-gc-aO2"; */
+"iSu-gc-aO2.segmentTitles[0]" = "About";
+
+/* Class = "IBUISegmentedControl"; iSu-gc-aO2.segmentTitles[1] = "For Kids"; ObjectID = "iSu-gc-aO2"; */
+"iSu-gc-aO2.segmentTitles[1]" = "For Kids";
+
+/* Class = "IBUISegmentedControl"; iSu-gc-aO2.segmentTitles[2] = "Map"; ObjectID = "iSu-gc-aO2"; */
+"iSu-gc-aO2.segmentTitles[2]" = "Map";
+
+/* Class = "IBUILabel"; text = "Animals"; ObjectID = "pVK-nv-tKx"; */
+"pVK-nv-tKx.text" = "Animals";
+
+/* Class = "IBUILabel"; text = "Gastronomy"; ObjectID = "riI-KU-vmk"; */
+"riI-KU-vmk.text" = "Gastronomy";
+
+/* Class = "IBUILabel"; text = "History"; ObjectID = "tsL-ae-7Gr"; */
+"tsL-ae-7Gr.text" = "History";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "yIf-F5-yY5"; */
+"yIf-F5-yY5.text" = "Litwo! Ojczyzno moja! Ty jesteś jak zdrowie. Nazywał się jak szlachcic młody panek i na kształt ogromnego gmachu słońce nad błękitnym Niemnem rozciągnionych. Do zobaczenia! tak rzadka nowina! Ojcze Robaku ciszej rzekł - Białe jej był zostawiony nóżkami drobnemi od chmielu tyki w tylu szlachty, w stodołę miał długie, cienkie, jak przystało drugich wiek, urodzenie, cnoty, obyczaje chowa i liczba żołnierza i mniej piękne, niż myśliwi młodzi tak rzuciły. Tuż i raptem boczne drzwi ślad widać było z nieba dochodziło mniej był przystojny, czuł choroby zaród.";
+
+/* Class = "IBUITextView"; text = "EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS "; ObjectID = "yoO-jN-vOU"; */
+"yoO-jN-vOU.text" = "WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA";
