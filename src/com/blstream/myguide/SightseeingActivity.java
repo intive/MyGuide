@@ -124,7 +124,6 @@ public class SightseeingActivity extends Activity implements
 
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
-		displayAllJunctions(mJunctionsVisible);
 
 		if (isDebugBuild()) {
 			mLocationLogger = new LocationLogger(this, 3, true);
@@ -255,15 +254,7 @@ public class SightseeingActivity extends Activity implements
 					.center(new LatLng(a.getNode().getLatitude(), a.getNode()
 							.getLongitude())
 
-					));
-		}
-	}
-
-	/** Determines whatever of not all junctions are displayed on the map. */
-
-	private void displayAllJunctions(boolean display) {
-		for (Circle junction : mZooJunctions) {
-			junction.setVisible(display);
+					).visible(mJunctionsVisible));
 		}
 	}
 
@@ -395,15 +386,26 @@ public class SightseeingActivity extends Activity implements
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
+				
+				Class<?> goToActivity = null;
 				Intent intent;
 				switch(position){
 				case 0:
-					mDrawerLayout.closeDrawer(Gravity.LEFT);
+					goToActivity = SightseeingActivity.class;
 					break;
 				case 1:
-					intent = new Intent(getApplicationContext(), AnimalListActivity.class);
-					startActivity(intent);
+					goToActivity = AnimalListActivity.class;
 					break;
+				}
+				
+				if(goToActivity.equals(this.getClass().getName())){
+					mDrawerLayout.closeDrawer(Gravity.LEFT);
+					Log.w("LOGGING CLASS", "same class");
+				}
+				else{
+					Log.w("LOGGING NEW CLASS", ""+goToActivity + " " + this.getClass());
+					intent = new Intent(getApplicationContext(), goToActivity);
+					startActivity(intent);
 				}
 			}
 		});
