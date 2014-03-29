@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using Caliburn.Micro.BindableAppBar;
+using Caliburn.Micro.Logging.NLog;
 using MyGuide.DataServices;
 using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
@@ -15,6 +16,11 @@ namespace MyGuide
     public class Bootstrapper : PhoneBootstrapper
     {
         private PhoneContainer container;
+
+        static Bootstrapper()
+        {
+            LogManager.GetLog = type => new NLogLogger(type);
+        }
 
         protected override void BuildUp(object instance)
         {
