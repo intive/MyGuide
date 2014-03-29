@@ -6,7 +6,7 @@
 
 "YES" = "YES";
 
-/*****************************
+/******************************
             ALERTS
  ******************************/
 
@@ -19,3 +19,11 @@
 "gpsDisabledMapMessage" = "Enable location services in device settings to see your current position on the map.";
 
 "gpsDeniedTitle" = "GPS disabeld";
+
+/******************************
+           CONTROLLERS
+ ******************************/
+
+"titleControllerAnimalsList" = "Animals list";
+
+"titleControllerMap" = "ZOO map";

@@ -47,6 +47,8 @@
     [self centerMap];
     [self showPaths];
     [self showJunctions];
+    
+    [self setTitle: NSLocalizedString(@"titleControllerMap", nil)];
 }
 
 
