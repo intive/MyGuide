@@ -63,7 +63,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="06T-y8-t9z">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="06T-y8-t9z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,6 +78,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="06T-y8-t9z" secondAttribute="trailing" id="JDu-XV-epg"/>
+                            <constraint firstItem="06T-y8-t9z" firstAttribute="top" secondItem="iy7-V2-3cX" secondAttribute="top" id="MeV-2v-6Se"/>
+                            <constraint firstItem="06T-y8-t9z" firstAttribute="leading" secondItem="iy7-V2-3cX" secondAttribute="leading" id="Ygp-6a-7n0"/>
+                            <constraint firstAttribute="bottom" secondItem="06T-y8-t9z" secondAttribute="bottom" id="acx-fM-iAw"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pac-fJ-BOj">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="fYD-of-KS9"/>
