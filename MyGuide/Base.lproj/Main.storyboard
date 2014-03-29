@@ -8,7 +8,7 @@
         <!--Map View Controller - Explore-->
         <scene sceneID="Rwy-Mw-zzh">
             <objects>
-                <viewController id="k7A-NH-zPr" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainMap" id="k7A-NH-zPr" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UV8-lu-se9"/>
                         <viewControllerLayoutGuide type="bottom" id="O5o-Za-FAd"/>
@@ -63,7 +63,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="06T-y8-t9z">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="06T-y8-t9z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,6 +78,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="06T-y8-t9z" secondAttribute="trailing" id="06j-PW-65F"/>
+                            <constraint firstItem="06T-y8-t9z" firstAttribute="top" secondItem="iy7-V2-3cX" secondAttribute="top" id="BOe-rS-ox5"/>
+                            <constraint firstItem="06T-y8-t9z" firstAttribute="leading" secondItem="iy7-V2-3cX" secondAttribute="leading" id="qhr-i5-79B"/>
+                            <constraint firstAttribute="bottom" secondItem="06T-y8-t9z" secondAttribute="bottom" id="sUJ-s4-3gS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pac-fJ-BOj">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="fYD-of-KS9"/>
@@ -192,6 +198,7 @@
                     </view>
                     <connections>
                         <outlet property="animalImage" destination="SFj-n6-zfZ" id="JSY-G0-Ehh"/>
+                        <outlet property="descriptionTextViewOutlet" destination="yIf-F5-yY5" id="zmt-qj-PBc"/>
                         <outlet property="segmentedControlOutlet" destination="iSu-gc-aO2" id="6nF-wj-nRm"/>
                     </connections>
                 </viewController>
@@ -420,6 +427,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lUA-99-4r3"/>
+        <segue reference="bDn-LD-z3i"/>
     </inferredMetricsTieBreakers>
 </document>

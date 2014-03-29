@@ -175,10 +175,12 @@ static NSString *kXmlEN                 = @"en";
     }
     else if ([elementName isEqualToString:kXmlImage]) {
         if(_descriptionAdultFlag == YES){
-            [_animalInfoDictionary setValue:_elementValue forKey:@"adultImageName"];
+            NSString *imageName = [[_elementValue componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] componentsJoinedByString:@""];
+            [_animalInfoDictionary setValue:imageName forKey:@"adultImageName"];
         }
         else{
-            [_animalInfoDictionary setValue:_elementValue forKey:@"childImageName"];
+            NSString *imageName = [[_elementValue componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] componentsJoinedByString:@""];
+            [_animalInfoDictionary setValue:imageName forKey:@"childImageName"];
         }
     }
     else if ([elementName isEqualToString:kXmlPL]) {

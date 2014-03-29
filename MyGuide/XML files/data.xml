@@ -19,7 +19,7 @@
 		<animal lat="51.1050185" lon="17.0759970">
 			<name>
 				<pl>Struś</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -35,7 +35,7 @@
 		<animal lat="51.1046625" lon="17.0771680">
 			<name>
 				<pl>Lew angolański</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -51,7 +51,7 @@
 		<animal lat="51.1053988" lon="17.0737940">
 			<name>
 				<pl>Zebra</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -67,7 +67,7 @@
 		<animal lat="51.1031447" lon="17.0756473">
 			<name>
 				<pl>Żubr</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -83,7 +83,7 @@
 		<animal lat="51.1042875" lon="17.0786295">
 			<name>
 				<pl>Gnu białobrode</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -99,7 +99,7 @@
 		<animal lat="51.1047078" lon="17.0784479">
 			<name>
 				<pl>Oryks szablorogi</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -115,7 +115,7 @@
 		<animal lat="51.1049038" lon="17.0778135">
 			<name>
 				<pl>Osioł Domowy</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -131,7 +131,7 @@
 		<animal lat="51.1051282" lon="17.0774613">
 			<name>
 				<pl>Wielbłąd jednogarbny</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -147,7 +147,7 @@
 		<animal lat="51.1040432" lon="17.0774597">
 			<name>
 				<pl>Kob Singsing</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -163,7 +163,7 @@
 		<animal lat="51.1039061" lon="17.0773532">
 			<name>
 				<pl>Sitatunga</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -179,7 +179,7 @@
 		<animal lat="51.1016737" lon="17.0785009">
 			<name>
 				<pl>Niedźwiedź brunatny</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -195,7 +195,7 @@
 		<animal lat="51.1015091" lon="17.0778810">
 			<name>
 				<pl>Magot</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -211,7 +211,7 @@
 		<animal lat="51.1042993" lon="17.0778709">
 			<name>
 				<pl>Garna</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -227,7 +227,7 @@
 		<animal lat="51.1024655" lon="17.0756415">
 			<name>
 				<pl>Pelikan różowy</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -243,7 +243,7 @@
 		<animal lat="51.1061405" lon="17.0741774">
 			<name>
 				<pl>Kotik afrykański</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -259,7 +259,7 @@
 		<animal lat="51.1017737" lon="17.0779163">
 			<name>
 				<pl>Muflon</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -275,7 +275,7 @@
 		<animal lat="51.1042374" lon="17.0777086">
 			<name>
 				<pl>Nilgau</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -291,7 +291,7 @@
 		<animal lat="51.1047396" lon="17.0782172">
 			<name>
 				<pl>Fenek</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -307,7 +307,7 @@
 		<animal lat="51.1042030" lon="17.0767175">
 			<name>
 				<pl>Likaon</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -323,7 +323,7 @@
 		<animal lat="51.1042048" lon="17.0731681">
 			<name>
 				<pl>Kapibara</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -339,7 +339,7 @@
 		<animal lat="51.1037581" lon="17.0728256">
 			<name>
 				<pl>Aguti złociste</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -355,7 +355,7 @@
 		<animal lat="51.1066934" lon="17.0724480">
 			<name>
 				<pl>Mangaba czarna</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -371,7 +371,7 @@
 		<animal lat="51.1056874" lon="17.0738775">
 			<name>
 				<pl>Urson</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -387,7 +387,7 @@
 		<animal lat="51.1058086" lon="17.0739829">
 			<name>
 				<pl>Niedźwiedź Brunatny</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -403,7 +403,7 @@
 		<animal lat="51.1064215" lon="17.0732379">
 			<name>
 				<pl>Wilk</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -419,7 +419,7 @@
 		<animal lat="51.1060238" lon="17.0716045">
 			<name>
 				<pl>Słoń indyjski</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -435,7 +435,7 @@
 		<animal lat="51.1039169" lon="17.0729268">
 			<name>
 				<pl>Lama</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -451,7 +451,7 @@
 		<animal lat="51.1035765" lon="17.0726617">
 			<name>
 				<pl>Mara patagońska</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -467,7 +467,7 @@
 		<animal lat="51.1040441" lon="17.0734620">
 			<name>
 				<pl>Nandu szare</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -483,7 +483,7 @@
 		<animal lat="51.1040605" lon="17.0706544">
 			<name>
 				<pl>Daniel mezopotamski</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -499,7 +499,7 @@
 		<animal lat="51.1034744" lon="17.0728319">
 			<name>
 				<pl>Alpaka</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -515,7 +515,7 @@
 		<animal lat="51.1063327" lon="17.0740033">
 			<name>
 				<pl>Niedźwiedź himalajski</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -531,7 +531,7 @@
 		<animal lat="51.1068418" lon="17.0723794">
 			<name>
 				<pl>Makak czubaty</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -547,7 +547,7 @@
 		<animal lat="51.1067633" lon="17.0724229">
 			<name>
 				<pl>Mangaba rudoczelna</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -563,7 +563,7 @@
 		<animal lat="51.1046240" lon="17.0698661">
 			<name>
 				<pl>Sajmiri</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -579,7 +579,7 @@
 		<animal lat="51.1040646" lon="17.0731295">
 			<name>
 				<pl>Gwanako</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -595,7 +595,7 @@
 		<animal lat="51.1035167" lon="17.0766332">
 			<name>
 				<pl>Marabut afrykański</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -611,7 +611,7 @@
 		<animal lat="51.1063553" lon="17.0722136">
 			<name>
 				<pl>Hipopotam nilowy</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -627,7 +627,7 @@
 		<animal lat="51.1050439" lon="17.0696709">
 			<name>
 				<pl>Jeleń aksis</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -643,7 +643,7 @@
 		<animal lat="51.1069080" lon="17.0722911">
 			<name>
 				<pl>Makak rezus</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -659,7 +659,7 @@
 		<animal lat="51.1043066" lon="17.0717151">
 			<name>
 				<pl>Lemur katta</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -675,7 +675,7 @@
 		<animal lat="51.1042855" lon="17.0699521">
 			<name>
 				<pl>Sika Dybowskiego</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -691,7 +691,7 @@
 		<animal lat="51.1053321" lon="17.0695383">
 			<name>
 				<pl>Jeleń milu</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -707,7 +707,7 @@
 		<animal lat="51.1034212" lon="17.0725676">
 			<name>
 				<pl>Skrzydłoszpon obrożny</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -723,7 +723,7 @@
 		<animal lat="51.1016967" lon="17.0771516">
 			<name>
 				<pl>Żbik</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -739,7 +739,7 @@
 		<animal lat="51.1032748" lon="17.0750735">
 			<name>
 				<pl>Banteng</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -755,7 +755,7 @@
 		<animal lat="51.1068641" lon="17.0702596">
 			<name>
 				<pl>Czerwonak różowy</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -771,7 +771,7 @@
 		<animal lat="51.1067957" lon="17.0724032">
 			<name>
 				<pl>Patas</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -787,7 +787,7 @@
 		<animal lat="51.1048820" lon="17.0693605">
 			<name>
 				<pl>Renifer</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -803,7 +803,7 @@
 		<animal lat="51.1019258" lon="17.0771623">
 			<name>
 				<pl>Ryś</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -819,7 +819,7 @@
 		<animal lat="51.1063146" lon="17.0728767">
 			<name>
 				<pl>Tygrys Sumatrzański</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
             </name>
             <description_adult>
 				<image>placeholder_adult.png</image>
@@ -835,7 +835,7 @@
 		<animal lat="51.1061018" lon="17.0721245">
 			<name>
 				<pl>Tapir anta</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -851,7 +851,7 @@
 		<animal lat="51.1045571" lon="17.0730667">
 			<name>
 				<pl>Panda Mała</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>
@@ -867,7 +867,7 @@
 		<animal lat="51.1058351" lon="17.0732203">
 			<name>
 				<pl>Nosorożec indyjski</pl>
-				<en>nameEN</en>
+				<en>name EN</en>
 			</name>
 			<description_adult>
 				<image>placeholder_adult.png</image>

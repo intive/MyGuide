@@ -28,18 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _tableView.translatesAutoresizingMaskIntoConstraints = YES;
-    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    _languageCode = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
-    if(![_languageCode isEqualToString:@"pl"]){
+    _languageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
+    if(![_languageCode isEqualToString:@"PL"]){
         _languageCode = @"EN";
-        _lastUsedLanguageCode = @"en";
     }
-    else{
-        _languageCode = @"PL";
-        _lastUsedLanguageCode = @"pl";
-    }
+    _lastUsedLanguageCode = _languageCode;
 
     [self initMenuBar];
     [self initTableData];
@@ -48,8 +42,17 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.view.frame = self.view.superview.bounds;
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-    if(![_lastUsedLanguageCode isEqual:[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2]]){
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if(![_lastUsedLanguageCode isEqualToString:[[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString]]){
+        _lastUsedLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
+        if(![_lastUsedLanguageCode isEqualToString:@"PL"]){
+            _lastUsedLanguageCode = @"EN";
+        }
         [[self tableView] reloadData];
     }
 }
@@ -120,6 +123,13 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AFAnimal *animal;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        animal = [_filteredAnimalsArray objectAtIndex:indexPath.section];
+    } else {
+        animal = [_animalsArray objectAtIndex:indexPath.section];
+    }
+    [_detailsController setAnimal:animal];
     if(_filteredAnimalsArray.count != 0){
         if([_languageCode isEqualToString:@"PL"]){
             [_detailsController setTitle:[[_filteredAnimalsArray objectAtIndex:[indexPath indexAtPosition:0]] namePL]];
