@@ -10,6 +10,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
@@ -22,6 +23,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.blstream.myguide.dialog.ConfirmationDialogFragment;
 import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.settings.Settings;
@@ -43,8 +45,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class SightseeingActivity extends Activity implements
-		OnCameraChangeListener {
+public class SightseeingActivity extends FragmentActivity implements
+		OnCameraChangeListener, ConfirmationDialogFragment.ConfirmationDialogHolder {
 
 	private static final String LOG_TAG = SightseeingActivity.class
 			.getSimpleName();
@@ -86,7 +88,7 @@ public class SightseeingActivity extends Activity implements
 		Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
 		mMap.setMyLocationEnabled(visible);
 	}
-	
+
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
 	 * NavigationDrawer for the Activity. Reads settings which are saved in
@@ -146,7 +148,7 @@ public class SightseeingActivity extends Activity implements
 
 	/**
 	 * Check if build type of application is set to debug.
-	 *
+	 * 
 	 * @return true if yes, false if no
 	 */
 	private boolean isDebugBuild() {
@@ -201,7 +203,7 @@ public class SightseeingActivity extends Activity implements
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 				mStartCenterLat, mStartCenterLon), mMinZoom));
 		mMap.setOnCameraChangeListener(this);
-		
+
 		this.configureAndDisplayUserPosition();
 	}
 
@@ -355,10 +357,11 @@ public class SightseeingActivity extends Activity implements
 			public void onClick(View view) {
 				clearSearchView();
 
-				if (!mDrawerLayout.isDrawerOpen(Gravity.LEFT))
+				if (!mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
 					mDrawerLayout.openDrawer(Gravity.LEFT);
-				else
+				} else {
 					mDrawerLayout.closeDrawer(Gravity.LEFT);
+				}
 			}
 		});
 	}
@@ -414,4 +417,20 @@ public class SightseeingActivity extends Activity implements
 		mSearchViewClose.setVisibility(View.GONE);
 	}
 
+	/**
+	 * Override back-button functionality - show dialog asking about
+	 * confirmation of closing an application.
+	 */
+	@Override
+	public void onBackPressed() {
+		ConfirmationDialogFragment
+				.newInstance(getResources().getString(R.string.confirmation_exit))
+				.show(getSupportFragmentManager(), ConfirmationDialogFragment.class.getSimpleName());
+	}
+
+	/** Invoke after confirmation about closing an application is made. */
+	@Override
+	public void onDialogConfirm() {
+		super.onBackPressed();
+	}
 }
