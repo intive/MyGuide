@@ -1,10 +1,18 @@
-"distanceAlertTitle" = "Too far from the Zoo!";
-
-"distanceAlertMessage" = "You are too far from the zoo. Do you want to show driving directions?";
+/******************************
+            COMMON
+ ******************************/
 
 "NO" = "NO";
 
 "YES" = "YES";
+
+/*****************************
+            ALERTS
+ ******************************/
+
+"distanceAlertTitle" = "Too far from the Zoo!";
+
+"distanceAlertMessage" = "You are too far from the zoo. Do you want to show driving directions?";
 
 "gpsDisabledLaunchMessage" = "Turning on location services will impove application quality.";
 
