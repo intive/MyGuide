@@ -12,12 +12,16 @@
 @interface AFAnimal : NSObject
 
 @property (nonatomic, readonly) AFNode   *coordinates;
-@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *namePL;
+@property (nonatomic, readonly) NSString *nameEN;
+@property (nonatomic, readonly) NSDictionary *animalInfoDictionary;
 
 - (id)init;
-- (id)initWithPosition:(AFNode *)coordinates andName:(NSString *)name;
+- (id)initWithPosition:(AFNode *)coordinates namePL:(NSString *)namePL andNameEN:(NSString *)nameEN;
 
 - (void)setCoordinates:(AFNode *)coordinates;
-- (void)setName:(NSString *)name;
+- (void)setDictionary:(NSDictionary *)dictionary;
+- (void)setNamePL:(NSString *)namePL;
+- (void)setNameEN:(NSString *)nameEN;
 
 @end

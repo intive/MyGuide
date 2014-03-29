@@ -13,6 +13,8 @@
 @property (strong, nonatomic) NSArray *animalsArray;
 @property (strong, nonatomic) NSMutableArray *filteredAnimalsArray;
 @property (strong, nonatomic) AnimalDetailsViewController *detailsController;
+@property (strong, nonatomic) NSString *languageCode;
+@property (strong, nonatomic) NSString *lastUsedLanguageCode;
 
 @end
 
@@ -29,6 +31,16 @@
     _tableView.translatesAutoresizingMaskIntoConstraints = YES;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
+    _languageCode = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
+    if(![_languageCode isEqualToString:@"pl"]){
+        _languageCode = @"EN";
+        _lastUsedLanguageCode = @"en";
+    }
+    else{
+        _languageCode = @"PL";
+        _lastUsedLanguageCode = @"pl";
+    }
+
     [self initMenuBar];
     [self initTableData];
     [self prepareNextViewController];
@@ -37,6 +49,9 @@
 {
     [super viewDidAppear:animated];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    if(![_lastUsedLanguageCode isEqual:[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2]]){
+        [[self tableView] reloadData];
+    }
 }
 
 - (void)initMenuBar
@@ -53,7 +68,7 @@
 
 - (void)initTableData
 {
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:[NSString stringWithFormat:@"name%@", _languageCode] ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     AFParsedData *data = [AFParsedData sharedParsedData];
@@ -94,14 +109,24 @@
     } else {
         animal = [_animalsArray objectAtIndex:indexPath.section];
     }
-    cell.textLabel.text = animal.name;
+    if([_languageCode isEqualToString:@"PL"]){
+        cell.textLabel.text = animal.namePL;
+    }
+    else{
+        cell.textLabel.text = animal.nameEN;
+    }
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(_filteredAnimalsArray.count != 0){
-        [_detailsController setTitle:[[_filteredAnimalsArray objectAtIndex:[indexPath indexAtPosition:0]] name]];
+        if([_languageCode isEqualToString:@"PL"]){
+            [_detailsController setTitle:[[_filteredAnimalsArray objectAtIndex:[indexPath indexAtPosition:0]] namePL]];
+        }
+        else{
+            [_detailsController setTitle:[[_filteredAnimalsArray objectAtIndex:[indexPath indexAtPosition:0]] nameEN]];
+        }
     }
     else{
         [_detailsController setTitle:[[[self.tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
@@ -118,8 +143,14 @@
 - (void)filterContentForSearchText:(NSString *)searchText scope:(NSString *)scope
 {
     [_filteredAnimalsArray removeAllObjects];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"SELF.name contains[cd] %@", searchText];
-    _filteredAnimalsArray = [NSMutableArray arrayWithArray: [_animalsArray filteredArrayUsingPredicate: predicate]];
+    NSPredicate *predicate = [[NSPredicate alloc] init];
+    if([_languageCode isEqualToString:@"PL"]){
+        predicate = [NSPredicate predicateWithFormat: @"SELF.namePL contains[cd] %@", searchText];
+    }
+    else{
+        predicate = [NSPredicate predicateWithFormat: @"SELF.nameEN contains[cd] %@", searchText];
+    }
+    _filteredAnimalsArray = [NSMutableArray arrayWithArray: [_animalsArray filteredArrayUsingPredicate:predicate]];
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString

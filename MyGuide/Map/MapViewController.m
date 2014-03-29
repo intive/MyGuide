@@ -16,6 +16,8 @@
 @property (nonatomic) CLLocation        *zooCenterLocation;
 @property (nonatomic) BOOL               showAlert;
 
+@property (strong, nonatomic) NSString *lastUsedLanguageCode;
+
 @end
 
 #pragma mark -
@@ -29,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _lastUsedLanguageCode = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
     _settings = [Settings sharedSettingsData];
     _data     = [AFParsedData sharedParsedData];
     _alertDistance = [self buildAlertView];
@@ -48,7 +51,13 @@
     [self showPaths];
     [self showJunctions];
 }
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if(![_lastUsedLanguageCode isEqual:[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2]]){
+        [self showAnimals];
+    }
+}
 
 
 #pragma mark - Initial configuration

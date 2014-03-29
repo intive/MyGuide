@@ -10,16 +10,22 @@
 #import "AFParsedData.h"
 #import "XMLFetcher.h"
 
-static NSString *kXmlAnimals    = @"animals";
-static NSString *kXmlWays       = @"ways";
-static NSString *kXmlJunctions  = @"junctions";
-static NSString *kXmlAnimal     = @"animal";
-static NSString *kXmlWay        = @"way";
-static NSString *kXmlNode       = @"node";
-static NSString *kXmlJunction   = @"junction";
-static NSString *kXmlLatitude   = @"lat";
-static NSString *kXmlLongitude  = @"lon";
-static NSString *kXmlId         = @"id";
+static NSString *kXmlAnimals            = @"animals";
+static NSString *kXmlWays               = @"ways";
+static NSString *kXmlJunctions          = @"junctions";
+static NSString *kXmlAnimal             = @"animal";
+static NSString *kXmlWay                = @"way";
+static NSString *kXmlNode               = @"node";
+static NSString *kXmlJunction           = @"junction";
+static NSString *kXmlLatitude           = @"lat";
+static NSString *kXmlLongitude          = @"lon";
+static NSString *kXmlId                 = @"id";
+static NSString *kXmlName               = @"name";
+static NSString *kXmlDescriptionAdult   = @"description_adult";
+static NSString *kXmlDescriptionChild   = @"description_child";
+static NSString *kXmlImage              = @"image";
+static NSString *kXmlPL                 = @"pl";
+static NSString *kXmlEN                 = @"en";
 
 @implementation AFXMLParser
 
@@ -30,7 +36,10 @@ static NSString *kXmlId         = @"id";
 
 - (void)parse
 {
-    _parsingError = NO;
+    _parsingError         = NO;
+    _nameFlag             = NO;
+    _descriptionAdultFlag = NO;
+    _descriptionChildFlag = NO;
     
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[self getDataXML]];
     [parser setDelegate:self];
@@ -69,11 +78,11 @@ static NSString *kXmlId         = @"id";
         _junctionsArray = [[NSMutableArray alloc] init];
     }
     else if ([elementName isEqualToString:kXmlAnimal]) {
-        AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
+        _temporaryNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
         _currentAnimal = [[AFAnimal alloc] init];
-        [_currentAnimal setCoordinates:tempNode];
+        _animalInfoDictionary = [[NSMutableDictionary alloc] init];
     }
-    else if ([elementName isEqualToString: kXmlWay]) {
+    else if ([elementName isEqualToString:kXmlWay]) {
         _currentWay = [[AFWay alloc] init];
         _nodesArray = nil;
         [_currentWay setWayID:[attributeDict valueForKey:kXmlId]];
@@ -81,11 +90,20 @@ static NSString *kXmlId         = @"id";
     else if ([elementName isEqualToString:kXmlNode]) {
         _currentNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
     }
-    else if ([elementName isEqualToString: kXmlJunction]) {
+    else if ([elementName isEqualToString:kXmlJunction]) {
         AFNode *tempNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
         _waysArray = nil;
         _currentJunction = [[AFJunction alloc] init];
         [_currentJunction setCoordinates:tempNode];
+    }
+    else if ([elementName isEqualToString:kXmlName]) {
+        _nameFlag = YES;
+    }
+    else if ([elementName isEqualToString:kXmlDescriptionAdult]) {
+        _descriptionAdultFlag = YES;
+    }
+    else if ([elementName isEqualToString:kXmlDescriptionChild]) {
+        _descriptionChildFlag = YES;
     }
 }
 
@@ -113,8 +131,11 @@ static NSString *kXmlId         = @"id";
         _junctionsArray = nil;
     }
     else if ([elementName isEqualToString:kXmlAnimal]) {
-        [_currentAnimal setName:_elementValue];
+        [_currentAnimal setDictionary:_animalInfoDictionary];
+        [_currentAnimal setCoordinates:_temporaryNode];
         [_animalsArray addObject:_currentAnimal];
+        _animalInfoDictionary = nil;
+        _temporaryNode = nil;
     }
     else if ([elementName isEqualToString:kXmlWay]) {
         if(_waysArray == nil) {
@@ -142,6 +163,45 @@ static NSString *kXmlId         = @"id";
             _currentJunction.waysArray = nil;
         }
         [_junctionsArray addObject:_currentJunction];
+    }
+    else if ([elementName isEqualToString:kXmlName]) {
+        _nameFlag = NO;
+    }
+    else if ([elementName isEqualToString:kXmlDescriptionAdult]) {
+        _descriptionAdultFlag = NO;
+    }
+    else if ([elementName isEqualToString:kXmlDescriptionChild]) {
+        _descriptionChildFlag = NO;
+    }
+    else if ([elementName isEqualToString:kXmlImage]) {
+        if(_descriptionAdultFlag == YES){
+            [_animalInfoDictionary setValue:_elementValue forKey:@"adultImageName"];
+        }
+        else{
+            [_animalInfoDictionary setValue:_elementValue forKey:@"childImageName"];
+        }
+    }
+    else if ([elementName isEqualToString:kXmlPL]) {
+        if(_nameFlag == YES){
+            [_currentAnimal setNamePL:_elementValue];
+        }
+        else if(_descriptionAdultFlag == YES){
+            [_animalInfoDictionary setValue:_elementValue forKey:@"adultDescriptionPL"];
+        }
+        else{
+            [_animalInfoDictionary setValue:_elementValue forKey:@"childDescriptionPL"];
+        }
+    }
+    else if ([elementName isEqualToString:kXmlEN]) {
+        if(_nameFlag == YES){
+            [_currentAnimal setNameEN:_elementValue];
+        }
+        else if(_descriptionAdultFlag == YES){
+            [_animalInfoDictionary setValue:_elementValue forKey:@"adultDescriptionEN"];
+        }
+        else{
+            [_animalInfoDictionary setValue:_elementValue forKey:@"childDescriptionEN"];
+        }
     }
 }
 

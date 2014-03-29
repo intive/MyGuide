@@ -12,8 +12,6 @@
     LocationManager *_locationManager;
 }
 
-
-
 - (void)parseDataXML
 {
     AFXMLParser *parser = [[AFXMLParser alloc] init];
