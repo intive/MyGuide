@@ -75,7 +75,10 @@
 - (void)configureToolbarItems
 {
     MKUserTrackingBarButtonItem *button = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
-    self.mapToolbar.items = @[button];
+    UIBarButtonItem *fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpaceButton.width = 262.5f;
+    self.mapToolbar.items = @[fixedSpaceButton, button];
+    [self.mapToolbar setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
 - (void)showUserPosition
@@ -125,6 +128,12 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     double distance = [self calculateUserDistance:userLocation];
+    if(distance <= _settings.maxUserDistance){
+        [[self.mapToolbar.items lastObject] setEnabled:YES];
+    }
+    else{
+        [[self.mapToolbar.items lastObject] setEnabled:NO];
+    }
     if([self shouldShowAlertDistance:distance]) {
         [_alertDistance show];
     }
@@ -142,7 +151,7 @@
     return distance > _settings.maxUserDistance && !_alertDistance.visible && _showAlert;
 }
 
-- (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex: (NSInteger) buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex != alertView.cancelButtonIndex)
     {

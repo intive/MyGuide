@@ -44,6 +44,7 @@
             _languageCode = @"EN";
         }
     }
+    [_segmentedControlOutlet setSelectedSegmentIndex:0];
     [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
     [_descriptionTextViewOutlet setText:[_animal.animalInfoDictionary valueForKey:[NSString stringWithFormat:@"adultDescription%@", _languageCode]]];
 }
@@ -51,11 +52,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    NSLog(@" will disappear");
 }
 - (void)prepareNextViewController
 {
