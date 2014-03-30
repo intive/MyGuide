@@ -1,7 +1,7 @@
 
 package com.blstream.myguide.zoolocations;
 
-import java.util.TreeMap;
+import java.util.HashMap;
 
 /**
  * This class contains animal names (in various languages), descriptions for
@@ -9,13 +9,17 @@ import java.util.TreeMap;
  */
 public class Animal {
 
-	private TreeMap<String, String> mName;
+	private HashMap<String, String> mNames;
 	private Node mNode;
 	private Description mDescriptionAdult;
 	private Description mDescriptionChild;
 
-	public void setName(TreeMap<String, String> name) {
-		mName = name;
+	public Animal() {
+		mNames = new HashMap<String, String>();
+	}
+
+	public void addName(String lang, String name) {
+		mNames.put(lang, name);
 	}
 
 	public void setNode(Node node) {
@@ -31,11 +35,11 @@ public class Animal {
 	}
 
 	public String getName() {
-		return mName.get(Language.DEFAULT);
+		return mNames.get(Language.DEFAULT);
 	}
 
 	public String getName(String language) {
-		String name = mName.get(language);
+		String name = mNames.get(language);
 		if (name == null) { return this.getName(); }
 		return name;
 	}
