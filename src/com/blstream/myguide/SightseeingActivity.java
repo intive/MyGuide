@@ -4,7 +4,6 @@ package com.blstream.myguide;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
-import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.location.Location;
@@ -81,6 +80,7 @@ public class SightseeingActivity extends FragmentActivity implements
 
 	private LocationLogger mLocationLogger;
 	private LocationUpdater mLocationUpdater;
+	private boolean mLocationLogVisible;
 
 	private void configureAndDisplayUserPosition() {
 		// check if location should be hidden
@@ -122,23 +122,18 @@ public class SightseeingActivity extends FragmentActivity implements
 		setUpAnimalMarkers();
 		setUpWays();
 		setUpJunctions();
+		setUpLocation();
 
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
-
-		mLocationUpdater = LocationUpdater.getInstance();
-
-		if (isDebugBuild()) {
-			mLocationLogger = new LocationLogger(this, 3, true);
-		}
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
 		setUpGps();
-		if (isDebugBuild()) {
+		if (mLocationLogVisible) {
 			mLocationUpdater.startUpdating(mLocationLogger);
 		}
 	}
@@ -146,18 +141,18 @@ public class SightseeingActivity extends FragmentActivity implements
 	@Override
 	protected void onStop() {
 		super.onStop();
-		if (isDebugBuild()) {
+		if (mLocationLogVisible) {
 			mLocationUpdater.stopUpdating(mLocationLogger);
 		}
 	}
 
-	/**
-	 * Check if build type of application is set to debug.
-	 *
-	 * @return true if yes, false if no
-	 */
-	private boolean isDebugBuild() {
-		return (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
+	private void setUpLocation() {
+		mLocationUpdater = LocationUpdater.getInstance();
+		mLocationLogVisible = ((MyGuideApp) (this.getApplication())).getSettings()
+				.getValueAsBoolean(Settings.KEY_GPS_LOGGING);
+		if (mLocationLogVisible) {
+			mLocationLogger = new LocationLogger(this, 3, true);
+		}
 	}
 
 	private void setUpMapSettings() {
