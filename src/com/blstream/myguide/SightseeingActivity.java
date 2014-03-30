@@ -4,12 +4,12 @@ package com.blstream.myguide;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
-import android.app.Activity;
-import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
@@ -22,8 +22,10 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.blstream.myguide.dialog.EnableGpsDialogFragment;
 import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
+import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.Junction;
@@ -43,8 +45,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class SightseeingActivity extends Activity implements
-		OnCameraChangeListener {
+public class SightseeingActivity extends FragmentActivity implements
+		OnCameraChangeListener, LocationUser {
 
 	private static final String LOG_TAG = SightseeingActivity.class
 			.getSimpleName();
@@ -77,6 +79,8 @@ public class SightseeingActivity extends Activity implements
 	private ArrayList<Circle> mZooJunctions;
 
 	private LocationLogger mLocationLogger;
+	private LocationUpdater mLocationUpdater;
+	private boolean mLocationLogVisible;
 
 	private void configureAndDisplayUserPosition() {
 		// check if location should be hidden
@@ -86,7 +90,7 @@ public class SightseeingActivity extends Activity implements
 		Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
 		mMap.setMyLocationEnabled(visible);
 	}
-	
+
 	/**
 	 * Called when the activity is first created. Sets up ActionBar and
 	 * NavigationDrawer for the Activity. Reads settings which are saved in
@@ -118,39 +122,37 @@ public class SightseeingActivity extends Activity implements
 		setUpAnimalMarkers();
 		setUpWays();
 		setUpJunctions();
+		setUpLocation();
 
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
-
-		if (isDebugBuild()) {
-			mLocationLogger = new LocationLogger(this, 3, true);
-		}
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
-		if (isDebugBuild()) {
-			LocationUpdater.getInstance().startUpdating(mLocationLogger);
+		setUpGps();
+		if (mLocationLogVisible) {
+			mLocationUpdater.startUpdating(mLocationLogger);
 		}
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
-		if (isDebugBuild()) {
-			LocationUpdater.getInstance().stopUpdating(mLocationLogger);
+		if (mLocationLogVisible) {
+			mLocationUpdater.stopUpdating(mLocationLogger);
 		}
 	}
 
-	/**
-	 * Check if build type of application is set to debug.
-	 *
-	 * @return true if yes, false if no
-	 */
-	private boolean isDebugBuild() {
-		return (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
+	private void setUpLocation() {
+		mLocationUpdater = LocationUpdater.getInstance();
+		mLocationLogVisible = ((MyGuideApp) (this.getApplication())).getSettings()
+				.getValueAsBoolean(Settings.KEY_GPS_LOGGING);
+		if (mLocationLogVisible) {
+			mLocationLogger = new LocationLogger(this, 3, true);
+		}
 	}
 
 	private void setUpMapSettings() {
@@ -412,6 +414,35 @@ public class SightseeingActivity extends Activity implements
 	private void clearSearchView() {
 		mSearchView.clearFocus();
 		mSearchViewClose.setVisibility(View.GONE);
+	}
+
+	@Override
+	public void onLocationUpdate(Location location) {
+	}
+
+	@Override
+	public void onGpsAvailable() {
+		// All location base UI should be enable here
+		mMap.setMyLocationEnabled(true);
+	}
+
+	@Override
+	public void onGpsUnavailable() {
+		// All location base UI should be disable here
+		mMap.setMyLocationEnabled(false);
+	}
+
+	private void setUpGps() {
+		if (mLocationUpdater.isGpsEnable())
+		{
+			onGpsAvailable();
+		} else {
+			if (mLocationUpdater.isEnableGpsDialogNeeded()) {
+				new EnableGpsDialogFragment().show(getSupportFragmentManager(),
+						EnableGpsDialogFragment.class.getSimpleName());
+			}
+			onGpsUnavailable();
+		}
 	}
 
 }

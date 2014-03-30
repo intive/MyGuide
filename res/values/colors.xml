@@ -2,6 +2,7 @@
 <resources>
 
     <item name="gray" type="color">#f2f1f1</item>
+    <item name="dark_gray" type="color">#888888</item>
     <item name="white" type="color">#FFFFFF</item>
     <color name="list_divider">#323232</color>
 
