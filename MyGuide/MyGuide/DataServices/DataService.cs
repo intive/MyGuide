@@ -12,7 +12,7 @@ namespace MyGuide.DataServices
 {
     public class DataService : IDataService
     {
-        private ILog _log;
+        private ILog _log = LogManager.GetLog(typeof(DataService));
 
         public Root Datas { get; set; }
 
@@ -48,7 +48,6 @@ namespace MyGuide.DataServices
 
         public async Task Initialize()
         {
-            _log = LogManager.GetLog(typeof(DataService));
             XmlParser<Root> xmlPars = new XmlParser<Root>();
             try
             {

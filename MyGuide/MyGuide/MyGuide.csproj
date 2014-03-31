@@ -116,7 +116,6 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\Interfaces\IMessageDialogService.cs" />
-    <Compile Include="Services\Maps\TileSources\OSMRenderTileSource.cs" />
     <Compile Include="Services\MessageDialogService.cs" />
     <Compile Include="ViewModels\AboutZooPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
@@ -254,6 +253,12 @@
     <SDKReference Include="SendGridSdk, Version=1.0">
       <Name>SendGrid SDK Windows Phone</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MapTileSources\MapTileSources.csproj">
+      <Project>{8C980FED-6833-4A9C-A400-5F8ED861447C}</Project>
+      <Name>MapTileSources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

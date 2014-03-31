@@ -46,7 +46,6 @@ namespace Caliburn.Micro.Logging
                     string raport = GetRaport().Replace(System.Environment.NewLine, "<br>");
                     var sendGridMail = new Mail(USER, PASSWORD);
                     sendGridMail.addTo("pat2014-wro-wp-list@blstream.com")
-                        //.addTo("bukalski.piotr@gmail.com")
                                 .setFrom("UserReport@myguide.com")
                                 .setSubject("MyGuide crash report")
                                 .setHtml(raport);
@@ -125,11 +124,11 @@ namespace Caliburn.Micro.Logging
             LoggingConfiguration nLogConfig = global::NLog.LogManager.Configuration;
             foreach (Target target in nLogConfig.AllTargets)
             {
-                IsolatedStorageTarget ISFileTarget = target as IsolatedStorageTarget;
-                if (ISFileTarget != null)
+                IsolatedStorageTarget isolatedSFTarget = target as IsolatedStorageTarget;
+                if (isolatedSFTarget != null)
                 {
-                    result.AppendLine("<b>" + ISFileTarget.FileName + "</b>");
-                    ISFileTarget.Flush(e =>
+                    result.AppendLine("<b>" + isolatedSFTarget.FileName + "</b>");
+                    isolatedSFTarget.Flush(e =>
                     {
                         if (e != null)
                         {
@@ -138,7 +137,7 @@ namespace Caliburn.Micro.Logging
                     });
                     using (var isolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        using (var fileStream = new IsolatedStorageFileStream(ISFileTarget.FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, isolatedStorage))
+                        using (var fileStream = new IsolatedStorageFileStream(isolatedSFTarget.FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, isolatedStorage))
                         {
                             using (StreamReader reader = new StreamReader(fileStream))
                             {
