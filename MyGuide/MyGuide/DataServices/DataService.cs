@@ -1,4 +1,5 @@
-﻿using MyGuide.DataServices;
+﻿using Caliburn.Micro;
+using MyGuide.DataServices;
 using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using System;
@@ -11,6 +12,8 @@ namespace MyGuide.DataServices
 {
     public class DataService : IDataService
     {
+        private ILog _log;
+
         public Root Datas { get; set; }
 
         public int AnimalsSize()
@@ -20,7 +23,7 @@ namespace MyGuide.DataServices
 
         public string CollectionsSizes()
         {
-            return String.Format("Animals: {0}\nWays: {1}\nJunctions: {2}", AnimalsSize(), WaysSize(), JunctionsSize());
+            return String.Format("\nAnimals: {0}\nWays: {1}\nJunctions: {2}", AnimalsSize(), WaysSize(), JunctionsSize());
         }
 
         public Node GetAnimalPosition(string name)
@@ -45,6 +48,7 @@ namespace MyGuide.DataServices
 
         public async Task Initialize()
         {
+            _log = LogManager.GetLog(typeof(DataService));
             XmlParser<Root> xmlPars = new XmlParser<Root>();
             try
             {
@@ -54,8 +58,7 @@ namespace MyGuide.DataServices
                     && Datas.JunctionsList.Items.Count != 0
                     && Datas.WaysList.Items.Count != 0)
                 {
-                    Debug.WriteLine(this.ToString());
-                    Debug.WriteLine(CollectionsSizes());
+                    _log.Info("Loaded data.xml: {0}", CollectionsSizes());
                 }
                 else
                 {

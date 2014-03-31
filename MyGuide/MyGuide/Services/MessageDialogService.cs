@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Controls;
+﻿using Caliburn.Micro;
+using Microsoft.Phone.Controls;
 using MyGuide.Resources;
 using MyGuide.Services.Interfaces;
 using System.Threading.Tasks;
@@ -7,6 +8,13 @@ namespace MyGuide.Services
 {
     public class MessageDialogService : IMessageDialogService
     {
+        private ILog _log;
+
+        public MessageDialogService()
+        {
+            _log = LogManager.GetLog(typeof(MessageDialogService));
+        }
+
         public Task<bool> ShowDialog(string title, string message, string leftButton, string rightButton)
         {
             var tcs = new TaskCompletionSource<bool>();
@@ -45,7 +53,7 @@ namespace MyGuide.Services
                         break;
 
                     default:
-                        // TODO Log that some thing went wrong
+                        _log.Warn("User manage to broke MessageDialogService - not existing button choice");
                         tcs.TrySetResult(true);
                         break;
                 }
@@ -69,10 +77,9 @@ namespace MyGuide.Services
                     return ShowDialog(title, message, AppResources.AllowButton, AppResources.DenayButton);
 
                 default:
-                    // TODO Log that some thing went wrong
+                    _log.Warn("User manage to broke MessageDialogService - not existing DialogType");
                     break;
             }
-            // TODO Log that some thing went wrong
             return Task.Run<bool>(() => false);
         }
     }

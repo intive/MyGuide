@@ -2,6 +2,7 @@
 using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Services.Interfaces;
+using System;
 
 namespace MyGuide.ViewModels
 {
@@ -21,9 +22,10 @@ namespace MyGuide.ViewModels
         //{
         //}
 
-        //public void ShowAnimals()
-        //{
-        //}
+        public void ShowAnimals()
+        {
+            throw new Exception("Unchandled ex");
+        }
 
         //public void ShowMap()
         //{

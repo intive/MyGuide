@@ -9,6 +9,7 @@ namespace MyGuide.ViewModels
     public class ViewModelBase : PropertyChangedBase
     {
         protected IDataService _dataService;
+        protected ILog _log;
         protected IMessageDialogService _messageDialogService;
         protected INavigationService _navigation;
 
@@ -23,6 +24,7 @@ namespace MyGuide.ViewModels
             _navigation = navigationService;
             _dataService = dataService;
             _messageDialogService = messageDialogService;
+            _log = LogManager.GetLog(this.GetType());
         }
 
         public virtual void OnNavigatedFrom(NavigationMode navigationMode)

@@ -96,6 +96,8 @@
     </Compile>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Caliburn\Micro\Logging\DebugLogger.cs" />
+    <Compile Include="Caliburn\Micro\Logging\IsolatedStorageTarget.cs" />
+    <Compile Include="Caliburn\Micro\Logging\LittleWatson.cs" />
     <Compile Include="DataServices\Interfaces\IXmlParser.cs" />
     <Compile Include="DataServices\XmlParser.cs" />
     <Compile Include="DesignData\LoremImpusGenerator.cs" />
@@ -168,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NLog.config">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
@@ -245,6 +248,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\AppBarIcons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="SendGridSdk, Version=1.0">
+      <Name>SendGrid SDK Windows Phone</Name>
+    </SDKReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
