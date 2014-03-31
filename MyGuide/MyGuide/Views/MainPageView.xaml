@@ -50,13 +50,16 @@
         <bindappbar:BindableAppBar x:Name="AppBar">
             <bindappbar:BindableAppBarButton
                 x:Name="ShowAboutZoo"
-                Text="{Binding LocalizedResources.TicketsAndHours, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+                Text="{Binding LocalizedResources.TicketsAndHours, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
+                IconUri="/Assets/AppBarIcons/tickets.png" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowTravelDirections"
-                Text="{Binding LocalizedResources.TravelDirections, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+                Text="{Binding LocalizedResources.TravelDirections, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
+                IconUri="/Assets/AppBarIcons/access.png" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowSightsee"
-                Text="{Binding LocalizedResources.Sightsee, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+                Text="{Binding LocalizedResources.Sightsee, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
+                IconUri="/Assets/AppBarIcons/sightsee.png" />
             <bindappbar:BindableAppBarMenuItem
                 x:Name="ShowOptions"
                 Text="{Binding LocalizedResources.Options, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
