@@ -40,5 +40,7 @@
         <item name="gastronomy">Gastronomia</item>
         <item name="preferences">Preferencje</item>
     </string-array>
+    
+    <string name="animal_list_title">Zwierzęta</string>
 
 </resources>

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -16,6 +17,8 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -53,6 +56,9 @@ public class SightseeingActivity extends Activity implements
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
+	
+	private static final int SIGHTSEEING_ITEM_POSITION = 0;
+	private static final int ANIMAL_LIST_ITEM_POSITION = 1;
 
 	private ImageView mImgvSlidingMenu;
 	private ImageView mImgvShowRoute;
@@ -122,7 +128,6 @@ public class SightseeingActivity extends Activity implements
 
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
-		displayAllJunctions(mJunctionsVisible);
 
 		if (isDebugBuild()) {
 			mLocationLogger = new LocationLogger(this, 3, true);
@@ -253,15 +258,7 @@ public class SightseeingActivity extends Activity implements
 					.center(new LatLng(a.getNode().getLatitude(), a.getNode()
 							.getLongitude())
 
-					));
-		}
-	}
-
-	/** Determines whatever of not all junctions are displayed on the map. */
-
-	private void displayAllJunctions(boolean display) {
-		for (Circle junction : mZooJunctions) {
-			junction.setVisible(display);
+					).visible(mJunctionsVisible));
 		}
 	}
 
@@ -385,6 +382,26 @@ public class SightseeingActivity extends Activity implements
 			public boolean onTouch(View view, MotionEvent motionEvent) {
 				clearSearchView();
 				return false;
+			}
+		});
+		
+		mDrawerList.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				
+				Intent intent = new Intent();
+				switch(position){
+				case ANIMAL_LIST_ITEM_POSITION:
+					intent.setClass(getApplicationContext(), AnimalListActivity.class);
+					startActivity(intent);
+					break;
+				default:
+					mDrawerLayout.closeDrawer(Gravity.LEFT);
+					break;
+				}
+				
 			}
 		});
 	}

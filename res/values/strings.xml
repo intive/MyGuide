@@ -54,5 +54,7 @@
         <item name="child">For Child</item>
         <item name="map_view">Map</item>
     </string-array>
+    
+    <string name="animal_list_title">Animals</string>
 
 </resources>

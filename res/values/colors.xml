@@ -3,6 +3,7 @@
 
     <item name="gray" type="color">#f2f1f1</item>
     <item name="white" type="color">#FFFFFF</item>
+    <item name="black" type="color">#000000</item>
     <color name="list_divider">#323232</color>
 
 </resources>
