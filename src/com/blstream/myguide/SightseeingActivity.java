@@ -56,6 +56,9 @@ public class SightseeingActivity extends Activity implements
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
+	
+	private static final int SIGHTSEEING_ITEM_POSITION = 0;
+	private static final int ANIMAL_LIST_ITEM_POSITION = 1;
 
 	private ImageView mImgvSlidingMenu;
 	private ImageView mImgvShowRoute;
@@ -388,26 +391,17 @@ public class SightseeingActivity extends Activity implements
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
 				
-				Class<?> goToActivity = null;
-				Intent intent;
+				Intent intent = new Intent();
 				switch(position){
-				case 0:
-					goToActivity = SightseeingActivity.class;
+				case ANIMAL_LIST_ITEM_POSITION:
+					intent.setClass(getApplicationContext(), AnimalListActivity.class);
+					startActivity(intent);
 					break;
-				case 1:
-					goToActivity = AnimalListActivity.class;
+				default:
+					mDrawerLayout.closeDrawer(Gravity.LEFT);
 					break;
 				}
 				
-				if(goToActivity.equals(this.getClass().getName())){
-					mDrawerLayout.closeDrawer(Gravity.LEFT);
-					Log.w("LOGGING CLASS", "same class");
-				}
-				else{
-					Log.w("LOGGING NEW CLASS", ""+goToActivity + " " + this.getClass());
-					intent = new Intent(getApplicationContext(), goToActivity);
-					startActivity(intent);
-				}
 			}
 		});
 	}

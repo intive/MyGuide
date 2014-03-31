@@ -11,10 +11,10 @@
         android:background="@color/gray" >
     </SearchView>
 
-    <ListView
-        android:id="@+id/listViewAnimalList"
+    <fragment
+        android:name="com.blstream.myguide.fragments.AnimalListFragment"
+        android:id="@+id/headlines_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

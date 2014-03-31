@@ -7,7 +7,7 @@ import java.util.HashMap;
  * This class contains animal names (in various languages), descriptions for
  * adult and child and animal's location in the zoo.
  */
-public class Animal {
+public class Animal implements Comparable<Animal>{
 
 	private HashMap<String, String> mNames;
 	private Node mNode;
@@ -54,5 +54,10 @@ public class Animal {
 
 	public Description getDescriptionAdult() {
 		return mDescriptionAdult;
+	}
+
+	@Override
+	public int compareTo(Animal another) {
+		return -(another.getName().compareTo(getName()));
 	}
 }
