@@ -20,7 +20,7 @@ namespace MyGuide.ViewModels
             : base(navigationService, messageDialogService, dataService)
         {
             // Uncomment to use design time data as test data
-            // LoadDesignData();
+            LoadDesignData();
         }
 
         #region Properties

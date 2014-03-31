@@ -3,6 +3,7 @@ using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Services.Interfaces;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Navigation;
 
 namespace MyGuide.ViewModels
@@ -26,7 +27,7 @@ namespace MyGuide.ViewModels
                 _log.Error(ex);
                 throw; // LittleWatson enters to action :D
             }
-
+            await Task.Delay(2000);
             _navigation.UriFor<MainPageViewModel>().Navigate();
         }
     }
