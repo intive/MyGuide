@@ -102,9 +102,57 @@ public class ZooLocationsDataParser {
 	}
 
 	private Animal readAnimal(XmlPullParser parser) throws XmlPullParserException, IOException {
+		Animal animal = new Animal();
 		Node node = readAtributesLatLon(parser);
-		String name = readText(parser);
-		return new Animal(name, node);
+		animal.setNode(node);
+		
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("name".equals(name)) {
+				readName(parser, animal);
+			} else if ("description_adult".equals(name)) {
+				animal.setDescriptionAdult(readDescription(parser));
+			} else if ("description_child".equals(name)) {
+				animal.setDescriptionChild(readDescription(parser));
+			} else {
+				skip(parser);
+			}
+		}
+		return animal;
+	}
+
+	private Description readDescription(XmlPullParser parser) throws XmlPullParserException,
+			IOException {
+		Description description = new Description();
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("image".equals(name)) {
+				description.setImageName(readText(parser));
+			} else {
+				String language = parser.getName();
+				String text = readText(parser);
+				description.addText(language, text);
+			}
+		}
+		return description;
+	}
+
+	private void readName(XmlPullParser parser, Animal animal) throws XmlPullParserException,
+			IOException {
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String language = parser.getName();
+			String name = readText(parser);
+			animal.addName(language, name);
+		}
 	}
 
 	private Node readAtributesLatLon(XmlPullParser parser) throws XmlPullParserException,
