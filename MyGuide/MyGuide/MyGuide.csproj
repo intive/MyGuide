@@ -95,7 +95,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Caliburn\Micro\Logging\DebugLogger.cs" />
     <Compile Include="Caliburn\Micro\Logging\IsolatedStorageTarget.cs" />
     <Compile Include="Caliburn\Micro\Logging\LittleWatson.cs" />
     <Compile Include="DataServices\Interfaces\IXmlParser.cs" />
@@ -182,6 +181,7 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="SendGridSdkWindowsPhone.vsix" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
