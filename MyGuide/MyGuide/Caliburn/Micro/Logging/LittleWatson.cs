@@ -45,8 +45,8 @@ namespace Caliburn.Micro.Logging
 
                     string raport = GetRaport().Replace(System.Environment.NewLine, "<br>");
                     var sendGridMail = new Mail(USER, PASSWORD);
-                    sendGridMail.addTo("bukalski.piotr@gmail.com")
-                        //.addTo("pat2014-wro-wp-list@blstream.com")
+                    sendGridMail.addTo("pat2014-wro-wp-list@blstream.com")
+                        //.addTo("bukalski.piotr@gmail.com")
                                 .setFrom("UserReport@myguide.com")
                                 .setSubject("MyGuide crash report")
                                 .setHtml(raport);

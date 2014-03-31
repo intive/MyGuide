@@ -22,10 +22,9 @@ namespace MyGuide.ViewModels
         //{
         //}
 
-        public void ShowAnimals()
-        {
-            throw new Exception("Unchandled ex");
-        }
+        //public void ShowAnimals()
+        //{
+        //}
 
         //public void ShowMap()
         //{
