@@ -150,17 +150,35 @@
   <data name="Map" xml:space="preserve">
     <value>map</value>
   </data>
+  <data name="NetworkNotAvailableMessage" xml:space="preserve">
+    <value>Turn on network to send report next time.</value>
+  </data>
+  <data name="NetworkNotAvailableTitle" xml:space="preserve">
+    <value>Network conection not available</value>
+  </data>
   <data name="NoButton" xml:space="preserve">
     <value>no</value>
   </data>
   <data name="OkButton" xml:space="preserve">
     <value>ok</value>
   </data>
+  <data name="OnlyGsmMessage" xml:space="preserve">
+    <value>Only GSM conection is available. Are you sure you would like to send report?</value>
+  </data>
+  <data name="OnlyGsmTitle" xml:space="preserve">
+    <value>Only GSM network available</value>
+  </data>
   <data name="Options" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="Preferences" xml:space="preserve">
     <value>preferences</value>
+  </data>
+  <data name="RaportMessage" xml:space="preserve">
+    <value>A problem occurred in this application.  Would you like to send a message to report it?</value>
+  </data>
+  <data name="RaportTitle" xml:space="preserve">
+    <value>Crash report</value>
   </data>
   <data name="ResourceFlowDirection" xml:space="preserve">
     <value>LeftToRight</value>
@@ -169,6 +187,12 @@
   <data name="ResourceLanguage" xml:space="preserve">
     <value>en-US</value>
     <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="SendingRaportMessage" xml:space="preserve">
+    <value>Application is sending report.</value>
+  </data>
+  <data name="SendingRaportTitle" xml:space="preserve">
+    <value>Please wait...</value>
   </data>
   <data name="Sightsee" xml:space="preserve">
     <value>sightsee</value>

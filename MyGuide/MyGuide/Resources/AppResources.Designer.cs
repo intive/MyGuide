@@ -160,6 +160,24 @@ namespace MyGuide.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Turn on network to send report next time..
+        /// </summary>
+        public static string NetworkNotAvailableMessage {
+            get {
+                return ResourceManager.GetString("NetworkNotAvailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network conection not available.
+        /// </summary>
+        public static string NetworkNotAvailableTitle {
+            get {
+                return ResourceManager.GetString("NetworkNotAvailableTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to no.
         /// </summary>
         public static string NoButton {
@@ -174,6 +192,24 @@ namespace MyGuide.Resources {
         public static string OkButton {
             get {
                 return ResourceManager.GetString("OkButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only GSM conection is available. Are you sure you would like to send report?.
+        /// </summary>
+        public static string OnlyGsmMessage {
+            get {
+                return ResourceManager.GetString("OnlyGsmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only GSM network available.
+        /// </summary>
+        public static string OnlyGsmTitle {
+            get {
+                return ResourceManager.GetString("OnlyGsmTitle", resourceCulture);
             }
         }
         
@@ -196,6 +232,24 @@ namespace MyGuide.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A problem occurred in this application.  Would you like to send a message to report it?.
+        /// </summary>
+        public static string RaportMessage {
+            get {
+                return ResourceManager.GetString("RaportMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crash report.
+        /// </summary>
+        public static string RaportTitle {
+            get {
+                return ResourceManager.GetString("RaportTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LeftToRight.
         /// </summary>
         public static string ResourceFlowDirection {
@@ -210,6 +264,24 @@ namespace MyGuide.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application is sending report..
+        /// </summary>
+        public static string SendingRaportMessage {
+            get {
+                return ResourceManager.GetString("SendingRaportMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait....
+        /// </summary>
+        public static string SendingRaportTitle {
+            get {
+                return ResourceManager.GetString("SendingRaportTitle", resourceCulture);
             }
         }
         
