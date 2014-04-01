@@ -12,8 +12,9 @@
 
 @property (nonatomic, readonly) AFAnimal *animal;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControlOutlet;
-@property (strong, nonatomic) IBOutlet UIImageView *animalImage;
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextViewOutlet;
+@property (weak, nonatomic) IBOutlet UIImageView *animalImage;
+
 
 - (void)setAnimal:(AFAnimal *)animal;
 

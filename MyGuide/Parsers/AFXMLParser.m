@@ -214,7 +214,6 @@ static NSString *kXmlEN                 = @"en";
         MWLogInfo(@"animals count: %d",   [sharedData.animalsArray   count]);
         MWLogInfo(@"ways count: %d",      [sharedData.waysArray      count]);
         MWLogInfo(@"junctions count: %d", [sharedData.junctionsArray count]);
-
         MWLogInfo(@"Parsing data.xml complete.");
     }
     else {

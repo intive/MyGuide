@@ -38,6 +38,8 @@
     [self initMenuBar];
     [self initTableData];
     [self prepareNextViewController];
+    
+    [self setTitle: NSLocalizedString(@"titleControllerAnimalsList", nil)];
 }
 - (void)viewDidAppear:(BOOL)animated
 {
