@@ -69,7 +69,6 @@
 {
     MKUserTrackingBarButtonItem *button = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
     self.mapToolbar.items = @[button];
-    self.mapToolbar.translatesAutoresizingMaskIntoConstraints = YES;
 }
 
 - (void)showUserPosition
