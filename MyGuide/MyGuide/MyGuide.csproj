@@ -184,7 +184,14 @@
     <None Include="SendGridSdkWindowsPhone.vsix" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\AppBarIcons\access.png" />
     <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\AppBarIcons\animal.png" />
+    <Content Include="Assets\AppBarIcons\food.png" />
+    <Content Include="Assets\AppBarIcons\information.png" />
+    <Content Include="Assets\AppBarIcons\map.png" />
+    <Content Include="Assets\AppBarIcons\sightsee.png" />
+    <Content Include="Assets\AppBarIcons\tickets.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -247,9 +254,7 @@
       <HintPath>..\packages\Caliburn.Micro.1.5.2\lib\wp8\System.Windows.Interactivity.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\AppBarIcons\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <SDKReference Include="SendGridSdk, Version=1.0">
       <Name>SendGrid SDK Windows Phone</Name>

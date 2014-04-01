@@ -60,17 +60,24 @@
         <bindappbar:BindableAppBar x:Name="AppBarSightseeing">
             <bindappbar:BindableAppBarButton
                 x:Name="ShowMap"
-                Text="{Binding LocalizedResources.Map, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+
+                Text="{Binding LocalizedResources.Map, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
+                IconUri="/Assets/AppBarIcons/map.png" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowAnimals"
-                Text="{Binding LocalizedResources.Animals, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+
+                Text="{Binding LocalizedResources.Animals, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
+                IconUri="/Assets/AppBarIcons/animal.png" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowInformation"
-                Text="{Binding LocalizedResources.Information, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+
+                Text="{Binding LocalizedResources.Information, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
+                IconUri="/Assets/AppBarIcons/information.png" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowGastronomy"
-                Text="{Binding LocalizedResources.Gastronomy, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
-
+                
+                Text="{Binding LocalizedResources.Gastronomy, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
+                IconUri="/Assets/AppBarIcons/food.png" />
             <bindappbar:BindableAppBarMenuItem
                 x:Name="ShowHistory"
                 Text="{Binding LocalizedResources.History, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
