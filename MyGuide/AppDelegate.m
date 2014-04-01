@@ -26,11 +26,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
-       dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(aQueue, ^{
-        [self parseDataXML];
-        [self loadSettings];
-    });
+    [self parseDataXML];
+    [self loadSettings];
     
     _locationManager = [LocationManager sharedLocationManager];
     [_locationManager requestLocationStatus];

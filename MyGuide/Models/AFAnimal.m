@@ -18,6 +18,7 @@
         _namePL = [[NSString alloc] init];
         _nameEN = [[NSString alloc] init];
         _animalInfoDictionary = [[NSDictionary alloc] init];
+        _distanceFromUser = 0;
     }
     return self;
 }
@@ -29,6 +30,7 @@
         _namePL = namePL;
         _nameEN = nameEN;
         _animalInfoDictionary = [[NSDictionary alloc] init];
+        _distanceFromUser = 0;
     }
     return self;
 }
@@ -48,6 +50,18 @@
 - (void)setNameEN:(NSString *)nameEN
 {
     _nameEN = nameEN;
+}
+- (void)setDistanceFromUser:(NSInteger)distanceFromUser
+{
+    _distanceFromUser = distanceFromUser;
+}
+- (BOOL)isWithinDistance:(NSInteger)distance fromLocation:(CLLocation *)location
+{
+    BOOL ans = NO;
+    if([_coordinates distanceFromLocation:location] <= distance){
+        ans = YES;
+    }
+    return ans;
 }
 
 @end
