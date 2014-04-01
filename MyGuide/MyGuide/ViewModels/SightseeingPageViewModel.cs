@@ -2,6 +2,7 @@
 using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Services.Interfaces;
+using System;
 
 namespace MyGuide.ViewModels
 {

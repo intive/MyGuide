@@ -18,23 +18,14 @@ namespace MyGuide.ViewModels
 
         public override async void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
         {
-            bool exceptionOccured = false;
-            string exceptionMessage = "";
             try
             {
                 await _dataService.Initialize();
             }
             catch (LackOfDataException ex)
             {
-                exceptionOccured = true;
-                exceptionMessage = ex.Message;
-            }
-
-            if (exceptionOccured)
-            {
-                await _messageDialogService.ShowDialog("Error",
-                    (string)String.Format("There is a problem with data. Please contact with us. \n{0}", exceptionMessage), "Ok", null);
-                App.Current.Terminate();
+                _log.Error(ex);
+                throw; // LittleWatson enters to action :D
             }
             await Task.Delay(2000);
             _navigation.UriFor<MainPageViewModel>().Navigate();

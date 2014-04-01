@@ -1,14 +1,18 @@
-﻿<phone:PhoneApplicationPage
+﻿<views:PageViewBase
     x:Class="MyGuide.Views.SightseeingPageView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:views="clr-namespace:MyGuide.Views"
     xmlns:bindappbar="clr-namespace:Caliburn.Micro.BindableAppBar;assembly=Caliburn.Micro.BindableAppBar"
     xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
     xmlns:vm="clr-namespace:MyGuide.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps"
+    xmlns:mapsCore="clr-namespace:Microsoft.Phone.Controls.Maps.Core;assembly=Microsoft.Phone.Controls.Maps"
+    xmlns:TileSources="clr-namespace:MyGuide.Services.Map"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -31,24 +35,47 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <maps:Map
+                x:Name="MapControl"
+                Margin="10"
+                CredentialsProvider="Aqzt3lCfs-qg6pzuvrW7qCuGToXeff-Ii_ELq7piZ4HcKe6uLE2SHKuKJgZXZwTF"
+                LogoVisibility="Collapsed"
+                Center="51.104642, 17.073520"
+                ZoomLevel="15"
+>
+                <maps:Map.Mode>
+                    <mapsCore:MercatorMode />
+                </maps:Map.Mode>
+                <maps:Map.Children>
+                    <maps:MapTileLayer>
+                        <maps:MapTileLayer.TileSources>
+                            <TileSources:OSMRenderTileSource />
+                        </maps:MapTileLayer.TileSources>
+                    </maps:MapTileLayer>
+                </maps:Map.Children>
+            </maps:Map>
         </Grid>
 
         <!--AppBar - bindable replacement of standard ApplicationBar-->
         <bindappbar:BindableAppBar x:Name="AppBarSightseeing">
             <bindappbar:BindableAppBarButton
                 x:Name="ShowMap"
+
                 Text="{Binding LocalizedResources.Map, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
                 IconUri="/Assets/AppBarIcons/map.png" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowAnimals"
+
                 Text="{Binding LocalizedResources.Animals, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
                 IconUri="/Assets/AppBarIcons/animal.png" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowInformation"
+
                 Text="{Binding LocalizedResources.Information, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
                 IconUri="/Assets/AppBarIcons/information.png" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowGastronomy"
+                
                 Text="{Binding LocalizedResources.Gastronomy, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
                 IconUri="/Assets/AppBarIcons/food.png" />
             <bindappbar:BindableAppBarMenuItem
@@ -59,4 +86,4 @@
                 Text="{Binding LocalizedResources.Preferences, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
         </bindappbar:BindableAppBar>
     </Grid>
-</phone:PhoneApplicationPage>
+</views:PageViewBase>

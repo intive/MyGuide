@@ -95,6 +95,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Caliburn\Micro\Logging\IsolatedStorageTarget.cs" />
+    <Compile Include="Caliburn\Micro\Logging\LittleWatson.cs" />
     <Compile Include="DataServices\Interfaces\IXmlParser.cs" />
     <Compile Include="DataServices\XmlParser.cs" />
     <Compile Include="DesignData\LoremImpusGenerator.cs" />
@@ -114,6 +116,7 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\Interfaces\IMessageDialogService.cs" />
+    <Compile Include="Services\Map\OSMRenderTileSource.cs" />
     <Compile Include="Services\MessageDialogService.cs" />
     <Compile Include="ViewModels\AboutZooPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
@@ -165,11 +168,20 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NLog.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="app.config" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="SendGridSdkWindowsPhone.vsix" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AppBarIcons\access.png" />
@@ -224,14 +236,30 @@
     <Reference Include="Caliburn.Micro.Extensions">
       <HintPath>..\packages\Caliburn.Micro.1.5.2\lib\wp8\Caliburn.Micro.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Caliburn.Micro.Logging">
+      <HintPath>..\packages\Caliburn.Micro.Logging.1.5.0.0\lib\wp8\Caliburn.Micro.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Logging.NLog">
+      <HintPath>..\packages\Caliburn.Micro.Logging.NLog.1.5.0.0\lib\wp8\Caliburn.Micro.Logging.NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Controls.Maps, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=2.1.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLog.2.1.0\lib\sl4-windowsphone71\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Interactivity, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.1.5.2\lib\wp8\System.Windows.Interactivity.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="SendGridSdk, Version=1.0">
+      <Name>SendGrid SDK Windows Phone</Name>
+    </SDKReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
