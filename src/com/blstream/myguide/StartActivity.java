@@ -39,7 +39,7 @@ public class StartActivity extends FragmentActivity {
 		if (savedInstanceState == null) {
 			mFragmentManager = getSupportFragmentManager();
 			// The main Fragment
-			Fragment fragment = new SightseeingActivity();
+			Fragment fragment = new SightseeingFragment();
 
 			setNextFragment(fragment, "sight");
 		}

@@ -16,21 +16,37 @@ import com.blstream.myguide.zoolocations.Animal;
 
 /**
  * Created by Piotrek on 23.03.14.
- *
  */
-public class AnimalDescriptionActivity extends Fragment {
+public class AnimalDescriptionFragment extends Fragment {
 
 	private ViewPager mViewPager;
 	private ActionBar mActionBar;
 	private Animal mAnimal;
 
-	public AnimalDescriptionActivity(Animal animal) {
+	public AnimalDescriptionFragment() {
+	}
+
+	public AnimalDescriptionFragment(Animal animal) {
 		mAnimal = animal;
+		Bundle args = new Bundle();
+		args.putSerializable("mAnimal", mAnimal);
+		setArguments(args);
+	}
+
+	private void getArgs() {
+		Bundle args = getArguments();
+		if (args != null) {
+			mAnimal = (Animal) args.getSerializable("mAnimal");
+
+		}
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View mRootView = View.inflate(getActivity(), R.layout.activity_animal_description, null);
+		// View mRootView = View.inflate(getActivity(),
+		// R.layout.activity_animal_description, null);
+		getArgs();
+		View mRootView = inflater.inflate(R.layout.activity_animal_description, container, false);
 		setHasOptionsMenu(true);
 
 		mActionBar = getActivity().getActionBar();
@@ -60,12 +76,12 @@ public class AnimalDescriptionActivity extends Fragment {
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+	}
 
-    /**
+	/**
 	 * Method add tabs to actionBar and set Tabs Listener.
 	 */
 	private void setUpTabs() {

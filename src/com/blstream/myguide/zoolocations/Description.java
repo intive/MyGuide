@@ -1,13 +1,14 @@
 
 package com.blstream.myguide.zoolocations;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * This class contains animal description (in various languages) and name
  * (address) of image with this animal.
  */
-public class Description {
+public class Description implements Serializable{
 
 	private String mImageName;
 	private HashMap<String, String> mTexts;

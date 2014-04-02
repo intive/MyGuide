@@ -8,7 +8,6 @@ import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,10 +36,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class SightseeingActivity extends Fragment implements
+public class SightseeingFragment extends Fragment implements
 		OnCameraChangeListener {
 
-	private static final String LOG_TAG = SightseeingActivity.class
+	private static final String LOG_TAG = SightseeingFragment.class
 			.getSimpleName();
 	private static final float DEFAULT_MIN_ZOOM = 14.5f;
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
@@ -73,10 +72,15 @@ public class SightseeingActivity extends Fragment implements
 		mMap.setMyLocationEnabled(visible);
 	}
 
+	public SightseeingFragment() {
+
+	}
+
+	public View mRootView;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View mRootView = View.inflate(getActivity(), R.layout.activity_sightseeing, null);
+		mRootView = inflater.inflate(R.layout.activity_sightseeing, container, false);
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -95,24 +99,6 @@ public class SightseeingActivity extends Fragment implements
 			mLocationLogger = new LocationLogger(getActivity(), 3, true);
 		}
 		return mRootView;
-	}
-
-	@Override
-	public void onPause() {
-		super.onPause();
-		SupportMapFragment mapFragment = (SupportMapFragment)
-				getFragmentManager().findFragmentById(R.id.map);
-
-		if (mapFragment != null) {
-			FragmentManager fM = getFragmentManager();
-			fM.beginTransaction().remove(mapFragment).commit();
-		}
-	}
-
-
-	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
 	}
 
 	@Override
@@ -195,16 +181,15 @@ public class SightseeingActivity extends Fragment implements
 			public void onInfoWindowClick(Marker marker) {
 				Animal animal = animals.get(Integer.parseInt(marker.getId().substring(1)));
 
-				Fragment newFragment = new AnimalDescriptionActivity(animal);
-				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+				Fragment newFragment = new AnimalDescriptionFragment(animal);
+				FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+						.beginTransaction();
 				transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
 				transaction.replace(R.id.flFragmentHolder, newFragment, "Details");
 				transaction.addToBackStack("addDetail");
 				transaction.commit();
-
 			}
 		});
-
 
 		this.configureAndDisplayUserPosition();
 	}
