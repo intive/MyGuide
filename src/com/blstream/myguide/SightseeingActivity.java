@@ -20,6 +20,7 @@ import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.Junction;
+import com.blstream.myguide.zoolocations.Language;
 import com.blstream.myguide.zoolocations.Node;
 import com.blstream.myguide.zoolocations.Way;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -71,6 +72,7 @@ public class SightseeingActivity extends Fragment implements
 		Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
 		mMap.setMyLocationEnabled(visible);
 	}
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -203,6 +205,7 @@ public class SightseeingActivity extends Fragment implements
 			}
 		});
 
+
 		this.configureAndDisplayUserPosition();
 	}
 
@@ -275,8 +278,7 @@ public class SightseeingActivity extends Fragment implements
 		for (Animal a : animals) {
 			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions().position(
 					new LatLng(a.getNode().getLatitude(), a.getNode()
-							.getLongitude())
-					).title(a.getName())));
+							.getLongitude())).title(a.getName(Language.DEFAULT))));
 		}
 	}
 

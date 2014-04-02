@@ -29,8 +29,19 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	public void testParsingAnimals() throws IOException, XmlPullParserException {
 		// given
 		String xmlText = "<root><animals>"
-				+ "<animal lat=\"51.1052072\" lon=\"17.0754498\">Żyrafa</animal>"
-				+ "<animal lat=\"51.1050185\" lon=\"17.0759970\">Struś</animal>"
+				+ "<animal lat=\"51.1052072\" lon=\"17.0754498\">"
+				+ "<name><en>Giraffe</en><pl>Żyrafa</pl></name>"
+				+ "<description_adult>"
+				+ "<image>img/giraffe_adult.jpg</image>"
+				+ "<en>Description</en>"
+				+ "<pl>Opis</pl>"
+				+ "</description_adult>"
+				+ "<description_child>"
+				+ "<image>img/giraffe_child.jpg</image>"
+				+ "<en>Description child</en>"
+				+ "<pl>Opis dziecko</pl>"
+				+ "</description_child>"
+				+ "</animal>"
 				+ "</animals></root>";
 		ZooLocationsDataParser parser = new ZooLocationsDataParser();
 		InputStream is = null;
@@ -42,15 +53,25 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		is.close();
 
 		// then
-		assertEquals(2, data.getAnimals().size());
+		assertEquals(1, data.getAnimals().size());
 		assertEquals(0, data.getWays().size());
 		assertEquals(0, data.getJunctions().size());
-		assertEquals("Żyrafa", data.getAnimals().get(0).getName());
+		assertEquals("Giraffe", data.getAnimals().get(0).getName(Language.EN));
+		assertEquals("Żyrafa", data.getAnimals().get(0).getName(Language.PL));
+		assertEquals("img/giraffe_adult.jpg", data.getAnimals().get(0).getDescriptionAdult()
+				.getImageName());
+		assertEquals("Description",
+				data.getAnimals().get(0).getDescriptionAdult().getText(Language.EN));
+		assertEquals("Opis",
+				data.getAnimals().get(0).getDescriptionAdult().getText(Language.PL));
+		assertEquals("img/giraffe_child.jpg", data.getAnimals().get(0).getDescriptionChild()
+				.getImageName());
+		assertEquals("Description child",
+				data.getAnimals().get(0).getDescriptionChild().getText(Language.EN));
+		assertEquals("Opis dziecko",
+				data.getAnimals().get(0).getDescriptionChild().getText(Language.PL));
 		assertEquals(51.1052072, data.getAnimals().get(0).getNode().getLatitude());
 		assertEquals(17.0754498, data.getAnimals().get(0).getNode().getLongitude());
-		assertEquals("Struś", data.getAnimals().get(1).getName());
-		assertEquals(51.1050185, data.getAnimals().get(1).getNode().getLatitude());
-		assertEquals(17.0759970, data.getAnimals().get(1).getNode().getLongitude());
 	}
 
 	/** Checks if tag <ways> is well parsed. */
