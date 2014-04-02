@@ -22,8 +22,8 @@
 @property (weak, nonatomic)   IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIToolbar *mapToolbar;
 @property (weak, nonatomic)   IBOutlet UIBarButtonItem *sidebarButton;
-@property (strong, nonatomic) IBOutlet UIImageView *nearestAnimalImageViewOutlet;
-@property (strong, nonatomic) IBOutlet UIView *nearestAnimalsListOutlet;
-@property (strong, nonatomic) IBOutlet UITableView *nearestAnimalsTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *nearestAnimalImageView;
+@property (weak, nonatomic) IBOutlet UIView *nearestAnimalsList;
+@property (weak, nonatomic) IBOutlet UITableView *nearestAnimalsTableView;
 
 @end

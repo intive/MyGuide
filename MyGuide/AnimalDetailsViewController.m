@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     [self prepareNextViewController];
-    [_segmentedControlOutlet addTarget:self action:@selector(alternateBetweenContent) forControlEvents:UIControlEventValueChanged];
+    [_segmentedControl addTarget:self action:@selector(alternateBetweenContent) forControlEvents:UIControlEventValueChanged];
     _languageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
     if(![_languageCode isEqualToString:@"PL"]){
         _languageCode = @"EN";
@@ -44,9 +44,9 @@
             _languageCode = @"EN";
         }
     }
-    [_segmentedControlOutlet setSelectedSegmentIndex:0];
+    [_segmentedControl setSelectedSegmentIndex:0];
     [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
-    [_descriptionTextViewOutlet setText:[_animal.animalInfoDictionary valueForKey:[NSString stringWithFormat:@"adultDescription%@", _languageCode]]];
+    [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:[NSString stringWithFormat:@"adultDescription%@", _languageCode]]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,13 +60,13 @@
 }
 - (void)alternateBetweenContent
 {
-    if([_segmentedControlOutlet selectedSegmentIndex] == 0){
+    if([_segmentedControl selectedSegmentIndex] == 0){
         [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
-        [_descriptionTextViewOutlet setText:[_animal.animalInfoDictionary valueForKey:[NSString stringWithFormat:@"adultDescription%@", _languageCode]]];
+        [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:[NSString stringWithFormat:@"adultDescription%@", _languageCode]]];
     }
-    else if([_segmentedControlOutlet selectedSegmentIndex] == 1){
+    else if([_segmentedControl selectedSegmentIndex] == 1){
         [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"childImageName"]]];
-        [_descriptionTextViewOutlet setText:[_animal.animalInfoDictionary valueForKey:[NSString stringWithFormat:@"childDescription%@", _languageCode]]];
+        [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:[NSString stringWithFormat:@"childDescription%@", _languageCode]]];
     }
     else{
         [self.navigationController pushViewController:_detailsMapController animated:YES];

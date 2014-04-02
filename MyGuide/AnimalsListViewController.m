@@ -44,7 +44,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.view.frame = self.view.superview.bounds;
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 - (void)viewWillAppear:(BOOL)animated

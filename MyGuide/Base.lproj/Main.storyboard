@@ -118,8 +118,8 @@
                     <connections>
                         <outlet property="mapToolbar" destination="xy3-W9-HAD" id="Das-TO-zeQ"/>
                         <outlet property="mapView" destination="q3f-u0-kV8" id="Vaj-wR-6ge"/>
-                        <outlet property="nearestAnimalImageViewOutlet" destination="Xkc-3l-77k" id="9zq-ci-LTv"/>
-                        <outlet property="nearestAnimalsListOutlet" destination="R3T-sz-zN8" id="bQn-Zj-hSo"/>
+                        <outlet property="nearestAnimalImageView" destination="Xkc-3l-77k" id="Kde-fG-TZy"/>
+                        <outlet property="nearestAnimalsList" destination="R3T-sz-zN8" id="yJ8-rc-rmT"/>
                         <outlet property="nearestAnimalsTableView" destination="qY9-Ya-213" id="whc-xK-LKk"/>
                         <outlet property="sidebarButton" destination="o8H-0S-uza" id="mNd-Uq-3nk"/>
                     </connections>
@@ -278,9 +278,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="animalImage" destination="SFj-n6-zfZ" id="JSY-G0-Ehh"/>
-                        <outlet property="descriptionTextViewOutlet" destination="yIf-F5-yY5" id="zmt-qj-PBc"/>
-                        <outlet property="segmentedControlOutlet" destination="iSu-gc-aO2" id="6nF-wj-nRm"/>
+                        <outlet property="animalImage" destination="SFj-n6-zfZ" id="Vni-e8-8Bg"/>
+                        <outlet property="descriptionTextView" destination="yIf-F5-yY5" id="XHo-1O-2zY"/>
+                        <outlet property="segmentedControl" destination="iSu-gc-aO2" id="MbJ-Wb-8WU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gob-US-j4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>

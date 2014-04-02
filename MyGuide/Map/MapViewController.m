@@ -280,7 +280,7 @@
 {
 	UITouch *touch = [touches anyObject];
 	CGPoint point = [touch locationInView:self.view];
-	CGRect rect = _nearestAnimalImageViewOutlet.frame;
+	CGRect rect = _nearestAnimalImageView.frame;
 	BOOL xRange = point.x >= rect.origin.x && point.x<=rect.origin.x+rect.size.width;
 	BOOL yRange = point.y >= rect.origin.y && point.y<=rect.origin.y+rect.size.height;
 	if(xRange && yRange) {
@@ -295,7 +295,7 @@
 	if(_isSlidingView) {
 		UITouch *touch = [touches anyObject];
 		CGPoint point  = [touch locationInView:self.view];
-		CGRect rect = _nearestAnimalImageViewOutlet.frame;
+		CGRect rect = _nearestAnimalImageView.frame;
 		if((point.y-rect.size.height/2)<0) {
 			point = CGPointMake(point.x,rect.size.height/2);
 		}
@@ -303,8 +303,8 @@
 			point = CGPointMake(point.x,self.view.frame.size.height-rect.size.height/2);
 		}
 		CGRect newRect = CGRectMake(rect.origin.x, point.y - rect.size.height/2, rect.size.width, rect.size.height);
-		_nearestAnimalImageViewOutlet.frame=newRect;
-		_nearestAnimalsListOutlet.frame=CGRectMake(0, _nearestAnimalImageViewOutlet.frame.origin.y + _nearestAnimalImageViewOutlet.frame.size.height, _nearestAnimalsListOutlet.frame.size.width, _nearestAnimalsListOutlet.frame.size.height);
+		_nearestAnimalImageView.frame=newRect;
+		_nearestAnimalsList.frame=CGRectMake(0, _nearestAnimalImageView.frame.origin.y + _nearestAnimalImageView.frame.size.height, _nearestAnimalsList.frame.size.width, _nearestAnimalsList.frame.size.height);
 	}
 }
 
@@ -317,12 +317,12 @@
 		[UIView beginAnimations:@"move" context:nil];
 		[UIView setAnimationDuration:0.5];
 		if(point.y>(self.view.frame.size.height - self.view.frame.size.height/2)) {
-			_nearestAnimalImageViewOutlet.frame=CGRectMake(75, self.view.frame.size.height - _nearestAnimalImageViewOutlet.frame.size.height, _nearestAnimalImageViewOutlet.frame.size.width, _nearestAnimalImageViewOutlet.frame.size.height);
+			_nearestAnimalImageView.frame=CGRectMake(75, self.view.frame.size.height - _nearestAnimalImageView.frame.size.height, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
 		}
         else {
-			_nearestAnimalImageViewOutlet.frame=CGRectMake(75, 60, _nearestAnimalImageViewOutlet.frame.size.width, _nearestAnimalImageViewOutlet.frame.size.height);
+			_nearestAnimalImageView.frame=CGRectMake(75, 60, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
 		}
-		_nearestAnimalsListOutlet.frame=CGRectMake(0, _nearestAnimalImageViewOutlet.frame.origin.y + _nearestAnimalImageViewOutlet.frame.size.height, _nearestAnimalsListOutlet.frame.size.width, _nearestAnimalsListOutlet.frame.size.height);
+		_nearestAnimalsList.frame=CGRectMake(0, _nearestAnimalImageView.frame.origin.y + _nearestAnimalImageView.frame.size.height, _nearestAnimalsList.frame.size.width, _nearestAnimalsList.frame.size.height);
 		[UIView commitAnimations];
         [self.mapView setScrollEnabled:YES];
         [self.mapView setZoomEnabled:YES];
