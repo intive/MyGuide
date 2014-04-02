@@ -3,41 +3,41 @@ package com.blstream.myguide;
 
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.blstream.myguide.zoolocations.Animal;
-
-//TODO navigation drawer
 
 /**
  * Created by Piotrek on 23.03.14.
  *
- * Sample of using AnimalDescriptionAcitivity. Send in intent animal Object.
- * Intent i = new Intent(SampleActivity.thus, AnimalDescriptionActivity.class);
- *        i.putExtra(BundleConstants.SELECTED_ANIMAL, animal_object);
- *        startActivity(i);
- *
  */
-public class AnimalDescriptionActivity extends FragmentActivity {
+public class AnimalDescriptionActivity extends Fragment {
 
 	private ViewPager mViewPager;
 	private ActionBar mActionBar;
 	private Animal mAnimal;
 
+	public AnimalDescriptionActivity(Animal animal) {
+		mAnimal = animal;
+	}
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_animal_description);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View mRootView = View.inflate(getActivity(), R.layout.activity_animal_description, null);
+		setHasOptionsMenu(true);
 
-		Bundle extras = getIntent().getExtras();
-		if (extras != null && extras.containsKey(BundleConstants.SELECTED_ANIMAL)) {
-			// get Animal Object
-			mAnimal = (Animal) extras.getSerializable(BundleConstants.SELECTED_ANIMAL);
-		}
+		mActionBar = getActivity().getActionBar();
 
-		mActionBar = getActionBar();
 		if (mActionBar != null) {
+			mActionBar.removeAllTabs();
+
 			mActionBar.setHomeButtonEnabled(true);
 			mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -45,12 +45,27 @@ public class AnimalDescriptionActivity extends FragmentActivity {
 			mActionBar.setIcon(android.R.color.transparent);
 			mActionBar.setDisplayHomeAsUpEnabled(true);
 
-			setUpViewPager();
+			setUpViewPager(mRootView);
 			setUpTabs();
 		}
+		return mRootView;
 	}
 
-	/**
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		MenuItem itemSearch = menu.findItem(R.id.action_search);
+		MenuItem itemFiltr = menu.findItem(R.id.action_filtr);
+		if (itemSearch != null) itemSearch.setVisible(false);
+		if (itemFiltr != null) itemFiltr.setVisible(false);
+		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    /**
 	 * Method add tabs to actionBar and set Tabs Listener.
 	 */
 	private void setUpTabs() {
@@ -66,13 +81,11 @@ public class AnimalDescriptionActivity extends FragmentActivity {
 						@Override
 						public void onTabUnselected(ActionBar.Tab tab,
 								android.app.FragmentTransaction fragmentTransaction) {
-
 						}
 
 						@Override
 						public void onTabReselected(ActionBar.Tab tab,
 								android.app.FragmentTransaction fragmentTransaction) {
-
 						}
 					}));
 		}
@@ -81,15 +94,14 @@ public class AnimalDescriptionActivity extends FragmentActivity {
 	/**
 	 * Method setUp ViewPager and Listener to swipe fragment
 	 */
-	private void setUpViewPager() {
+	private void setUpViewPager(View view) {
 		AnimalPagerAdapter mAdapter;
 
-		mViewPager = (ViewPager) findViewById(R.id.pager);
-		mAdapter = new AnimalPagerAdapter(getSupportFragmentManager());
+		mViewPager = (ViewPager) view.findViewById(R.id.pager);
+		mAdapter = new AnimalPagerAdapter(getActivity().getSupportFragmentManager());
 		mViewPager.setAdapter(mAdapter);
 
 		mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
 			@Override
 			public void onPageSelected(int position) {
 				mActionBar.setSelectedNavigationItem(position);

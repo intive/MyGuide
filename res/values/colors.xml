@@ -4,5 +4,6 @@
     <item name="gray" type="color">#f2f1f1</item>
     <item name="white" type="color">#FFFFFF</item>
     <color name="list_divider">#323232</color>
+    <item name="main" type="color">#0E9467</item>
 
 </resources>

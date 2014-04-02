@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/options_menu"
-        android:title="@string/options"
-        android:showAsAction="always"/>
+        android:showAsAction="never"
+        android:title="@string/options" />
 
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_action_search"
+        android:showAsAction="always"
+        android:title="@string/options" />
+
+    <item
+        android:id="@+id/action_filtr"
+        android:icon="@drawable/ic_location_web_site"
+        android:showAsAction="always"
+        android:title="@string/options" />
 </menu>
