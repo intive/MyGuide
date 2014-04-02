@@ -155,7 +155,7 @@
 - (void)filterContentForSearchText:(NSString *)searchText scope:(NSString *)scope
 {
     [_filteredAnimalsArray removeAllObjects];
-    NSPredicate *predicate = [[NSPredicate alloc] init];
+    NSPredicate *predicate = nil;
     if([_languageCode isEqualToString:@"PL"]){
         predicate = [NSPredicate predicateWithFormat: @"SELF.namePL contains[cd] %@", searchText];
     }
