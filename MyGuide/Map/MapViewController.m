@@ -351,13 +351,17 @@
     UIImageView *animalImage = (UIImageView *)[cell viewWithTag:100];
     animalImage.image = [UIImage imageNamed:[[[_nearestAnimals objectAtIndex:indexPath.section] animalInfoDictionary] valueForKey:@"adultImageName"]];
     
-////    internationalize
-/**/UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
-/**/nameLabel.text = [NSString stringWithFormat:@"%@", [[_nearestAnimals objectAtIndex:indexPath.section] namePL]];
-/**/
-/**/UITextView *funFact = (UITextView *)[cell viewWithTag:102];
-/**/funFact.text = [NSString stringWithFormat:@"Fun Fact #%ld", (long)indexPath.section];
-////   ====================
+    if([_lastUsedLanguageCode isEqualToString:@"pl"]){
+        UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
+        nameLabel.text = [NSString stringWithFormat:@"%@", [[_nearestAnimals objectAtIndex:indexPath.section] namePL]];
+    }
+    else{
+        UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
+        nameLabel.text = [NSString stringWithFormat:@"%@", [[_nearestAnimals objectAtIndex:indexPath.section] nameEN]];
+    }
+    
+    UITextView *funFact = (UITextView *)[cell viewWithTag:102];
+    funFact.text = [NSString stringWithFormat:@"Fun Fact #%ld", (long)indexPath.section];
     UILabel *distanceLabel = (UILabel *)[cell viewWithTag:103];
     distanceLabel.text = [NSString stringWithFormat:@"%ldm", (long)[[_nearestAnimals objectAtIndex:indexPath.section] distanceFromUser]];
     
