@@ -168,6 +168,7 @@ public class SightseeingFragment extends Fragment implements
 	}
 
 	private void setUpMap() {
+
 		mMap = ((SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(
 				R.id.map))
 				.getMap();
@@ -181,12 +182,18 @@ public class SightseeingFragment extends Fragment implements
 			public void onInfoWindowClick(Marker marker) {
 				Animal animal = animals.get(Integer.parseInt(marker.getId().substring(1)));
 
+				SupportMapFragment f = (SupportMapFragment) getActivity()
+						.getSupportFragmentManager()
+						.findFragmentById(R.id.map);
+				if (f != null)
+				getFragmentManager().beginTransaction().remove(f).commit();
+
 				Fragment newFragment = new AnimalDescriptionFragment(animal);
 				FragmentTransaction transaction = getActivity().getSupportFragmentManager()
 						.beginTransaction();
 				transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
-				transaction.replace(R.id.flFragmentHolder, newFragment, "Details");
-				transaction.addToBackStack("addDetail");
+				transaction.replace(R.id.flFragmentHolder, newFragment, BundleConstants.FRAGMENT_ANIMAL_DETAIL);
+				transaction.addToBackStack(BundleConstants.STACK_ANIMAL_DETAIL);
 				transaction.commit();
 			}
 		});

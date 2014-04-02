@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.blstream.myguide.zoolocations.Animal;
 
+
 /**
  * Created by Piotrek on 23.03.14.
  */
@@ -23,28 +24,24 @@ public class AnimalDescriptionFragment extends Fragment {
 	private ActionBar mActionBar;
 	private Animal mAnimal;
 
-	public AnimalDescriptionFragment() {
-	}
+	public AnimalDescriptionFragment() {}
 
 	public AnimalDescriptionFragment(Animal animal) {
 		mAnimal = animal;
 		Bundle args = new Bundle();
-		args.putSerializable("mAnimal", mAnimal);
+		args.putSerializable(BundleConstants.SELECTED_ANIMAL, mAnimal);
 		setArguments(args);
 	}
 
 	private void getArgs() {
 		Bundle args = getArguments();
 		if (args != null) {
-			mAnimal = (Animal) args.getSerializable("mAnimal");
-
+			mAnimal = (Animal) args.getSerializable(BundleConstants.SELECTED_ANIMAL);
 		}
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// View mRootView = View.inflate(getActivity(),
-		// R.layout.activity_animal_description, null);
 		getArgs();
 		View mRootView = inflater.inflate(R.layout.activity_animal_description, container, false);
 		setHasOptionsMenu(true);
@@ -71,8 +68,10 @@ public class AnimalDescriptionFragment extends Fragment {
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		MenuItem itemSearch = menu.findItem(R.id.action_search);
 		MenuItem itemFiltr = menu.findItem(R.id.action_filtr);
+
 		if (itemSearch != null) itemSearch.setVisible(false);
 		if (itemFiltr != null) itemFiltr.setVisible(false);
+
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 

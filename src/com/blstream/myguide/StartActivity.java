@@ -41,7 +41,7 @@ public class StartActivity extends FragmentActivity {
 			// The main Fragment
 			Fragment fragment = new SightseeingFragment();
 
-			setNextFragment(fragment, "sight");
+			setNextFragment(fragment, BundleConstants.FRAGMENT_SIGHTSEEING);
 		}
 
 		mActionBar = getActionBar();
