@@ -69,7 +69,7 @@ public class MainActivity extends FragmentActivity implements ConfirmationDialog
 	 * with sightseeing chooser screen.
 	 */
 	private void goSightseeing() {
-		Intent intent = new Intent(this, SightseeingActivity.class);
+		Intent intent = new Intent(this, SightseeingFragment.class);
 		startActivity(intent);
 	}
 

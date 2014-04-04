@@ -246,7 +246,7 @@ public class SplashActivity extends FragmentActivity {
 	}
 
 	protected void startNextActivity() {
-		Intent intent = new Intent(this, SightseeingActivity.class);
+		Intent intent = new Intent(this, StartActivity.class);
 		startActivity(intent);
 	}
 
