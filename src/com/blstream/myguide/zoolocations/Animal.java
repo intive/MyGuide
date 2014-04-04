@@ -4,7 +4,7 @@ package com.blstream.myguide.zoolocations;
 import java.io.Serializable;
 import java.util.HashMap;
 /** This class contains animal name and its location in the zoo. */
-public class Animal implements Serializable{
+public class Animal implements Serializable {
 
 
 

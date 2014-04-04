@@ -67,7 +67,7 @@ public class AnimalDescriptionFragment extends Fragment {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		MenuItem itemSearch = menu.findItem(R.id.action_search);
-		MenuItem itemFiltr = menu.findItem(R.id.action_filtr);
+		MenuItem itemFiltr = menu.findItem(R.id.action_filter);
 
 		if (itemSearch != null) itemSearch.setVisible(false);
 		if (itemFiltr != null) itemFiltr.setVisible(false);

@@ -7,7 +7,7 @@ import java.io.Serializable;
  * This class contains two coordinates (latitude and longitude) of some point in
  * the zoo.
  */
-public class Node implements Serializable{
+public class Node implements Serializable {
 
 	private double mLatitude;
 	private double mLongitude;

@@ -59,7 +59,7 @@ public class SightseeingFragment extends Fragment implements
 
 	private boolean mJunctionsVisible;
 	private ArrayList<Circle> mZooJunctions;
-	ArrayList<Animal> animals;
+	private ArrayList<Animal> mAnimalsList;
 
 	private LocationLogger mLocationLogger;
 
@@ -180,19 +180,19 @@ public class SightseeingFragment extends Fragment implements
 		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
-				Animal animal = animals.get(Integer.parseInt(marker.getId().substring(1)));
+				Animal animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
 
 				SupportMapFragment f = (SupportMapFragment) getActivity()
 						.getSupportFragmentManager()
 						.findFragmentById(R.id.map);
-				if (f != null)
-				getFragmentManager().beginTransaction().remove(f).commit();
+				if (f != null) getFragmentManager().beginTransaction().remove(f).commit();
 
 				Fragment newFragment = new AnimalDescriptionFragment(animal);
 				FragmentTransaction transaction = getActivity().getSupportFragmentManager()
 						.beginTransaction();
 				transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
-				transaction.replace(R.id.flFragmentHolder, newFragment, BundleConstants.FRAGMENT_ANIMAL_DETAIL);
+				transaction.replace(R.id.flFragmentHolder, newFragment,
+						BundleConstants.FRAGMENT_ANIMAL_DETAIL);
 				transaction.addToBackStack(BundleConstants.STACK_ANIMAL_DETAIL);
 				transaction.commit();
 			}
@@ -265,9 +265,9 @@ public class SightseeingFragment extends Fragment implements
 
 	private void setUpAnimalMarkers() {
 		MyGuideApp mga = (MyGuideApp) (getActivity().getApplication());
-		animals = mga.getZooData().getAnimals();
+		mAnimalsList = mga.getZooData().getAnimals();
 		mAnimalMarkers = new ArrayList<Marker>();
-		for (Animal a : animals) {
+		for (Animal a : mAnimalsList) {
 			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions().position(
 					new LatLng(a.getNode().getLatitude(), a.getNode()
 							.getLongitude())).title(a.getName(Language.DEFAULT))));

@@ -8,7 +8,7 @@ import java.util.HashMap;
  * This class contains animal description (in various languages) and name
  * (address) of image with this animal.
  */
-public class Description implements Serializable{
+public class Description implements Serializable {
 
 	private String mImageName;
 	private HashMap<String, String> mTexts;
