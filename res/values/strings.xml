@@ -51,7 +51,7 @@
     <!--Animals description tabs name -->
     <string-array name="animal_desc_tabs_name">
         <item name="description">Description</item>
-        <item name="child">For Child</item>
+        <item name="child">For children</item>
         <item name="map_view">Map</item>
     </string-array>
 

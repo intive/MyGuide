@@ -1,11 +1,13 @@
 
 package com.blstream.myguide.zoolocations;
 
+import java.io.Serializable;
+
 /**
  * This class contains two coordinates (latitude and longitude) of some point in
  * the zoo.
  */
-public class Node {
+public class Node implements Serializable {
 
 	private double mLatitude;
 	private double mLongitude;
