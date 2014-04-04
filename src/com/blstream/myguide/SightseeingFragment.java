@@ -62,6 +62,7 @@ public class SightseeingFragment extends Fragment implements
 	private ArrayList<Animal> mAnimalsList;
 
 	private LocationLogger mLocationLogger;
+	private boolean mLocationLogVisible;
 
 	private void configureAndDisplayUserPosition() {
 		// check if location should be hidden
@@ -90,21 +91,19 @@ public class SightseeingFragment extends Fragment implements
 		setUpAnimalMarkers();
 		setUpWays();
 		setUpJunctions();
+		setUpLocationLogger();
 
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
 
-		if (isDebugBuild()) {
-			mLocationLogger = new LocationLogger(getActivity(), 3, true);
-		}
 		return mRootView;
 	}
 
 	@Override
 	public void onStart() {
 		super.onStart();
-		if (isDebugBuild()) {
+		if (mLocationLogVisible) {
 			LocationUpdater.getInstance().startUpdating(mLocationLogger);
 		}
 	}
@@ -112,18 +111,9 @@ public class SightseeingFragment extends Fragment implements
 	@Override
 	public void onStop() {
 		super.onStop();
-		if (isDebugBuild()) {
+		if (mLocationLogVisible) {
 			LocationUpdater.getInstance().stopUpdating(mLocationLogger);
 		}
-	}
-
-	/**
-	 * Check if build type of application is set to debug.
-	 * 
-	 * @return true if yes, false if no
-	 */
-	private boolean isDebugBuild() {
-		return (0 != (getActivity().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
 	}
 
 	private void setUpMapSettings() {
@@ -286,6 +276,14 @@ public class SightseeingFragment extends Fragment implements
 			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
 		} else if (camera.zoom > mMaxZoom) {
 			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
+		}
+	}
+
+	private void setUpLocationLogger() {
+		mLocationLogVisible = ((MyGuideApp) (getActivity().getApplication())).getSettings()
+				.getValueAsBoolean(Settings.KEY_GPS_LOGGING);
+		if (mLocationLogVisible) {
+			mLocationLogger = new LocationLogger(getActivity(), 3, true);
 		}
 	}
 
