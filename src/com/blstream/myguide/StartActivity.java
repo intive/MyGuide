@@ -1,6 +1,8 @@
 
 package com.blstream.myguide;
 
+import com.blstream.myguide.fragments.FragmentHelper;
+
 import android.app.ActionBar;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import android.widget.ListView;
 
 /**
  * Created by Piotrek on 2014-04-01.
+ * Fixed by Angieszka (fragment swap) on 2014-04-04.
  */
 public class StartActivity extends FragmentActivity {
 
@@ -90,10 +93,26 @@ public class StartActivity extends FragmentActivity {
 
 	/** Swaps fragments in the main content view */
 	private void selectItem(int position) {
-		/*
-		 * Replace fragment by chose fragment Fragment fragment = new
-		 * ChooseFragment(); setNextFragment(fragment);
-		 */
+		
+		Fragment current = getSupportFragmentManager().findFragmentById(R.id.flFragmentHolder);
+		Fragment newFragment = null;
+		String tag = null;
+		switch(position){
+		case 0:
+			newFragment = new SightseeingFragment();
+			tag = BundleConstants.FRAGMENT_SIGHTSEEING;
+			break;
+		case 1:
+			newFragment = new AnimalListFragment();
+			tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
+			break;
+		default: break;
+		}
+		
+		if(newFragment != null && !current.getTag().equals(tag)){
+			setNextFragment(newFragment, tag);
+		}
+		
 		mDrawerList.setItemChecked(position, true);
 		setTitle(mDrawerMenuItems[position]);
 		mDrawerLayout.closeDrawer(mDrawerList);
@@ -106,10 +125,7 @@ public class StartActivity extends FragmentActivity {
 	}
 
 	private void setNextFragment(Fragment fragment, String tag) {
-		FragmentTransaction ft = mFragmentManager.beginTransaction();
-		ft.setCustomAnimations(R.anim.right_in, R.anim.left_out);
-		ft.replace(R.id.flFragmentHolder, fragment, tag);
-		ft.commit();
+		FragmentHelper.swapFragment(R.id.flFragmentHolder, fragment, getSupportFragmentManager(), tag);
 	}
 
 	/*

@@ -55,6 +55,7 @@
         <item name="map_view">Map</item>
     </string-array>
     
+    <!-- Animal List title -->
     <string name="animal_list_title">Animals</string>
 
 </resources>
