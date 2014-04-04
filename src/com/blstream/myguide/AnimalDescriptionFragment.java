@@ -43,7 +43,7 @@ public class AnimalDescriptionFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		getArgs();
-		View mRootView = inflater.inflate(R.layout.activity_animal_description, container, false);
+		View mRootView = inflater.inflate(R.layout.fragment_animal_description, container, false);
 		setHasOptionsMenu(true);
 
 		mActionBar = getActivity().getActionBar();

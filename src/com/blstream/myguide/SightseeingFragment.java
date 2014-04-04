@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
@@ -44,9 +45,6 @@ public class SightseeingFragment extends Fragment implements
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
-	
-	private static final int SIGHTSEEING_ITEM_POSITION = 0;
-	private static final int ANIMAL_LIST_ITEM_POSITION = 1;
 
 	private GoogleMap mMap;
 	private float mMinZoom;
@@ -82,7 +80,7 @@ public class SightseeingFragment extends Fragment implements
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mRootView = inflater.inflate(R.layout.activity_sightseeing, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -251,7 +249,6 @@ public class SightseeingFragment extends Fragment implements
 					.center(new LatLng(a.getNode().getLatitude(), a.getNode()
 							.getLongitude())
 					).visible(mJunctionsVisible));
-					));
 		}
 	}
 
