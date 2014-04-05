@@ -3,6 +3,7 @@ package com.blstream.myguide;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import android.app.AlertDialog;
@@ -15,9 +16,12 @@ import android.util.Log;
 
 import com.blstream.myguide.dialog.PlayServicesErrorDialogFragment;
 import com.blstream.myguide.gps.LocationUpdater;
+import com.blstream.myguide.path.Graph;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.settings.SettingsHelper;
+import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.ParserHelper;
+import com.blstream.myguide.zoolocations.Way;
 import com.blstream.myguide.zoolocations.ZooLocationsData;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -187,6 +191,24 @@ public class SplashActivity extends FragmentActivity {
 		Log.i(LOG_TAG, "data XML parsed");
 	}
 
+	private void prepareGraph() {
+		Log.i(LOG_TAG, "preparing graph structure");
+
+		ArrayList<Way> ways = mApp.getZooData().getWays();
+		ArrayList<Junction> junctions = mApp.getZooData().getJunctions();
+		if (ways == null || junctions == null) {
+			Log.e(LOG_TAG, "can't prepare Graph: no ways or junctions");
+			throw new NullPointerException();
+		}
+
+		Graph graph = new Graph();
+		graph.createGraph(ways, junctions);
+
+		mApp.setGraph(graph);
+
+		Log.i(LOG_TAG, "graph created");
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -243,8 +265,9 @@ public class SplashActivity extends FragmentActivity {
 	 * Activity.
 	 */
 	protected void doInBackground() {
-		this.parseSettingsXML();
-		this.parseDataXML();
+		parseSettingsXML();
+		parseDataXML();
+		prepareGraph();
 	}
 
 	protected void startNextActivity() {

@@ -26,6 +26,7 @@
     <string name="go_to_option">Ustawienia</string>
     <string name="start_without_gps">Uruchom bez GPS</string>
     <string name="gps_enable_dialog_msg">Włącz GPS aby móc korzystać ze wszystkich funkcji aplikacji:</string>
+    <string name="gps_loading_position">Uaktualnianie Twojej pozycji...</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Błąd aplikacji</string>
