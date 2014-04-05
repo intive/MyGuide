@@ -2,6 +2,7 @@
 package com.blstream.myguide;
 
 import com.blstream.myguide.fragments.FragmentHelper;
+import com.google.android.gms.maps.SupportMapFragment;
 
 import android.app.ActionBar;
 import android.content.res.Configuration;
@@ -125,6 +126,9 @@ public class StartActivity extends FragmentActivity {
 	}
 
 	private void setNextFragment(Fragment fragment, String tag) {
+		SupportMapFragment f = (SupportMapFragment) getSupportFragmentManager()
+	            .findFragmentById(R.id.map);
+	    if (f != null) getSupportFragmentManager().beginTransaction().remove(f).commit();
 		FragmentHelper.swapFragment(R.id.flFragmentHolder, fragment, getSupportFragmentManager(), tag);
 	}
 

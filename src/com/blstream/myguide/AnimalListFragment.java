@@ -7,9 +7,13 @@ import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.ZooLocationsData;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -35,7 +39,8 @@ public class AnimalListFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_animal_list, container,
 				false);
 		
-		getActivity().getActionBar().setTitle(R.string.animal_list_title);
+		setActionBar();
+		setHasOptionsMenu(true);
 		
 		mAnimalList = (ListView) view.findViewById(R.id.lvAnimalList);
 		mZooData = ((MyGuideApp) this.getActivity().getApplication())
@@ -50,6 +55,11 @@ public class AnimalListFragment extends Fragment {
 		return view;
 	}
 
+	private void setActionBar(){
+		getActivity().getActionBar().setTitle(R.string.animal_list_title);
+		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+	}
+	
 	/**
 	 * Reads names of animals from ZooLocationsData. 
 	 * @return array of strings with animal names
@@ -75,6 +85,13 @@ public class AnimalListFragment extends Fragment {
 			FragmentHelper.swapFragment(R.id.flFragmentHolder, newFragment, getFragmentManager(), BundleConstants.FRAGMENT_ANIMAL_DETAIL);
 		}
 		
+	}
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		MenuItem itemSearch = menu.findItem(R.id.action_search);
+		if (itemSearch != null) itemSearch.setVisible(false);
 	}
 
 }
