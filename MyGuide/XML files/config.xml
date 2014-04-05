@@ -8,6 +8,9 @@
 	<!-- Radius outside which the information that user got close to an object disappears -->
 	<external_object_radius>2</external_object_radius>
     
+    <!-- Radius to mark POI as visited -->
+    <visited_object_radius>20</visited_object_radius>
+    
     <!-- Bounds in meters restricting map area -->
     <map_max_width>1100</map_max_width>
     <map_max_height>900</map_max_height>

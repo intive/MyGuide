@@ -17,6 +17,7 @@
 @property (nonatomic) NSArray           *nearestAnimals;
 @property (nonatomic) BOOL               showAlert;
 @property (nonatomic) BOOL               isSlidingView;
+@property (nonatomic) BOOL               visitedLocationFlag;
 
 @end
 
@@ -45,7 +46,6 @@
     [_locationManager checkLocationStatus];
     
     [self configureMapView];
-    [self showAnimals];
     [self centerMap];
     [self showPaths];
     [self showJunctions];
@@ -57,7 +57,6 @@
     [super viewWillAppear:animated];
     [self showAnimals];
 }
-
 
 #pragma mark - Initial configuration
 - (void)configureMapView
@@ -132,6 +131,7 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     [self updateNearestAnimalsArrayWithLocation:userLocation.location];
+    [self updateVisitedLocationsWIthLocation:userLocation.location];
     [_nearestAnimalsTableView reloadData];
     double distance = [self calculateUserDistance:userLocation];
     if(distance <= _settings.maxUserDistance){
@@ -378,6 +378,20 @@
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     _nearestAnimals = [_data.animalsArray sortedArrayUsingDescriptors:sortDescriptors];
 }
+- (void)updateVisitedLocationsWIthLocation:(CLLocation *)location
+{
+    for(int i=0; i<5; i++){
+        if([_nearestAnimals[i] isWithinDistance:_settings.visitedRadius fromLocation:location]){
+            for(MKAnnotationAnimal *annotation in _mapView.annotations){
+                if([annotation.title isEqualToString:[_nearestAnimals[i] name]]){
+                    _visitedLocationFlag = YES;
+                    [self.mapView selectAnnotation:annotation animated:YES];
+                    break;
+                }
+            }
+        }
+    }
+}
 - (BOOL)compareCoordinate:(CLLocationCoordinate2D)coordinateOne withCoordinate:(CLLocationCoordinate2D)coordinateTwo
 {
     BOOL ans = NO;
@@ -388,11 +402,19 @@
 }
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
 {
-    view.pinColor = MKPinAnnotationColorPurple;
+    if(_visitedLocationFlag){
+        _visitedLocationFlag = NO;
+        view.pinColor = MKPinAnnotationColorGreen;
+    }
+    else if(view.pinColor == MKPinAnnotationColorRed){
+        view.pinColor = MKPinAnnotationColorPurple;
+    }
 }
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKPinAnnotationView *)view
 {
-    view.pinColor = MKPinAnnotationColorRed;
+    if(view.pinColor == MKPinAnnotationColorPurple) {
+        view.pinColor = MKPinAnnotationColorRed;
+    }
 }
 
 @end

@@ -48,6 +48,7 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
 {
     _innerRadius        = 1;
     _externalRadius     = 2;
+    _visitedRadius      = 10;
     _languageFallback   = @"en";
     _showAnimalsOnMap   = YES;
     _showUserPosition   = YES;
@@ -66,7 +67,10 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
     else if ([name isEqualToString:  @"external_object_radius"]) {
         _externalRadius = [value integerValue];
     }
-    else if ([name isEqualToString:  @"show_animals"]) {
+    else if ([name isEqualToString:  @"visited_object_radius"]) {
+        _visitedRadius = [value integerValue];
+    }
+    else if ([name isEqualToString:  @"map_show_animals"]) {
         _showAnimalsOnMap = [value boolValue];
     }
     else if ([name isEqualToString:  @"map_show_user_position"]) {
