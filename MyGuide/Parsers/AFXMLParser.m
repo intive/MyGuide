@@ -69,7 +69,8 @@ static NSString *kXmlEN                 = @"en";
     _elementValue = [[NSMutableString alloc] init];
     
     if ([elementName isEqualToString:kXmlAnimals]) {
-        _animalsArray = [[NSMutableArray alloc] init];
+        _animalsArrayPL = [[NSMutableArray alloc] init];
+        _animalsArrayEN = [[NSMutableArray alloc] init];
     }
     else if ([elementName isEqualToString:kXmlWays]) {
         _waysArray = [[NSMutableArray alloc] init];
@@ -79,8 +80,10 @@ static NSString *kXmlEN                 = @"en";
     }
     else if ([elementName isEqualToString:kXmlAnimal]) {
         _temporaryNode = [[AFNode alloc] initWithLatitude:[attributeDict valueForKey:kXmlLatitude] andLongitude:[attributeDict valueForKey:kXmlLongitude]];
-        _currentAnimal = [[AFAnimal alloc] init];
-        _animalInfoDictionary = [[NSMutableDictionary alloc] init];
+        _currentAnimalPL = [[AFAnimal alloc] init];
+        _currentAnimalEN = [[AFAnimal alloc] init];
+        _animalInfoDictionaryPL = [[NSMutableDictionary alloc] init];
+        _animalInfoDictionaryEN = [[NSMutableDictionary alloc] init];
     }
     else if ([elementName isEqualToString:kXmlWay]) {
         _currentWay = [[AFWay alloc] init];
@@ -119,8 +122,10 @@ static NSString *kXmlEN                 = @"en";
     AFParsedData *sharedData = [AFParsedData sharedParsedData];
 
     if ([elementName isEqualToString:kXmlAnimals]) {
-        [sharedData setAnimalsArray:_animalsArray];
-        _animalsArray = nil;
+        sharedData.animalsPL = _animalsArrayPL;
+        sharedData.animalsEN = _animalsArrayEN;
+        _animalsArrayPL = nil;
+        _animalsArrayEN = nil;
     }
     else if ([elementName isEqualToString:kXmlWays]) {
         [sharedData setWaysArray:_waysArray];
@@ -131,10 +136,14 @@ static NSString *kXmlEN                 = @"en";
         _junctionsArray = nil;
     }
     else if ([elementName isEqualToString:kXmlAnimal]) {
-        [_currentAnimal setDictionary:_animalInfoDictionary];
-        [_currentAnimal setCoordinates:_temporaryNode];
-        [_animalsArray addObject:_currentAnimal];
-        _animalInfoDictionary = nil;
+        [_currentAnimalPL setDictionary:_animalInfoDictionaryPL];
+        [_currentAnimalEN setDictionary:_animalInfoDictionaryEN];
+        [_currentAnimalPL setCoordinates:_temporaryNode];
+        [_currentAnimalEN setCoordinates:_temporaryNode];
+        [_animalsArrayPL addObject:_currentAnimalPL];
+        [_animalsArrayEN addObject:_currentAnimalEN];
+        _animalInfoDictionaryPL = nil;
+        _animalInfoDictionaryEN = nil;
         _temporaryNode = nil;
     }
     else if ([elementName isEqualToString:kXmlWay]) {
@@ -176,33 +185,35 @@ static NSString *kXmlEN                 = @"en";
     else if ([elementName isEqualToString:kXmlImage]) {
         if(_descriptionAdultFlag == YES){
             NSString *imageName = [[_elementValue componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] componentsJoinedByString:@""];
-            [_animalInfoDictionary setValue:imageName forKey:@"adultImageName"];
+            [_animalInfoDictionaryPL setValue:imageName forKey:@"adultImageName"];
+            [_animalInfoDictionaryEN setValue:imageName forKey:@"adultImageName"];
         }
         else{
             NSString *imageName = [[_elementValue componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] componentsJoinedByString:@""];
-            [_animalInfoDictionary setValue:imageName forKey:@"childImageName"];
+            [_animalInfoDictionaryPL setValue:imageName forKey:@"childImageName"];
+            [_animalInfoDictionaryEN setValue:imageName forKey:@"childImageName"];
         }
     }
     else if ([elementName isEqualToString:kXmlPL]) {
         if(_nameFlag == YES){
-            [_currentAnimal setNamePL:_elementValue];
+            [_currentAnimalPL setName:_elementValue];
         }
         else if(_descriptionAdultFlag == YES){
-            [_animalInfoDictionary setValue:_elementValue forKey:@"adultDescriptionPL"];
+            [_animalInfoDictionaryPL setValue:_elementValue forKey:@"adultDescription"];
         }
         else{
-            [_animalInfoDictionary setValue:_elementValue forKey:@"childDescriptionPL"];
+            [_animalInfoDictionaryPL setValue:_elementValue forKey:@"childDescription"];
         }
     }
     else if ([elementName isEqualToString:kXmlEN]) {
         if(_nameFlag == YES){
-            [_currentAnimal setNameEN:_elementValue];
+            [_currentAnimalEN setName:_elementValue];
         }
         else if(_descriptionAdultFlag == YES){
-            [_animalInfoDictionary setValue:_elementValue forKey:@"adultDescriptionEN"];
+            [_animalInfoDictionaryEN setValue:_elementValue forKey:@"adultDescription"];
         }
         else{
-            [_animalInfoDictionary setValue:_elementValue forKey:@"childDescriptionEN"];
+            [_animalInfoDictionaryEN setValue:_elementValue forKey:@"childDescription"];
         }
     }
 }

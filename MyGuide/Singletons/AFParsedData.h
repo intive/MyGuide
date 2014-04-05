@@ -7,17 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Settings.h"
 
 @interface AFParsedData : NSObject
 
-@property (nonatomic, readonly) NSArray *animalsArray;
+@property (nonatomic, readonly, getter = localizeAnimalsArray) NSArray *animalsArray;
+@property (nonatomic) NSArray *animalsPL;
+@property (nonatomic) NSArray *animalsEN;
 @property (nonatomic, readonly) NSArray *waysArray;
 @property (nonatomic, readonly) NSArray *junctionsArray;
 
 + (id)sharedParsedData;
 
-- (void) setWaysArray:      (NSArray *) waysArray;
-- (void) setAnimalsArray:   (NSArray *) animalsArray;
-- (void) setJunctionsArray: (NSArray *) junctionsArray;
+- (void)setWaysArray:     (NSArray *)waysArray;
+- (void)setJunctionsArray:(NSArray *)junctionsArray;
+- (NSArray *)localizeAnimalsArray;
 
 @end

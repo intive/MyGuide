@@ -10,6 +10,7 @@
 
 @implementation AppDelegate {
     LocationManager *_locationManager;
+    Settings *_sharedSettings;
 }
 
 - (void)parseDataXML
@@ -26,13 +27,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
+    _sharedSettings = [Settings sharedSettingsData];
+
     [self parseDataXML];
     [self loadSettings];
     
     _locationManager = [LocationManager sharedLocationManager];
     [_locationManager requestLocationStatus];
-
     return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    _sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
 }
 
 @end

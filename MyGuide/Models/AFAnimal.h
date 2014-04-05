@@ -13,18 +13,15 @@
 @interface AFAnimal : NSObject
 
 @property (nonatomic, readonly) AFNode   *coordinates;
-@property (nonatomic, readonly) NSString *namePL;
-@property (nonatomic, readonly) NSString *nameEN;
+@property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSInteger distanceFromUser;
 @property (nonatomic, readonly) NSDictionary *animalInfoDictionary;
 
 - (id)init;
-- (id)initWithPosition:(AFNode *)coordinates namePL:(NSString *)namePL andNameEN:(NSString *)nameEN;
 
 - (void)setCoordinates:(AFNode *)coordinates;
 - (void)setDictionary:(NSDictionary *)dictionary;
-- (void)setNamePL:(NSString *)namePL;
-- (void)setNameEN:(NSString *)nameEN;
+- (void)setName:(NSString *)name;
 - (void)setDistanceFromUser:(NSInteger)distanceFromUser;
 - (BOOL)isWithinDistance:(NSInteger)distance fromLocation:(CLLocation *)location;
 

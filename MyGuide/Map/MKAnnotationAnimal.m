@@ -12,16 +12,10 @@
 
 - (id)initWithAnimal:(AFAnimal *)animal
 {
-    NSString *languageCode = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
     self = [super init];
     if (self) {
         _coordinate = [self buildCoordinates:animal];
-        if([languageCode isEqualToString:@"pl"]){
-            _title = animal.namePL;
-        }
-        else{
-            _title = animal.nameEN;
-        }
+        _title = animal.name;
     }
     return self;
 }

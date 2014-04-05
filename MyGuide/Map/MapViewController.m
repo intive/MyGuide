@@ -18,8 +18,6 @@
 @property (nonatomic) BOOL               showAlert;
 @property (nonatomic) BOOL               isSlidingView;
 
-@property (strong, nonatomic) NSString *lastUsedLanguageCode;
-
 @end
 
 #pragma mark -
@@ -33,7 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _lastUsedLanguageCode = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
     _settings = [Settings sharedSettingsData];
     _data     = [AFParsedData sharedParsedData];
     _alertDistance = [self buildAlertView];
@@ -58,10 +55,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(![_lastUsedLanguageCode isEqual:[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2]]){
-        _lastUsedLanguageCode = [[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2];
-        [self showAnimals];
-    }
+    [self showAnimals];
 }
 
 
@@ -351,17 +345,12 @@
     UIImageView *animalImage = (UIImageView *)[cell viewWithTag:100];
     animalImage.image = [UIImage imageNamed:[[[_nearestAnimals objectAtIndex:indexPath.section] animalInfoDictionary] valueForKey:@"adultImageName"]];
     
-    if([_lastUsedLanguageCode isEqualToString:@"pl"]){
-        UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
-        nameLabel.text = [NSString stringWithFormat:@"%@", [[_nearestAnimals objectAtIndex:indexPath.section] namePL]];
-    }
-    else{
-        UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
-        nameLabel.text = [NSString stringWithFormat:@"%@", [[_nearestAnimals objectAtIndex:indexPath.section] nameEN]];
-    }
+    UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
+    nameLabel.text = [NSString stringWithFormat:@"%@", [[_nearestAnimals objectAtIndex:indexPath.section] name]];
     
     UITextView *funFact = (UITextView *)[cell viewWithTag:102];
     funFact.text = [NSString stringWithFormat:@"Fun Fact #%ld", (long)indexPath.section];
+    
     UILabel *distanceLabel = (UILabel *)[cell viewWithTag:103];
     distanceLabel.text = [NSString stringWithFormat:@"%ldm", (long)[[_nearestAnimals objectAtIndex:indexPath.section] distanceFromUser]];
     

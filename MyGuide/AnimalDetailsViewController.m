@@ -11,7 +11,6 @@
 @interface AnimalDetailsViewController ()
 
 @property (strong, nonatomic) UIViewController *detailsMapController;
-@property (strong, nonatomic) NSString *languageCode;
 
 @end
 
@@ -30,23 +29,14 @@
     [super viewDidLoad];
     [self prepareNextViewController];
     [_segmentedControl addTarget:self action:@selector(alternateBetweenContent) forControlEvents:UIControlEventValueChanged];
-    _languageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
-    if(![_languageCode isEqualToString:@"PL"]){
-        _languageCode = @"EN";
-    }
 }
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if(![_languageCode isEqual:[[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString]]){
-        _languageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
-        if(![_languageCode isEqualToString:@"PL"]){
-            _languageCode = @"EN";
-        }
-    }
+    
     [_segmentedControl setSelectedSegmentIndex:0];
     [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
-    [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:[NSString stringWithFormat:@"adultDescription%@", _languageCode]]];
+    [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"adultDescription"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,19 +52,15 @@
 {
     if([_segmentedControl selectedSegmentIndex] == 0){
         [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
-        [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:[NSString stringWithFormat:@"adultDescription%@", _languageCode]]];
+        [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"adultDescription"]];
     }
     else if([_segmentedControl selectedSegmentIndex] == 1){
         [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"childImageName"]]];
-        [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:[NSString stringWithFormat:@"childDescription%@", _languageCode]]];
+        [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"childDescription"]];
     }
     else{
         [self.navigationController pushViewController:_detailsMapController animated:YES];
     }
-}
-- (void)setAnimal:(AFAnimal *)animal
-{
-    _animal = animal;
 }
 
 @end

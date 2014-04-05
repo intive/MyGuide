@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSInteger centerRadius;
 
 @property (nonatomic, readonly) NSString *languageFallback;
+@property (nonatomic)           NSString *currentLanguageCode;
 
 @property (nonatomic, readonly) BOOL showAnimalsOnMap;
 @property (nonatomic, readonly) BOOL showUserPosition;

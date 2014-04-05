@@ -26,6 +26,7 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
 + (id)sharedSettingsData
 {
     static Settings *sharedData = nil;
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedData = [[self alloc] init];
@@ -35,13 +36,13 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
 
 - (id)init
 {
-    self = [super init];
-    if(self) {
+    _currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
+    if(!self) {
+        self = [super init];
         [self initDefaults];
     }
     return self;
 }
-
 
 - (void)initDefaults
 {

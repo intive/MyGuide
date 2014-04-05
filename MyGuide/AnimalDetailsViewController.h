@@ -10,12 +10,9 @@
 #import "AFAnimal.h"
 @interface AnimalDetailsViewController : UIViewController
 
-@property (nonatomic, readonly) AFAnimal *animal;
+@property (nonatomic) AFAnimal *animal;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UITextView  *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *animalImage;
-
-
-- (void)setAnimal:(AFAnimal *)animal;
 
 @end

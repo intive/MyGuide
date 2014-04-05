@@ -14,8 +14,10 @@
 
 @interface AFXMLParser : NSObject <NSXMLParserDelegate>
 
-@property (nonatomic, readonly) NSMutableDictionary *animalInfoDictionary;
-@property (nonatomic, readonly) NSMutableArray      *animalsArray;
+@property (nonatomic, readonly) NSMutableDictionary *animalInfoDictionaryPL;
+@property (nonatomic, readonly) NSMutableDictionary *animalInfoDictionaryEN;
+@property (nonatomic, readonly) NSMutableArray      *animalsArrayPL;
+@property (nonatomic, readonly) NSMutableArray      *animalsArrayEN;
 @property (nonatomic, readonly) NSMutableArray      *waysArray;
 @property (nonatomic, readonly) NSMutableArray      *junctionsArray;
 @property (nonatomic, readonly) NSMutableArray      *nodesArray;
@@ -27,7 +29,8 @@
 @property (nonatomic, readonly) BOOL descriptionAdultFlag;
 @property (nonatomic, readonly) BOOL descriptionChildFlag;
 
-@property (nonatomic, readonly) AFAnimal    *currentAnimal;
+@property (nonatomic, readonly) AFAnimal    *currentAnimalPL;
+@property (nonatomic, readonly) AFAnimal    *currentAnimalEN;
 @property (nonatomic, readonly) AFWay       *currentWay;
 @property (nonatomic, readonly) AFNode      *currentNode;
 @property (nonatomic, readonly) AFNode      *temporaryNode;

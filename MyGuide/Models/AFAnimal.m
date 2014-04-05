@@ -15,26 +15,17 @@
     self = [super init];
     if(self) {
         _coordinates = [[AFNode alloc] init];
-        _namePL = [[NSString alloc] init];
-        _nameEN = [[NSString alloc] init];
-        _animalInfoDictionary = [[NSDictionary alloc] init];
-        _distanceFromUser = 0;
-    }
-    return self;
-}
-- (id)initWithPosition:(AFNode *)coordinates namePL:(NSString *)namePL andNameEN:(NSString *)nameEN
-{
-    self = [super init];
-    if(self) {
-        _coordinates = coordinates;
-        _namePL = namePL;
-        _nameEN = nameEN;
+        _name = [[NSString alloc] init];
         _animalInfoDictionary = [[NSDictionary alloc] init];
         _distanceFromUser = 0;
     }
     return self;
 }
 
+- (void)setName:(NSString *)name
+{
+    _name = name;
+}
 - (void)setCoordinates:(AFNode *)coordinates
 {
     _coordinates = coordinates;
@@ -42,14 +33,6 @@
 - (void)setDictionary:(NSDictionary *)dictionary
 {
     _animalInfoDictionary = dictionary;
-}
-- (void)setNamePL:(NSString *)namePL
-{
-    _namePL = namePL;
-}
-- (void)setNameEN:(NSString *)nameEN
-{
-    _nameEN = nameEN;
 }
 - (void)setDistanceFromUser:(NSInteger)distanceFromUser
 {
