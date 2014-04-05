@@ -74,7 +74,7 @@ static unsigned long vJunctionsAmount = 20;
     bool check = NO;
     for(AFAnimal *animal in _sharedData.animalsArray)
     {
-        if([animal.namePL length] - 3 <= 0 || [animal.nameEN length] - 3 <= 0) check = YES;
+        if([animal.name length] - 3 <= 0 || [animal.name length] - 3 <= 0) check = YES;
     }
     XCTAssertFalse(check, @"There is an animal without a name");
 }
