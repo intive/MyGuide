@@ -603,7 +603,7 @@
         <scene sceneID="wOn-ez-rJH">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0d-XC-5f4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="tdK-Ye-NGc" customClass="GastronomyDetailsInfoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gastronomyDetailsInfo" automaticallyAdjustsScrollViewInsets="NO" id="tdK-Ye-NGc" customClass="GastronomyDetailsInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vu0-p7-LGi"/>
                         <viewControllerLayoutGuide type="bottom" id="ubA-yW-Hz6"/>
