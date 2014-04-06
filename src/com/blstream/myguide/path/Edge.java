@@ -1,3 +1,4 @@
+
 package com.blstream.myguide.path;
 
 public class Edge {
@@ -10,8 +11,6 @@ public class Edge {
 		mVertex1 = v1;
 		mVertex2 = v2;
 		mLength = l;
-		v1.addEdge(this);
-		v2.addEdge(this);
 	}
 
 	public void setVertex1(Vertex vertex1) {
@@ -21,11 +20,11 @@ public class Edge {
 	public void setVertex2(Vertex vertex2) {
 		mVertex2 = vertex2;
 	}
-	
+
 	public void setLength(double length) {
 		mLength = length;
 	}
-	
+
 	public Vertex getVertex1() {
 		return mVertex1;
 	}
@@ -33,9 +32,23 @@ public class Edge {
 	public Vertex getVertex2() {
 		return mVertex2;
 	}
-	
+
 	public double getLength() {
 		return mLength;
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		Edge edge = (Edge) o;
+		if (mVertex1.getPosition().equals(edge.getVertex1().getPosition())
+				&& mVertex2.getPosition().equals(edge.getVertex2().getPosition())) { return true; }
+		if (mVertex1.getPosition().equals(edge.getVertex2().getPosition())
+				&& mVertex2.getPosition().equals(edge.getVertex1().getPosition())) { return true; }
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return mVertex1.getPosition().hashCode() + mVertex2.getPosition().hashCode();
+	}
 }

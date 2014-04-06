@@ -3,7 +3,6 @@ package com.blstream.myguide.zoolocations;
 
 import java.io.Serializable;
 
-import com.blstream.myguide.path.Vertex;
 /**
  * This class contains two coordinates (latitude and longitude) of some point in
  * the zoo.
@@ -34,15 +33,14 @@ public class Node implements Serializable {
 		return mLongitude;
 	}
 
-	@Override 
+	@Override
 	public boolean equals(Object o) {
 		Node node = (Node) o;
-		if (mLatitude == node.getLatitude() && mLongitude == node.getLongitude()) {
-			return true;
-		}
+		if (mLatitude == node.getLatitude() && mLongitude == node.getLongitude()) { return true; }
 		return false;
 	}
-	@Override 
+
+	@Override
 	public int hashCode() {
 		Double lat = mLatitude;
 		Double lon = mLongitude;
