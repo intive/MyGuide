@@ -7,6 +7,8 @@
 //
 
 #import "GastronomyDetailsViewController.h"
+#import "GastronomyDetailsMenuTableViewController.h"
+#import "GastronomyDetailsInfoViewController.h"
 
 @interface GastronomyDetailsViewController ()
 
@@ -41,7 +43,7 @@
     _detailsMapController = [storyboard instantiateViewControllerWithIdentifier:@"detailsMap"];
 }
 
-- (void)alternateBetweenContent
+- (void) alternateBetweenContent
 {
     NSInteger selectedIndex = [_segmentedControl selectedSegmentIndex];
     if(selectedIndex == 0) {

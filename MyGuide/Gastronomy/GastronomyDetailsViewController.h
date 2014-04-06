@@ -12,5 +12,6 @@
 
 @property NSInteger restaurantID;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIView             *containerView;
 
 @end
