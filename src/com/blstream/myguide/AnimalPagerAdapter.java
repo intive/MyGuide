@@ -1,6 +1,7 @@
 
 package com.blstream.myguide;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -11,6 +12,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  */
 public class AnimalPagerAdapter extends FragmentStatePagerAdapter {
 
+	private Bundle mBundle;
+	private AnimalDescriptionTabs mTabs;
+
 	public AnimalPagerAdapter(FragmentManager fm) {
 		super(fm);
 	}
@@ -19,12 +23,23 @@ public class AnimalPagerAdapter extends FragmentStatePagerAdapter {
 	public Fragment getItem(int i) {
 		switch (i) {
 			case 0:
-				return new TabDescription();
+				mBundle = new Bundle();
+				mBundle.putInt(BundleConstants.TAB_ID, i);
+				mTabs = new AnimalDescriptionTabs();
+				mTabs.setArguments(mBundle);
+				return mTabs;
 			case 1:
-				return new TabForChildren();
+				mBundle = new Bundle();
+				mBundle.putInt(BundleConstants.TAB_ID, i);
+				mTabs = new AnimalDescriptionTabs();
+				mTabs.setArguments(mBundle);
+				return mTabs;
 			case 2:
-				// TODO Map activity
-				return new TabMap();
+				mBundle = new Bundle();
+				mBundle.putInt(BundleConstants.TAB_ID, i);
+				mTabs = new AnimalDescriptionTabs();
+				mTabs.setArguments(mBundle);
+				return mTabs;
 		}
 		return null;
 	}
