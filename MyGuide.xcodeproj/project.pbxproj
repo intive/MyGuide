@@ -74,8 +74,6 @@
 		055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalsListViewController.h; sourceTree = "<group>"; };
 		055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalsListViewController.m; sourceTree = "<group>"; };
 		057F9EC618E7760A001DE63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		057F9EC818E77639001DE63B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
-		057F9ECA18E7763D001DE63B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		05B86F0318F155A50065DE1A /* GastronomyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyListViewController.h; sourceTree = "<group>"; };
 		05B86F0418F155A50065DE1A /* GastronomyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastronomyListViewController.m; sourceTree = "<group>"; };
 		05B86F0618F16A300065DE1A /* GastronomyDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyDetailsViewController.h; sourceTree = "<group>"; };
@@ -96,6 +94,8 @@
 		05E0209018C1D38000AE76EC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		05E0209618C23B7100AE76EC /* MKAnnotationAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAnnotationAnimal.h; sourceTree = "<group>"; };
 		05E0209718C23B7100AE76EC /* MKAnnotationAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAnnotationAnimal.m; sourceTree = "<group>"; };
+		05E1653C18F17E4800DA3BD7 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
+		05E1653F18F17EAC00DA3BD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		05E375C418BA872B00A31630 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
 		05E375C518BA872B00A31630 /* MWLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MWLogging.h; path = "Supporting Files/MWLogging.h"; sourceTree = "<group>"; };
 		05E375C618BA872B00A31630 /* MWLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MWLogging.m; path = "Supporting Files/MWLogging.m"; sourceTree = "<group>"; };
@@ -563,8 +563,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				057F9EC618E7760A001DE63B /* Base */,
-				057F9EC818E77639001DE63B /* pl */,
-				057F9ECA18E7763D001DE63B /* en */,
+				05E1653C18F17E4800DA3BD7 /* pl */,
+				05E1653F18F17EAC00DA3BD7 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

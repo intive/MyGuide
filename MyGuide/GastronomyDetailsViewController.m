@@ -25,4 +25,10 @@
     [self setTitle: [NSString stringWithFormat: NSLocalizedString(@"cellLabelRestaurant", nil), _restaurantID]];
 }
 
+
+- (void) viewWillAppear: (BOOL)animated
+{
+    [_segmentedControl setSelectedSegmentIndex:0];
+}
+
 @end

@@ -39,3 +39,12 @@
 
 /* Class = "IBUITextView"; text = "EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS "; ObjectID = "yoO-jN-vOU"; */
 "yoO-jN-vOU.text" = "EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS";
+
+/* Class = "IBUISegmentedControl"; DS1-xr-SEf.segmentTitles[0] = "Information"; ObjectID = "DS1-xr-SEf"; */
+"DS1-xr-SEf.segmentTitles[0]" = "Informacje";
+
+/* Class = "IBUISegmentedControl"; DS1-xr-SEf.segmentTitles[1] = "Menu"; ObjectID = "DS1-xr-SEf"; */
+"DS1-xr-SEf.segmentTitles[1]" = "Menu";
+
+/* Class = "IBUISegmentedControl"; DS1-xr-SEf.segmentTitles[2] = "Map"; ObjectID = "DS1-xr-SEf"; */
+"DS1-xr-SEf.segmentTitles[2]" = "Mapa";
