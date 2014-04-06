@@ -14,3 +14,8 @@ example: version = 0.1.12
 - release number 0
 - sprint number  1
 - build number   12
+
+
+Build status 
+============
+* [![Build Status](https://travis-ci.org/blstream/MyGuide.svg?branch=ios)](https://travis-ci.org/blstream/MyGuide)
