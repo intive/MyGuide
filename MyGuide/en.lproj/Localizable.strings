@@ -27,3 +27,7 @@
 "titleControllerAnimalsList" = "Animals list";
 
 "titleControllerMap" = "ZOO map";
+
+"titleControllerGastronomy" = "Gastronomy";
+
+"cellLabelRestaurant" = "Restaurant %d";

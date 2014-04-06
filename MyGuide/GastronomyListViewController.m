@@ -9,6 +9,8 @@
 #import "GastronomyListViewController.h"
 #import "SWRevealViewController.h"
 
+#define NUMBER_OF_DUMMY_CELLS 10
+
 @interface GastronomyListViewController ()
 
 @end
@@ -24,12 +26,33 @@
 {
     [super viewDidLoad];
     [self initMenuBar];
+    
+    [self setTitle: NSLocalizedString(@"titleControllerGastronomy", nil)];
 }
 
 - (void) initMenuBar
 {
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
+}
+
+- (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section
+{
+    return NUMBER_OF_DUMMY_CELLS;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"RestaurantCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat: NSLocalizedString(@"cellLabelRestaurant", nil), indexPath.row];
+    return cell;
 }
 
 @end
