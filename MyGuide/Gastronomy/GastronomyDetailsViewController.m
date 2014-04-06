@@ -53,6 +53,7 @@
 {
     [self prepareControllers];
     [_segmentedControl setSelectedSegmentIndex: 0];
+    [self switchController: _gastronomyInfo withAnimation: NO];
 }
 
 - (void) prepareMapController
@@ -81,11 +82,11 @@
 {
     NSInteger selectedIndex = [segmentControl selectedSegmentIndex];
     if(selectedIndex == 0) {
-        BOOL result = [self switchController: _gastronomyInfo];
+        BOOL result = [self switchController: _gastronomyInfo withAnimation: YES];
         if(!result) [segmentControl setSelectedSegmentIndex: 1];
     }
     else if(selectedIndex == 1) {
-        BOOL result = [self switchController: _gastronomyMenu];
+        BOOL result = [self switchController: _gastronomyMenu withAnimation: YES];
         if(!result) [segmentControl setSelectedSegmentIndex: 0];
     }
     else {
@@ -93,7 +94,7 @@
     }
 }
 
-- (BOOL) switchController: (UIViewController *) newController {
+- (BOOL) switchController: (UIViewController *) newController withAnimation: (BOOL) animation {
     if(!_canSwichView) return  NO;
     _canSwichView = NO;
     
@@ -105,7 +106,9 @@
     [self transitionFromViewController: _currentViewController
                       toViewController: newController
                               duration: .6
-                               options: UIViewAnimationOptionTransitionFlipFromTop
+                               options: animation ?
+                                        UIViewAnimationOptionTransitionFlipFromLeft :
+                                        UIViewAnimationOptionTransitionNone
                             animations: nil
                             completion: ^(BOOL finished) {
                                 [_currentViewController removeFromParentViewController];
