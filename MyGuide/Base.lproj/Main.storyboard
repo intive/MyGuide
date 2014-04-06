@@ -49,6 +49,9 @@
                                     <segment title="Menu"/>
                                     <segment title="Map"/>
                                 </segments>
+                                <connections>
+                                    <action selector="switchControllers:" destination="DSz-JZ-KzA" eventType="valueChanged" id="sZX-JC-pVQ"/>
+                                </connections>
                             </segmentedControl>
                             <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zr4-uZ-Dwh">
                                 <rect key="frame" x="20" y="111" width="280" height="437"/>
@@ -62,7 +65,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="segmentedControl" destination="DS1-xr-SEf" id="cj9-Z7-xBL"/>
+                        <outlet property="containerView" destination="Zr4-uZ-Dwh" id="Hcs-7X-NhM"/>
+                        <outlet property="segmentedControl" destination="DS1-xr-SEf" id="dTR-HO-vpx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECY-no-5QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -300,6 +304,9 @@
                                     <segment title="For Kids"/>
                                     <segment title="Map"/>
                                 </segments>
+                                <connections>
+                                    <action selector="switchControllers:" destination="M8A-t7-eRn" eventType="valueChanged" id="Vnd-Ca-xCX"/>
+                                </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V0U-O9-wlz">
                                 <rect key="frame" x="20" y="62" width="280" height="502"/>
@@ -372,7 +379,7 @@
                     <connections>
                         <outlet property="animalImage" destination="SFj-n6-zfZ" id="Vni-e8-8Bg"/>
                         <outlet property="descriptionTextView" destination="yIf-F5-yY5" id="XHo-1O-2zY"/>
-                        <outlet property="segmentedControl" destination="iSu-gc-aO2" id="MbJ-Wb-8WU"/>
+                        <outlet property="segmentedControl" destination="iSu-gc-aO2" id="mG8-Wl-JXz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gob-US-j4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>

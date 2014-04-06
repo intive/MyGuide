@@ -11,7 +11,9 @@
 @interface GastronomyDetailsViewController : UIViewController
 
 @property NSInteger restaurantID;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-@property (weak, nonatomic) IBOutlet UIView             *containerView;
+
+-(IBAction) switchControllers: (UISegmentedControl *) segmentControl;
 
 @end
