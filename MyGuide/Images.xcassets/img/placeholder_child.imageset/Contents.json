@@ -2,6 +2,10 @@
   "images" : [
     {
       "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
       "scale" : "2x",
       "filename" : "placeholder_child.png"
     }

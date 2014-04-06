@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     [self initMenuBar];
     [self initTableData];
     [self prepareNextViewController];
@@ -37,6 +37,11 @@
 {
     [super viewDidAppear:animated];
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[self tableView] reloadData];
 }
 
 - (void)initMenuBar
@@ -95,13 +100,21 @@
         animal = [_animalsArray objectAtIndex:indexPath.section];
     }
     cell.textLabel.text = animal.name;
+    
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AFAnimal *animal;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        animal = [_filteredAnimalsArray objectAtIndex:indexPath.section];
+    } else {
+        animal = [_animalsArray objectAtIndex:indexPath.section];
+    }
+    _detailsController.animal = animal;
     if(_filteredAnimalsArray.count != 0){
-        [_detailsController setTitle:[[_filteredAnimalsArray objectAtIndex:[indexPath indexAtPosition:0]] name]];
+            [_detailsController setTitle:[[_filteredAnimalsArray objectAtIndex:[indexPath indexAtPosition:0]] name]];
     }
     else{
         [_detailsController setTitle:[[[self.tableView cellForRowAtIndexPath:indexPath] textLabel] text]];
@@ -118,8 +131,10 @@
 - (void)filterContentForSearchText:(NSString *)searchText scope:(NSString *)scope
 {
     [_filteredAnimalsArray removeAllObjects];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"SELF.name contains[cd] %@", searchText];
-    _filteredAnimalsArray = [NSMutableArray arrayWithArray: [_animalsArray filteredArrayUsingPredicate: predicate]];
+    NSPredicate *predicate = nil;
+    predicate = [NSPredicate predicateWithFormat: @"SELF.name contains[cd] %@", searchText];
+    
+    _filteredAnimalsArray = [NSMutableArray arrayWithArray: [_animalsArray filteredArrayUsingPredicate:predicate]];
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString

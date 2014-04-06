@@ -14,7 +14,10 @@
 @property (nonatomic) UIAlertView       *alertDistance;
 @property (nonatomic) MKMapCamera       *lastGoodCamera;
 @property (nonatomic) CLLocation        *zooCenterLocation;
+@property (nonatomic) NSArray           *nearestAnimals;
 @property (nonatomic) BOOL               showAlert;
+@property (nonatomic) BOOL               isSlidingView;
+@property (nonatomic) BOOL               visitedLocationFlag;
 
 @end
 
@@ -43,15 +46,17 @@
     [_locationManager checkLocationStatus];
     
     [self configureMapView];
-    [self showAnimals];
     [self centerMap];
     [self showPaths];
     [self showJunctions];
     
     [self setTitle: NSLocalizedString(@"titleControllerMap", nil)];
 }
-
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self showAnimals];
+}
 
 #pragma mark - Initial configuration
 - (void)configureMapView
@@ -62,15 +67,23 @@
     _lastGoodCamera = [self.mapView.camera copy];
     
     [self configureToolbarItems];
+    [self configureTableData];
     [self showUserPosition];
 }
 
 - (void)configureToolbarItems
 {
     MKUserTrackingBarButtonItem *button = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
-    self.mapToolbar.items = @[button];
+    UIBarButtonItem *fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpaceButton.width = 262.5f;
+    self.mapToolbar.items = @[fixedSpaceButton, button];
+    [self.mapToolbar setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
 }
-
+- (void)configureTableData
+{
+    _nearestAnimalsTableView.dataSource = self;
+    _nearestAnimalsTableView.delegate   = self;
+}
 - (void)showUserPosition
 {
     if(_settings.showUserPosition) {
@@ -117,7 +130,16 @@
 #pragma mark - Showing AlertView depending on user distance
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+    [self updateNearestAnimalsArrayWithLocation:userLocation.location];
+    [self updateVisitedLocationsWIthLocation:userLocation.location];
+    [_nearestAnimalsTableView reloadData];
     double distance = [self calculateUserDistance:userLocation];
+    if(distance <= _settings.maxUserDistance){
+        [[self.mapToolbar.items lastObject] setEnabled:YES];
+    }
+    else{
+        [[self.mapToolbar.items lastObject] setEnabled:NO];
+    }
     if([self shouldShowAlertDistance:distance]) {
         [_alertDistance show];
     }
@@ -135,7 +157,7 @@
     return distance > _settings.maxUserDistance && !_alertDistance.visible && _showAlert;
 }
 
-- (void) alertView: (UIAlertView *) alertView clickedButtonAtIndex: (NSInteger) buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex != alertView.cancelButtonIndex)
     {
@@ -184,7 +206,7 @@
             routeRenderer.lineCap     = kCGLineCapRound;
             routeRenderer.lineJoin    = kCGLineJoinRound;
             routeRenderer.lineWidth   = 3;
-            routeRenderer.alpha       = 0.5;
+            routeRenderer.alpha       = 0.7;
         }
         return routeRenderer;
     }
@@ -244,6 +266,154 @@
             [minAltitudeCamera setAltitude:362];
             [mapView setCamera:minAltitudeCamera animated:YES];
         }
+    }
+}
+
+#pragma mark - Scrolling nearest animals list
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	UITouch *touch = [touches anyObject];
+	CGPoint point = [touch locationInView:self.view];
+	CGRect rect = _nearestAnimalImageView.frame;
+	BOOL xRange = point.x >= rect.origin.x && point.x<=rect.origin.x+rect.size.width;
+	BOOL yRange = point.y >= rect.origin.y && point.y<=rect.origin.y+rect.size.height;
+	if(xRange && yRange) {
+		_isSlidingView=YES;
+        [self.mapView setScrollEnabled:NO];
+        [self.mapView setZoomEnabled:NO];
+	}
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	if(_isSlidingView) {
+		UITouch *touch = [touches anyObject];
+		CGPoint point  = [touch locationInView:self.view];
+		CGRect rect = _nearestAnimalImageView.frame;
+		if((point.y-rect.size.height/2)<0) {
+			point = CGPointMake(point.x,rect.size.height/2);
+		}
+        else if(((point.y+rect.size.height/2)>self.view.frame.size.height)) {
+			point = CGPointMake(point.x,self.view.frame.size.height-rect.size.height/2);
+		}
+		CGRect newRect = CGRectMake(rect.origin.x, point.y - rect.size.height/2, rect.size.width, rect.size.height);
+		_nearestAnimalImageView.frame=newRect;
+		_nearestAnimalsList.frame=CGRectMake(0, _nearestAnimalImageView.frame.origin.y + _nearestAnimalImageView.frame.size.height, _nearestAnimalsList.frame.size.width, _nearestAnimalsList.frame.size.height);
+	}
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	if([self isSlidingView]) {
+		_isSlidingView = NO;
+		UITouch *touch = [touches anyObject];
+		CGPoint point  = [touch locationInView:self.view];
+		[UIView beginAnimations:@"move" context:nil];
+		[UIView setAnimationDuration:0.5];
+		if(point.y>(self.view.frame.size.height - self.view.frame.size.height/2)) {
+			_nearestAnimalImageView.frame=CGRectMake(75, self.view.frame.size.height - _nearestAnimalImageView.frame.size.height, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
+		}
+        else {
+			_nearestAnimalImageView.frame=CGRectMake(75, 60, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
+		}
+		_nearestAnimalsList.frame=CGRectMake(0, _nearestAnimalImageView.frame.origin.y + _nearestAnimalImageView.frame.size.height, _nearestAnimalsList.frame.size.width, _nearestAnimalsList.frame.size.height);
+		[UIView commitAnimations];
+        [self.mapView setScrollEnabled:YES];
+        [self.mapView setZoomEnabled:YES];
+	}
+}
+
+#pragma mark - Nearest animals list's table view
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 5;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellId = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    UIImageView *animalImage = (UIImageView *)[cell viewWithTag:100];
+    animalImage.image = [UIImage imageNamed:[[[_nearestAnimals objectAtIndex:indexPath.section] animalInfoDictionary] valueForKey:@"adultImageName"]];
+    
+    UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
+    nameLabel.text = [NSString stringWithFormat:@"%@", [[_nearestAnimals objectAtIndex:indexPath.section] name]];
+    
+    UITextView *funFact = (UITextView *)[cell viewWithTag:102];
+    funFact.text = [NSString stringWithFormat:@"Fun Fact #%ld", (long)indexPath.section];
+    
+    UILabel *distanceLabel = (UILabel *)[cell viewWithTag:103];
+    distanceLabel.text = [NSString stringWithFormat:@"%ldm", (long)[[_nearestAnimals objectAtIndex:indexPath.section] distanceFromUser]];
+    
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AFNode* coordinates = [[_nearestAnimals objectAtIndex:indexPath.section] coordinates];
+    double lat = [coordinates.latitude doubleValue];
+    double lon = [coordinates.longitude doubleValue];
+    CLLocationCoordinate2D selectedAnimalLocation =  CLLocationCoordinate2DMake(lat, lon);
+    for(MKAnnotationAnimal *annotation in _mapView.annotations){
+        if([self compareCoordinate:selectedAnimalLocation withCoordinate:annotation.coordinate]){
+            [self.mapView selectAnnotation:annotation animated:YES];
+            break;
+        }
+    }
+}
+- (void)updateNearestAnimalsArrayWithLocation:(CLLocation *)location
+{
+    for(AFAnimal *animal in _data.animalsArray){
+        [animal setDistanceFromUser:[animal.coordinates distanceFromLocation:location]];
+    }
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromUser" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    _nearestAnimals = [_data.animalsArray sortedArrayUsingDescriptors:sortDescriptors];
+}
+- (void)updateVisitedLocationsWIthLocation:(CLLocation *)location
+{
+    for(int i=0; i<5; i++){
+        if([_nearestAnimals[i] isWithinDistance:_settings.visitedRadius fromLocation:location]){
+            for(MKAnnotationAnimal *annotation in _mapView.annotations){
+                if([annotation.title isEqualToString:[_nearestAnimals[i] name]]){
+                    _visitedLocationFlag = YES;
+                    [self.mapView selectAnnotation:annotation animated:YES];
+                    break;
+                }
+            }
+        }
+    }
+}
+- (BOOL)compareCoordinate:(CLLocationCoordinate2D)coordinateOne withCoordinate:(CLLocationCoordinate2D)coordinateTwo
+{
+    BOOL ans = NO;
+    if(fabs(coordinateOne.latitude - coordinateTwo.latitude) <= 1e-8 && fabs(coordinateOne.longitude - coordinateTwo.longitude) <= 1e-8){
+        ans = YES;
+    }
+    return ans;
+}
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
+{
+    if(_visitedLocationFlag){
+        _visitedLocationFlag = NO;
+        view.pinColor = MKPinAnnotationColorGreen;
+    }
+    else if(view.pinColor == MKPinAnnotationColorRed){
+        view.pinColor = MKPinAnnotationColorPurple;
+    }
+}
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKPinAnnotationView *)view
+{
+    if(view.pinColor == MKPinAnnotationColorPurple) {
+        view.pinColor = MKPinAnnotationColorRed;
     }
 }
 

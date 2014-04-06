@@ -17,10 +17,13 @@
 #import "SWRevealViewController.h"
 #import "LocationManager.h"
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate, UIToolbarDelegate>
+@interface MapViewController : UIViewController <MKMapViewDelegate, UIAlertViewDelegate, UIToolbarDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic)   IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) IBOutlet UIToolbar *mapToolbar;
-@property (weak, nonatomic)   IBOutlet UIBarButtonItem *sidebarButton;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIToolbar *mapToolbar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (weak, nonatomic) IBOutlet UIImageView *nearestAnimalImageView;
+@property (weak, nonatomic) IBOutlet UIView *nearestAnimalsList;
+@property (weak, nonatomic) IBOutlet UITableView *nearestAnimalsTableView;
 
 @end

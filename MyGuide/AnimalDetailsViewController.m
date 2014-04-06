@@ -28,7 +28,15 @@
 {
     [super viewDidLoad];
     [self prepareNextViewController];
-    [_segmentedControlOutlet addTarget:self action:@selector(alternateBetweenContent) forControlEvents:UIControlEventValueChanged];
+    [_segmentedControl addTarget:self action:@selector(alternateBetweenContent) forControlEvents:UIControlEventValueChanged];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [_segmentedControl setSelectedSegmentIndex:0];
+    [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
+    [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"adultDescription"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,11 +50,13 @@
 }
 - (void)alternateBetweenContent
 {
-    if([_segmentedControlOutlet selectedSegmentIndex] == 0){
-        [_animalImage setImage:[UIImage imageNamed:@"placeholder_adult.png"]];
+    if([_segmentedControl selectedSegmentIndex] == 0){
+        [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
+        [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"adultDescription"]];
     }
-    else if([_segmentedControlOutlet selectedSegmentIndex] == 1){
-        [_animalImage setImage:[UIImage imageNamed:@"placeholder_child.png"]];
+    else if([_segmentedControl selectedSegmentIndex] == 1){
+        [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"childImageName"]]];
+        [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"childDescription"]];
     }
     else{
         [self.navigationController pushViewController:_detailsMapController animated:YES];

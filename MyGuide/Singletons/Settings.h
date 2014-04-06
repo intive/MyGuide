@@ -14,8 +14,10 @@
 @property (nonatomic, readonly) NSInteger innerRadius;
 @property (nonatomic, readonly) NSInteger externalRadius;
 @property (nonatomic, readonly) NSInteger centerRadius;
+@property (nonatomic, readonly) NSInteger visitedRadius;
 
 @property (nonatomic, readonly) NSString *languageFallback;
+@property (nonatomic)           NSString *currentLanguageCode;
 
 @property (nonatomic, readonly) BOOL showAnimalsOnMap;
 @property (nonatomic, readonly) BOOL showUserPosition;

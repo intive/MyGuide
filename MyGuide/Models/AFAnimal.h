@@ -7,17 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 #import "AFNode.h"
 
 @interface AFAnimal : NSObject
 
 @property (nonatomic, readonly) AFNode   *coordinates;
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSInteger distanceFromUser;
+@property (nonatomic, readonly) NSDictionary *animalInfoDictionary;
 
 - (id)init;
-- (id)initWithPosition:(AFNode *)coordinates andName:(NSString *)name;
 
 - (void)setCoordinates:(AFNode *)coordinates;
+- (void)setDictionary:(NSDictionary *)dictionary;
 - (void)setName:(NSString *)name;
+- (void)setDistanceFromUser:(NSInteger)distanceFromUser;
+- (BOOL)isWithinDistance:(NSInteger)distance fromLocation:(CLLocation *)location;
 
 @end

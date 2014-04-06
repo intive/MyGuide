@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 @interface AFNode : NSObject
 
@@ -18,5 +19,6 @@
 
 - (void)setLatitude: (NSString *)latitude;
 - (void)setLongitude:(NSString *)longitude;
+- (NSInteger)distanceFromLocation:(CLLocation *)location;
 
 @end

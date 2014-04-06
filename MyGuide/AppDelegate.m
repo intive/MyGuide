@@ -10,9 +10,8 @@
 
 @implementation AppDelegate {
     LocationManager *_locationManager;
+    Settings *_sharedSettings;
 }
-
-
 
 - (void)parseDataXML
 {
@@ -28,16 +27,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
-       dispatch_queue_t aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(aQueue, ^{
-        [self parseDataXML];
-        [self loadSettings];
-    });
+    _sharedSettings = [Settings sharedSettingsData];
+
+    [self parseDataXML];
+    [self loadSettings];
     
     _locationManager = [LocationManager sharedLocationManager];
     [_locationManager requestLocationStatus];
-
     return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    _sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
 }
 
 @end

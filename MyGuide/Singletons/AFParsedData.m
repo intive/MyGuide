@@ -8,7 +8,9 @@
 
 #import "AFParsedData.h"
 
-@implementation AFParsedData
+@implementation AFParsedData{
+    Settings *_sharedSettings;
+}
 
 + (id)sharedParsedData
 {
@@ -25,17 +27,23 @@
     if(!self) {
         self = [super init];
         _waysArray      = [[NSArray alloc] init];
-        _animalsArray   = [[NSArray alloc] init];
+        _animalsPL = [[NSArray alloc] init];
+        _animalsEN = [[NSArray alloc] init];
         _junctionsArray = [[NSArray alloc] init];
     }
     return self;
 }
 
-- (void)setAnimalsArray:(NSArray *)animalsArray
+- (NSArray *)localizeAnimalsArray
 {
-    _animalsArray = animalsArray;
+    _sharedSettings = [Settings sharedSettingsData];
+    if([_sharedSettings.currentLanguageCode isEqualToString:@"PL"]){
+        return _animalsPL;
+    }
+    else {
+        return _animalsEN;
+    }
 }
-
 - (void)setWaysArray:(NSArray *)waysArray
 {
     _waysArray = waysArray;

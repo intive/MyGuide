@@ -39,5 +39,10 @@
 {
     _longitude = longitude;
 }
+- (NSInteger)distanceFromLocation:(CLLocation *)location
+{
+    CLLocation *nodeLocation  = [[CLLocation alloc] initWithLatitude:[_latitude doubleValue] longitude:[_longitude doubleValue]];
+    return [location distanceFromLocation:nodeLocation];
+}
 
 @end
