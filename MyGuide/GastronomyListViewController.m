@@ -8,10 +8,13 @@
 
 #import "GastronomyListViewController.h"
 #import "SWRevealViewController.h"
+#import "GastronomyDetailsViewController.h"
 
 #define NUMBER_OF_DUMMY_CELLS 10
 
 @interface GastronomyListViewController ()
+
+@property (strong, nonatomic) GastronomyDetailsViewController *gastronomyDetailsViewController;
 
 @end
 
@@ -26,6 +29,7 @@
 {
     [super viewDidLoad];
     [self initMenuBar];
+    [self prepareDetailsViewController];
     
     [self setTitle: NSLocalizedString(@"titleControllerGastronomy", nil)];
 }
@@ -34,6 +38,12 @@
 {
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
+}
+
+- (void) prepareDetailsViewController
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    _gastronomyDetailsViewController = (GastronomyDetailsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"gastronomyDetails"];
 }
 
 - (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section
@@ -53,6 +63,12 @@
     
     cell.textLabel.text = [NSString stringWithFormat: NSLocalizedString(@"cellLabelRestaurant", nil), indexPath.row];
     return cell;
+}
+
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    [_gastronomyDetailsViewController setRestaurantID: indexPath.row];
+    [self.navigationController pushViewController: _gastronomyDetailsViewController animated:YES];
 }
 
 @end
