@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AnimalDescriptionTabs extends Fragment {
+public class AnimalDescriptionTab extends Fragment {
 
 	private View mView;
 	private TextView mDescription;
@@ -18,18 +18,18 @@ public class AnimalDescriptionTabs extends Fragment {
 	private int mTextID;
 	private int mImageID;
 
-	public static AnimalDescriptionTabs newInstance() {
-		AnimalDescriptionTabs mTabs = new AnimalDescriptionTabs();
+	public static AnimalDescriptionTab newInstance() {
+		AnimalDescriptionTab mTabs = new AnimalDescriptionTab();
 		return mTabs;
 	}
 
-	public static AnimalDescriptionTabs newInstance(int image, int text) {
-		AnimalDescriptionTabs mTabs = new AnimalDescriptionTabs();
+	public static AnimalDescriptionTab newInstance(int image, int text) {
+		AnimalDescriptionTab mTabs = new AnimalDescriptionTab();
 
 		Bundle bundle = new Bundle();
 		bundle.putInt(BundleConstants.TAB_TEXT_ID, text);
 		bundle.putInt(BundleConstants.TAB_IMAGE_ID, image);
-		mTabs = new AnimalDescriptionTabs();
+		mTabs = new AnimalDescriptionTab();
 		mTabs.setArguments(bundle);
 
 		return mTabs;

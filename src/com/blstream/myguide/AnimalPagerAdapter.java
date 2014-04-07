@@ -1,3 +1,4 @@
+
 package com.blstream.myguide;
 
 import android.support.v4.app.Fragment;
@@ -10,8 +11,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  */
 public class AnimalPagerAdapter extends FragmentStatePagerAdapter {
 
-	private static AnimalDescriptionTabs mTabs;
-
 	public AnimalPagerAdapter(FragmentManager fm) {
 		super(fm);
 	}
@@ -19,17 +18,14 @@ public class AnimalPagerAdapter extends FragmentStatePagerAdapter {
 	@Override
 	public Fragment getItem(int i) {
 		switch (i) {
-		case 0:
-			mTabs = AnimalDescriptionTabs.newInstance(
-					R.drawable.plaeholder_adult, R.string.text);
-			return mTabs;
-		case 1:
-			mTabs = AnimalDescriptionTabs.newInstance(
-					R.drawable.placeholder_child, R.string.text);
-			return mTabs;
-		case 2:
-			mTabs = AnimalDescriptionTabs.newInstance();
-			return mTabs;
+			case 0:
+				return AnimalDescriptionTab
+						.newInstance(R.drawable.placeholder_adult, R.string.text);
+			case 1:
+				return AnimalDescriptionTab
+						.newInstance(R.drawable.placeholder_child, R.string.text);
+			case 2:
+				return AnimalDescriptionTab.newInstance();
 		}
 		return null;
 	}
