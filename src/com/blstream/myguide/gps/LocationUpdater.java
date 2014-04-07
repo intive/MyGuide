@@ -1,4 +1,3 @@
-
 package com.blstream.myguide.gps;
 
 import java.util.ArrayList;
@@ -36,11 +35,11 @@ public class LocationUpdater {
 	// List of listeners that bind to LocationUpdater
 	private ArrayList<LocationUser> mLocationUsers;
 	// True, when at least one listener is bind to LocationUpdater
-	private boolean mRrequestingForUpdates;
+	private boolean mRequestingForUpdates;
 	private boolean mGpsPopupWasShown;
 
 	private LocationUpdater() {
-		mRrequestingForUpdates = false;
+		mRequestingForUpdates = false;
 		mGpsPopupWasShown = false;
 		mLocationUsers = new ArrayList<LocationUser>();
 		mLocationClient = new LocationClient(mAppContext, mConnectionCallbacks,
@@ -97,7 +96,7 @@ public class LocationUpdater {
 	 */
 	public void clear() {
 		mGpsPopupWasShown = false;
-		mRrequestingForUpdates = false;
+		mRequestingForUpdates = false;
 		mLocationRequest = null;
 		mLocationUsers.clear();
 	}
@@ -110,7 +109,7 @@ public class LocationUpdater {
 	 */
 	public void startUpdating(LocationUser user) {
 		mLocationUsers.add(user);
-		if (!mRrequestingForUpdates) {
+		if (!mRequestingForUpdates) {
 			requestUpdates();
 		}
 	}
@@ -126,7 +125,7 @@ public class LocationUpdater {
 		mLocationUsers.remove(user);
 		if (mLocationUsers.isEmpty()) {
 			mLocationClient.removeLocationUpdates(mLocationListener);
-			mRrequestingForUpdates = false;
+			mRequestingForUpdates = false;
 		}
 	}
 
@@ -145,14 +144,14 @@ public class LocationUpdater {
 	}
 
 	private void requestUpdates() {
-		if (!mRrequestingForUpdates) {
+		if (!mRequestingForUpdates) {
 			if (mLocationRequest == null) {
 				setLocationRequestFromSettings();
 			}
 			if (mLocationClient.isConnected() && isGpsEnable()) {
 				if (isGpsEnable()) {
 					mLocationClient.requestLocationUpdates(mLocationRequest, mLocationListener);
-					mRrequestingForUpdates = true;
+					mRequestingForUpdates = true;
 					mGpsPopupWasShown = false;
 					for (LocationUser e : mLocationUsers) {
 						e.onGpsAvailable();
@@ -195,7 +194,7 @@ public class LocationUpdater {
 		@Override
 		public void onDisconnected() {
 			notifyBinderAboutConnectionProblem();
-			mRrequestingForUpdates = false;
+			mRequestingForUpdates = false;
 			Log.d(LOG_TAG, "Disconnect from location services.");
 		}
 	};
@@ -204,7 +203,7 @@ public class LocationUpdater {
 		@Override
 		public void onConnectionFailed(ConnectionResult arg0) {
 			notifyBinderAboutConnectionProblem();
-			mRrequestingForUpdates = false;
+			mRequestingForUpdates = false;
 			Log.d(LOG_TAG, "An error occure while connecting to location service.");
 		}
 	};
