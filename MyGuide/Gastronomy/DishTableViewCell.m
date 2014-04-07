@@ -10,13 +10,4 @@
 
 @implementation DishTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    return [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-}
-
-- (void) awakeFromNib
-{
-}
-
 @end

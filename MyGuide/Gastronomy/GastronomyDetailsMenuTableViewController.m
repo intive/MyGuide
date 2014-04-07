@@ -14,12 +14,7 @@
 
 @implementation GastronomyDetailsMenuTableViewController
 
-- (id) initWithStyle: (UITableViewStyle)style
-{
-    return [super initWithStyle: style];
-}
-
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     [super viewDidLoad];
 }
