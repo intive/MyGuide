@@ -12,6 +12,7 @@
 		0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFF18DE1520001BCB28 /* menu@2x.png */; };
 		0533DF0918DE333A001BCB28 /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DF0818DE333A001BCB28 /* SlideMenuViewController.m */; };
 		0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DF0B18DE365D001BCB28 /* HomeViewController.m */; };
+		05406E3C18F2C6FF001656FC /* DishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E3B18F2C6FF001656FC /* DishTableViewCell.m */; };
 		055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */; };
 		05C925D318DDAFAD00C2F746 /* GPS.md in Resources */ = {isa = PBXBuildFile; fileRef = 05C925D218DDAFAD00C2F746 /* GPS.md */; };
 		05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C9265818DDDF1800C2F746 /* LocationManager.m */; };
@@ -73,6 +74,8 @@
 		0533DF0818DE333A001BCB28 /* SlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideMenuViewController.m; sourceTree = "<group>"; };
 		0533DF0A18DE365D001BCB28 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		0533DF0B18DE365D001BCB28 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		05406E3A18F2C6FF001656FC /* DishTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DishTableViewCell.h; sourceTree = "<group>"; };
+		05406E3B18F2C6FF001656FC /* DishTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishTableViewCell.m; sourceTree = "<group>"; };
 		055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalsListViewController.h; sourceTree = "<group>"; };
 		055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalsListViewController.m; sourceTree = "<group>"; };
 		057F9EC618E7760A001DE63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 				05E1654C18F1B51100DA3BD7 /* GastronomyDetailsViewController.m */,
 				05E1654D18F1B51100DA3BD7 /* GastronomyListViewController.h */,
 				05E1654E18F1B51100DA3BD7 /* GastronomyListViewController.m */,
+				05406E3A18F2C6FF001656FC /* DishTableViewCell.h */,
+				05406E3B18F2C6FF001656FC /* DishTableViewCell.m */,
 			);
 			path = Gastronomy;
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 				05CD409918DF6FD60065C04F /* MapViewController.m in Sources */,
 				84DDCB3418BA917800A2F720 /* AFWay.m in Sources */,
 				05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */,
+				05406E3C18F2C6FF001656FC /* DishTableViewCell.m in Sources */,
 				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
 				05E1654F18F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m in Sources */,
 				05E1655118F1B51100DA3BD7 /* GastronomyDetailsViewController.m in Sources */,
