@@ -19,12 +19,13 @@ public class AnimalPagerAdapter extends FragmentStatePagerAdapter {
 	public Fragment getItem(int i) {
 		switch (i) {
 			case 0:
-				return new Sample();
+				return AnimalDescriptionTab
+						.newInstance(R.drawable.placeholder_adult, R.string.text);
 			case 1:
-				return new Sample();
+				return AnimalDescriptionTab
+						.newInstance(R.drawable.placeholder_child, R.string.text);
 			case 2:
-				// TODO Map activity
-				return new Sample();
+				return AnimalDescriptionTab.newInstance();
 		}
 		return null;
 	}
