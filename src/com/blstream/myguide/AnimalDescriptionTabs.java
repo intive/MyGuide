@@ -1,4 +1,3 @@
-
 package com.blstream.myguide;
 
 import android.os.Bundle;
@@ -16,35 +15,46 @@ public class AnimalDescriptionTabs extends Fragment {
 	private TextView mDescription;
 	private ImageView mImage;
 	private String mText;
-	private int mTabID;
+	private int mTextID;
+	private int mImageID;
+
+	public static AnimalDescriptionTabs newInstance() {
+		AnimalDescriptionTabs mTabs = new AnimalDescriptionTabs();
+		return mTabs;
+	}
+
+	public static AnimalDescriptionTabs newInstance(int image, int text) {
+		AnimalDescriptionTabs mTabs = new AnimalDescriptionTabs();
+
+		Bundle bundle = new Bundle();
+		bundle.putInt(BundleConstants.TAB_TEXT_ID, text);
+		bundle.putInt(BundleConstants.TAB_IMAGE_ID, image);
+		mTabs = new AnimalDescriptionTabs();
+		mTabs.setArguments(bundle);
+
+		return mTabs;
+	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 
 		Bundle bundle = getArguments();
-		mTabID = bundle.getInt(BundleConstants.TAB_ID);
 		mView = View.inflate(getActivity(), R.layout.tabs, null);
 
-		mDescription = (TextView) mView.findViewById(R.id.textDescription);
-		mDescription.setMovementMethod(new ScrollingMovementMethod());
-		mImage = (ImageView) mView.findViewById(R.id.animal_image);
+		if (bundle != null) {
+			mTextID = bundle.getInt(BundleConstants.TAB_TEXT_ID);
+			mImageID = bundle.getInt(BundleConstants.TAB_IMAGE_ID);
 
-		switch (mTabID) {
-			case 0:
-				mText = getResources().getString(R.string.text);
-				mDescription.setText(mText);
-				mImage.setImageResource(R.drawable.plaeholder_adult);
-				return mView;
-			case 1:
-				mText = getResources().getString(R.string.text);
-				mDescription.setText(mText);
-				mImage.setImageResource(R.drawable.placeholder_child);
-				return mView;
-			case 2:
-				// TODO Map activity
-				return mView;
+			mDescription = (TextView) mView.findViewById(R.id.textDescription);
+			mDescription.setMovementMethod(new ScrollingMovementMethod());
+			mImage = (ImageView) mView.findViewById(R.id.animal_image);
+
+			mImage.setImageResource(mImageID);
+			mText = getResources().getString(mTextID);
+			mDescription.setText(mText);
 		}
 
-		return null;
+		return mView;
 	}
 }

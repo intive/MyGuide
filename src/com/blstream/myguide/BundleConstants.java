@@ -1,4 +1,3 @@
-
 package com.blstream.myguide;
 
 /**
@@ -8,7 +7,8 @@ public class BundleConstants {
 
 	// TAGS
 	public static final String SELECTED_ANIMAL = "selected_animal";
-	public static final String TAB_ID = "tabID";
+	public static final String TAB_IMAGE_ID = "image";
+	public static final String TAB_TEXT_ID = "text";
 
 	// FRAGMENT TAGS
 	public static final String FRAGMENT_ANIMAL_DETAIL = "fragment_animal_details";

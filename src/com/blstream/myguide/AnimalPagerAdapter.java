@@ -1,7 +1,5 @@
-
 package com.blstream.myguide;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -12,8 +10,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  */
 public class AnimalPagerAdapter extends FragmentStatePagerAdapter {
 
-	private Bundle mBundle;
-	private AnimalDescriptionTabs mTabs;
+	private static AnimalDescriptionTabs mTabs;
 
 	public AnimalPagerAdapter(FragmentManager fm) {
 		super(fm);
@@ -22,24 +19,17 @@ public class AnimalPagerAdapter extends FragmentStatePagerAdapter {
 	@Override
 	public Fragment getItem(int i) {
 		switch (i) {
-			case 0:
-				mBundle = new Bundle();
-				mBundle.putInt(BundleConstants.TAB_ID, i);
-				mTabs = new AnimalDescriptionTabs();
-				mTabs.setArguments(mBundle);
-				return mTabs;
-			case 1:
-				mBundle = new Bundle();
-				mBundle.putInt(BundleConstants.TAB_ID, i);
-				mTabs = new AnimalDescriptionTabs();
-				mTabs.setArguments(mBundle);
-				return mTabs;
-			case 2:
-				mBundle = new Bundle();
-				mBundle.putInt(BundleConstants.TAB_ID, i);
-				mTabs = new AnimalDescriptionTabs();
-				mTabs.setArguments(mBundle);
-				return mTabs;
+		case 0:
+			mTabs = AnimalDescriptionTabs.newInstance(
+					R.drawable.plaeholder_adult, R.string.text);
+			return mTabs;
+		case 1:
+			mTabs = AnimalDescriptionTabs.newInstance(
+					R.drawable.placeholder_child, R.string.text);
+			return mTabs;
+		case 2:
+			mTabs = AnimalDescriptionTabs.newInstance();
+			return mTabs;
 		}
 		return null;
 	}
