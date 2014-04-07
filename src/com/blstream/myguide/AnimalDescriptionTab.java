@@ -1,3 +1,4 @@
+
 package com.blstream.myguide;
 
 import android.os.Bundle;
@@ -19,8 +20,7 @@ public class AnimalDescriptionTab extends Fragment {
 	private int mImageID;
 
 	public static AnimalDescriptionTab newInstance() {
-		AnimalDescriptionTab mTabs = new AnimalDescriptionTab();
-		return mTabs;
+		return new AnimalDescriptionTab();
 	}
 
 	public static AnimalDescriptionTab newInstance(int image, int text) {
