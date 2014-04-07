@@ -68,7 +68,8 @@ public class SightseeingFragment extends Fragment implements
 		// check if location should be hidden
 		boolean visible = !((MyGuideApp) getActivity().getApplication())
 				.getSettings()
-				.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN);
+				.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN)
+				&& LocationUpdater.getInstance().isGpsEnable();
 		Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
 		mMap.setMyLocationEnabled(visible);
 	}
@@ -103,6 +104,7 @@ public class SightseeingFragment extends Fragment implements
 	@Override
 	public void onStart() {
 		super.onStart();
+		configureAndDisplayUserPosition();
 		if (mLocationLogVisible) {
 			LocationUpdater.getInstance().startUpdating(mLocationLogger);
 		}
@@ -187,8 +189,6 @@ public class SightseeingFragment extends Fragment implements
 				transaction.commit();
 			}
 		});
-
-		this.configureAndDisplayUserPosition();
 	}
 
 	/**

@@ -1,10 +1,10 @@
-
 package com.blstream.myguide.gps;
 
 import java.util.ArrayList;
 
 import android.content.Context;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -35,10 +35,12 @@ public class LocationUpdater {
 	// List of listeners that bind to LocationUpdater
 	private ArrayList<LocationUser> mLocationUsers;
 	// True, when at least one listener is bind to LocationUpdater
-	private boolean mRrequestingForUpdates;
+	private boolean mRequestingForUpdates;
+	private boolean mGpsPopupWasShown;
 
 	private LocationUpdater() {
-		mRrequestingForUpdates = false;
+		mRequestingForUpdates = false;
+		mGpsPopupWasShown = false;
 		mLocationUsers = new ArrayList<LocationUser>();
 		mLocationClient = new LocationClient(mAppContext, mConnectionCallbacks,
 				mOnConnectionFailedListener);
@@ -50,6 +52,20 @@ public class LocationUpdater {
 			mLocationUpdater = new LocationUpdater();
 		}
 		return mLocationUpdater;
+	}
+
+	public boolean isGpsEnable() {
+		return ((LocationManager) mAppContext
+				.getSystemService(Context.LOCATION_SERVICE))
+				.isProviderEnabled(LocationManager.GPS_PROVIDER);
+	}
+
+	public void markGpsEnableDialogAsShown() {
+		mGpsPopupWasShown = true;
+	}
+
+	public boolean isEnableGpsDialogNeeded() {
+		return (!isGpsEnable() && !mGpsPopupWasShown);
 	}
 
 	/**
@@ -76,6 +92,16 @@ public class LocationUpdater {
 	}
 
 	/**
+	 * Restart LocationUpdater state.
+	 */
+	public void clear() {
+		mGpsPopupWasShown = false;
+		mRequestingForUpdates = false;
+		mLocationRequest = null;
+		mLocationUsers.clear();
+	}
+
+	/**
 	 * Bind to {@link LocationUpdater} for location update.
 	 * 
 	 * @param user callback interface which should be bind to
@@ -83,7 +109,7 @@ public class LocationUpdater {
 	 */
 	public void startUpdating(LocationUser user) {
 		mLocationUsers.add(user);
-		if (!mRrequestingForUpdates) {
+		if (!mRequestingForUpdates) {
 			requestUpdates();
 		}
 	}
@@ -99,7 +125,7 @@ public class LocationUpdater {
 		mLocationUsers.remove(user);
 		if (mLocationUsers.isEmpty()) {
 			mLocationClient.removeLocationUpdates(mLocationListener);
-			mRrequestingForUpdates = false;
+			mRequestingForUpdates = false;
 		}
 	}
 
@@ -118,16 +144,24 @@ public class LocationUpdater {
 	}
 
 	private void requestUpdates() {
-		if (!mRrequestingForUpdates && !mLocationUsers.isEmpty()) {
+		if (!mRequestingForUpdates) {
 			if (mLocationRequest == null) {
 				setLocationRequestFromSettings();
 			}
-			if (mLocationClient.isConnected()) {
-				mLocationClient.requestLocationUpdates(mLocationRequest, mLocationListener);
-				mRrequestingForUpdates = true;
+			if (mLocationClient.isConnected() && isGpsEnable()) {
+				if (isGpsEnable()) {
+					mLocationClient.requestLocationUpdates(mLocationRequest, mLocationListener);
+					mRequestingForUpdates = true;
+					mGpsPopupWasShown = false;
+					for (LocationUser e : mLocationUsers) {
+						e.onGpsAvailable();
+					}
+				} else {
+					notifyBinderAboutConnectionProblem();
+				}
 			} else {
 				notifyBinderAboutConnectionProblem();
-				if (!mLocationClient.isConnecting()) {
+				if (!mLocationClient.isConnecting() && !mLocationClient.isConnected()) {
 					mLocationClient.connect();
 				}
 			}
@@ -154,16 +188,13 @@ public class LocationUpdater {
 		@Override
 		public void onConnected(Bundle arg0) {
 			requestUpdates();
-			for (LocationUser e : mLocationUsers) {
-				e.onGpsAvailable();
-			}
 			Log.d(LOG_TAG, "Connected to location services.");
 		}
 
 		@Override
 		public void onDisconnected() {
 			notifyBinderAboutConnectionProblem();
-			mRrequestingForUpdates = false;
+			mRequestingForUpdates = false;
 			Log.d(LOG_TAG, "Disconnect from location services.");
 		}
 	};
@@ -172,7 +203,7 @@ public class LocationUpdater {
 		@Override
 		public void onConnectionFailed(ConnectionResult arg0) {
 			notifyBinderAboutConnectionProblem();
-			mRrequestingForUpdates = false;
+			mRequestingForUpdates = false;
 			Log.d(LOG_TAG, "An error occure while connecting to location service.");
 		}
 	};

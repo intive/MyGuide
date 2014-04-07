@@ -1,8 +1,13 @@
 
 package com.blstream.myguide;
 
+import com.blstream.myguide.dialog.EnableGpsDialogFragment;
+import com.blstream.myguide.gps.LocationUpdater;
+import com.blstream.myguide.gps.LocationUser;
+
 import android.app.ActionBar;
 import android.content.res.Configuration;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -60,6 +65,12 @@ public class StartActivity extends FragmentActivity {
 		inflater.inflate(R.menu.menu_main, menu);
 
 		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		showEnableGpsDialogIfNeeded();
 	}
 
 	/** Sets up NavigationDrawer. */
@@ -133,6 +144,13 @@ public class StartActivity extends FragmentActivity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	private void showEnableGpsDialogIfNeeded() {
+		if (LocationUpdater.getInstance().isEnableGpsDialogNeeded()) {
+			new EnableGpsDialogFragment().show(getSupportFragmentManager(),
+					EnableGpsDialogFragment.class.getSimpleName());
+		}
 	}
 
 }
