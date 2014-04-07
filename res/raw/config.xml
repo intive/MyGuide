@@ -38,6 +38,9 @@
 	<!-- Minimal interval between location updates(in ms) - protects from too frequent updates -->
 	<min_gps_interval>500</min_gps_interval>
 
+	<!-- Log and toast gps position on location update -->
+	<gps_logging>false</gps_logging>
+
 	<!-- (logical) hide user's position on map?
 		lack of this key will, by default, DISPLAY user's location
 	-->
