@@ -9,6 +9,18 @@
 #import "GastronomyParser.h"
 #import "XMLFetcher.h"
 
+static NSString *kXmlGastronomy = @"gastronomy";
+static NSString *kXmlRestaurant = @"restaurant";
+static NSString *kXmlLatitude   = @"lat";
+static NSString *kXmlLongitude  = @"lon";
+static NSString *kXmlName       = @"name";
+static NSString *kXmlPL         = @"pl";
+static NSString *kXmlEN         = @"en";
+static NSString *kXmlOpen       = @"open";
+static NSString *kXmlDishes     = @"dishes";
+static NSString *kXmlDish       = @"dish";
+static NSString *kXmlPrice      = @"price";
+
 @implementation GastronomyParser {
     NSMutableString *_cacheElement;
 }

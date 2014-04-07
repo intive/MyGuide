@@ -14,6 +14,9 @@
 		0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DF0B18DE365D001BCB28 /* HomeViewController.m */; };
 		05406E3C18F2C6FF001656FC /* DishTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E3B18F2C6FF001656FC /* DishTableViewCell.m */; };
 		05406E3F18F2EE1A001656FC /* GastronomyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E3E18F2EE1A001656FC /* GastronomyParser.m */; };
+		05406E4118F313A7001656FC /* gastronomy.xml in Resources */ = {isa = PBXBuildFile; fileRef = 05406E4018F313A7001656FC /* gastronomy.xml */; };
+		05406E4318F313B6001656FC /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 05406E4218F313B6001656FC /* data.xml */; };
+		05406E4618F31661001656FC /* GastronomyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E4518F31661001656FC /* GastronomyData.m */; };
 		055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */; };
 		05C925D318DDAFAD00C2F746 /* GPS.md in Resources */ = {isa = PBXBuildFile; fileRef = 05C925D218DDAFAD00C2F746 /* GPS.md */; };
 		05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C9265818DDDF1800C2F746 /* LocationManager.m */; };
@@ -40,7 +43,6 @@
 		3DE69DA918C7B83400B54509 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF611189637C000233B64 /* Localizable.strings */; };
 		8421D32218BE3B5100B54DC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8421D32118BE3B5100B54DC3 /* Images.xcassets */; };
 		8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426164118DF9BB700927285 /* AnimalDetailsViewController.m */; };
-		844D5F1118B41F470018C970 /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 844D5F1018B41F470018C970 /* data.xml */; };
 		8460875718BDFA7F00620219 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875618BDFA7F00620219 /* SettingsParser.m */; };
 		8460875A18BDFA8A00620219 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875918BDFA8A00620219 /* Settings.m */; };
 		84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
@@ -79,6 +81,10 @@
 		05406E3B18F2C6FF001656FC /* DishTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DishTableViewCell.m; sourceTree = "<group>"; };
 		05406E3D18F2EE1A001656FC /* GastronomyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyParser.h; sourceTree = "<group>"; };
 		05406E3E18F2EE1A001656FC /* GastronomyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastronomyParser.m; sourceTree = "<group>"; };
+		05406E4018F313A7001656FC /* gastronomy.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = gastronomy.xml; path = "XML files/gastronomy.xml"; sourceTree = "<group>"; };
+		05406E4218F313B6001656FC /* data.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = data.xml; path = "XML files/data.xml"; sourceTree = "<group>"; };
+		05406E4418F31661001656FC /* GastronomyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyData.h; sourceTree = "<group>"; };
+		05406E4518F31661001656FC /* GastronomyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastronomyData.m; sourceTree = "<group>"; };
 		055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalsListViewController.h; sourceTree = "<group>"; };
 		055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalsListViewController.m; sourceTree = "<group>"; };
 		057F9EC618E7760A001DE63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,7 +134,6 @@
 		8421D32118BE3B5100B54DC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8426164018DF9BB700927285 /* AnimalDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalDetailsViewController.h; sourceTree = "<group>"; };
 		8426164118DF9BB700927285 /* AnimalDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalDetailsViewController.m; sourceTree = "<group>"; };
-		844D5F1018B41F470018C970 /* data.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = data.xml; path = "XML files/data.xml"; sourceTree = "<group>"; };
 		8460875518BDFA7F00620219 /* SettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsParser.h; sourceTree = "<group>"; };
 		8460875618BDFA7F00620219 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
 		8460875818BDFA8A00620219 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
@@ -392,6 +397,8 @@
 				8460875918BDFA8A00620219 /* Settings.m */,
 				84DDCB4018BA91A100A2F720 /* AFParsedData.h */,
 				84DDCB4118BA91A100A2F720 /* AFParsedData.m */,
+				05406E4418F31661001656FC /* GastronomyData.h */,
+				05406E4518F31661001656FC /* GastronomyData.m */,
 			);
 			name = Storage;
 			path = Singletons;
@@ -402,8 +409,9 @@
 			children = (
 				84DD035818BA8C7A00DE7178 /* config.xml */,
 				84DD035918BA8C7A00DE7178 /* XMLFetcher.h */,
+				05406E4018F313A7001656FC /* gastronomy.xml */,
 				84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */,
-				844D5F1018B41F470018C970 /* data.xml */,
+				05406E4218F313B6001656FC /* data.xml */,
 			);
 			name = "XML files";
 			sourceTree = "<group>";
@@ -489,13 +497,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844D5F1118B41F470018C970 /* data.xml in Resources */,
 				05C925D318DDAFAD00C2F746 /* GPS.md in Resources */,
 				3DE69DA918C7B83400B54509 /* Localizable.strings in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				0533DF0118DE1520001BCB28 /* menu.png in Resources */,
+				05406E4318F313B6001656FC /* data.xml in Resources */,
 				0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */,
 				3DDE538818C705B20062D217 /* Main.storyboard in Resources */,
+				05406E4118F313A7001656FC /* gastronomy.xml in Resources */,
 				8421D32218BE3B5100B54DC3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +556,7 @@
 				05E1655118F1B51100DA3BD7 /* GastronomyDetailsViewController.m in Sources */,
 				0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */,
 				05E1655218F1B51100DA3BD7 /* GastronomyListViewController.m in Sources */,
+				05406E4618F31661001656FC /* GastronomyData.m in Sources */,
 				84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */,
 				0533DF0918DE333A001BCB28 /* SlideMenuViewController.m in Sources */,
 				84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */,
