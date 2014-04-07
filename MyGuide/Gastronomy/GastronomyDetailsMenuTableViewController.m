@@ -10,9 +10,6 @@
 #import "DishTableViewCell.h"
 
 #define NUMBER_OF_DUMMY_CELLS 10
-#define TAG_IMAGE_VIEW  1
-#define TAG_LABEL_NAME  2
-#define TAG_LABEL_PRICE 3
 
 @interface GastronomyDetailsMenuTableViewController ()
 
