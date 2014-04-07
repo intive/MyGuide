@@ -20,6 +20,7 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.allowsSelection = NO;
 }
 
 - (NSInteger)tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section
@@ -38,7 +39,7 @@
     }
     
     cell.labelName.text  = @"Name";
-    cell.labelPrice.text = @"Price";
+    cell.labelPrice.text = [NSString stringWithFormat: @"%.2f", (double)(arc4random() % 50)];
     cell.imageLogo.image = [UIImage imageNamed: @"placeholder_adult"];
     
     return cell;
