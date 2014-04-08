@@ -9,13 +9,14 @@
 #import "GastronomyDetailsViewController.h"
 #import "GastronomyDetailsMenuTableViewController.h"
 #import "GastronomyDetailsInfoViewController.h"
+#import "DetailsMapViewController.h"
 
 @interface GastronomyDetailsViewController ()
 
 @property (strong, nonatomic) UIStoryboard *mainStoryboard;
 
 @property (strong, nonatomic) UIViewController *currentViewController;
-@property (strong, nonatomic) UIViewController *detailsMapController;
+@property (strong, nonatomic) DetailsMapViewController                  *detailsMapController;
 @property (strong, nonatomic) GastronomyDetailsInfoViewController       *gastronomyInfo;
 @property (strong, nonatomic) GastronomyDetailsMenuTableViewController  *gastronomyMenu;
 
@@ -52,7 +53,9 @@
 
 - (void) prepareMapController
 {
-    _detailsMapController = [self getControllerById: @"detailsMap"];
+    _detailsMapController = (DetailsMapViewController *)[self getControllerById: @"detailsMap"];
+    _detailsMapController.latitude  = _restaurant.latitude;
+    _detailsMapController.longitude = _restaurant.longitude;
 }
 
 - (void) prepareMenuController

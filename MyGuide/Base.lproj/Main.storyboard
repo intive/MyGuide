@@ -386,10 +386,10 @@
             </objects>
             <point key="canvasLocation" x="-682" y="-209"/>
         </scene>
-        <!--View Controller-->
+        <!--Details Map View Controller-->
         <scene sceneID="j3C-cL-4sc">
             <objects>
-                <viewController storyboardIdentifier="detailsMap" id="92R-66-iBc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailsMap" id="92R-66-iBc" customClass="DetailsMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Ql-of-wW1"/>
                         <viewControllerLayoutGuide type="bottom" id="6g8-2p-luf"/>
@@ -411,6 +411,9 @@
                             <constraint firstAttribute="centerY" secondItem="zns-nO-zs7" secondAttribute="centerY" id="k83-gp-Ms7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="zns-nO-zs7" id="vAa-Iq-lLm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8m8-C7-cUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
