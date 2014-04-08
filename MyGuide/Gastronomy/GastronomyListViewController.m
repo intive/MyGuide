@@ -9,12 +9,15 @@
 #import "GastronomyListViewController.h"
 #import "SWRevealViewController.h"
 #import "GastronomyDetailsViewController.h"
+#import "GastronomyData.h"
+#import "Restaurant.h"
 
 #define NUMBER_OF_DUMMY_CELLS 10
 
 @interface GastronomyListViewController ()
 
 @property (strong, nonatomic) GastronomyDetailsViewController *gastronomyDetailsViewController;
+@property (nonatomic) NSArray *restaurants;
 
 @end
 
@@ -25,6 +28,7 @@
     [super viewDidLoad];
     [self initMenuBar];
     [self prepareDetailsViewController];
+    [self initRestaurants];
     
     [self setTitle: NSLocalizedString(@"titleControllerGastronomy", nil)];
 }
@@ -41,9 +45,15 @@
     _gastronomyDetailsViewController = (GastronomyDetailsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"gastronomyDetails"];
 }
 
+- (void) initRestaurants
+{
+    GastronomyData *sharedParsedData = [GastronomyData sharedParsedData];
+    _restaurants = [sharedParsedData.restaurants copy];
+}
+
 - (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section
 {
-    return NUMBER_OF_DUMMY_CELLS;
+    return _restaurants.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -56,7 +66,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat: NSLocalizedString(@"cellLabelRestaurant", nil), indexPath.row];
+    cell.textLabel.text = [(Restaurant *)(_restaurants[indexPath.row]) getName];
     return cell;
 }
 

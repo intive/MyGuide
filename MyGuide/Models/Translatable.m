@@ -8,6 +8,12 @@
 
 #import "Translatable.h"
 
+@interface Translatable ()
+
+@property (nonatomic) NSMutableDictionary *name;
+
+@end
+
 @implementation Translatable
 
 - (id) init {

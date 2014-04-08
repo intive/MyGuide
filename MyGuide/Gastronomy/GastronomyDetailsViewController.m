@@ -9,6 +9,8 @@
 #import "GastronomyDetailsViewController.h"
 #import "GastronomyDetailsMenuTableViewController.h"
 #import "GastronomyDetailsInfoViewController.h"
+#import "GastronomyData.h"
+#import "Restaurant.h"
 
 @interface GastronomyDetailsViewController ()
 
@@ -20,6 +22,7 @@
 @property (strong, nonatomic) UIViewController *currentViewController;
 
 @property (nonatomic) BOOL canSwichView;
+@property (nonatomic) NSArray *restaurants;
 
 @end
 
@@ -28,9 +31,14 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
     _mainStoryboard = [UIStoryboard storyboardWithName: @"Main" bundle: [NSBundle mainBundle]];
-    [self setTitle: [NSString stringWithFormat: NSLocalizedString(@"cellLabelRestaurant", nil), _restaurantID]];
+    [self initRestaurants];
+}
+
+- (void) initRestaurants
+{
+    GastronomyData *sharedParsedData = [GastronomyData sharedParsedData];
+    _restaurants = [sharedParsedData.restaurants copy];
 }
 
 # pragma mark - Initializing controllers
@@ -46,6 +54,7 @@
 
 - (void) viewWillAppear: (BOOL)animated
 {
+    [self setTitle: [(Restaurant *)(_restaurants[_restaurantID]) getName]];
     [self prepareControllers];
     [_segmentedControl setSelectedSegmentIndex: 0];
     [self switchController: _gastronomyInfo withAnimation: NO];
