@@ -16,4 +16,10 @@ public class BundleConstants {
     //FRAGMENT STACK TAG
     public static final String STACK_ANIMAL_DETAIL = "stack_detail";
 
+    //FONT PATH BOLD
+    public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";
+
+    //FONT PATH REGULAR
+    public static final String FONT_PATH_REGULAR = "fonts/Roboto-Regular.ttf";
+
 }

@@ -60,5 +60,7 @@
             android:text="@string/sightseeing" />
         
     </LinearLayout>
+
+
     
 </RelativeLayout>

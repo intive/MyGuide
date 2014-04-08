@@ -3,7 +3,8 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/rlSightseeingActivityContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
         
         <fragment
             android:id="@+id/map"
@@ -15,6 +16,71 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:background="@android:color/transparent"/>
+
+    <RelativeLayout
+        android:id="@+id/rlMarkerDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/llLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:orientation="horizontal"
+            android:background="@color/main"/>
+
+        <ImageView
+            android:layout_below="@+id/llLine"
+            android:id="@+id/imgvAnimalMarker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sam"
+            />
+
+        <TextView
+            android:id="@+id/txtvInfoWindowAnimal"
+            android:layout_toRightOf="@+id/imgvAnimalMarker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animal dasfasafs asfasfa"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:textColor="@color/main"
+            android:layout_toLeftOf="@+id/textView"/>
+
+        <TextView
+            android:layout_below="@+id/txtvInfoWindowAnimal"
+            android:layout_toRightOf="@+id/imgvAnimalMarker"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opis"
+            android:layout_toLeftOf="@+id/textView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="200 m"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/main"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/textView" />
+
+
+
+    </RelativeLayout>
+
 	    
     </RelativeLayout>
 

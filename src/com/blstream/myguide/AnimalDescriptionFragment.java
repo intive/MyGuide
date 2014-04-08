@@ -17,6 +17,7 @@ import com.blstream.myguide.zoolocations.Animal;
 
 /**
  * Created by Piotrek on 23.03.14.
+ *
  */
 public class AnimalDescriptionFragment extends Fragment {
 
@@ -113,6 +114,7 @@ public class AnimalDescriptionFragment extends Fragment {
 		AnimalPagerAdapter mAdapter;
 
 		mViewPager = (ViewPager) view.findViewById(R.id.pager);
+        //w konstruktorze przekazywac
 		mAdapter = new AnimalPagerAdapter(getActivity().getSupportFragmentManager());
 		mViewPager.setAdapter(mAdapter);
 

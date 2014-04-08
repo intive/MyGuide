@@ -2,6 +2,7 @@
 package com.blstream.myguide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.ActionBar;
 import android.content.pm.ApplicationInfo;
@@ -13,6 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
@@ -27,6 +31,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
@@ -41,7 +46,7 @@ public class SightseeingFragment extends Fragment implements
 
 	private static final String LOG_TAG = SightseeingFragment.class
 			.getSimpleName();
-	private static final float DEFAULT_MIN_ZOOM = 14.5f;
+	private static final float DEFAULT_MIN_ZOOM = 19.5f;
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
@@ -62,6 +67,10 @@ public class SightseeingFragment extends Fragment implements
 	private ArrayList<Animal> mAnimalsList;
 
 	private LocationLogger mLocationLogger;
+    private RelativeLayout mRlAnimalDetails;
+    private TextView mTxtvAnimaLName;
+    private Animal animal;
+    private Marker mMarker;
 
 	private void configureAndDisplayUserPosition() {
 		// check if location should be hidden
@@ -94,6 +103,10 @@ public class SightseeingFragment extends Fragment implements
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
+
+        mRlAnimalDetails = (RelativeLayout) mRootView.findViewById(R.id.rlMarkerDetails);
+        mTxtvAnimaLName = (TextView) mRlAnimalDetails.findViewById(R.id.txtvInfoWindowAnimal);
+
 
 		if (isDebugBuild()) {
 			mLocationLogger = new LocationLogger(getActivity(), 3, true);
@@ -173,21 +186,67 @@ public class SightseeingFragment extends Fragment implements
 				R.id.map))
 				.getMap();
 		MapsInitializer.initialize(getActivity());
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-				mStartCenterLat, mStartCenterLon), mMinZoom));
+	//	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+	//			mStartCenterLat, mStartCenterLon), mMinZoom));
+        setUpCamera();
 		mMap.setOnCameraChangeListener(this);
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                if (mMarker != null) {
+                    mMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.giraffeblack));
+                }
+                animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
+                mMarker = marker;
+                marker.setIcon((BitmapDescriptorFactory.fromResource(R.drawable.gir)));
+
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 17));
+
+                TranslateAnimation animation = new TranslateAnimation(0, 0, 300, 0);
+                animation.setDuration(500);
+//                mTxtvHeader.setAnimation(animation1);
+                Animal animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
+
+                mTxtvAnimaLName.setText(animal.getName() + "");
+
+                //mRlAnimalDetails.setVisibility(View.VISIBLE);
+                mRlAnimalDetails.setAnimation(animation);
+                mRlAnimalDetails.setVisibility(View.VISIBLE);
+
+                return false;
+            }
+        });
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                setUpMap();
+                mMarker.setIcon((BitmapDescriptorFactory.fromResource(R.drawable.giraffeblack)));
+                TranslateAnimation animation = new TranslateAnimation(0, 0, 0, 300);
+                animation.setDuration(500);
+
+                //mRlAnimalDetails.setVisibility(View.VISIBLE);
+                mRlAnimalDetails.setAnimation(animation);
+                mRlAnimalDetails.setVisibility(View.GONE);
+
+            }
+        });
+
 
 		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
-				Animal animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
+				animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
 
 				SupportMapFragment f = (SupportMapFragment) getActivity()
 						.getSupportFragmentManager()
 						.findFragmentById(R.id.map);
 				if (f != null) getFragmentManager().beginTransaction().remove(f).commit();
 
-				Fragment newFragment = new AnimalDescriptionFragment(animal);
+                Fragment[] fragments = {new Sample(), new Sample() , new Sample()};
+               // Fragment newFragment = new FragmentTabManager(R.array.animal_desc_tabs_name,fragments, animal);
+                Fragment newFragment = new GastronomyListFragment();
 				FragmentTransaction transaction = getActivity().getSupportFragmentManager()
 						.beginTransaction();
 				transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
@@ -206,6 +265,7 @@ public class SightseeingFragment extends Fragment implements
 	 * accordingly.
 	 */
 	private void setUpWays() {
+
 		MyGuideApp mga = (MyGuideApp) (getActivity().getApplication());
 		ArrayList<Way> ways = mga.getZooData().getWays();
 		mZooPaths = new ArrayList<Polyline>();
@@ -214,15 +274,17 @@ public class SightseeingFragment extends Fragment implements
 			for (int i = 0; i < numOfNodes - 1; i++) {
 				Node current = a.getNodes().get(i);
 				Node next = a.getNodes().get(i + 1);
+
 				mZooPaths.add(mMap.addPolyline(new PolylineOptions()
 						.add(new LatLng(current.getLatitude(), current
 								.getLongitude()),
 								new LatLng(next.getLatitude(), next
 										.getLongitude())
-						).width(2)
-						.color(Color.BLACK)));
+						).width(8)
+						.color(Color.WHITE)));
 			}
 		}
+
 	}
 
 	/**
@@ -258,10 +320,12 @@ public class SightseeingFragment extends Fragment implements
 	 */
 
 	private void displayAllJunctions(boolean display) {
-		for (Circle junction : mZooJunctions) {
-			junction.setVisible(display);
-		}
+//		for (Circle junction : mZooJunctions) {
+//			junction.setVisible(display);
+//		}
 	}
+
+
 
 	private void setUpAnimalMarkers() {
 		MyGuideApp mga = (MyGuideApp) (getActivity().getApplication());
@@ -270,8 +334,10 @@ public class SightseeingFragment extends Fragment implements
 		for (Animal a : mAnimalsList) {
 			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions().position(
 					new LatLng(a.getNode().getLatitude(), a.getNode()
-							.getLongitude())).title(a.getName(Language.DEFAULT))));
+							.getLongitude())).title(a.getName(Language.DEFAULT)).icon(BitmapDescriptorFactory.fromResource(R.drawable.giraffeblack))));
 		}
+
+
 	}
 
 	private void displayAnimalMarkers(boolean display) {
@@ -280,13 +346,18 @@ public class SightseeingFragment extends Fragment implements
 		}
 	}
 
+    private void setUpCamera() {
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+                mStartCenterLat, mStartCenterLon), 15));
+    }
+
 	@Override
 	public void onCameraChange(CameraPosition camera) {
-		if (camera.zoom < mMinZoom) {
-			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
-		} else if (camera.zoom > mMaxZoom) {
-			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
-		}
+		//if (camera.zoom < mMinZoom) {
+		//	mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
+		//} else if (camera.zoom > mMaxZoom) {
+		//	mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
+		//}
 	}
 
 }

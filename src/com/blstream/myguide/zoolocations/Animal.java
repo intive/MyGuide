@@ -4,7 +4,7 @@ package com.blstream.myguide.zoolocations;
 import java.io.Serializable;
 import java.util.HashMap;
 /** This class contains animal name and its location in the zoo. */
-public class Animal implements Serializable {
+public class Animal extends XmlObject implements Serializable {
 
 
 
@@ -23,6 +23,7 @@ public class Animal implements Serializable {
 		mNames = new HashMap<String, String>();
 	}
 
+    @Override
 	public void addName(String lang, String name) {
 		mNames.put(lang, name);
 	}

@@ -4,6 +4,9 @@
     <item name="gray" type="color">#f2f1f1</item>
     <item name="white" type="color">#FFFFFF</item>
     <color name="list_divider">#323232</color>
-    <item name="main" type="color">#0E9467</item>
+    <item name="main" type="color">#009984</item>
+
+    <item name="background" type="color">#F9F9F9</item>
+    <item name="description" type="color">#DBD7CB</item>
 
 </resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlGastronomy"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@color/background">
+
+    <ImageView
+        android:id="@+id/imgvRestaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gastronom"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/txtvGastronomyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/txtvGastronomyDistance"
+        android:layout_toRightOf="@+id/imgvRestaurant"
+        android:paddingLeft="12px"
+        android:paddingTop="8px"
+        android:paddingBottom="4px"
+        android:text="RESTAURACJA LETNIA POD PAPUGAMI"
+        android:textColor="@color/main"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvGastronomyName"
+        android:layout_toRightOf="@+id/imgvRestaurant"
+        android:paddingLeft="12px"
+        android:text="Czas:"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/txtvTimeTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvGastronomyName"
+        android:layout_toLeftOf="@id/txtvGastronomyDistance"
+        android:layout_toRightOf="@+id/txtvTime"
+        android:paddingLeft="5px"
+        android:text="10 minut"
+        android:textSize="14sp"/>
+
+
+
+    <TextView
+        android:id="@+id/txtvOpenTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvTime"
+        android:layout_toRightOf="@+id/imgvRestaurant"
+        android:text="Godz. otwarcia:"
+        android:paddingLeft="12px"
+        android:textSize="14sp"
+        />
+    <TextView
+        android:id="@+id/txtvOpen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvTime"
+        android:layout_toRightOf="@+id/txtvOpenTime"
+        android:text="10.00-17.00"
+        android:paddingLeft="5px"
+        android:textSize="14sp"
+        />
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/txtvOpenTime"
+    android:layout_toRightOf="@+id/imgvRestaurant"
+    android:text="Menu:"
+    android:paddingLeft="12px"
+    android:textSize="14sp"
+    android:id="@+id/txtvMenuDesc" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvOpenTime"
+        android:layout_toRightOf="@+id/txtvMenuDesc"
+        android:text="kuchnia meksykanska"
+        android:paddingLeft="5px"
+        android:textSize="14sp"
+        android:id="@+id/txtvMenu" />
+
+    <TextView
+        android:id="@+id/txtvGastronomyDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:paddingRight="12px"
+        android:paddingTop="8px"
+        android:text="200 m"
+        android:textColor="@color/main"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>
