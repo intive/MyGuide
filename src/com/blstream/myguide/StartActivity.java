@@ -18,8 +18,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.blstream.myguide.dialog.EnableGpsDialogFragment;
+import com.blstream.myguide.fragments.FragmentHelper;
+import com.blstream.myguide.gps.LocationUpdater;
+import com.google.android.gms.maps.SupportMapFragment;
+
 /**
  * Created by Piotrek on 2014-04-01.
+ * Fixed by Angieszka (fragment swap) on 2014-04-04.
  */
 public class StartActivity extends FragmentActivity {
 
@@ -41,7 +47,8 @@ public class StartActivity extends FragmentActivity {
 			// The main Fragment
 			Fragment fragment = new SightseeingFragment();
 
-			setNextFragment(fragment, BundleConstants.FRAGMENT_SIGHTSEEING);
+			FragmentHelper.initFragment(R.id.flFragmentHolder, fragment,
+					getSupportFragmentManager(), BundleConstants.FRAGMENT_SIGHTSEEING);
 		}
 
 		mActionBar = getActionBar();
@@ -60,6 +67,12 @@ public class StartActivity extends FragmentActivity {
 		inflater.inflate(R.menu.menu_main, menu);
 
 		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		showEnableGpsDialogIfNeeded();
 	}
 
 	/** Sets up NavigationDrawer. */
@@ -83,17 +96,35 @@ public class StartActivity extends FragmentActivity {
 
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
-		public void onItemClick(AdapterView parent, View view, int position, long id) {
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			selectItem(position);
 		}
 	}
 
 	/** Swaps fragments in the main content view */
 	private void selectItem(int position) {
-		/*
-		 * Replace fragment by chose fragment Fragment fragment = new
-		 * ChooseFragment(); setNextFragment(fragment);
-		 */
+		
+		Fragment current = getSupportFragmentManager().findFragmentById(R.id.flFragmentHolder);
+		Fragment newFragment = null;
+		String tag = null;
+		switch(position){
+		case 0:
+			newFragment = new SightseeingFragment();
+			tag = BundleConstants.FRAGMENT_SIGHTSEEING;
+			break;
+		case 1:
+			newFragment = new AnimalListFragment();
+			tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
+			break;
+		default: break;
+		}
+		
+		if(newFragment != null && !current.getTag().equals(tag)){
+			if(tag.equals( BundleConstants.FRAGMENT_SIGHTSEEING)) {
+				getSupportFragmentManager().popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+			} else setNextFragment(newFragment, tag);
+		}
+		
 		mDrawerList.setItemChecked(position, true);
 		setTitle(mDrawerMenuItems[position]);
 		mDrawerLayout.closeDrawer(mDrawerList);
@@ -106,10 +137,10 @@ public class StartActivity extends FragmentActivity {
 	}
 
 	private void setNextFragment(Fragment fragment, String tag) {
-		FragmentTransaction ft = mFragmentManager.beginTransaction();
-		ft.setCustomAnimations(R.anim.right_in, R.anim.left_out);
-		ft.replace(R.id.flFragmentHolder, fragment, tag);
-		ft.commit();
+		SupportMapFragment f = (SupportMapFragment) getSupportFragmentManager()
+	            .findFragmentById(R.id.map);
+	    if (f != null) getSupportFragmentManager().beginTransaction().remove(f).commit();
+		FragmentHelper.swapFragment(R.id.flFragmentHolder, fragment, getSupportFragmentManager(), tag);
 	}
 
 	/*
@@ -133,6 +164,13 @@ public class StartActivity extends FragmentActivity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	private void showEnableGpsDialogIfNeeded() {
+		if (LocationUpdater.getInstance().isEnableGpsDialogNeeded()) {
+			new EnableGpsDialogFragment().show(getSupportFragmentManager(),
+					EnableGpsDialogFragment.class.getSimpleName());
+		}
 	}
 
 }

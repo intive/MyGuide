@@ -4,7 +4,6 @@ package com.blstream.myguide;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
-import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -62,12 +61,14 @@ public class SightseeingFragment extends Fragment implements
 	private ArrayList<Animal> mAnimalsList;
 
 	private LocationLogger mLocationLogger;
+	private boolean mLocationLogVisible;
 
 	private void configureAndDisplayUserPosition() {
 		// check if location should be hidden
 		boolean visible = !((MyGuideApp) getActivity().getApplication())
 				.getSettings()
-				.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN);
+				.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN)
+				&& LocationUpdater.getInstance().isGpsEnable();
 		Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
 		mMap.setMyLocationEnabled(visible);
 	}
@@ -80,7 +81,7 @@ public class SightseeingFragment extends Fragment implements
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mRootView = inflater.inflate(R.layout.activity_sightseeing, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -90,21 +91,19 @@ public class SightseeingFragment extends Fragment implements
 		setUpAnimalMarkers();
 		setUpWays();
 		setUpJunctions();
+		setUpLocationLogger();
 
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
-		displayAllJunctions(mJunctionsVisible);
 
-		if (isDebugBuild()) {
-			mLocationLogger = new LocationLogger(getActivity(), 3, true);
-		}
 		return mRootView;
 	}
 
 	@Override
 	public void onStart() {
 		super.onStart();
-		if (isDebugBuild()) {
+		configureAndDisplayUserPosition();
+		if (mLocationLogVisible) {
 			LocationUpdater.getInstance().startUpdating(mLocationLogger);
 		}
 	}
@@ -112,18 +111,9 @@ public class SightseeingFragment extends Fragment implements
 	@Override
 	public void onStop() {
 		super.onStop();
-		if (isDebugBuild()) {
+		if (mLocationLogVisible) {
 			LocationUpdater.getInstance().stopUpdating(mLocationLogger);
 		}
-	}
-
-	/**
-	 * Check if build type of application is set to debug.
-	 * 
-	 * @return true if yes, false if no
-	 */
-	private boolean isDebugBuild() {
-		return (0 != (getActivity().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
 	}
 
 	private void setUpMapSettings() {
@@ -197,8 +187,6 @@ public class SightseeingFragment extends Fragment implements
 				transaction.commit();
 			}
 		});
-
-		this.configureAndDisplayUserPosition();
 	}
 
 	/**
@@ -249,7 +237,7 @@ public class SightseeingFragment extends Fragment implements
 					.fillColor(Color.YELLOW)
 					.center(new LatLng(a.getNode().getLatitude(), a.getNode()
 							.getLongitude())
-					));
+					).visible(mJunctionsVisible));
 		}
 	}
 
@@ -286,6 +274,14 @@ public class SightseeingFragment extends Fragment implements
 			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
 		} else if (camera.zoom > mMaxZoom) {
 			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
+		}
+	}
+
+	private void setUpLocationLogger() {
+		mLocationLogVisible = ((MyGuideApp) (getActivity().getApplication())).getSettings()
+				.getValueAsBoolean(Settings.KEY_GPS_LOGGING);
+		if (mLocationLogVisible) {
+			mLocationLogger = new LocationLogger(getActivity(), 3, true);
 		}
 	}
 
