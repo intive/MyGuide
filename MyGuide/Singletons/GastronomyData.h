@@ -10,11 +10,8 @@
 
 @interface GastronomyData : NSObject
 
-@property (nonatomic, readonly, getter = localizeAnimalsArray) NSArray *restaurantsArray;
-@property (nonatomic) NSArray *restaurantsPL;
-@property (nonatomic) NSArray *restaurantsEN;
+@property (nonatomic) NSArray *restaurants;
 
 + (id) sharedParsedData;
-- (NSArray *) localizeRestaurantsArray;
 
 @end

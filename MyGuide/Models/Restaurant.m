@@ -10,6 +10,15 @@
 
 @implementation Restaurant
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _dishes = [@[] mutableCopy];
+    }
+    return self;
+}
+
 - (void) addNewDish: (Dish *) dish {
     [_dishes addObject: dish];
 }

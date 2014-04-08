@@ -25,17 +25,9 @@
 {
     if(!self) {
         self = [super init];
-        self.restaurantsPL = @[];
-        self.restaurantsEN = @[];
+        self.restaurants = @[];
     }
     return self;
-}
-
-- (NSArray *) localizeRestaurantsArray
-{
-    Settings *_sharedSettings = [Settings sharedSettingsData];
-    BOOL localePL = [_sharedSettings.currentLanguageCode isEqualToString: @"PL"];
-    return localePL ? _restaurantsPL : _restaurantsEN;
 }
 
 @end

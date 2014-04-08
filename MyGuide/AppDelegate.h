@@ -7,11 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SettingsParser.h"
-#import "AFParsedData.h"
-#import "AFXMLParser.h"
-#import "SettingsParser.h"
-#import "LocationManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

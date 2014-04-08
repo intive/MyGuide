@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Dish.h"
+#import "Translatable.h"
 
-@interface Restaurant : NSObject
+@interface Restaurant : Translatable
 
-@property (nonatomic, readonly) NSString *name;
-@property (nonatomic, readonly) NSString *openHours;
-@property (nonatomic, readonly) NSMutableArray *dishes;
+@property (nonatomic) NSString *openHours;
+@property (nonatomic) NSMutableArray *dishes;
 
 - (void) addNewDish: (Dish *) dish;
 

@@ -7,6 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "SettingsParser.h"
+#import "AFParsedData.h"
+#import "AFXMLParser.h"
+#import "SettingsParser.h"
+#import "LocationManager.h"
+#import "GastronomyParser.h"
 
 @implementation AppDelegate {
     LocationManager *_locationManager;
@@ -25,11 +31,18 @@
     [parser loadSettings];
 }
 
+- (void) parseGastronomy
+{
+    GastronomyParser *parser = [GastronomyParser new];
+    [parser parse];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
     _sharedSettings = [Settings sharedSettingsData];
 
     [self parseDataXML];
+    [self parseGastronomy];
     [self loadSettings];
     
     _locationManager = [LocationManager sharedLocationManager];

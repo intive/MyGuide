@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Translatable.h"
 
-@interface Dish : NSObject
+@interface Dish : Translatable
 
-@property (nonatomic, readonly) NSString *name;
-@property (nonatomic, readonly) NSNumber *price;
+@property (nonatomic) NSNumber *price;
 
 @end
