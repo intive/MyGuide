@@ -6,12 +6,12 @@ namespace MyGuide.Models
     public class Configuration
     {
         [XmlElement("external_object_radius")]
-        public int externalObjectRadius;
+        public int externalObjectRadius { get; set; }
 
         [XmlElement("internal_object_radius")]
-        public int internalObjectRadius;
+        public int internalObjectRadius { get; set; }
 
         [XmlElement("lang_fallback")]
-        public string langFallback;
+        public string langFallback { get; set; }
     }
 }

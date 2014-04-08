@@ -51,7 +51,12 @@ namespace MyGuide.DataServices
             XmlParser<Root> xmlPars = new XmlParser<Root>();
             try
             {
-                Datas = await xmlPars.DeserializeXml("Data/data.xml");
+                string xmlString;
+                using (StreamReader sr = new StreamReader("Data/data.xml"))
+                {
+                    xmlString = await sr.ReadToEndAsync();
+                }
+                Datas = await xmlPars.DeserializeXml(xmlString);
 
                 if (Datas.AnimalsList.Items.Count != 0
                     && Datas.JunctionsList.Items.Count != 0
@@ -61,21 +66,21 @@ namespace MyGuide.DataServices
                 }
                 else
                 {
-                    throw new LackOfDataException("Lack of Data");
+                    throw new LackOfXmlFileException("Lack of Data");
                 }
             }
             catch (Exception ex)
             {
                 if (ex is FileNotFoundException)
                 {
-                    throw new LackOfDataException("There is not data file", ex);
+                    throw new LackOfXmlFileException("There is not data file", ex);
                 }
                 if (ex is InvalidOperationException)
                 {
-                    throw new LackOfDataException("There are errors in data file", ex);
+                    throw new LackOfXmlFileException("There are errors in data file", ex);
                 }
 
-                throw new LackOfDataException("Unknow exception", ex);
+                throw new LackOfXmlFileException("Unknow exception", ex);
             }
         }
 

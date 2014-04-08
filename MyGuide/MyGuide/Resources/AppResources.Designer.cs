@@ -97,6 +97,15 @@ namespace MyGuide.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debug options.
+        /// </summary>
+        public static string DebugOptions {
+            get {
+                return ResourceManager.GetString("DebugOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to denay.
         /// </summary>
         public static string DenayButton {

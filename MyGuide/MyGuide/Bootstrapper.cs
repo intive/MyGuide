@@ -44,9 +44,11 @@ namespace MyGuide
 
             container.PerRequest<MainPageViewModel>();
             container.PerRequest<AboutZooPageViewModel>();
+            container.PerRequest<DebugOptionsPageViewModel>();
             container.PerRequest<OptionsPageViewModel>();
             container.PerRequest<SightseeingPageViewModel>();
             container.Singleton<IDataService, DataService>();
+            container.Singleton<IOptionsService, OptionsService>();
             container.PerRequest<SplashScreenViewModel>();
             container.PerRequest<IMessageDialogService, MessageDialogService>();
             container.Singleton<LittleWatson>();

@@ -97,14 +97,15 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Caliburn\Micro\Logging\IsolatedStorageTarget.cs" />
     <Compile Include="Caliburn\Micro\Logging\LittleWatson.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="DataServices\Interfaces\IXmlParser.cs" />
     <Compile Include="DataServices\XmlParser.cs" />
     <Compile Include="DesignData\LoremImpusGenerator.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="DataServices\DataService.cs" />
     <Compile Include="DataServices\Interfaces\IDataService.cs" />
-    <Compile Include="DataServices\Interfaces\IOptionService.cs" />
-    <Compile Include="Models\LackOfDataException.cs" />
+    <Compile Include="DataServices\Interfaces\IOptionsService.cs" />
+    <Compile Include="Models\LackOfXmlFileException.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="DataServices\OptionsService.cs" />
     <Compile Include="Models\XmlSerializationOptionModels.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Services\Map\OSMRenderTileSource.cs" />
     <Compile Include="Services\MessageDialogService.cs" />
     <Compile Include="ViewModels\AboutZooPageViewModel.cs" />
+    <Compile Include="ViewModels\DebugOptionsPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\OptionsPageViewModel.cs" />
     <Compile Include="ViewModels\SightseeingPageViewModel.cs" />
@@ -126,6 +128,9 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AboutZooPageView.xaml.cs">
       <DependentUpon>AboutZooPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DebugOptionsPageView.xaml.cs">
+      <DependentUpon>DebugOptionsPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPageView.xaml.cs">
       <DependentUpon>MainPageView.xaml</DependentUpon>
@@ -147,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="Views\AboutZooPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DebugOptionsPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
