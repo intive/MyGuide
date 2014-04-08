@@ -8,10 +8,6 @@
 
 #import "GastronomyDetailsInfoViewController.h"
 
-@interface GastronomyDetailsInfoViewController ()
-
-@end
-
 @implementation GastronomyDetailsInfoViewController
 
 - (void) viewDidLoad

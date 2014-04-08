@@ -19,6 +19,17 @@
     return self;
 }
 
+- (id) initWithLatitude: (NSString *)latitude andLongitude: (NSString *)longitude
+{
+    self = [super init];
+    if (self) {
+        _dishes = [@[] mutableCopy];
+        _latitude  = [NSNumber numberWithDouble: [latitude doubleValue]];
+        _longitude = [NSNumber numberWithDouble: [longitude doubleValue]];
+    }
+    return self;
+}
+
 - (void) addNewDish: (Dish *) dish {
     [_dishes addObject: dish];
 }

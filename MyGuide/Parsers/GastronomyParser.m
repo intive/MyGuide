@@ -62,7 +62,8 @@ didStartElement: (NSString *)     elementName
     _cacheElement = [NSMutableString new];
     
     if ([elementName isEqualToString: kXmlRestaurant]) {
-        _currentRestaurant = [Restaurant new];
+        _currentRestaurant = [[Restaurant alloc] initWithLatitude: [attributeDict valueForKey: kXmlLatitude]
+                                                     andLongitude: [attributeDict valueForKey: kXmlLongitude]];
     }
     else if ([elementName isEqualToString: kXmlDish]) {
         _insideDish = YES;
@@ -99,7 +100,7 @@ didStartElement: (NSString *)     elementName
         [_currentRestaurant addNewDish: _currentDish];
     }
     else if ([elementName isEqualToString: kXmlPrice]) {
-        _currentDish.price = [NSNumber numberWithInt: [_cacheElement doubleValue]];
+        _currentDish.price = [NSNumber numberWithDouble: [_cacheElement doubleValue]];
     }
 }
 

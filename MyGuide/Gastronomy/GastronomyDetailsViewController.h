@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Restaurant.h"
 
 @interface GastronomyDetailsViewController : UIViewController
 
-@property NSInteger restaurantID;
+@property (weak, nonatomic) Restaurant *restaurant;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 

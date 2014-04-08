@@ -8,12 +8,7 @@
 
 #import "GastronomyDetailsMenuTableViewController.h"
 #import "DishTableViewCell.h"
-
-#define NUMBER_OF_DUMMY_CELLS 10
-
-@interface GastronomyDetailsMenuTableViewController ()
-
-@end
+#import "Dish.h"
 
 @implementation GastronomyDetailsMenuTableViewController
 
@@ -25,7 +20,7 @@
 
 - (NSInteger)tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section
 {
-    return NUMBER_OF_DUMMY_CELLS;
+    return _dishes.count;
 }
 
 - (UITableViewCell *) tableView: (UITableView *)tableView cellForRowAtIndexPath: (NSIndexPath *)indexPath
@@ -38,8 +33,9 @@
         cell = [[DishTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    cell.labelName.text  = @"Name";
-    cell.labelPrice.text = [NSString stringWithFormat: @"%.2f", (double)(arc4random() % 50)];
+    Dish *dish = _dishes[indexPath.row];
+    cell.labelName.text  = [dish getName];
+    cell.labelPrice.text = [NSString stringWithFormat: @"%.2f", [dish.price doubleValue]];
     cell.imageLogo.image = [UIImage imageNamed: @"placeholder_adult"];
     
     return cell;

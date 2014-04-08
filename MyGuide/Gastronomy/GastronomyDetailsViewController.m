@@ -9,20 +9,17 @@
 #import "GastronomyDetailsViewController.h"
 #import "GastronomyDetailsMenuTableViewController.h"
 #import "GastronomyDetailsInfoViewController.h"
-#import "GastronomyData.h"
-#import "Restaurant.h"
 
 @interface GastronomyDetailsViewController ()
 
 @property (strong, nonatomic) UIStoryboard *mainStoryboard;
 
-@property (strong, nonatomic) UIViewController *detailsMapController;
-@property (strong, nonatomic) UIViewController *gastronomyInfo;
-@property (strong, nonatomic) UIViewController *gastronomyMenu;
 @property (strong, nonatomic) UIViewController *currentViewController;
+@property (strong, nonatomic) UIViewController *detailsMapController;
+@property (strong, nonatomic) GastronomyDetailsInfoViewController       *gastronomyInfo;
+@property (strong, nonatomic) GastronomyDetailsMenuTableViewController  *gastronomyMenu;
 
 @property (nonatomic) BOOL canSwichView;
-@property (nonatomic) NSArray *restaurants;
 
 @end
 
@@ -32,13 +29,6 @@
 {
     [super viewDidLoad];
     _mainStoryboard = [UIStoryboard storyboardWithName: @"Main" bundle: [NSBundle mainBundle]];
-    [self initRestaurants];
-}
-
-- (void) initRestaurants
-{
-    GastronomyData *sharedParsedData = [GastronomyData sharedParsedData];
-    _restaurants = [sharedParsedData.restaurants copy];
 }
 
 # pragma mark - Initializing controllers
@@ -54,7 +44,7 @@
 
 - (void) viewWillAppear: (BOOL)animated
 {
-    [self setTitle: [(Restaurant *)(_restaurants[_restaurantID]) getName]];
+    [self setTitle: [_restaurant getName]];
     [self prepareControllers];
     [_segmentedControl setSelectedSegmentIndex: 0];
     [self switchController: _gastronomyInfo withAnimation: NO];
@@ -67,12 +57,13 @@
 
 - (void) prepareMenuController
 {
-    _gastronomyMenu = [self getControllerById: @"gastronomyDetailsMenu"];
+    _gastronomyMenu = (GastronomyDetailsMenuTableViewController *)[self getControllerById: @"gastronomyDetailsMenu"];
+    [_gastronomyMenu setDishes: _restaurant.dishes];
 }
 
 - (void) prepareInfoController
 {
-    _gastronomyInfo = [self getControllerById: @"gastronomyDetailsInfo"];
+    _gastronomyInfo = (GastronomyDetailsInfoViewController *)[self getControllerById: @"gastronomyDetailsInfo"];
 }
 
 - (UIViewController *) getControllerById: (NSString *) controllerID

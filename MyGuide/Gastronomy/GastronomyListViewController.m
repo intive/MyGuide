@@ -72,7 +72,7 @@
 
 - (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
 {
-    [_gastronomyDetailsViewController setRestaurantID: indexPath.row];
+    [_gastronomyDetailsViewController setRestaurant: _restaurants[indexPath.row]];
     [self.navigationController pushViewController: _gastronomyDetailsViewController animated:YES];
 }
 
