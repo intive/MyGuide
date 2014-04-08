@@ -9,9 +9,9 @@ import android.support.v4.app.FragmentTransaction;
 public class FragmentHelper {
 
 	public static void initFragment(int container, Fragment fragment,
-			FragmentManager fragmentManager) {
+			FragmentManager fragmentManager, String tag) {
 		FragmentTransaction ft = fragmentManager.beginTransaction();
-		ft.add(container, fragment);
+		ft.add(container, fragment, tag);
 		ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 		ft.commit();
 	}

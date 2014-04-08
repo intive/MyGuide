@@ -12,10 +12,10 @@ import android.test.ActivityInstrumentationTestCase2;
  * com.blstream.myguide.MainActivityTest \
  * com.blstream.myguide.tests/android.test.InstrumentationTestRunner
  */
-public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
+public class MainActivityTest extends ActivityInstrumentationTestCase2<StartActivity> {
 
 	public MainActivityTest() {
-		super("com.blstream.myguide", MainActivity.class);
+		super("com.blstream.myguide", StartActivity.class);
 	}
 
 	/**

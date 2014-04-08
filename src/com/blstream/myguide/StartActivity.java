@@ -45,7 +45,8 @@ public class StartActivity extends FragmentActivity {
 			// The main Fragment
 			Fragment fragment = new SightseeingFragment();
 
-			setNextFragment(fragment, BundleConstants.FRAGMENT_SIGHTSEEING);
+			FragmentHelper.initFragment(R.id.flFragmentHolder, fragment,
+					getSupportFragmentManager(), BundleConstants.FRAGMENT_SIGHTSEEING);
 		}
 
 		mActionBar = getActionBar();
@@ -111,7 +112,9 @@ public class StartActivity extends FragmentActivity {
 		}
 		
 		if(newFragment != null && !current.getTag().equals(tag)){
-			setNextFragment(newFragment, tag);
+			if(tag.equals( BundleConstants.FRAGMENT_SIGHTSEEING)) {
+				getSupportFragmentManager().popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+			} else setNextFragment(newFragment, tag);
 		}
 		
 		mDrawerList.setItemChecked(position, true);
