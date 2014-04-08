@@ -4,7 +4,6 @@ package com.blstream.myguide;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
-import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -82,7 +81,7 @@ public class SightseeingFragment extends Fragment implements
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mRootView = inflater.inflate(R.layout.activity_sightseeing, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -96,7 +95,6 @@ public class SightseeingFragment extends Fragment implements
 
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
-		displayAllJunctions(mJunctionsVisible);
 
 		return mRootView;
 	}
@@ -239,7 +237,7 @@ public class SightseeingFragment extends Fragment implements
 					.fillColor(Color.YELLOW)
 					.center(new LatLng(a.getNode().getLatitude(), a.getNode()
 							.getLongitude())
-					));
+					).visible(mJunctionsVisible));
 		}
 	}
 

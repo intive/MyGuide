@@ -50,5 +50,8 @@
         <item name="child">Dla Dzieci</item>
         <item name="map_view">Mapa</item>
     </string-array>
+    
+    <!-- Animal List title -->
+    <string name="animal_list_title">Zwierzęta</string>
 
 </resources>

@@ -2,6 +2,7 @@
 package com.blstream.myguide.zoolocations;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * This class contains informations about animals, ways and ways' junctions and
@@ -21,6 +22,7 @@ public class ZooLocationsData {
 	}
 
 	public ArrayList<Animal> getAnimals() {
+		Collections.sort(mAnimals);
 		return mAnimals;
 	}
 

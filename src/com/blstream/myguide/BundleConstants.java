@@ -10,9 +10,10 @@ public class BundleConstants {
 	public static final String TAB_IMAGE_ID = "image";
 	public static final String TAB_TEXT_ID = "text";
 
-	// FRAGMENT TAGS
-	public static final String FRAGMENT_ANIMAL_DETAIL = "fragment_animal_details";
-	public static final String FRAGMENT_SIGHTSEEING = "fragment_sightseeing";
+    //FRAGMENT TAGS
+    public static final String FRAGMENT_ANIMAL_DETAIL = "fragment_animal_details";
+    public static final String FRAGMENT_SIGHTSEEING = "fragment_sightseeing";
+    public static final String FRAGMENT_ANIMAL_LIST = "fragment_animal_list";
 
 	// FRAGMENT STACK TAG
 	public static final String STACK_ANIMAL_DETAIL = "stack_detail";
