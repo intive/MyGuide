@@ -36,9 +36,8 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
 
 - (id)init
 {
-    _currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
-    if(!self) {
-        self = [super init];
+    self = [super init];
+    if(self) {
         [self initDefaults];
     }
     return self;
@@ -46,14 +45,16 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
 
 - (void)initDefaults
 {
-    _innerRadius        = 1;
-    _externalRadius     = 2;
-    _visitedRadius      = 10;
-    _languageFallback   = @"en";
-    _showAnimalsOnMap   = YES;
-    _showUserPosition   = YES;
-    _showPathsOnMap     = YES;
-    _showJunctionsOnMap = YES;
+    _currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
+    _languageFallback    = @"en";
+    _innerRadius         = 1;
+    _externalRadius      = 2;
+    _visitedRadius       = 10;
+    _showAnimalsOnMap    = YES;
+    _showUserPosition    = YES;
+    _showPathsOnMap      = YES;
+    _showJunctionsOnMap  = YES;
+    _showDistanceAlert   = YES;
 }
 
 - (void)injectDataWithName:(NSString*)name andValue:(NSString*)value

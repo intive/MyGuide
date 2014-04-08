@@ -34,7 +34,7 @@
 @property (nonatomic, readonly, getter = calculateMinSpan)   MKCoordinateSpan       minSpan;
 @property (nonatomic, readonly, getter = calculateMapBounds) MKCoordinateRegion     mapBounds;
 
-
+@property (atomic) BOOL showDistanceAlert;
 
 - (MKCoordinateSpan)        calculateMaxSpan;
 - (MKCoordinateSpan)        calculateMinSpan;
