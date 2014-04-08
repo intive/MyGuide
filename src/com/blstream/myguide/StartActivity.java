@@ -1,15 +1,8 @@
 
 package com.blstream.myguide;
 
-import com.blstream.myguide.fragments.FragmentHelper;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.blstream.myguide.dialog.EnableGpsDialogFragment;
-import com.blstream.myguide.gps.LocationUpdater;
-import com.blstream.myguide.gps.LocationUser;
-
 import android.app.ActionBar;
 import android.content.res.Configuration;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -24,6 +17,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.blstream.myguide.dialog.EnableGpsDialogFragment;
+import com.blstream.myguide.fragments.FragmentHelper;
+import com.blstream.myguide.gps.LocationUpdater;
+import com.google.android.gms.maps.SupportMapFragment;
 
 /**
  * Created by Piotrek on 2014-04-01.
@@ -98,7 +96,7 @@ public class StartActivity extends FragmentActivity {
 
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
-		public void onItemClick(AdapterView parent, View view, int position, long id) {
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			selectItem(position);
 		}
 	}

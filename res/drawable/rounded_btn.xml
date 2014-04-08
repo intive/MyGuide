@@ -4,7 +4,7 @@
      <item android:state_pressed="true"> <!-- clicked -->
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
             android:shape="rectangle">
-            <solid android:color="@color/white" />
+            <solid android:color="@color/light_title" />
             <corners android:radius="5dp"/>
         </shape>
      </item>
@@ -12,7 +12,7 @@
      <item> <!-- default -->
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
             android:shape="rectangle">
-            <solid android:color="@color/main" />
+            <solid android:color="@color/main_accent" />
             <corners android:radius="5dp"/>
         </shape>
      </item>
