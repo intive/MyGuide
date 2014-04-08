@@ -89,6 +89,15 @@ public class Graph {
 		return nearVertex;
 	}
 
+	private Vertex findVertexInGraph(Node n) {
+		for (Vertex v : mVertices) {
+			if (v.getPosition().getLatitude() == n.getLatitude()
+			&& v.getPosition().getLongitude() == n.getLongitude() ) {
+				return v;
+			}
+		}
+		return null;
+	}
 	/**
 	 * Creates graph using ways and junctions. Additionally it search for way's
 	 * connections not included in xml.
@@ -96,24 +105,19 @@ public class Graph {
 	public void createGraph(ArrayList<Way> ways, ArrayList<Junction> junctions) {
 		mVertices = new ArrayList<Vertex>();
 		mEdges = new ArrayList<Edge>();
-
-		HashMap<Node, Vertex> vertices = new HashMap<Node, Vertex>();
 		HashMap<Way, ArrayList<Vertex>> verticesInWays = new HashMap<Way, ArrayList<Vertex>>();
 
 		for (Way w : ways) {
 			ArrayList<Vertex> verticesInWay = new ArrayList<Vertex>();
 			Vertex last = null;
 			for (Node n : w.getNodes()) {
-				Vertex v = vertices.get(n);
+				Vertex v = findVertexInGraph(n);
 				if (v == null) {
 					v = new Vertex();
-					Double lat = n.getLatitude();
-					Double lon = n.getLongitude();
-					vertices.put(new Node(lat, lon), v);
-					v.setPosition(new Node(lat, lon));
+					v.setPosition(new Node(n.getLatitude(), n.getLongitude()) );
 					mVertices.add(v);
-					verticesInWay.add(v);
 				}
+				verticesInWay.add(v);
 				if (last != null) {
 					Edge e = new Edge(last, v, distanceApproximate(last.getPosition(),
 							v.getPosition()));
@@ -127,12 +131,10 @@ public class Graph {
 		}
 
 		for (Junction j : junctions) {
-			Vertex v = vertices.get(j.getNode());
+			Vertex v = findVertexInGraph(j.getNode());
 			if (v == null) {
 				v = new Vertex();
-				Double lat = j.getNode().getLatitude();
-				Double lon = j.getNode().getLongitude();
-				v.setPosition(new Node(lat, lon));
+				v.setPosition(new Node(j.getNode().getLatitude(), j.getNode().getLongitude()));
 				mVertices.add(v);
 			}
 			for (Way w : j.getWays()) {

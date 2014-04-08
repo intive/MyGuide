@@ -32,18 +32,4 @@ public class Node implements Serializable {
 	public double getLongitude() {
 		return mLongitude;
 	}
-
-	@Override
-	public boolean equals(Object o) {
-		Node node = (Node) o;
-		if (mLatitude == node.getLatitude() && mLongitude == node.getLongitude()) { return true; }
-		return false;
-	}
-
-	@Override
-	public int hashCode() {
-		Double lat = mLatitude;
-		Double lon = mLongitude;
-		return lat.hashCode() + lon.hashCode();
-	}
 }

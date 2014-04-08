@@ -40,15 +40,11 @@ public class Edge {
 	@Override
 	public boolean equals(Object o) {
 		Edge edge = (Edge) o;
-		if (mVertex1.getPosition().equals(edge.getVertex1().getPosition())
-				&& mVertex2.getPosition().equals(edge.getVertex2().getPosition())) { return true; }
-		if (mVertex1.getPosition().equals(edge.getVertex2().getPosition())
-				&& mVertex2.getPosition().equals(edge.getVertex1().getPosition())) { return true; }
+		if (mVertex1.equals(edge.getVertex1())
+				&& mVertex2.equals(edge.getVertex2())) { return true; }
+		if (mVertex1.equals(edge.getVertex2())
+				&& mVertex2.equals(edge.getVertex1())) { return true; }
 		return false;
 	}
 
-	@Override
-	public int hashCode() {
-		return mVertex1.getPosition().hashCode() + mVertex2.getPosition().hashCode();
-	}
 }
