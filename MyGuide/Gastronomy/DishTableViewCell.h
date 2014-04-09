@@ -10,8 +10,8 @@
 
 @interface DishTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageLogo;
-@property (strong, nonatomic) IBOutlet UILabel     *labelName;
-@property (strong, nonatomic) IBOutlet UILabel     *labelPrice;
+@property (weak, nonatomic) IBOutlet UIImageView *imageLogo;
+@property (weak, nonatomic) IBOutlet UILabel     *labelName;
+@property (weak, nonatomic) IBOutlet UILabel     *labelPrice;
 
 @end
