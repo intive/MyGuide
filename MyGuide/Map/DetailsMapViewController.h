@@ -13,8 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-@property NSString *nameToDisplay;
-@property NSNumber *latitude;
-@property NSNumber *longitude;
+@property (nonatomic) NSString *nameToDisplay;
+@property (nonatomic) NSNumber *latitude;
+@property (nonatomic) NSNumber *longitude;
 
 @end

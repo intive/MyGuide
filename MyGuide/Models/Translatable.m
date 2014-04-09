@@ -19,12 +19,11 @@
 - (id) init {
     self = [super self];
     if(self) {
-        self.name = [
+        self.name = [NSMutableDictionary dictionaryWithDictionary:
                      @{
                        @"en" : @"",
                        @"pl" : @""
                       }
-                     mutableCopy
                      ];
     }
     return self;

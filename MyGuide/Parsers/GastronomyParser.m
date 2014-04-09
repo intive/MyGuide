@@ -106,7 +106,7 @@ didStartElement: (NSString *)     elementName
 
 - (void) parserDidEndDocument: (NSXMLParser *)parser {
     GastronomyData *sharedParsedData = [GastronomyData sharedParsedData];
-    sharedParsedData.restaurants = [self.restaurants copy];
+    sharedParsedData.restaurants = self.restaurants;
     MWLogInfo(@"Restaurants loaded!");
 }
 

@@ -10,9 +10,4 @@
 
 @implementation GastronomyDetailsInfoViewController
 
-- (void) viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 @end

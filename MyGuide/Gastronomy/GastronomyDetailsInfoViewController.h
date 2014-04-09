@@ -10,7 +10,4 @@
 
 @interface GastronomyDetailsInfoViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView        *animalImage;
-@property (weak, nonatomic) IBOutlet UITextView         *descriptionTextView;
-
 @end

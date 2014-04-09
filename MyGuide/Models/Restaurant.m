@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        _dishes = [@[] mutableCopy];
+        _dishes = [NSMutableArray new];
     }
     return self;
 }
@@ -23,7 +23,7 @@
 {
     self = [super init];
     if (self) {
-        _dishes = [@[] mutableCopy];
+        _dishes    = [NSMutableArray new];
         _latitude  = [NSNumber numberWithDouble: [latitude doubleValue]];
         _longitude = [NSNumber numberWithDouble: [longitude doubleValue]];
     }

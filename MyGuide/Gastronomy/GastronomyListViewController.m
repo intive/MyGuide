@@ -48,7 +48,7 @@
 - (void) initRestaurants
 {
     GastronomyData *sharedParsedData = [GastronomyData sharedParsedData];
-    _restaurants = [sharedParsedData.restaurants copy];
+    _restaurants = sharedParsedData.restaurants;
 }
 
 - (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section

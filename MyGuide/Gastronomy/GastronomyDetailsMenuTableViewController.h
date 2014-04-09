@@ -10,6 +10,6 @@
 
 @interface GastronomyDetailsMenuTableViewController : UITableViewController
 
-@property (weak, nonatomic) NSArray *dishes;
+@property (strong, nonatomic) NSArray *dishes;
 
 @end
