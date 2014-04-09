@@ -7,7 +7,6 @@
 //
 
 #import "DetailsMapViewController.h"
-#import "MKMapView+ZoomLevel.h"
 
 #define ZOOM_LEVEL 15
 
@@ -25,8 +24,9 @@
     MKPointAnnotation *annotationPoint = [MKPointAnnotation new];
     annotationPoint.title       = _nameToDisplay;
     annotationPoint.coordinate  = selectedAnimalLocation;
-    [_mapView addAnnotation: annotationPoint];
-    [_mapView setCenterCoordinate: selectedAnimalLocation zoomLevel: ZOOM_LEVEL animated: YES];
+    [_mapView addAnnotation: annotationPoint];    
+    MKCoordinateSpan span = MKCoordinateSpanMake(180 / pow(2, ZOOM_LEVEL) * _mapView.frame.size.height / 256, 0);
+    [_mapView setRegion:MKCoordinateRegionMake(selectedAnimalLocation, span) animated: YES];
 }
 
 @end

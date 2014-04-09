@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0509026918F45C7B00369B07 /* Translatable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0509026818F45C7B00369B07 /* Translatable.m */; };
 		0531724118F4A5B500FEC79F /* DetailsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0531724018F4A5B500FEC79F /* DetailsMapViewController.m */; };
-		0531724418F4AC2100FEC79F /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0531724318F4AC2100FEC79F /* MKMapView+ZoomLevel.m */; };
 		0533DEFA18DE0D27001BCB28 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DEF918DE0D27001BCB28 /* SWRevealViewController.m */; };
 		0533DF0118DE1520001BCB28 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFE18DE1520001BCB28 /* menu.png */; };
 		0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFF18DE1520001BCB28 /* menu@2x.png */; };
@@ -78,8 +77,6 @@
 		0509026818F45C7B00369B07 /* Translatable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translatable.m; sourceTree = "<group>"; };
 		0531723F18F4A5B500FEC79F /* DetailsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsMapViewController.h; sourceTree = "<group>"; };
 		0531724018F4A5B500FEC79F /* DetailsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsMapViewController.m; sourceTree = "<group>"; };
-		0531724218F4AC2100FEC79F /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
-		0531724318F4AC2100FEC79F /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		0533DEF818DE0D27001BCB28 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		0533DEF918DE0D27001BCB28 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		0533DEFE18DE1520001BCB28 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
@@ -266,8 +263,6 @@
 				05C9265818DDDF1800C2F746 /* LocationManager.m */,
 				0531723F18F4A5B500FEC79F /* DetailsMapViewController.h */,
 				0531724018F4A5B500FEC79F /* DetailsMapViewController.m */,
-				0531724218F4AC2100FEC79F /* MKMapView+ZoomLevel.h */,
-				0531724318F4AC2100FEC79F /* MKMapView+ZoomLevel.m */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -573,7 +568,6 @@
 				05E1655018F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.m in Sources */,
 				84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */,
 				05CD409918DF6FD60065C04F /* MapViewController.m in Sources */,
-				0531724418F4AC2100FEC79F /* MKMapView+ZoomLevel.m in Sources */,
 				84DDCB3418BA917800A2F720 /* AFWay.m in Sources */,
 				05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */,
 				05406E3C18F2C6FF001656FC /* DishTableViewCell.m in Sources */,
