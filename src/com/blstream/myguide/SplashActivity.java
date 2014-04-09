@@ -215,9 +215,11 @@ public class SplashActivity extends FragmentActivity {
 				 * Create instance of LocationUpdater to attempt to connect to
 				 * location service. It can be done simultaneously with parsing
 				 * xml data, so just after leaving splashscreen LocationUpdater
-				 * will be connected and ready to use.
+				 * will be connected and ready to use. Method clear() ensure,
+				 * that singleton is not storing old data, if instance of it
+				 * survived in "not killed" application process.
 				 */
-				LocationUpdater.getInstance();
+				LocationUpdater.getInstance().clear();
 				runBackgroundThread();
 			} else {
 				Log.w(LOG_TAG, "Google Play Services is not available on this device.");

@@ -5,17 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
-    android:background="@color/background">
+    android:background="@color/light_background">
 
     <ImageView
         android:id="@+id/imgvRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/gastronom"
-
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/gastronom" />
 
     <TextView
         android:id="@+id/txtvGastronomyName"
@@ -23,11 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/txtvGastronomyDistance"
         android:layout_toRightOf="@+id/imgvRestaurant"
+        android:paddingBottom="4px"
         android:paddingLeft="12px"
         android:paddingTop="8px"
-        android:paddingBottom="4px"
-        android:text="RESTAURACJA LETNIA POD PAPUGAMI"
-        android:textColor="@color/main"
+        android:text="RESTAURACJA LETNIA"
+        android:textColor="@color/main_accent"
         android:textSize="17sp"
         android:textStyle="bold" />
 
@@ -39,7 +38,7 @@
         android:layout_toRightOf="@+id/imgvRestaurant"
         android:paddingLeft="12px"
         android:text="Czas:"
-        android:textSize="14sp"/>
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/txtvTimeTo"
@@ -50,8 +49,7 @@
         android:layout_toRightOf="@+id/txtvTime"
         android:paddingLeft="5px"
         android:text="10 minut"
-        android:textSize="14sp"/>
-
+        android:textSize="14sp" />
 
 
     <TextView
@@ -60,40 +58,39 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtvTime"
         android:layout_toRightOf="@+id/imgvRestaurant"
-        android:text="Godz. otwarcia:"
         android:paddingLeft="12px"
-        android:textSize="14sp"
-        />
+        android:text="Godz. otwarcia:"
+        android:textSize="14sp" />
+
     <TextView
         android:id="@+id/txtvOpen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtvTime"
         android:layout_toRightOf="@+id/txtvOpenTime"
-        android:text="10.00-17.00"
         android:paddingLeft="5px"
-        android:textSize="14sp"
-        />
+        android:text="10.00-17.00"
+        android:textSize="14sp" />
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/txtvOpenTime"
-    android:layout_toRightOf="@+id/imgvRestaurant"
-    android:text="Menu:"
-    android:paddingLeft="12px"
-    android:textSize="14sp"
-    android:id="@+id/txtvMenuDesc" />
+        android:id="@+id/txtvMenuDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvOpenTime"
+        android:layout_toRightOf="@+id/imgvRestaurant"
+        android:paddingLeft="12px"
+        android:text="Menu:"
+        android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/txtvMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtvOpenTime"
         android:layout_toRightOf="@+id/txtvMenuDesc"
-        android:text="kuchnia meksykanska"
         android:paddingLeft="5px"
-        android:textSize="14sp"
-        android:id="@+id/txtvMenu" />
+        android:text="kuchnia meksykanska"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/txtvGastronomyDistance"
@@ -104,7 +101,7 @@
         android:paddingRight="12px"
         android:paddingTop="8px"
         android:text="200 m"
-        android:textColor="@color/main"
+        android:textColor="@color/main_accent"
         android:textSize="17sp"
         android:textStyle="bold" />
 

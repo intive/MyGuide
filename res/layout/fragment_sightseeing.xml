@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlSightseeingActivityContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/map"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent" />
+
+    <RelativeLayout
+        android:id="@+id/rlMarkerDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/light_title"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgvAnimalMarker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sam" />
+
+        <TextView
+            android:id="@+id/txtvInfoWindowAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/textView"
+            android:layout_toRightOf="@+id/imgvAnimalMarker"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Animal dasfasafs asfasfa"
+            android:textColor="@color/main_accent"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtvInfoWindowAnimal"
+            android:layout_toLeftOf="@+id/textView"
+            android:layout_toRightOf="@+id/imgvAnimalMarker"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="Opis" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:text="200 m"
+            android:textColor="@color/main_accent"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

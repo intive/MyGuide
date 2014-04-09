@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#E1E1E1"
+    android:background="@color/main_accent"
     android:orientation="horizontal"
     android:weightSum="1">
 
@@ -28,6 +28,6 @@
         android:contentDescription="@string/route_icon_Description"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:src="@drawable/map_icon_selector" />
+        android:src="@drawable/ic_action_map_icon_myguide" />
 
 </LinearLayout>

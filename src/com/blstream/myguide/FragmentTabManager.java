@@ -1,3 +1,4 @@
+
 package com.blstream.myguide;
 
 import android.app.ActionBar;
@@ -12,143 +13,158 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blstream.myguide.zoolocations.Animal;
+import com.blstream.myguide.zoolocations.XmlObject;
+
 /**
  * Created by Piotrek on 2014-04-05.
+ * This class is to create fragment with Tab.  Simple use of this class:
+ * First we create array of Fragment which are Tab(twoor three)
+ * And the we create one fragment call FragmentTabManager.newInstance
  *
+ * Fragment[] fragmentsTab = {FirstTab.newInstance(), SecondTab.newInstance(),ThirdTab.newInstance()};
+ * Fragment newFragment = FragmentTabManager.newInstance(R.array.tabs_name, fragmentsTab, XmlObjet);
  */
 public class FragmentTabManager extends Fragment {
 
-    private ViewPager mViewPager;
-    private ActionBar mActionBar;
-    private String mTitle;
-    private Fragment[] mFragments;
-    private int mStringArray;
-    private Animal mAnimal;
+	private ViewPager mViewPager;
+	private ActionBar mActionBar;
+	private String mTitle;
+	private Fragment[] mFragments;
+	private int mStringArray;
+	private Animal mAnimal;
 
-    public FragmentTabManager() {
+	public static FragmentTabManager newInstance() {
+		return new FragmentTabManager();
+	}
 
-    }
+	public static FragmentTabManager newInstance(int stringArray, Fragment[] fragment,
+			XmlObject object) {
+		FragmentTabManager fragmentTab = new FragmentTabManager();
 
-    public FragmentTabManager(int stringArray, Fragment[] fragment, Animal animal) {
-        mStringArray = stringArray;
-        mFragments = fragment;
-        mAnimal = animal;
-        mTitle = animal.getName();
-        setArgs();
-    }
-    public FragmentTabManager(int stringArray, Fragment[] fragment, String title) {
-        mStringArray = stringArray;
-        mFragments = fragment;
-        mTitle = title;
-        setArgs();
-    }
+		Bundle bundle = new Bundle();
+		bundle.putInt(BundleConstants.STRING_ARRAY, stringArray);
+		bundle.putSerializable(BundleConstants.SELECTED_OBJECT, object);
+		bundle.putSerializable(BundleConstants.TAB_FRAGMENTS, fragment);
+		bundle.putCharSequence(BundleConstants.TAB_TITLE, object.getName());
+		fragmentTab.setArguments(bundle);
 
-    private void setArgs() {
-        Bundle args = new Bundle();
-        args.putCharSequence("text", mTitle);
-        if (mAnimal != null) args.putSerializable(BundleConstants.SELECTED_ANIMAL, mAnimal);
-        setArguments(args);
-    }
+		return fragmentTab;
+	}
 
-    private void getArgs() {
-        Bundle args = getArguments();
-        if (args != null) {
-            mTitle = (String) args.getCharSequence("text");
-            if (mAnimal != null) mAnimal = (Animal) args.getSerializable(BundleConstants.SELECTED_ANIMAL);
-        }
-    }
+	public static FragmentTabManager newInstance(int stringArray, Fragment[] fragment, String title) {
+		FragmentTabManager fragmentTab = new FragmentTabManager();
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        getArgs();
-        View mRootView = inflater.inflate(R.layout.activity_animal_description, container, false);
-        setHasOptionsMenu(true);
+		Bundle bundle = new Bundle();
+		bundle.putInt(BundleConstants.STRING_ARRAY, stringArray);
+		bundle.putCharSequence(BundleConstants.TAB_TITLE, title);
+		bundle.putSerializable(BundleConstants.TAB_FRAGMENTS, fragment);
+		fragmentTab.setArguments(bundle);
 
-        mActionBar = getActivity().getActionBar();
+		return fragmentTab;
+	}
 
-        if (mActionBar != null) {
-            mActionBar.removeAllTabs();
+	private void getArgs() {
+		Bundle args = getArguments();
+		if (args != null) {
+			mTitle = (String) args.getCharSequence(BundleConstants.TAB_TITLE);
+			mStringArray = args.getInt(BundleConstants.STRING_ARRAY);
+			mFragments = (Fragment[]) args.getSerializable(BundleConstants.TAB_FRAGMENTS);
+			if (mAnimal != null) mAnimal = (Animal) args
+					.getSerializable(BundleConstants.SELECTED_OBJECT);
+		}
+	}
 
-            mActionBar.setHomeButtonEnabled(true);
-            mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		getArgs();
+		View mRootView = inflater.inflate(R.layout.fragment_animal_description, container, false);
+		setHasOptionsMenu(true);
 
-            mActionBar.setTitle(mTitle);
-            mActionBar.setIcon(android.R.color.transparent);
-            mActionBar.setDisplayHomeAsUpEnabled(true);
+		mActionBar = getActivity().getActionBar();
 
-            setUpViewPager(mRootView);
-            setUpTabs();
-        }
-        return mRootView;
-    }
+		if (mActionBar != null) {
+			mActionBar.removeAllTabs();
 
+			mActionBar.setHomeButtonEnabled(true);
+			mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem itemSearch = menu.findItem(R.id.action_search);
-        MenuItem itemFiltr = menu.findItem(R.id.action_filter);
+			mActionBar.setTitle(mTitle);
+			mActionBar.setIcon(android.R.color.transparent);
+			mActionBar.setDisplayHomeAsUpEnabled(true);
 
-        if (itemSearch != null) itemSearch.setVisible(false);
-        if (itemFiltr != null) itemFiltr.setVisible(false);
+			setUpViewPager(mRootView);
+			setUpTabs();
+		}
+		return mRootView;
+	}
 
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		MenuItem itemSearch = menu.findItem(R.id.action_search);
+		MenuItem itemFiltr = menu.findItem(R.id.action_filter);
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
+		if (itemSearch != null) itemSearch.setVisible(false);
+		if (itemFiltr != null) itemFiltr.setVisible(false);
 
-    /**
-     * Method add tabs to actionBar and set Tabs Listener.
-     */
+		super.onCreateOptionsMenu(menu, inflater);
+	}
 
-    //R.array.animal_desc_tabs_name
-    private void setUpTabs() {
-        for (String tab_name : getResources().getStringArray(mStringArray)) {
-            mActionBar.addTab(mActionBar.newTab().setText(tab_name)
-                    .setTabListener(new ActionBar.TabListener() {
-                        @Override
-                        public void onTabSelected(ActionBar.Tab tab,
-                                                  android.app.FragmentTransaction fragmentTransaction) {
-                            mViewPager.setCurrentItem(tab.getPosition());
-                        }
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+	}
 
-                        @Override
-                        public void onTabUnselected(ActionBar.Tab tab,
-                                                    android.app.FragmentTransaction fragmentTransaction) {
-                        }
+	/**
+	 * Method add tabs to actionBar and set Tabs Listener.
+	 */
 
-                        @Override
-                        public void onTabReselected(ActionBar.Tab tab,
-                                                    android.app.FragmentTransaction fragmentTransaction) {
-                        }
-                    }));
-        }
-    }
+	// R.array.animal_desc_tabs_name
+	private void setUpTabs() {
+		for (String tab_name : getResources().getStringArray(mStringArray)) {
+			mActionBar.addTab(mActionBar.newTab().setText(tab_name)
+					.setTabListener(new ActionBar.TabListener() {
+						@Override
+						public void onTabSelected(ActionBar.Tab tab,
+								android.app.FragmentTransaction fragmentTransaction) {
+							mViewPager.setCurrentItem(tab.getPosition());
+						}
 
-    /**
-     * Method setUp ViewPager and Listener to swipe fragment
-     */
-    private void setUpViewPager(View view) {
-        FragmentPagerAdapter mAdapter;
-        mViewPager = (ViewPager) view.findViewById(R.id.pager);
-        mAdapter = new FragmentPagerAdapter(getActivity().getSupportFragmentManager(),mFragments, getResources().getStringArray(mStringArray).length);
-        mViewPager.setAdapter(mAdapter);
+						@Override
+						public void onTabUnselected(ActionBar.Tab tab,
+								android.app.FragmentTransaction fragmentTransaction) {
+						}
 
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                mActionBar.setSelectedNavigationItem(position);
-            }
+						@Override
+						public void onTabReselected(ActionBar.Tab tab,
+								android.app.FragmentTransaction fragmentTransaction) {
+						}
+					}));
+		}
+	}
 
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
+	/**
+	 * Method setUp ViewPager and Listener to swipe fragment
+	 */
+	private void setUpViewPager(View view) {
+		FragmentPagerAdapter mAdapter;
+		mViewPager = (ViewPager) view.findViewById(R.id.pager);
+		mAdapter = new FragmentPagerAdapter(getChildFragmentManager(), mFragments, getResources()
+				.getStringArray(mStringArray).length);
+		mViewPager.setAdapter(mAdapter);
 
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-            }
-        });
-    }
+		mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				mActionBar.setSelectedNavigationItem(position);
+			}
+
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+			}
+		});
+	}
 }

@@ -3,16 +3,12 @@ package com.blstream.myguide.zoolocations;
 
 import java.io.Serializable;
 import java.util.HashMap;
-/** This class contains animal name and its location in the zoo. */
-public class Animal extends XmlObject implements Serializable {
-
-
 
 /**
  * This class contains animal names (in various languages), descriptions for
  * adult and child and animal's location in the zoo.
  */
-
+public class Animal extends XmlObject implements Serializable, Comparable<Animal> {
 
 	private HashMap<String, String> mNames;
 	private Node mNode;
@@ -23,7 +19,7 @@ public class Animal extends XmlObject implements Serializable {
 		mNames = new HashMap<String, String>();
 	}
 
-    @Override
+	@Override
 	public void addName(String lang, String name) {
 		mNames.put(lang, name);
 	}
@@ -40,6 +36,7 @@ public class Animal extends XmlObject implements Serializable {
 		mDescriptionAdult = description;
 	}
 
+	@Override
 	public String getName() {
 		return mNames.get(Language.DEFAULT);
 	}
@@ -60,5 +57,10 @@ public class Animal extends XmlObject implements Serializable {
 
 	public Description getDescriptionAdult() {
 		return mDescriptionAdult;
+	}
+
+	@Override
+	public int compareTo(Animal another) {
+		return -(another.getName().compareTo(getName()));
 	}
 }

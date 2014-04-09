@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtvDishName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:text="Danie"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtvDishPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/txtvZL"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:text="20,00"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtvZL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:text="zł"
+        android:textSize="20sp" />
+
+</RelativeLayout>

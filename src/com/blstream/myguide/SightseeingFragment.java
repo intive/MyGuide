@@ -2,14 +2,11 @@
 package com.blstream.myguide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.ActionBar;
-import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +15,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.settings.Settings;
@@ -41,15 +39,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class SightseeingFragment extends Fragment implements
-		OnCameraChangeListener {
+/**
+ * Main fragment of application
+ */
+
+public class SightseeingFragment extends Fragment {
 
 	private static final String LOG_TAG = SightseeingFragment.class
 			.getSimpleName();
-	private static final float DEFAULT_MIN_ZOOM = 19.5f;
-	private static final float DEFAULT_MAX_ZOOM = 19.0f;
+	private static final float DEFAULT_MIN_ZOOM = 18.5f;
+	private static final float DEFAULT_MAX_ZOOM = 14.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
+	private static final int WAYS_COLOR_DEFAULT = Color.BLACK;
+	private static final int WAYS_WIDTH_DEFAULT = 4;
 
 	private GoogleMap mMap;
 	private float mMinZoom;
@@ -67,29 +70,30 @@ public class SightseeingFragment extends Fragment implements
 	private ArrayList<Animal> mAnimalsList;
 
 	private LocationLogger mLocationLogger;
-    private RelativeLayout mRlAnimalDetails;
-    private TextView mTxtvAnimaLName;
-    private Animal animal;
-    private Marker mMarker;
+
+	private RelativeLayout mRlAnimalDetails;
+	private TextView mTxtvAnimaLName;
+	private Animal animal;
+
+	private boolean mLocationLogVisible;
+	private View mRootView;
+
+	public SightseeingFragment() {
+	}
 
 	private void configureAndDisplayUserPosition() {
 		// check if location should be hidden
 		boolean visible = !((MyGuideApp) getActivity().getApplication())
 				.getSettings()
-				.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN);
+				.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN)
+				&& LocationUpdater.getInstance().isGpsEnable();
 		Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
 		mMap.setMyLocationEnabled(visible);
 	}
 
-	public SightseeingFragment() {
-
-	}
-
-	public View mRootView;
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mRootView = inflater.inflate(R.layout.activity_sightseeing, container, false);
+		mRootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -99,25 +103,23 @@ public class SightseeingFragment extends Fragment implements
 		setUpAnimalMarkers();
 		setUpWays();
 		setUpJunctions();
+		setUpLocationLogger();
 
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
 
-        mRlAnimalDetails = (RelativeLayout) mRootView.findViewById(R.id.rlMarkerDetails);
-        mTxtvAnimaLName = (TextView) mRlAnimalDetails.findViewById(R.id.txtvInfoWindowAnimal);
+		mRlAnimalDetails = (RelativeLayout) mRootView.findViewById(R.id.rlMarkerDetails);
+		mTxtvAnimaLName = (TextView) mRlAnimalDetails.findViewById(R.id.txtvInfoWindowAnimal);
 
-
-		if (isDebugBuild()) {
-			mLocationLogger = new LocationLogger(getActivity(), 3, true);
-		}
 		return mRootView;
 	}
 
 	@Override
 	public void onStart() {
 		super.onStart();
-		if (isDebugBuild()) {
+		configureAndDisplayUserPosition();
+		if (mLocationLogVisible) {
 			LocationUpdater.getInstance().startUpdating(mLocationLogger);
 		}
 	}
@@ -125,18 +127,9 @@ public class SightseeingFragment extends Fragment implements
 	@Override
 	public void onStop() {
 		super.onStop();
-		if (isDebugBuild()) {
+		if (mLocationLogVisible) {
 			LocationUpdater.getInstance().stopUpdating(mLocationLogger);
 		}
-	}
-
-	/**
-	 * Check if build type of application is set to debug.
-	 * 
-	 * @return true if yes, false if no
-	 */
-	private boolean isDebugBuild() {
-		return (0 != (getActivity().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
 	}
 
 	private void setUpMapSettings() {
@@ -177,63 +170,74 @@ public class SightseeingFragment extends Fragment implements
 			mMinZoom = DEFAULT_MIN_ZOOM;
 			mMaxZoom = DEFAULT_MAX_ZOOM;
 		}
-
 	}
 
 	private void setUpMap() {
-
 		mMap = ((SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(
 				R.id.map))
 				.getMap();
 		MapsInitializer.initialize(getActivity());
-	//	mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-	//			mStartCenterLat, mStartCenterLon), mMinZoom));
-        setUpCamera();
-		mMap.setOnCameraChangeListener(this);
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+				mStartCenterLat, mStartCenterLon), mMinZoom));
+		setUpCamera();
+		setUpMapListeners();
+	}
 
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                if (mMarker != null) {
-                    mMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.giraffeblack));
-                }
-                animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
-                mMarker = marker;
-                marker.setIcon((BitmapDescriptorFactory.fromResource(R.drawable.gir)));
+	private void setUpMapListeners() {
+		mMap.setOnCameraChangeListener(new OnCameraChangeListener() {
+			@Override
+			public void onCameraChange(CameraPosition cameraPosition) {
+				if (cameraPosition.zoom < mMinZoom) {
+					mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
+				} else if (cameraPosition.zoom > mMaxZoom) {
+					mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
+				}
+			}
+		});
 
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 17));
+		/**
+		 * This listeners is on Marker click on the Map After click is animation
+		 * with description of Animals from bottom of screen
+		 */
+		mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+			@Override
+			public boolean onMarkerClick(Marker marker) {
+				animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
+				marker.setIcon((BitmapDescriptorFactory
+						.fromResource(R.drawable.animal_icon_myguide)));
 
-                TranslateAnimation animation = new TranslateAnimation(0, 0, 300, 0);
-                animation.setDuration(500);
-//                mTxtvHeader.setAnimation(animation1);
-                Animal animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
+				TranslateAnimation animation = new TranslateAnimation(0, 0, 300, 0);
+				animation.setDuration(500);
 
-                mTxtvAnimaLName.setText(animal.getName() + "");
+				Animal animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
+				mTxtvAnimaLName.setText(animal.getName() + "");
 
-                //mRlAnimalDetails.setVisibility(View.VISIBLE);
-                mRlAnimalDetails.setAnimation(animation);
-                mRlAnimalDetails.setVisibility(View.VISIBLE);
+				mRlAnimalDetails.setAnimation(animation);
+				mRlAnimalDetails.setVisibility(View.VISIBLE);
 
-                return false;
-            }
-        });
+				return false;
+			}
+		});
 
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng latLng) {
-                setUpMap();
-                mMarker.setIcon((BitmapDescriptorFactory.fromResource(R.drawable.giraffeblack)));
-                TranslateAnimation animation = new TranslateAnimation(0, 0, 0, 300);
-                animation.setDuration(500);
+		/**
+		 * This listener is on Map click. Outside of marker and method hide
+		 * description of Animal.
+		 */
+		mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+			@Override
+			public void onMapClick(LatLng latLng) {
+				TranslateAnimation animation = new TranslateAnimation(0, 0, 0, 300);
+				animation.setDuration(500);
 
-                //mRlAnimalDetails.setVisibility(View.VISIBLE);
-                mRlAnimalDetails.setAnimation(animation);
-                mRlAnimalDetails.setVisibility(View.GONE);
+				mRlAnimalDetails.setAnimation(animation);
+				mRlAnimalDetails.setVisibility(View.GONE);
+			}
+		});
 
-            }
-        });
-
-
+		/**
+		 * This listener is on Info window click ( Top of Marker ) After click
+		 * animal description fragment is opened
+		 */
 		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
@@ -244,20 +248,21 @@ public class SightseeingFragment extends Fragment implements
 						.findFragmentById(R.id.map);
 				if (f != null) getFragmentManager().beginTransaction().remove(f).commit();
 
-                Fragment[] fragments = {new Sample(), new Sample() , new Sample()};
-               // Fragment newFragment = new FragmentTabManager(R.array.animal_desc_tabs_name,fragments, animal);
-                Fragment newFragment = new GastronomyListFragment();
-				FragmentTransaction transaction = getActivity().getSupportFragmentManager()
-						.beginTransaction();
-				transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
-				transaction.replace(R.id.flFragmentHolder, newFragment,
-						BundleConstants.FRAGMENT_ANIMAL_DETAIL);
-				transaction.addToBackStack(BundleConstants.STACK_ANIMAL_DETAIL);
-				transaction.commit();
+				Fragment[] fragments = {
+						AnimalDescriptionTab
+								.newInstance(R.drawable.placeholder_adult, R.string.text),
+						AnimalDescriptionTab
+								.newInstance(R.drawable.placeholder_child, R.string.text),
+						AnimalDescriptionTab.newInstance()
+				};
+				Fragment newFragment = FragmentTabManager.newInstance(
+						R.array.animal_desc_tabs_name,
+						fragments, animal);
+
+				FragmentHelper.swapFragment(R.id.flFragmentHolder, newFragment,
+						getFragmentManager(), BundleConstants.FRAGMENT_ANIMAL_DETAIL);
 			}
 		});
-
-		this.configureAndDisplayUserPosition();
 	}
 
 	/**
@@ -265,26 +270,18 @@ public class SightseeingFragment extends Fragment implements
 	 * accordingly.
 	 */
 	private void setUpWays() {
-
 		MyGuideApp mga = (MyGuideApp) (getActivity().getApplication());
 		ArrayList<Way> ways = mga.getZooData().getWays();
 		mZooPaths = new ArrayList<Polyline>();
-		for (Way a : ways) {
-			int numOfNodes = a.getNodes().size();
-			for (int i = 0; i < numOfNodes - 1; i++) {
-				Node current = a.getNodes().get(i);
-				Node next = a.getNodes().get(i + 1);
-
-				mZooPaths.add(mMap.addPolyline(new PolylineOptions()
-						.add(new LatLng(current.getLatitude(), current
-								.getLongitude()),
-								new LatLng(next.getLatitude(), next
-										.getLongitude())
-						).width(8)
-						.color(Color.WHITE)));
+		for (Way way : ways) {
+			PolylineOptions plo = new PolylineOptions()
+					.width(WAYS_WIDTH_DEFAULT)
+					.color(WAYS_COLOR_DEFAULT);
+			for (Node node : way.getNodes()) {
+				plo.add(new LatLng(node.getLatitude(), node.getLongitude()));
 			}
+			mZooPaths.add(mMap.addPolyline(plo));
 		}
-
 	}
 
 	/**
@@ -299,7 +296,6 @@ public class SightseeingFragment extends Fragment implements
 	/**
 	 * Reads Junctions from ZooData and draws Circles on the map accordingly.
 	 */
-
 	private void setUpJunctions() {
 		MyGuideApp mga = (MyGuideApp) (getActivity().getApplication());
 		ArrayList<Junction> junctions = mga.getZooData().getJunctions();
@@ -311,21 +307,18 @@ public class SightseeingFragment extends Fragment implements
 					.fillColor(Color.YELLOW)
 					.center(new LatLng(a.getNode().getLatitude(), a.getNode()
 							.getLongitude())
-					));
+					).visible(mJunctionsVisible));
 		}
 	}
 
 	/**
 	 * Determines whatever of not all junctions are displayed on the map.
 	 */
-
 	private void displayAllJunctions(boolean display) {
-//		for (Circle junction : mZooJunctions) {
-//			junction.setVisible(display);
-//		}
+		for (Circle junction : mZooJunctions) {
+			junction.setVisible(display);
+		}
 	}
-
-
 
 	private void setUpAnimalMarkers() {
 		MyGuideApp mga = (MyGuideApp) (getActivity().getApplication());
@@ -334,10 +327,9 @@ public class SightseeingFragment extends Fragment implements
 		for (Animal a : mAnimalsList) {
 			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions().position(
 					new LatLng(a.getNode().getLatitude(), a.getNode()
-							.getLongitude())).title(a.getName(Language.DEFAULT)).icon(BitmapDescriptorFactory.fromResource(R.drawable.giraffeblack))));
+							.getLongitude())).title(a.getName(Language.DEFAULT))
+					.icon(BitmapDescriptorFactory.fromResource(R.drawable.animal_icon_myguide))));
 		}
-
-
 	}
 
 	private void displayAnimalMarkers(boolean display) {
@@ -346,18 +338,17 @@ public class SightseeingFragment extends Fragment implements
 		}
 	}
 
-    private void setUpCamera() {
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-                mStartCenterLat, mStartCenterLon), 15));
-    }
+	private void setUpCamera() {
+		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+				mStartCenterLat, mStartCenterLon), 15));
+	}
 
-	@Override
-	public void onCameraChange(CameraPosition camera) {
-		//if (camera.zoom < mMinZoom) {
-		//	mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
-		//} else if (camera.zoom > mMaxZoom) {
-		//	mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
-		//}
+	private void setUpLocationLogger() {
+		mLocationLogVisible = ((MyGuideApp) (getActivity().getApplication())).getSettings()
+				.getValueAsBoolean(Settings.KEY_GPS_LOGGING);
+		if (mLocationLogVisible) {
+			mLocationLogger = new LocationLogger(getActivity(), 3, true);
+		}
 	}
 
 }

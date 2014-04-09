@@ -23,6 +23,9 @@
     <string name="cancel">Anuluj</string>
     <string name="confirmation_default">Kontynuować?</string>
     <string name="confirmation_exit">Zakończyć działanie aplikacji?</string>
+    <string name="go_to_option">Ustawienia</string>
+    <string name="start_without_gps">Uruchom bez GPS</string>
+    <string name="gps_enable_dialog_msg">Włącz GPS aby móc korzystać ze wszystkich funkcji aplikacji:</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Błąd aplikacji</string>
@@ -47,6 +50,9 @@
         <item name="child">Dla Dzieci</item>
         <item name="map_view">Mapa</item>
     </string-array>
+
+    <!-- Animal List title -->
+    <string name="animal_list_title">Zwierzęta</string>
 
     <!-- Gastronomy description tabs -->
     <string-array name="gastronomy_desc_tabs_name">
