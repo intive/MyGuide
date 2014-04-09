@@ -15,7 +15,6 @@
 @property (nonatomic) MKMapCamera       *lastGoodCamera;
 @property (nonatomic) CLLocation        *zooCenterLocation;
 @property (nonatomic) NSArray           *nearestAnimals;
-@property (nonatomic) BOOL               showAlert;
 @property (nonatomic) BOOL               isSlidingView;
 @property (nonatomic) BOOL               visitedLocationFlag;
 
@@ -35,7 +34,6 @@
     _settings = [Settings sharedSettingsData];
     _data     = [AFParsedData sharedParsedData];
     _alertDistance = [self buildAlertView];
-    _showAlert = YES;
     _zooCenterLocation = [[CLLocation alloc] initWithLatitude:_settings.zooCenter.latitude longitude:_settings.zooCenter.longitude];
 
     _sidebarButton.target    = self.revealViewController;
@@ -154,7 +152,7 @@
 
 - (BOOL)shouldShowAlertDistance:(double)distance
 {
-    return distance > _settings.maxUserDistance && !_alertDistance.visible && _showAlert;
+    return distance > _settings.maxUserDistance && !_alertDistance.visible && _settings.showDistanceAlert;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -165,7 +163,7 @@
         fakeDrivingLocationController.view.backgroundColor = [UIColor whiteColor];
         [self.navigationController pushViewController:fakeDrivingLocationController animated: YES];
     }
-    _showAlert = NO;
+    _settings.showDistanceAlert = NO;
 }
 
 #pragma mark - Drawing paths on the map
