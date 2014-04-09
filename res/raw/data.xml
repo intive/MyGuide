@@ -123,6 +123,190 @@
 			</dishes>
 		</restaurant>
 	</gastronomy>
+	<events>
+		<event>
+			<name>
+				<pl>Kotiki afrykańkie</pl>
+				<en>Kotiki afrykańkie EN</en>
+			</name>
+			<time>11:00;14:00</time>
+			<time_weekends>11:00;14:00;17:00</time_weekends>
+			<time_christmas>11:00;14:00;17:00</time_christmas>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Żyrafy siatkowane</pl>
+				<en>Żyrafy siatkowane EN</en>
+			</name>
+			<time>9:15</time>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Niedźwiedzie brunatne</pl>
+				<en>Niedźwiedzie brunatne EN</en>
+			</name>
+			<time>9:30</time>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Pawiany masajskie</pl>
+				<en>Pawiany masajskie EN</en>
+			</name>
+			<time>11:00</time>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Hipopotamy</pl>
+				<en>Hipopotamy EN</en>
+			</name>
+			<time>11:00</time>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Ptaki (ptaszarnia)</pl>
+				<en>Ptaki (ptaszarnia) EN</en>
+			</name>
+			<time>12:00</time>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Lemury</pl>
+				<en>Lemury EN</en>
+			</name>
+			<time>13:00</time>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Słonie indyjskie</pl>
+				<en>Słonie indyjskie EN</en>
+			</name>
+			<time>12:30</time>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Żółwie pustynne</pl>
+				<en>Żółwie pustynne EN</en>
+			</name>
+			<time>12:00</time>
+			<start>1.06</start>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Pelikany</pl>
+				<en>Pelikany EN</en>
+			</name>
+			<time>13:00</time>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Mrówniki</pl>
+				<en>Mrówniki EN</en>
+			</name>
+			<time>13:30</time>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+		<event>
+			<name>
+				<pl>Piranie lub płaszczki</pl>
+				<en>Piranie lub płaszczki EN</en>
+			</name>
+			<time>16:00</time>
+			<image>img/placeholder_event.jpg</image>
+		</event>
+	</events>
+	<history>
+		<history_event>
+			<date>10.07.1865</date> <!-- please inform me if some other format would be better for you -->
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Otwarcie ogrodu zoologicznego we Wrocławiu</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>1880</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Rozkwit ogrodu, zaliczanego w tym czasie do wiodących placówek na świecie</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>1921</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Zamknięcie ZOO po kryzysie lat powojennych</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>1.05.1927</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Ponowne udostępnienie ogrodu dla publiczności</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>05.1945</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Zniszczenie ogrodu podczas oblężenia miasta przez wojska radzieckie</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>18.07.1948</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Otwarcie ZOO po II Wojnie Światowej</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>1957</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Podwojenie dotychczasowego obszaru ogrodu poprzez zajęcie terenów po Wystawie Ziem Odzyskanych</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>70s</date> <!-- 1970 - 1979 should we put it some other way or can you handle this? -->
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Kolekcja zwierząt należy do większych w Europie, a dzięki medialnemu sukcesowi "Z kamerą wśród zwierząt", prowadzonego przez Hannę i Antoniego Gucwińskich, ZOO przez wiele lat pozostaje najbardziej znanym ogrodem w Polsce</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>01.2007</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Dyrektorem zostaje Radosław Ratajszczak, który zapoczątkowuje proces zmian mających wprowadzić ogród w XXI wiek </pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>01.2010</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Wrocławskie ZOO jako pierwsze w Polsce przekształca się w spółkę</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+	</history>
+>>>>>>> upstream/android
 	<animals>
 		<animal lat="51.1052072" lon="17.0754498">
 			<name>

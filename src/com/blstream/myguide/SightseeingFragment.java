@@ -52,7 +52,7 @@ public class SightseeingFragment extends Fragment {
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
 	private static final int WAYS_COLOR_DEFAULT = Color.BLACK;
-	private static final int WAYS_WIDTH_DEFAULT = 4;
+	private static final int WAYS_WIDTH_DEFAULT = 2;
 
 	private GoogleMap mMap;
 	private float mMinZoom;
