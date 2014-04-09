@@ -2,7 +2,6 @@
 using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Reflection;

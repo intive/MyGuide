@@ -1,25 +1,7 @@
 ﻿using Caliburn.Micro;
-
-using Caliburn.Micro;
-
-using MyGuide.DataServices;
 using MyGuide.DataServices.Interfaces;
-
-using MyGuide.DataServices.Interfaces;
-
 using MyGuide.Models;
-
-using MyGuide.Models;
-
 using MyGuide.Services.Interfaces;
-
-using MyGuide.Services.Interfaces;
-
-using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
-
 using System.Windows.Navigation;
 
 namespace MyGuide.ViewModels
@@ -43,20 +25,41 @@ namespace MyGuide.ViewModels
 
         public int ExternalObjectRadius
         {
-            get { return externalObjectRadius; }
-            set { externalObjectRadius = value; NotifyOfPropertyChange(() => ExternalObjectRadius); }
+            get
+            {
+                return externalObjectRadius;
+            }
+            set
+            {
+                externalObjectRadius = value;
+                NotifyOfPropertyChange(() => ExternalObjectRadius);
+            }
         }
 
         public int InternalObjectRadius
         {
-            get { return internalObjectRadius; }
-            set { internalObjectRadius = value; NotifyOfPropertyChange(() => InternalObjectRadius); }
+            get
+            {
+                return internalObjectRadius;
+            }
+            set
+            {
+                internalObjectRadius = value;
+                NotifyOfPropertyChange(() => InternalObjectRadius);
+            }
         }
 
         public string LangFallback
         {
-            get { return langFallback; }
-            set { langFallback = value; NotifyOfPropertyChange(() => LangFallback); }
+            get
+            {
+                return langFallback;
+            }
+            set
+            {
+                langFallback = value;
+                NotifyOfPropertyChange(() => LangFallback);
+            }
         }
 
         #endregion Properties

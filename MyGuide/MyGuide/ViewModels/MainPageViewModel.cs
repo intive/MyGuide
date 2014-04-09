@@ -1,7 +1,5 @@
 ﻿using Caliburn.Micro;
-using MyGuide.DataServices;
 using MyGuide.DataServices.Interfaces;
-using MyGuide.Models;
 using MyGuide.Resources;
 using MyGuide.Services.Interfaces;
 using System.ComponentModel;
