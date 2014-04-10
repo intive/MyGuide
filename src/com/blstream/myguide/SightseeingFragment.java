@@ -11,9 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationLogger;
@@ -70,16 +67,11 @@ public class SightseeingFragment extends Fragment {
 	private ArrayList<Animal> mAnimalsList;
 
 	private LocationLogger mLocationLogger;
-
-	private RelativeLayout mRlAnimalDetails;
-	private TextView mTxtvAnimaLName;
 	private Animal animal;
 
 	private boolean mLocationLogVisible;
-	private View mRootView;
 
-	public SightseeingFragment() {
-	}
+	public SightseeingFragment() {}
 
 	private void configureAndDisplayUserPosition() {
 		// check if location should be hidden
@@ -93,7 +85,7 @@ public class SightseeingFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mRootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
+		View mRootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -108,9 +100,6 @@ public class SightseeingFragment extends Fragment {
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
-
-		mRlAnimalDetails = (RelativeLayout) mRootView.findViewById(R.id.rlMarkerDetails);
-		mTxtvAnimaLName = (TextView) mRlAnimalDetails.findViewById(R.id.txtvInfoWindowAnimal);
 
 		return mRootView;
 	}
@@ -194,46 +183,6 @@ public class SightseeingFragment extends Fragment {
 				}
 			}
 		});
-
-		/**
-		 * This listeners is on Marker click on the Map After click is animation
-		 * with description of Animals from bottom of screen
-		 */
-		mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-			@Override
-			public boolean onMarkerClick(Marker marker) {
-				animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
-				marker.setIcon((BitmapDescriptorFactory
-						.fromResource(R.drawable.animal_icon_myguide)));
-
-				TranslateAnimation animation = new TranslateAnimation(0, 0, 300, 0);
-				animation.setDuration(500);
-
-				Animal animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
-				mTxtvAnimaLName.setText(animal.getName() + "");
-
-				mRlAnimalDetails.setAnimation(animation);
-				mRlAnimalDetails.setVisibility(View.VISIBLE);
-
-				return false;
-			}
-		});
-
-		/**
-		 * This listener is on Map click. Outside of marker and method hide
-		 * description of Animal.
-		 */
-		mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-			@Override
-			public void onMapClick(LatLng latLng) {
-				TranslateAnimation animation = new TranslateAnimation(0, 0, 0, 300);
-				animation.setDuration(500);
-
-				mRlAnimalDetails.setAnimation(animation);
-				mRlAnimalDetails.setVisibility(View.GONE);
-			}
-		});
-
 		/**
 		 * This listener is on Info window click ( Top of Marker ) After click
 		 * animal description fragment is opened

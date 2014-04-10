@@ -57,13 +57,15 @@
         <item name="android:adjustViewBounds">true</item>
         <item name="android:scaleType">fitCenter</item>
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:layout_margin">5dp</item>
     </style>
     
     <style name="animal_description_text">
         <item name="android:textSize">14sp</item>
         <item name="android:gravity">left</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:layout_margin">10dp</item>
     </style>
 
