@@ -44,6 +44,8 @@ public class SightseeingFragment extends Fragment implements
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
+	private static final int WAYS_COLOR_DEFAULT = Color.BLACK;
+	private static final int WAYS_WIDTH_DEFAULT = 2;
 
 	private GoogleMap mMap;
 	private float mMinZoom;
@@ -197,19 +199,15 @@ public class SightseeingFragment extends Fragment implements
 		MyGuideApp mga = (MyGuideApp) (getActivity().getApplication());
 		ArrayList<Way> ways = mga.getZooData().getWays();
 		mZooPaths = new ArrayList<Polyline>();
-		for (Way a : ways) {
-			int numOfNodes = a.getNodes().size();
-			for (int i = 0; i < numOfNodes - 1; i++) {
-				Node current = a.getNodes().get(i);
-				Node next = a.getNodes().get(i + 1);
-				mZooPaths.add(mMap.addPolyline(new PolylineOptions()
-						.add(new LatLng(current.getLatitude(), current
-								.getLongitude()),
-								new LatLng(next.getLatitude(), next
-										.getLongitude())
-						).width(2)
-						.color(Color.BLACK)));
+
+		for (Way way : ways) {
+			PolylineOptions plo = new PolylineOptions()
+					.width(WAYS_WIDTH_DEFAULT)
+					.color(WAYS_COLOR_DEFAULT);
+			for (Node node : way.getNodes()) {
+				plo.add(new LatLng(node.getLatitude(), node.getLongitude()));
 			}
+			mZooPaths.add(mMap.addPolyline(plo));
 		}
 	}
 
