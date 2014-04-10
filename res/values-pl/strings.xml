@@ -10,6 +10,7 @@
     <string name="tickets_and_times">Bilety i godziny</string>
     <string name="how_to_get">Dojazd</string>
     <string name="sightseeing">Zwiedzaj</string>
+    <string name="information">Informacje</string>
     <string name="options">Opcje</string>
     <string name="text">pl: Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
         Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. 
@@ -26,6 +27,9 @@
     <string name="go_to_option">Ustawienia</string>
     <string name="start_without_gps">Uruchom bez GPS</string>
     <string name="gps_enable_dialog_msg">Włącz GPS aby móc korzystać ze wszystkich funkcji aplikacji:</string>
+    <string name="view_map">Mapa Zoo</string>
+    <string name="to_far_from_zoo">Znajdujesz się daleko od Zoo. Chcesz zobaczyć wskazówki dojazdu
+         zamiast mapy Zoo?</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Błąd aplikacji</string>

@@ -1,6 +1,6 @@
 package com.blstream.myguide.gps;
 
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import android.content.Context;
 import android.location.Location;
@@ -33,7 +33,7 @@ public class LocationUpdater {
 	private LocationClient mLocationClient;
 	private LocationRequest mLocationRequest;
 	// List of listeners that bind to LocationUpdater
-	private ArrayList<LocationUser> mLocationUsers;
+	private CopyOnWriteArrayList<LocationUser> mLocationUsers;
 	// True, when at least one listener is bind to LocationUpdater
 	private boolean mRequestingForUpdates;
 	private boolean mGpsPopupWasShown;
@@ -41,7 +41,7 @@ public class LocationUpdater {
 	private LocationUpdater() {
 		mRequestingForUpdates = false;
 		mGpsPopupWasShown = false;
-		mLocationUsers = new ArrayList<LocationUser>();
+		mLocationUsers = new CopyOnWriteArrayList<LocationUser>();
 		mLocationClient = new LocationClient(mAppContext, mConnectionCallbacks,
 				mOnConnectionFailedListener);
 		mLocationClient.connect();
