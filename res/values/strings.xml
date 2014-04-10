@@ -57,8 +57,13 @@
         <item name="child">For children</item>
         <item name="map_view">Map</item>
     </string-array>
-   
+
     <string name="animal_list_title">Animals</string>
 <string name="animal_image">Animal Image</string>
     
+
+    <!-- Animal List title -->
+    <string name="animal_list_title">Animals</string>
+<string name="animal_image">Animal Image</string>
+
 </resources>

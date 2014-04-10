@@ -43,8 +43,6 @@
         <item name="gastronomy">Gastronomia</item>
         <item name="preferences">Preferencje</item>
     </string-array>
-    
-    <string name="animal_list_title">Zwierzęta</string>
 
     <!--Animals description tabs name -->
     <string-array name="animal_desc_tabs_name">
@@ -52,5 +50,8 @@
         <item name="child">Dla Dzieci</item>
         <item name="map_view">Mapa</item>
     </string-array>
+    
+    <!-- Animal List title -->
+    <string name="animal_list_title">Zwierzęta</string>
 
 </resources>

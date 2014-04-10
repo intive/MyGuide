@@ -4,7 +4,6 @@ package com.blstream.myguide;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
-import android.content.pm.ApplicationInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
