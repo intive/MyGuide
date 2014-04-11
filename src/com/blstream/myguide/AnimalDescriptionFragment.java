@@ -14,11 +14,12 @@ import android.view.ViewGroup;
 
 import com.blstream.myguide.zoolocations.Animal;
 
-
 /**
  * Created by Piotrek on 23.03.14.
  */
 public class AnimalDescriptionFragment extends Fragment {
+
+	private static final String LOG_TAG = AnimalDescriptionFragment.class.getSimpleName();
 
 	private ViewPager mViewPager;
 	private ActionBar mActionBar;
@@ -110,11 +111,14 @@ public class AnimalDescriptionFragment extends Fragment {
 	 * Method setUp ViewPager and Listener to swipe fragment
 	 */
 	private void setUpViewPager(View view) {
-		AnimalPagerAdapter mAdapter;
+		// using Activity's FragmentManager causes issues opening this Fragment second time
+		AnimalPagerAdapter mAdapter = new AnimalPagerAdapter(getChildFragmentManager());
+		mAdapter.setAnimal(mAnimal);
 
 		mViewPager = (ViewPager) view.findViewById(R.id.pager);
-		mAdapter = new AnimalPagerAdapter(getActivity().getSupportFragmentManager());
 		mViewPager.setAdapter(mAdapter);
+		// all three tabs always active when this Fragment is alive
+		mViewPager.setOffscreenPageLimit(3);
 
 		mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override
@@ -131,4 +135,5 @@ public class AnimalDescriptionFragment extends Fragment {
 			}
 		});
 	}
+
 }
