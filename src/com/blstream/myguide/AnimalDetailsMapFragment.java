@@ -74,7 +74,7 @@ public class AnimalDetailsMapFragment extends Fragment {
 
 		// minimal interval (in milliseconds) for Location updates
 		// must not be set too low or too high
-		private static final long MINIMAL_IDLE_TIME = TimeUnit.SECONDS.toMillis(90);
+		private static final long MINIMAL_IDLE_TIME = TimeUnit.SECONDS.toMillis(10);
 
 		private long mLastUpdateTime = 0;
 		private boolean mFirstUpdate = true;
@@ -103,7 +103,6 @@ public class AnimalDetailsMapFragment extends Fragment {
 
 		@Override
 		public void onLocationUpdate(Location location) {
-			Log.d(LOG_TAG, "onLocationUpdate");
 			mFragment.dismissProgressDialog();
 
 			// since every update causes path finding it may be a good idea to
@@ -118,8 +117,6 @@ public class AnimalDetailsMapFragment extends Fragment {
 
 				mLastUpdateTime = time;
 				if (mFirstUpdate) mFirstUpdate = false;
-			} else {
-				Log.d(LOG_TAG, "location update rejected");
 			}
 		}
 
