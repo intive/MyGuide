@@ -1,3 +1,4 @@
+
 package com.blstream.myguide;
 
 import java.util.ArrayList;
@@ -23,8 +24,8 @@ import android.widget.ListView;
 
 /**
  * Fragment showing list of animals in the Zoo.
+ * 
  * @author Agnieszka
- *
  */
 
 public class AnimalListFragment extends Fragment {
@@ -36,30 +37,31 @@ public class AnimalListFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_animal_list, container,
 				false);
-		
+
 		setActionBar();
 		setHasOptionsMenu(true);
-		
+
 		ListView mAnimalList = (ListView) view.findViewById(R.id.lvAnimalList);
 		mZooData = ((MyGuideApp) this.getActivity().getApplication())
 				.getZooData();
-		
+
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				inflater.getContext(), R.layout.animal_list_item,getAnimalNames());
-		
+				inflater.getContext(), R.layout.animal_list_item, getAnimalNames());
+
 		mAnimalList.setAdapter(adapter);
 		mAnimalList.setOnItemClickListener(new AnimalListOnClickListener());
 
 		return view;
 	}
 
-	private void setActionBar(){
+	private void setActionBar() {
 		getActivity().getActionBar().setTitle(R.string.animal_list_title);
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 	}
-	
+
 	/**
-	 * Reads names of animals from ZooLocationsData. 
+	 * Reads names of animals from ZooLocationsData.
+	 * 
 	 * @return array of strings with animal names
 	 */
 
@@ -72,30 +74,36 @@ public class AnimalListFragment extends Fragment {
 		}
 		return animalNames;
 	}
-	
-	private class AnimalListOnClickListener implements OnItemClickListener{
+
+	private class AnimalListOnClickListener implements OnItemClickListener {
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view,
 				int position, long id) {
-            Animal animal = mZooData.getAnimals().get(position);
+			Animal animal = mZooData.getAnimals().get(position);
 
-            Fragment[] fragments = {AnimalDescriptionTab
-                    .newInstance(R.drawable.placeholder_adult, R.string.text), AnimalDescriptionTab
-                    .newInstance(R.drawable.placeholder_child, R.string.text), AnimalDescriptionTab.newInstance()};
-            Fragment newFragment = FragmentTabManager.newInstance(R.array.animal_desc_tabs_name, fragments, animal);
+			Fragment[] fragments = {
+					AnimalDescriptionTab
+							.newInstance(R.drawable.placeholder_adult, R.string.text),
+					AnimalDescriptionTab
+							.newInstance(R.drawable.placeholder_child, R.string.text),
+					AnimalDescriptionTab.newInstance()
+			};
+			Fragment newFragment = FragmentTabManager.newInstance(R.array.animal_desc_tabs_name,
+					fragments, animal);
 
-            FragmentHelper.swapFragment(R.id.flFragmentHolder, newFragment, getFragmentManager(), BundleConstants.FRAGMENT_ANIMAL_DETAIL);
-        }
+			FragmentHelper.swapFragment(R.id.flFragmentHolder, newFragment, getFragmentManager(),
+					BundleConstants.FRAGMENT_ANIMAL_DETAIL);
+		}
 	}
-	
+
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		super.onCreateOptionsMenu(menu, inflater);
 		MenuItem itemSearch = menu.findItem(R.id.action_search);
-        MenuItem itemFilter = menu.findItem(R.id.action_filter);
+		MenuItem itemFilter = menu.findItem(R.id.action_filter);
 		if (itemSearch != null) itemSearch.setVisible(false);
-        if (itemFilter != null) itemFilter.setVisible(false);
+		if (itemFilter != null) itemFilter.setVisible(false);
 	}
 
 }

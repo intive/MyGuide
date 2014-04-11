@@ -24,8 +24,8 @@ import com.blstream.myguide.gps.LocationUpdater;
 import com.google.android.gms.maps.SupportMapFragment;
 
 /**
- * Created by Piotrek on 2014-04-01.
- * Fixed by Angieszka (fragment swap) on 2014-04-04.
+ * Created by Piotrek on 2014-04-01. Fixed by Angieszka (fragment swap) on
+ * 2014-04-04.
  */
 public class StartActivity extends FragmentActivity {
 
@@ -103,40 +103,42 @@ public class StartActivity extends FragmentActivity {
 
 	/** Swaps fragments in the main content view */
 	private void selectItem(int position) {
-		
+
 		Fragment current = getSupportFragmentManager().findFragmentById(R.id.flFragmentHolder);
 		Fragment newFragment = null;
 		String tag = null;
 
-        new Thread() {
-            @Override
-            public void run() {
-                StartActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mDrawerLayout.closeDrawer(mDrawerList);
-                    }
-                });
-            }
-        }.start();
+		new Thread() {
+			@Override
+			public void run() {
+				StartActivity.this.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						mDrawerLayout.closeDrawer(mDrawerList);
+					}
+				});
+			}
+		}.start();
 
-		switch(position){
-		case 0:
-            if(!current.getTag().equals(BundleConstants.FRAGMENT_SIGHTSEEING)) {
-                getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            }
-			break;
-		case 1:
-			newFragment = new AnimalListFragment();
-			tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
-			break;
-		default: break;
+		switch (position) {
+			case 0:
+				if (!current.getTag().equals(BundleConstants.FRAGMENT_SIGHTSEEING)) {
+					getSupportFragmentManager().popBackStack(null,
+							FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				}
+				break;
+			case 1:
+				newFragment = new AnimalListFragment();
+				tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
+				break;
+			default:
+				break;
 		}
-		
-		if(newFragment != null && !current.getTag().equals(tag)){
+
+		if (newFragment != null && !current.getTag().equals(tag)) {
 			if (!tag.equals(BundleConstants.FRAGMENT_SIGHTSEEING)) setNextFragment(newFragment, tag);
 		}
-		
+
 		mDrawerList.setItemChecked(position, true);
 		setTitle(mDrawerMenuItems[position]);
 	}
@@ -149,9 +151,10 @@ public class StartActivity extends FragmentActivity {
 
 	private void setNextFragment(Fragment fragment, String tag) {
 		SupportMapFragment f = (SupportMapFragment) getSupportFragmentManager()
-	            .findFragmentById(R.id.map);
-	    if (f != null) getSupportFragmentManager().beginTransaction().remove(f).commit();
-		FragmentHelper.swapFragment(R.id.flFragmentHolder, fragment, getSupportFragmentManager(), tag);
+				.findFragmentById(R.id.map);
+		if (f != null) getSupportFragmentManager().beginTransaction().remove(f).commit();
+		FragmentHelper.swapFragment(R.id.flFragmentHolder, fragment, getSupportFragmentManager(),
+				tag);
 	}
 
 	/*

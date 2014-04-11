@@ -1,3 +1,4 @@
+
 package com.blstream.myguide.fragments;
 
 import com.blstream.myguide.R;
@@ -12,7 +13,7 @@ public class FragmentHelper {
 			FragmentManager fragmentManager, String tag) {
 
 		FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.setCustomAnimations(R.anim.right_in, R.anim.left_out);
+		ft.setCustomAnimations(R.anim.right_in, R.anim.left_out);
 		ft.add(container, fragment, tag);
 		ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 		ft.commit();
@@ -22,7 +23,7 @@ public class FragmentHelper {
 			FragmentManager fragmentManager, String tag) {
 
 		FragmentTransaction ft = fragmentManager.beginTransaction();
-		ft.setCustomAnimations(R.anim.right_in, R.anim.left_out,R.anim.left_in, R.anim.right_out);
+		ft.setCustomAnimations(R.anim.right_in, R.anim.left_out, R.anim.left_in, R.anim.right_out);
 		ft.replace(container, newFragment, tag);
 		ft.addToBackStack(null);
 		ft.commit();

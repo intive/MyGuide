@@ -29,7 +29,7 @@ public class AnimalDescriptionTab extends Fragment {
 		Bundle bundle = new Bundle();
 		bundle.putInt(BundleConstants.TAB_TEXT_ID, text);
 		bundle.putInt(BundleConstants.TAB_IMAGE_ID, image);
-        mTabs.setArguments(bundle);
+		mTabs.setArguments(bundle);
 
 		return mTabs;
 	}

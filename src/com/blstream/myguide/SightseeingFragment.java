@@ -44,8 +44,8 @@ public class SightseeingFragment extends Fragment {
 
 	private static final String LOG_TAG = SightseeingFragment.class
 			.getSimpleName();
-	private static final float DEFAULT_MIN_ZOOM = 18.5f;
-	private static final float DEFAULT_MAX_ZOOM = 14.0f;
+	private static final float DEFAULT_MIN_ZOOM = 14.5f;
+	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
 	private static final int WAYS_COLOR_DEFAULT = Color.BLACK;
@@ -67,7 +67,6 @@ public class SightseeingFragment extends Fragment {
 	private ArrayList<Animal> mAnimalsList;
 
 	private LocationLogger mLocationLogger;
-	private Animal animal;
 
 	private boolean mLocationLogVisible;
 
@@ -190,7 +189,7 @@ public class SightseeingFragment extends Fragment {
 		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
-				animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
+				Animal animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
 
 				SupportMapFragment f = (SupportMapFragment) getActivity()
 						.getSupportFragmentManager()

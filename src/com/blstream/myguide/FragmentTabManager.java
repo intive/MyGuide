@@ -16,13 +16,13 @@ import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.XmlObject;
 
 /**
- * Created by Piotrek on 2014-04-05.
- * This class is to create fragment with Tab.  Simple use of this class:
- * First we create array of Fragment which are Tab(twoor three)
- * And the we create one fragment call FragmentTabManager.newInstance
- *
- * Fragment[] fragmentsTab = {FirstTab.newInstance(), SecondTab.newInstance(),ThirdTab.newInstance()};
- * Fragment newFragment = FragmentTabManager.newInstance(R.array.tabs_name, fragmentsTab, XmlObjet);
+ * Created by Piotrek on 2014-04-05. This class is to create fragment with Tab.
+ * Simple use of this class: First we create array of Fragment which are
+ * Tab(twoor three) And the we create one fragment call
+ * FragmentTabManager.newInstance Fragment[] fragmentsTab =
+ * {FirstTab.newInstance(), SecondTab.newInstance(),ThirdTab.newInstance()};
+ * Fragment newFragment = FragmentTabManager.newInstance(R.array.tabs_name,
+ * fragmentsTab, XmlObjet);
  */
 public class FragmentTabManager extends Fragment {
 
@@ -31,12 +31,20 @@ public class FragmentTabManager extends Fragment {
 	private String mTitle;
 	private Fragment[] mFragments;
 	private int mStringArray;
-	private Animal mAnimal;
+	private XmlObject mXmlObject;
 
 	public static FragmentTabManager newInstance() {
 		return new FragmentTabManager();
 	}
 
+	/**
+	 * Method create fragment which create and manage tabs
+	 * 
+	 * @param stringArray - array of String which are Headers in Tab
+	 * @param fragment - array of fragments which are used in each Tabs
+	 * @param object - It's XmlObject which we used to take his attributes.
+	 * @return fragemntTab object
+	 */
 	public static FragmentTabManager newInstance(int stringArray, Fragment[] fragment,
 			XmlObject object) {
 		FragmentTabManager fragmentTab = new FragmentTabManager();
@@ -69,7 +77,7 @@ public class FragmentTabManager extends Fragment {
 			mTitle = (String) args.getCharSequence(BundleConstants.TAB_TITLE);
 			mStringArray = args.getInt(BundleConstants.STRING_ARRAY);
 			mFragments = (Fragment[]) args.getSerializable(BundleConstants.TAB_FRAGMENTS);
-			if (mAnimal != null) mAnimal = (Animal) args
+			if (mXmlObject != null) mXmlObject = (XmlObject) args
 					.getSerializable(BundleConstants.SELECTED_OBJECT);
 		}
 	}

@@ -28,12 +28,12 @@ public class ZooLocationsDataParser {
 	private ArrayList<Way> mWays;
 	private ArrayList<Junction> mJunctions;
 	private TreeMap<Integer, Way> mWaysMap;
-    private ArrayList<Restaurant> mRestaurants;
+	private ArrayList<Restaurant> mRestaurants;
 
 	/**
-	 * This function parses chosen xml file and returns data saved in
-	 *  object. If there are ways in junction tag which
-	 * are not defined in ways tag, function throws exception.
+	 * This function parses chosen xml file and returns data saved in object. If
+	 * there are ways in junction tag which are not defined in ways tag,
+	 * function throws exception.
 	 * 
 	 * @param in InputStream of xml file
 	 * @return parsed data from xml file
@@ -43,7 +43,7 @@ public class ZooLocationsDataParser {
 		mWays = new ArrayList<Way>();
 		mJunctions = new ArrayList<Junction>();
 		mWaysMap = new TreeMap<Integer, Way>();
-        mRestaurants = new ArrayList<Restaurant>();
+		mRestaurants = new ArrayList<Restaurant>();
 
 		XmlPullParser parser = Xml.newPullParser();
 		parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
@@ -67,9 +67,9 @@ public class ZooLocationsDataParser {
 			} else if ("ways".equals(name)) {
 				readWays(parser);
 			} else if ("junctions".equals(name)) {
-                readJunctions(parser);
-            } else if ("gastronomy".equals(name)) {
-                readGastronomy(parser);
+				readJunctions(parser);
+			} else if ("gastronomy".equals(name)) {
+				readGastronomy(parser);
 			} else {
 				skip(parser);
 			}
@@ -91,82 +91,83 @@ public class ZooLocationsDataParser {
 		mJunctions = junctionsWithWays;
 	}
 
-    private void readGastronomy(XmlPullParser parser) throws XmlPullParserException, IOException {
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            String name = parser.getName();
-            if ("restaurant".equals(name)) {
-                mRestaurants.add(readRestaurant(parser));
-            } else {
-                skip(parser);
-            }
-        }
-    }
+	private void readGastronomy(XmlPullParser parser) throws XmlPullParserException, IOException {
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("restaurant".equals(name)) {
+				mRestaurants.add(readRestaurant(parser));
+			} else {
+				skip(parser);
+			}
+		}
+	}
 
-    private Restaurant readRestaurant(XmlPullParser parser) throws XmlPullParserException, IOException {
-        Restaurant restaurant = new Restaurant();
-        Node node = readAtributesLatLon(parser);
-        restaurant.setNode(node);
+	private Restaurant readRestaurant(XmlPullParser parser) throws XmlPullParserException,
+			IOException {
+		Restaurant restaurant = new Restaurant();
+		Node node = readAtributesLatLon(parser);
+		restaurant.setNode(node);
 
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            String name = parser.getName();
-            if ("name".equals(name)) {
-                readName(parser, restaurant);
-            } else if ("open".equals(name)) {
-                restaurant.setOpen(readText(parser));
-            } else if ("dishes".equals(name)) {
-                restaurant.setDishes(readDishes(parser));
-            } else {
-                skip(parser);
-            }
-        }
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("name".equals(name)) {
+				readName(parser, restaurant);
+			} else if ("open".equals(name)) {
+				restaurant.setOpen(readText(parser));
+			} else if ("dishes".equals(name)) {
+				restaurant.setDishes(readDishes(parser));
+			} else {
+				skip(parser);
+			}
+		}
 
-        return restaurant;
-    }
+		return restaurant;
+	}
 
-    private ArrayList<Dish> readDishes(XmlPullParser parser) throws XmlPullParserException, IOException {
-        ArrayList<Dish> dishes = new ArrayList<Dish>();
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            String name = parser.getName();
-            if ("dish".equals(name)) {
-                dishes.add(readDish(parser));
-            } else {
-                skip(parser);
-            }
-        }
-        return dishes;
-    }
+	private ArrayList<Dish> readDishes(XmlPullParser parser) throws XmlPullParserException,
+			IOException {
+		ArrayList<Dish> dishes = new ArrayList<Dish>();
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("dish".equals(name)) {
+				dishes.add(readDish(parser));
+			} else {
+				skip(parser);
+			}
+		}
+		return dishes;
+	}
 
-    private Dish readDish(XmlPullParser parser) throws XmlPullParserException, IOException {
-        Dish dish = new Dish();
+	private Dish readDish(XmlPullParser parser) throws XmlPullParserException, IOException {
+		Dish dish = new Dish();
 
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            String name = parser.getName();
-            if ("price".equals(name)) {
-                dish.setPrice(Float.parseFloat(readText(parser)));
-            } else if ("name".equals(name)) {
-                readName(parser, dish);
-            } else {
-                skip(parser);
-            }
-        }
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("price".equals(name)) {
+				dish.setPrice(Float.parseFloat(readText(parser)));
+			} else if ("name".equals(name)) {
+				readName(parser, dish);
+			} else {
+				skip(parser);
+			}
+		}
 
-        return dish;
-    }
+		return dish;
+	}
 
-
-    private void readAnimals(XmlPullParser parser) throws XmlPullParserException, IOException {
+	private void readAnimals(XmlPullParser parser) throws XmlPullParserException, IOException {
 
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -185,7 +186,7 @@ public class ZooLocationsDataParser {
 		Animal animal = new Animal();
 		Node node = readAtributesLatLon(parser);
 		animal.setNode(node);
-		
+
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
 				continue;
@@ -235,32 +236,7 @@ public class ZooLocationsDataParser {
 		}
 	}
 
-//    private void readName(XmlPullParser parser, Restaurant restaurant) throws XmlPullParserException,
-//            IOException {
-//        while (parser.next() != XmlPullParser.END_TAG) {
-//            if (parser.getEventType() != XmlPullParser.START_TAG) {
-//                continue;
-//            }
-//            String language = parser.getName();
-//            String name = readText(parser);
-//            restaurant.addName(language, name);
-//        }
-//    }
-//
-//    private void readName(XmlPullParser parser, Dish dish) throws XmlPullParserException,
-//            IOException {
-//        while (parser.next() != XmlPullParser.END_TAG) {
-//            if (parser.getEventType() != XmlPullParser.START_TAG) {
-//                continue;
-//            }
-//            String language = parser.getName();
-//            String name = readText(parser);
-//            dish.addName(language, name);
-//        }
-//    }
-
-
-    private Node readAtributesLatLon(XmlPullParser parser) throws XmlPullParserException,
+	private Node readAtributesLatLon(XmlPullParser parser) throws XmlPullParserException,
 			IOException {
 		String latitudeStr = parser.getAttributeValue(null, "lat");
 		String longitudeStr = parser.getAttributeValue(null, "lon");
