@@ -1,13 +1,3 @@
-//
-//  UIBubbleTableView.m
-//
-//  Created by Alex Barinov
-//  Project home page: http://alexbarinov.github.com/UIBubbleTableView/
-//
-//  This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
-//  To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/
-//
-
 #import "UIBubbleTableView.h"
 #import "NSBubbleData.h"
 #import "UIBubbleHeaderTableViewCell.h"
@@ -73,16 +63,6 @@
     return self;
 }
 
-#if !__has_feature(objc_arc)
-- (void)dealloc
-{
-    [_bubbleSection release];
-	_bubbleSection = nil;
-	_bubbleDataSource = nil;
-    [super dealloc];
-}
-#endif
-
 #pragma mark - Override
 
 - (void)reloadData
@@ -95,19 +75,11 @@
     
     // Loading new data
     int count = 0;
-#if !__has_feature(objc_arc)
-    self.bubbleSection = [[[NSMutableArray alloc] init] autorelease];
-#else
     self.bubbleSection = [[NSMutableArray alloc] init];
-#endif
     
     if (self.bubbleDataSource && (count = [self.bubbleDataSource rowsForBubbleTable:self]) > 0)
     {
-#if !__has_feature(objc_arc)
-        NSMutableArray *bubbleData = [[[NSMutableArray alloc] initWithCapacity:count] autorelease];
-#else
         NSMutableArray *bubbleData = [[NSMutableArray alloc] initWithCapacity:count];
-#endif
         
         for (int i = 0; i < count; i++)
         {
@@ -121,28 +93,19 @@
              NSBubbleData *bubbleData1 = (NSBubbleData *)obj1;
              NSBubbleData *bubbleData2 = (NSBubbleData *)obj2;
              
-             return [bubbleData1.date compare:bubbleData2.date];            
+             return [bubbleData1.date compare:bubbleData2.date];
          }];
         
-        NSDate *last = [NSDate dateWithTimeIntervalSince1970:0];
         NSMutableArray *currentSection = nil;
         
         for (int i = 0; i < count; i++)
         {
             NSBubbleData *data = (NSBubbleData *)[bubbleData objectAtIndex:i];
             
-            if ([data.date timeIntervalSinceDate:last] > self.snapInterval)
-            {
-#if !__has_feature(objc_arc)
-                currentSection = [[[NSMutableArray alloc] init] autorelease];
-#else
-                currentSection = [[NSMutableArray alloc] init];
-#endif
-                [self.bubbleSection addObject:currentSection];
-            }
+            currentSection = [[NSMutableArray alloc] init];
+            [self.bubbleSection addObject:currentSection];
             
             [currentSection addObject:data];
-            last = data.date;
         }
     }
     
@@ -182,7 +145,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     // Header with date and time
     if (indexPath.row == 0)
     {
@@ -191,13 +154,13 @@
         NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:0];
         
         if (cell == nil) cell = [[UIBubbleHeaderTableViewCell alloc] init];
-
+        
         cell.date = data.date;
-       
+        
         return cell;
     }
     
-    // Standard bubble    
+    // Standard bubble
     static NSString *cellId = @"tblBubbleCell";
     UIBubbleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     NSBubbleData *data = [[self.bubbleSection objectAtIndex:indexPath.section] objectAtIndex:indexPath.row - 1];
@@ -221,6 +184,5 @@
     	[self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:([self numberOfRowsInSection:lastSectionIdx] - 1) inSection:lastSectionIdx] atScrollPosition:UITableViewScrollPositionBottom animated:animated];
     }
 }
-
 
 @end

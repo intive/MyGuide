@@ -1,5 +1,5 @@
 //
-//  HistoryTableViewController.h
+//  HistoryViewController.h
 //  MyGuide
 //
 //  Created by Kamil Lelonek on 4/13/14.
@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIBubbleTableViewDataSource.h"
 
-@interface HistoryTableViewController : UITableViewController
+@interface HistoryViewController : UIViewController <UIBubbleTableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
