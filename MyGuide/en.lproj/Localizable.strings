@@ -31,3 +31,5 @@
 "titleControllerGastronomy" = "Gastronomy";
 
 "cellLabelRestaurant" = "Restaurant %d";
+
+"titleControllerHistory" = "History of ZOO";
