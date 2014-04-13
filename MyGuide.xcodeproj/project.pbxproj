@@ -24,6 +24,9 @@
 		055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */; };
 		05A1C12618FAA436008FE0CB /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C12518FAA436008FE0CB /* HistoryTableViewController.m */; };
 		05A1C12818FAABD3008FE0CB /* history.xml in Resources */ = {isa = PBXBuildFile; fileRef = 05A1C12718FAABD3008FE0CB /* history.xml */; };
+		05A1C12B18FAAF9D008FE0CB /* HistoryEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */; };
+		05A1C12E18FAB0B8008FE0CB /* HistoryData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C12D18FAB0B8008FE0CB /* HistoryData.m */; };
+		05A1C13118FAB125008FE0CB /* HistoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C13018FAB125008FE0CB /* HistoryParser.m */; };
 		05C925D318DDAFAD00C2F746 /* GPS.md in Resources */ = {isa = PBXBuildFile; fileRef = 05C925D218DDAFAD00C2F746 /* GPS.md */; };
 		05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C9265818DDDF1800C2F746 /* LocationManager.m */; };
 		05CD409918DF6FD60065C04F /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CD409818DF6FD60065C04F /* MapViewController.m */; };
@@ -105,6 +108,12 @@
 		05A1C12418FAA436008FE0CB /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		05A1C12518FAA436008FE0CB /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
 		05A1C12718FAABD3008FE0CB /* history.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = history.xml; path = "XML files/history.xml"; sourceTree = "<group>"; };
+		05A1C12918FAAF9D008FE0CB /* HistoryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryEvent.h; sourceTree = "<group>"; };
+		05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryEvent.m; sourceTree = "<group>"; };
+		05A1C12C18FAB0B8008FE0CB /* HistoryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryData.h; sourceTree = "<group>"; };
+		05A1C12D18FAB0B8008FE0CB /* HistoryData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryData.m; sourceTree = "<group>"; };
+		05A1C12F18FAB125008FE0CB /* HistoryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryParser.h; sourceTree = "<group>"; };
+		05A1C13018FAB125008FE0CB /* HistoryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryParser.m; sourceTree = "<group>"; };
 		05C925D218DDAFAD00C2F746 /* GPS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GPS.md; sourceTree = "<group>"; };
 		05C9265718DDDF1800C2F746 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		05C9265818DDDF1800C2F746 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
@@ -408,6 +417,8 @@
 				05406E4B18F31B06001656FC /* Restaurant.m */,
 				0509026718F45C7B00369B07 /* Translatable.h */,
 				0509026818F45C7B00369B07 /* Translatable.m */,
+				05A1C12918FAAF9D008FE0CB /* HistoryEvent.h */,
+				05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -421,6 +432,8 @@
 				84DDCB3718BA919600A2F720 /* AFXMLParser.m */,
 				05406E3D18F2EE1A001656FC /* GastronomyParser.h */,
 				05406E3E18F2EE1A001656FC /* GastronomyParser.m */,
+				05A1C12F18FAB125008FE0CB /* HistoryParser.h */,
+				05A1C13018FAB125008FE0CB /* HistoryParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -434,6 +447,8 @@
 				84DDCB4118BA91A100A2F720 /* AFParsedData.m */,
 				05406E4418F31661001656FC /* GastronomyData.h */,
 				05406E4518F31661001656FC /* GastronomyData.m */,
+				05A1C12C18FAB0B8008FE0CB /* HistoryData.h */,
+				05A1C12D18FAB0B8008FE0CB /* HistoryData.m */,
 			);
 			name = Storage;
 			path = Singletons;
@@ -590,6 +605,7 @@
 				05406E3C18F2C6FF001656FC /* DishTableViewCell.m in Sources */,
 				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
 				05E1654F18F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m in Sources */,
+				05A1C13118FAB125008FE0CB /* HistoryParser.m in Sources */,
 				05E1655118F1B51100DA3BD7 /* GastronomyDetailsViewController.m in Sources */,
 				0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */,
 				05A1C12618FAA436008FE0CB /* HistoryTableViewController.m in Sources */,
@@ -600,9 +616,11 @@
 				0533DF0918DE333A001BCB28 /* SlideMenuViewController.m in Sources */,
 				84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */,
 				05406E4C18F31B06001656FC /* Restaurant.m in Sources */,
+				05A1C12E18FAB0B8008FE0CB /* HistoryData.m in Sources */,
 				0531724118F4A5B500FEC79F /* DetailsMapViewController.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
 				05E375CB18BA872B00A31630 /* MWLogging.m in Sources */,
+				05A1C12B18FAAF9D008FE0CB /* HistoryEvent.m in Sources */,
 				05E375C918BA872B00A31630 /* main.m in Sources */,
 				0509026918F45C7B00369B07 /* Translatable.m in Sources */,
 				05E0209818C23B7100AE76EC /* MKAnnotationAnimal.m in Sources */,
