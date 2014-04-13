@@ -23,6 +23,7 @@
 		05406E4C18F31B06001656FC /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E4B18F31B06001656FC /* Restaurant.m */; };
 		055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */; };
 		05A1C12618FAA436008FE0CB /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C12518FAA436008FE0CB /* HistoryTableViewController.m */; };
+		05A1C12818FAABD3008FE0CB /* history.xml in Resources */ = {isa = PBXBuildFile; fileRef = 05A1C12718FAABD3008FE0CB /* history.xml */; };
 		05C925D318DDAFAD00C2F746 /* GPS.md in Resources */ = {isa = PBXBuildFile; fileRef = 05C925D218DDAFAD00C2F746 /* GPS.md */; };
 		05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C9265818DDDF1800C2F746 /* LocationManager.m */; };
 		05CD409918DF6FD60065C04F /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CD409818DF6FD60065C04F /* MapViewController.m */; };
@@ -103,6 +104,7 @@
 		057F9EC618E7760A001DE63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		05A1C12418FAA436008FE0CB /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		05A1C12518FAA436008FE0CB /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
+		05A1C12718FAABD3008FE0CB /* history.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = history.xml; path = "XML files/history.xml"; sourceTree = "<group>"; };
 		05C925D218DDAFAD00C2F746 /* GPS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GPS.md; sourceTree = "<group>"; };
 		05C9265718DDDF1800C2F746 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		05C9265818DDDF1800C2F746 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 		84DDCB4618BA91CB00A2F720 /* XML files */ = {
 			isa = PBXGroup;
 			children = (
+				05A1C12718FAABD3008FE0CB /* history.xml */,
 				84DD035818BA8C7A00DE7178 /* config.xml */,
 				84DD035918BA8C7A00DE7178 /* XMLFetcher.h */,
 				05406E4018F313A7001656FC /* gastronomy.xml */,
@@ -532,6 +535,7 @@
 			files = (
 				05C925D318DDAFAD00C2F746 /* GPS.md in Resources */,
 				3DE69DA918C7B83400B54509 /* Localizable.strings in Resources */,
+				05A1C12818FAABD3008FE0CB /* history.xml in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				0533DF0118DE1520001BCB28 /* menu.png in Resources */,
 				05406E4318F313B6001656FC /* data.xml in Resources */,

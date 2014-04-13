@@ -1,0 +1,11 @@
+{
+    "images": [{
+        "idiom": "iphone",
+        "scale": "2x",
+        "filename": "placeholder_history.jpg"
+    }],
+    "info": {
+        "version": 1,
+        "author": "xcode"
+    }
+}
