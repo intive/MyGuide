@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 /**
  * Created by Piotrek on 2014-04-07.
- *
  */
 public class Dish extends XmlObject implements Serializable {
 

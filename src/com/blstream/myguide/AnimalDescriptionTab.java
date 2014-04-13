@@ -59,13 +59,13 @@ public class AnimalDescriptionTab extends Fragment implements Parcelable {
 		return mView;
 	}
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+	@Override
+	public int describeContents() {
+		return 0;
+	}
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
 
-    }
+	}
 }

@@ -70,7 +70,8 @@ public class SightseeingFragment extends Fragment {
 
 	private boolean mLocationLogVisible;
 
-	public SightseeingFragment() {}
+	public SightseeingFragment() {
+	}
 
 	private void configureAndDisplayUserPosition() {
 		// check if location should be hidden

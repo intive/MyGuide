@@ -5,7 +5,6 @@ import java.io.Serializable;
 
 /**
  * Created by Piotrek on 2014-04-08.
- *
  */
 public abstract class XmlObject implements Serializable {
 
