@@ -14,9 +14,9 @@
     <string name="text">pl: Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
         Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. 
         Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.</string>
-    <string name="play_services_unavailable">Usługi Google Play nie są dostępne na tym urządzeniu. 
-        Niektóre funkcje, takie jak obsługa map czy lokalizacji, mogą być wyłączone. 
-        Usługi można pobrać bezpośrednio z Google Play.</string>
+    <string name="play_services_unavailable">Usługi Google Play, od których zależy działanie 
+        głównych funkcji aplikacji, nie są dostępne na tym urządzeniu. Aplikacja MyGuide nie może 
+        zostać uruchomiona. Usługi można pobrać bezpośrednio z Google Play.</string>
 
     <!-- Dialogs -->
     <string name="ok">OK</string>
@@ -26,6 +26,7 @@
     <string name="go_to_option">Ustawienia</string>
     <string name="start_without_gps">Uruchom bez GPS</string>
     <string name="gps_enable_dialog_msg">Włącz GPS aby móc korzystać ze wszystkich funkcji aplikacji:</string>
+    <string name="gps_loading_position">Uaktualnianie Twojej pozycji...</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Błąd aplikacji</string>

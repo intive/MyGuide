@@ -15,8 +15,8 @@
     <string name="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
         Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. 
         Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.</string>
-    <string name="play_services_unavailable">Google Play Services are not available on this device. 
-        Some function, including handling maps and location, might be inaccessible. 
+    <string name="play_services_unavailable">Google Play services, which main application features 
+        rely on, is not available on this device. MyGuide can not be lunched.
         Services can be downloaded directly from Google Play.</string>
 
     <!-- Dialogs -->
@@ -29,6 +29,7 @@
     <string name="go_to_option">Go to options</string>
     <string name="start_without_gps">Start without GPS</string>
     <string name="gps_enable_dialog_msg">Enable GPS to use all application features:</string>
+    <string name="gps_loading_position">Your position is being updated...</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Application error</string>

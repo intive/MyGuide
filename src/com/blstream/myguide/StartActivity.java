@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.blstream.myguide.dialog.ConfirmExitDialogFragment;
 import com.blstream.myguide.dialog.EnableGpsDialogFragment;
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationUpdater;
@@ -187,4 +188,14 @@ public class StartActivity extends FragmentActivity {
 		}
 	}
 
+	@Override
+	public void onBackPressed() {
+		if (getSupportFragmentManager().findFragmentById(R.id.flFragmentHolder)
+				.getTag() == BundleConstants.FRAGMENT_SIGHTSEEING) {
+			new ConfirmExitDialogFragment().show(getSupportFragmentManager(),
+					ConfirmExitDialogFragment.class.getSimpleName());
+		} else {
+			super.onBackPressed();
+		}
+	}
 }

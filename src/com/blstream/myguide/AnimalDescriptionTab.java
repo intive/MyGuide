@@ -2,6 +2,8 @@
 package com.blstream.myguide;
 
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
@@ -10,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AnimalDescriptionTab extends Fragment {
+public class AnimalDescriptionTab extends Fragment implements Parcelable {
 
 	private View mView;
 	private TextView mDescription;
@@ -56,4 +58,14 @@ public class AnimalDescriptionTab extends Fragment {
 
 		return mView;
 	}
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
 }

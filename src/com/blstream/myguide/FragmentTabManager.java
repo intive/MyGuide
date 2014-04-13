@@ -12,9 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.XmlObject;
-
 /**
  * Created by Piotrek on 2014-04-05. This class is to create fragment with Tab.
  * Simple use of this class: First we create array of Fragment which are
@@ -25,6 +23,8 @@ import com.blstream.myguide.zoolocations.XmlObject;
  * fragmentsTab, XmlObjet);
  */
 public class FragmentTabManager extends Fragment {
+
+	private static final String LOG_TAG = FragmentTabManager.class.getSimpleName();
 
 	private ViewPager mViewPager;
 	private ActionBar mActionBar;
@@ -159,6 +159,8 @@ public class FragmentTabManager extends Fragment {
 		mAdapter = new FragmentPagerAdapter(getChildFragmentManager(), mFragments, getResources()
 				.getStringArray(mStringArray).length);
 		mViewPager.setAdapter(mAdapter);
+		// all three tabs always active when this Fragment is alive
+		mViewPager.setOffscreenPageLimit(3);
 
 		mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override
@@ -175,4 +177,5 @@ public class FragmentTabManager extends Fragment {
 			}
 		});
 	}
+
 }

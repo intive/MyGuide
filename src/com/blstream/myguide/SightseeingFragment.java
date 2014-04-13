@@ -201,7 +201,7 @@ public class SightseeingFragment extends Fragment {
 								.newInstance(R.drawable.placeholder_adult, R.string.text),
 						AnimalDescriptionTab
 								.newInstance(R.drawable.placeholder_child, R.string.text),
-						AnimalDescriptionTab.newInstance()
+						AnimalDetailsMapFragment.newInstance(animal)
 				};
 				Fragment newFragment = FragmentTabManager.newInstance(
 						R.array.animal_desc_tabs_name,
