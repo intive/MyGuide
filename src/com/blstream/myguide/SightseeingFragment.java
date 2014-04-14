@@ -85,7 +85,7 @@ public class SightseeingFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View mRootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
+		View RootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -101,7 +101,7 @@ public class SightseeingFragment extends Fragment {
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
 
-		return mRootView;
+		return RootView;
 	}
 
 	@Override
@@ -222,6 +222,7 @@ public class SightseeingFragment extends Fragment {
 		MyGuideApp mga = (MyGuideApp) (getActivity().getApplication());
 		ArrayList<Way> ways = mga.getZooData().getWays();
 		mZooPaths = new ArrayList<Polyline>();
+
 		for (Way way : ways) {
 			PolylineOptions plo = new PolylineOptions()
 					.width(WAYS_WIDTH_DEFAULT)
@@ -274,9 +275,9 @@ public class SightseeingFragment extends Fragment {
 		mAnimalsList = mga.getZooData().getAnimals();
 		mAnimalMarkers = new ArrayList<Marker>();
 		for (Animal a : mAnimalsList) {
-			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions().position(
-					new LatLng(a.getNode().getLatitude(), a.getNode()
-							.getLongitude())).title(a.getName(Language.DEFAULT))
+			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions()
+					.position(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()))
+					.title(a.getName(Language.DEFAULT))
 					.icon(BitmapDescriptorFactory.fromResource(R.drawable.animal_icon_myguide))));
 		}
 	}

@@ -68,16 +68,6 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 	private LocationObserver mLocationObserver;
 	private boolean mLocationServiceBounded = false;
 
-	@Override
-	public int describeContents() {
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel parcel, int i) {
-
-	}
-
 	// this part handles Location Service updates
 	// Fragment itself may implement this interface but it's a nicely separated
 	// piece of code
@@ -261,6 +251,16 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		mMap.addPolyline(plo).setVisible(true);
 
 		return builder;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
+
 	}
 
 	@Override

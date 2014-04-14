@@ -16,7 +16,8 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
 	public FragmentPagerAdapter(FragmentManager fm, Fragment[] fragments, int tabCount) {
 		super(fm);
 		mTabCount = tabCount;
-		mFragments = fragments;
+		mFragments = new Fragment[fragments.length];
+		mFragments = fragments.clone();
 	}
 
 	@Override

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blstream.myguide.zoolocations.XmlObject;
+
 /**
  * Created by Piotrek on 2014-04-05. This class is to create fragment with Tab.
  * Simple use of this class: First we create array of Fragment which are
@@ -160,7 +161,8 @@ public class FragmentTabManager extends Fragment {
 				.getStringArray(mStringArray).length);
 		mViewPager.setAdapter(mAdapter);
 		// all three tabs always active when this Fragment is alive
-		mViewPager.setOffscreenPageLimit(3);
+		mViewPager.setOffscreenPageLimit(getResources()
+				.getStringArray(mStringArray).length);
 
 		mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override

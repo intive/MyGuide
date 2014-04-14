@@ -41,15 +41,15 @@ public class AnimalListFragment extends Fragment {
 		setActionBar();
 		setHasOptionsMenu(true);
 
-		ListView mAnimalList = (ListView) view.findViewById(R.id.lvAnimalList);
+		ListView AnimalList = (ListView) view.findViewById(R.id.lvAnimalList);
 		mZooData = ((MyGuideApp) this.getActivity().getApplication())
 				.getZooData();
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 				inflater.getContext(), R.layout.animal_list_item, getAnimalNames());
 
-		mAnimalList.setAdapter(adapter);
-		mAnimalList.setOnItemClickListener(new AnimalListOnClickListener());
+		AnimalList.setAdapter(adapter);
+		AnimalList.setOnItemClickListener(new AnimalListOnClickListener());
 
 		return view;
 	}

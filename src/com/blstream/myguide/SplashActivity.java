@@ -261,8 +261,9 @@ public class SplashActivity extends FragmentActivity {
 	}
 
 	/**
-	 * Operations to be performed on background thread. All uncatched exceptions
-	 * will trigger an error dialog to appear and eventually kill the Activity.
+	 * Operations to be performed on background thread.
+     * All uncatched exceptions will trigger an error dialog to appear and eventually kill the
+     * Activity.
 	 */
 	protected void doInBackground() {
 		parseSettingsXML();

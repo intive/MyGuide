@@ -25,8 +25,8 @@ import com.blstream.myguide.gps.LocationUpdater;
 import com.google.android.gms.maps.SupportMapFragment;
 
 /**
- * Created by Piotrek on 2014-04-01. Fixed by Angieszka (fragment swap) on
- * 2014-04-04.
+ * Created by Piotrek on 2014-04-01.
+ * Fixed by Angieszka (fragment swap) on 2014-04-04.
  */
 public class StartActivity extends FragmentActivity {
 
