@@ -16,7 +16,15 @@ public class EnableGpsDialogFragment extends DialogFragment {
 
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		final CustomDialog dialog = new CustomDialog(getActivity());
+		final CustomDialog dialog = new CustomDialog(getActivity()) {
+			@Override
+			public void onWindowFocusChanged(boolean hasFocus) {
+				super.onWindowFocusChanged(hasFocus);
+				if (hasFocus && LocationUpdater.getInstance().isGpsEnable()) {
+					EnableGpsDialogFragment.this.dismiss();
+				}
+			}
+		};
 		dialog.setMessage(R.string.gps_enable_dialog_msg)
 				.setFirstButton(R.string.start_without_gps, new OnClickListener() {
 					@Override
