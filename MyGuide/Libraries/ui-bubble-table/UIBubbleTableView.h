@@ -12,11 +12,8 @@ typedef enum _NSBubbleTypingType
 
 @interface UIBubbleTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, assign) IBOutlet id<UIBubbleTableViewDataSource> bubbleDataSource;
-@property (nonatomic) NSTimeInterval snapInterval;
+@property (nonatomic, weak) IBOutlet id<UIBubbleTableViewDataSource> bubbleDataSource;
 @property (nonatomic) NSBubbleTypingType typingBubble;
 @property (nonatomic) BOOL showAvatars;
-
-- (void) scrollBubbleViewToBottomAnimated:(BOOL)animated;
 
 @end

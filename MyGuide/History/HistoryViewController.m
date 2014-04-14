@@ -60,7 +60,7 @@
     BOOL left = NO;
     _bubbleData = [NSMutableArray new];
     for (HistoryEvent *event in _historyEvents) {
-        NSBubbleType type = (left ^= YES) ? BubbleTypeSomeoneElse : BubbleTypeMine;
+        NSBubbleType type = (left ^= YES) ? BubbleRight : BubbleLeft;
         NSString *name  = [event getName];
         NSString *date  = event.date;
         NSString *image = event.image;

@@ -3,12 +3,10 @@
 
 @implementation NSBubbleData
 
-#pragma mark - Text bubble
-
 const UIEdgeInsets textInsetsMine    = {5, 10, 11, 17};
 const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
-#pragma mark - History event bubble
+#pragma mark - Text bubble
 
 - (id) initWithText:(NSString *)text date:(NSString *)date type:(NSBubbleType)type
 {
@@ -21,14 +19,15 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
     label.text = (text ? text : @"");
     label.font = font;
     label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
     
-    UIEdgeInsets insets = (type == BubbleTypeMine ? textInsetsMine : textInsetsSomeone);
+    UIEdgeInsets insets = (type == BubbleLeft ? textInsetsMine : textInsetsSomeone);
     return [self initWithView:label date:date type:type insets:insets];
 }
 
 #pragma mark - Image bubble
 
-const UIEdgeInsets imageInsetsMine = {11, 13, 16, 22};
+const UIEdgeInsets imageInsetsMine    = {11, 13, 16, 22};
 const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
 
 - (id) initWithImage:(NSString *)imageName andDate:(NSString *)date andType:(NSBubbleType)type
@@ -43,11 +42,10 @@ const UIEdgeInsets imageInsetsSomeone = {11, 18, 16, 14};
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     imageView.image = image;
-    imageView.layer.cornerRadius = 5.0;
+    imageView.layer.cornerRadius  = 5.0;
     imageView.layer.masksToBounds = YES;
-
     
-    UIEdgeInsets insets = (type == BubbleTypeMine ? imageInsetsMine : imageInsetsSomeone);
+    UIEdgeInsets insets = (type == BubbleLeft ? imageInsetsMine : imageInsetsSomeone);
     return [self initWithView:imageView date:date type:type insets:insets];       
 }
 
