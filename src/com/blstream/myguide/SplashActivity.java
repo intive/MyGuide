@@ -95,7 +95,8 @@ public class SplashActivity extends FragmentActivity {
 
 					// make sure min display time has elapsed
 					boolean interuppted = false;
-					final long duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime()) - startTime;
+					final long duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime())
+							- startTime;
 					if (duration < mMinDisplayMillis) {
 						try {
 							Thread.sleep(mMinDisplayMillis - duration);
@@ -179,6 +180,7 @@ public class SplashActivity extends FragmentActivity {
 			Log.i(LOG_TAG, "animals: " + data.getAnimals().size());
 			Log.i(LOG_TAG, "ways: " + data.getWays().size());
 			Log.i(LOG_TAG, "junctions: " + data.getJunctions().size());
+			Log.i(LOG_TAG, "restaurant: " + data.getRestaurant().size());
 		} catch (Exception e) {
 			// data should always be valid
 			// controlled application shutdown
@@ -260,7 +262,7 @@ public class SplashActivity extends FragmentActivity {
 
 	/**
 	 * Operations to be performed on background thread.
-	 * 
+     *
 	 * All uncatched exceptions will trigger an error dialog to appear and eventually kill the
 	 * Activity.
 	 */
@@ -281,4 +283,5 @@ public class SplashActivity extends FragmentActivity {
 
 }
 
-class DataNotParsedException extends NullPointerException {}
+class DataNotParsedException extends NullPointerException {
+}

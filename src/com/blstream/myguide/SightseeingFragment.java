@@ -7,12 +7,12 @@ import android.app.ActionBar;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.settings.Settings;
@@ -26,6 +26,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
@@ -35,8 +36,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class SightseeingFragment extends Fragment implements
-		OnCameraChangeListener {
+/**
+ * Main fragment of application
+ */
+
+public class SightseeingFragment extends Fragment {
 
 	private static final String LOG_TAG = SightseeingFragment.class
 			.getSimpleName();
@@ -63,7 +67,11 @@ public class SightseeingFragment extends Fragment implements
 	private ArrayList<Animal> mAnimalsList;
 
 	private LocationLogger mLocationLogger;
+
 	private boolean mLocationLogVisible;
+
+	public SightseeingFragment() {
+	}
 
 	private void configureAndDisplayUserPosition() {
 		// check if location should be hidden
@@ -75,15 +83,9 @@ public class SightseeingFragment extends Fragment implements
 		mMap.setMyLocationEnabled(visible);
 	}
 
-	public SightseeingFragment() {
-
-	}
-
-	public View mRootView;
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mRootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
@@ -97,8 +99,9 @@ public class SightseeingFragment extends Fragment implements
 
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
+		displayAllJunctions(mJunctionsVisible);
 
-		return mRootView;
+		return rootView;
 	}
 
 	@Override
@@ -156,19 +159,34 @@ public class SightseeingFragment extends Fragment implements
 			mMinZoom = DEFAULT_MIN_ZOOM;
 			mMaxZoom = DEFAULT_MAX_ZOOM;
 		}
-
 	}
 
 	private void setUpMap() {
-
 		mMap = ((SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(
 				R.id.map))
 				.getMap();
 		MapsInitializer.initialize(getActivity());
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 				mStartCenterLat, mStartCenterLon), mMinZoom));
-		mMap.setOnCameraChangeListener(this);
+		setUpCamera();
+		setUpMapListeners();
+	}
 
+	private void setUpMapListeners() {
+		mMap.setOnCameraChangeListener(new OnCameraChangeListener() {
+			@Override
+			public void onCameraChange(CameraPosition cameraPosition) {
+				if (cameraPosition.zoom < mMinZoom) {
+					mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
+				} else if (cameraPosition.zoom > mMaxZoom) {
+					mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
+				}
+			}
+		});
+		/**
+		 * This listener is on Info window click ( Top of Marker ) After click
+		 * animal description fragment is opened
+		 */
 		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
@@ -179,14 +197,19 @@ public class SightseeingFragment extends Fragment implements
 						.findFragmentById(R.id.map);
 				if (f != null) getFragmentManager().beginTransaction().remove(f).commit();
 
-				Fragment newFragment = new AnimalDescriptionFragment(animal);
-				FragmentTransaction transaction = getActivity().getSupportFragmentManager()
-						.beginTransaction();
-				transaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
-				transaction.replace(R.id.flFragmentHolder, newFragment,
-						BundleConstants.FRAGMENT_ANIMAL_DETAIL);
-				transaction.addToBackStack(BundleConstants.STACK_ANIMAL_DETAIL);
-				transaction.commit();
+				Fragment[] fragments = {
+						AnimalDescriptionTab
+								.newInstance(R.drawable.placeholder_adult, R.string.text),
+						AnimalDescriptionTab
+								.newInstance(R.drawable.placeholder_child, R.string.text),
+						AnimalDetailsMapFragment.newInstance(animal)
+				};
+				Fragment newFragment = FragmentTabManager.newInstance(
+						R.array.animal_desc_tabs_name,
+						fragments, animal);
+
+				FragmentHelper.swapFragment(R.id.flFragmentHolder, newFragment,
+						getFragmentManager(), BundleConstants.FRAGMENT_ANIMAL_DETAIL);
 			}
 		});
 	}
@@ -223,7 +246,6 @@ public class SightseeingFragment extends Fragment implements
 	/**
 	 * Reads Junctions from ZooData and draws Circles on the map accordingly.
 	 */
-
 	private void setUpJunctions() {
 		MyGuideApp mga = (MyGuideApp) (getActivity().getApplication());
 		ArrayList<Junction> junctions = mga.getZooData().getJunctions();
@@ -242,7 +264,6 @@ public class SightseeingFragment extends Fragment implements
 	/**
 	 * Determines whatever of not all junctions are displayed on the map.
 	 */
-
 	private void displayAllJunctions(boolean display) {
 		for (Circle junction : mZooJunctions) {
 			junction.setVisible(display);
@@ -254,9 +275,10 @@ public class SightseeingFragment extends Fragment implements
 		mAnimalsList = mga.getZooData().getAnimals();
 		mAnimalMarkers = new ArrayList<Marker>();
 		for (Animal a : mAnimalsList) {
-			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions().position(
-					new LatLng(a.getNode().getLatitude(), a.getNode()
-							.getLongitude())).title(a.getName(Language.DEFAULT))));
+			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions()
+					.position(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()))
+					.title(a.getName(Language.DEFAULT))
+					.icon(BitmapDescriptorFactory.fromResource(R.drawable.animal_icon_myguide))));
 		}
 	}
 
@@ -266,13 +288,9 @@ public class SightseeingFragment extends Fragment implements
 		}
 	}
 
-	@Override
-	public void onCameraChange(CameraPosition camera) {
-		if (camera.zoom < mMinZoom) {
-			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMinZoom));
-		} else if (camera.zoom > mMaxZoom) {
-			mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
-		}
+	private void setUpCamera() {
+		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+				mStartCenterLat, mStartCenterLon), 15));
 	}
 
 	private void setUpLocationLogger() {

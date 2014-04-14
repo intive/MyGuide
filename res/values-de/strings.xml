@@ -39,4 +39,10 @@
         <item name="map_view">Landkarte</item>
     </string-array>
 
+    <!-- Gastronomy description tabs -->
+    <string-array name="gastronomy_desc_tabs_name">
+        <item name="description">Beschreibung</item>
+        <item name="menu">Speisekarte</item>
+    </string-array>
+
 </resources>

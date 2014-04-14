@@ -13,12 +13,14 @@ public class ZooLocationsData {
 	private ArrayList<Animal> mAnimals;
 	private ArrayList<Way> mWays;
 	private ArrayList<Junction> mJunctions;
+	private ArrayList<Restaurant> mRestaurants;
 
 	public ZooLocationsData(ArrayList<Animal> animals, ArrayList<Way> ways,
-			ArrayList<Junction> junctions) {
+			ArrayList<Junction> junctions, ArrayList<Restaurant> restaurants) {
 		mAnimals = animals;
 		mWays = ways;
 		mJunctions = junctions;
+		mRestaurants = restaurants;
 	}
 
 	public ArrayList<Animal> getAnimals() {
@@ -34,6 +36,10 @@ public class ZooLocationsData {
 		return mJunctions;
 	}
 
+	public ArrayList<Restaurant> getRestaurant() {
+		return mRestaurants;
+	}
+
 	public void setAnimals(ArrayList<Animal> animals) {
 		mAnimals = animals;
 	}
@@ -46,4 +52,7 @@ public class ZooLocationsData {
 		mJunctions = junctions;
 	}
 
+	public void setRestaurants(ArrayList<Restaurant> restaurants) {
+		mRestaurants = restaurants;
+	}
 }
