@@ -9,9 +9,9 @@ import java.util.HashMap;
  * adult and child and animal's location in the zoo.
  */
 
-public class Animal implements Serializable, Comparable<Animal>{
+public class Animal implements Serializable, Comparable<Animal> {
 
-
+	private int mId;
 	private HashMap<String, String> mNames;
 	private Node mNode;
 	private Description mDescriptionAdult;
@@ -25,6 +25,10 @@ public class Animal implements Serializable, Comparable<Animal>{
 		mNames.put(lang, name);
 	}
 
+	public void setNames(HashMap<String, String> names) {
+		mNames = names;
+	}
+
 	public void setNode(Node node) {
 		mNode = node;
 	}
@@ -35,6 +39,10 @@ public class Animal implements Serializable, Comparable<Animal>{
 
 	public void setDescriptionAdult(Description description) {
 		mDescriptionAdult = description;
+	}
+
+	public void setId(int id) {
+		mId = id;
 	}
 
 	public String getName() {
@@ -57,6 +65,10 @@ public class Animal implements Serializable, Comparable<Animal>{
 
 	public Description getDescriptionAdult() {
 		return mDescriptionAdult;
+	}
+
+	public int getId() {
+		return mId;
 	}
 
 	@Override

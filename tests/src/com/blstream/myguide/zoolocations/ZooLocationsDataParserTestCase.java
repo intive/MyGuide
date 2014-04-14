@@ -29,7 +29,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	public void testParsingAnimals() throws IOException, XmlPullParserException {
 		// given
 		String xmlText = "<root><animals>"
-				+ "<animal lat=\"51.1052072\" lon=\"17.0754498\">"
+				+ "<animal lat=\"51.1052072\" lon=\"17.0754498\" id=\"1\">"
 				+ "<name><en>Giraffe</en><pl>Żyrafa</pl></name>"
 				+ "<description_adult>"
 				+ "<image>img/giraffe_adult.jpg</image>"
@@ -56,6 +56,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		assertEquals(1, data.getAnimals().size());
 		assertEquals(0, data.getWays().size());
 		assertEquals(0, data.getJunctions().size());
+		assertEquals(1, data.getAnimals().get(0).getId());
 		assertEquals("Giraffe", data.getAnimals().get(0).getName(Language.EN));
 		assertEquals("Żyrafa", data.getAnimals().get(0).getName(Language.PL));
 		assertEquals("img/giraffe_adult.jpg", data.getAnimals().get(0).getDescriptionAdult()
@@ -218,5 +219,63 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		// then
 		assertNotNull(exception);
 		assertTrue(exception instanceof ZooLocationsDataParser.WayNotFoundException);
+	}
+
+	public void testParsingTracks() throws IOException, XmlPullParserException {
+		// given
+		String xmlText = "<root><visiting_tracks>"
+				+ "<track><name><pl>Trasa 1</pl><en>Track 1</en></name>"
+				+ "<description><pl>Opis 1</pl><en>Description 1</en></description>"
+				+ "<image>img/track1.jpg</image>"
+				+ "<animals>"
+				+ "<animal_id>1</animal_id><animal_id>2</animal_id>"
+				+ "</animals></track>"
+				+ "</visiting_tracks>"
+				+ "<animals>"
+				+ "<animal lat=\"51.1052072\" lon=\"17.0754498\" id=\"1\">"
+				+ "<name><en>Animal1</en><pl>Zwierze1</pl></name>"
+				+ "<description_adult>"
+				+ "<image>img/giraffe_adult.jpg</image><en>Description</en><pl>Opis</pl>"
+				+ "</description_adult>"
+				+ "<description_child>"
+				+ "<image>img/giraffe_child.jpg</image><en>Description child</en><pl>Opis dziecko</pl>"
+				+ "</description_child>"
+				+ "</animal>"
+				+ "<animal lat=\"51.1052072\" lon=\"17.0754498\" id=\"2\">"
+				+ "<name><en>Animal2</en><pl>Zwierze2</pl></name>"
+				+ "<description_adult>"
+				+ "<image>img/giraffe_adult.jpg</image><en>Description</en><pl>Opis</pl>"
+				+ "</description_adult>"
+				+ "<description_child>"
+				+ "<image>img/giraffe_child.jpg</image><en>Description child</en><pl>Opis dziecko</pl>"
+				+ "</description_child>"
+				+ "</animal>"
+				+ "</animals></root>";
+		ZooLocationsDataParser parser = new ZooLocationsDataParser();
+		InputStream is = null;
+		ZooLocationsData data = null;
+
+		// when
+		is = new ByteArrayInputStream(xmlText.getBytes(ENCODING));
+		data = parser.parse(is);
+		is.close();
+
+		// then
+		assertEquals(2, data.getAnimals().size());
+		assertEquals(0, data.getWays().size());
+		assertEquals(0, data.getJunctions().size());
+		assertEquals(1, data.getTracks().size());
+		assertEquals(2, data.getTracks().get(0).getAnimals().size());
+		assertEquals("Track 1", data.getTracks().get(0).getName(Language.EN));
+		assertEquals("Trasa 1", data.getTracks().get(0).getName(Language.PL));
+		assertEquals("Description 1", data.getTracks().get(0).getDescription(Language.EN));
+		assertEquals("Opis 1", data.getTracks().get(0).getDescription(Language.PL));
+		assertEquals("img/track1.jpg", data.getTracks().get(0).getImage());
+		assertEquals(1, data.getTracks().get(0).getAnimals().get(0).getId());
+		assertEquals(2, data.getTracks().get(0).getAnimals().get(1).getId());
+		assertEquals("Animal1", data.getTracks().get(0).getAnimals().get(0).getName(Language.EN));
+		assertEquals("Zwierze1", data.getTracks().get(0).getAnimals().get(0).getName(Language.PL));
+		assertEquals("Animal2", data.getTracks().get(0).getAnimals().get(1).getName(Language.EN));
+		assertEquals("Zwierze2", data.getTracks().get(0).getAnimals().get(1).getName(Language.PL));
 	}
 }
