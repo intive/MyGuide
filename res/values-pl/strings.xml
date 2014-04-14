@@ -51,8 +51,14 @@
         <item name="child">Dla Dzieci</item>
         <item name="map_view">Mapa</item>
     </string-array>
-    
+
     <!-- Animal List title -->
     <string name="animal_list_title">Zwierzęta</string>
+
+    <!-- Gastronomy description tabs -->
+    <string-array name="gastronomy_desc_tabs_name">
+        <item name="description">Opis</item>
+        <item name="menu">Menu</item>
+    </string-array>
 
 </resources>

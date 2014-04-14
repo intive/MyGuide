@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -41,7 +43,7 @@ import java.util.concurrent.TimeUnit;
  * @author Rafal
  */
 // TODO: Robotium tests (moving through tabs and back to the main screen)
-public class AnimalDetailsMapFragment extends Fragment {
+public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 
 	private static final String LOG_TAG = AnimalDetailsMapFragment.class.getSimpleName();
 
@@ -249,6 +251,16 @@ public class AnimalDetailsMapFragment extends Fragment {
 		mMap.addPolyline(plo).setVisible(true);
 
 		return builder;
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
+
 	}
 
 	@Override

@@ -58,8 +58,15 @@
         <item name="child">For children</item>
         <item name="map_view">Map</item>
     </string-array>
- 
+
+    <!-- Gastronomy description tabs -->
+    <string-array name="gastronomy_desc_tabs_name">
+        <item name="description">Description</item>
+        <item name="menu">Menu</item>
+    </string-array>
+
     <!-- Animal List title -->
     <string name="animal_list_title">Animals</string>
-<string name="animal_image">Animal Image</string>
+    <string name="animal_image">Animal Image</string>
+
 </resources>

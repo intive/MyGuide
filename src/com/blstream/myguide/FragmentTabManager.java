@@ -12,32 +12,74 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blstream.myguide.zoolocations.Animal;
+import com.blstream.myguide.zoolocations.XmlObject;
 
 /**
- * Created by Piotrek on 23.03.14.
+ * Created by Piotrek on 2014-04-05. This class is to create fragment with Tab.
+ * Simple use of this class: First we create array of Fragment which are
+ * Tab(twoor three) And the we create one fragment call
+ * FragmentTabManager.newInstance Fragment[] fragmentsTab =
+ * {FirstTab.newInstance(), SecondTab.newInstance(),ThirdTab.newInstance()};
+ * Fragment newFragment = FragmentTabManager.newInstance(R.array.tabs_name,
+ * fragmentsTab, XmlObjet);
  */
-public class AnimalDescriptionFragment extends Fragment {
+public class FragmentTabManager extends Fragment {
 
-	private static final String LOG_TAG = AnimalDescriptionFragment.class.getSimpleName();
+	private static final String LOG_TAG = FragmentTabManager.class.getSimpleName();
 
 	private ViewPager mViewPager;
 	private ActionBar mActionBar;
-	private Animal mAnimal;
+	private String mTitle;
+	private Fragment[] mFragments;
+	private int mStringArray;
+	private XmlObject mXmlObject;
 
-	public AnimalDescriptionFragment() {}
+	public static FragmentTabManager newInstance() {
+		return new FragmentTabManager();
+	}
 
-	public AnimalDescriptionFragment(Animal animal) {
-		mAnimal = animal;
-		Bundle args = new Bundle();
-		args.putSerializable(BundleConstants.SELECTED_ANIMAL, mAnimal);
-		setArguments(args);
+	/**
+	 * Method create fragment which create and manage tabs
+	 * 
+	 * @param stringArray - array of String which are Headers in Tab
+	 * @param fragment - array of fragments which are used in each Tabs
+	 * @param object - It's XmlObject which we used to take his attributes.
+	 * @return fragemntTab object
+	 */
+	public static FragmentTabManager newInstance(int stringArray, Fragment[] fragment,
+			XmlObject object) {
+		FragmentTabManager fragmentTab = new FragmentTabManager();
+
+		Bundle bundle = new Bundle();
+		bundle.putInt(BundleConstants.STRING_ARRAY, stringArray);
+		bundle.putSerializable(BundleConstants.SELECTED_OBJECT, object);
+		bundle.putSerializable(BundleConstants.TAB_FRAGMENTS, fragment);
+		bundle.putCharSequence(BundleConstants.TAB_TITLE, object.getName());
+		fragmentTab.setArguments(bundle);
+
+		return fragmentTab;
+	}
+
+	public static FragmentTabManager newInstance(int stringArray, Fragment[] fragment, String title) {
+		FragmentTabManager fragmentTab = new FragmentTabManager();
+
+		Bundle bundle = new Bundle();
+		bundle.putInt(BundleConstants.STRING_ARRAY, stringArray);
+		bundle.putCharSequence(BundleConstants.TAB_TITLE, title);
+		bundle.putSerializable(BundleConstants.TAB_FRAGMENTS, fragment);
+		fragmentTab.setArguments(bundle);
+
+		return fragmentTab;
 	}
 
 	private void getArgs() {
 		Bundle args = getArguments();
 		if (args != null) {
-			mAnimal = (Animal) args.getSerializable(BundleConstants.SELECTED_ANIMAL);
+			mTitle = (String) args.getCharSequence(BundleConstants.TAB_TITLE);
+			mStringArray = args.getInt(BundleConstants.STRING_ARRAY);
+			mFragments = (Fragment[]) args.getSerializable(BundleConstants.TAB_FRAGMENTS);
+			if (mXmlObject != null) mXmlObject = (XmlObject) args
+					.getSerializable(BundleConstants.SELECTED_OBJECT);
 		}
 	}
 
@@ -55,7 +97,7 @@ public class AnimalDescriptionFragment extends Fragment {
 			mActionBar.setHomeButtonEnabled(true);
 			mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-			mActionBar.setTitle(mAnimal.getName());
+			mActionBar.setTitle(mTitle);
 			mActionBar.setIcon(android.R.color.transparent);
 			mActionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -84,8 +126,10 @@ public class AnimalDescriptionFragment extends Fragment {
 	/**
 	 * Method add tabs to actionBar and set Tabs Listener.
 	 */
+
+	// R.array.animal_desc_tabs_name
 	private void setUpTabs() {
-		for (String tab_name : getResources().getStringArray(R.array.animal_desc_tabs_name)) {
+		for (String tab_name : getResources().getStringArray(mStringArray)) {
 			mActionBar.addTab(mActionBar.newTab().setText(tab_name)
 					.setTabListener(new ActionBar.TabListener() {
 						@Override
@@ -111,14 +155,14 @@ public class AnimalDescriptionFragment extends Fragment {
 	 * Method setUp ViewPager and Listener to swipe fragment
 	 */
 	private void setUpViewPager(View view) {
-		// using Activity's FragmentManager causes issues opening this Fragment second time
-		AnimalPagerAdapter mAdapter = new AnimalPagerAdapter(getChildFragmentManager());
-		mAdapter.setAnimal(mAnimal);
-
+		FragmentPagerAdapter mAdapter;
 		mViewPager = (ViewPager) view.findViewById(R.id.pager);
+		mAdapter = new FragmentPagerAdapter(getChildFragmentManager(), mFragments, getResources()
+				.getStringArray(mStringArray).length);
 		mViewPager.setAdapter(mAdapter);
 		// all three tabs always active when this Fragment is alive
-		mViewPager.setOffscreenPageLimit(3);
+		mViewPager.setOffscreenPageLimit(getResources()
+				.getStringArray(mStringArray).length);
 
 		mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override
