@@ -48,7 +48,6 @@
 - (void) initTableData
 {
     [self fillBubleData];
-    _tableView.allowsSelection = NO;
     _tableView.bubbleDataSource = self;
     _tableView.showAvatars = YES;
     [_tableView reloadData];
@@ -60,7 +59,7 @@
     BOOL left = NO;
     _bubbleData = [NSMutableArray new];
     for (HistoryEvent *event in _historyEvents) {
-        NSBubbleType type = (left ^= YES) ? BubbleRight : BubbleLeft;
+        NSBubbleType type = (left = !left) ? BubbleRight : BubbleLeft;
         NSString *name  = [event getName];
         NSString *date  = event.date;
         NSString *image = event.image;
