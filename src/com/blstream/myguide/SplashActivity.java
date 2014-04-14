@@ -260,12 +260,12 @@ public class SplashActivity extends FragmentActivity {
 		outState.putBoolean(BGTHREAD_STATE_KEY, mBackgroundThreadRunning);
 	}
 
-      /**
-      * Operations to be performed on background thread.
-      *
-      * All uncatched exceptions
-      * will trigger an error dialog to appear and eventually kill the Activity.
-      */
+	/**
+	 * Operations to be performed on background thread.
+     *
+	 * All uncatched exceptions will trigger an error dialog to appear and eventually kill the
+	 * Activity.
+	 */
 	protected void doInBackground() {
 		parseSettingsXML();
 		parseDataXML();
