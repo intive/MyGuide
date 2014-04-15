@@ -64,6 +64,10 @@ public class LocationUpdater {
 		mGpsPopupWasShown = true;
 	}
 
+	public void markGpsEnableDialogAsUnshown() {
+		mGpsPopupWasShown = false;
+	}
+
 	public boolean isEnableGpsDialogNeeded() {
 		return (!isGpsEnable() && !mGpsPopupWasShown);
 	}
