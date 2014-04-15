@@ -19,7 +19,13 @@ namespace MyGuideTests.Tests
         {
             XmlParser<Root> xmlParser = new XmlParser<Root>();
             Root parsedData;
-            string correctXmlData = "TestData/CorrectData.xml";
+            string correctXmlDataPath = "TestData/CorrectData.xml";
+            string correctXmlData = string.Empty;
+
+            using (StreamReader sr = new StreamReader(correctXmlDataPath))
+            {
+                correctXmlData = await sr.ReadToEndAsync();
+            }
 
             string animalName = "Żyrafa";
             double animalLatitude = 51.1046625;
@@ -55,8 +61,21 @@ namespace MyGuideTests.Tests
             Root parsedData;
             Root correctParsedData;
 
-            string incorrectXmlData = "TestData/IncorrectStructureData.xml";
-            string correctXmlData = "TestData/CorrectData.xml";
+            string incorrectXmlDataPath = "TestData/IncorrectStructureData.xml";
+            string correctXmlDataPath = "TestData/CorrectData.xml";
+            string incorrectXmlData = string.Empty;
+            string correctXmlData = string.Empty;
+
+
+            using (StreamReader sr = new StreamReader(incorrectXmlDataPath))
+            {
+                incorrectXmlData = await sr.ReadToEndAsync();
+            }
+
+            using (StreamReader sr = new StreamReader(correctXmlDataPath))
+            {
+                correctXmlData = await sr.ReadToEndAsync();
+            }
 
             parsedData = await xmlParser.DeserializeXml(incorrectXmlData);
             correctParsedData = await xmlParser.DeserializeXml(correctXmlData);
@@ -68,7 +87,13 @@ namespace MyGuideTests.Tests
         public async Task IncorrectXmlDataParser()
         {
             XmlParser<Root> xmlParser = new XmlParser<Root>();
-            string incorrectXmlData = "TestData/IncorrectData.xml";
+            string incorrectXmlDataPath = "TestData/IncorrectData.xml";
+            string incorrectXmlData = string.Empty;
+
+            using (StreamReader sr = new StreamReader(incorrectXmlDataPath))
+            {
+                incorrectXmlData = await sr.ReadToEndAsync();
+            }
 
             try
             {
@@ -86,10 +111,16 @@ namespace MyGuideTests.Tests
         {
             XmlParser<Root> xmlParser = new XmlParser<Root>();
 
-            string lackXmlData = "TestData/LackData.xml";
+            string lackXmlDataPath = "TestData/LackData.xml";
+            string lackXmlData = string.Empty;
+           
 
             try
             {
+                using (StreamReader sr = new StreamReader(lackXmlDataPath))
+                {
+                    lackXmlData = await sr.ReadToEndAsync();
+                }
                 await xmlParser.DeserializeXml(lackXmlData);
                 Assert.Fail();
             }
