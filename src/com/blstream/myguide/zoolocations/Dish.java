@@ -24,6 +24,10 @@ public class Dish extends XmlObject implements Serializable {
 		return mPrice;
 	}
 
+	public void setNames(HashMap<String, String> names) {
+		mNames = names;
+	}
+
 	@Override
 	public void addName(String lang, String name) {
 		mNames.put(lang, name);

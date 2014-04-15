@@ -40,7 +40,7 @@ public class ZooLocationsData {
 	public ArrayList<Track> getTracks() {
 		return mTracks;
 	}
-	
+
 	public ArrayList<Restaurant> getRestaurant() {
 		return mRestaurants;
 	}
