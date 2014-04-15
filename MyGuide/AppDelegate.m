@@ -13,6 +13,7 @@
 #import "SettingsParser.h"
 #import "LocationManager.h"
 #import "GastronomyParser.h"
+#import "HistoryParser.h"
 
 @implementation AppDelegate {
     LocationManager *_locationManager;
@@ -37,12 +38,19 @@
     [parser parse];
 }
 
+- (void) parseHistory
+{
+    HistoryParser *parser = [HistoryParser new];
+    [parser parse];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
     _sharedSettings = [Settings sharedSettingsData];
 
     [self parseDataXML];
     [self parseGastronomy];
+    [self parseHistory];
     [self loadSettings];
     
     _locationManager = [LocationManager sharedLocationManager];

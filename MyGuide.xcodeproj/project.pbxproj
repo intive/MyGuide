@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0509026918F45C7B00369B07 /* Translatable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0509026818F45C7B00369B07 /* Translatable.m */; };
 		0531724118F4A5B500FEC79F /* DetailsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0531724018F4A5B500FEC79F /* DetailsMapViewController.m */; };
-		0533DEFA18DE0D27001BCB28 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DEF918DE0D27001BCB28 /* SWRevealViewController.m */; };
 		0533DF0118DE1520001BCB28 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFE18DE1520001BCB28 /* menu.png */; };
 		0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFF18DE1520001BCB28 /* menu@2x.png */; };
 		0533DF0918DE333A001BCB28 /* SlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0533DF0818DE333A001BCB28 /* SlideMenuViewController.m */; };
@@ -22,6 +21,16 @@
 		05406E4918F31AF6001656FC /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E4818F31AF6001656FC /* Dish.m */; };
 		05406E4C18F31B06001656FC /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E4B18F31B06001656FC /* Restaurant.m */; };
 		055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */; };
+		05A1C12818FAABD3008FE0CB /* history.xml in Resources */ = {isa = PBXBuildFile; fileRef = 05A1C12718FAABD3008FE0CB /* history.xml */; };
+		05A1C12B18FAAF9D008FE0CB /* HistoryEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */; };
+		05A1C12E18FAB0B8008FE0CB /* HistoryData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C12D18FAB0B8008FE0CB /* HistoryData.m */; };
+		05A1C13118FAB125008FE0CB /* HistoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C13018FAB125008FE0CB /* HistoryParser.m */; };
+		05A1C14E18FAC7F2008FE0CB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14318FAC7F2008FE0CB /* SWRevealViewController.m */; };
+		05A1C14F18FAC7F2008FE0CB /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14618FAC7F2008FE0CB /* NSBubbleData.m */; };
+		05A1C15018FAC7F2008FE0CB /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14818FAC7F2008FE0CB /* UIBubbleHeaderTableViewCell.m */; };
+		05A1C15118FAC7F2008FE0CB /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14A18FAC7F2008FE0CB /* UIBubbleTableView.m */; };
+		05A1C15218FAC7F2008FE0CB /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14C18FAC7F2008FE0CB /* UIBubbleTableViewCell.m */; };
+		05A1C15518FACB3E008FE0CB /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C15418FACB3E008FE0CB /* HistoryViewController.m */; };
 		05C925D318DDAFAD00C2F746 /* GPS.md in Resources */ = {isa = PBXBuildFile; fileRef = 05C925D218DDAFAD00C2F746 /* GPS.md */; };
 		05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C9265818DDDF1800C2F746 /* LocationManager.m */; };
 		05CD409918DF6FD60065C04F /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CD409818DF6FD60065C04F /* MapViewController.m */; };
@@ -77,8 +86,6 @@
 		0509026818F45C7B00369B07 /* Translatable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translatable.m; sourceTree = "<group>"; };
 		0531723F18F4A5B500FEC79F /* DetailsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsMapViewController.h; sourceTree = "<group>"; };
 		0531724018F4A5B500FEC79F /* DetailsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsMapViewController.m; sourceTree = "<group>"; };
-		0533DEF818DE0D27001BCB28 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		0533DEF918DE0D27001BCB28 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		0533DEFE18DE1520001BCB28 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		0533DEFF18DE1520001BCB28 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		0533DF0718DE333A001BCB28 /* SlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideMenuViewController.h; sourceTree = "<group>"; };
@@ -100,6 +107,26 @@
 		055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalsListViewController.h; sourceTree = "<group>"; };
 		055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalsListViewController.m; sourceTree = "<group>"; };
 		057F9EC618E7760A001DE63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		05A1C12718FAABD3008FE0CB /* history.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = history.xml; path = "XML files/history.xml"; sourceTree = "<group>"; };
+		05A1C12918FAAF9D008FE0CB /* HistoryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryEvent.h; sourceTree = "<group>"; };
+		05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryEvent.m; sourceTree = "<group>"; };
+		05A1C12C18FAB0B8008FE0CB /* HistoryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryData.h; sourceTree = "<group>"; };
+		05A1C12D18FAB0B8008FE0CB /* HistoryData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryData.m; sourceTree = "<group>"; };
+		05A1C12F18FAB125008FE0CB /* HistoryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryParser.h; sourceTree = "<group>"; };
+		05A1C13018FAB125008FE0CB /* HistoryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryParser.m; sourceTree = "<group>"; };
+		05A1C14218FAC7F2008FE0CB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		05A1C14318FAC7F2008FE0CB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		05A1C14518FAC7F2008FE0CB /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBubbleData.h; sourceTree = "<group>"; };
+		05A1C14618FAC7F2008FE0CB /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBubbleData.m; sourceTree = "<group>"; };
+		05A1C14718FAC7F2008FE0CB /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
+		05A1C14818FAC7F2008FE0CB /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
+		05A1C14918FAC7F2008FE0CB /* UIBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableView.h; sourceTree = "<group>"; };
+		05A1C14A18FAC7F2008FE0CB /* UIBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableView.m; sourceTree = "<group>"; };
+		05A1C14B18FAC7F2008FE0CB /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewCell.h; sourceTree = "<group>"; };
+		05A1C14C18FAC7F2008FE0CB /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableViewCell.m; sourceTree = "<group>"; };
+		05A1C14D18FAC7F2008FE0CB /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
+		05A1C15318FACB3E008FE0CB /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		05A1C15418FACB3E008FE0CB /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		05C925D218DDAFAD00C2F746 /* GPS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GPS.md; sourceTree = "<group>"; };
 		05C9265718DDDF1800C2F746 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		05C9265818DDDF1800C2F746 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
@@ -194,13 +221,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0533DEF718DE0D04001BCB28 /* Library */ = {
+		05A1C12318FAA436008FE0CB /* History */ = {
 			isa = PBXGroup;
 			children = (
-				0533DEF818DE0D27001BCB28 /* SWRevealViewController.h */,
-				0533DEF918DE0D27001BCB28 /* SWRevealViewController.m */,
+				05A1C15318FACB3E008FE0CB /* HistoryViewController.h */,
+				05A1C15418FACB3E008FE0CB /* HistoryViewController.m */,
 			);
-			name = Library;
+			path = History;
+			sourceTree = "<group>";
+		};
+		05A1C14018FAC7F2008FE0CB /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				05A1C14118FAC7F2008FE0CB /* sliding-menu */,
+				05A1C14418FAC7F2008FE0CB /* ui-bubble-table */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		05A1C14118FAC7F2008FE0CB /* sliding-menu */ = {
+			isa = PBXGroup;
+			children = (
+				05A1C14218FAC7F2008FE0CB /* SWRevealViewController.h */,
+				05A1C14318FAC7F2008FE0CB /* SWRevealViewController.m */,
+			);
+			path = "sliding-menu";
+			sourceTree = "<group>";
+		};
+		05A1C14418FAC7F2008FE0CB /* ui-bubble-table */ = {
+			isa = PBXGroup;
+			children = (
+				05A1C14518FAC7F2008FE0CB /* NSBubbleData.h */,
+				05A1C14618FAC7F2008FE0CB /* NSBubbleData.m */,
+				05A1C14718FAC7F2008FE0CB /* UIBubbleHeaderTableViewCell.h */,
+				05A1C14818FAC7F2008FE0CB /* UIBubbleHeaderTableViewCell.m */,
+				05A1C14918FAC7F2008FE0CB /* UIBubbleTableView.h */,
+				05A1C14A18FAC7F2008FE0CB /* UIBubbleTableView.m */,
+				05A1C14B18FAC7F2008FE0CB /* UIBubbleTableViewCell.h */,
+				05A1C14C18FAC7F2008FE0CB /* UIBubbleTableViewCell.m */,
+				05A1C14D18FAC7F2008FE0CB /* UIBubbleTableViewDataSource.h */,
+			);
+			path = "ui-bubble-table";
 			sourceTree = "<group>";
 		};
 		05C925D118DDAFAD00C2F746 /* Documentation */ = {
@@ -320,9 +381,10 @@
 		3D5EF60E189637C000233B64 /* MyGuide */ = {
 			isa = PBXGroup;
 			children = (
-				0533DEF718DE0D04001BCB28 /* Library */,
+				05A1C14018FAC7F2008FE0CB /* Libraries */,
 				05C925D418DDBA6000C2F746 /* Images */,
 				3D5EF617189637C000233B64 /* AppDelegate.h */,
+				05A1C12318FAA436008FE0CB /* History */,
 				05E1654618F1B4DE00DA3BD7 /* Gastronomy */,
 				3D5EF618189637C000233B64 /* AppDelegate.m */,
 				3D5EF61A189637C000233B64 /* Main.storyboard */,
@@ -393,6 +455,8 @@
 				05406E4B18F31B06001656FC /* Restaurant.m */,
 				0509026718F45C7B00369B07 /* Translatable.h */,
 				0509026818F45C7B00369B07 /* Translatable.m */,
+				05A1C12918FAAF9D008FE0CB /* HistoryEvent.h */,
+				05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -406,6 +470,8 @@
 				84DDCB3718BA919600A2F720 /* AFXMLParser.m */,
 				05406E3D18F2EE1A001656FC /* GastronomyParser.h */,
 				05406E3E18F2EE1A001656FC /* GastronomyParser.m */,
+				05A1C12F18FAB125008FE0CB /* HistoryParser.h */,
+				05A1C13018FAB125008FE0CB /* HistoryParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -419,6 +485,8 @@
 				84DDCB4118BA91A100A2F720 /* AFParsedData.m */,
 				05406E4418F31661001656FC /* GastronomyData.h */,
 				05406E4518F31661001656FC /* GastronomyData.m */,
+				05A1C12C18FAB0B8008FE0CB /* HistoryData.h */,
+				05A1C12D18FAB0B8008FE0CB /* HistoryData.m */,
 			);
 			name = Storage;
 			path = Singletons;
@@ -427,6 +495,7 @@
 		84DDCB4618BA91CB00A2F720 /* XML files */ = {
 			isa = PBXGroup;
 			children = (
+				05A1C12718FAABD3008FE0CB /* history.xml */,
 				84DD035818BA8C7A00DE7178 /* config.xml */,
 				84DD035918BA8C7A00DE7178 /* XMLFetcher.h */,
 				05406E4018F313A7001656FC /* gastronomy.xml */,
@@ -519,6 +588,7 @@
 			files = (
 				05C925D318DDAFAD00C2F746 /* GPS.md in Resources */,
 				3DE69DA918C7B83400B54509 /* Localizable.strings in Resources */,
+				05A1C12818FAABD3008FE0CB /* history.xml in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				0533DF0118DE1520001BCB28 /* menu.png in Resources */,
 				05406E4318F313B6001656FC /* data.xml in Resources */,
@@ -562,17 +632,19 @@
 				055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */,
 				84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */,
 				8460875718BDFA7F00620219 /* SettingsParser.m in Sources */,
-				0533DEFA18DE0D27001BCB28 /* SWRevealViewController.m in Sources */,
+				05A1C15518FACB3E008FE0CB /* HistoryViewController.m in Sources */,
 				8460875A18BDFA8A00620219 /* Settings.m in Sources */,
 				84DDCB3318BA917800A2F720 /* AFNode.m in Sources */,
 				05E1655018F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.m in Sources */,
 				84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */,
+				05A1C14E18FAC7F2008FE0CB /* SWRevealViewController.m in Sources */,
 				05CD409918DF6FD60065C04F /* MapViewController.m in Sources */,
 				84DDCB3418BA917800A2F720 /* AFWay.m in Sources */,
 				05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */,
 				05406E3C18F2C6FF001656FC /* DishTableViewCell.m in Sources */,
 				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
 				05E1654F18F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m in Sources */,
+				05A1C13118FAB125008FE0CB /* HistoryParser.m in Sources */,
 				05E1655118F1B51100DA3BD7 /* GastronomyDetailsViewController.m in Sources */,
 				0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */,
 				05E1655218F1B51100DA3BD7 /* GastronomyListViewController.m in Sources */,
@@ -582,12 +654,18 @@
 				0533DF0918DE333A001BCB28 /* SlideMenuViewController.m in Sources */,
 				84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */,
 				05406E4C18F31B06001656FC /* Restaurant.m in Sources */,
+				05A1C15118FAC7F2008FE0CB /* UIBubbleTableView.m in Sources */,
+				05A1C12E18FAB0B8008FE0CB /* HistoryData.m in Sources */,
 				0531724118F4A5B500FEC79F /* DetailsMapViewController.m in Sources */,
 				3D5EF619189637C000233B64 /* AppDelegate.m in Sources */,
 				05E375CB18BA872B00A31630 /* MWLogging.m in Sources */,
+				05A1C12B18FAAF9D008FE0CB /* HistoryEvent.m in Sources */,
+				05A1C15218FAC7F2008FE0CB /* UIBubbleTableViewCell.m in Sources */,
 				05E375C918BA872B00A31630 /* main.m in Sources */,
 				0509026918F45C7B00369B07 /* Translatable.m in Sources */,
+				05A1C14F18FAC7F2008FE0CB /* NSBubbleData.m in Sources */,
 				05E0209818C23B7100AE76EC /* MKAnnotationAnimal.m in Sources */,
+				05A1C15018FAC7F2008FE0CB /* UIBubbleHeaderTableViewCell.m in Sources */,
 				8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */,
 				05406E3F18F2EE1A001656FC /* GastronomyParser.m in Sources */,
 			);

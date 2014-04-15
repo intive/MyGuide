@@ -11,6 +11,7 @@
 @interface Translatable ()
 
 @property (nonatomic) NSMutableDictionary *name;
+@property (nonatomic) NSString  *currentLocale;
 
 @end
 
@@ -25,6 +26,7 @@
                        @"pl" : @""
                       }
                      ];
+        self.currentLocale = [[NSLocale preferredLanguages] objectAtIndex: 0];
     }
     return self;
 }
@@ -41,7 +43,7 @@
 
 - (NSString *) getName
 {
-    return self.name[@"en"];
+    return [self.currentLocale isEqualToString: @"pl"] ? self.name[@"pl"] : self.name[@"en"];
 }
 
 @end

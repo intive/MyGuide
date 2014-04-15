@@ -1,0 +1,84 @@
+<root>
+	<history>
+		<history_event>
+			<date>10.07.1865</date> <!-- please inform me if some other format would be better for you -->
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Otwarcie ogrodu zoologicznego we Wrocławiu</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>1880</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Rozkwit ogrodu, zaliczanego w tym czasie do wiodących placówek na świecie</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>1921</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Zamknięcie ZOO po kryzysie lat powojennych</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>1.05.1927</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Ponowne udostępnienie ogrodu dla publiczności</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>05.1945</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Zniszczenie ogrodu podczas oblężenia miasta przez wojska radzieckie</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>18.07.1948</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Otwarcie ZOO po II Wojnie Światowej</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>1957</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Podwojenie dotychczasowego obszaru ogrodu poprzez zajęcie terenów po Wystawie Ziem Odzyskanych</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>70s</date> <!-- 1970 - 1979 should we put it some other way or can you handle this? -->
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Kolekcja zwierząt należy do większych w Europie, a dzięki medialnemu sukcesowi "Z kamerą wśród zwierząt", prowadzonego przez Hannę i Antoniego Gucwińskich, ZOO przez wiele lat pozostaje najbardziej znanym ogrodem w Polsce</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>01.2007</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Dyrektorem zostaje Radosław Ratajszczak, który zapoczątkowuje proces zmian mających wprowadzić ogród w XXI wiek </pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+		<history_event>
+			<date>01.2010</date> 
+			<image>img/placeholder_history.jpg</image>
+			<heading>
+				<pl>Wrocławskie ZOO jako pierwsze w Polsce przekształca się w spółkę</pl>
+				<en>EN</en>
+			</heading>
+		</history_event>
+	</history>
+</root>

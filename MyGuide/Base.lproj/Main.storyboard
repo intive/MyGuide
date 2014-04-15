@@ -27,7 +27,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ta-7d-pIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1071" y="456"/>
+            <point key="canvasLocation" x="-1099" y="946"/>
         </scene>
         <!--Gastronomy Details View Controller-->
         <scene sceneID="Aqv-aU-kM3">
@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECY-no-5QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-682" y="456"/>
+            <point key="canvasLocation" x="-710" y="946"/>
         </scene>
         <!--Map View Controller - Explore-->
         <scene sceneID="Rwy-Mw-zzh">
@@ -86,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3f-u0-kV8">
-                                <rect key="frame" x="0.0" y="49" width="328" height="520"/>
+                                <rect key="frame" x="0.0" y="5" width="328" height="564"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </mapView>
@@ -222,7 +222,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1F-GP-lr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1071" y="1113"/>
+            <point key="canvasLocation" x="-1099" y="1603"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="gjz-2v-uYr">
+            <objects>
+                <viewController id="HWS-SH-QxJ" customClass="HistoryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yOQ-vc-FaT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zri-RI-kcY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MuK-iU-AhA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LJo-nU-H8K" customClass="UIBubbleTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="N2I-9G-Hjy">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="110-Ul-i6f"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sidebarButton" destination="110-Ul-i6f" id="laz-5X-obI"/>
+                        <outlet property="tableView" destination="LJo-nU-H8K" id="qwF-t1-VUl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6dm-gL-ZoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1099" y="-399"/>
         </scene>
         <!--Animals List View Controller-->
         <scene sceneID="8f3-02-r7t">
@@ -282,7 +314,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1071" y="-209"/>
+            <point key="canvasLocation" x="-1099" y="281"/>
         </scene>
         <!--Animal Details View Controller-->
         <scene sceneID="4Ba-Ny-nPz">
@@ -384,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gob-US-j4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-682" y="-209"/>
+            <point key="canvasLocation" x="-710" y="281"/>
         </scene>
         <!--Details Map View Controller-->
         <scene sceneID="j3C-cL-4sc">
@@ -417,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8m8-C7-cUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-279" y="-209"/>
+            <point key="canvasLocation" x="-307" y="281"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lhd-Ed-tzD">
@@ -532,6 +564,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="HWS-SH-QxJ" kind="custom" customClass="SWRevealViewControllerSegue" id="e3I-bg-ZPG"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gastronomy" id="KB2-oP-P06">
                                 <rect key="frame" x="0.0" y="242" width="320" height="44"/>
@@ -633,7 +668,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0d-XC-5f4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-259" y="521"/>
+            <point key="canvasLocation" x="-287" y="1011"/>
         </scene>
         <!--Gastronomy Details Menu Table View Controller-->
         <scene sceneID="Rjw-xW-d47">
@@ -691,7 +726,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ng8-bw-RLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-279" y="1113"/>
+            <point key="canvasLocation" x="-307" y="1603"/>
         </scene>
     </scenes>
     <resources>
@@ -705,6 +740,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lUA-99-4r3"/>
+        <segue reference="bDn-LD-z3i"/>
     </inferredMetricsTieBreakers>
 </document>
