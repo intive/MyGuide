@@ -10,6 +10,7 @@ import java.util.HashMap;
  */
 public class Animal extends XmlObject implements Serializable, Comparable<Animal> {
 
+	private int mId;
 	private HashMap<String, String> mNames;
 	private Node mNode;
 	private Description mDescriptionAdult;
@@ -24,6 +25,10 @@ public class Animal extends XmlObject implements Serializable, Comparable<Animal
 		mNames.put(lang, name);
 	}
 
+	public void setNames(HashMap<String, String> names) {
+		mNames = names;
+	}
+
 	public void setNode(Node node) {
 		mNode = node;
 	}
@@ -34,6 +39,10 @@ public class Animal extends XmlObject implements Serializable, Comparable<Animal
 
 	public void setDescriptionAdult(Description description) {
 		mDescriptionAdult = description;
+	}
+
+	public void setId(int id) {
+		mId = id;
 	}
 
 	@Override
@@ -57,6 +66,10 @@ public class Animal extends XmlObject implements Serializable, Comparable<Animal
 
 	public Description getDescriptionAdult() {
 		return mDescriptionAdult;
+	}
+
+	public int getId() {
+		return mId;
 	}
 
 	@Override
