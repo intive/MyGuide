@@ -71,9 +71,14 @@ public class StartActivity extends FragmentActivity {
 	}
 
 	@Override
-	protected void onStart() {
-		super.onStart();
-		showEnableGpsDialogIfNeeded();
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if (hasFocus) {
+			showEnableGpsDialogIfNeeded();
+			if (LocationUpdater.getInstance().isGpsEnable()) {
+				LocationUpdater.getInstance().markGpsEnableDialogAsUnshown();
+			}
+		}
 	}
 
 	/** Sets up NavigationDrawer. */
@@ -104,31 +109,44 @@ public class StartActivity extends FragmentActivity {
 
 	/** Swaps fragments in the main content view */
 	private void selectItem(int position) {
-		
+
 		Fragment current = getSupportFragmentManager().findFragmentById(R.id.flFragmentHolder);
 		Fragment newFragment = null;
 		String tag = null;
-		switch(position){
-		case 0:
-			newFragment = new SightseeingFragment();
-			tag = BundleConstants.FRAGMENT_SIGHTSEEING;
-			break;
-		case 1:
-			newFragment = new AnimalListFragment();
-			tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
-			break;
-		default: break;
+
+		new Thread() {
+			@Override
+			public void run() {
+				StartActivity.this.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						mDrawerLayout.closeDrawer(mDrawerList);
+					}
+				});
+			}
+		}.start();
+
+		switch (position) {
+			case 0:
+				if (!current.getTag().equals(BundleConstants.FRAGMENT_SIGHTSEEING)) {
+					getSupportFragmentManager().popBackStack(null,
+							FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				}
+				break;
+			case 1:
+				newFragment = new AnimalListFragment();
+				tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
+				break;
+			default:
+				break;
 		}
-		
-		if(newFragment != null && !current.getTag().equals(tag)){
-			if(tag.equals( BundleConstants.FRAGMENT_SIGHTSEEING)) {
-				getSupportFragmentManager().popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
-			} else setNextFragment(newFragment, tag);
+
+		if (newFragment != null && !current.getTag().equals(tag)) {
+			if (!tag.equals(BundleConstants.FRAGMENT_SIGHTSEEING)) setNextFragment(newFragment, tag);
 		}
-		
+
 		mDrawerList.setItemChecked(position, true);
 		setTitle(mDrawerMenuItems[position]);
-		mDrawerLayout.closeDrawer(mDrawerList);
 	}
 
 	@Override
@@ -139,9 +157,10 @@ public class StartActivity extends FragmentActivity {
 
 	private void setNextFragment(Fragment fragment, String tag) {
 		SupportMapFragment f = (SupportMapFragment) getSupportFragmentManager()
-	            .findFragmentById(R.id.map);
-	    if (f != null) getSupportFragmentManager().beginTransaction().remove(f).commit();
-		FragmentHelper.swapFragment(R.id.flFragmentHolder, fragment, getSupportFragmentManager(), tag);
+				.findFragmentById(R.id.map);
+		if (f != null) getSupportFragmentManager().beginTransaction().remove(f).commit();
+		FragmentHelper.swapFragment(R.id.flFragmentHolder, fragment, getSupportFragmentManager(),
+				tag);
 	}
 
 	/*

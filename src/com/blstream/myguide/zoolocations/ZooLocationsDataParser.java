@@ -3,6 +3,7 @@ package com.blstream.myguide.zoolocations;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -34,16 +35,17 @@ public class ZooLocationsDataParser {
 	private ArrayList<Way> mWays;
 	private ArrayList<Junction> mJunctions;
 	private ArrayList<Track> mTracks;
+	private ArrayList<Restaurant> mRestaurants;
 
 	private HashMap<Integer, Way> mWaysMap;
 	private HashMap<Integer, Animal> mAnimalsMap;
 
 	/**
-	 * This function parses chosen xml file and returns data saved in
-	 * {@link ZooLocationData} object. If there are ways in junction tag which
-	 * are not defined in ways tag, function throws exception.
+	 * This function parses chosen xml file and returns data saved in object. If
+	 * there are ways in junction tag which are not defined in ways tag,
+	 * function throws exception.
 	 * 
-	 * @param is InputStream of xml file
+	 * @param in InputStream of xml file
 	 * @return parsed data from xml file
 	 */
 	public ZooLocationsData parse(InputStream in) throws XmlPullParserException, IOException {
@@ -51,6 +53,7 @@ public class ZooLocationsDataParser {
 		mWays = new ArrayList<Way>();
 		mJunctions = new ArrayList<Junction>();
 		mTracks = new ArrayList<Track>();
+		mRestaurants = new ArrayList<Restaurant>();
 		mWaysMap = new HashMap<Integer, Way>();
 		mAnimalsMap = new HashMap<Integer, Animal>();
 
@@ -65,6 +68,7 @@ public class ZooLocationsDataParser {
 		data.setWays(mWays);
 		data.setJunctions(mJunctions);
 		data.setTracks(mTracks);
+		data.setRestaurants(mRestaurants);
 		return data;
 	}
 
@@ -84,6 +88,8 @@ public class ZooLocationsDataParser {
 				readJunctions(parser);
 			} else if ("visiting_tracks".equals(name)) {
 				readTracks(parser);
+			} else if ("gastronomy".equals(name)) {
+				readGastronomy(parser);
 			} else {
 				skip(parser);
 			}
@@ -114,6 +120,82 @@ public class ZooLocationsDataParser {
 			}
 			t.setAnimals(animalsOnTrack);
 		}
+	}
+
+	private void readGastronomy(XmlPullParser parser) throws XmlPullParserException, IOException {
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("restaurant".equals(name)) {
+				mRestaurants.add(readRestaurant(parser));
+			} else {
+				skip(parser);
+			}
+		}
+	}
+
+	private Restaurant readRestaurant(XmlPullParser parser) throws XmlPullParserException,
+			IOException {
+		Restaurant restaurant = new Restaurant();
+		Node node = readAtributesLatLon(parser);
+		restaurant.setNode(node);
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("name".equals(name)) {
+				readName(parser, restaurant);
+			} else if ("open".equals(name)) {
+				restaurant.setOpen(readText(parser));
+			} else if ("dishes".equals(name)) {
+				restaurant.setDishes(readDishes(parser));
+			} else {
+				skip(parser);
+			}
+		}
+
+		return restaurant;
+	}
+
+	private ArrayList<Dish> readDishes(XmlPullParser parser) throws XmlPullParserException,
+			IOException {
+		ArrayList<Dish> dishes = new ArrayList<Dish>();
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("dish".equals(name)) {
+				dishes.add(readDish(parser));
+			} else {
+				skip(parser);
+			}
+		}
+		return dishes;
+	}
+
+	private Dish readDish(XmlPullParser parser) throws XmlPullParserException, IOException {
+		Dish dish = new Dish();
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("price".equals(name)) {
+				dish.setPrice(Float.parseFloat(readText(parser)));
+			} else if ("name".equals(name)) {
+				readName(parser, dish);
+			} else {
+				skip(parser);
+			}
+		}
+
+		return dish;
 	}
 
 	private void readAnimals(XmlPullParser parser) throws XmlPullParserException, IOException {
@@ -175,9 +257,7 @@ public class ZooLocationsDataParser {
 		return description;
 	}
 
-	private HashMap<String, String> readDictionary(XmlPullParser parser)
-			throws XmlPullParserException,
-			IOException {
+	private HashMap<String, String> readDictionary(XmlPullParser parser) throws XmlPullParserException, IOException {
 		HashMap<String, String> names = new HashMap<String, String>();
 
 		while (parser.next() != XmlPullParser.END_TAG) {
@@ -190,6 +270,20 @@ public class ZooLocationsDataParser {
 		}
 		return names;
 	}
+
+	private void readName(XmlPullParser parser, XmlObject object) throws XmlPullParserException,
+			IOException {
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String language = parser.getName();
+			String name = readText(parser);
+			object.addName(language, name);
+		}
+	}
+
 
 	private Node readAtributesLatLon(XmlPullParser parser) throws XmlPullParserException,
 			IOException {
