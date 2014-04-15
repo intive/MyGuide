@@ -23,8 +23,8 @@
 
 - (id) init
 {
-    if(!self) {
-        self = [super init];
+    self = [super init];
+    if(self) {
         self.historyEvents = @[];
     }
     return self;
