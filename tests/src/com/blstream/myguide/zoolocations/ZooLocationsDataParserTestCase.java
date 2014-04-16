@@ -10,8 +10,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.test.AndroidTestCase;
 
 import com.blstream.myguide.R;
-import com.blstream.myguide.zoolocations.ZooLocationsData;
-import com.blstream.myguide.zoolocations.ZooLocationsDataParser;
 
 /** Class containing tests for ZooLocationsDataParser. */
 public class ZooLocationsDataParserTestCase extends AndroidTestCase {
@@ -278,4 +276,84 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		assertEquals("Animal2", data.getTracks().get(0).getAnimals().get(1).getName(Language.EN));
 		assertEquals("Zwierze2", data.getTracks().get(0).getAnimals().get(1).getName(Language.PL));
 	}
+
+	public void testParsingTickets() throws XmlPullParserException, IOException {
+		// given
+		String plTicketBaseName = "bilet", enTicketBaseName = "ticket";
+		// three tickets (2 individual, 1 group
+		// price is used as a counter, starting from 1
+		String xmlMock = "" +
+				"<root>" +
+				"\t<tickets_information>\n" +
+				"\t\t<individual>\n" +
+				"\t\t\t<ticket>\n" +
+				"\t\t\t\t<description>\n" +
+				"\t\t\t\t\t<pl>" + plTicketBaseName + "1</pl>\n" +
+				"\t\t\t\t\t<en>" + enTicketBaseName + "1</en>\n" +
+				"\t\t\t\t</description>\n" +
+				"\t\t\t\t<price>1</price>\n" +
+				"\t\t\t</ticket>\n" +
+				"\t\t\t<ticket>\n" +
+				"\t\t\t\t<description>\n" +
+				"\t\t\t\t\t<pl>" + plTicketBaseName + "2</pl>\n" +
+				"\t\t\t\t\t<en>" + enTicketBaseName + "2</en>\n" +
+				"\t\t\t\t</description>\n" +
+				"\t\t\t\t<price>2</price>\n" +
+				"\t\t\t</ticket>" +
+				"\t\t</individual>\n" +
+				"\t\t<group>\n" +
+				"\t\t\t<ticket>\n" +
+				"\t\t\t\t<description>\n" +
+				"\t\t\t\t\t<pl>" + plTicketBaseName + "3</pl>\n" +
+				"\t\t\t\t\t<en>" + enTicketBaseName + "3</en>\n" +
+				"\t\t\t\t</description>\n" +
+				"\t\t\t\t<price>3</price>\n" +
+				"\t\t\t</ticket>\n" +
+				"\t\t</group>\n" +
+				"\t\t<information>\n" +
+				"\t\t\t<key1>value1</key1>\n" +
+				"\t\t\t<key2>value2</key2>\n" +
+				"\t\t\t<key3>value3</key3>\n" +
+				"\t\t\t<key4>value4</key4>\n" +
+				"\t\t</information>\n" +
+				"\t</tickets_information>\n" +
+				"</root>\n";
+		ZooLocationsDataParser parser = new ZooLocationsDataParser();
+		ZooLocationsData data = null;
+
+		// when
+		InputStream is = new ByteArrayInputStream(xmlMock.getBytes());
+		data = parser.parse(is);
+		is.close();
+
+		// then
+		assertNotNull(data);
+		assertEquals(3, data.getTickets().size());
+		int k = 1, individualTicketsCount = 0, groupTicketsCount = 0;
+		for (Ticket ticket : data.getTickets()) {
+			String pl = String.format("%s%d", plTicketBaseName, k);
+			String en = String.format("%s%d", enTicketBaseName, k);
+
+			assertEquals(pl, ticket.getDescription(Language.PL));
+			assertEquals(en, ticket.getDescription(Language.EN));
+			assertEquals(k, ticket.getPrice());
+			k++;
+
+			switch (ticket.getType()) {
+				case INDIVIDUAL:
+					individualTicketsCount++;
+					break;
+
+				case GROUP:
+					groupTicketsCount++;
+					break;
+
+				default: break;
+			}
+		}
+		assertEquals(2, individualTicketsCount);
+		assertEquals(1, groupTicketsCount);
+		assertEquals(4, data.getTicketInformation().size());
+	}
+
 }
