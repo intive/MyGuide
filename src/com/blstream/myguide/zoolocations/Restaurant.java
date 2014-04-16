@@ -53,6 +53,10 @@ public class Restaurant extends XmlObject implements Serializable {
 		return mOpen;
 	}
 
+	public void setNames(HashMap<String, String> names) {
+		mNames = names;
+	}
+
 	public String getName(String language) {
 		String name = mNames.get(language);
 		if (name == null) { return this.getName(); }
