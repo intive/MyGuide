@@ -3,6 +3,10 @@ package com.blstream.myguide.zoolocations;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class contains informations about animals, ways and ways' junctions and
@@ -15,6 +19,8 @@ public class ZooLocationsData {
 	private ArrayList<Junction> mJunctions;
 	private ArrayList<Track> mTracks;
 	private ArrayList<Restaurant> mRestaurants;
+	private ArrayList<Ticket> mTickets;
+	private HashMap<String, String> mTicketInformation = new HashMap<String, String>();
 
 	public ZooLocationsData() {
 		mAnimals = new ArrayList<Animal>();
@@ -22,6 +28,7 @@ public class ZooLocationsData {
 		mJunctions = new ArrayList<Junction>();
 		mTracks = new ArrayList<Track>();
 		mRestaurants = new ArrayList<Restaurant>();
+		mTickets = new ArrayList<Ticket>();
 	}
 
 	public ArrayList<Animal> getAnimals() {
@@ -45,6 +52,14 @@ public class ZooLocationsData {
 		return mRestaurants;
 	}
 
+	public List<Ticket> getTickets() {
+		return new LinkedList<Ticket>(mTickets);
+	}
+
+	public Map<String, String> getTicketInformation() {
+		return mTicketInformation;
+	}
+
 	public void setAnimals(ArrayList<Animal> animals) {
 		mAnimals = animals;
 	}
@@ -64,4 +79,13 @@ public class ZooLocationsData {
 	public void setRestaurants(ArrayList<Restaurant> restaurants) {
 		mRestaurants = restaurants;
 	}
+
+	public void setTickets(ArrayList<Ticket> tickets) {
+		mTickets = tickets;
+	}
+
+	public void setTicketInformation(Map<String, String> ticketInformation) {
+		mTicketInformation.putAll(ticketInformation);
+	}
+
 }
