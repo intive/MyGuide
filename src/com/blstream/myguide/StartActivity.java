@@ -38,6 +38,19 @@ public class StartActivity extends FragmentActivity {
 	private String[] mDrawerMenuItems;
 	private ListView mDrawerList;
 
+	private Fragment createInformationFragment() {
+		Fragment fragments[] = new Fragment[] {
+				DummyFragment.newInstance("Ala"),
+				DummyFragment.newInstance("ma"),
+				DummyFragment.newInstance("kota"),
+		};
+
+		return FragmentTabManager.newInstance(
+				R.array.information_tabs_name,
+				fragments,
+				getResources().getStringArray(R.array.nav_drawer_items)[2]);    // this needs adjusting if strings.xml is changed
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -133,10 +146,17 @@ public class StartActivity extends FragmentActivity {
 							FragmentManager.POP_BACK_STACK_INCLUSIVE);
 				}
 				break;
+
 			case 1:
 				newFragment = new AnimalListFragment();
 				tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
 				break;
+
+			case 2:
+				newFragment = createInformationFragment();
+				tag = BundleConstants.FRAGMENT_INFORMATION;
+				break;
+
 			default:
 				break;
 		}

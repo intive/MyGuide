@@ -23,6 +23,7 @@ public class BundleConstants {
 	public static final String FRAGMENT_SIGHTSEEING = "fragment_sightseeing";
 	public static final String FRAGMENT_ANIMAL_LIST = "fragment_animal_list";
 	public static final String FRAGMENT_GASTRONOMY = "fragment_gastronomy";
+	public static final String FRAGMENT_INFORMATION = "fragment_information";
 
 	// FONT PATH BOLD
 	public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";

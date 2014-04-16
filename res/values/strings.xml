@@ -69,4 +69,11 @@
     <string name="animal_list_title">Animals</string>
     <string name="animal_image">Animal Image</string>
 
+	<!-- Information tabs name -->
+	<string-array name="information_tabs_name">
+		<item name="tickets">Tickets</item>
+		<item name="getthere">Get to ZOO</item>
+		<item name="contact">Contact</item>
+	</string-array>
+
 </resources>
