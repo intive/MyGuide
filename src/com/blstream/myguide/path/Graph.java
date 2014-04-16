@@ -14,7 +14,8 @@ public class Graph {
 
 	protected static final double INFINITY = -1; // should be a negative number
 	private static final double ZOO_LATITUDE = 51.10503;
-	private static final double LON_COEFFICIENT = Math.cos(ZOO_LATITUDE);
+	private static final double LON_COEFFICIENT = Math.cos(Math.toRadians(ZOO_LATITUDE));
+	private static final double METERS_COEFFICIENT = 6378410*Math.PI/180.0;
 
 	protected ArrayList<Vertex> mVertices;
 	protected ArrayList<Edge> mEdges;
@@ -32,6 +33,43 @@ public class Graph {
 		return Math.sqrt(deltaLat * deltaLat + deltaLon * deltaLon);
 	}
 
+	/** Find distance in meters from point start to point end.*/
+	public double findDistance(Node start, Node end) {
+		mToRemove = new ArrayList<Vertex>();
+		Vertex startVertex = findNearVertex(start);
+		Vertex endVertex = findNearVertex(end);
+		List<Node> path = new ArrayList<Node>();
+		ArrayList<Vertex> vertices = new ArrayList<Vertex>();
+		double  result = INFINITY;
+		
+		if (startVertex != null && endVertex != null) {
+			vertices = findPathBetweenVertices(startVertex, endVertex);
+			if (vertices.size() > 0) {
+				result = METERS_COEFFICIENT * endVertex.getWeight();
+				result += METERS_COEFFICIENT * distanceApproximate(end, endVertex.getPosition());
+				result += METERS_COEFFICIENT * distanceApproximate(start, startVertex.getPosition());
+			}
+		}
+
+		removeTemporaryVertices();
+		return result;
+	}
+
+	private void removeTemporaryVertices() {
+		if (mToRemove == null) {
+			return;
+		}
+		for (Vertex v : mToRemove) {
+			Edge e1 = v.getEdges().get(0);
+			Edge e2 = v.getEdges().get(1);
+			Vertex v1 = e1.getVertex2();
+			Vertex v2 = e2.getVertex2();
+			mVertices.remove(v);
+			v1.getEdges().remove(e1);
+			v2.getEdges().remove(e2);
+		}
+		mToRemove = null;		
+	}
 	/*
 	 * Method finds vertex or edge which is nearest to point n. If it is an edge
 	 * then method add new vertex to graph. New vertex is added to list
@@ -178,18 +216,7 @@ public class Graph {
 			}
 		}
 
-		// removing temporary vertices
-		for (Vertex v : mToRemove) {
-			Edge e1 = v.getEdges().get(0);
-			Edge e2 = v.getEdges().get(1);
-			Vertex v1 = e1.getVertex2();
-			Vertex v2 = e2.getVertex2();
-			mVertices.remove(v);
-			v1.getEdges().remove(e1);
-			v2.getEdges().remove(e2);
-		}
-		mToRemove = null;
-
+		removeTemporaryVertices();
 		return path;
 	}
 
