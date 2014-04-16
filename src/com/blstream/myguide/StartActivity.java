@@ -47,7 +47,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private Fragment createInformationFragment() {
 		Fragment fragments[] = new Fragment[] {
 				DummyFragment.newInstance("Ala"),
-				DummyFragment.newInstance("ma"),
+				AccessFragment.newInstance(),
 				DummyFragment.newInstance("kota"),
 		};
 

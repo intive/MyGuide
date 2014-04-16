@@ -50,4 +50,8 @@
 		instead of sightseeing screen (in meters)
 	-->
 	<distance_from_zoo>700</distance_from_zoo>
+
+	<!-- ZOO entrance coordinates -->
+	<zoo_entrance_lat>51.106395</zoo_entrance_lat>
+	<zoo_entrance_lng>17.074899</zoo_entrance_lng>
 </configuration>
