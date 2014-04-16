@@ -1,7 +1,10 @@
 
 package com.blstream.myguide;
 
+import java.util.ArrayList;
+
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -10,18 +13,24 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blstream.myguide.dialog.ConfirmExitDialogFragment;
 import com.blstream.myguide.dialog.EnableGpsDialogFragment;
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationUpdater;
+import com.blstream.myguide.zoolocations.Track;
 import com.google.android.gms.maps.SupportMapFragment;
 
 /**
@@ -38,6 +47,9 @@ public class StartActivity extends FragmentActivity {
 	private String[] mDrawerMenuItems;
 	private ListView mDrawerList;
 
+	private ArrayList<Track> mDrawerRightMenuItems;
+	private ListView mDrawerRightList;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,6 +72,7 @@ public class StartActivity extends FragmentActivity {
 			mActionBar.setDisplayHomeAsUpEnabled(true);
 		}
 		setUpDrawerListView();
+		setUpRightDrawer();
 	}
 
 	@Override
@@ -95,10 +108,19 @@ public class StartActivity extends FragmentActivity {
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.ic_navigation_drawer, R.string.drawer_open,
 				R.string.drawer_close);
-
+			
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 	}
+
+	/** Sets up NavigationDrawer with track names. */
+	public void setUpRightDrawer() {
+		mDrawerRightMenuItems = ((MyGuideApp) getApplication()).getZooData().getTracks();
+		mDrawerRightList = (ListView) findViewById(R.id.lvTracks);
+		mDrawerRightList.setAdapter(new TrackListAdapter(this, R.layout.right_drawer_item, mDrawerRightMenuItems));
+		mDrawerRightList.setOnItemClickListener(new DrawerRightItemClickListener());
+	}
+
 
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
@@ -107,6 +129,29 @@ public class StartActivity extends FragmentActivity {
 		}
 	}
 
+	private class DrawerRightItemClickListener implements ListView.OnItemClickListener {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			selectItemRight(position);
+		}
+	}
+
+	/** Swaps fragments in the main content view */
+	private void selectItemRight(int position) {
+		new Thread() {
+			@Override
+			public void run() {
+				StartActivity.this.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						mDrawerLayout.closeDrawer(mDrawerRightList);
+					}
+				});
+			}
+		}.start();
+		Toast.makeText(this, "track " + position, Toast.LENGTH_SHORT).show();
+	}
+	
 	/** Swaps fragments in the main content view */
 	private void selectItem(int position) {
 
@@ -151,7 +196,19 @@ public class StartActivity extends FragmentActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (mDrawerToggle.onOptionsItemSelected(item)) { return true; }
+		if (mDrawerToggle.onOptionsItemSelected(item)) { 
+			mDrawerLayout.closeDrawer(mDrawerRightList);
+			return true; 
+		}
+		if (item.getItemId() == R.id.action_filter) {
+			mDrawerLayout.closeDrawer(mDrawerList);
+			if (mDrawerLayout.isDrawerVisible(mDrawerRightList)) {
+				mDrawerLayout.closeDrawer(mDrawerRightList);
+			}
+			else {
+				mDrawerLayout.openDrawer(mDrawerRightList);
+			}
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -202,5 +259,41 @@ public class StartActivity extends FragmentActivity {
 		} else {
 			super.onBackPressed();
 		}
+	}
+	
+	public DrawerLayout getDrawerLayout() {
+		return mDrawerLayout;
+	}
+}
+
+class TrackListAdapter extends ArrayAdapter<Track> {
+
+	private Context context;
+	private int id;
+	
+	public TrackListAdapter(Context context, int textViewResourceId, ArrayList<Track> items) {
+		super(context, textViewResourceId, items);
+		this.context = context;
+		this.id = textViewResourceId;
+	}
+
+	public View getView(int position, View convertView, ViewGroup parent) {
+		LayoutInflater inflater = (LayoutInflater) context
+			.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+ 
+		View rowView = inflater.inflate(id, parent, false);
+		
+		TextView name = (TextView) rowView.findViewById(R.id.trackName);
+		name.setText(getItem(position).getName());
+
+		//some dummy data
+		TextView progressText = (TextView) rowView.findViewById(R.id.progressText);
+		progressText.setText("4/10");
+
+		ProgressBar progress = (ProgressBar) rowView.findViewById(R.id.progress);
+		progress.setMax(100);
+		progress.setProgress(50);
+		
+		return rowView;
 	}
 }
