@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
+import com.blstream.myguide.zoolocations.AnimalDistance;
 import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.Language;
 import com.blstream.myguide.zoolocations.Node;
@@ -69,6 +71,7 @@ public class SightseeingFragment extends Fragment {
 	private LocationLogger mLocationLogger;
 
 	private boolean mLocationLogVisible;
+	private BottomAnimalFragment mBottomAnimalFragment;
 
 	public SightseeingFragment() {
 	}
@@ -100,6 +103,8 @@ public class SightseeingFragment extends Fragment {
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
+		
+		setUpClosestAnimal();
 
 		return rootView;
 	}
@@ -170,6 +175,27 @@ public class SightseeingFragment extends Fragment {
 				mStartCenterLat, mStartCenterLon), mMinZoom));
 		setUpCamera();
 		setUpMapListeners();
+	}
+	
+	private void setUpClosestAnimal() {
+		mBottomAnimalFragment = new BottomAnimalFragment();
+
+		AnimalDistance closestAnimal = closestAnimal();
+		Bundle data = new Bundle();
+		data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
+		mBottomAnimalFragment.setArguments(data);
+		FragmentManager manager = getChildFragmentManager();
+		FragmentHelper.swapFragment(R.id.closestAnimal, mBottomAnimalFragment,
+				manager, BundleConstants.FRAGMENT_BOTTOM_ANIMAL);
+		
+
+	}
+
+	private AnimalDistance closestAnimal() {
+		AnimalFinderHelper animalFinder = new AnimalFinderHelper(
+				LocationUpdater.getInstance().getLocation(),
+				(MyGuideApp) this.getActivity().getApplication());
+		return animalFinder.closestAnimal();
 	}
 
 	private void setUpMapListeners() {

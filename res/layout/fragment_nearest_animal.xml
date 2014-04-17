@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_background" >
+
+    <ImageView
+        android:id="@+id/imgvClosestAnimal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/animal_image"
+        android:src="@drawable/placeholder_animal_icon" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/txtvClosestAnimalName"
+            style="@style/item_name"
+            android:layout_margin="15dp"
+            android:text="@string/placeholder_name" />
+
+        <TextView
+            android:id="@+id/txtvClosestAnimalDistance"
+            style="@style/item_name"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="15dp"
+            android:text="@string/placeholder_distance"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/txtvClosestAnimalFunFact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/txtvClosestAnimalName"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="7dp"
+            android:text="@string/placeholder_fact"
+            android:textSize="12sp"
+            android:textColor="@color/main_text"/>
+    </RelativeLayout>
+
+</LinearLayout>

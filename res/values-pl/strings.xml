@@ -45,7 +45,7 @@
         <item name="preferences">Preferencje</item>
     </string-array>
 
-    <!--Animals description tabs name -->
+    <!-- Animals description tabs name -->
     <string-array name="animal_desc_tabs_name">
         <item name="description">Opis</item>
         <item name="child">Dla Dzieci</item>
@@ -54,6 +54,9 @@
 
     <!-- Animal List title -->
     <string name="animal_list_title">Zwierzęta</string>
+    
+    <!-- Nearest animals -->
+    <string name="nearest_animals_title">Najbliższe zwierzęta</string>
 
     <!-- Gastronomy description tabs -->
     <string-array name="gastronomy_desc_tabs_name">

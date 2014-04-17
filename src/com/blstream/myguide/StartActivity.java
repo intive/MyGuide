@@ -137,6 +137,7 @@ public class StartActivity extends FragmentActivity {
 				newFragment = new AnimalListFragment();
 				tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
 				break;
+				
 			default:
 				break;
 		}

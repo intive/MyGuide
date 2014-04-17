@@ -16,6 +16,7 @@ public class BundleConstants {
 	public static final String TAB_FRAGMENTS = "tab_fragments";
 	public static final String TAB_TITLE = "tab_title";
 	public static final String SELECTED_RESTAURANT = "selected_restaurant";
+	public static final String CLOSEST_ANIMAL = "closest_animal";
 
 	// FRAGMENT TAGS
 	public static final String FRAGMENT_ANIMAL_DETAIL = "fragment_animal_details";
@@ -23,6 +24,9 @@ public class BundleConstants {
 	public static final String FRAGMENT_SIGHTSEEING = "fragment_sightseeing";
 	public static final String FRAGMENT_ANIMAL_LIST = "fragment_animal_list";
 	public static final String FRAGMENT_GASTRONOMY = "fragment_gastronomy";
+	public static final String FRAGMENT_NEAREST_ANIMALS = "fragment_nearest_animals";
+	public static final String FRAGMENT_BOTTOM_ANIMAL = "fragment_bottom_animal";
+	public static final String FRAGMENT_MAP = "fragment_sightseeing_map";
 
 	// FONT PATH BOLD
 	public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";

@@ -52,29 +52,29 @@
         <item name="preferences">Preferences</item>
     </string-array>
 
-    <!--Animals description tabs name -->
+    <!-- Animals description tabs name -->
     <string-array name="animal_desc_tabs_name">
         <item name="description">Description</item>
         <item name="child">For children</item>
         <item name="map_view">Map</item>
     </string-array>
 
-<string name="animal_list_title">Animals</string>
-<string name="animal_image">Animal Image</string>
-    
-
     <!-- Animal List title -->
     <string name="animal_list_title">Animals</string>
-<string name="animal_image">Animal Image</string>
+    <string name="animal_image">Animal Image</string>
 
-<!-- Gastronomy description tabs -->
+    <!-- Gastronomy description tabs -->
     <string-array name="gastronomy_desc_tabs_name">
         <item name="description">Description</item>
         <item name="menu">Menu</item>
     </string-array>
 
-    <!-- Animal List title -->
-    <string name="animal_list_title">Animals</string>
-    <string name="animal_image">Animal Image</string>
+    <!-- Nearest animals -->
+    <string name="nearest_animals_title">Nearest animals</string>
+
+    <!-- Placeholders for Custom_Animal_Row -->
+    <string name="placeholder_name">Animal name</string>
+    <string name="placeholder_distance">100m</string>
+    <string name="placeholder_fact">Fun fact</string>
 
 </resources>
