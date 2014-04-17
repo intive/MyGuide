@@ -13,7 +13,8 @@
     <ListView
         android:id="@+id/lvAnimalList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:listSelector="@drawable/menu_list_selector">
     </ListView>
 
 </LinearLayout>

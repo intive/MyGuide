@@ -1,4 +1,3 @@
-
 package com.blstream.myguide;
 
 import android.app.ActionBar;
@@ -131,6 +130,10 @@ public class StartActivity extends FragmentActivity {
 			case 1:
 				newFragment = new AnimalListFragment();
 				tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
+				break;
+			case 4:
+				newFragment = new GastronomyListFragment();
+				tag = BundleConstants.FRAGMENT_GASTRONOMY;
 				break;
 			default:
 				break;

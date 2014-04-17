@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlGastronomy"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@color/light_background">
+
+    <ImageView
+        android:id="@+id/imgvRestaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/gastronomy_list_image"
+        android:src="@drawable/restaurant_sample" />
+
+    <TextView
+        android:id="@+id/txtvGastronomyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/txtvGastronomyDistance"
+        android:layout_toRightOf="@+id/imgvRestaurant"
+        android:minLines="2"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="7dp"
+        android:text="Letnia Restaurant"
+        android:textColor="@color/main_accent"
+        android:textSize="@dimen/List_text_size_small"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvGastronomyName"
+        android:layout_toRightOf="@+id/imgvRestaurant"
+        android:paddingLeft="10dp"
+        android:text="@string/time_to_item_list"
+        android:textSize="@dimen/Item_text_size" />
+
+    <TextView
+        android:id="@+id/txtvTimeTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvGastronomyName"
+        android:layout_toLeftOf="@id/txtvGastronomyDistance"
+        android:layout_toRightOf="@+id/txtvTime"
+        android:paddingLeft="5dp"
+        android:text="10 minut"
+        android:textSize="@dimen/Item_text_size" />
+
+
+    <TextView
+        android:id="@+id/txtvOpenTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvTime"
+        android:layout_toRightOf="@+id/imgvRestaurant"
+        android:paddingLeft="10dp"
+        android:text="@string/open_item_list"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/txtvOpen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvTime"
+        android:layout_toRightOf="@+id/txtvOpenTime"
+        android:paddingLeft="5dp"
+        android:text="10.00-17.00"
+        android:textSize="@dimen/Item_text_size" />
+
+    <TextView
+        android:id="@+id/txtvMenuDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvOpenTime"
+        android:layout_toRightOf="@+id/imgvRestaurant"
+        android:paddingBottom="7dp"
+        android:paddingLeft="10dp"
+        android:text="@string/menu_item_list"
+        android:textSize="@dimen/Item_text_size" />
+
+    <TextView
+        android:id="@+id/txtvMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvOpenTime"
+        android:layout_toRightOf="@+id/txtvMenuDesc"
+        android:paddingBottom="7dp"
+        android:paddingLeft="5dp"
+        android:text="Fish, Wurst"
+        android:textSize="@dimen/Item_text_size" />
+
+    <TextView
+        android:id="@+id/txtvGastronomyDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:paddingRight="8dp"
+        android:paddingTop="7dp"
+        android:text="200 m"
+        android:textColor="@color/main_accent"
+        android:textSize="@dimen/List_text_size_small"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>
