@@ -103,13 +103,11 @@ public class GastronomyMenuTab extends Fragment implements Parcelable {
 				convertView = inflater.inflate(mLayoutResourceId, parent, false);
 
 				viewHolder = new ViewHolder();
-				if (convertView != null) {
 					viewHolder.mTxtvDishName = (TextView) convertView
 							.findViewById(R.id.txtvDishName);
 					viewHolder.mTxtvDishPrice = (TextView) convertView
 							.findViewById(R.id.txtvDishPrice);
 					convertView.setTag(viewHolder);
-				}
 			} else {
 				viewHolder = (ViewHolder) convertView.getTag();
 			}

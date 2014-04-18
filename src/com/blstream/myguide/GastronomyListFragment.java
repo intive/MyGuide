@@ -43,13 +43,13 @@ public class GastronomyListFragment extends Fragment {
 
 		mZooData = ((MyGuideApp) this.getActivity().getApplication())
 				.getZooData();
-		List<Restaurant> mRestaurants = mZooData.getRestaurant();
+		List<Restaurant> restaurants = mZooData.getRestaurant();
 
 		if (view != null) {
 			mListView = (ListView) view.findViewById(R.id.lvListItem);
-			GastronomyAdapter mGastronomyAdapter = new GastronomyAdapter(getActivity(),
-					R.layout.gastronomy_list_item, mRestaurants);
-			mListView.setAdapter(mGastronomyAdapter);
+			GastronomyAdapter gastronomyAdapter = new GastronomyAdapter(getActivity(),
+					R.layout.gastronomy_list_item, restaurants);
+			mListView.setAdapter(gastronomyAdapter);
 			setUpListeners();
 		}
 
@@ -132,7 +132,6 @@ public class GastronomyListFragment extends Fragment {
 				convertView = inflater.inflate(mLayoutResourceId, parent, false);
 
 				viewHolder = new ViewHolder();
-				if (convertView != null) {
 					viewHolder.mTxtvRestaurantName = (TextView) convertView
 							.findViewById(R.id.txtvGastronomyName);
 					viewHolder.mImgvRestaurant = (ImageView) convertView
@@ -144,7 +143,6 @@ public class GastronomyListFragment extends Fragment {
 					viewHolder.mTxtvMenu = (TextView) convertView.findViewById(R.id.txtvMenu);
 
 					convertView.setTag(viewHolder);
-				}
 			} else {
 				viewHolder = (ViewHolder) convertView.getTag();
 			}
