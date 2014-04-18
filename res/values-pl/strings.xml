@@ -61,4 +61,11 @@
         <item name="menu">Menu</item>
     </string-array>
 
+    <!-- Gastronomy Item List -->
+    <string name="menu_item_list">Menu:</string>
+    <string name="open_item_list">Godz. otwarcia:</string>
+    <string name="time_to_item_list">Czas:</string>
+
+    <string name="gastronomy_list_title">Gastronomy</string>
+
 </resources>

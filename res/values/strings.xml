@@ -69,4 +69,14 @@
     <string name="animal_list_title">Animals</string>
     <string name="animal_image">Animal Image</string>
 
+    <!-- Gastronomy Item List -->
+    <string name="menu_item_list">Menu:</string>
+    <string name="open_item_list">Opening hours:</string>
+    <string name="time_to_item_list">Time:</string>
+
+    <string name="gastronomy_list_title">Gastronomy</string>
+
+    <!-- Content Description -->
+    <string name="gastronomy_list_image">Gastronomy List Image</string>
+
 </resources>
