@@ -40,7 +40,7 @@ public class StartActivity extends FragmentActivity {
 
 	private Fragment createInformationFragment() {
 		Fragment fragments[] = new Fragment[] {
-				DummyFragment.newInstance("Ala"),
+				TicketsFragment.newInstance(),
 				DummyFragment.newInstance("ma"),
 				DummyFragment.newInstance("kota"),
 		};

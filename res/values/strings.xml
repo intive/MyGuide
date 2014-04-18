@@ -76,4 +76,8 @@
 		<item name="contact">Contact</item>
 	</string-array>
 
+	<string name="ticket_individual">Individual tickets</string>
+	<string name="ticket_group">Group tickets</string>
+	<string name="ticket_info">Information</string>
+
 </resources>
