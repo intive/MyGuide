@@ -71,9 +71,14 @@ public class StartActivity extends FragmentActivity {
 	}
 
 	@Override
-	protected void onStart() {
-		super.onStart();
-		showEnableGpsDialogIfNeeded();
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if (hasFocus) {
+			showEnableGpsDialogIfNeeded();
+			if (LocationUpdater.getInstance().isGpsEnable()) {
+				LocationUpdater.getInstance().markGpsEnableDialogAsUnshown();
+			}
+		}
 	}
 
 	/** Sets up NavigationDrawer. */
