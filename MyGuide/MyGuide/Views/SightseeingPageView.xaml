@@ -13,6 +13,7 @@
     xmlns:maps="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps"
     xmlns:mapsCore="clr-namespace:Microsoft.Phone.Controls.Maps.Core;assembly=Microsoft.Phone.Controls.Maps"
     xmlns:TileSources="clr-namespace:MyGuide.Services.Map"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -52,6 +53,24 @@
                             <TileSources:OSMRenderTileSource />
                         </maps:MapTileLayer.TileSources>
                     </maps:MapTileLayer>
+
+                    <maps:MapLayer x:Name="UserPositionLayer">
+                        <maps:Pushpin Location="{Binding UserPositionLocation, Mode=TwoWay}">
+                            <maps:Pushpin.Template>
+                                <ControlTemplate>
+                                    <Grid>
+
+                                        <Rectangle Width="30" Height="30" Fill="Black" RenderTransformOrigin="0.5,0.5">
+                                            <Rectangle.RenderTransform>
+                                                <CompositeTransform Rotation="45" />
+                                            </Rectangle.RenderTransform>
+                                        </Rectangle>
+                                        <Ellipse Width="20" Height="20" Fill="Red" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </maps:Pushpin.Template>
+                        </maps:Pushpin>
+                    </maps:MapLayer>
                 </maps:Map.Children>
             </maps:Map>
         </Grid>
@@ -75,7 +94,7 @@
                 IconUri="/Assets/AppBarIcons/information.png" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowGastronomy"
-                
+
                 Text="{Binding LocalizedResources.Gastronomy, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
                 IconUri="/Assets/AppBarIcons/food.png" />
             <bindappbar:BindableAppBarMenuItem
