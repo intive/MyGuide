@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,10 @@ public class BottomAnimalFragment extends Fragment {
 		@Override
 		public void onClick(View v) { 
 			FragmentManager manager = getActivity().getSupportFragmentManager();
+			Fragment map = manager.findFragmentById(R.id.map);
+			FragmentTransaction transation = manager.beginTransaction();
+			transation.remove(map);
+			transation.commit();
 			Fragment nearestAnimals = new NearestAnimalsListFragment();
 			FragmentHelper.swapFragment(R.id.flFragmentHolder, nearestAnimals,
 				manager, BundleConstants.FRAGMENT_NEAREST_ANIMALS);
