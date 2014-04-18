@@ -6,10 +6,9 @@
 
     <TextView
         android:id="@+id/trackName"
-        android:layout_weight="0.75"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:padding="5dp"
+        android:layout_weight="0.75"
         android:textSize="20sp" />
 
     <LinearLayout
@@ -22,10 +21,10 @@
             android:id="@+id/progressText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
         
         <ProgressBar
-            android:id="@+id/progress"
+            android:id="@+id/progressBar"
             style="@style/track_progress_bar"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />

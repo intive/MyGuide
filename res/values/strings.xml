@@ -69,4 +69,9 @@
     <string name="animal_list_title">Animals</string>
     <string name="animal_image">Animal Image</string>
 
+    <!-- Track list -->
+    <string name="exploration">Exploration</string>
+
+    <!-- Language name -->
+    <string name="language">en</string>
 </resources>
