@@ -4,4 +4,3 @@
     <item android:drawable="@drawable/list_focused_example" android:state_pressed="true" />
     <item android:drawable="@android:color/transparent" />
 </selector>
-    

@@ -2,7 +2,6 @@
 package com.blstream.myguide;
 
 import android.app.Activity;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -115,14 +114,10 @@ public class GastronomyMenuTab extends Fragment implements Parcelable {
 				viewHolder = (ViewHolder) convertView.getTag();
 			}
 
-			Typeface fontRegular = Typeface.createFromAsset(mContext.getAssets(),
-					BundleConstants.FONT_PATH_REGULAR);
 			Dish dish = mDishes.get(position);
 
 			viewHolder.mTxtvDishName.setText(dish.getName() + "");
-			viewHolder.mTxtvDishName.setTypeface(fontRegular);
 			viewHolder.mTxtvDishPrice.setText(dish.getPrice() + "");
-			viewHolder.mTxtvDishPrice.setTypeface(fontRegular);
 
 			return convertView;
 		}

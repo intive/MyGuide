@@ -2,7 +2,6 @@
 package com.blstream.myguide;
 
 import android.app.Activity;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,16 +65,10 @@ public class GastronomyAdapter extends ArrayAdapter<Restaurant> {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
-		Typeface font = Typeface.createFromAsset(mContext.getAssets(),
-				BundleConstants.FONT_PATH_BOLD);
-		Typeface fontRegular = Typeface.createFromAsset(mContext.getAssets(),
-				BundleConstants.FONT_PATH_REGULAR);
 		Restaurant restaurant = mRestaurants.get(position);
 
 		viewHolder.mTxtvRestaurantName.setText(restaurant.getName() + "");
-		viewHolder.mTxtvRestaurantName.setTypeface(font);
 		viewHolder.mTxtvOpenTime.setText(restaurant.getOpen() + "");
-		viewHolder.mTxtvOpenTime.setTypeface(fontRegular);
 
 		return convertView;
 	}
