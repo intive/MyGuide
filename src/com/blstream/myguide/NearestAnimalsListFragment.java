@@ -3,17 +3,21 @@ package com.blstream.myguide;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
+import android.app.Activity;
+import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
-
-import com.blstream.myguide.adapters.NearestAnimalsAdapter;
+import android.widget.TextView;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.gps.LocationUser;
+import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.AnimalDistance;
 
 /**
@@ -60,8 +64,8 @@ public class NearestAnimalsListFragment extends Fragment implements
 	public void onResume() {
 		super.onResume();
 		mAnimalsAndDistances = mAnimalFinder.allAnimalsWithDistances();
-		mListAdapter = new NearestAnimalsAdapter(
-				getActivity().getBaseContext(), mAnimalsAndDistances);
+		mListAdapter = new NearestAnimalsListFragment.NearestAnimalsAdapter(getActivity(),
+				R.layout.custom_animal_row, mAnimalsAndDistances);
 
 		mAnimalListView.setAdapter(mListAdapter);
 	};
@@ -82,6 +86,53 @@ public class NearestAnimalsListFragment extends Fragment implements
 
 	@Override
 	public void onGpsUnavailable() {
+	}
+
+	private static class NearestAnimalsAdapter extends
+			ArrayAdapter<AnimalDistance> {
+
+		private final int NUM_OF_CHARS_IN_LINE = 18;
+
+		public NearestAnimalsAdapter(Context context, int resource,
+				ArrayList<AnimalDistance> objects) {
+			super(context, resource, objects);
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+
+			LayoutInflater inflater = (LayoutInflater) getContext()
+					.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+
+			convertView = inflater.inflate(R.layout.custom_animal_row, null);
+
+			ImageView animalImage = (ImageView) convertView
+					.findViewById(R.id.imgvAnimalIcon);
+			TextView animalName = (TextView) convertView
+					.findViewById(R.id.txtvAnimalName);
+			TextView animalDistance = (TextView) convertView
+					.findViewById(R.id.txtvAnimalDistance);
+			TextView animalFact = (TextView) convertView
+					.findViewById(R.id.txtvAnimalFunFact);
+
+			Animal animal = ((AnimalDistance) getItem(position)).getAnimal();
+			int distance = ((AnimalDistance) getItem(position)).getDistance();
+
+			animalName.setText(prepareName(animal.getName(),
+					NUM_OF_CHARS_IN_LINE));
+			animalFact.setText(animal.getDescriptionAdult().getText());
+			animalDistance.setText(Integer.toString(distance) + "m");
+			// TODO image
+
+			return convertView;
+		}
+
+		public static String prepareName(String name, int characterNumber) {
+			if (name.contains(" ") && name.length() > characterNumber)
+				name = name.replace(' ', '\n');
+			return name;
+		}
+
 	}
 
 }
