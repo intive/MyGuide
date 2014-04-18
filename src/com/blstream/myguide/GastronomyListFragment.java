@@ -2,6 +2,7 @@
 package com.blstream.myguide;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,7 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.zoolocations.*;
@@ -20,8 +24,8 @@ import java.util.List;
 
 /**
  * Created by Piotrek on 2014-04-06.
- * This class is used to show Restaurant List which are read from xml
- * Each restaurant is shown in label and contain header, description and image
+ * This class is used to show Restaurant List which are read
+ * from xml Each restaurant is shown in label and contain header,description and image
  */
 public class GastronomyListFragment extends Fragment {
 
@@ -91,6 +95,67 @@ public class GastronomyListFragment extends Fragment {
 		if (itemFilter != null) itemFilter.setVisible(false);
 
 		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+	/**
+	 * This Adapter is used to show Restaurants in GastronomyListFragment.
+	 */
+	private static class GastronomyAdapter extends ArrayAdapter<Restaurant> {
+
+		private Activity mContext;
+		private List<Restaurant> mRestaurants;
+		private int mLayoutResourceId;
+
+		public GastronomyAdapter(Activity context, int layoutResourceId,
+				List<Restaurant> restaurants) {
+			super(context, layoutResourceId, restaurants);
+			mContext = context;
+			mRestaurants = restaurants;
+			mLayoutResourceId = layoutResourceId;
+		}
+
+		static class ViewHolder {
+			public TextView mTxtvRestaurantName;
+			public ImageView mImgvRestaurant;
+			public TextView mTxtvTimeTo;
+			public TextView mTxtvMeter;
+			public TextView mTxtvOpenTime;
+			public TextView mTxtvMenu;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			ViewHolder viewHolder;
+
+			if (convertView == null) {
+				LayoutInflater inflater = mContext.getLayoutInflater();
+				convertView = inflater.inflate(mLayoutResourceId, parent, false);
+
+				viewHolder = new ViewHolder();
+				if (convertView != null) {
+					viewHolder.mTxtvRestaurantName = (TextView) convertView
+							.findViewById(R.id.txtvGastronomyName);
+					viewHolder.mImgvRestaurant = (ImageView) convertView
+							.findViewById(R.id.imgvRestaurant);
+					viewHolder.mTxtvTimeTo = (TextView) convertView.findViewById(R.id.txtvTimeTo);
+					viewHolder.mTxtvMeter = (TextView) convertView
+							.findViewById(R.id.txtvGastronomyDistance);
+					viewHolder.mTxtvOpenTime = (TextView) convertView.findViewById(R.id.txtvOpen);
+					viewHolder.mTxtvMenu = (TextView) convertView.findViewById(R.id.txtvMenu);
+
+					convertView.setTag(viewHolder);
+				}
+			} else {
+				viewHolder = (ViewHolder) convertView.getTag();
+			}
+
+			Restaurant restaurant = mRestaurants.get(position);
+
+			viewHolder.mTxtvRestaurantName.setText(restaurant.getName() + "");
+			viewHolder.mTxtvOpenTime.setText(restaurant.getOpen() + "");
+
+			return convertView;
+		}
 	}
 
 }

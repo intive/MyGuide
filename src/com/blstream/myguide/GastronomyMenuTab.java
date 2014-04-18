@@ -76,7 +76,7 @@ public class GastronomyMenuTab extends Fragment implements Parcelable {
 	 * This Adapter is used to show Restaurant Menu. Every label has dish name
 	 * and price.
 	 */
-	private class DishAdapter extends ArrayAdapter<Dish> {
+	private static class DishAdapter extends ArrayAdapter<Dish> {
 
 		private Activity mContext;
 		private List<Dish> mDishes;
@@ -89,7 +89,7 @@ public class GastronomyMenuTab extends Fragment implements Parcelable {
 			mLayoutResourceId = layoutResourceId;
 		}
 
-		class ViewHolder {
+		static class ViewHolder {
 			public TextView mTxtvDishName;
 			public TextView mTxtvDishPrice;
 		}
