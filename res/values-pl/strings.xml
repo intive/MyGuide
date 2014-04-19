@@ -72,4 +72,11 @@
 
     <string name="gastronomy_list_title">Gastronomy</string>
 
+	<!-- Information tabs name -->
+	<string-array name="information_tabs_name">
+		<item name="tickets">Bilety</item>
+		<item name="getthere">Dojazd</item>
+		<item name="contact">Kontakt</item>
+	</string-array>
+
 </resources>
