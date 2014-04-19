@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
+import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.AnimalDistance;
@@ -42,7 +43,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
  * Main fragment of application
  */
 
-public class SightseeingFragment extends Fragment {
+public class SightseeingFragment extends Fragment implements LocationUser {
 
 	private static final String LOG_TAG = SightseeingFragment.class
 			.getSimpleName();
@@ -69,9 +70,11 @@ public class SightseeingFragment extends Fragment {
 	private ArrayList<Animal> mAnimalsList;
 
 	private LocationLogger mLocationLogger;
+	private LocationUpdater mLocationUpdater;
 
 	private boolean mLocationLogVisible;
 	private BottomAnimalFragment mBottomAnimalFragment;
+	private AnimalDistance mLastAnimalDistance;
 
 	public SightseeingFragment() {
 	}
@@ -92,6 +95,10 @@ public class SightseeingFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_sightseeing,
 				container, false);
 
+		mLocationUpdater = LocationUpdater.getInstance();
+		mLocationUpdater.startUpdating(this);
+		mLastAnimalDistance = null;
+
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(
 				ActionBar.NAVIGATION_MODE_STANDARD);
@@ -108,7 +115,7 @@ public class SightseeingFragment extends Fragment {
 		displayAllJunctions(mJunctionsVisible);
 
 		setUpClosestAnimal();
-
+		
 		return rootView;
 	}
 
@@ -179,11 +186,19 @@ public class SightseeingFragment extends Fragment {
 		setUpMapListeners();
 	}
 
+	/**
+	 * Sets up the closest animal showing at the bottom of the screen. Uses
+	 * {@link com.blstream.myguide.AnimalFinderHelper }
+	 */
 	private void setUpClosestAnimal() {
 		mBottomAnimalFragment = new BottomAnimalFragment();
 
-		AnimalDistance closestAnimal = closestAnimal();
-		if (closestAnimal != null) {
+		AnimalFinderHelper animalFinderHelper = new AnimalFinderHelper(
+				mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
+						.getApplication());
+
+		AnimalDistance closestAnimal = animalFinderHelper.closestAnimal();
+		if (closestAnimal != null && !sameAsLastAnimal(closestAnimal)) {
 			Bundle data = new Bundle();
 			data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
 			mBottomAnimalFragment.setArguments(data);
@@ -191,19 +206,13 @@ public class SightseeingFragment extends Fragment {
 			FragmentHelper.swapFragment(R.id.closestAnimal,
 					mBottomAnimalFragment, manager,
 					BundleConstants.FRAGMENT_BOTTOM_ANIMAL);
+			mLastAnimalDistance = closestAnimal;
 		}
 
 	}
-
-	private AnimalDistance closestAnimal() {
-		Location lastLocation = LocationUpdater.getInstance().getLocation();
-		if (lastLocation != null) {
-			AnimalFinderHelper animalFinder = new AnimalFinderHelper(
-					lastLocation, (MyGuideApp) this.getActivity()
-							.getApplication());
-			return animalFinder.closestAnimal();
-		}
-		return null;
+	
+	private boolean sameAsLastAnimal(AnimalDistance closest){
+		return mLastAnimalDistance != null && closest.equals(mLastAnimalDistance);
 	}
 
 	private void setUpMapListeners() {
@@ -334,6 +343,24 @@ public class SightseeingFragment extends Fragment {
 		if (mLocationLogVisible) {
 			mLocationLogger = new LocationLogger(getActivity(), 3, true);
 		}
+	}
+
+	@Override
+	public void onLocationUpdate(Location location) {
+		//setUpClosestAnimal();
+
+	}
+
+	@Override
+	public void onGpsAvailable() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onGpsUnavailable() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class AnimalDistance implements Comparable<AnimalDistance>, Serializable {
 
 	private static final long serialVersionUID = 1191737465868834056L;
-	
+
 	private Animal mAnimal;
 	private double mDistance;
 
@@ -33,6 +33,12 @@ public class AnimalDistance implements Comparable<AnimalDistance>, Serializable 
 	@Override
 	public int compareTo(AnimalDistance other) {
 		return Double.compare(mDistance, other.getDistance());
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		return ((AnimalDistance) o).getAnimal().equals(mAnimal)
+				&& ((AnimalDistance) o).getDistance() == (int)mDistance;
 	}
 
 }

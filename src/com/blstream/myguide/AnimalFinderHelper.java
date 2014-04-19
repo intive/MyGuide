@@ -19,6 +19,11 @@ import com.blstream.myguide.zoolocations.*;
 
 public class AnimalFinderHelper {
 
+	private static final double FURTHEST_NORTH = 51.107912;
+	private static final double FURTHEST_SOUTH = 51.101359;
+	private static final double FURTHEST_EAST = 17.078696;
+	private static final double FURTHEST_WEST = 17.068376;
+
 	private static final String LOG_TAG = AnimalFinderHelper.class
 			.getSimpleName();
 	Location mLocation;
@@ -85,10 +90,24 @@ public class AnimalFinderHelper {
 
 	/**
 	 * Returns pair (Animal, distance) for the animal which is the closest to
-	 * User.
+	 * User; if user's localization is unknown or not within bounds of the Zoo,
+	 * returns null.
 	 */
 	public AnimalDistance closestAnimal() {
-		return allAnimalsWithDistances().get(0);
+		if (mLocation != null && withinBoundsOfZoo(mLocation)) {
+			return allAnimalsWithDistances().get(0);
+		}
+		return null;
+	}
+
+	/**
+	 * Checks if user's position is within bounds of the Zoo.
+	 */
+	private boolean withinBoundsOfZoo(Location location) {
+		return (FURTHEST_NORTH > location.getLatitude())
+				&& (location.getLatitude() > FURTHEST_SOUTH)
+				&& (FURTHEST_EAST > location.getLongitude())
+				&& (location.getLongitude() > FURTHEST_WEST);
 	}
 
 }
