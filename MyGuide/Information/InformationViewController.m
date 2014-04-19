@@ -7,24 +7,22 @@
 //
 
 #import "InformationViewController.h"
-#import "SWRevealViewController.h"
+#import "TicketsViewController.h"
+#import "ContactViewController.h"
 
 @interface InformationViewController ()
+
+@property (strong, nonatomic) TicketsViewController *firstViewController;
+@property (strong, nonatomic) ContactViewController *lastViewController;
 
 @end
 
 @implementation InformationViewController
 
-- (void) viewDidLoad
+- (void) invalidateViewControllers
 {
-    [super viewDidLoad];
-    [self initMenuBar];
-}
-
-- (void) initMenuBar
-{
-    self.sidebarButton.target = self.revealViewController;
-    self.sidebarButton.action = @selector(revealToggle:);
+    [self prepareFirstViewController:  @"TicketsViewController"];
+    [self prepareSecondViewController: @"ContactViewController"];
 }
 
 @end

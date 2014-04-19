@@ -13,108 +13,35 @@
 
 @interface GastronomyDetailsViewController ()
 
-@property (strong, nonatomic) UIStoryboard *mainStoryboard;
-
-@property (strong, nonatomic) UIViewController *currentViewController;
-@property (strong, nonatomic) DetailsMapViewController                  *detailsMapController;
-@property (strong, nonatomic) GastronomyDetailsInfoViewController       *gastronomyInfo;
-@property (strong, nonatomic) GastronomyDetailsMenuTableViewController  *gastronomyMenu;
-
-@property (nonatomic) BOOL canSwichView;
+@property (strong, nonatomic) GastronomyDetailsInfoViewController *firstViewController;
+@property (strong, nonatomic) GastronomyDetailsMenuTableViewController *lastViewController;
 
 @end
 
 @implementation GastronomyDetailsViewController
 
-- (void) viewDidLoad
+- (void) invalidateViewControllers
 {
-    [super viewDidLoad];
-    _mainStoryboard = [UIStoryboard storyboardWithName: @"Main" bundle: [NSBundle mainBundle]];
-}
-
-# pragma mark - Initializing controllers
-
-- (void) prepareControllers
-{
-    [self prepareMapController];
-    [self prepareMenuController];
-    [self prepareInfoController];
-    _currentViewController = self.childViewControllers.lastObject;
-    _canSwichView = YES;
+    [self prepareFirstViewController:  @"gastronomyDetailsInfo"];
+    [self prepareSecondViewController: @"gastronomyDetailsMenu"];
 }
 
 - (void) viewWillAppear: (BOOL)animated
 {
-    [self setTitle: [_restaurant getName]];
-    [self prepareControllers];
-    [_segmentedControl setSelectedSegmentIndex: 0];
-    [self switchController: _gastronomyInfo withAnimation: NO];
+    [super viewWillAppear: animated];
+    [self prepareMapController];
+    [self prepareMenuViewController];
 }
 
 - (void) prepareMapController
 {
-    _detailsMapController = (DetailsMapViewController *)[self getControllerById: @"detailsMap"];
-    _detailsMapController.latitude  = _restaurant.latitude;
-    _detailsMapController.longitude = _restaurant.longitude;
+    self.detailsMapController.latitude  = self.restaurant.latitude;
+    self.detailsMapController.longitude = self.restaurant.longitude;
 }
 
-- (void) prepareMenuController
+- (void) prepareMenuViewController
 {
-    _gastronomyMenu = (GastronomyDetailsMenuTableViewController *)[self getControllerById: @"gastronomyDetailsMenu"];
-    [_gastronomyMenu setDishes: _restaurant.dishes];
-}
-
-- (void) prepareInfoController
-{
-    _gastronomyInfo = (GastronomyDetailsInfoViewController *)[self getControllerById: @"gastronomyDetailsInfo"];
-}
-
-- (UIViewController *) getControllerById: (NSString *) controllerID
-{
-    return [_mainStoryboard instantiateViewControllerWithIdentifier: controllerID];
-}
-
-# pragma mark - Switching controllers
-
-- (IBAction) switchControllers: (UISegmentedControl *) segmentControl
-{
-    NSInteger selectedIndex = [segmentControl selectedSegmentIndex];
-    if(selectedIndex == 0) {
-        BOOL result = [self switchController: _gastronomyInfo withAnimation: YES];
-        if(!result) [segmentControl setSelectedSegmentIndex: 1];
-    }
-    else if(selectedIndex == 1) {
-        BOOL result = [self switchController: _gastronomyMenu withAnimation: YES];
-        if(!result) [segmentControl setSelectedSegmentIndex: 0];
-    }
-    else {
-        [self.navigationController pushViewController: _detailsMapController animated: YES];
-    }
-}
-
-- (BOOL) switchController: (UIViewController *) newController withAnimation: (BOOL) animation {
-    if(!_canSwichView) return  NO;
-    _canSwichView = NO;
-    
-    [self addChildViewController: newController];
-    newController.view.frame = _containerView.bounds;
-    
-    [_currentViewController willMoveToParentViewController: nil];
-    
-    [self transitionFromViewController: _currentViewController
-                      toViewController: newController
-                              duration: .6
-                               options: animation ?
-                                        UIViewAnimationOptionTransitionFlipFromLeft :
-                                        UIViewAnimationOptionTransitionNone
-                            animations: nil
-                            completion: ^(BOOL finished) {
-                                [_currentViewController removeFromParentViewController];
-                                [newController didMoveToParentViewController: self];
-                                _currentViewController = newController;
-                                _canSwichView = YES;
-                            }];
-    return YES;
+    ((GastronomyDetailsMenuTableViewController *)(self.secondViewController)).dishes = self.restaurant.dishes;
 }
 
 @end

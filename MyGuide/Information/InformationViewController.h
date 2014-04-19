@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SegmentedViewController.h"
 
-@interface InformationViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@interface InformationViewController : SegmentedViewController  
 
 @end
