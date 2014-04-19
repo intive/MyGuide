@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@color/list_divider"
-        android:dividerHeight="1px">
+        android:dividerHeight="1px"
+        android:listSelector="@drawable/menu_list_selector">
     </ListView>
 
 </LinearLayout>

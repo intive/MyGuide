@@ -61,6 +61,13 @@
         <item name="menu">Menu</item>
     </string-array>
 
+    <!-- Gastronomy Item List -->
+    <string name="menu_item_list">Menu:</string>
+    <string name="open_item_list">Godz. otwarcia:</string>
+    <string name="time_to_item_list">Czas:</string>
+
+    <string name="gastronomy_list_title">Gastronomy</string>
+
 	<!-- Information tabs name -->
 	<string-array name="information_tabs_name">
 		<item name="tickets">Bilety</item>
@@ -73,3 +80,4 @@
 	<string name="ticket_info">Informacje</string>
 
 </resources>
+

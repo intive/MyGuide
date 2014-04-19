@@ -157,6 +157,11 @@ public class StartActivity extends FragmentActivity {
 				tag = BundleConstants.FRAGMENT_INFORMATION;
 				break;
 
+			case 4:
+				newFragment = new GastronomyListFragment();
+				tag = BundleConstants.FRAGMENT_GASTRONOMY;
+				break;
+
 			default:
 				break;
 		}
