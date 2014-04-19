@@ -73,11 +73,11 @@
 {
     NSInteger selectedIndex = [segmentControl selectedSegmentIndex];
     if(selectedIndex == 0) {
-        BOOL result = [self switchController: self.firstViewController    withAnimation: YES];
+        BOOL result = [self switchController: self.firstViewController withAnimation: YES];
         if(!result) [segmentControl setSelectedSegmentIndex: 1];
     }
     else if(selectedIndex == 1) {
-        BOOL result = [self switchController: self.secondViewController    withAnimation: YES];
+        BOOL result = [self switchController: self.secondViewController withAnimation: YES];
         if(!result) [segmentControl setSelectedSegmentIndex: 0];
     }
     else {

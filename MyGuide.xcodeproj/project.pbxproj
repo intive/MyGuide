@@ -116,6 +116,8 @@
 		05406E4B18F31B06001656FC /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
 		055452C419025B570021884C /* SegmentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentedViewController.h; sourceTree = "<group>"; };
 		055452C519025B570021884C /* SegmentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedViewController.m; sourceTree = "<group>"; };
+		055452CB190278970021884C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		055452CC190278AC0021884C /* pl */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = pl; path = pl.lproj/Main.storyboard; sourceTree = "<group>"; };
 		055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalsListViewController.h; sourceTree = "<group>"; };
 		055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalsListViewController.m; sourceTree = "<group>"; };
 		057F9EC618E7760A001DE63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,8 +157,6 @@
 		05E0209018C1D38000AE76EC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		05E0209618C23B7100AE76EC /* MKAnnotationAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAnnotationAnimal.h; sourceTree = "<group>"; };
 		05E0209718C23B7100AE76EC /* MKAnnotationAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAnnotationAnimal.m; sourceTree = "<group>"; };
-		05E1653C18F17E4800DA3BD7 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
-		05E1653F18F17EAC00DA3BD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		05E1654718F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyDetailsInfoViewController.h; sourceTree = "<group>"; };
 		05E1654818F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastronomyDetailsInfoViewController.m; sourceTree = "<group>"; };
 		05E1654918F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyDetailsMenuTableViewController.h; sourceTree = "<group>"; };
@@ -739,8 +739,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				057F9EC618E7760A001DE63B /* Base */,
-				05E1653C18F17E4800DA3BD7 /* pl */,
-				05E1653F18F17EAC00DA3BD7 /* en */,
+				055452CB190278970021884C /* en */,
+				055452CC190278AC0021884C /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
