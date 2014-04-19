@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "DetailsMapViewController.h"
 
 @interface MapViewController ()
 
@@ -159,11 +160,17 @@
 {
     if(buttonIndex != alertView.cancelButtonIndex)
     {
-        UIViewController *fakeDrivingLocationController = [[UIViewController alloc] init];
-        fakeDrivingLocationController.view.backgroundColor = [UIColor whiteColor];
-        [self.navigationController pushViewController:fakeDrivingLocationController animated: YES];
+        [self.navigationController pushViewController: [self getMapViewController] animated: YES];
     }
     _settings.showDistanceAlert = NO;
+}
+
+- (DetailsMapViewController *) getMapViewController
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main" bundle: [NSBundle mainBundle]];
+    DetailsMapViewController *mapViewController = (DetailsMapViewController *)[storyboard instantiateViewControllerWithIdentifier: @"detailsMap"];
+    [mapViewController showZOO];
+    return mapViewController;
 }
 
 #pragma mark - Drawing paths on the map

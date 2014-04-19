@@ -18,4 +18,6 @@
 @property (nonatomic) NSNumber *longitude;
 @property (nonatomic) BOOL     showDirections;
 
+- (void) showZOO;
+
 @end

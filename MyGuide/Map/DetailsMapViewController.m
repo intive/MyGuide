@@ -7,10 +7,12 @@
 //
 
 #import "DetailsMapViewController.h"
+#import "Settings.h"
 
 @interface DetailsMapViewController ()
 
-    @property (nonatomic) CLLocationCoordinate2D destinationCoordinates;
+@property (nonatomic) CLLocationCoordinate2D destinationCoordinates;
+@property (nonatomic) Settings *sharedSettings;
 
 @end
 
@@ -18,21 +20,35 @@
 
 double const ZOOM_LEVEL = 15;
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.sharedSettings = [Settings sharedSettingsData];
+    }
+    return self;
+}
+
 - (void) viewDidLoad
 {
     [super viewDidLoad];
     [self setDestinationCoordinates];
     [self drawCoordinatesOnMap: self.destinationCoordinates];
-    [self.mapView setShowsUserLocation: YES];
-    [self.mapView setMapType: MKMapTypeSatellite];
+    [self setupMapView];
     
     if (self.showDirections) {
         [self drawDirectionsToLocation];
-        self.mapView.delegate = self;
     }
     else {
         [self zoomOnLocation: self.destinationCoordinates];
     }
+}
+
+- (void) setupMapView
+{
+    [self.mapView setShowsUserLocation: YES];
+    [self.mapView setMapType: MKMapTypeSatellite];
+    self.mapView.delegate = self;
 }
 
 - (void) zoomOnLocation: (CLLocationCoordinate2D) coordinates
@@ -54,6 +70,14 @@ double const ZOOM_LEVEL = 15;
     self.destinationCoordinates = CLLocationCoordinate2DMake(self.latitude.doubleValue, self.longitude.doubleValue);
 }
 
+- (void) showZOO
+{
+    self.showDirections = YES;
+    self.nameToDisplay  = @"ZOO";
+    self.latitude  = [NSNumber numberWithDouble: self.sharedSettings.zooCenter.latitude];
+    self.longitude = [NSNumber numberWithDouble: self.sharedSettings.zooCenter.longitude];
+}
+
 # pragma mark - Rendering directions
 
 - (void) drawDirectionsToLocation
@@ -68,7 +92,6 @@ double const ZOOM_LEVEL = 15;
     MKDirectionsRequest *request = [MKDirectionsRequest new];
     [request setSource: sourceMapItem];
     [request setDestination: destinationMapItem];
-    [request setTransportType: MKDirectionsTransportTypeWalking];
     
     MKDirections *direction = [[MKDirections alloc] initWithRequest: request];
     [direction calculateDirectionsWithCompletionHandler: ^(MKDirectionsResponse *response, NSError *error) {
@@ -79,10 +102,11 @@ double const ZOOM_LEVEL = 15;
             [self zoomOnLocation: self.destinationCoordinates];
             return;
         }
-        [self zoomOnLocation: self.mapView.userLocation.coordinate];
         
+        [self setMapRegion];
         MKRoute *route = [response.routes firstObject];
         NSArray *steps = [route steps];
+        [self.mapView removeOverlay: self.mapView.overlays.lastObject];
         [self.mapView addOverlay: [route polyline]];
         
         NSLog(@"Total Distance (in Meters) : %.0f", route.distance);
@@ -101,6 +125,32 @@ double const ZOOM_LEVEL = 15;
     renderer.strokeColor = [UIColor orangeColor];
     renderer.lineWidth = 4.0;
     return  renderer;
+}
+
+- (void) setMapRegion
+{
+    const double mapPadding = 1.2;
+    const double minimumVerticalSpan = .1;
+    
+    CLLocationCoordinate2D userCoordinate        = self.mapView.userLocation.coordinate;
+    CLLocationCoordinate2D destinationCoordinate = self.destinationCoordinates;
+    
+    double minLatitude  = MIN(destinationCoordinate.latitude,  userCoordinate.latitude);
+    double minLongitude = MIN(destinationCoordinate.longitude, userCoordinate.longitude);
+    double maxLatitude  = MAX(destinationCoordinate.latitude,  userCoordinate.latitude);
+    double maxLongitude = MAX(destinationCoordinate.longitude, userCoordinate.longitude);
+    
+    MKCoordinateRegion region;
+    region.center.latitude      = (minLatitude + maxLatitude) / 2;
+    region.center.longitude     = (minLongitude + maxLongitude) / 2;
+    region.span.latitudeDelta   = (maxLatitude - minLatitude) * mapPadding;
+    region.span.latitudeDelta   = (region.span.latitudeDelta < minimumVerticalSpan)
+    ? minimumVerticalSpan
+    : region.span.latitudeDelta;
+    region.span.longitudeDelta  = (maxLongitude - minLongitude) * mapPadding;
+    
+    MKCoordinateRegion scaledRegion = [self.mapView regionThatFits: region];
+    [self.mapView setRegion:scaledRegion animated:YES];
 }
 
 @end
