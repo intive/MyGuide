@@ -33,7 +33,7 @@
     <string name="gps_loading_position">Your position is being updated...</string>
     <string name="view_map">Map of the Zoo</string>
     <string name="to_far_from_zoo">You are far away from the Zoo. Would you like to see
-        how to get there insted of sightseeing map?</string>
+        how to get there instead of sightseeing map?</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Application error</string>

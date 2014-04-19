@@ -41,6 +41,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private ListView mDrawerList;
 
 	private boolean mFarFromZooDialogWasShown;
+	private boolean mDistanceFromZooGuardIsBinding;
 	private DistanceFromZooGuard mDistanceFromZooGuard;
 
 	@Override
@@ -88,9 +89,10 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			showEnableGpsDialogIfNeeded();
 			if (LocationUpdater.getInstance().isGpsEnable()) {
 				LocationUpdater.getInstance().markGpsEnableDialogAsUnshown();
-			}
-			if (!mFarFromZooDialogWasShown) {
-				LocationUpdater.getInstance().startUpdating(mDistanceFromZooGuard);
+				if (!mFarFromZooDialogWasShown && !mDistanceFromZooGuardIsBinding) {
+					mDistanceFromZooGuardIsBinding = true;
+					LocationUpdater.getInstance().startUpdating(mDistanceFromZooGuard);
+				}
 			}
 		}
 	}

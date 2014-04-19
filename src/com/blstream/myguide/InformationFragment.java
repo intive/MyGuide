@@ -13,15 +13,13 @@ public class InformationFragment extends Fragment {
 
 	}
 
-	public View mRootView;
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		mRootView = inflater.inflate(R.layout.fragment_informations, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_informations, container, false);
 
 		getActivity().getActionBar().setTitle(R.string.information);
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 
-		return mRootView;
+		return rootView;
 	}
 }
