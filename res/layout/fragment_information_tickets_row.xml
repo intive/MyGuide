@@ -7,25 +7,23 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical"
-		android:layout_marginBottom="20sp">
+		android:layout_marginBottom="20dp">
 		<TextView
-			android:id="@+id/title"
+			android:id="@+id/txtvTitle"
 			android:text="Sample title"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginBottom="15sp"
+			android:layout_marginBottom="15dp"
 			android:gravity="center"
 			android:singleLine="true"
-			android:textSize="25sp"
-			android:textStyle="bold"/>
+			style="@style/header_text"/>
 		<TextView
-			android:id="@+id/text"
+			android:id="@+id/txtvText"
 			android:text="sample content is overrated"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:background="@color/light_background"
-			android:textSize="20sp"
-			android:padding="5sp"
-			android:typeface="serif"/>
+			android:padding="5dp"
+			style="@style/animal_description_text"/>
 	</LinearLayout>
 </LinearLayout>

@@ -67,9 +67,9 @@ public class TicketsFragment extends ListFragment
 	}
 
 	private void prepareFooter(Map<String, String> information) {
-		((TextView) mFooterView.findViewById(R.id.title)).setText(getResources().getString(
+		((TextView) mFooterView.findViewById(R.id.txtvTitle)).setText(getResources().getString(
 				R.string.ticket_info));
-		((TextView) mFooterView.findViewById(R.id.text)).setText(information.get(Language.PL));
+		((TextView) mFooterView.findViewById(R.id.txtvText)).setText(information.get(Language.PL));
 	}
 
 	protected List<ListRowModel> processTickets(Collection<? extends Ticket> c) {
@@ -135,8 +135,8 @@ public class TicketsFragment extends ListFragment
 				}
 
 				ListRowModel model = getItem(position);
-				TextView titleView = (TextView) convertView.findViewById(R.id.title);
-				TextView valueView = (TextView) convertView.findViewById(R.id.text);
+				TextView titleView = (TextView) convertView.findViewById(R.id.txtvTitle);
+				TextView valueView = (TextView) convertView.findViewById(R.id.txtvText);
 				titleView.setText(model.toString());
 				valueView.setText(model.joinValues("\n"));
 

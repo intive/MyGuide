@@ -8,6 +8,6 @@
 		android:layout_height="match_parent"
 		android:id="@android:id/list"
 		android:divider="@null"
-		android:padding="20sp"
+		android:padding="15dp"
 		android:listSelector="@android:color/transparent"/>
 </LinearLayout>
