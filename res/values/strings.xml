@@ -10,6 +10,7 @@
     <string name="tickets_and_times">Tickets and times</string>
     <string name="how_to_get">How to get</string>
     <string name="sightseeing">Sightseeing</string>
+    <string name="information">Information</string>
     <string name="options">Options</string>
     <string name="logo_Description">Zoo Logo</string>
     <string name="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
@@ -30,6 +31,9 @@
     <string name="start_without_gps">Start without GPS</string>
     <string name="gps_enable_dialog_msg">Enable GPS to use all application features:</string>
     <string name="gps_loading_position">Your position is being updated...</string>
+    <string name="view_map">Map of the Zoo</string>
+    <string name="to_far_from_zoo">You are far away from the Zoo. Would you like to see
+        how to get there instead of sightseeing map?</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Application error</string>
