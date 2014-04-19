@@ -30,6 +30,7 @@
     <string name="go_to_option">Go to options</string>
     <string name="start_without_gps">Start without GPS</string>
     <string name="gps_enable_dialog_msg">Enable GPS to use all application features:</string>
+    <string name="gps_loading_position">Your position is being updated...</string>
     <string name="view_map">Map of the Zoo</string>
     <string name="to_far_from_zoo">You are far away from the Zoo. Would you like to see
         how to get there insted of sightseeing map?</string>
@@ -61,8 +62,25 @@
         <item name="child">For children</item>
         <item name="map_view">Map</item>
     </string-array>
- 
+
+    <!-- Gastronomy description tabs -->
+    <string-array name="gastronomy_desc_tabs_name">
+        <item name="description">Description</item>
+        <item name="menu">Menu</item>
+    </string-array>
+
     <!-- Animal List title -->
     <string name="animal_list_title">Animals</string>
-<string name="animal_image">Animal Image</string>
+    <string name="animal_image">Animal Image</string>
+
+    <!-- Gastronomy Item List -->
+    <string name="menu_item_list">Menu:</string>
+    <string name="open_item_list">Opening hours:</string>
+    <string name="time_to_item_list">Time:</string>
+
+    <string name="gastronomy_list_title">Gastronomy</string>
+
+    <!-- Content Description -->
+    <string name="gastronomy_list_image">Gastronomy List Image</string>
+
 </resources>

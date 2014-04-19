@@ -8,10 +8,9 @@ import java.util.HashMap;
  * This class contains animal names (in various languages), descriptions for
  * adult and child and animal's location in the zoo.
  */
+public class Animal extends XmlObject implements Serializable, Comparable<Animal> {
 
-public class Animal implements Serializable, Comparable<Animal>{
-
-
+	private int mId;
 	private HashMap<String, String> mNames;
 	private Node mNode;
 	private Description mDescriptionAdult;
@@ -21,8 +20,13 @@ public class Animal implements Serializable, Comparable<Animal>{
 		mNames = new HashMap<String, String>();
 	}
 
+	@Override
 	public void addName(String lang, String name) {
 		mNames.put(lang, name);
+	}
+
+	public void setNames(HashMap<String, String> names) {
+		mNames = names;
 	}
 
 	public void setNode(Node node) {
@@ -37,6 +41,11 @@ public class Animal implements Serializable, Comparable<Animal>{
 		mDescriptionAdult = description;
 	}
 
+	public void setId(int id) {
+		mId = id;
+	}
+
+	@Override
 	public String getName() {
 		return mNames.get(Language.DEFAULT);
 	}
@@ -57,6 +66,10 @@ public class Animal implements Serializable, Comparable<Animal>{
 
 	public Description getDescriptionAdult() {
 		return mDescriptionAdult;
+	}
+
+	public int getId() {
+		return mId;
 	}
 
 	@Override

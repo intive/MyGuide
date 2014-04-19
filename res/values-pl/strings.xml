@@ -27,6 +27,7 @@
     <string name="go_to_option">Ustawienia</string>
     <string name="start_without_gps">Uruchom bez GPS</string>
     <string name="gps_enable_dialog_msg">Włącz GPS aby móc korzystać ze wszystkich funkcji aplikacji:</string>
+    <string name="gps_loading_position">Uaktualnianie Twojej pozycji...</string>
     <string name="view_map">Mapa Zoo</string>
     <string name="to_far_from_zoo">Znajdujesz się daleko od Zoo. Chcesz zobaczyć wskazówki dojazdu
          zamiast mapy Zoo?</string>
@@ -54,8 +55,21 @@
         <item name="child">Dla Dzieci</item>
         <item name="map_view">Mapa</item>
     </string-array>
-    
+
     <!-- Animal List title -->
     <string name="animal_list_title">Zwierzęta</string>
+
+    <!-- Gastronomy description tabs -->
+    <string-array name="gastronomy_desc_tabs_name">
+        <item name="description">Opis</item>
+        <item name="menu">Menu</item>
+    </string-array>
+
+    <!-- Gastronomy Item List -->
+    <string name="menu_item_list">Menu:</string>
+    <string name="open_item_list">Godz. otwarcia:</string>
+    <string name="time_to_item_list">Czas:</string>
+
+    <string name="gastronomy_list_title">Gastronomy</string>
 
 </resources>

@@ -82,11 +82,16 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	}
 
 	@Override
-	protected void onStart() {
-		super.onStart();
-		showEnableGpsDialogIfNeeded();
-		if (!mFarFromZooDialogWasShown) {
-			LocationUpdater.getInstance().startUpdating(mDistanceFromZooGuard);
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		if (hasFocus) {
+			showEnableGpsDialogIfNeeded();
+			if (LocationUpdater.getInstance().isGpsEnable()) {
+				LocationUpdater.getInstance().markGpsEnableDialogAsUnshown();
+			}
+			if (!mFarFromZooDialogWasShown) {
+				LocationUpdater.getInstance().startUpdating(mDistanceFromZooGuard);
+			}
 		}
 	}
 
@@ -130,35 +135,47 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 	/** Swaps fragments in the main content view */
 	private void selectItem(int position) {
-		
+
 		Fragment current = getSupportFragmentManager().findFragmentById(R.id.flFragmentHolder);
 		Fragment newFragment = null;
 		String tag = null;
-		switch(position){
-		case 0:
-			newFragment = new SightseeingFragment();
-			tag = BundleConstants.FRAGMENT_SIGHTSEEING;
-			break;
-		case 1:
-			newFragment = new AnimalListFragment();
-			tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
-			break;
-		case 2:
-			newFragment = new InformationFragment();
-			tag = BundleConstants.FRAGMENT_INFORMATION;
-			break;
-		default: break;
+
+		new Thread() {
+			@Override
+			public void run() {
+				StartActivity.this.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						mDrawerLayout.closeDrawer(mDrawerList);
+					}
+				});
+			}
+		}.start();
+
+		switch (position) {
+			case 0:
+				if (!current.getTag().equals(BundleConstants.FRAGMENT_SIGHTSEEING)) {
+					navigateToSightseeing();
+				}
+				break;
+			case 1:
+				newFragment = new AnimalListFragment();
+				tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
+				break;
+			case 4:
+				newFragment = new GastronomyListFragment();
+				tag = BundleConstants.FRAGMENT_GASTRONOMY;
+				break;
+			default:
+				break;
 		}
-		
-		if(newFragment != null && !current.getTag().equals(tag)){
-			if(tag.equals( BundleConstants.FRAGMENT_SIGHTSEEING)) {
-				navigateToSightseeing();
-			} else setNextFragment(newFragment, tag);
+
+		if (newFragment != null && !current.getTag().equals(tag)) {
+			if (!tag.equals(BundleConstants.FRAGMENT_SIGHTSEEING)) setNextFragment(newFragment, tag);
 		}
-		
+
 		mDrawerList.setItemChecked(position, true);
 		setTitle(mDrawerMenuItems[position]);
-		mDrawerLayout.closeDrawer(mDrawerList);
 	}
 
 	private void navigateToSightseeing() {
@@ -178,9 +195,10 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 	private void setNextFragment(Fragment fragment, String tag) {
 		SupportMapFragment f = (SupportMapFragment) getSupportFragmentManager()
-	            .findFragmentById(R.id.map);
-	    if (f != null) getSupportFragmentManager().beginTransaction().remove(f).commit();
-		FragmentHelper.swapFragment(R.id.flFragmentHolder, fragment, getSupportFragmentManager(), tag);
+				.findFragmentById(R.id.map);
+		if (f != null) getSupportFragmentManager().beginTransaction().remove(f).commit();
+		FragmentHelper.swapFragment(R.id.flFragmentHolder, fragment, getSupportFragmentManager(),
+				tag);
 	}
 
 	/*

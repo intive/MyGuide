@@ -4,8 +4,7 @@
     <item name="light_title" type="color">#ffffff</item>
     <item name="light_background" type="color">#f9f9f9</item>
     <item name="main_text" type="color">#676767</item>
-    <item name="main_accent" type="color">#009984</item>
+    <item name="main_accent" type="color">#ff9500</item>
     <color name="list_divider">#efede9</color>
-
 
 </resources>

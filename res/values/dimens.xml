@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="List_text_size">25sp</dimen>
+    <dimen name="List_text_size_medium">20sp</dimen>
+    <dimen name="List_text_size_small">16sp</dimen>
+    <dimen name="Item_text_size">12sp</dimen>
+
+</resources>

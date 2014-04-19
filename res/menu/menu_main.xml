@@ -8,13 +8,13 @@
 
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_action_search"
+        android:icon="@drawable/ic_action_search_icon_myguide"
         android:showAsAction="always"
         android:title="@string/options" />
 
     <item
         android:id="@+id/action_filter"
-        android:icon="@drawable/ic_location_web_site"
+        android:icon="@drawable/ic_action_map_icon_myguide"
         android:showAsAction="always"
         android:title="@string/options" />
 </menu>

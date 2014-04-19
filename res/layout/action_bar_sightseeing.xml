@@ -28,6 +28,6 @@
         android:contentDescription="@string/route_icon_Description"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:src="@drawable/map_icon_selector" />
+        android:src="@drawable/ic_action_map_icon_myguide" />
 
 </LinearLayout>
