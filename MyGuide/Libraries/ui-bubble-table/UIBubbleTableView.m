@@ -33,7 +33,7 @@
     self.showsHorizontalScrollIndicator = NO;
     self.bubbleSection = [[NSMutableArray alloc] init];
     
-    int count = 0;
+    NSInteger count = 0;
     if (self.bubbleDataSource && (count = [self.bubbleDataSource rowsForBubbleTable:self]) > 0)
     {
         for (int i = 0; i < count; i++)
@@ -59,7 +59,7 @@
     return [[self.bubbleSection objectAtIndex:section] count] + 1;
 }
 
-- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0)
     {
