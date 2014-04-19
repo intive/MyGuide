@@ -9,20 +9,44 @@
 #import "InformationViewController.h"
 #import "TicketsViewController.h"
 #import "ContactViewController.h"
+#import "Settings.h"
 
 @interface InformationViewController ()
 
-@property (strong, nonatomic) TicketsViewController *firstViewController;
-@property (strong, nonatomic) ContactViewController *lastViewController;
+@property (nonatomic) TicketsViewController *firstViewController;
+@property (nonatomic) ContactViewController *lastViewController;
+@property (nonatomic) Settings *sharedSettings;
 
 @end
 
 @implementation InformationViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.sharedSettings = [Settings sharedSettingsData];
+    }
+    return self;
+}
 - (void) invalidateViewControllers
 {
     [self prepareFirstViewController:  @"TicketsViewController"];
     [self prepareSecondViewController: @"ContactViewController"];
+}
+
+- (void) viewWillAppear: (BOOL)animated
+{
+    [super viewWillAppear: animated];
+    [self prepareMapController];
+}
+
+- (void) prepareMapController
+{
+    self.detailsMapController.showDirections = YES;
+    self.detailsMapController.nameToDisplay  = @"ZOO";
+    self.detailsMapController.latitude  = [NSNumber numberWithDouble: self.sharedSettings.zooCenter.latitude];
+    self.detailsMapController.longitude = [NSNumber numberWithDouble: self.sharedSettings.zooCenter.longitude];
 }
 
 @end
