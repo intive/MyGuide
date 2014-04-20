@@ -19,8 +19,7 @@ public class ZooLocationsData {
 	private ArrayList<Junction> mJunctions;
 	private ArrayList<Track> mTracks;
 	private ArrayList<Restaurant> mRestaurants;
-	private ArrayList<Ticket> mTickets;
-	private HashMap<String, String> mTicketInformation = new HashMap<String, String>();
+	private TicketsInformation mTicketInformation = new TicketsInformation();
 
 	public ZooLocationsData() {
 		mAnimals = new ArrayList<Animal>();
@@ -28,7 +27,6 @@ public class ZooLocationsData {
 		mJunctions = new ArrayList<Junction>();
 		mTracks = new ArrayList<Track>();
 		mRestaurants = new ArrayList<Restaurant>();
-		mTickets = new ArrayList<Ticket>();
 	}
 
 	public ArrayList<Animal> getAnimals() {
@@ -52,11 +50,7 @@ public class ZooLocationsData {
 		return mRestaurants;
 	}
 
-	public List<Ticket> getTickets() {
-		return new LinkedList<Ticket>(mTickets);
-	}
-
-	public Map<String, String> getTicketInformation() {
+	public TicketsInformation getTicketInformation() {
 		return mTicketInformation;
 	}
 
@@ -80,12 +74,8 @@ public class ZooLocationsData {
 		mRestaurants = restaurants;
 	}
 
-	public void setTickets(ArrayList<Ticket> tickets) {
-		mTickets = tickets;
-	}
-
-	public void setTicketInformation(Map<String, String> ticketInformation) {
-		mTicketInformation.putAll(ticketInformation);
+	public void setTicketInformation(TicketsInformation ticketInformation) {
+		mTicketInformation = ticketInformation;
 	}
 
 }

@@ -38,8 +38,7 @@ public class ZooLocationsDataParser {
 	private ArrayList<Junction> mJunctions;
 	private ArrayList<Track> mTracks;
 	private ArrayList<Restaurant> mRestaurants;
-	private ArrayList<Ticket> mTickets;
-	private HashMap<String, String> mTicketInformation;
+	private TicketsInformation mTicketInformation;
 
 	private HashMap<Integer, Way> mWaysMap;
 	private HashMap<Integer, Animal> mAnimalsMap;
@@ -57,9 +56,8 @@ public class ZooLocationsDataParser {
 		mWays = new ArrayList<Way>();
 		mJunctions = new ArrayList<Junction>();
 		mTracks = new ArrayList<Track>();
-		mTickets = new ArrayList<Ticket>();
 		mRestaurants = new ArrayList<Restaurant>();
-		mTicketInformation = new HashMap<String, String>();
+		mTicketInformation = new TicketsInformation();
 		mWaysMap = new HashMap<Integer, Way>();
 		mAnimalsMap = new HashMap<Integer, Animal>();
 
@@ -75,7 +73,6 @@ public class ZooLocationsDataParser {
 		data.setJunctions(mJunctions);
 		data.setTracks(mTracks);
 		data.setRestaurants(mRestaurants);
-		data.setTickets(mTickets);
 		data.setTicketInformation(mTicketInformation);
 
 		return data;
@@ -461,21 +458,28 @@ public class ZooLocationsDataParser {
 
 	private void readTicketsInformation(XmlPullParser parser) throws XmlPullParserException,
 			IOException {
+		ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+		HashMap<String, String> information = new HashMap<String, String>();
+
 		// using mTickets
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) continue;
 
 			String name = parser.getName();
 			if ("individual".equals(name)) {
-				mTickets.addAll(readTicketSet(Ticket.Type.INDIVIDUAL, parser));
+				tickets.addAll(readTicketSet(Ticket.Type.INDIVIDUAL, parser));
 			} else if ("group".equals(name)) {
-				mTickets.addAll(readTicketSet(Ticket.Type.GROUP, parser));
+				tickets.addAll(readTicketSet(Ticket.Type.GROUP, parser));
 			} else if ("information".equals(name)) {
-				mTicketInformation = readDictionary(parser);
+				information = readDictionary(parser);
 			} else {
 				skip(parser);
 			}
 		}
+
+		mTicketInformation
+				.setTickets(tickets)
+				.setInformation(information);
 	}
 
 	private ArrayList<Ticket> readTicketSet(Ticket.Type ticketType, XmlPullParser parser)

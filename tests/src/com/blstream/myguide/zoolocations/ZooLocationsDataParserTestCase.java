@@ -328,9 +328,9 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 
 		// then
 		assertNotNull(data);
-		assertEquals(3, data.getTickets().size());
+		assertEquals(3, data.getTicketInformation().getTickets().size());
 		int k = 1, individualTicketsCount = 0, groupTicketsCount = 0;
-		for (Ticket ticket : data.getTickets()) {
+		for (Ticket ticket : data.getTicketInformation().getTickets()) {
 			String pl = String.format("%s%d", plTicketBaseName, k);
 			String en = String.format("%s%d", enTicketBaseName, k);
 
@@ -353,7 +353,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		}
 		assertEquals(2, individualTicketsCount);
 		assertEquals(1, groupTicketsCount);
-		assertEquals(4, data.getTicketInformation().size());
+		assertEquals(4, data.getTicketInformation().getAllInformation().size());
 	}
 
 }

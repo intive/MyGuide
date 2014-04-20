@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.blstream.myguide.zoolocations.Language;
 import com.blstream.myguide.zoolocations.Ticket;
+import com.blstream.myguide.zoolocations.TicketsInformation;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -66,10 +67,21 @@ public class TicketsFragment extends ListFragment
 		return new TicketsFragment();
 	}
 
-	private void prepareFooter(Map<String, String> information) {
+	private void prepareFooter(TicketsInformation information) {
 		((TextView) mFooterView.findViewById(R.id.txtvTitle)).setText(getResources().getString(
 				R.string.ticket_info));
-		((TextView) mFooterView.findViewById(R.id.txtvText)).setText(information.get(Language.PL));
+		((TextView) mFooterView.findViewById(R.id.txtvText)).setText(information
+				.getInformation(getLanguage()));
+	}
+
+	/**
+	 * Used in getting text resources from data parsed from data.xml.
+	 * Compatible with {@link com.blstream.myguide.zoolocations.Language}
+	 *
+	 * @return language code
+	 */
+	protected String getLanguage() {
+		return java.util.Locale.getDefault().getLanguage();
 	}
 
 	protected List<ListRowModel> processTickets(Collection<? extends Ticket> c) {
@@ -94,7 +106,7 @@ public class TicketsFragment extends ListFragment
 			}
 			tmp.addValue(String.format("%3d zł   %s",
 					ticket.getPrice(),
-					ticket.getDescription(Language.DEFAULT)));
+					ticket.getDescription(getLanguage())));
 		}
 
 		return Arrays.asList(individual, group);
@@ -117,7 +129,10 @@ public class TicketsFragment extends ListFragment
 		super.onStart();
 
 		MyGuideApp app = (MyGuideApp) getActivity().getApplication();
-		List<ListRowModel> tickets = processTickets(app.getZooData().getTickets());
+		List<ListRowModel> tickets = processTickets(app
+				.getZooData()
+				.getTicketInformation()
+				.getTickets());
 
 		prepareFooter(app.getZooData().getTicketInformation());
 		// prior to KITKAT footer and header must have been set before adapter
