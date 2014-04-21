@@ -87,6 +87,9 @@
     </Compile>
     <Compile Include="Tests\DummyTests.cs" />
     <Compile Include="Tests\DataServiceTest.cs" />
+    <Compile Include="Tests\OptionServiceTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Tests\XmlParserTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +126,9 @@
     </Content>
     <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\config.xml">
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="TestData\IncorrectStructureData.xml" />
     <Content Include="TestData\IncorrectData.xml" />

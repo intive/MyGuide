@@ -85,7 +85,7 @@ namespace MyGuide.DataServices
                     }
                 }
             }
-            _log.Info("Loaded config.xml: {0}", WritePropertiesToLog());
+            _log.Info("Loaded config.xml: {0}", WritePropertiesToString());
         }
 
         public async Task SaveOptions()
@@ -103,7 +103,7 @@ namespace MyGuide.DataServices
             }
         }
 
-        private string WritePropertiesToLog()
+        public string WritePropertiesToString()
         {
             PropertyInfo[] propertyInfos;
             propertyInfos = typeof(Configuration).GetProperties();

@@ -44,6 +44,7 @@ namespace MyGuideTests.Tests
             Assert.AreEqual(correctNode.Latitude, nodeList.First().Latitude);
             Assert.AreEqual(correctNode.Longitude, nodeList.First().Longitude);
         }
+        
 
         [TestInitialize]
         public void InitTest()
