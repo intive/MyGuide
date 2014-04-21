@@ -63,8 +63,5 @@
 
     <!-- Track list -->
     <string name="exploration">Eksploracja</string>
-    
-    <!-- Language name -->
-    <string name="language">pl</string>
-    
+        
 </resources>

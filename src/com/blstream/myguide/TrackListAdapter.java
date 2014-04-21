@@ -2,6 +2,7 @@
 package com.blstream.myguide;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -25,21 +26,20 @@ public class TrackListAdapter extends ArrayAdapter<Track> {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater inflater = (LayoutInflater) mContext
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-		View rowView = inflater.inflate(mId, parent, false);
-
-		TextView name = (TextView) rowView.findViewById(R.id.trackName);
-		TextView progressText = (TextView) rowView.findViewById(R.id.progressText);
-		ProgressBar progress = (ProgressBar) rowView.findViewById(R.id.progressBar);
+		if (convertView == null) {
+			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			convertView = inflater.inflate(mId, parent, false);
+		}
+		TextView name = (TextView) convertView.findViewById(R.id.txtvTrackName);
+		TextView progressText = (TextView) convertView.findViewById(R.id.txtvProgressText);
+		ProgressBar progress = (ProgressBar) convertView.findViewById(R.id.pbProgressBar);
 
 		// TODO set real progress
-		name.setText(getItem(position).getName(mContext.getString(R.string.language)));
+		name.setText(getItem(position).getName(Locale.getDefault().getLanguage()));
 		progressText.setText(1 + "/" + getItem(position).getAnimals().size());
 		progress.setProgress(1);
 		progress.setMax(getItem(position).getAnimals().size());
 
-		return rowView;
+		return convertView;
 	}
 }

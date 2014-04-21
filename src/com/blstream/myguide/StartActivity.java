@@ -272,9 +272,9 @@ public class StartActivity extends FragmentActivity {
 	}
 
 	private void setUpTrackHeader() {
-		TextView text = (TextView) mTrackHeader.findViewById(R.id.trackName);
-		TextView progressText = (TextView) mTrackHeader.findViewById(R.id.progressText);
-		ProgressBar progressBar = (ProgressBar) mTrackHeader.findViewById(R.id.progressBar);
+		TextView text = (TextView) mTrackHeader.findViewById(R.id.txtvTrackName);
+		TextView progressText = (TextView) mTrackHeader.findViewById(R.id.txtvProgressText);
+		ProgressBar progressBar = (ProgressBar) mTrackHeader.findViewById(R.id.pbProgressBar);
 		int animals = ((MyGuideApp) getApplication()).getZooData().sumOfAnimalsOnTracks();
 		text.setText(R.string.exploration);
 		// TODO set real progress
