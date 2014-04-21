@@ -27,7 +27,8 @@ public class TrackListAdapter extends ArrayAdapter<Track> {
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
-			LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LayoutInflater inflater = (LayoutInflater) mContext
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(mId, parent, false);
 		}
 		TextView name = (TextView) convertView.findViewById(R.id.txtvTrackName);
