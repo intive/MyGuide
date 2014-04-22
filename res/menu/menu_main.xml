@@ -2,19 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/options_menu"
-        android:showAsAction="never"
-        android:title="@string/options" />
-
-    <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_action_search_icon_myguide"
         android:showAsAction="always"
-        android:title="@string/options" />
+        android:title="Search" />
 
     <item
         android:id="@+id/action_filter"
         android:icon="@drawable/ic_action_map_icon_myguide"
         android:showAsAction="always"
-        android:title="@string/options" />
+        android:title="Explore" />
 </menu>

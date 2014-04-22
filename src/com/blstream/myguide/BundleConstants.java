@@ -10,6 +10,7 @@ public class BundleConstants {
 	// TAGS
 	public static final String SELECTED_OBJECT = "selected_object";
 	public static final String SELECTED_ANIMAL = "selected_animal";
+    public static final String SELECTED_TRACK = "selected_track";
 	public static final String TAB_IMAGE_ID = "image";
 	public static final String TAB_TEXT_ID = "text";
 	public static final String STRING_ARRAY = "string_array";
