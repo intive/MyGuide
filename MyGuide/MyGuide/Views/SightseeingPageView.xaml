@@ -58,14 +58,19 @@
                         <maps:Pushpin Location="{Binding UserPositionLocation, Mode=TwoWay}">
                             <maps:Pushpin.Template>
                                 <ControlTemplate>
-                                    <Grid>
+                                    <Grid Width="40" Height="40">
 
-                                        <Rectangle Width="30" Height="30" Fill="Black" RenderTransformOrigin="0.5,0.5">
+                                        <Rectangle Width="24" Height="24" Fill="Black" RenderTransformOrigin="0.5,0.5">
                                             <Rectangle.RenderTransform>
                                                 <CompositeTransform Rotation="45" />
                                             </Rectangle.RenderTransform>
                                         </Rectangle>
-                                        <Ellipse Width="20" Height="20" Fill="Red" />
+                                        <Ellipse Width="18" Height="18" Fill="Red" />
+                                        <!--<Rectangle Fill="Black" Height="10" Width="20">
+                                            <Rectangle.RenderTransform>
+                                                <CompositeTransform Rotation="0" />
+                                            </Rectangle.RenderTransform>
+                                        </Rectangle>-->
                                     </Grid>
                                 </ControlTemplate>
                             </maps:Pushpin.Template>
