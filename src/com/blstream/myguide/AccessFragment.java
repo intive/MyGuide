@@ -42,12 +42,13 @@ public class AccessFragment extends Fragment
 	private LatLng mDestination;
 
 	private int pixelsFromDp(int dp) {
-		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
+		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources()
+				.getDisplayMetrics());
 	}
 
 	private void configureGrid(GridLayout gridLayout, int columns, Collection<String> items) {
 		int itemsCount = items.size();
-		int rows = itemsCount/columns + 1;
+		int rows = itemsCount / columns + 1;
 		gridLayout.setColumnCount(columns);
 		gridLayout.setRowCount(rows);
 
@@ -62,7 +63,8 @@ public class AccessFragment extends Fragment
 	}
 
 	protected ViewGroup.LayoutParams newLayoutParams(int row, int column) {
-		GridLayout.LayoutParams params = new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
+		GridLayout.LayoutParams params = new GridLayout.LayoutParams(GridLayout.spec(row),
+				GridLayout.spec(column));
 		params.setMargins(pixelsFromDp(2), pixelsFromDp(2), pixelsFromDp(2), pixelsFromDp(2));
 		params.setGravity(Gravity.CENTER);
 
@@ -84,9 +86,9 @@ public class AccessFragment extends Fragment
 	}
 
 	/**
-	 * Used in getting text resources from data parsed from data.xml.
-	 * Compatible with {@link com.blstream.myguide.zoolocations.Language}
-	 *
+	 * Used in getting text resources from data parsed from data.xml. Compatible
+	 * with {@link com.blstream.myguide.zoolocations.Language}
+	 * 
 	 * @return language code
 	 */
 	protected String getLanguage() {
@@ -94,10 +96,10 @@ public class AccessFragment extends Fragment
 	}
 
 	/**
-	 * Creates a valid URI for Google Maps application which instruct the application to find
-	 * route from <i>source</i> to <i>destination</i>. Google Maps takes current user position
-	 * if no source is specified.
-	 *
+	 * Creates a valid URI for Google Maps application which instruct the
+	 * application to find route from <i>source</i> to <i>destination</i>.
+	 * Google Maps takes current user position if no source is specified.
+	 * 
 	 * @param source starting point, <i>null</i> - current user position
 	 * @param destination destination point
 	 * @return Uri to used with Google Maps application
@@ -126,19 +128,22 @@ public class AccessFragment extends Fragment
 			@Override
 			public void onMapClick(LatLng latLng) {
 				Intent intent = new Intent(Intent.ACTION_VIEW, createUriForMaps(null, mDestination));
-				intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+				intent.setClassName("com.google.android.apps.maps",
+						"com.google.android.maps.MapsActivity");
 				startActivity(intent);
 			}
 		});
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater layoutInflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		AccessInformation accessInformation = ((MyGuideApp) getActivity().getApplication())
 				.getZooData()
 				.getAccessInformation();
 
-		View rootView = layoutInflater.inflate(R.layout.fragment_information_access, container, false);
+		View rootView = layoutInflater.inflate(R.layout.fragment_information_access, container,
+				false);
 		((TextView) rootView.findViewById(R.id.txtv_parking)).setText(accessInformation
 				.getParkingInformation(getLanguage()));
 		// TODO: use data parsed from /root/contact_information/

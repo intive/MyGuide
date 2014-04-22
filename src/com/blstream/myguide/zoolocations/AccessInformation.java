@@ -13,10 +13,10 @@ public class AccessInformation {
 
 	private List<String> parseCommaSeparatedValuesRow(String values) {
 		LinkedList<String> list = new LinkedList<String>();
-		for (String str : values.split(",")) list.add(str.trim());
+		for (String str : values.split(","))
+			list.add(str.trim());
 		return list;
 	}
-
 
 	protected void setTrams(String trams) {
 		mTrams = trams;
