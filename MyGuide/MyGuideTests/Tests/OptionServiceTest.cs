@@ -16,28 +16,34 @@ namespace MyGuideTests.Tests
     [TestClass]
     public class OptionServiceTest
     {
-//        [TestInitialize]
-//        public void InitTest()
-//        {
-//            string xmlString = @"<configuration>
-//            <!-- Fallback to language if string is not available -->
-//            <lang_fallback>pl</lang_fallback>
-//            <!-- Radius within which the information that user got close to an object appears -->
-//            <internal_object_radius>1</internal_object_radius>
-//            <!-- Radius outside which the information that user got close to an object disappears -->
-//            <external_object_radius>2</external_object_radius>
-//          </configuration>";
+        [ClassCleanup]
+        public static void ClassTestCleanup()
+        {
+            CleanupMethod();
+        }
 
-//            using (StreamWriter file = new StreamWriter("Data/config.xml"))
-//            {
-//                file.Write(xmlString);
-//            }
-//        }
+        public static void CleanupMethod()
+        {
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                if (myIsolatedStorage.FileExists("Options/config.xml"))
+                {
+                    myIsolatedStorage.DeleteFile("Options/config.xml");
+                    myIsolatedStorage.DeleteDirectory("Options");
+                }
+            }
+        }
+
+        [TestCleanup]
+        public void PerTestCleanup()
+        {
+            CleanupMethod();
+        }
 
         [TestMethod]
         public async Task InitializeWithFileInISOptionTest()
         {
-            string xmlString = 
+            string xmlString =
 @"<configuration>
             <!-- Fallback to language if string is not available -->
             <lang_fallback>en</lang_fallback>
@@ -63,39 +69,23 @@ namespace MyGuideTests.Tests
             Debug.WriteLine(ds.ConfigData.externalObjectRadius);
             Assert.AreEqual("en", ds.ConfigData.langFallback);
             Assert.AreEqual(100, ds.ConfigData.internalObjectRadius);
-            Assert.AreEqual(200,ds.ConfigData.externalObjectRadius);
-
-            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                myIsolatedStorage.DeleteFile("Options/config.xml");
-                myIsolatedStorage.DeleteDirectory("Options");
-            }
-
-            
+            Assert.AreEqual(200, ds.ConfigData.externalObjectRadius);
         }
 
         [TestMethod]
         public async Task InitializeWithoutFileInISOptionTest()
         {
-
             OptionsService ds = new OptionsService();
             await ds.Initialize();
             Debug.WriteLine(ds.ConfigData.externalObjectRadius);
             Assert.AreEqual("pl", ds.ConfigData.langFallback);
             Assert.AreEqual(1, ds.ConfigData.internalObjectRadius);
             Assert.AreEqual(2, ds.ConfigData.externalObjectRadius);
-
-            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                myIsolatedStorage.DeleteFile("Options/config.xml");
-                myIsolatedStorage.DeleteDirectory("Options");
-            }
         }
 
         [TestMethod]
         public async Task SaveOptionTest()
         {
-
             OptionsService ds = new OptionsService();
             await ds.Initialize();
             ds.ConfigData = new Configuration { langFallback = "us", externalObjectRadius = 20, internalObjectRadius = 10 };
@@ -107,45 +97,19 @@ namespace MyGuideTests.Tests
             Assert.AreEqual(ds.ConfigData.langFallback, dsSecond.ConfigData.langFallback);
             Assert.AreEqual(ds.ConfigData.internalObjectRadius, dsSecond.ConfigData.internalObjectRadius);
             Assert.AreEqual(ds.ConfigData.externalObjectRadius, dsSecond.ConfigData.externalObjectRadius);
-            
-            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                myIsolatedStorage.DeleteFile("Options/config.xml");
-                myIsolatedStorage.DeleteDirectory("Options");
-            }
         }
 
         [TestMethod]
         public async Task WritePropertiesToStringTest()
         {
-
             OptionsService ds = new OptionsService();
             await ds.Initialize();
-           
+
             //If we will add some other parameters in Configuration class
             //we should change this tes too...
             string expectedString = "\nName: externalObjectRadius, Value: 2\nName: internalObjectRadius, Value: 1\nName: langFallback, Value: pl";
             string resultString = ds.WritePropertiesToString();
             Assert.AreEqual(expectedString, resultString);
-
-            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                myIsolatedStorage.DeleteFile("Options/config.xml");
-                myIsolatedStorage.DeleteDirectory("Options");
-            }
-        }
-
-        [ClassCleanup]
-        public static void TestCleanup()
-        {
-            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                if(myIsolatedStorage.FileExists("Options/config.xml"))
-                {
-                myIsolatedStorage.DeleteFile("Options/config.xml");
-                myIsolatedStorage.DeleteDirectory("Options");
-                }
-            }
         }
     }
 }
