@@ -73,6 +73,9 @@
     <string name="animal_list_title">Animals</string>
     <string name="animal_image">Animal Image</string>
 
+    <!-- Track list -->
+    <string name="exploration">Exploration</string>
+
     <!-- Gastronomy Item List -->
     <string name="menu_item_list">Menu:</string>
     <string name="open_item_list">Opening hours:</string>

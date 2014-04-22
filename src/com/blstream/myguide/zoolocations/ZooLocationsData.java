@@ -64,4 +64,13 @@ public class ZooLocationsData {
 	public void setRestaurants(ArrayList<Restaurant> restaurants) {
 		mRestaurants = restaurants;
 	}
+
+	public int sumOfAnimalsOnTracks() {
+		int sum = 0;
+		for (Track t : mTracks) {
+			sum += t.getAnimals().size();
+		}
+		return sum;
+	}
+
 }
