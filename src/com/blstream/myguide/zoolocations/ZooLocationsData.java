@@ -78,4 +78,12 @@ public class ZooLocationsData {
 		mTicketInformation = ticketInformation;
 	}
 
+	public int sumOfAnimalsOnTracks() {
+		int sum = 0;
+		for (Track t : mTracks) {
+			sum += t.getAnimals().size();
+		}
+		return sum;
+	}
+
 }

@@ -7,7 +7,9 @@ import android.app.ActionBar;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +91,10 @@ public class SightseeingFragment extends Fragment {
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-
+		
+		((StartActivity) getActivity() ).getDrawerLayout()
+			.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+		
 		setUpMapSettings();
 		setUpMap();
 		setUpAnimalMarkers();
@@ -104,6 +109,13 @@ public class SightseeingFragment extends Fragment {
 		return rootView;
 	}
 
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		((StartActivity) getActivity() ).getDrawerLayout()
+			.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);		
+	}
+	
 	@Override
 	public void onStart() {
 		super.onStart();
