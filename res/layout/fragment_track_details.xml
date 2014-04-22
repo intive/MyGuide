@@ -60,20 +60,6 @@
                     android:layout_height="wrap_content" />
 
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:id="@+id/txtvTrackAnimals"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="20dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="@dimen/List_text_size_small"
-                        android:textStyle="bold"
-                        android:text="Lorem ipsum dolor sit amnet, consectetur adipiscing elit. Ut neque  maurius."/>
-                </ScrollView>
-
 
 
             </LinearLayout>

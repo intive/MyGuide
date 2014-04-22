@@ -74,7 +74,6 @@ public class FragmentTrackDetails extends Fragment {
         ImageView imgvTrackDetails = (ImageView) mRootView.findViewById(R.id.imgvTrackDetails);
         TextView txtvTrackProgress = (TextView) mRootView.findViewById(R.id.txtvTrackProgress);
         ProgressBar pbTrackDetails = (ProgressBar) mRootView.findViewById(R.id.pbTrackDetails);
-        TextView txtvTrackAnimals = (TextView) mRootView.findViewById(R.id.txtvTrackAnimals);
         TextView txtvTrackDescription = (TextView) mRootView.findViewById(R.id.txtvTrackDetailsDescription);
 
         String trackAnimals = "";
@@ -82,8 +81,7 @@ public class FragmentTrackDetails extends Fragment {
             trackAnimals += animal.getName() +", ";
         }
 
-        txtvTrackAnimals.setText(trackAnimals + "");
-        txtvTrackDescription.setText(mTrack.getDescription() + "");
+        txtvTrackDescription.setText(trackAnimals + ". " + mTrack.getDescription() + "");
     }
 
     @Override

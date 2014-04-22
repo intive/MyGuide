@@ -10,19 +10,20 @@
             <gradient
                 android:endColor="#ffffff"
                 android:startColor="#ffffff" />
-        </shape>
+         </shape>
     </item>
     <item android:id="@android:id/progress">
         <clip>
             <shape>
                 <corners android:radius="0dip" />
-                <stroke
-                    android:width="1dip"
-                    android:color="#000000" />
-                <gradient
-                    android:endColor="@color/main_accent"
-                    android:startColor="@color/main_accent" />
+                    <stroke
+                         android:width="1dip"
+                         android:color="#000000" />
+                    <gradient
+                        android:endColor="@color/main_accent"
+                        android:startColor="@color/main_accent" />
             </shape>
         </clip>
     </item>
 </layer-list>
+
