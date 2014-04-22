@@ -70,6 +70,14 @@ public class ZooLocationsData {
 		mRestaurants = restaurants;
 	}
 
+	public int sumOfAnimalsOnTracks() {
+		int sum = 0;
+		for (Track t : mTracks) {
+			sum += t.getAnimals().size();
+		}
+		return sum;
+	}
+
 	public void setAccessInformation(AccessInformation accessInformation) {
 		mAccessInfo = accessInformation;
 	}
