@@ -132,7 +132,7 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     [self updateNearestAnimalsArrayWithLocation:userLocation.location];
-    [self updateVisitedLocationsWIthLocation:userLocation.location];
+    [self updateVisitedLocationsWithLocation:userLocation.location];
     [_nearestAnimalsTableView reloadData];
     double distance = [self calculateUserDistance:userLocation];
     if(distance <= _settings.maxUserDistance){
@@ -380,7 +380,7 @@
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     _nearestAnimals = [_data.animalsArray sortedArrayUsingDescriptors:sortDescriptors];
 }
-- (void)updateVisitedLocationsWIthLocation:(CLLocation *)location
+- (void)updateVisitedLocationsWithLocation:(CLLocation *)location
 {
     for(int i=0; i<5; i++){
         if([_nearestAnimals[i] isWithinDistance:_settings.visitedRadius fromLocation:location]){
