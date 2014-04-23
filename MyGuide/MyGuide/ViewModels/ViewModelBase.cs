@@ -12,6 +12,7 @@ namespace MyGuide.ViewModels
         protected ILog _log;
         protected IMessageDialogService _messageDialogService;
         protected INavigationService _navigation;
+        protected IOptionsService _optionService;
 
         public ViewModelBase()
         {
@@ -19,10 +20,11 @@ namespace MyGuide.ViewModels
         }
 
         public ViewModelBase(INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataService dataService)
+            IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService)
         {
             _navigation = navigationService;
             _dataService = dataService;
+            _optionService = optionService;
             _messageDialogService = messageDialogService;
             _log = LogManager.GetLog(this.GetType());
         }

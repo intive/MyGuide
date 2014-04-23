@@ -6,6 +6,6 @@ namespace MyGuide.DataServices.Interfaces
     {
         Task<T> DeserializeXml(string dataPath);
 
-        string SerializeXml(T objectToSerialize);
+        Task<string> SerializeXml(T objectToSerialize);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using MyGuide.DataServices;
 using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Services.Interfaces;
@@ -11,8 +12,8 @@ namespace MyGuide.ViewModels
     public class SplashScreenViewModel : ViewModelBase
     {
         public SplashScreenViewModel(INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataService dataService)
-            : base(navigationService, messageDialogService, dataService)
+            IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService)
+            : base(navigationService, messageDialogService, dataService, optionService)
         {
         }
 
@@ -21,12 +22,14 @@ namespace MyGuide.ViewModels
             try
             {
                 await _dataService.Initialize();
+                await _optionService.Initialize();
             }
-            catch (LackOfDataException ex)
+            catch (LackOfXmlFileException ex)
             {
                 _log.Error(ex);
                 throw; // LittleWatson enters to action :D
             }
+
             await Task.Delay(2000);
             _navigation.UriFor<MainPageViewModel>().Navigate();
         }

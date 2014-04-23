@@ -73,7 +73,7 @@ namespace MyGuideTests.Tests
         {
             DataService ds = new DataService();
             ds.Datas = correctData;
-            string collectionsSize = "Animals: 1\nWays: 2\nJunctions: 1";
+            string collectionsSize = "\nAnimals: 1\nWays: 2\nJunctions: 1";
 
             Assert.AreEqual(1, ds.AnimalsSize());
             Assert.AreEqual(1, ds.JunctionsSize());

@@ -8,8 +8,8 @@ namespace MyGuide.ViewModels
     public class OptionsPageViewModel : ViewModelBase
     {
         public OptionsPageViewModel(INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataService dataService)
-            : base(navigationService, messageDialogService, dataService)
+            IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService)
+            : base(navigationService, messageDialogService, dataService, optionService)
         {
         }
     }

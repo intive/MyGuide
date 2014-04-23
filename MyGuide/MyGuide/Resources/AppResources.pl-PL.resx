@@ -129,6 +129,9 @@
   <data name="CancelButton" xml:space="preserve">
     <value>anuluj</value>
   </data>
+  <data name="DebugOptions" xml:space="preserve">
+    <value>Opcje debug</value>
+  </data>
   <data name="DenayButton" xml:space="preserve">
     <value>zabroń</value>
   </data>

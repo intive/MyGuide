@@ -63,6 +63,10 @@
             <bindappbar:BindableAppBarMenuItem
                 x:Name="ShowOptions"
                 Text="{Binding LocalizedResources.Options, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+            <bindappbar:BindableAppBarMenuItem
+                x:Name="ShowDebugOptions"
+                Text="{Binding LocalizedResources.DebugOptions, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
+                Visibility="{Binding Path=IsVisibleDebugOptionsItem, Converter={StaticResource BooleanToVisibilityConverter}}" />
         </bindappbar:BindableAppBar>
     </Grid>
 </views:PageViewBase>
