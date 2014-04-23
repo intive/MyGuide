@@ -2,7 +2,6 @@
 package com.blstream.myguide;
 
 import android.app.ProgressDialog;
-import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -26,6 +25,7 @@ import com.blstream.myguide.zoolocations.Way;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -47,10 +47,9 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 
 	private static final String LOG_TAG = AnimalDetailsMapFragment.class.getSimpleName();
 
-	private static final int SHORTEST_PATH_COLOR = Color.RED;
-	private static final float SHORTEST_PATH_WIDTH = 3.0f;
-	private static final int PATH_COLOR = Color.BLACK;
-	private static final float PATH_WIDTH = 2.0f;
+	private static final float SHORTEST_PATH_WIDTH = 8.5f;
+	private static final float PATH_WIDTH = 7.5f;
+	private static final int PATH_ZINDEX = 3;
 
 	// taken from SightseeingFragment
 	private static final float DEFAULT_MIN_ZOOM = 14.5f;
@@ -178,7 +177,8 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 	}
 
 	private void markPosition(LatLng pos, String text) {
-		mMap.addMarker(new MarkerOptions().position(pos).title(text));
+		mMap.addMarker(new MarkerOptions().position(pos).title(text)
+				.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal)));
 	}
 
 	private void drawAllWays() {
@@ -190,7 +190,7 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		for (Way way : app.getZooData().getWays()) {
 			PolylineOptions plo = new PolylineOptions()
 					.width(PATH_WIDTH)
-					.color(PATH_COLOR);
+					.color(getResources().getColor(R.color.paths));
 			for (Node node : way.getNodes()) {
 				plo.add(new LatLng(node.getLatitude(), node.getLongitude()));
 			}
@@ -237,7 +237,8 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		// drawing shortest path
 		// found nodes are also added to the LatLngBounds.Builder
 		PolylineOptions plo = new PolylineOptions()
-				.color(SHORTEST_PATH_COLOR)
+				.color(getResources().getColor(R.color.paths_on_track))
+				.zIndex(PATH_ZINDEX)
 				.width(SHORTEST_PATH_WIDTH)
 				.add(src);
 		builder.include(src);

@@ -22,6 +22,7 @@ import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.Language;
 import com.blstream.myguide.zoolocations.Node;
+import com.blstream.myguide.zoolocations.Track;
 import com.blstream.myguide.zoolocations.Way;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -50,8 +51,7 @@ public class SightseeingFragment extends Fragment {
 	private static final float DEFAULT_MAX_ZOOM = 19.0f;
 	private static final double DEFAULT_START_LAT = 51.1050406;
 	private static final double DEFAULT_START_LON = 17.074053;
-	private static final int WAYS_COLOR_DEFAULT = Color.BLACK;
-	private static final int WAYS_WIDTH_DEFAULT = 2;
+	private static final float WAYS_WIDTH_DEFAULT = 7.5f;
 
 	private GoogleMap mMap;
 	private float mMinZoom;
@@ -67,6 +67,7 @@ public class SightseeingFragment extends Fragment {
 	private boolean mJunctionsVisible;
 	private ArrayList<Circle> mZooJunctions;
 	private ArrayList<Animal> mAnimalsList;
+	private TrackDrawer mTrackDrawer;
 
 	private LocationLogger mLocationLogger;
 
@@ -106,6 +107,8 @@ public class SightseeingFragment extends Fragment {
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
 
+		mTrackDrawer = new TrackDrawer(
+				((MyGuideApp) getActivity().getApplication()).getGraph(), mMap, mAnimalMarkers);
 		return rootView;
 	}
 
@@ -238,12 +241,13 @@ public class SightseeingFragment extends Fragment {
 		for (Way way : ways) {
 			PolylineOptions plo = new PolylineOptions()
 					.width(WAYS_WIDTH_DEFAULT)
-					.color(WAYS_COLOR_DEFAULT);
+					.color(getResources().getColor(R.color.paths));
 			for (Node node : way.getNodes()) {
 				plo.add(new LatLng(node.getLatitude(), node.getLongitude()));
 			}
 			mZooPaths.add(mMap.addPolyline(plo));
 		}
+
 	}
 
 	/**
@@ -290,7 +294,7 @@ public class SightseeingFragment extends Fragment {
 			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions()
 					.position(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()))
 					.title(a.getName(Language.DEFAULT))
-					.icon(BitmapDescriptorFactory.fromResource(R.drawable.animal_icon_myguide))));
+					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal))));
 		}
 	}
 
@@ -311,6 +315,11 @@ public class SightseeingFragment extends Fragment {
 		if (mLocationLogVisible) {
 			mLocationLogger = new LocationLogger(getActivity(), 3, true);
 		}
+	}
+
+	public void drawTrack(Track track) {
+		mTrackDrawer
+				.drawTrack(track, getResources().getColor(R.color.paths_on_track), mPathsVisible);
 	}
 
 }
