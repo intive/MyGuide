@@ -38,6 +38,9 @@
 	<!-- Minimal interval between location updates(in ms) - protects from too frequent updates -->
 	<min_gps_interval>500</min_gps_interval>
 
+	<!-- Minimal change in location to be register by gps (in m) -->
+	<gps_sensitive>1.0</gps_sensitive>
+
 	<!-- Log and toast gps position on location update -->
 	<gps_logging>false</gps_logging>
 
@@ -45,4 +48,9 @@
 		lack of this key will, by default, DISPLAY user's location
 	-->
 	<map_my_position_hidden>false</map_my_position_hidden>
+
+	<!-- Minimal distance form Zoo to still ask user about showing "how to get" screen
+		instead of sightseeing screen (in meters)
+	-->
+	<distance_from_zoo>700</distance_from_zoo>
 </configuration>

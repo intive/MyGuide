@@ -54,7 +54,6 @@
     </style>
 
     <style name="sliding_menu">
-        <item name="android:layout_gravity">start</item>
         <item name="android:background">@color/light_background</item>
         <item name="android:choiceMode">singleChoice</item>
         <item name="android:divider">@color/list_divider</item>
@@ -94,5 +93,12 @@
         <item name="android:paddingLeft">15dp</item>
         <item name="android:paddingRight">15dp</item>
     </style>
+    
+    <style name="track_progress_bar" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:maxHeight">10dp</item>
+        <item name="android:progressDrawable">@drawable/progress_bar</item>
+    </style>       
 
 </resources>
