@@ -172,8 +172,10 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 					}
 				}.start();
 
-                setNextFragment(FragmentTrackDetails.newInstance(((MyGuideApp) getApplication()).getZooData().getTracks()
-                        .get(position - 1)), "track");
+				setNextFragment(
+						FragmentTrackDetails.newInstance(((MyGuideApp) getApplication())
+								.getZooData().getTracks()
+								.get(position - 1)), "track");
 			}
 		});
 
@@ -220,7 +222,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				newFragment = new GastronomyListFragment();
 				tag = BundleConstants.FRAGMENT_GASTRONOMY;
 				break;
-            default:
+			default:
 				break;
 		}
 

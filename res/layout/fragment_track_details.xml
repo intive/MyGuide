@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,50 +21,46 @@
                 android:id="@+id/imgvTrackDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="20dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
-                android:src="@drawable/track_details"/>
+                android:paddingTop="20dp"
+                android:src="@drawable/track_placeholder" />
 
-            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/txtvTrackProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="20dp"
+                android:text="10/15"
+                android:textSize="@dimen/List_text_size_small" />
 
-                <TextView
-                    android:id="@+id/txtvTrackProgress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="20dp"
-                    android:text="10/15"
-                    android:textSize="@dimen/List_text_size_small"/>
-
-                <ProgressBar
-                    android:id="@+id/pbTrackDetails"
-                    android:progressDrawable="@drawable/progress_bar"
-                    android:indeterminateOnly="false"
-                    android:minHeight="10dp"
-                    android:maxHeight="10dp"
-                    android:layout_marginTop="5dp"
-                    android:paddingRight="20dp"
-                    android:paddingLeft="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-
-
-
-            </LinearLayout>
+            <ProgressBar
+                android:id="@+id/pbTrackDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:indeterminateOnly="false"
+                android:maxHeight="10dp"
+                android:minHeight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="20dp"
+                android:progressDrawable="@drawable/progress_bar" />
 
         </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,17 +77,14 @@
                 android:id="@+id/txtvTrackDetailsDescription"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="20dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:paddingBottom="20dp"
-                android:textSize="@dimen/List_text_size_small"
                 android:text="@string/text"
-                />
+                android:textSize="@dimen/List_text_size_small" />
 
+        </ScrollView>
 
-
-            </ScrollView>
-
-        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
