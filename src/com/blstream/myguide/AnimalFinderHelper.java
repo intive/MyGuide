@@ -3,8 +3,11 @@ package com.blstream.myguide;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import android.content.Context;
 import android.location.Location;
+import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.blstream.myguide.path.Graph;
 import com.blstream.myguide.zoolocations.*;
@@ -29,11 +32,15 @@ public class AnimalFinderHelper {
 	Location mLocation;
 	ArrayList<Animal> mAllAnimals;
 	Graph mGraph;
+	Handler mHandler;
+	Context mContext;
 
-	public AnimalFinderHelper(Location location, MyGuideApp app) {
+	public AnimalFinderHelper(Location location, MyGuideApp app, Context context) {
 		mLocation = location;
 		mAllAnimals = app.getZooData().getAnimals();
 		mGraph = app.getGraph();
+		mContext = context;
+		mHandler = new Handler();
 	}
 
 	/**
@@ -50,25 +57,36 @@ public class AnimalFinderHelper {
 	 * 
 	 * @return double array containing distances to every animal
 	 */
+
 	private double[] distancesToAllAnimals() {
 		final double[] distances = new double[mAllAnimals.size()];
 		final Node position = myPosition();
-		Thread calcuateDistances = new Thread(new Runnable() {
+		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
 				for (int i = 0; i < distances.length; i++) {
 					distances[i] = mGraph.findDistance(position, mAllAnimals
 							.get(i).getNode());
 				}
+				mHandler.post(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(mContext,
+								R.string.nearest_animals_waiting_toast,
+								Toast.LENGTH_SHORT).show();
+					}
+				});
 			}
-		});
-
+		};
+		Thread calcuateDistances = new Thread(runnable);
 		calcuateDistances.start();
+
 		try {
 			calcuateDistances.join();
 		} catch (InterruptedException e) {
 			Log.e(LOG_TAG, e.getMessage());
 		}
+
 		return distances;
 	}
 

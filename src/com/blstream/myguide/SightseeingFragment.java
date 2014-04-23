@@ -195,7 +195,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 
 		AnimalFinderHelper animalFinderHelper = new AnimalFinderHelper(
 				mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
-						.getApplication());
+						.getApplication(), getActivity());
 
 		AnimalDistance closestAnimal = animalFinderHelper.closestAnimal();
 		if (closestAnimal != null && !sameAsLastAnimal(closestAnimal)) {
@@ -347,7 +347,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 
 	@Override
 	public void onLocationUpdate(Location location) {
-		//setUpClosestAnimal();
+		setUpClosestAnimal();
 
 	}
 

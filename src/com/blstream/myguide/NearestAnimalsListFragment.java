@@ -56,7 +56,7 @@ public class NearestAnimalsListFragment extends Fragment implements
 				.findViewById(R.id.lvNearestAnimalList);
 
 		mAnimalFinder = new AnimalFinderHelper(mLocationUpdater.getLocation(),
-				(MyGuideApp) getActivity().getApplication());
+				(MyGuideApp) getActivity().getApplication(), getActivity());
 		return view;
 	}
 
