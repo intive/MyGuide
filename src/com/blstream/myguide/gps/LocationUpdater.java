@@ -37,11 +37,15 @@ public class LocationUpdater {
 	// True, when at least one listener is bind to LocationUpdater
 	private boolean mRequestingForUpdates;
 	private boolean mGpsPopupWasShown;
+	private double mMinDistanceToRegister;
+	private Location mLastLocation;
 
 	private LocationUpdater() {
 		mRequestingForUpdates = false;
 		mGpsPopupWasShown = false;
 		mLocationUsers = new CopyOnWriteArrayList<LocationUser>();
+		mLastLocation = new Location(LOG_TAG);
+		resetLastLocation();
 		mLocationClient = new LocationClient(mAppContext, mConnectionCallbacks,
 				mOnConnectionFailedListener);
 		mLocationClient.connect();
@@ -102,6 +106,7 @@ public class LocationUpdater {
 		mGpsPopupWasShown = false;
 		mRequestingForUpdates = false;
 		mLocationRequest = null;
+		resetLastLocation();
 		mLocationUsers.clear();
 	}
 
@@ -113,6 +118,8 @@ public class LocationUpdater {
 	 */
 	public void startUpdating(LocationUser user) {
 		mLocationUsers.add(user);
+		// called to avoid location update when new listener is binding
+		resetLastLocation();
 		if (!mRequestingForUpdates) {
 			requestUpdates();
 		}
@@ -151,6 +158,7 @@ public class LocationUpdater {
 		if (!mRequestingForUpdates) {
 			if (mLocationRequest == null) {
 				setLocationRequestFromSettings();
+				setGpsSensitive();
 			}
 			if (mLocationClient.isConnected() && isGpsEnable()) {
 				if (isGpsEnable()) {
@@ -179,11 +187,24 @@ public class LocationUpdater {
 				.setFastestInterval(mSettings.getValueAsInt(Settings.KEY_MIN_GPS_INTERVAL));
 	}
 
+	private void setGpsSensitive() {
+		mMinDistanceToRegister = mSettings.getValueAsDouble(Settings.KEY_GPS_SENSITIVE);
+	}
+
+	public void resetLastLocation() {
+		mLastLocation.setLatitude(0);
+		mLastLocation.setLongitude(0);
+	}
+
 	private final LocationListener mLocationListener = new LocationListener() {
 		@Override
 		public void onLocationChanged(Location location) {
-			for (LocationUser e : mLocationUsers) {
-				e.onLocationUpdate(location);
+			if (location.distanceTo(mLastLocation) > mMinDistanceToRegister) {
+				mLastLocation.setLatitude(location.getLatitude());
+				mLastLocation.setLongitude(location.getLongitude());
+				for (LocationUser e : mLocationUsers) {
+					e.onLocationUpdate(location);
+				}
 			}
 		}
 	};
