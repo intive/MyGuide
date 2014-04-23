@@ -59,6 +59,7 @@
 		8460875718BDFA7F00620219 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875618BDFA7F00620219 /* SettingsParser.m */; };
 		8460875A18BDFA8A00620219 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875918BDFA8A00620219 /* Settings.m */; };
 		84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
+		84C2A1851907B21900354036 /* AFVisitedPOIsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A1841907B21900354036 /* AFVisitedPOIsData.m */; };
 		84DD035B18BA8C7A00DE7178 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84DD035818BA8C7A00DE7178 /* config.xml */; };
 		84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */; };
 		84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB2A18BA917800A2F720 /* AFAnimal.m */; };
@@ -177,6 +178,8 @@
 		8460875618BDFA7F00620219 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
 		8460875818BDFA8A00620219 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		8460875918BDFA8A00620219 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		84C2A1831907B21900354036 /* AFVisitedPOIsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFVisitedPOIsData.h; sourceTree = "<group>"; };
+		84C2A1841907B21900354036 /* AFVisitedPOIsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFVisitedPOIsData.m; sourceTree = "<group>"; };
 		84DD035818BA8C7A00DE7178 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = "XML files/config.xml"; sourceTree = "<group>"; };
 		84DD035918BA8C7A00DE7178 /* XMLFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLFetcher.h; path = "XML files/XMLFetcher.h"; sourceTree = "<group>"; };
 		84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLFetcher.m; path = "XML files/XMLFetcher.m"; sourceTree = "<group>"; };
@@ -481,6 +484,8 @@
 			children = (
 				8460875818BDFA8A00620219 /* Settings.h */,
 				8460875918BDFA8A00620219 /* Settings.m */,
+				84C2A1831907B21900354036 /* AFVisitedPOIsData.h */,
+				84C2A1841907B21900354036 /* AFVisitedPOIsData.m */,
 				84DDCB4018BA91A100A2F720 /* AFParsedData.h */,
 				84DDCB4118BA91A100A2F720 /* AFParsedData.m */,
 				05406E4418F31661001656FC /* GastronomyData.h */,
@@ -631,6 +636,7 @@
 			files = (
 				055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */,
 				84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */,
+				84C2A1851907B21900354036 /* AFVisitedPOIsData.m in Sources */,
 				8460875718BDFA7F00620219 /* SettingsParser.m in Sources */,
 				05A1C15518FACB3E008FE0CB /* HistoryViewController.m in Sources */,
 				8460875A18BDFA8A00620219 /* Settings.m in Sources */,
