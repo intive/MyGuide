@@ -23,21 +23,23 @@
 #pragma mark -
 @implementation MapViewController
 {
-    Settings        *_settings;
-    AFParsedData    *_data;
-    LocationManager *_locationManager;
+    Settings          *_settings;
+    AFParsedData      *_data;
+    LocationManager   *_locationManager;
+    AFVisitedPOIsData *_visitedPOIs;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _settings = [Settings sharedSettingsData];
-    _data     = [AFParsedData sharedParsedData];
+    _settings      = [Settings sharedSettingsData];
+    _data          = [AFParsedData sharedParsedData];
+    _visitedPOIs   = [AFVisitedPOIsData sharedData];
     _alertDistance = [self buildAlertView];
     _zooCenterLocation = [[CLLocation alloc] initWithLatitude:_settings.zooCenter.latitude longitude:_settings.zooCenter.longitude];
 
-    _sidebarButton.target    = self.revealViewController;
-    _sidebarButton.action    = @selector(revealToggle:);
+    _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
     _locationManager = [LocationManager sharedLocationManager];
@@ -47,6 +49,7 @@
     [self centerMap];
     [self showPaths];
     [self showJunctions];
+    [self loadAnnotationsFromSingleton];
     
     [self setTitle: NSLocalizedString(@"titleControllerMap", nil)];
 }
@@ -362,6 +365,7 @@
     CLLocationCoordinate2D selectedAnimalLocation =  CLLocationCoordinate2DMake(lat, lon);
     for(MKAnnotationAnimal *annotation in _mapView.annotations){
         if([self compareCoordinate:selectedAnimalLocation withCoordinate:annotation.coordinate]){
+            [_visitedPOIs.visitedPOIs addObject:annotation];
             [self.mapView selectAnnotation:annotation animated:YES];
             break;
         }
@@ -383,6 +387,7 @@
             for(MKAnnotationAnimal *annotation in _mapView.annotations){
                 if([annotation.title isEqualToString:[_nearestAnimals[i] name]]){
                     _visitedLocationFlag = YES;
+                    [_visitedPOIs.visitedPOIs addObject:annotation];
                     [self.mapView selectAnnotation:annotation animated:YES];
                     break;
                 }
@@ -412,6 +417,13 @@
 {
     if(view.pinColor == MKPinAnnotationColorPurple) {
         view.pinColor = MKPinAnnotationColorRed;
+    }
+}
+- (void)loadAnnotationsFromSingleton
+{
+    for(MKAnnotationAnimal *annotation in _visitedPOIs.visitedPOIs){
+        _visitedLocationFlag = YES;
+        [self.mapView selectAnnotation:annotation animated:YES];
     }
 }
 
