@@ -169,6 +169,15 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 					}
 				}.start();
 				// TODO swap fragments etc. etc.
+				Fragment mapFragment = getSupportFragmentManager().findFragmentById(
+						R.id.flFragmentHolder);
+				try {
+					((SightseeingFragment) mapFragment).drawTrack(((MyGuideApp) getApplication())
+							.getZooData().getTracks().get(position - 1));
+				} catch (ClassCastException e) {
+					throw new ClassCastException("Drawer can be use only with "
+							+ SightseeingFragment.class.getSimpleName());
+				}
 				Toast.makeText(
 						StartActivity.this,
 						"track: "
