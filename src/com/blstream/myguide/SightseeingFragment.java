@@ -322,4 +322,8 @@ public class SightseeingFragment extends Fragment {
 				.drawTrack(track, getResources().getColor(R.color.paths_on_track), mPathsVisible);
 	}
 
+	public void cleanTrack() {
+		mTrackDrawer.cleanTrack();
+	}
+
 }

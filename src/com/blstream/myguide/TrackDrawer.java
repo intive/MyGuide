@@ -28,7 +28,7 @@ public class TrackDrawer {
 	private static final int TRACK_PADDING = 60;
 
 	private Graph mGraph;
-	private Polyline mCurrentTruckPolyline;
+	private Polyline mCurrentTrackPolyline;
 	private ArrayList<Marker> mAnimalMarkers;
 	private ArrayList<Marker> mAnimalOnTrackMarkers;
 	private GoogleMap mMap;
@@ -62,26 +62,26 @@ public class TrackDrawer {
 			polylineOptions.add(position);
 		}
 
-		mCurrentTruckPolyline = mMap.addPolyline(polylineOptions);
-		mCurrentTruckPolyline.setVisible(pathsVisible);
+		mCurrentTrackPolyline = mMap.addPolyline(polylineOptions);
+		mCurrentTrackPolyline.setVisible(pathsVisible);
 		markAnimalsOnTrack(track, trackBoundsBuilder);
 
 		mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(trackBoundsBuilder.build(),
 				TRACK_PADDING));
-		return mCurrentTruckPolyline;
+		return mCurrentTrackPolyline;
 	}
 
 	/**
 	 * Remove track drawn before on the map.
 	 */
 	public void cleanTrack() {
-		if (mCurrentTruckPolyline != null) {
-			mCurrentTruckPolyline.remove();
+		if (mCurrentTrackPolyline != null) {
+			mCurrentTrackPolyline.remove();
 			for (Marker m : mAnimalOnTrackMarkers) {
 				m.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal));
 			}
-			for (Marker n : mAnimalMarkers) {
-				n.setAlpha(1.0f);
+			for (Marker m : mAnimalMarkers) {
+				m.setAlpha(1.0f);
 			}
 		}
 	}
@@ -111,12 +111,10 @@ public class TrackDrawer {
 		Animal currentAnimal;
 		while (iterator.hasNext()) {
 			currentAnimal = iterator.next();
-			path.addAll((ArrayList<Node>) mGraph.findPath(previousAnimal.getNode(),
-					currentAnimal.getNode()));
+			path.addAll(mGraph.findPath(previousAnimal.getNode(), currentAnimal.getNode()));
 			previousAnimal = currentAnimal;
 		}
-		path.addAll((ArrayList<Node>) mGraph
-				.findPath(previousAnimal.getNode(), track.getAnimals().get(0).getNode()));
+		path.addAll(mGraph.findPath(previousAnimal.getNode(), track.getAnimals().get(0).getNode()));
 		return path;
 	}
 }
