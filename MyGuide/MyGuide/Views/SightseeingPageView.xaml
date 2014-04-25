@@ -54,28 +54,35 @@
                         </maps:MapTileLayer.TileSources>
                     </maps:MapTileLayer>
 
-                    <maps:MapLayer x:Name="UserPositionLayer">
-                        <maps:Pushpin Location="{Binding UserPositionLocation, Mode=TwoWay}">
+                    <!--<maps:MapLayer x:Name="UserPositionLayer">
+                        <maps:Pushpin PositionOrigin="0.5,0.5" Location="{Binding UserPositionLocation, Mode=TwoWay}">
                             <maps:Pushpin.Template>
                                 <ControlTemplate>
-                                    <Grid Width="40" Height="40">
+                                    <Grid Width="100" Height="100">
+                                        <Border RenderTransformOrigin="0.5,0.5" Margin="0,0" Padding="0,0" UseLayoutRounding="False">
+                                            <Border.RenderTransform>
+                                                <RotateTransform  Angle="{Binding Path=HeadingAngle }" />
+                                            </Border.RenderTransform>
+                                            <Grid RenderTransformOrigin="0.5,0.5">
 
-                                        <Rectangle Width="24" Height="24" Fill="Black" RenderTransformOrigin="0.5,0.5">
-                                            <Rectangle.RenderTransform>
-                                                <CompositeTransform Rotation="45" />
-                                            </Rectangle.RenderTransform>
-                                        </Rectangle>
-                                        <Ellipse Width="18" Height="18" Fill="Red" />
-                                        <!--<Rectangle Fill="Black" Height="10" Width="20">
-                                            <Rectangle.RenderTransform>
-                                                <CompositeTransform Rotation="0" />
-                                            </Rectangle.RenderTransform>
-                                        </Rectangle>-->
+                                                <Rectangle Width="24" Height="24" Fill="Black" RenderTransformOrigin="0.5,0.5">
+                                                    <Rectangle.RenderTransform>
+                                                        <CompositeTransform Rotation="45" />
+                                                    </Rectangle.RenderTransform>
+                                                </Rectangle>
+                                                <Ellipse Width="18" Height="18" Fill="Red" />
+                                                <Rectangle Fill="Black" Height="10" Width="20">
+                                                    <Rectangle.RenderTransform>
+                                                        <CompositeTransform Rotation="90" TranslateX="15" TranslateY="-30" />
+                                                    </Rectangle.RenderTransform>
+                                                </Rectangle>
+                                            </Grid>
+                                        </Border>
                                     </Grid>
                                 </ControlTemplate>
                             </maps:Pushpin.Template>
                         </maps:Pushpin>
-                    </maps:MapLayer>
+                    </maps:MapLayer>-->
                 </maps:Map.Children>
             </maps:Map>
         </Grid>

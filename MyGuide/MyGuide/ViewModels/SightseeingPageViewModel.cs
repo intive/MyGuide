@@ -17,7 +17,7 @@ namespace MyGuide.ViewModels
 {
     public class SightseeingPageViewModel : ViewModelBase
     {
-        private string _test;
+        private double _headingAngle;
         private GeoCoordinate _userPositionLocation;
         private Compass compass;
         private Geolocator geolocator;
@@ -28,10 +28,10 @@ namespace MyGuide.ViewModels
         {
         }
 
-        public string Test
+        public double HeadingAngle
         {
-            get { return _test; }
-            set { _test = value; NotifyOfPropertyChange(() => Test); }
+            get { return _headingAngle; }
+            set { _headingAngle = value; NotifyOfPropertyChange(() => HeadingAngle); }
         }
 
         public GeoCoordinate UserPositionLocation
@@ -78,8 +78,16 @@ namespace MyGuide.ViewModels
 
         #region UserMarker
 
+        public override void OnNavigatedFrom(NavigationMode navigationMode)
+        {
+            geolocator.PositionChanged -= geolocator_PositionChanged;
+            compass.ReadingChanged -= compass_ReadingChanged;
+        }
+
         public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
         {
+            UserPositionLocation = new GeoCoordinate(51.104642, 17.073520);
+
             geolocator = new Geolocator();
             geolocator.MovementThreshold = 1;
             geolocator.DesiredAccuracy = PositionAccuracy.High;
@@ -97,15 +105,7 @@ namespace MyGuide.ViewModels
 
         private void compass_ReadingChanged(object sender, CompassReadingChangedEventArgs e)
         {
-            CompassReading reading = e.Reading;
-            Deployment.Current.Dispatcher.BeginInvoke(() =>
-            {
-                Test = String.Format("{0,5:0.00}", reading.HeadingMagneticNorth);
-                //if (reading.HeadingTrueNorth.HasValue)
-                //    MessageBox.Show(String.Format("{0,5:0.00}", reading.HeadingTrueNorth));
-                //else
-                //    MessageBox.Show("No reading.");
-            });
+            HeadingAngle = e.Reading.HeadingMagneticNorth;
         }
 
         private void geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
