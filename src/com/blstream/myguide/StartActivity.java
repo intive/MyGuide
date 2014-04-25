@@ -99,6 +99,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		super.onWindowFocusChanged(hasFocus);
 		if (hasFocus) {
 			showEnableGpsDialogIfNeeded();
+			LocationUpdater.getInstance().refreshGpsStatus();
 			if (LocationUpdater.getInstance().isGpsEnable()) {
 				LocationUpdater.getInstance().markGpsEnableDialogAsUnshown();
 				if (!mFarFromZooDialogWasShown && !mDistanceFromZooGuardIsBinding) {

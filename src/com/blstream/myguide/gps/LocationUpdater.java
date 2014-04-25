@@ -1,6 +1,7 @@
 package com.blstream.myguide.gps;
 
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 import android.content.Context;
 import android.location.Location;
@@ -34,6 +35,8 @@ public class LocationUpdater {
 	private LocationRequest mLocationRequest;
 	// List of listeners that bind to LocationUpdater
 	private CopyOnWriteArrayList<LocationUser> mLocationUsers;
+	// Set of listeners, which do not received location even once
+	private CopyOnWriteArraySet<LocationUser> mNewUsers;
 	// True, when at least one listener is bind to LocationUpdater
 	private boolean mRequestingForUpdates;
 	private boolean mGpsPopupWasShown;
@@ -44,6 +47,7 @@ public class LocationUpdater {
 		mRequestingForUpdates = false;
 		mGpsPopupWasShown = false;
 		mLocationUsers = new CopyOnWriteArrayList<LocationUser>();
+		mNewUsers = new CopyOnWriteArraySet<LocationUser>();
 		mLastLocation = new Location(LOG_TAG);
 		resetLastLocation();
 		mLocationClient = new LocationClient(mAppContext, mConnectionCallbacks,
@@ -108,6 +112,7 @@ public class LocationUpdater {
 		mLocationRequest = null;
 		resetLastLocation();
 		mLocationUsers.clear();
+		mNewUsers.clear();
 	}
 
 	/**
@@ -118,6 +123,7 @@ public class LocationUpdater {
 	 */
 	public void startUpdating(LocationUser user) {
 		mLocationUsers.add(user);
+		mNewUsers.add(user);
 		// called to avoid location update when new listener is binding
 		resetLastLocation();
 		if (!mRequestingForUpdates) {
@@ -165,9 +171,6 @@ public class LocationUpdater {
 					mLocationClient.requestLocationUpdates(mLocationRequest, mLocationListener);
 					mRequestingForUpdates = true;
 					mGpsPopupWasShown = false;
-					for (LocationUser e : mLocationUsers) {
-						e.onGpsAvailable();
-					}
 				} else {
 					notifyBinderAboutConnectionProblem();
 				}
@@ -202,6 +205,10 @@ public class LocationUpdater {
 			if (location.distanceTo(mLastLocation) > mMinDistanceToRegister) {
 				mLastLocation.setLatitude(location.getLatitude());
 				mLastLocation.setLongitude(location.getLongitude());
+				for (LocationUser e : mNewUsers) {
+					e.onGpsAvailable();
+					mNewUsers.remove(e);
+				}
 				for (LocationUser e : mLocationUsers) {
 					e.onLocationUpdate(location);
 				}
@@ -236,6 +243,19 @@ public class LocationUpdater {
 	private void notifyBinderAboutConnectionProblem() {
 		for (LocationUser e : mLocationUsers) {
 			e.onGpsUnavailable();
+			mNewUsers.add(e);
+		}
+	}
+
+	public void refreshGpsStatus() {
+		if (isGpsEnable()) {
+			requestUpdates();
+		} else {
+			notifyBinderAboutConnectionProblem();
+			if (mRequestingForUpdates) {
+				mLocationClient.removeLocationUpdates(mLocationListener);
+				mRequestingForUpdates = false;
+			}
 		}
 	}
 }
