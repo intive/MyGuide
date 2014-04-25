@@ -78,11 +78,11 @@ public class AnimalFinderHelper {
 				});
 			}
 		};
-		Thread calcuateDistances = new Thread(runnable);
-		calcuateDistances.start();
+		Thread calculateDistances = new Thread(runnable);
+		calculateDistances.start();
 
 		try {
-			calcuateDistances.join();
+			calculateDistances.join();
 		} catch (InterruptedException e) {
 			Log.e(LOG_TAG, e.getMessage());
 		}
