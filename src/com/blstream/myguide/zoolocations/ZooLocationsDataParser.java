@@ -38,6 +38,7 @@ public class ZooLocationsDataParser {
 	private ArrayList<Junction> mJunctions;
 	private ArrayList<Track> mTracks;
 	private ArrayList<Restaurant> mRestaurants;
+	private ArrayList<Event> mEvents;
 	private TicketsInformation mTicketInformation;
 	private AccessInformation mAccessInfo;
 
@@ -58,6 +59,7 @@ public class ZooLocationsDataParser {
 		mJunctions = new ArrayList<Junction>();
 		mTracks = new ArrayList<Track>();
 		mRestaurants = new ArrayList<Restaurant>();
+		mEvents = new ArrayList<Event>();
 		mTicketInformation = new TicketsInformation();
 		mWaysMap = new HashMap<Integer, Way>();
 		mAnimalsMap = new HashMap<Integer, Animal>();
@@ -75,6 +77,7 @@ public class ZooLocationsDataParser {
 		data.setJunctions(mJunctions);
 		data.setTracks(mTracks);
 		data.setRestaurants(mRestaurants);
+		data.setEvents(mEvents);
 		data.setTicketInformation(mTicketInformation);
 		data.setAccessInformation(mAccessInfo);
 
@@ -99,6 +102,8 @@ public class ZooLocationsDataParser {
 				readTracks(parser);
 			} else if ("gastronomy".equals(name)) {
 				readGastronomy(parser);
+			} else if ("events".equals(name)) {
+				readEvents(parser);
 			} else if ("tickets_information".equals(name)) {
 				readTicketsInformation(parser);
 			} else if ("access_information".equals(name)) {
@@ -446,6 +451,49 @@ public class ZooLocationsDataParser {
 		return animals;
 	}
 
+	private void readEvents(XmlPullParser parser) throws XmlPullParserException, IOException {
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("event".equals(name)) {
+				mEvents.add(readEvent(parser));
+			} else {
+				skip(parser);
+			}
+		}
+	}
+
+	private Event readEvent(XmlPullParser parser) throws XmlPullParserException,
+			IOException {
+		Event event = new Event();
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("name".equals(name)) {
+				event.setNames(readDictionary(parser));
+			} else if ("time".equals(name)) {
+				event.setTime(readText(parser));
+			} else if ("time_weekends".equals(name)) {
+				event.setTimeWeekends(readText(parser));
+			} else if ("time_christmas".equals(name)) {
+				event.setTimeHolidays(readText(parser));
+			} else if ("start".equals(name)) {
+				event.setStartDate(readText(parser));
+			} else if ("image".equals(name)) {
+				event.setImagePath(readText(parser));
+			} else {
+				skip(parser);
+			}
+		}
+
+		return event;
+	}
+
 	private void readAccessInformation(XmlPullParser parser) throws XmlPullParserException, IOException {
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -462,7 +510,6 @@ public class ZooLocationsDataParser {
 			}
 		}
 	}
-
 	private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
 		if (parser.getEventType() != XmlPullParser.START_TAG) { throw new IllegalStateException(); }
 		int depth = 1;
