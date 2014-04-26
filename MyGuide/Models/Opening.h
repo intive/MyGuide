@@ -13,4 +13,7 @@
 
 @property (nonatomic) NSMutableDictionary *hours;
 
+- (void) setWeekdaysHours: (NSString *) weekdaysHours;
+- (void) setWeekendsHours: (NSString *) weekendsHours;
+
 @end

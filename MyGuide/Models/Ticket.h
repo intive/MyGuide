@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, TicketKind) {
 
 @interface Ticket : Translatable
 
-@property (nonatomic) TicketKind *ticketKind;
-@property (nonatomic) NSNumber   *name;
+@property (nonatomic) TicketKind ticketKind;
+@property (nonatomic) NSNumber   *price;
 
 @end

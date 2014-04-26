@@ -27,10 +27,10 @@
         _website            = @"";
         _telephone          = @"";
         _address            = @"";
+        _trams              = @"";
         _openings           = @[];
         _tickets            = @[];
         _emails             = @[];
-        _trams              = @[];
         _ticketsInformation = [Translatable new];
         _parkingInformation = [Translatable new];
     }

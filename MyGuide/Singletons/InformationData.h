@@ -24,7 +24,7 @@
 @property (nonatomic) NSArray  *emails;
 
 # pragma mark - Access
-@property (nonatomic) NSArray      *trams;
+@property (nonatomic) NSString     *trams;
 @property (nonatomic) Translatable *parkingInformation;
 
 + (id) sharedParsedData;

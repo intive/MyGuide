@@ -46,4 +46,14 @@ didStartElement: (NSString *)     elementName
     return [aString stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
+{
+    NSDictionary *userInfo = parseError.userInfo;
+    NSNumber *lineNumber   = userInfo[@"NSXMLParserErrorLineNumber"];
+    NSNumber *errorColumn  = userInfo[@"NSXMLParserErrorColumn"];
+    NSString *errorMessage = userInfo[@"NSXMLParserErrorMessage"];
+    
+    NSLog(@"Error occured in line %@ and column %@\nWith message: %@", lineNumber, errorColumn, errorMessage);
+}
+
 @end
