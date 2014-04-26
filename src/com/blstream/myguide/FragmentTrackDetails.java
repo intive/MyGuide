@@ -27,16 +27,11 @@ public class FragmentTrackDetails extends Fragment {
 	private Track mTrack;
 	private View mRootView;
 
-	public static FragmentTrackDetails newInstance() {
-		return new FragmentTrackDetails();
-	}
-
 	public static FragmentTrackDetails newInstance(Track track) {
 		FragmentTrackDetails fragmentTrack = new FragmentTrackDetails();
 
 		Bundle bundle = new Bundle();
 		bundle.putSerializable(BundleConstants.SELECTED_TRACK, track);
-		bundle.putSerializable(BundleConstants.TAB_TITLE, track.getName());
 		fragmentTrack.setArguments(bundle);
 
 		return fragmentTrack;
@@ -45,8 +40,8 @@ public class FragmentTrackDetails extends Fragment {
 	private void getArgs() {
 		Bundle args = getArguments();
 		if (args != null) {
-			mTitle = (String) args.getCharSequence(BundleConstants.TAB_TITLE);
 			mTrack = (Track) args.getSerializable(BundleConstants.SELECTED_TRACK);
+			mTitle = mTrack.getName();
 		}
 	}
 
@@ -77,18 +72,12 @@ public class FragmentTrackDetails extends Fragment {
 		TextView txtvTrackDescription = (TextView) mRootView
 				.findViewById(R.id.txtvTrackDetailsDescription);
 
-		// example to add animals to description
-		String trackAnimals = "";
-		for (Animal animal : mTrack.getAnimals()) {
-			trackAnimals += animal.getName() + ", ";
-		}
-
 		imgvTrackDetails.setImageResource(getResources().getIdentifier(
 				mTrack.getImage().substring(4), "drawable", getActivity().getPackageName()));
 		txtvTrackProgress.setText(1 + "/" + mTrack.getAnimals().size());
 		pbTrackDetails.setProgress(1);
 		pbTrackDetails.setMax(mTrack.getAnimals().size());
-		txtvTrackDescription.setText(trackAnimals + mTrack.getDescription() + "");
+		txtvTrackDescription.setText(mTrack.getDescription() + "");
 	}
 
 	@Override
@@ -105,7 +94,8 @@ public class FragmentTrackDetails extends Fragment {
 		itemStart.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 			@Override
 			public boolean onMenuItemClick(MenuItem menuItem) {
-				FragmentHelper.swapFragment(R.id.flFragmentHolder, new SightseeingFragment(),
+				FragmentHelper.swapFragment(R.id.flFragmentHolder,
+						SightseeingFragment.newInstance(mTrack),
 						getActivity().getSupportFragmentManager(),
 						BundleConstants.FRAGMENT_SIGHTSEEING);
 				return true;

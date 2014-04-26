@@ -65,7 +65,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		if (savedInstanceState == null) {
 			mFragmentManager = getSupportFragmentManager();
 			// The main Fragment
-			Fragment fragment = new SightseeingFragment();
+			Fragment fragment = SightseeingFragment.newInstance();
 
 			FragmentHelper.initFragment(R.id.flFragmentHolder, fragment,
 					getSupportFragmentManager(), BundleConstants.FRAGMENT_SIGHTSEEING);
