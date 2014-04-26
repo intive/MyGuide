@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AbstractParser.h"
 
-@interface InformationParser : NSObject <NSXMLParserDelegate>
-
-- (void) parse;
+@interface InformationParser : AbstractParser
 
 @end

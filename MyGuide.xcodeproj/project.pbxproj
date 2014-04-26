@@ -16,6 +16,7 @@
 		0524326C190B9B5A00FC3242 /* Opening.m in Sources */ = {isa = PBXBuildFile; fileRef = 0524326B190B9B5A00FC3242 /* Opening.m */; };
 		0524326F190B9B6E00FC3242 /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0524326E190B9B6E00FC3242 /* Ticket.m */; };
 		05243272190B9DC500FC3242 /* InformationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05243271190B9DC500FC3242 /* InformationData.m */; };
+		05243275190BB52100FC3242 /* AbstractParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05243274190BB52100FC3242 /* AbstractParser.m */; };
 		0531724118F4A5B500FEC79F /* DetailsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0531724018F4A5B500FEC79F /* DetailsMapViewController.m */; };
 		0533DF0118DE1520001BCB28 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFE18DE1520001BCB28 /* menu.png */; };
 		0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFF18DE1520001BCB28 /* menu@2x.png */; };
@@ -108,6 +109,8 @@
 		0524326E190B9B6E00FC3242 /* Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ticket.m; sourceTree = "<group>"; };
 		05243270190B9DC500FC3242 /* InformationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationData.h; sourceTree = "<group>"; };
 		05243271190B9DC500FC3242 /* InformationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationData.m; sourceTree = "<group>"; };
+		05243273190BB52100FC3242 /* AbstractParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractParser.h; sourceTree = "<group>"; };
+		05243274190BB52100FC3242 /* AbstractParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractParser.m; sourceTree = "<group>"; };
 		0531723F18F4A5B500FEC79F /* DetailsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsMapViewController.h; sourceTree = "<group>"; };
 		0531724018F4A5B500FEC79F /* DetailsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsMapViewController.m; sourceTree = "<group>"; };
 		0533DEFE18DE1520001BCB28 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
@@ -520,6 +523,8 @@
 				05A1C13018FAB125008FE0CB /* HistoryParser.m */,
 				050E852E190B9A3A00B13473 /* InformationParser.h */,
 				050E852F190B9A3A00B13473 /* InformationParser.m */,
+				05243273190BB52100FC3242 /* AbstractParser.h */,
+				05243274190BB52100FC3242 /* AbstractParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -725,6 +730,7 @@
 				05A1C15018FAC7F2008FE0CB /* UIBubbleHeaderTableViewCell.m in Sources */,
 				0524326C190B9B5A00FC3242 /* Opening.m in Sources */,
 				050E8530190B9A3A00B13473 /* InformationParser.m in Sources */,
+				05243275190BB52100FC3242 /* AbstractParser.m in Sources */,
 				0524326F190B9B6E00FC3242 /* Ticket.m in Sources */,
 				8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */,
 				05406E3F18F2EE1A001656FC /* GastronomyParser.m in Sources */,
