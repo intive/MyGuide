@@ -8,15 +8,6 @@
 
 #import "GastronomyDetailsViewController.h"
 #import "GastronomyDetailsMenuTableViewController.h"
-#import "GastronomyDetailsInfoViewController.h"
-#import "DetailsMapViewController.h"
-
-@interface GastronomyDetailsViewController ()
-
-@property (strong, nonatomic) GastronomyDetailsInfoViewController *firstViewController;
-@property (strong, nonatomic) GastronomyDetailsMenuTableViewController *lastViewController;
-
-@end
 
 @implementation GastronomyDetailsViewController
 

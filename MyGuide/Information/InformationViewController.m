@@ -10,19 +10,12 @@
 #import "TicketsViewController.h"
 #import "ContactViewController.h"
 
-@interface InformationViewController ()
-
-@property (nonatomic) TicketsViewController *firstViewController;
-@property (nonatomic) ContactViewController *lastViewController;
-
-@end
-
 @implementation InformationViewController
 
 - (void) invalidateViewControllers
 {
-    [self prepareFirstViewController:  @"TicketsViewController"];
-    [self prepareSecondViewController: @"ContactViewController"];
+    [self prepareFirstViewController:  @"ticketsViewController"];
+    [self prepareSecondViewController: @"contactViewController"];
 }
 
 - (void) viewWillAppear: (BOOL)animated

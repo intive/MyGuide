@@ -1,0 +1,50 @@
+/* Class = "IBUILabel"; text = "Information"; ObjectID = "8iY-Gy-ZWe"; */
+"8iY-Gy-ZWe.text" = "Informacje";
+
+/* Class = "IBUILabel"; text = "Events"; ObjectID = "Qan-C1-De1"; */
+"Qan-C1-De1.text" = "Wydarzenia";
+
+/* Class = "IBUISearchBar"; placeholder = "Search for animal"; ObjectID = "VzT-e2-UZs"; */
+"VzT-e2-UZs.placeholder" = "Szukaj zwierzęcia";
+
+/* Class = "IBUILabel"; text = "Preferences"; ObjectID = "XwW-SR-asb"; */
+"XwW-SR-asb.text" = "Ustawienia";
+
+/* Class = "IBUILabel"; text = "Map"; ObjectID = "bJF-YD-tQ1"; */
+"bJF-YD-tQ1.text" = "Mapa";
+
+/* Class = "IBUITabBarItem"; title = "Explore"; ObjectID = "dfN-EF-0Uk"; */
+"dfN-EF-0Uk.title" = "Odkrywaj";
+
+/* Class = "IBUISegmentedControl"; iSu-gc-aO2.segmentTitles[0] = "About"; ObjectID = "iSu-gc-aO2"; */
+"iSu-gc-aO2.segmentTitles[0]" = "Informacje";
+
+/* Class = "IBUISegmentedControl"; iSu-gc-aO2.segmentTitles[1] = "For Kids"; ObjectID = "iSu-gc-aO2"; */
+"iSu-gc-aO2.segmentTitles[1]" = "Dla dzieci";
+
+/* Class = "IBUISegmentedControl"; iSu-gc-aO2.segmentTitles[2] = "Map"; ObjectID = "iSu-gc-aO2"; */
+"iSu-gc-aO2.segmentTitles[2]" = "Mapa";
+
+/* Class = "IBUILabel"; text = "Animals"; ObjectID = "pVK-nv-tKx"; */
+"pVK-nv-tKx.text" = "Zwierzęta";
+
+/* Class = "IBUILabel"; text = "Gastronomy"; ObjectID = "riI-KU-vmk"; */
+"riI-KU-vmk.text" = "Gastronomia";
+
+/* Class = "IBUILabel"; text = "History"; ObjectID = "tsL-ae-7Gr"; */
+"tsL-ae-7Gr.text" = "Historia";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "yIf-F5-yY5"; */
+"yIf-F5-yY5.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUITextView"; text = "EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS "; ObjectID = "yoO-jN-vOU"; */
+"yoO-jN-vOU.text" = "WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA";
+
+/* Class = "IBUISegmentedControl"; DS1-xr-SEf.segmentTitles[0] = "Information"; ObjectID = "DS1-xr-SEf"; */
+"DS1-xr-SEf.segmentTitles[0]" = "Informacje";
+
+/* Class = "IBUISegmentedControl"; DS1-xr-SEf.segmentTitles[1] = "Menu"; ObjectID = "DS1-xr-SEf"; */
+"DS1-xr-SEf.segmentTitles[1]" = "Menu";
+
+/* Class = "IBUISegmentedControl"; DS1-xr-SEf.segmentTitles[2] = "Map"; ObjectID = "DS1-xr-SEf"; */
+"DS1-xr-SEf.segmentTitles[2]" = "Mapa";

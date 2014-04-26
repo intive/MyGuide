@@ -110,7 +110,7 @@ double const ZOOM_LEVEL = 15;
         [self.mapView addOverlay: [route polyline]];
         
         NSLog(@"Total Distance (in Meters) : %.0f", route.distance);
-        NSLog(@"Total Steps : %d",[steps count]);
+        NSLog(@"Total Steps : %lu",(unsigned long)[steps count]);
         
         [steps enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
             NSLog(@"Route Instruction : %@",[obj instructions]);
