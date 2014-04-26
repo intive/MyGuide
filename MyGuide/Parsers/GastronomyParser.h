@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AbstractParser.h"
 
-@interface GastronomyParser : NSObject <NSXMLParserDelegate>
-
-- (void) parse;
+@interface GastronomyParser : AbstractParser
 
 @end
