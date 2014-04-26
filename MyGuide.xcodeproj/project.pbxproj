@@ -41,6 +41,9 @@
 		05A1C15118FAC7F2008FE0CB /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14A18FAC7F2008FE0CB /* UIBubbleTableView.m */; };
 		05A1C15218FAC7F2008FE0CB /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14C18FAC7F2008FE0CB /* UIBubbleTableViewCell.m */; };
 		05A1C15518FACB3E008FE0CB /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C15418FACB3E008FE0CB /* HistoryViewController.m */; };
+		05C335E8190C02DB000B705B /* info_contact_address.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C335E5190C02DB000B705B /* info_contact_address.png */; };
+		05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C335E6190C02DB000B705B /* info_contact_phone.png */; };
+		05C335EA190C02DB000B705B /* info_contact_url.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C335E7190C02DB000B705B /* info_contact_url.png */; };
 		05C925D318DDAFAD00C2F746 /* GPS.md in Resources */ = {isa = PBXBuildFile; fileRef = 05C925D218DDAFAD00C2F746 /* GPS.md */; };
 		05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C9265818DDDF1800C2F746 /* LocationManager.m */; };
 		05CD409918DF6FD60065C04F /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CD409818DF6FD60065C04F /* MapViewController.m */; };
@@ -136,7 +139,6 @@
 		055452C519025B570021884C /* SegmentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedViewController.m; sourceTree = "<group>"; };
 		055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalsListViewController.h; sourceTree = "<group>"; };
 		055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalsListViewController.m; sourceTree = "<group>"; };
-		057F9EC618E7760A001DE63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		05A1C12718FAABD3008FE0CB /* history.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = history.xml; path = "XML files/history.xml"; sourceTree = "<group>"; };
 		05A1C12918FAAF9D008FE0CB /* HistoryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryEvent.h; sourceTree = "<group>"; };
 		05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryEvent.m; sourceTree = "<group>"; };
@@ -157,8 +159,12 @@
 		05A1C14D18FAC7F2008FE0CB /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
 		05A1C15318FACB3E008FE0CB /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		05A1C15418FACB3E008FE0CB /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
-		05C335DE190BFBA9000B705B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		05C335DF190BFBAC000B705B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
+		05C335E2190BFFAE000B705B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		05C335E3190BFFB6000B705B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		05C335E4190BFFBB000B705B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
+		05C335E5190C02DB000B705B /* info_contact_address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_address.png; sourceTree = "<group>"; };
+		05C335E6190C02DB000B705B /* info_contact_phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_phone.png; sourceTree = "<group>"; };
+		05C335E7190C02DB000B705B /* info_contact_url.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_url.png; sourceTree = "<group>"; };
 		05C925D218DDAFAD00C2F746 /* GPS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GPS.md; sourceTree = "<group>"; };
 		05C9265718DDDF1800C2F746 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		05C9265818DDDF1800C2F746 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
@@ -321,6 +327,9 @@
 			isa = PBXGroup;
 			children = (
 				0533DEFE18DE1520001BCB28 /* menu.png */,
+				05C335E5190C02DB000B705B /* info_contact_address.png */,
+				05C335E6190C02DB000B705B /* info_contact_phone.png */,
+				05C335E7190C02DB000B705B /* info_contact_url.png */,
 				0533DEFF18DE1520001BCB28 /* menu@2x.png */,
 			);
 			path = Images;
@@ -647,9 +656,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05C335EA190C02DB000B705B /* info_contact_url.png in Resources */,
 				05C925D318DDAFAD00C2F746 /* GPS.md in Resources */,
+				05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */,
 				050E852D190B94CE00B13473 /* information.xml in Resources */,
 				3DE69DA918C7B83400B54509 /* Localizable.strings in Resources */,
+				05C335E8190C02DB000B705B /* info_contact_address.png in Resources */,
 				05A1C12818FAABD3008FE0CB /* history.xml in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				0533DF0118DE1520001BCB28 /* menu.png in Resources */,
@@ -778,9 +790,9 @@
 		3D5EF61A189637C000233B64 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				057F9EC618E7760A001DE63B /* Base */,
-				05C335DE190BFBA9000B705B /* en */,
-				05C335DF190BFBAC000B705B /* pl */,
+				05C335E2190BFFAE000B705B /* Base */,
+				05C335E3190BFFB6000B705B /* en */,
+				05C335E4190BFFBB000B705B /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
