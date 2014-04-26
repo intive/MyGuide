@@ -42,6 +42,10 @@
 				</hours>
 			</opening>
 		</openings>
+        <opening_information>
+            <en>ZOO Wroclaw Sp. z o.o. is open all year round with no exceptions, seven days a week, every day of the year, including Sundays and holidays.</en>
+            <pl>ZOO Wrocław Sp. z o.o. jest czynne przez cały rok bez najmniejszych wyjątków, we wszystkie dni tygodnia, roku, niedziele i święta.</pl>
+        </opening_information>
         
 		<website>http://www.zoo.wroclaw.pl/</website>
 		<emails>

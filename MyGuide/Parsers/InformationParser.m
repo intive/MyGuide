@@ -26,11 +26,13 @@ static NSString *kXmlTrams      = @"trams";
 
 static NSString *kXmlParkingsInformation = @"parkings_information";
 static NSString *kXmlTicketsInformation  = @"information";
+static NSString *kXmlOpeningInformation  = @"opening_information";
 
 @interface InformationParser ()
 
 @property (nonatomic) BOOL insideTicketsInformation;
 @property (nonatomic) BOOL insideParkingsInformation;
+@property (nonatomic) BOOL insideOpeningInformation;
 @property (nonatomic) BOOL insideOpening;
 @property (nonatomic) BOOL insideTicket;
 @property (nonatomic) BOOL insideIndividual;
@@ -40,6 +42,7 @@ static NSString *kXmlTicketsInformation  = @"information";
 @property (nonatomic) Ticket  *currentTicket;
 @property (nonatomic) Translatable *currentTicketsInformation;
 @property (nonatomic) Translatable *currentParkingsInformation;
+@property (nonatomic) Translatable *currentOpeningInformation;
 
 @property (nonatomic) NSMutableArray  *openings;
 @property (nonatomic) NSMutableArray  *tickets;
@@ -100,6 +103,10 @@ didStartElement: (NSString *)     elementName
         self.insideTicketsInformation = YES;
         self.currentTicketsInformation = [Translatable new];
     }
+    else if ([elementName isEqualToString: kXmlOpeningInformation]) {
+        self.insideOpeningInformation = YES;
+        self.currentOpeningInformation = [Translatable new];
+    }
 }
 
 - (void) parser: (NSXMLParser *) parser
@@ -130,6 +137,9 @@ didStartElement: (NSString *)     elementName
     else if ([elementName isEqualToString: kXmlTicketsInformation]) {
         self.insideTicketsInformation = NO;
     }
+    else if ([elementName isEqualToString: kXmlOpeningInformation]) {
+        self.insideOpeningInformation = NO;
+    }
     else if ([elementName isEqualToString: kXmlWeekdays]) {
         [self.currentOpening setWeekdaysHours: self.currentElement];
     }
@@ -152,6 +162,12 @@ didStartElement: (NSString *)     elementName
         else if (self.insideParkingsInformation) {
             [self.currentParkingsInformation setName: self.currentElement withLanguage: elementName];
         }
+        else if (self.insideParkingsInformation) {
+            [self.currentParkingsInformation setName: self.currentElement withLanguage: elementName];
+        }
+        else if (self.insideOpeningInformation) {
+            [self.currentOpeningInformation setName: self.currentElement withLanguage: elementName];
+        }
     }
     else if ([elementName isEqualToString: kXmlTrams]) {
         [self.sharedParsedData setTrams: self.currentElement];
@@ -173,6 +189,7 @@ didStartElement: (NSString *)     elementName
     
     [self.sharedParsedData setTicketsInformation: self.currentTicketsInformation];
     [self.sharedParsedData setParkingInformation: self.currentParkingsInformation];
+    [self.sharedParsedData setOpeningInformation: self.currentOpeningInformation];
     
     [self.sharedParsedData setOpenings: self.openings];
     [self.sharedParsedData setTickets:  self.tickets];

@@ -434,6 +434,7 @@
                         <outlet property="labelPhone" destination="b2d-sH-XRj" id="bKg-Bl-XaO"/>
                         <outlet property="labelWebsite" destination="jzy-YY-aJo" id="3o0-zs-xkR"/>
                         <outlet property="tableViewHours" destination="ykH-c5-xwy" id="pgr-4A-JCI"/>
+                        <outlet property="textViewOpeningInformation" destination="udF-BE-BMC" id="bym-ws-1jj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eit-LN-pIW" userLabel="First Responder" sceneMemberID="firstResponder"/>

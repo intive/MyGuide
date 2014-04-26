@@ -82,3 +82,30 @@
 
 /* Class = "IBUITextView"; text = "WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA"; ObjectID = "yoO-jN-vOU"; */
 "yoO-jN-vOU.text" = "WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA WYDARZENIA";
+
+/* Class = "IBUITextView"; text = "ZOO Wroclaw Sp. z o.o. is open all year round with no exceptions, seven days a week, every day of the year, including Sundays and holidays."; ObjectID = "udF-BE-BMC"; */
+"udF-BE-BMC.text" = "ZOO Wrocław Sp. z o.o. jest czynne przez cały rok bez najmniejszych wyjątków, we wszystkie dni tygodnia, roku, niedziele i święta.";
+
+/* Class = "IBUILabel"; text = "Mon - Fri"; ObjectID = "3jc-G4-av9"; */
+"3jc-G4-av9.text" = "pon - pt";
+
+/* Class = "IBUILabel"; text = "weekends and holidays"; ObjectID = "8Gx-2a-Rfp"; */
+"8Gx-2a-Rfp.text" = "weekendy i święta";
+
+/* Class = "IBUILabel"; text = "Sightseeing hours"; ObjectID = "wTM-gH-Efv"; */
+"wTM-gH-Efv.text" = "Godziny zwiedzania";
+
+/* Class = "IBUILabel"; text = "ZOO open hours"; ObjectID = "utq-Xi-NNU"; */
+"utq-Xi-NNU.text" = "Godziny otwarcia ZOO";
+
+/* Class = "IBUISegmentedControl"; Oqy-au-1t4.segmentTitles[0] = "Tickets"; ObjectID = "Oqy-au-1t4"; */
+"Oqy-au-1t4.segmentTitles[0]" = "Bilety";
+
+/* Class = "IBUISegmentedControl"; Oqy-au-1t4.segmentTitles[1] = "Contact"; ObjectID = "Oqy-au-1t4"; */
+"Oqy-au-1t4.segmentTitles[1]" = "Kontakt";
+
+/* Class = "IBUISegmentedControl"; Oqy-au-1t4.segmentTitles[2] = "Commute"; ObjectID = "Oqy-au-1t4"; */
+"Oqy-au-1t4.segmentTitles[2]" = "Dojazd";
+
+/* Class = "IBUILabel"; text = "Contact"; ObjectID = "xEu-oS-KYY"; */
+"xEu-oS-KYY.text" = "Kontakt";

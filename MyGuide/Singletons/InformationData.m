@@ -33,6 +33,7 @@
         _emails             = @[];
         _ticketsInformation = [Translatable new];
         _parkingInformation = [Translatable new];
+        _openingInformation = [Translatable new];
     }
     return self;
 }

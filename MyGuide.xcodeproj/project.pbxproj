@@ -139,6 +139,7 @@
 		055452C519025B570021884C /* SegmentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedViewController.m; sourceTree = "<group>"; };
 		055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalsListViewController.h; sourceTree = "<group>"; };
 		055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalsListViewController.m; sourceTree = "<group>"; };
+		0566C5FB190C497800F0C7CE /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		05A1C12718FAABD3008FE0CB /* history.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = history.xml; path = "XML files/history.xml"; sourceTree = "<group>"; };
 		05A1C12918FAAF9D008FE0CB /* HistoryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryEvent.h; sourceTree = "<group>"; };
 		05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryEvent.m; sourceTree = "<group>"; };
@@ -160,8 +161,6 @@
 		05A1C15318FACB3E008FE0CB /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		05A1C15418FACB3E008FE0CB /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		05C335E2190BFFAE000B705B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		05C335E3190BFFB6000B705B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		05C335E4190BFFBB000B705B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		05C335E5190C02DB000B705B /* info_contact_address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_address.png; sourceTree = "<group>"; };
 		05C335E6190C02DB000B705B /* info_contact_phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_phone.png; sourceTree = "<group>"; };
 		05C335E7190C02DB000B705B /* info_contact_url.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_url.png; sourceTree = "<group>"; };
@@ -791,8 +790,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				05C335E2190BFFAE000B705B /* Base */,
-				05C335E3190BFFB6000B705B /* en */,
-				05C335E4190BFFBB000B705B /* pl */,
+				0566C5FB190C497800F0C7CE /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -916,6 +914,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/Frameworks/OCMock",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;

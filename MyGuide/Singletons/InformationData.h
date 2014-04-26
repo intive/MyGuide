@@ -11,7 +11,9 @@
 
 @interface InformationData : NSObject
 
-@property (nonatomic) NSArray *openings;
+#pragma mark - Openings
+@property (nonatomic) NSArray      *openings;
+@property (nonatomic) Translatable *openingInformation;
 
 #pragma mark - Tickets
 @property (nonatomic) NSArray      *tickets;

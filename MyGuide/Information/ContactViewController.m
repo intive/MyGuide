@@ -39,6 +39,7 @@
     self.openingHours = self.informationData.openings;
     self.tableViewHours.dataSource = self;
     self.tableViewHours.delegate   = self;
+    self.textViewOpeningInformation.text = [self.informationData.openingInformation getName];
 }
 
 - (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section
