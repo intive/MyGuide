@@ -43,6 +43,7 @@
     <string-array name="nav_drawer_items">
         <item name="map">Mapa</item>
         <item name="animals">Zwierzęta</item>
+        <item name="events">Wydarzenia</item>
         <item name="information">Informacja</item>
         <item name="history">Historia</item>
         <item name="gastronomy">Gastronomia</item>
