@@ -157,7 +157,8 @@ didStartElement: (NSString *)     elementName
         [self.sharedParsedData setTrams: self.currentElement];
     }
     else if ([elementName isEqualToString: kXmlAddress]) {
-        [self.sharedParsedData setAddress: self.currentElement];
+        NSString *address = [self.currentElement stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];
+        [self.sharedParsedData setAddress: address];
     }
     else if ([elementName isEqualToString: kXmlPhone]) {
         [self.sharedParsedData setTelephone: self.currentElement];
