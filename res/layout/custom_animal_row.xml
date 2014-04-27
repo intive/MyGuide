@@ -41,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/txtvAnimalName"
+            android:layout_toLeftOf="@+id/txtvAnimalDistance"
             android:text="@string/placeholder_fact" />
 
     </RelativeLayout>

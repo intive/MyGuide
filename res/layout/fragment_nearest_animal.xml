@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/txtvClosestAnimalName"
             android:layout_below="@+id/txtvClosestAnimalName"
+            android:layout_toLeftOf="@+id/txtvClosestAnimalDistance"
             android:text="@string/placeholder_fact"
             android:textColor="@color/main_text"
             android:textSize="@dimen/Item_text_size" />
