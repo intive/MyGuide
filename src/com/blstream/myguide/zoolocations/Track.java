@@ -1,10 +1,11 @@
 
 package com.blstream.myguide.zoolocations;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.ArrayList;
 
-public class Track {
+public class Track implements Serializable {
 
 	private String mImage;
 	private HashMap<String, String> mNames;

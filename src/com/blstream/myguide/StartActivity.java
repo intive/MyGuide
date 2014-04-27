@@ -32,6 +32,9 @@ import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.zoolocations.Track;
 import com.google.android.gms.maps.SupportMapFragment;
 
+import com.blstream.myguide.zoolocations.*;
+import java.util.ArrayList;
+
 /**
  * Created by Piotrek on 2014-04-01. Fixed by Angieszka (fragment swap) on
  * 2014-04-04.
@@ -62,7 +65,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		if (savedInstanceState == null) {
 			mFragmentManager = getSupportFragmentManager();
 			// The main Fragment
-			Fragment fragment = new SightseeingFragment();
+			Fragment fragment = SightseeingFragment.newInstance();
 
 			FragmentHelper.initFragment(R.id.flFragmentHolder, fragment,
 					getSupportFragmentManager(), BundleConstants.FRAGMENT_SIGHTSEEING);
@@ -99,6 +102,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		super.onWindowFocusChanged(hasFocus);
 		if (hasFocus) {
 			showEnableGpsDialogIfNeeded();
+			LocationUpdater.getInstance().refreshGpsStatus();
 			if (LocationUpdater.getInstance().isGpsEnable()) {
 				LocationUpdater.getInstance().markGpsEnableDialogAsUnshown();
 				if (!mFarFromZooDialogWasShown && !mDistanceFromZooGuardIsBinding) {
@@ -168,12 +172,11 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 						});
 					}
 				}.start();
-				// TODO swap fragments etc. etc.
-				Toast.makeText(
-						StartActivity.this,
-						"track: "
-								+ ((MyGuideApp) getApplication()).getZooData().getTracks()
-										.get(position - 1).getName(), Toast.LENGTH_SHORT).show();
+
+				setNextFragment(
+						FragmentTrackDetails.newInstance(((MyGuideApp) getApplication())
+								.getZooData().getTracks()
+								.get(position - 1)), "track");
 			}
 		});
 
