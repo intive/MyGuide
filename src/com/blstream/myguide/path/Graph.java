@@ -4,7 +4,7 @@ package com.blstream.myguide.path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.PriorityQueue;
+//import java.util.PriorityQueue;
 
 import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.Node;
@@ -203,11 +203,12 @@ public class Graph {
 		start.setWeight(0);
 		start.setPredecessor(null);
 
-		PriorityQueue<Vertex> queue = new PriorityQueue<Vertex>();
-		queue.add(start);
-
+		Heap heap = new Heap(mVertices.size());
+		for (Vertex v : mVertices) {
+			heap.add(v);
+		}
 		while (true) {
-			Vertex u = queue.poll();
+			Vertex u = heap.poll();
 			if (u == null || u == end) {
 				break;
 			}
@@ -216,11 +217,10 @@ public class Graph {
 				if (v == u) {
 					v = e.getVertex2();
 				}
-				if (u.getWeight() + e.getLength() < v.getWeight()
-						|| v.getWeight() == Graph.INFINITY) {
+				if (u.getWeight() + e.getLength() < v.getWeight() || v.getWeight() == Graph.INFINITY) {
 					v.setWeight(u.getWeight() + e.getLength());
 					v.setPredecessor(u);
-					queue.add(v);
+					heap.repairUp(v.getHeapIndex());
 				}
 			}
 		}
