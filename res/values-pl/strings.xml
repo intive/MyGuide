@@ -79,4 +79,16 @@
 
     <string name="gastronomy_list_title">Gastronomia</string>
 
+	<!-- Information tabs name -->
+	<string-array name="information_tabs_name">
+		<item name="tickets">Bilety</item>
+		<item name="getthere">Dojazd</item>
+		<item name="contact">Kontakt</item>
+	</string-array>
+	
+	<string name="ticket_individual">Bilety indywidualne</string>
+	<string name="ticket_group">Bilety grupowe</string>
+	<string name="ticket_info">Informacje</string>
+
 </resources>
+
