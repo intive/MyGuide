@@ -74,8 +74,7 @@ public class TrackDrawer {
 				mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(trackBoundsBuilder.build(),
 						TRACK_PADDING));
 				// Remove listener to prevent position reset on camera move.
-				mMap.setOnCameraChangeListener(null
-						);
+				mMap.setOnCameraChangeListener(null);
 			}
 		});
 
