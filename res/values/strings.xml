@@ -75,6 +75,7 @@
 
     <!-- Track list -->
     <string name="exploration">Exploration</string>
+    <string name="start_track">START</string>
 
     <!-- Gastronomy Item List -->
     <string name="menu_item_list">Menu:</string>
