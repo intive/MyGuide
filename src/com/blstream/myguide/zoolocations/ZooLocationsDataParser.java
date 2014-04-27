@@ -9,10 +9,13 @@ import java.util.HashMap;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.util.Log;
 import android.util.Xml;
 
 /** Class containing function parsing xml file and messages for exceptions. */
 public class ZooLocationsDataParser {
+
+	private static final String LOG_TAG = ZooLocationsDataParser.class.getSimpleName();
 
 	public static class WayNotFoundException extends XmlPullParserException {
 
@@ -35,6 +38,7 @@ public class ZooLocationsDataParser {
 	private ArrayList<Junction> mJunctions;
 	private ArrayList<Track> mTracks;
 	private ArrayList<Restaurant> mRestaurants;
+	private TicketsInformation mTicketInformation;
 	private AccessInformation mAccessInfo;
 
 	private HashMap<Integer, Way> mWaysMap;
@@ -54,6 +58,7 @@ public class ZooLocationsDataParser {
 		mJunctions = new ArrayList<Junction>();
 		mTracks = new ArrayList<Track>();
 		mRestaurants = new ArrayList<Restaurant>();
+		mTicketInformation = new TicketsInformation();
 		mWaysMap = new HashMap<Integer, Way>();
 		mAnimalsMap = new HashMap<Integer, Animal>();
 		mAccessInfo = new AccessInformation();
@@ -70,7 +75,9 @@ public class ZooLocationsDataParser {
 		data.setJunctions(mJunctions);
 		data.setTracks(mTracks);
 		data.setRestaurants(mRestaurants);
+		data.setTicketInformation(mTicketInformation);
 		data.setAccessInformation(mAccessInfo);
+
 		return data;
 	}
 
@@ -92,6 +99,8 @@ public class ZooLocationsDataParser {
 				readTracks(parser);
 			} else if ("gastronomy".equals(name)) {
 				readGastronomy(parser);
+			} else if ("tickets_information".equals(name)) {
+				readTicketsInformation(parser);
 			} else if ("access_information".equals(name)) {
 				readAccessInformation(parser);
 			} else {
@@ -467,6 +476,72 @@ public class ZooLocationsDataParser {
 					break;
 			}
 		}
+	}
+
+	private void readTicketsInformation(XmlPullParser parser) throws XmlPullParserException,
+			IOException {
+		ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+		HashMap<String, String> information = new HashMap<String, String>();
+
+		// using mTickets
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) continue;
+
+			String name = parser.getName();
+			if ("individual".equals(name)) {
+				tickets.addAll(readTicketSet(Ticket.Type.INDIVIDUAL, parser));
+			} else if ("group".equals(name)) {
+				tickets.addAll(readTicketSet(Ticket.Type.GROUP, parser));
+			} else if ("information".equals(name)) {
+				information = readDictionary(parser);
+			} else {
+				skip(parser);
+			}
+		}
+
+		mTicketInformation
+				.setTickets(tickets)
+				.setInformation(information);
+	}
+
+	private ArrayList<Ticket> readTicketSet(Ticket.Type ticketType, XmlPullParser parser)
+			throws XmlPullParserException, IOException {
+		ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) continue;
+
+			String name = parser.getName();
+			if ("ticket".equals(name)) {
+				tickets.add(readTicket(ticketType, parser));
+			} else {
+				skip(parser);
+			}
+		}
+
+		return tickets;
+	}
+
+	private Ticket readTicket(Ticket.Type ticketType, XmlPullParser parser)
+			throws XmlPullParserException, IOException {
+		Ticket ticket = new Ticket(ticketType);
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) continue;
+
+			String name = parser.getName();
+			if ("description".equals(name)) {
+				HashMap<String, String> dict = readDictionary(parser);
+				ticket.setDescriptionDictionary(dict);
+			} else if ("price".equals(name)) {
+				String text = readText(parser);
+				ticket.setPrice(Integer.parseInt(text));
+			} else {
+				skip(parser);
+			}
+		}
+
+		return ticket;
 	}
 
 }

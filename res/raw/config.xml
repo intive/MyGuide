@@ -38,6 +38,9 @@
 	<!-- Minimal interval between location updates(in ms) - protects from too frequent updates -->
 	<min_gps_interval>500</min_gps_interval>
 
+	<!-- Minimal change in location to be register by gps (in m) -->
+	<gps_sensitive>1.0</gps_sensitive>
+
 	<!-- Log and toast gps position on location update -->
 	<gps_logging>false</gps_logging>
 
