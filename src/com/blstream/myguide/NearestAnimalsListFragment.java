@@ -34,7 +34,6 @@ public class NearestAnimalsListFragment extends Fragment implements
 		LocationUser {
 
 	private ListView mAnimalListView;
-	private NearestAnimalsAdapter mListAdapter;
 
 	private ArrayList<AnimalDistance> mAnimalsAndDistances;
 	private LocationUpdater mLocationUpdater;
@@ -45,7 +44,7 @@ public class NearestAnimalsListFragment extends Fragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.fragment_nearest_animals,
+		View view = inflater.inflate(R.layout.fragment_list_view,
 				container, false);
 
 		setActionBar();
@@ -53,7 +52,7 @@ public class NearestAnimalsListFragment extends Fragment implements
 		mLocationUpdater.startUpdating(this);
 
 		mAnimalListView = (ListView) view
-				.findViewById(R.id.lvNearestAnimalList);
+				.findViewById(R.id.lvListItem);
 
 		mAnimalFinder = new AnimalFinderHelper(mLocationUpdater.getLocation(),
 				(MyGuideApp) getActivity().getApplication(), getActivity());
@@ -64,7 +63,7 @@ public class NearestAnimalsListFragment extends Fragment implements
 	public void onResume() {
 		super.onResume();
 		mAnimalsAndDistances = mAnimalFinder.allAnimalsWithDistances();
-		mListAdapter = new NearestAnimalsListFragment.NearestAnimalsAdapter(getActivity(),
+		NearestAnimalsAdapter mListAdapter = new NearestAnimalsListFragment.NearestAnimalsAdapter(getActivity(),
 				R.layout.custom_animal_row, mAnimalsAndDistances);
 
 		mAnimalListView.setAdapter(mListAdapter);
@@ -91,8 +90,6 @@ public class NearestAnimalsListFragment extends Fragment implements
 	private static class NearestAnimalsAdapter extends
 			ArrayAdapter<AnimalDistance> {
 
-		private final int NUM_OF_CHARS_IN_LINE = 18;
-
 		public NearestAnimalsAdapter(Context context, int resource,
 				ArrayList<AnimalDistance> objects) {
 			super(context, resource, objects);
@@ -118,19 +115,12 @@ public class NearestAnimalsListFragment extends Fragment implements
 			Animal animal = ((AnimalDistance) getItem(position)).getAnimal();
 			int distance = ((AnimalDistance) getItem(position)).getDistance();
 
-			animalName.setText(prepareName(animal.getName(),
-					NUM_OF_CHARS_IN_LINE));
+			animalName.setText(animal.getName());
 			animalFact.setText(animal.getDescriptionAdult().getText());
 			animalDistance.setText(Integer.toString(distance) + "m");
 			// TODO image
 
 			return convertView;
-		}
-
-		public static String prepareName(String name, int characterNumber) {
-			if (name.contains(" ") && name.length() > characterNumber)
-				name = name.replace(' ', '\n');
-			return name;
 		}
 
 	}

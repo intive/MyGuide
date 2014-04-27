@@ -16,30 +16,34 @@
         android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/txtvClosestAnimalName"
-            style="@style/item_name"
-            android:layout_margin="15dp"
-            android:text="@string/placeholder_name" />
-
-        <TextView
             android:id="@+id/txtvClosestAnimalDistance"
             style="@style/item_name"
-            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
             android:layout_margin="15dp"
             android:text="@string/placeholder_distance"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:gravity="right" />
 
         <TextView
             android:id="@+id/txtvClosestAnimalFunFact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/txtvClosestAnimalName"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="7dp"
+            android:layout_below="@+id/txtvClosestAnimalName"
             android:text="@string/placeholder_fact"
-            android:textSize="12sp"
-            android:textColor="@color/main_text"/>
+            android:textColor="@color/main_text"
+            android:textSize="@dimen/Item_text_size" />
+
+        <TextView
+            android:id="@+id/txtvClosestAnimalName"
+            style="@style/item_name"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/txtvClosestAnimalDistance"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/placeholder_name" />
+
     </RelativeLayout>
 
 </LinearLayout>

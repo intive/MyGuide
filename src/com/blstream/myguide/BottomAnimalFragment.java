@@ -17,8 +17,6 @@ import android.widget.TextView;
 
 public class BottomAnimalFragment extends Fragment {
 
-	private View mRootView;
-
 	private ImageView mAnimalImage;
 	private TextView mAnimalName;
 	private TextView mDistance;
@@ -27,7 +25,7 @@ public class BottomAnimalFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		mRootView = (LinearLayout) inflater.inflate(
+		View mRootView = (LinearLayout) inflater.inflate(
 				R.layout.fragment_nearest_animal, container, false);
 
 		mAnimalImage = (ImageView) mRootView

@@ -23,6 +23,8 @@
         <TextView
             android:id="@+id/txtvAnimalName"
             style="@style/animal_list_main"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/txtvAnimalDistance"
             android:text="@string/placeholder_name" />
 
         <TextView
