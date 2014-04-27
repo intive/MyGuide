@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
@@ -121,6 +122,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		mLocationUpdater = LocationUpdater.getInstance();
 		mLocationUpdater.startUpdating(this);
 		mLastAnimalDistance = null;
+		mBottomAnimalFragment = new BottomAnimalFragment();
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(
@@ -139,8 +141,6 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		displayAnimalMarkers(mAnimalsVisible);
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
-
-		setUpClosestAnimal();
 
 		mTrackDrawer = new TrackDrawer(
 				((MyGuideApp) getActivity().getApplication()).getGraph(), mMap, mAnimalMarkers);
@@ -229,7 +229,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	 * {@link com.blstream.myguide.AnimalFinderHelper }
 	 */
 	private void setUpClosestAnimal() {
-		mBottomAnimalFragment = new BottomAnimalFragment();
+		if (mBottomAnimalFragment == null) mBottomAnimalFragment = new BottomAnimalFragment();
 
 		AnimalFinderHelper animalFinderHelper = new AnimalFinderHelper(
 				mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
@@ -239,6 +239,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		if (closestAnimal != null && !sameAsLastAnimal(closestAnimal)) {
 			Bundle data = new Bundle();
 			data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
+			mBottomAnimalFragment = new BottomAnimalFragment();
 			mBottomAnimalFragment.setArguments(data);
 			FragmentManager manager = getChildFragmentManager();
 			FragmentHelper.swapFragment(R.id.closestAnimal,
@@ -385,21 +386,34 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		}
 	}
 
+	private void destroyBottomFragment(){
+		if (mBottomAnimalFragment != null && mBottomAnimalFragment.isVisible()){
+			FragmentManager fm = getChildFragmentManager();
+			FragmentTransaction ft = fm.beginTransaction();
+			ft.remove(mBottomAnimalFragment);
+			ft.commit();
+		}
+	}
+	
+	@Override
+	public void onPause() {
+		destroyBottomFragment();
+		super.onPause();
+	}
 
 	@Override
 	public void onLocationUpdate(Location location) {
 		setUpClosestAnimal();
-
 	}
 
 	@Override
 	public void onGpsAvailable() {
-		Log.i("","avaible");
+		setUpClosestAnimal();
 	}
 
 	@Override
 	public void onGpsUnavailable() {
-		Log.i("","unavaible");
+		destroyBottomFragment();
 	}
 
 	public void drawTrack() {
