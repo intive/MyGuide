@@ -356,4 +356,34 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		assertEquals(4, data.getTicketInformation().getAllInformation().size());
 	}
 
+	public void testParsingAccessInformation() throws IOException, XmlPullParserException {
+		// given
+		String xmlMock = "" +
+				"<root>" +
+				"\t<access_information>\n" +
+				"\t\t<trams>\n" +
+				"\t\t\t1,2,   3, 4, 5,6\n" +
+				"\t\t</trams>\n" +
+				"\t\t<parkings_information>\n" +
+				"\t\t\t<key1>value1</key1>\n" +
+				"\t\t\t<key2>value2</key2>\n" +
+				"\t\t\t<key3>value3</key3>\n" +
+				"\t\t\t<key4>value4</key4>\n" +
+				"\t\t</parkings_information>\n" +
+				"\t</access_information>\n" +
+				"</root>\n";
+		ZooLocationsDataParser parser = new ZooLocationsDataParser();
+		ZooLocationsData data = null;
+
+		// when
+		InputStream is = new ByteArrayInputStream(xmlMock.getBytes());
+		data = parser.parse(is);
+		is.close();
+
+		// then
+		assertNotNull(data);
+		assertEquals("1,2,   3, 4, 5,6", data.getAccessInformation().getTrams());
+		assertEquals(4, data.getAccessInformation().getAllParkingInformation().size());
+	}
+
 }

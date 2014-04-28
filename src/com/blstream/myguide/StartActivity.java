@@ -57,10 +57,11 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private boolean mDistanceFromZooGuardIsBinding;
 	private DistanceFromZooGuard mDistanceFromZooGuard;
 
+
     private Fragment createInformationFragment() {
 		Fragment fragments[] = new Fragment[] {
 				TicketsFragment.newInstance(),
-				DummyFragment.newInstance("ma"),
+				AccessFragment.newInstance(),
 				DummyFragment.newInstance("kota"),
 		};
 
