@@ -262,7 +262,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="nbV-vg-Zzq" kind="embed" id="PAO-IB-zvD"/>
+                                    <segue destination="Gx2-Gc-Zza" kind="embed" id="fLN-qm-yI2"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -282,20 +282,30 @@
             <point key="canvasLocation" x="-1107" y="-398"/>
         </scene>
         <!--Tickets View Controller-->
-        <scene sceneID="sJQ-gB-tAa">
+        <scene sceneID="5fb-1n-qHZ">
             <objects>
-                <viewController storyboardIdentifier="ticketsViewController" id="nbV-vg-Zzq" customClass="TicketsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7fJ-rh-XNQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="lrx-mS-WxZ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="e5y-4E-4XS">
+                <tableViewController storyboardIdentifier="ticketsViewController" id="Gx2-Gc-Zza" customClass="TicketsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gyz-XC-iYc">
                         <rect key="frame" x="0.0" y="0.0" width="328" height="457"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vHH-Rh-wom" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="ticketInformationCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ticketInformationCell" id="0Bf-AQ-S9p">
+                                <rect key="frame" x="0.0" y="22" width="328" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Bf-AQ-S9p" id="aVP-iz-gN9">
+                                    <rect key="frame" x="0.0" y="0.0" width="328" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Gx2-Gc-Zza" id="mmP-WI-bBV"/>
+                            <outlet property="delegate" destination="Gx2-Gc-Zza" id="OKL-7v-Zs6"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZKt-Jf-Ew2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-718" y="-398"/>
         </scene>

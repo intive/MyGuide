@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TicketsViewController : UIViewController
+@interface TicketsViewController : UITableViewController
 
 @end
