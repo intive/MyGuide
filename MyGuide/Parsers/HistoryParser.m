@@ -7,20 +7,16 @@
 //
 
 #import "HistoryParser.h"
-#import "XMLFetcher.h"
 #import "HistoryEvent.h"
 #import "HistoryData.h"
 
 static NSString *kXmlEvent = @"history_event";
 static NSString *kXmlDate  = @"date";
 static NSString *kXmlImage = @"image";
-static NSString *kXmlPL    = @"pl";
-static NSString *kXmlEN    = @"en";
 
 @interface HistoryParser ()
 
 @property (nonatomic, readonly) NSMutableArray  *historyEvents;
-@property (nonatomic, readonly) NSMutableString *cacheElement;
 @property (nonatomic) HistoryEvent *currentHistoryEvent;
 
 @end
@@ -31,18 +27,10 @@ static NSString *kXmlEN    = @"en";
     self = [super init];
     if(self) {
         _historyEvents  = [NSMutableArray new];
+        self.fileName = @"history";
     }
     return self;
 }
-
-- (void) parse
-{
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData: [XMLFetcher fetchDataFromXML: @"history"]];
-    [parser setDelegate: self];
-    [parser parse];
-}
-
-- (void) parserDidStartDocument: (NSXMLParser *)parser { MWLogInfo(@"Reading history from file..."); }
 
 - (void) parser: (NSXMLParser *)  parser
 didStartElement: (NSString *)     elementName
@@ -50,16 +38,11 @@ didStartElement: (NSString *)     elementName
   qualifiedName: (NSString *)     qName
      attributes: (NSDictionary *) attributeDict
 {
-    _cacheElement = [NSMutableString new];
+    [super parser:parser didStartElement:elementName namespaceURI:namespaceURI qualifiedName:qName attributes:attributeDict];
     
     if ([elementName isEqualToString: kXmlEvent]) {
         _currentHistoryEvent = [HistoryEvent new];
     }
-}
-
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
-{
-    [_cacheElement appendString: string];
 }
 
 - (void) parser: (NSXMLParser *) parser
@@ -82,18 +65,9 @@ didStartElement: (NSString *)     elementName
 }
 
 - (void) parserDidEndDocument: (NSXMLParser *)parser {
+    [super parserDidEndDocument: parser];
     HistoryData *sharedParsedData = [HistoryData sharedParsedData];
     sharedParsedData.historyEvents = _historyEvents;
-    MWLogInfo(@"History loaded!");
-}
-
-- (NSString *) currentElement {
-    return [self normalize: _cacheElement];
-}
-
-- (NSString *) normalize: (NSString*)aString
-{
-    return [aString stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 @end

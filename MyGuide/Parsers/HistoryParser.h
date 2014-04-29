@@ -7,9 +7,8 @@
 //
 
 #import "Translatable.h"
+#import "AbstractParser.h"
 
-@interface HistoryParser : NSObject <NSXMLParserDelegate>
-
-- (void) parse;
+@interface HistoryParser : AbstractParser
 
 @end
