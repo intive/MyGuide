@@ -1,13 +1,13 @@
 {
   "images" : [
     {
-      "idiom" : "iphone",
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "idiom" : "iphone",
+      "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "placeholder_adult.png"
+      "filename" : "placeholder_event.png"
     }
   ],
   "info" : {

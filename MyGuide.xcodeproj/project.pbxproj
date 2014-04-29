@@ -58,6 +58,7 @@
 		8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426164118DF9BB700927285 /* AnimalDetailsViewController.m */; };
 		8460875718BDFA7F00620219 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875618BDFA7F00620219 /* SettingsParser.m */; };
 		8460875A18BDFA8A00620219 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875918BDFA8A00620219 /* Settings.m */; };
+		84BA95D5190FC426008A4237 /* events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84BA95D4190FC426008A4237 /* events.xml */; };
 		84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
 		84C2A1851907B21900354036 /* AFVisitedPOIsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A1841907B21900354036 /* AFVisitedPOIsData.m */; };
 		84DD035B18BA8C7A00DE7178 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84DD035818BA8C7A00DE7178 /* config.xml */; };
@@ -178,6 +179,7 @@
 		8460875618BDFA7F00620219 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
 		8460875818BDFA8A00620219 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		8460875918BDFA8A00620219 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		84BA95D4190FC426008A4237 /* events.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = events.xml; path = "XML files/events.xml"; sourceTree = "<group>"; };
 		84C2A1831907B21900354036 /* AFVisitedPOIsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFVisitedPOIsData.h; sourceTree = "<group>"; };
 		84C2A1841907B21900354036 /* AFVisitedPOIsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFVisitedPOIsData.m; sourceTree = "<group>"; };
 		84DD035818BA8C7A00DE7178 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = "XML files/config.xml"; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				05A1C12718FAABD3008FE0CB /* history.xml */,
+				84BA95D4190FC426008A4237 /* events.xml */,
 				84DD035818BA8C7A00DE7178 /* config.xml */,
 				84DD035918BA8C7A00DE7178 /* XMLFetcher.h */,
 				05406E4018F313A7001656FC /* gastronomy.xml */,
@@ -598,6 +601,7 @@
 				0533DF0118DE1520001BCB28 /* menu.png in Resources */,
 				05406E4318F313B6001656FC /* data.xml in Resources */,
 				0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */,
+				84BA95D5190FC426008A4237 /* events.xml in Resources */,
 				3DDE538818C705B20062D217 /* Main.storyboard in Resources */,
 				05406E4118F313A7001656FC /* gastronomy.xml in Resources */,
 				8421D32218BE3B5100B54DC3 /* Images.xcassets in Resources */,
