@@ -137,10 +137,10 @@ public class EventsFragment extends Fragment {
 			Event event = mEvents.get(position);
 
 			viewHolder.mEventName.setText(event.getName());
-			viewHolder.mTime.setText(event.getTime());
+			viewHolder.mTime.setText(event.getTime().replaceAll(";", " "));
 
 			if (event.getTimeWeekends() != null) {
-				viewHolder.mWeekends.setText(event.getTimeWeekends());
+				viewHolder.mWeekends.setText(event.getTimeWeekends().replaceAll(";", " "));
 				viewHolder.mWeekends.setVisibility(View.VISIBLE);
 				viewHolder.mWeekendsLabel.setVisibility(View.VISIBLE);
 			} else {
@@ -149,7 +149,7 @@ public class EventsFragment extends Fragment {
 			}
 
 			if (event.getTimeHolidays() != null) {
-				viewHolder.mHolidays.setText(event.getTimeHolidays());
+				viewHolder.mHolidays.setText(event.getTimeHolidays().replaceAll(";", " "));
 				viewHolder.mHolidays.setVisibility(View.VISIBLE);
 				viewHolder.mHolidaysLabel.setVisibility(View.VISIBLE);
 			} else {
@@ -158,7 +158,7 @@ public class EventsFragment extends Fragment {
 			}
 
 			if (event.getStartDate() != null) {
-				viewHolder.mDate.setText(event.getStartDate());
+				viewHolder.mDate.setText(event.getStartDate().replaceAll(";", " "));
 				viewHolder.mDate.setVisibility(View.VISIBLE);
 				viewHolder.mDateLabel.setVisibility(View.VISIBLE);
 			} else {
