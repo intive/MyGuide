@@ -62,7 +62,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		Fragment fragments[] = new Fragment[] {
 				TicketsFragment.newInstance(),
 				AccessFragment.newInstance(),
-				DummyFragment.newInstance("kota"),
+				ContactFragment.newInstance(),
 		};
 
 		return FragmentTabManager.newInstance(

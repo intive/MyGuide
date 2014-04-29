@@ -98,4 +98,6 @@
 	<string name="ticket_group">Group tickets</string>
 	<string name="ticket_info">Information</string>
 
+	<string name="mail_sendto">Select receiver</string>
+
 </resources>

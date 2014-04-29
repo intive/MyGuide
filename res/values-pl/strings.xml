@@ -86,5 +86,7 @@
 	<string name="ticket_group">Bilety grupowe</string>
 	<string name="ticket_info">Informacje</string>
 
+	<string name="mail_sendto">Wybierz adresata</string>
+
 </resources>
 
