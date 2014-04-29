@@ -72,7 +72,8 @@
     }
     
     if ([self isChild: indexPath]) {
-        cell.detailTextLabel.text = [(Ticket *)[[self.ticketsGroups objectAtIndex: self.currentExpandedIndex] objectAtIndex:indexPath.row - self.currentExpandedIndex - 1] getName];
+        Ticket *ticket = (Ticket *)[[self.ticketsGroups objectAtIndex: self.currentExpandedIndex] objectAtIndex:indexPath.row - self.currentExpandedIndex - 1];
+        cell.detailTextLabel.text = [NSString stringWithFormat: @"%@: %@ zł", [ticket getName], [ticket.price stringValue]];
     }
     else {
         NSInteger topIndex = indexPath.row - ([self isExpanded] && [self isBelowHeader: indexPath] ? [self numberOfExpandedChildren] : 0);
