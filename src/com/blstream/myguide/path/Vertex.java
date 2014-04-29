@@ -53,6 +53,7 @@ public class Vertex implements Comparable<Vertex> {
 	public int compareTo(Vertex v2) {
 		Double weight1 = this.getWeight();
 		Double weight2 = v2.getWeight();
+		if (weight1 == Graph.INFINITY && weight2 == Graph.INFINITY) { return 0; }
 		if (weight1 == Graph.INFINITY) { return 1; }
 		if (weight2 == Graph.INFINITY) { return -1; }
 		return weight1.compareTo(weight2);
@@ -61,7 +62,7 @@ public class Vertex implements Comparable<Vertex> {
 	public void setHeapIndex(int index) {
 		mHeapIndex = index;
 	}
-	
+
 	public int getHeapIndex() {
 		return mHeapIndex;
 	}
