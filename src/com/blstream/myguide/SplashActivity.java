@@ -182,6 +182,7 @@ public class SplashActivity extends FragmentActivity {
 			Log.i(LOG_TAG, "junctions: " + data.getJunctions().size());
 			Log.i(LOG_TAG, "tracks: " + data.getTracks().size());
 			Log.i(LOG_TAG, "restaurant: " + data.getRestaurant().size());
+			Log.i(LOG_TAG, "tickets: " + data.getTicketInformation().getTickets().size());
 		} catch (Exception e) {
 			// data should always be valid
 			// controlled application shutdown

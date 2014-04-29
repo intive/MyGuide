@@ -32,6 +32,9 @@ import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.zoolocations.Track;
 import com.google.android.gms.maps.SupportMapFragment;
 
+import com.blstream.myguide.zoolocations.*;
+import java.util.ArrayList;
+
 /**
  * Created by Piotrek on 2014-04-01. Fixed by Angieszka (fragment swap) on
  * 2014-04-04.
@@ -54,6 +57,20 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private boolean mDistanceFromZooGuardIsBinding;
 	private DistanceFromZooGuard mDistanceFromZooGuard;
 
+
+    private Fragment createInformationFragment() {
+		Fragment fragments[] = new Fragment[] {
+				TicketsFragment.newInstance(),
+				AccessFragment.newInstance(),
+				DummyFragment.newInstance("kota"),
+		};
+
+		return FragmentTabManager.newInstance(
+				R.array.information_tabs_name,
+				fragments,
+				getResources().getStringArray(R.array.nav_drawer_items)[2]);    // this needs adjusting if strings.xml is changed
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,7 +79,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		if (savedInstanceState == null) {
 			mFragmentManager = getSupportFragmentManager();
 			// The main Fragment
-			Fragment fragment = new SightseeingFragment();
+			Fragment fragment = SightseeingFragment.newInstance();
 
 			FragmentHelper.initFragment(R.id.flFragmentHolder, fragment,
 					getSupportFragmentManager(), BundleConstants.FRAGMENT_SIGHTSEEING);
@@ -99,6 +116,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		super.onWindowFocusChanged(hasFocus);
 		if (hasFocus) {
 			showEnableGpsDialogIfNeeded();
+			LocationUpdater.getInstance().refreshGpsStatus();
 			if (LocationUpdater.getInstance().isGpsEnable()) {
 				LocationUpdater.getInstance().markGpsEnableDialogAsUnshown();
 				if (!mFarFromZooDialogWasShown && !mDistanceFromZooGuardIsBinding) {
@@ -168,21 +186,11 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 						});
 					}
 				}.start();
-				// TODO swap fragments etc. etc.
-				Fragment mapFragment = getSupportFragmentManager().findFragmentById(
-						R.id.flFragmentHolder);
-				try {
-					((SightseeingFragment) mapFragment).drawTrack(((MyGuideApp) getApplication())
-							.getZooData().getTracks().get(position - 1));
-				} catch (ClassCastException e) {
-					throw new ClassCastException("Drawer can be use only with "
-							+ SightseeingFragment.class.getSimpleName());
-				}
-				Toast.makeText(
-						StartActivity.this,
-						"track: "
-								+ ((MyGuideApp) getApplication()).getZooData().getTracks()
-										.get(position - 1).getName(), Toast.LENGTH_SHORT).show();
+
+				setNextFragment(
+						FragmentTrackDetails.newInstance(((MyGuideApp) getApplication())
+								.getZooData().getTracks()
+								.get(position - 1)), "track");
 			}
 		});
 
@@ -221,14 +229,22 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 					navigateToSightseeing();
 				}
 				break;
+
 			case 1:
 				newFragment = new AnimalListFragment();
 				tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
 				break;
+
+			case 2:
+				newFragment = createInformationFragment();
+				tag = BundleConstants.FRAGMENT_INFORMATION;
+				break;
+
 			case 4:
 				newFragment = new GastronomyListFragment();
 				tag = BundleConstants.FRAGMENT_GASTRONOMY;
 				break;
+
 			default:
 				break;
 		}

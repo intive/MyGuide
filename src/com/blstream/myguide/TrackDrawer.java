@@ -1,3 +1,4 @@
+
 package com.blstream.myguide;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import com.blstream.myguide.zoolocations.Track;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -53,7 +55,7 @@ public class TrackDrawer {
 		PolylineOptions polylineOptions = new PolylineOptions().width(TRACK_WIDTH)
 				.color(color)
 				.zIndex(POLYLINE_ZINDEX);
-		LatLngBounds.Builder trackBoundsBuilder = LatLngBounds.builder();
+		final LatLngBounds.Builder trackBoundsBuilder = LatLngBounds.builder();
 
 		ArrayList<Node> path = generatePathBetweenAnimals(track);
 		for (Node node : path) {
@@ -66,8 +68,16 @@ public class TrackDrawer {
 		mCurrentTrackPolyline.setVisible(pathsVisible);
 		markAnimalsOnTrack(track, trackBoundsBuilder);
 
-		mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(trackBoundsBuilder.build(),
-				TRACK_PADDING));
+		mMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
+			@Override
+			public void onCameraChange(CameraPosition cameraPosition) {
+				mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(trackBoundsBuilder.build(),
+						TRACK_PADDING));
+				// Remove listener to prevent position reset on camera move.
+				mMap.setOnCameraChangeListener(null);
+			}
+		});
+
 		return mCurrentTrackPolyline;
 	}
 

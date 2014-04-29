@@ -75,6 +75,7 @@
 
     <!-- Track list -->
     <string name="exploration">Exploration</string>
+    <string name="start_track">START</string>
 
     <!-- Gastronomy Item List -->
     <string name="menu_item_list">Menu:</string>
@@ -85,5 +86,16 @@
 
     <!-- Content Description -->
     <string name="gastronomy_list_image">Gastronomy List Image</string>
+
+	<!-- Information tabs name -->
+	<string-array name="information_tabs_name">
+		<item name="tickets">Tickets</item>
+		<item name="getthere">Get to ZOO</item>
+		<item name="contact">Contact</item>
+	</string-array>
+
+	<string name="ticket_individual">Individual tickets</string>
+	<string name="ticket_group">Group tickets</string>
+	<string name="ticket_info">Information</string>
 
 </resources>

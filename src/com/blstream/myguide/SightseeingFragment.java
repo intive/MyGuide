@@ -61,6 +61,8 @@ public class SightseeingFragment extends Fragment {
 	private boolean mAnimalsVisible;
 	private ArrayList<Marker> mAnimalMarkers;
 
+	private Track mTrack;
+
 	private boolean mPathsVisible;
 	private ArrayList<Polyline> mZooPaths;
 
@@ -73,7 +75,25 @@ public class SightseeingFragment extends Fragment {
 
 	private boolean mLocationLogVisible;
 
-	public SightseeingFragment() {
+	public static SightseeingFragment newInstance() {
+		return new SightseeingFragment();
+	}
+
+	public static SightseeingFragment newInstance(Track track) {
+		SightseeingFragment fragment = new SightseeingFragment();
+
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(BundleConstants.SELECTED_TRACK, track);
+		fragment.setArguments(bundle);
+
+		return fragment;
+	}
+
+	private void getArgs() {
+		Bundle args = getArguments();
+		if (args != null) {
+			mTrack = (Track) args.getSerializable(BundleConstants.SELECTED_TRACK);
+		}
 	}
 
 	private void configureAndDisplayUserPosition() {
@@ -88,14 +108,15 @@ public class SightseeingFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		getArgs();
 		View rootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		
-		((StartActivity) getActivity() ).getDrawerLayout()
-			.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-		
+
+		((StartActivity) getActivity()).getDrawerLayout()
+				.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+
 		setUpMapSettings();
 		setUpMap();
 		setUpAnimalMarkers();
@@ -109,16 +130,19 @@ public class SightseeingFragment extends Fragment {
 
 		mTrackDrawer = new TrackDrawer(
 				((MyGuideApp) getActivity().getApplication()).getGraph(), mMap, mAnimalMarkers);
+
+		if (mTrack != null) drawTrack();
+
 		return rootView;
 	}
 
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
-		((StartActivity) getActivity() ).getDrawerLayout()
-			.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);		
+		((StartActivity) getActivity()).getDrawerLayout()
+				.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);
 	}
-	
+
 	@Override
 	public void onStart() {
 		super.onStart();
@@ -317,9 +341,9 @@ public class SightseeingFragment extends Fragment {
 		}
 	}
 
-	public void drawTrack(Track track) {
+	public void drawTrack() {
 		mTrackDrawer
-				.drawTrack(track, getResources().getColor(R.color.paths_on_track), mPathsVisible);
+				.drawTrack(mTrack, getResources().getColor(R.color.paths_on_track), mPathsVisible);
 	}
 
 	public void cleanTrack() {

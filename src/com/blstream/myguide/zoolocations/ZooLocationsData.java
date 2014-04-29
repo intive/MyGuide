@@ -3,6 +3,10 @@ package com.blstream.myguide.zoolocations;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class contains informations about animals, ways and ways' junctions and
@@ -15,6 +19,8 @@ public class ZooLocationsData {
 	private ArrayList<Junction> mJunctions;
 	private ArrayList<Track> mTracks;
 	private ArrayList<Restaurant> mRestaurants;
+	private TicketsInformation mTicketInformation = new TicketsInformation();
+	private AccessInformation mAccessInfo = new AccessInformation();
 
 	public ZooLocationsData() {
 		mAnimals = new ArrayList<Animal>();
@@ -45,6 +51,14 @@ public class ZooLocationsData {
 		return mRestaurants;
 	}
 
+	public TicketsInformation getTicketInformation() {
+		return mTicketInformation;
+	}
+
+	public AccessInformation getAccessInformation() {
+		return mAccessInfo;
+	}
+
 	public void setAnimals(ArrayList<Animal> animals) {
 		mAnimals = animals;
 	}
@@ -65,12 +79,20 @@ public class ZooLocationsData {
 		mRestaurants = restaurants;
 	}
 
+	public void setTicketInformation(TicketsInformation ticketInformation) {
+		mTicketInformation = ticketInformation;
+	}
+
 	public int sumOfAnimalsOnTracks() {
 		int sum = 0;
 		for (Track t : mTracks) {
 			sum += t.getAnimals().size();
 		}
 		return sum;
+	}
+
+	public void setAccessInformation(AccessInformation accessInformation) {
+		mAccessInfo = accessInformation;
 	}
 
 }

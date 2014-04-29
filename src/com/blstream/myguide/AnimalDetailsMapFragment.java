@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blstream.myguide.dialog.EnableGpsDialogFragment;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.path.Graph;
@@ -130,9 +129,6 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		public void onGpsUnavailable() {
 			Log.d(LOG_TAG, "onGpsUnavailable");
 			mFragment.dismissProgressDialog();
-			new EnableGpsDialogFragment().show(
-					mFragment.getActivity().getSupportFragmentManager(),
-					EnableGpsDialogFragment.class.getSimpleName());
 		}
 
 	}
