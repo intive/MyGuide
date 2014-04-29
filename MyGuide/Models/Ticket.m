@@ -10,4 +10,8 @@
 
 @implementation Ticket
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"%@ %@", [self getName], self.price];
+}
+
 @end

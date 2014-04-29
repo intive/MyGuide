@@ -92,12 +92,12 @@
 				<price>85</price>
 			</ticket>
 			<ticket>
-			</ticket>
 				<description>
 					<pl>Osoba dorosła/os</pl>
 					<en>Adult</en>
 				</description>
 				<price>25</price>
+            </ticket>
 			<ticket>
 				<description>
 					<pl>Dziecko/os</pl>

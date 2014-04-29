@@ -7,149 +7,181 @@
 //
 
 #import "TicketsViewController.h"
+#import "InformationData.h"
+#import "Ticket.h"
 
 @interface TicketsViewController ()
 
-@property (nonatomic) NSArray        *topItems;
-@property (nonatomic) NSMutableArray *subItems;
-@property             NSInteger      currentExpandedIndex;
+@property NSInteger currentExpandedIndex;
+
+@property (nonatomic) NSArray         *ticketsHeaders;
+@property (nonatomic) NSMutableArray  *ticketsGroups;
+@property (nonatomic) InformationData *informationData;
 
 @end
 
 @implementation TicketsViewController
 
+#pragma mark - Initialization
+
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    self.topItems = [[NSArray alloc] initWithArray:[self  dummySuperItems]];
-    self.subItems = [NSMutableArray new];
+    self.informationData = [InformationData sharedParsedData];
+    [self prepareTicketsData];
+}
+
+- (void) prepareTicketsData
+{
     self.currentExpandedIndex = -1;
-    
-    for (int i = 0; i < [self.topItems count]; i++) {
-        [self.subItems addObject:[self  dummySubItems]];
-    }
+    self.ticketsHeaders = @[
+                             NSLocalizedString(@"ticketIndividual", nil),
+                             NSLocalizedString(@"ticketGroup",      nil)
+                             ];
+    self.ticketsGroups = [NSMutableArray new];
+    [self.ticketsGroups addObject: self.informationData.ticketsIndividual];
+    [self.ticketsGroups addObject: self.informationData.ticketsGroup];
 }
 
-#pragma mark - Data generators
+#pragma mark - Displaying tickets
 
-- (NSArray *) dummySuperItems {
-    NSMutableArray *items = [NSMutableArray array];
-    
-    for (int i = 0; i < 10; i++) {
-        [items addObject:[NSString stringWithFormat:@"Item %d", i + 1]];
-    }
-    
-    return items;
+- (NSInteger) tableView: (UITableView *)tableView
+  numberOfRowsInSection: (NSInteger)section
+{
+    return [self numberOfHeaders] + [self numberOfExpandedChildren];
 }
 
-- (NSArray *) dummySubItems {
-    NSMutableArray *items = [NSMutableArray array];
-    int numItems = arc4random() % 6 + 2;
-    
-    for (int i = 0; i < numItems; i++) {
-        [items addObject:[NSString stringWithFormat:@"SubItem %d", i + 1]];
-    }
-    
-    return items;
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.topItems count] + ((self.currentExpandedIndex > -1) ? [[self.subItems objectAtIndex: self.currentExpandedIndex] count] : 0);
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *) tableView: (UITableView *)tableView
+          cellForRowAtIndexPath: (NSIndexPath *)indexPath
+{
     static NSString *ParentCellIdentifier = @"ParentCell";
-    static NSString *ChildCellIdentifier = @"ChildCell";
-    
-    BOOL isChild =
-    self.currentExpandedIndex > -1
-    && indexPath.row > self.currentExpandedIndex
-    && indexPath.row <= self.currentExpandedIndex + [[self.subItems objectAtIndex: self.currentExpandedIndex] count];
+    static NSString *ChildCellIdentifier  = @"ChildCell";
     
     UITableViewCell *cell;
     
-    if (isChild) {
-        cell = [tableView dequeueReusableCellWithIdentifier:ChildCellIdentifier];
+    if ([self isChild: indexPath]) {
+        cell = [tableView dequeueReusableCellWithIdentifier: ChildCellIdentifier];
     }
     else {
-        cell = [tableView dequeueReusableCellWithIdentifier:ParentCellIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier: ParentCellIdentifier];
     }
-    
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ParentCellIdentifier];
+        cell.textLabel.textColor = [UIColor colorWithRed:255/255.f green:95/255.f blue:0/255.f alpha:1];
     }
     
-    if (isChild) {
-        cell.detailTextLabel.text = [[self.subItems objectAtIndex: self.currentExpandedIndex] objectAtIndex:indexPath.row - self.currentExpandedIndex - 1];
+    if ([self isChild: indexPath]) {
+        cell.detailTextLabel.text = [(Ticket *)[[self.ticketsGroups objectAtIndex: self.currentExpandedIndex] objectAtIndex:indexPath.row - self.currentExpandedIndex - 1] getName];
     }
     else {
-        NSInteger topIndex = (self.currentExpandedIndex > -1 && indexPath.row > self.currentExpandedIndex)
-        ? indexPath.row - [[self.subItems objectAtIndex:self.currentExpandedIndex] count]
-        : indexPath.row;
-        
-        cell.textLabel.text = [self.topItems objectAtIndex:topIndex];
-        cell.detailTextLabel.text = @"";
+        NSInteger topIndex = indexPath.row - ([self isExpanded] && [self isBelowHeader: indexPath] ? [self numberOfExpandedChildren] : 0);
+        cell.textLabel.text = [self.ticketsHeaders objectAtIndex:topIndex];
     }
     
     return cell;
 }
 
-#pragma mark - Table view delegate
+- (BOOL) tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return ![self isChild: indexPath];
+}
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    BOOL isChild =
-        self.currentExpandedIndex > -1
-        && indexPath.row > self.currentExpandedIndex
-        && indexPath.row <= self.currentExpandedIndex + [[self.subItems objectAtIndex: self.currentExpandedIndex] count];
-    
-    if (isChild) {
-        NSLog(@"A child was tapped, do what you will with it");
-        return;
-    }
+#pragma mark - Expanding tickets
+
+- (void)      tableView: (UITableView *)tableView
+didSelectRowAtIndexPath: (NSIndexPath *)indexPath
+{
+    if ([self isChild: indexPath]) { NSLog(@"Ticket tapped!"); return; }
     
     [self.tableView beginUpdates];
     
     if (self.currentExpandedIndex == indexPath.row) {
-        [self collapseSubItemsAtIndex: (int) self.currentExpandedIndex];
+        [self collapseTicketsGroupsAtIndex: self.currentExpandedIndex];
         self.currentExpandedIndex = -1;
     }
     else {
         
-        BOOL shouldCollapse =  self.currentExpandedIndex > -1;
+        BOOL shouldCollapse = [self isExpanded];
         
         if (shouldCollapse) {
-            [self collapseSubItemsAtIndex: (int) self.currentExpandedIndex];
+            [self collapseTicketsGroupsAtIndex: self.currentExpandedIndex];
         }
         
-        self.currentExpandedIndex = (shouldCollapse && indexPath.row > self.currentExpandedIndex) ? indexPath.row - [[self.subItems objectAtIndex: self.currentExpandedIndex] count] : indexPath.row;
-        
-        [self expandItemAtIndex: (int) self.currentExpandedIndex];
+        [self updateCurrentExpandedIndex: indexPath];
+        [self expandTicketsAtIndex: self.currentExpandedIndex];
     }
     
     [self.tableView endUpdates];
-    
 }
 
-- (void)expandItemAtIndex:(int)index {
-    NSMutableArray *indexPaths = [NSMutableArray new];
-    NSArray *currentSubItems = [self.subItems objectAtIndex:index];
+- (void) updateCurrentExpandedIndex: (NSIndexPath *)indexPath
+{
+    self.currentExpandedIndex = indexPath.row - ([self isExpanded] && [self isBelowHeader: indexPath] ? [self numberOfExpandedChildren] : 0);
+}
+
+- (void) expandTicketsAtIndex: (NSInteger)index
+{
+    NSMutableArray *indexPaths   = [NSMutableArray new];
+    NSArray *currentTicketsGroup = [self.ticketsGroups objectAtIndex:index];
     int insertPos = index + 1;
-    for (int i = 0; i < [currentSubItems count]; i++) {
+    for (int i = 0; i < [currentTicketsGroup count]; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:insertPos++ inSection:0]];
     }
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.tableView insertRowsAtIndexPaths: indexPaths
+                          withRowAnimation: UITableViewRowAnimationFade];
+    [self.tableView scrollToRowAtIndexPath: [NSIndexPath indexPathForRow: index
+                                                               inSection: 0]
+                          atScrollPosition: UITableViewScrollPositionTop
+                                  animated: YES];
 }
 
-- (void)collapseSubItemsAtIndex:(int)index {
+- (void) collapseTicketsGroupsAtIndex: (NSInteger)index
+{
     NSMutableArray *indexPaths = [NSMutableArray new];
-    for (int i = index + 1; i <= index + [[self.subItems objectAtIndex:index] count]; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    for (int i = index + 1; i <= index + [self childrenCount: index]; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow: i
+                                                 inSection: 0]];
     }
-    [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView deleteRowsAtIndexPaths: indexPaths
+                          withRowAnimation: UITableViewRowAnimationFade];
+}
+
+#pragma mark - Helper methods
+
+- (NSInteger) numberOfHeaders
+{
+    return [self.ticketsHeaders count];
+}
+
+- (NSInteger) childrenCount: (NSInteger)index
+{
+    return [[self.ticketsGroups objectAtIndex:index] count];
+}
+
+- (BOOL) isExpanded
+{
+    return self.currentExpandedIndex > -1;
+}
+
+- (BOOL) isChild: (NSIndexPath *)indexPath
+{
+    return [self isExpanded] && [self isBelowHeader: indexPath] && [self isInExpandedChildren: indexPath];
+}
+
+- (BOOL) isBelowHeader: (NSIndexPath *)indexPath
+{
+    return indexPath.row > self.currentExpandedIndex;
+}
+
+- (BOOL) isInExpandedChildren: (NSIndexPath *)indexPath
+{
+    return indexPath.row <= self.currentExpandedIndex + [self numberOfExpandedChildren];
+}
+
+- (NSInteger) numberOfExpandedChildren
+{
+    return [self isExpanded] ? [self childrenCount: self.currentExpandedIndex] : 0;
 }
 
 @end

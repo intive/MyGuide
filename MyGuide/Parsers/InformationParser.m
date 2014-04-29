@@ -45,7 +45,8 @@ static NSString *kXmlOpeningInformation  = @"opening_information";
 @property (nonatomic) Translatable *currentOpeningInformation;
 
 @property (nonatomic) NSMutableArray  *openings;
-@property (nonatomic) NSMutableArray  *tickets;
+@property (nonatomic) NSMutableArray  *ticketsIndividual;
+@property (nonatomic) NSMutableArray  *ticketsGroup;
 @property (nonatomic) NSMutableArray  *emails;
 
 @property (nonatomic) InformationData *sharedParsedData;
@@ -57,10 +58,11 @@ static NSString *kXmlOpeningInformation  = @"opening_information";
 - (id) init {
     self = [super init];
     if(self) {
-        _openings = [NSMutableArray arrayWithArray: @[]];
-        _tickets  = [NSMutableArray arrayWithArray: @[]];
-        _emails   = [NSMutableArray arrayWithArray: @[]];
-        _sharedParsedData = [InformationData sharedParsedData];
+        _openings           = [NSMutableArray arrayWithArray: @[]];
+        _ticketsIndividual  = [NSMutableArray arrayWithArray: @[]];
+        _ticketsGroup       = [NSMutableArray arrayWithArray: @[]];
+        _emails             = [NSMutableArray arrayWithArray: @[]];
+        _sharedParsedData   = [InformationData sharedParsedData];
         
         self.fileName = @"information";
     }
@@ -120,7 +122,13 @@ didStartElement: (NSString *)     elementName
     }
     else if ([elementName isEqualToString: kXmlTicket]) {
         self.insideTicket = NO;
-        [self.tickets addObject: self.currentTicket];
+        
+        if(self.insideGroup) {
+            [self.ticketsGroup addObject: self.currentTicket];
+        }
+        else if(self.insideIndividual) {
+            [self.ticketsIndividual addObject: self.currentTicket];
+        }
     }
     else if ([elementName isEqualToString: kXmlEmail]) {
         [self.emails addObject: self.currentElement];
@@ -191,9 +199,10 @@ didStartElement: (NSString *)     elementName
     [self.sharedParsedData setParkingInformation: self.currentParkingsInformation];
     [self.sharedParsedData setOpeningInformation: self.currentOpeningInformation];
     
-    [self.sharedParsedData setOpenings: self.openings];
-    [self.sharedParsedData setTickets:  self.tickets];
-    [self.sharedParsedData setEmails:   self.emails];
+    [self.sharedParsedData setOpenings:          self.openings];
+    [self.sharedParsedData setTicketsIndividual: self.ticketsIndividual];
+    [self.sharedParsedData setTicketsGroup:      self.ticketsGroup];
+    [self.sharedParsedData setEmails:            self.emails];
 }
 
 @end
