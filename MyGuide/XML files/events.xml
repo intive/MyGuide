@@ -1,0 +1,103 @@
+<root>
+    <events>
+		<event>
+			<name>
+				<pl>Kotiki afrykańkie</pl>
+				<en>Kotiki afrykańkie EN</en>
+			</name>
+			<time>11:00;14:00</time>
+			<time_weekends>11:00;14:00;17:00</time_weekends>
+			<time_christmas>11:00;14:00;17:00</time_christmas>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Żyrafy siatkowane</pl>
+				<en>Żyrafy siatkowane EN</en>
+			</name>
+			<time>9:15</time>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Niedźwiedzie brunatne</pl>
+				<en>Niedźwiedzie brunatne EN</en>
+			</name>
+			<time>9:30</time>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Pawiany masajskie</pl>
+				<en>Pawiany masajskie EN</en>
+			</name>
+			<time>11:00</time>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Hipopotamy</pl>
+				<en>Hipopotamy EN</en>
+			</name>
+			<time>11:00</time>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Ptaki (ptaszarnia)</pl>
+				<en>Ptaki (ptaszarnia) EN</en>
+			</name>
+			<time>12:00</time>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Lemury</pl>
+				<en>Lemury EN</en>
+			</name>
+			<time>13:00</time>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Słonie indyjskie</pl>
+				<en>Słonie indyjskie EN</en>
+			</name>
+			<time>12:30</time>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Żółwie pustynne</pl>
+				<en>Żółwie pustynne EN</en>
+			</name>
+			<time>12:00</time>
+			<start>1.06</start>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Pelikany</pl>
+				<en>Pelikany EN</en>
+			</name>
+			<time>13:00</time>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Mrówniki</pl>
+				<en>Mrówniki EN</en>
+			</name>
+			<time>13:30</time>
+			<image>placeholder_event.png</image>
+		</event>
+		<event>
+			<name>
+				<pl>Piranie lub płaszczki</pl>
+				<en>Piranie lub płaszczki EN</en>
+			</name>
+			<time>16:00</time>
+			<image>placeholder_event.png</image>
+		</event>
+	</events>
+</root>

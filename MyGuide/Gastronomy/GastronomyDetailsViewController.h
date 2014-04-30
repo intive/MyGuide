@@ -7,14 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SegmentedViewController.h"
 #import "Restaurant.h"
 
-@interface GastronomyDetailsViewController : UIViewController
+@interface GastronomyDetailsViewController : SegmentedViewController
 
 @property (weak, nonatomic) Restaurant *restaurant;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-
--(IBAction) switchControllers: (UISegmentedControl *) segmentControl;
 
 @end

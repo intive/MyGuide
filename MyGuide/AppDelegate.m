@@ -8,59 +8,36 @@
 
 #import "AppDelegate.h"
 #import "SettingsParser.h"
-#import "AFParsedData.h"
-#import "AFXMLParser.h"
-#import "SettingsParser.h"
-#import "LocationManager.h"
-#import "GastronomyParser.h"
 #import "HistoryParser.h"
+#import "GastronomyParser.h"
+#import "AFXMLParser.h"
+#import "InformationParser.h"
+#import "AFEventsParser.h"
+#import "LocationManager.h"
 
-@implementation AppDelegate {
-    LocationManager *_locationManager;
-    Settings *_sharedSettings;
-}
+@implementation AppDelegate
 
-- (void)parseDataXML
+- (void)loadXMLs
 {
-    AFXMLParser *parser = [[AFXMLParser alloc] init];
-    [parser parse];
-}
-
-- (void)loadSettings
-{
-    SettingsParser *parser = [[SettingsParser alloc] init];
-    [parser loadSettings];
-}
-
-- (void) parseGastronomy
-{
-    GastronomyParser *parser = [GastronomyParser new];
-    [parser parse];
-}
-
-- (void) parseHistory
-{
-    HistoryParser *parser = [HistoryParser new];
-    [parser parse];
+    [[SettingsParser new] loadSettings];
+    [[HistoryParser     new] parse];
+    [[GastronomyParser  new] parse];
+    [[AFXMLParser       new] parse];
+    [[InformationParser new] parse];
+    [[AFEventsParser    new] parse];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
-    _sharedSettings = [Settings sharedSettingsData];
-
-    [self parseDataXML];
-    [self parseGastronomy];
-    [self parseHistory];
-    [self loadSettings];
-    
-    _locationManager = [LocationManager sharedLocationManager];
-    [_locationManager requestLocationStatus];
+    [[LocationManager sharedLocationManager] requestLocationStatus];
+    [self loadXMLs];
     return YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    _sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
+    Settings *sharedSettings = [Settings sharedSettingsData];
+    sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
 }
 
 @end

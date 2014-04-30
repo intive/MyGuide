@@ -1,18 +1,18 @@
 //
-//  HistoryData.m
+//  AFEventsData.m
 //  MyGuide
 //
-//  Created by Kamil Lelonek on 4/13/14.
+//  Created by afilipowicz on 30.04.2014.
 //  Copyright (c) 2014 - Open Source (Apache 2.0 license). All rights reserved.
 //
 
-#import "HistoryData.h"
+#import "AFEventsData.h"
 
-@implementation HistoryData
+@implementation AFEventsData
 
-+ (id) sharedParsedData
++ (id)sharedParsedData
 {
-    static HistoryData *sharedData = nil;
+    static AFEventsData *sharedData = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedData = [[self alloc] init];
@@ -20,11 +20,11 @@
     return sharedData;
 }
 
-- (id) init
+- (id)init
 {
     self = [super init];
     if(self) {
-        self.historyEvents = @[];
+        _events = @[];
     }
     return self;
 }

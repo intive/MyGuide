@@ -33,3 +33,11 @@
 "cellLabelRestaurant" = "Restaurant %d";
 
 "titleControllerHistory" = "History of ZOO";
+
+"yourLocation" = "Your location";
+
+"ticketIndividual" = "Individual tickets";
+
+"ticketGroup" = "Group tickets";
+
+"titleControllerEvents" = "Events";
