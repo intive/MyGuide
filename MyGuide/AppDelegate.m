@@ -12,17 +12,19 @@
 #import "GastronomyParser.h"
 #import "AFXMLParser.h"
 #import "InformationParser.h"
+#import "AFEventsParser.h"
 #import "LocationManager.h"
 
 @implementation AppDelegate
 
-- (void) loadXMLs
+- (void)loadXMLs
 {
     [[SettingsParser new] loadSettings];
     [[HistoryParser     new] parse];
     [[GastronomyParser  new] parse];
     [[AFXMLParser       new] parse];
     [[InformationParser new] parse];
+    [[AFEventsParser    new] parse];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions

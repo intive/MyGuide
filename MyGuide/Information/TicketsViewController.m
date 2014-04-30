@@ -125,7 +125,7 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
     NSMutableArray *indexPaths   = [NSMutableArray new];
     NSArray *currentTicketsGroup = [self.ticketsGroups objectAtIndex:index];
-    int insertPos = index + 1;
+    long insertPos = index + 1;
     for (int i = 0; i < [currentTicketsGroup count]; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:insertPos++ inSection:0]];
     }
@@ -140,7 +140,7 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 - (void) collapseTicketsGroupsAtIndex: (NSInteger)index
 {
     NSMutableArray *indexPaths = [NSMutableArray new];
-    for (int i = index + 1; i <= index + [self childrenCount: index]; i++) {
+    for (long i = index + 1; i <= index + [self childrenCount: index]; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow: i
                                                  inSection: 0]];
     }

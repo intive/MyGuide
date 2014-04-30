@@ -73,6 +73,9 @@
 		8460875A18BDFA8A00620219 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875918BDFA8A00620219 /* Settings.m */; };
 		84BA95D5190FC426008A4237 /* events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84BA95D4190FC426008A4237 /* events.xml */; };
 		84BA95D8191021FB008A4237 /* AFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95D7191021FB008A4237 /* AFEvent.m */; };
+		84BA95DB191121E8008A4237 /* AFEventsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95DA191121E8008A4237 /* AFEventsData.m */; };
+		84BA95DE19112209008A4237 /* AFEventsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95DD19112209008A4237 /* AFEventsParser.m */; };
+		84BA95E219118CE8008A4237 /* AFEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95E119118CE8008A4237 /* AFEventsViewController.m */; };
 		84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
 		84C2A1851907B21900354036 /* AFVisitedPOIsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A1841907B21900354036 /* AFVisitedPOIsData.m */; };
 		84DD035B18BA8C7A00DE7178 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84DD035818BA8C7A00DE7178 /* config.xml */; };
@@ -217,6 +220,12 @@
 		84BA95D4190FC426008A4237 /* events.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = events.xml; path = "XML files/events.xml"; sourceTree = "<group>"; };
 		84BA95D6191021FB008A4237 /* AFEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFEvent.h; sourceTree = "<group>"; };
 		84BA95D7191021FB008A4237 /* AFEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFEvent.m; sourceTree = "<group>"; };
+		84BA95D9191121E7008A4237 /* AFEventsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFEventsData.h; sourceTree = "<group>"; };
+		84BA95DA191121E8008A4237 /* AFEventsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFEventsData.m; sourceTree = "<group>"; };
+		84BA95DC19112209008A4237 /* AFEventsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFEventsParser.h; sourceTree = "<group>"; };
+		84BA95DD19112209008A4237 /* AFEventsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFEventsParser.m; sourceTree = "<group>"; };
+		84BA95E019118CE8008A4237 /* AFEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFEventsViewController.h; path = Events/AFEventsViewController.h; sourceTree = "<group>"; };
+		84BA95E119118CE8008A4237 /* AFEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFEventsViewController.m; path = Events/AFEventsViewController.m; sourceTree = "<group>"; };
 		84C2A1831907B21900354036 /* AFVisitedPOIsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFVisitedPOIsData.h; sourceTree = "<group>"; };
 		84C2A1841907B21900354036 /* AFVisitedPOIsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFVisitedPOIsData.m; sourceTree = "<group>"; };
 		84DD035818BA8C7A00DE7178 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = "XML files/config.xml"; sourceTree = "<group>"; };
@@ -439,13 +448,14 @@
 		3D5EF60E189637C000233B64 /* MyGuide */ = {
 			isa = PBXGroup;
 			children = (
+				3D5EF617189637C000233B64 /* AppDelegate.h */,
+				3D5EF618189637C000233B64 /* AppDelegate.m */,
 				05A1C14018FAC7F2008FE0CB /* Libraries */,
 				05C925D418DDBA6000C2F746 /* Images */,
-				3D5EF617189637C000233B64 /* AppDelegate.h */,
 				051A8A24190081350012B096 /* Information */,
+				84BA95DF19118CB3008A4237 /* Events */,
 				05A1C12318FAA436008FE0CB /* History */,
 				05E1654618F1B4DE00DA3BD7 /* Gastronomy */,
-				3D5EF618189637C000233B64 /* AppDelegate.m */,
 				3D5EF61A189637C000233B64 /* Main.storyboard */,
 				8421D32118BE3B5100B54DC3 /* Images.xcassets */,
 				05E0209218C1DAFA00AE76EC /* Map */,
@@ -499,6 +509,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		84BA95DF19118CB3008A4237 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				84BA95E019118CE8008A4237 /* AFEventsViewController.h */,
+				84BA95E119118CE8008A4237 /* AFEventsViewController.m */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
 		84DDCB2818BA917800A2F720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +562,8 @@
 				050E852F190B9A3A00B13473 /* InformationParser.m */,
 				05243273190BB52100FC3242 /* AbstractParser.h */,
 				05243274190BB52100FC3242 /* AbstractParser.m */,
+				84BA95DC19112209008A4237 /* AFEventsParser.h */,
+				84BA95DD19112209008A4237 /* AFEventsParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -562,6 +583,8 @@
 				05A1C12D18FAB0B8008FE0CB /* HistoryData.m */,
 				05243270190B9DC500FC3242 /* InformationData.h */,
 				05243271190B9DC500FC3242 /* InformationData.m */,
+				84BA95D9191121E7008A4237 /* AFEventsData.h */,
+				84BA95DA191121E8008A4237 /* AFEventsData.m */,
 			);
 			name = Storage;
 			path = Singletons;
@@ -729,11 +752,13 @@
 				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
 				05E1654F18F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m in Sources */,
 				05243272190B9DC500FC3242 /* InformationData.m in Sources */,
+				84BA95DB191121E8008A4237 /* AFEventsData.m in Sources */,
 				05A1C13118FAB125008FE0CB /* HistoryParser.m in Sources */,
 				055452C619025B570021884C /* SegmentedViewController.m in Sources */,
 				05E1655118F1B51100DA3BD7 /* GastronomyDetailsViewController.m in Sources */,
 				84BA95D8191021FB008A4237 /* AFEvent.m in Sources */,
 				0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */,
+				84BA95DE19112209008A4237 /* AFEventsParser.m in Sources */,
 				05E1655218F1B51100DA3BD7 /* GastronomyListViewController.m in Sources */,
 				05406E4918F31AF6001656FC /* Dish.m in Sources */,
 				05406E4618F31661001656FC /* GastronomyData.m in Sources */,
@@ -759,6 +784,7 @@
 				050E8530190B9A3A00B13473 /* InformationParser.m in Sources */,
 				05243275190BB52100FC3242 /* AbstractParser.m in Sources */,
 				0524326F190B9B6E00FC3242 /* Ticket.m in Sources */,
+				84BA95E219118CE8008A4237 /* AFEventsViewController.m in Sources */,
 				8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */,
 				05406E3F18F2EE1A001656FC /* GastronomyParser.m in Sources */,
 			);
