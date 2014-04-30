@@ -26,7 +26,6 @@
 {
     Settings          *_settings;
     AFParsedData      *_data;
-    LocationManager   *_locationManager;
     AFVisitedPOIsData *_visitedPOIs;
 }
 
@@ -43,8 +42,7 @@
     _sidebarButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
-    _locationManager = [LocationManager sharedLocationManager];
-    [_locationManager checkLocationStatus];
+    [[LocationManager sharedLocationManager] checkLocationStatus];
     
     [self configureMapView];
     [self centerMap];
