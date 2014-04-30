@@ -86,21 +86,21 @@
 		<group>
 			<ticket>
 				<description>
-					<pl>Bilet rodzinny (2 dorosłych + maksymalnie 3 dzieci)</pl>
+					<pl>Bilet rodzinny</pl>
 					<en>Family ticket EN</en>
 				</description>
 				<price>85</price>
 			</ticket>
 			<ticket>
-			</ticket>
 				<description>
-					<pl>Osoba dorosła/os</pl>
+					<pl>Osoba dorosła</pl>
 					<en>Adult</en>
 				</description>
 				<price>25</price>
+            </ticket>
 			<ticket>
 				<description>
-					<pl>Dziecko/os</pl>
+					<pl>Dziecko</pl>
 					<en>Child</en>
 				</description>
 				<price>12</price>

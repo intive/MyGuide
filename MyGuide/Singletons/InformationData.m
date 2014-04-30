@@ -29,7 +29,8 @@
         _address            = @"";
         _trams              = @"";
         _openings           = @[];
-        _tickets            = @[];
+        _ticketsIndividual  = @[];
+        _ticketsGroup       = @[];
         _emails             = @[];
         _ticketsInformation = [Translatable new];
         _parkingInformation = [Translatable new];

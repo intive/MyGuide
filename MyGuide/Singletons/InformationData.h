@@ -16,7 +16,8 @@
 @property (nonatomic) Translatable *openingInformation;
 
 #pragma mark - Tickets
-@property (nonatomic) NSArray      *tickets;
+@property (nonatomic) NSArray      *ticketsIndividual;
+@property (nonatomic) NSArray      *ticketsGroup;
 @property (nonatomic) Translatable *ticketsInformation;
 
 # pragma mark - Contact
