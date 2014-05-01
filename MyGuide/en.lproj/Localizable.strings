@@ -20,6 +20,8 @@
 
 "gpsDeniedTitle" = "GPS disabeld";
 
+"alertEventWrongMonth" = "This event begins on 1.06";
+
 /******************************
            CONTROLLERS
  ******************************/

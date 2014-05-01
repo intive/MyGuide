@@ -64,16 +64,19 @@
 {
     UITableViewCell *cell = nil;
     if(indexPath.section % 2 == 0){
-       static NSString *cellId = @"Cell left";
-       cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-       if (cell == nil) {
+        static NSString *cellId = @"Cell left";
+        cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        if (cell == nil) {
            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-       }
-       UIImageView *eventImage = (UIImageView *)[cell viewWithTag:101];
+        }
+        UIImageView *eventImage = (UIImageView *)[cell viewWithTag:101];
         eventImage.image = [UIImage imageNamed:[[_events objectAtIndex:indexPath.section] eventImage]];
        
-       UILabel *nameLabel = (UILabel *)[cell viewWithTag:102];
-       nameLabel.text = [[_events objectAtIndex:indexPath.section] getName];
+        UILabel *nameLabel = (UILabel *)[cell viewWithTag:102];
+        nameLabel.text = [[_events objectAtIndex:indexPath.section] getName];
+        
+        UILabel *timeLabel = (UILabel *)[cell viewWithTag:105];
+        timeLabel.text = [self setTimeForCellAtSection:indexPath.section];
     }
     else{
         static NSString *cellId = @"Cell right";
@@ -86,8 +89,53 @@
         
         UILabel *nameLabel = (UILabel *)[cell viewWithTag:104];
         nameLabel.text = [[_events objectAtIndex:indexPath.section] getName];
+        
+        UILabel *timeLabel = (UILabel *)[cell viewWithTag:106];
+        timeLabel.text = [self setTimeForCellAtSection:indexPath.section];
     }
     return cell;
+}
+- (NSString *)setTimeForCellAtSection:(NSInteger)section
+{
+    NSString *str = nil;
+    NSDateFormatter *formatterMonth;
+    NSString        *dateString;
+    
+    formatterMonth = [[NSDateFormatter alloc] init];
+    [formatterMonth setDateFormat:@"MM"];
+    
+    if([[_events objectAtIndex:section] timeWeekends] != nil){
+        if([self isWeekend:[NSDate date]]){
+            str = [[[_events objectAtIndex:section] timeWeekends] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+        }
+        else{
+            str = [[[_events objectAtIndex:section] time] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+        }
+    }
+    else if([[_events objectAtIndex:section] startDate] != nil){
+        dateString = [formatterMonth stringFromDate:[NSDate date]];
+        if(dateString.integerValue >= 6 && dateString.integerValue <= 9){
+            str = [[[_events objectAtIndex:section] time] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+        }
+        else{
+            str = NSLocalizedString(@"alertEventWrongMonth", nil);
+        }
+    }
+    else{
+        str = [[[_events objectAtIndex:section] time] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+    }
+    return str;
+}
+- (BOOL)isWeekend:(NSDate *)date
+{
+    NSInteger day = [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:date] weekday];
+    
+    const int kSunday = 1;
+    const int kSaturday = 7;
+    
+    BOOL result = (day == kSunday || day == kSaturday);
+    
+    return result;
 }
 
 @end

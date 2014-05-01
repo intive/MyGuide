@@ -16,6 +16,7 @@ static NSString *kXmlTime         = @"time";
 static NSString *kXmlTimeCristmas = @"time_christmas";
 static NSString *kXmlTimeWeekends = @"time_weekends";
 static NSString *kXmlImage        = @"image";
+static NSString *kXmlStart        = @"start";
 
 @interface AFEventsParser ()
 
@@ -71,6 +72,9 @@ didStartElement: (NSString *)     elementName
     }
     else if ([elementName isEqualToString: kXmlImage]) {
         _currentEvent.eventImage = self.currentElement;
+    }
+    else if ([elementName isEqualToString: kXmlStart]) {
+        _currentEvent.startDate = self.currentElement;
     }
 }
 
