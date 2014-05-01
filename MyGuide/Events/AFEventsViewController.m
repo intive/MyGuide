@@ -97,11 +97,10 @@
 }
 - (NSString *)setTimeForCellAtSection:(NSInteger)section
 {
-    NSString *str = nil;
-    NSDateFormatter *formatterMonth;
+    NSString        *str;
+    NSDateFormatter *formatterMonth = [NSDateFormatter new];
     NSString        *dateString;
     
-    formatterMonth = [[NSDateFormatter alloc] init];
     [formatterMonth setDateFormat:@"MM"];
     
     if([[_events objectAtIndex:section] timeWeekends] != nil){
