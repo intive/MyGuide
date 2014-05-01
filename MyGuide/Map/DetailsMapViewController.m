@@ -13,7 +13,6 @@
 
 @property (nonatomic) CLLocationCoordinate2D destinationCoordinates;
 @property (nonatomic) Settings *sharedSettings;
-@property (nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -37,7 +36,6 @@ double const ZOOM_LEVEL = 15;
     [self drawCoordinatesOnMap: self.destinationCoordinates];
     [self setupMapView];
     
-    [self prepareLocationManager];
     if (self.showDirections) {
         [self drawDirectionsToLocation];
     }
@@ -51,6 +49,12 @@ double const ZOOM_LEVEL = 15;
     [self.mapView setShowsUserLocation: YES];
     [self.mapView setMapType: MKMapTypeSatellite];
     self.mapView.delegate = self;
+}
+
+- (void)      mapView: (MKMapView *)      mapView
+didUpdateUserLocation: (MKUserLocation *) userLocation
+{
+    [self drawDirectionsToLocation];
 }
 
 - (void) zoomOnLocation: (CLLocationCoordinate2D) coordinates
@@ -78,14 +82,6 @@ double const ZOOM_LEVEL = 15;
     self.nameToDisplay  = @"ZOO";
     self.latitude  = [NSNumber numberWithDouble: self.sharedSettings.zooCenter.latitude];
     self.longitude = [NSNumber numberWithDouble: self.sharedSettings.zooCenter.longitude];
-}
-
-- (void) prepareLocationManager
-{
-    self.locationManager = [CLLocationManager new];
-    [self.locationManager setDelegate:self];
-    [self.locationManager setDistanceFilter: kCLHeadingFilterNone];
-    [self.locationManager startUpdatingLocation];
 }
 
 - (void) locationManager: (CLLocationManager *)manager
