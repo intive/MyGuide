@@ -41,7 +41,7 @@
 - (void)loadEvents
 {
     AFEventsData *sharedParsedData = [AFEventsData sharedParsedData];
-    _events = sharedParsedData.events;
+    self.events = sharedParsedData.events;
 }
 
 - (void)loadTableData
@@ -70,10 +70,10 @@
            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
         UIImageView *eventImage = (UIImageView *)[cell viewWithTag:101];
-        eventImage.image = [UIImage imageNamed:[[_events objectAtIndex:indexPath.section] eventImage]];
+        eventImage.image = [UIImage imageNamed:[[self.events objectAtIndex:indexPath.section] eventImage]];
        
         UILabel *nameLabel = (UILabel *)[cell viewWithTag:102];
-        nameLabel.text = [[_events objectAtIndex:indexPath.section] getName];
+        nameLabel.text = [[self.events objectAtIndex:indexPath.section] getName];
         
         UILabel *timeLabel = (UILabel *)[cell viewWithTag:105];
         timeLabel.text = [self setTimeForCellAtSection:indexPath.section];
@@ -85,10 +85,10 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
         UIImageView *eventImage = (UIImageView *)[cell viewWithTag:103];
-        eventImage.image = [UIImage imageNamed:[[_events objectAtIndex:indexPath.section] eventImage]];
+        eventImage.image = [UIImage imageNamed:[[self.events objectAtIndex:indexPath.section] eventImage]];
         
         UILabel *nameLabel = (UILabel *)[cell viewWithTag:104];
-        nameLabel.text = [[_events objectAtIndex:indexPath.section] getName];
+        nameLabel.text = [[self.events objectAtIndex:indexPath.section] getName];
         
         UILabel *timeLabel = (UILabel *)[cell viewWithTag:106];
         timeLabel.text = [self setTimeForCellAtSection:indexPath.section];
@@ -103,25 +103,25 @@
     
     [formatterMonth setDateFormat:@"MM"];
     
-    if([[_events objectAtIndex:section] timeWeekends] != nil){
+    if([[self.events objectAtIndex:section] timeWeekends] != nil){
         if([self isWeekend:[NSDate date]]){
-            str = [[[_events objectAtIndex:section] timeWeekends] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+            str = [[[self.events objectAtIndex:section] timeWeekends] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
         }
         else{
-            str = [[[_events objectAtIndex:section] time] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+            str = [[[self.events objectAtIndex:section] time] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
         }
     }
-    else if([[_events objectAtIndex:section] startDate] != nil){
+    else if([[self.events objectAtIndex:section] startDate] != nil){
         dateString = [formatterMonth stringFromDate:[NSDate date]];
         if(dateString.integerValue >= 6 && dateString.integerValue <= 9){
-            str = [[[_events objectAtIndex:section] time] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+            str = [[[self.events objectAtIndex:section] time] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
         }
         else{
             str = NSLocalizedString(@"alertEventWrongMonth", nil);
         }
     }
     else{
-        str = [[[_events objectAtIndex:section] time] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+        str = [[[self.events objectAtIndex:section] time] stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
     }
     return str;
 }
