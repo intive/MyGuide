@@ -44,15 +44,14 @@ public class NearestAnimalsListFragment extends Fragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.fragment_list_view,
-				container, false);
+		View view = inflater.inflate(R.layout.fragment_list_view, container,
+				false);
 
 		setActionBar();
 		mLocationUpdater = LocationUpdater.getInstance();
 		mLocationUpdater.startUpdating(this);
 
-		mAnimalListView = (ListView) view
-				.findViewById(R.id.lvListItem);
+		mAnimalListView = (ListView) view.findViewById(R.id.lvListItem);
 
 		mAnimalFinder = new AnimalFinderHelper(mLocationUpdater.getLocation(),
 				(MyGuideApp) getActivity().getApplication(), getActivity());
@@ -63,8 +62,8 @@ public class NearestAnimalsListFragment extends Fragment implements
 	public void onResume() {
 		super.onResume();
 		mAnimalsAndDistances = mAnimalFinder.allAnimalsWithDistances();
-		NearestAnimalsAdapter mListAdapter = new NearestAnimalsListFragment.NearestAnimalsAdapter(getActivity(),
-				R.layout.custom_animal_row, mAnimalsAndDistances);
+		NearestAnimalsAdapter mListAdapter = new NearestAnimalsListFragment.NearestAnimalsAdapter(
+				getActivity(), R.layout.custom_animal_row, mAnimalsAndDistances);
 
 		mAnimalListView.setAdapter(mListAdapter);
 	};
@@ -95,30 +94,49 @@ public class NearestAnimalsListFragment extends Fragment implements
 			super(context, resource, objects);
 		}
 
+		private class ViewHolder {
+			ImageView animalImage;
+			TextView animalName;
+			TextView animalDistance;
+			TextView animalFact;
+		}
+
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 
-			LayoutInflater inflater = (LayoutInflater) getContext()
-					.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+			ViewHolder viewHolder;
 
-			convertView = inflater.inflate(R.layout.custom_animal_row, null);
+			if (convertView == null) {
+				LayoutInflater inflater = (LayoutInflater) getContext()
+						.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+				convertView = inflater
+						.inflate(R.layout.custom_animal_row, null);
 
-			ImageView animalImage = (ImageView) convertView
-					.findViewById(R.id.imgvAnimalIcon);
-			TextView animalName = (TextView) convertView
-					.findViewById(R.id.txtvAnimalName);
-			TextView animalDistance = (TextView) convertView
-					.findViewById(R.id.txtvAnimalDistance);
-			TextView animalFact = (TextView) convertView
-					.findViewById(R.id.txtvAnimalFunFact);
+				viewHolder = new ViewHolder();
+				viewHolder.animalImage = (ImageView) convertView
+						.findViewById(R.id.imgvAnimalIcon);
+				viewHolder.animalName = (TextView) convertView
+						.findViewById(R.id.txtvAnimalName);
+				viewHolder.animalDistance = (TextView) convertView
+						.findViewById(R.id.txtvAnimalDistance);
+				viewHolder.animalFact = (TextView) convertView
+						.findViewById(R.id.txtvAnimalFunFact);
+
+				convertView.setTag(viewHolder);
+			} else {
+				viewHolder = (ViewHolder) convertView.getTag();
+			}
 
 			Animal animal = ((AnimalDistance) getItem(position)).getAnimal();
 			int distance = ((AnimalDistance) getItem(position)).getDistance();
 
-			animalName.setText(animal.getName());
-			animalFact.setText(animal.getDescriptionAdult().getText());
-			animalDistance.setText(Integer.toString(distance) + "m");
-			// TODO image
+			if (animal != null) {
+				viewHolder.animalDistance.setText(Integer.toString(distance)
+						+ "m");
+				viewHolder.animalName.setText(animal.getName());
+				viewHolder.animalFact.setText(animal.getDescriptionAdult()
+						.getText());
+			}
 
 			return convertView;
 		}
