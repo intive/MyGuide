@@ -4,6 +4,7 @@ using MyGuide.Resources;
 using MyGuide.Services.Interfaces;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Windows.Navigation;
 
 namespace MyGuide.ViewModels
 {
@@ -98,4 +99,6 @@ namespace MyGuide.ViewModels
             IsVisibleDebugOptionsItem = true;
         }
     }
+
+
 }

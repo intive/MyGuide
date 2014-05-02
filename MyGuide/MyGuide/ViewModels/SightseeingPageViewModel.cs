@@ -1,17 +1,15 @@
 ﻿using Caliburn.Micro;
-using Microsoft.Phone.Controls.Maps.Platform;
 using MyGuide.DataServices.Interfaces;
-using MyGuide.Models;
 using MyGuide.Services.Interfaces;
-using System;
 using System.Device.Location;
-using System.Windows;
-using System.Windows.Media;
+using System.Diagnostics;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 using Windows.Devices.Geolocation;
-using Windows.Devices.Sensors;
+using Microsoft.Xna.Framework;
+using Windows.Foundation;
+using Microsoft.Devices.Sensors;
+using System;
+using System.Threading;
 
 namespace MyGuide.ViewModels
 {
@@ -44,19 +42,14 @@ namespace MyGuide.ViewModels
         //Uncomment all method and set some instructions when we'll implement appbar clickable
         //Remeber to add icons for appbar buttons!
 
-        public void ShowAnimals()
-        {
-            UserPositionLocation = new GeoCoordinate(51.104942, 17.073820);
-        }
-
-        public void ShowMap()
-        {
-            UserPositionLocation = new GeoCoordinate(51.104942, 17.073520);
-        }
+        //public void ShowAnimals()
+        //{
+        //}
 
         //public void ShowMap()
         //{
         //}
+
 
         //public void ShowInformation()
         //{
@@ -76,12 +69,20 @@ namespace MyGuide.ViewModels
 
         #endregion Commands
 
-        #region UserMarker
-
         public override void OnNavigatedFrom(NavigationMode navigationMode)
         {
+            compass.CurrentValueChanged -= compass_ReadingChanged;
+            Thread.Sleep(100);
+            if (Compass.IsSupported)
+            {
+                Debug.WriteLine(compass.IsDataValid);
+                compass.Stop();
+                Debug.WriteLine(compass.IsDataValid);
+            }
+
+            Debug.WriteLine(geolocator.LocationStatus);
             geolocator.PositionChanged -= geolocator_PositionChanged;
-            compass.ReadingChanged -= compass_ReadingChanged;
+            Debug.WriteLine(geolocator.LocationStatus);
         }
 
         public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
@@ -91,26 +92,33 @@ namespace MyGuide.ViewModels
             geolocator = new Geolocator();
             geolocator.MovementThreshold = 1;
             geolocator.DesiredAccuracy = PositionAccuracy.High;
-
             geolocator.PositionChanged += geolocator_PositionChanged;
 
-            compass = Compass.GetDefault();
-
-            uint minReportInterval = compass.MinimumReportInterval;
-            uint reportInterval = minReportInterval > 16 ? minReportInterval : 16;
-            compass.ReportInterval = reportInterval;
-
-            compass.ReadingChanged += compass_ReadingChanged;
+            if (Compass.IsSupported)
+            {
+                compass = new Compass();
+                //It is a crucial point. TimeBetweenUpdates should be multiple of 20.
+                //But I say that when it is 100ms, there is problem 9/10 with ending
+                //event when event hendler is removing in OnNavigatedFrom.
+                compass.TimeBetweenUpdates = TimeSpan.FromMilliseconds(400);
+                compass.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<CompassReading>>(compass_ReadingChanged);
+                compass.Start();
+            }
         }
 
-        private void compass_ReadingChanged(object sender, CompassReadingChangedEventArgs e)
+
+        #region UserMarker
+
+        
+
+        private void compass_ReadingChanged(object sender, SensorReadingEventArgs<CompassReading> e)
         {
-            HeadingAngle = e.Reading.HeadingMagneticNorth;
+            HeadingAngle = e.SensorReading.MagneticHeading;
         }
 
         private void geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
         {
-            UserPositionLocation = new GeoCoordinate(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude); ;
+            UserPositionLocation = new GeoCoordinate(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
         }
 
         #endregion UserMarker
