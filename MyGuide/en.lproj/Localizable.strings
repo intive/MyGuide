@@ -34,6 +34,8 @@
 
 "cellLabelRestaurant" = "Restaurant %d";
 
+"cellLabelMap" = "Map";
+
 "titleControllerHistory" = "History of ZOO";
 
 "yourLocation" = "Your location";

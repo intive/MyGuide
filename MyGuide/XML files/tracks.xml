@@ -1,0 +1,92 @@
+<root>
+    <visiting_tracks>
+        <version>6</version>
+        <track>
+            <name>
+                <pl>Eksploracja</pl>
+                <en>Free roam</en>
+            </name>
+            <description>
+                <pl>Wszystkie zwierzęta</pl>
+                <en>All animals</en>
+            </description>
+            <image>track_placeholder.png</image>
+        </track>
+		<track>
+			<name>
+				<pl>Track 1</pl>
+				<en>EN Track 1</en>
+			</name>
+			<description>
+				<pl>Track 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
+				<en>EN Track 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
+			</description>
+			<image>track_placeholder.png</image>
+			<animals>
+				<animal_id>1</animal_id>
+				<animal_id>2</animal_id>
+				<animal_id>3</animal_id>
+				<animal_id>4</animal_id>
+				<animal_id>5</animal_id>
+				<animal_id>6</animal_id>
+			</animals>
+		</track>
+		<track>
+			<name>
+				<pl>Track 2</pl>
+				<en>EN Track 2</en>
+			</name>
+			<description>
+				<pl>Track 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
+				<en>EN Track 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
+			</description>
+			<image>track_placeholder.png</image>
+			<animals>
+				<animal_id>11</animal_id>
+				<animal_id>12</animal_id>
+				<animal_id>13</animal_id>
+				<animal_id>14</animal_id>
+				<animal_id>15</animal_id>
+				<animal_id>16</animal_id>
+			</animals>
+		</track>
+		<track>
+			<name>
+				<pl>Track 3</pl>
+				<en>EN Track 3</en>
+			</name>
+			<description>
+				<pl>Track 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
+				<en>EN Track 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
+			</description>
+			<image>track_placeholder.png</image>
+			<animals>
+				<animal_id>21</animal_id>
+				<animal_id>22</animal_id>
+				<animal_id>23</animal_id>
+				<animal_id>24</animal_id>
+				<animal_id>25</animal_id>
+				<animal_id>26</animal_id>
+			</animals>
+		</track>
+		<track>
+			<name>
+				<pl>Track 4</pl>
+				<en>EN Track 4</en>
+			</name>
+			<description>
+				<pl>Track 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
+				<en>EN Track 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
+			</description>
+			<image>track_placeholder.png</image>
+			<animals>
+				<animal_id>31</animal_id>
+				<animal_id>32</animal_id>
+				<animal_id>33</animal_id>
+				<animal_id>34</animal_id>
+				<animal_id>35</animal_id>
+				<animal_id>36</animal_id>
+			</animals>
+		</track>
+	</visiting_tracks>
+</root>

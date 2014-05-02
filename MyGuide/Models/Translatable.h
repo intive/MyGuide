@@ -10,8 +10,8 @@
 
 @interface Translatable : NSObject
 
-- (void) setName: (NSString *)name withLanguage: (NSString *)language;
-- (NSString *) getNameForLanguage: (NSString *)language;
-- (NSString *) getName;
+- (void)setName:(NSString *)name withLanguage:(NSString *)language;
+- (NSString *)getNameForLanguage:(NSString *)language;
+- (NSString *)getName;
 
 @end

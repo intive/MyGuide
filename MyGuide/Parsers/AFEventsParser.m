@@ -78,7 +78,7 @@ didStartElement: (NSString *)     elementName
     }
 }
 
-- (void) parserDidEndDocument: (NSXMLParser *)parser
+- (void)parserDidEndDocument:(NSXMLParser *)parser
 {
     [super parserDidEndDocument: parser];
     AFEventsData *sharedParsedData = [AFEventsData sharedParsedData];

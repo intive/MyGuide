@@ -63,36 +63,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
-    if(indexPath.section % 2 == 0){
-        static NSString *cellId = @"Cell left";
-        cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        if (cell == nil) {
-           cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-        }
-        UIImageView *eventImage = (UIImageView *)[cell viewWithTag:101];
-        eventImage.image = [UIImage imageNamed:[[self.events objectAtIndex:indexPath.section] eventImage]];
-       
-        UILabel *nameLabel = (UILabel *)[cell viewWithTag:102];
-        nameLabel.text = [[self.events objectAtIndex:indexPath.section] getName];
-        
-        UILabel *timeLabel = (UILabel *)[cell viewWithTag:105];
-        timeLabel.text = [self setTimeForCellAtSection:indexPath.section];
+    BOOL isEven = indexPath.section % 2;
+    
+    NSString *cellId = (isEven ? @"Cell right" : @"Cell left");
+    cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-    else{
-        static NSString *cellId = @"Cell right";
-        cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-        }
-        UIImageView *eventImage = (UIImageView *)[cell viewWithTag:103];
-        eventImage.image = [UIImage imageNamed:[[self.events objectAtIndex:indexPath.section] eventImage]];
-        
-        UILabel *nameLabel = (UILabel *)[cell viewWithTag:104];
-        nameLabel.text = [[self.events objectAtIndex:indexPath.section] getName];
-        
-        UILabel *timeLabel = (UILabel *)[cell viewWithTag:106];
-        timeLabel.text = [self setTimeForCellAtSection:indexPath.section];
-    }
+    UIImageView *eventImage = (UIImageView *)[cell viewWithTag:(isEven ? 103 : 101)];
+    eventImage.image = [UIImage imageNamed:[[self.events objectAtIndex:indexPath.section] eventImage]];
+    
+    UILabel *nameLabel = (UILabel *)[cell viewWithTag:(isEven ? 104 : 102)];
+    nameLabel.text = [[self.events objectAtIndex:indexPath.section] getName];
+    
+    UILabel *timeLabel = (UILabel *)[cell viewWithTag:(isEven ? 106 : 105)];
+    timeLabel.text = [self setTimeForCellAtSection:indexPath.section];
+    
     return cell;
 }
 - (NSString *)setTimeForCellAtSection:(NSInteger)section
