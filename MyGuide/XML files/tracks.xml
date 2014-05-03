@@ -1,6 +1,6 @@
 <root>
     <visiting_tracks>
-        <version>9</version>
+        <version>10</version>
         <track>
             <name>
                 <pl>Eksploracja</pl>
@@ -11,6 +11,63 @@
                 <en>All animals</en>
             </description>
             <image>track_placeholder.png</image>
+            <animals>
+                <animal_id>0</animal_id>
+                <animal_id>1</animal_id>
+				<animal_id>2</animal_id>
+				<animal_id>3</animal_id>
+				<animal_id>4</animal_id>
+				<animal_id>5</animal_id>
+				<animal_id>6</animal_id>
+                <animal_id>7</animal_id>
+				<animal_id>8</animal_id>
+				<animal_id>9</animal_id>
+				<animal_id>10</animal_id>
+				<animal_id>11</animal_id>
+				<animal_id>12</animal_id>
+                <animal_id>13</animal_id>
+				<animal_id>14</animal_id>
+				<animal_id>15</animal_id>
+				<animal_id>16</animal_id>
+				<animal_id>17</animal_id>
+				<animal_id>18</animal_id>
+                <animal_id>19</animal_id>
+				<animal_id>20</animal_id>
+				<animal_id>21</animal_id>
+				<animal_id>22</animal_id>
+				<animal_id>23</animal_id>
+				<animal_id>24</animal_id>
+                <animal_id>25</animal_id>
+				<animal_id>26</animal_id>
+				<animal_id>27</animal_id>
+				<animal_id>28</animal_id>
+				<animal_id>29</animal_id>
+				<animal_id>30</animal_id>
+                <animal_id>31</animal_id>
+				<animal_id>32</animal_id>
+				<animal_id>33</animal_id>
+				<animal_id>34</animal_id>
+				<animal_id>35</animal_id>
+				<animal_id>36</animal_id>
+                <animal_id>37</animal_id>
+				<animal_id>38</animal_id>
+				<animal_id>39</animal_id>
+				<animal_id>40</animal_id>
+				<animal_id>41</animal_id>
+				<animal_id>42</animal_id>
+                <animal_id>43</animal_id>
+				<animal_id>44</animal_id>
+				<animal_id>45</animal_id>
+				<animal_id>46</animal_id>
+				<animal_id>47</animal_id>
+				<animal_id>48</animal_id>
+                <animal_id>49</animal_id>
+				<animal_id>50</animal_id>
+				<animal_id>51</animal_id>
+				<animal_id>52</animal_id>
+				<animal_id>53</animal_id>
+				<animal_id>54</animal_id>
+            </animals>
         </track>
 		<track>
 			<name>
