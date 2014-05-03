@@ -31,8 +31,8 @@
 
 - (void)loadMenuBar
 {
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
+    self.sidebarButton.target = self.revealViewController;
+    self.sidebarButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     [self.navigationItem setLeftBarButtonItem:_sidebarButton];
     [self.navigationItem setRightBarButtonItem:nil];
@@ -46,8 +46,8 @@
 
 - (void)loadTableData
 {
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

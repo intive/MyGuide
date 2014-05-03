@@ -20,11 +20,6 @@
 
 @implementation TrackSlideMenuViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    return [super initWithStyle:style];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
