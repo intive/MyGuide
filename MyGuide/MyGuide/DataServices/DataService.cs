@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.IsolatedStorage;
 using System.Threading.Tasks;
 
 namespace MyGuide.DataServices
@@ -49,38 +50,92 @@ namespace MyGuide.DataServices
         public async Task Initialize()
         {
             XmlParser<Root> xmlPars = new XmlParser<Root>();
-            try
-            {
-                string xmlString;
-                using (StreamReader sr = new StreamReader("Data/data.xml"))
-                {
-                    xmlString = await sr.ReadToEndAsync();
-                }
-                Datas = await xmlPars.DeserializeXml(xmlString);
 
-                if (Datas.AnimalsList.Items.Count != 0
-                    && Datas.JunctionsList.Items.Count != 0
-                    && Datas.WaysList.Items.Count != 0)
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                if (myIsolatedStorage.FileExists("Data/data.xml"))
                 {
-                    _log.Info("Loaded data.xml: {0}", CollectionsSizes());
+                    try
+                    {
+                        using (IsolatedStorageFileStream stream = myIsolatedStorage.OpenFile("Data/data.xml", FileMode.Open))
+                        {
+                            string xmlString;
+                            using (StreamReader sr = new StreamReader(stream))
+                            {
+                                xmlString = await sr.ReadToEndAsync();
+                            }
+                            Datas = await xmlPars.DeserializeXml(xmlString);
+                            if (Datas.AnimalsList.Items.Count != 0
+                           && Datas.JunctionsList.Items.Count != 0
+                           && Datas.WaysList.Items.Count != 0)
+                            {
+                                _log.Info("Loaded data.xml: {0}", CollectionsSizes());
+                            }
+                            else
+                            {
+                                throw new LackOfXmlFileException("Lack of Data");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex is FileNotFoundException)
+                        {
+                            throw new LackOfXmlFileException("There is no data file", ex);
+                        }
+                        if (ex is InvalidOperationException)
+                        {
+                            throw new LackOfXmlFileException("There are errors in data file", ex);
+                        }
+
+                        throw new LackOfXmlFileException("Unknow exception", ex);
+                    }
                 }
                 else
                 {
-                    throw new LackOfXmlFileException("Lack of Data");
-                }
-            }
-            catch (Exception ex)
-            {
-                if (ex is FileNotFoundException)
-                {
-                    throw new LackOfXmlFileException("There is not data file", ex);
-                }
-                if (ex is InvalidOperationException)
-                {
-                    throw new LackOfXmlFileException("There are errors in data file", ex);
-                }
+                    try
+                    {
+                        string xmlString;
+                        using (StreamReader sr = new StreamReader("Data/data.xml"))
+                        {
+                            xmlString = await sr.ReadToEndAsync();
+                        }
+                        Datas = await xmlPars.DeserializeXml(xmlString);
 
-                throw new LackOfXmlFileException("Unknow exception", ex);
+                        if (Datas.AnimalsList.Items.Count != 0
+                            && Datas.JunctionsList.Items.Count != 0
+                            && Datas.WaysList.Items.Count != 0)
+                        {
+                            _log.Info("Loaded data.xml: {0}", CollectionsSizes());
+                        }
+                        else
+                        {
+                            throw new LackOfXmlFileException("Lack of Data");
+                        }
+
+                        myIsolatedStorage.CreateDirectory("Data");
+                        using (IsolatedStorageFileStream stream = myIsolatedStorage.OpenFile("Data/data.xml", FileMode.Create))
+                        {
+                            using (StreamWriter sw = new StreamWriter(stream))
+                            {
+                                await sw.WriteAsync(xmlString);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex is FileNotFoundException)
+                        {
+                            throw new LackOfXmlFileException("There is not data file", ex);
+                        }
+                        if (ex is InvalidOperationException)
+                        {
+                            throw new LackOfXmlFileException("There are errors in data file", ex);
+                        }
+
+                        throw new LackOfXmlFileException("Unknow exception", ex);
+                    }
+                }
             }
         }
 

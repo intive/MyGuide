@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
-using Moq;
 using MyGuide.DataServices;
 using MyGuide.Models;
-using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyGuideTests.Tests
@@ -16,10 +16,61 @@ namespace MyGuideTests.Tests
         private Root correctData;
 
         [TestMethod]
-        public void CorrectDataInitializeTest()
+        public async Task CorrectDataInitializeTest()
         {
-            //TODO: Test for DataServiceModel.Initialize();
+
+            string xmlString;
+            using (StreamReader sr = new StreamReader("TestData/CorrectData.xml"))
+            {
+                xmlString = await sr.ReadToEndAsync();
+            }
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                myIsolatedStorage.CreateDirectory("Data");
+                using (IsolatedStorageFileStream stream = myIsolatedStorage.OpenFile("Data/data.xml", FileMode.Create))
+                {
+                    using (StreamWriter sw = new StreamWriter(stream))
+                    {
+                        await sw.WriteAsync(xmlString);
+                    }
+                }
+            }
+
+            DataService ds = new DataService();
+            await ds.Initialize();
+            Debug.WriteLine(ds.CollectionsSizes());
+            Assert.AreEqual("Zebra", ds.Datas.AnimalsList.Items.First().Name);
+            Assert.AreEqual(51.1048329, ds.Datas.JunctionsList.Items.First().Latitude);
+            Assert.AreEqual(17.0742639, ds.Datas.JunctionsList.Items.First().Longitude);
+            Assert.AreEqual(35948032, ds.Datas.WaysList.Items.First().Id);
+            CleanupMethod();
         }
+
+        public static void CleanupMethod()
+        {
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                if (myIsolatedStorage.FileExists("Data/data.xml"))
+                {
+                    myIsolatedStorage.DeleteFile("Data/data.xml");
+                    myIsolatedStorage.DeleteDirectory("Data");
+                }
+            }
+        }
+
+        [TestMethod]
+        public async Task InitializeWithoutFileInISOptionTest()
+        {
+            DataService ds = new DataService();
+            await ds.Initialize();
+            Debug.WriteLine(ds.CollectionsSizes());
+            Assert.AreEqual("Żyrafa", ds.Datas.AnimalsList.Items.First().Name);
+            Assert.AreEqual(51.1050455, ds.Datas.JunctionsList.Items.First().Latitude);
+            Assert.AreEqual(17.0720156, ds.Datas.JunctionsList.Items.First().Longitude);
+            Assert.AreEqual(32997558, ds.Datas.WaysList.Items.First().Id);
+            CleanupMethod();
+        }
+        
 
         [TestMethod]
         public void GetAnimalPositionTest()
