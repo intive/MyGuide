@@ -7,7 +7,6 @@
 //
 
 #import "HistoryData.h"
-#import "Settings.h"
 
 @implementation HistoryData
 

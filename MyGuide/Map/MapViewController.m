@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "DetailsMapViewController.h"
 
 @interface MapViewController ()
 
@@ -25,7 +26,6 @@
 {
     Settings          *_settings;
     AFParsedData      *_data;
-    LocationManager   *_locationManager;
     AFVisitedPOIsData *_visitedPOIs;
 }
 
@@ -42,8 +42,7 @@
     _sidebarButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
-    _locationManager = [LocationManager sharedLocationManager];
-    [_locationManager checkLocationStatus];
+    [[LocationManager sharedLocationManager] checkLocationStatus];
     
     [self configureMapView];
     [self centerMap];
@@ -162,11 +161,17 @@
 {
     if(buttonIndex != alertView.cancelButtonIndex)
     {
-        UIViewController *fakeDrivingLocationController = [[UIViewController alloc] init];
-        fakeDrivingLocationController.view.backgroundColor = [UIColor whiteColor];
-        [self.navigationController pushViewController:fakeDrivingLocationController animated: YES];
+        [self.navigationController pushViewController: [self getMapViewController] animated: YES];
     }
     _settings.showDistanceAlert = NO;
+}
+
+- (DetailsMapViewController *) getMapViewController
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main" bundle: [NSBundle mainBundle]];
+    DetailsMapViewController *mapViewController = (DetailsMapViewController *)[storyboard instantiateViewControllerWithIdentifier: @"detailsMap"];
+    [mapViewController showZOO];
+    return mapViewController;
 }
 
 #pragma mark - Drawing paths on the map

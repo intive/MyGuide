@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0509026918F45C7B00369B07 /* Translatable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0509026818F45C7B00369B07 /* Translatable.m */; };
+		050E852D190B94CE00B13473 /* information.xml in Resources */ = {isa = PBXBuildFile; fileRef = 050E852C190B94CE00B13473 /* information.xml */; };
+		050E8530190B9A3A00B13473 /* InformationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 050E852F190B9A3A00B13473 /* InformationParser.m */; };
+		051A8A27190081730012B096 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051A8A26190081730012B096 /* InformationViewController.m */; };
+		051A8A2D190082E70012B096 /* TicketsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051A8A2C190082E70012B096 /* TicketsViewController.m */; };
+		051A8A30190084720012B096 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 051A8A2F190084720012B096 /* ContactViewController.m */; };
+		0524326C190B9B5A00FC3242 /* Opening.m in Sources */ = {isa = PBXBuildFile; fileRef = 0524326B190B9B5A00FC3242 /* Opening.m */; };
+		0524326F190B9B6E00FC3242 /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0524326E190B9B6E00FC3242 /* Ticket.m */; };
+		05243272190B9DC500FC3242 /* InformationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05243271190B9DC500FC3242 /* InformationData.m */; };
+		05243275190BB52100FC3242 /* AbstractParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05243274190BB52100FC3242 /* AbstractParser.m */; };
 		0531724118F4A5B500FEC79F /* DetailsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0531724018F4A5B500FEC79F /* DetailsMapViewController.m */; };
 		0533DF0118DE1520001BCB28 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFE18DE1520001BCB28 /* menu.png */; };
 		0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533DEFF18DE1520001BCB28 /* menu@2x.png */; };
@@ -20,6 +29,7 @@
 		05406E4618F31661001656FC /* GastronomyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E4518F31661001656FC /* GastronomyData.m */; };
 		05406E4918F31AF6001656FC /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E4818F31AF6001656FC /* Dish.m */; };
 		05406E4C18F31B06001656FC /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E4B18F31B06001656FC /* Restaurant.m */; };
+		055452C619025B570021884C /* SegmentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055452C519025B570021884C /* SegmentedViewController.m */; };
 		055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */; };
 		05A1C12818FAABD3008FE0CB /* history.xml in Resources */ = {isa = PBXBuildFile; fileRef = 05A1C12718FAABD3008FE0CB /* history.xml */; };
 		05A1C12B18FAAF9D008FE0CB /* HistoryEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */; };
@@ -31,6 +41,9 @@
 		05A1C15118FAC7F2008FE0CB /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14A18FAC7F2008FE0CB /* UIBubbleTableView.m */; };
 		05A1C15218FAC7F2008FE0CB /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14C18FAC7F2008FE0CB /* UIBubbleTableViewCell.m */; };
 		05A1C15518FACB3E008FE0CB /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C15418FACB3E008FE0CB /* HistoryViewController.m */; };
+		05C335E8190C02DB000B705B /* info_contact_address.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C335E5190C02DB000B705B /* info_contact_address.png */; };
+		05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C335E6190C02DB000B705B /* info_contact_phone.png */; };
+		05C335EA190C02DB000B705B /* info_contact_url.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C335E7190C02DB000B705B /* info_contact_url.png */; };
 		05C925D318DDAFAD00C2F746 /* GPS.md in Resources */ = {isa = PBXBuildFile; fileRef = 05C925D218DDAFAD00C2F746 /* GPS.md */; };
 		05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C9265818DDDF1800C2F746 /* LocationManager.m */; };
 		05CD409918DF6FD60065C04F /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CD409818DF6FD60065C04F /* MapViewController.m */; };
@@ -85,6 +98,23 @@
 /* Begin PBXFileReference section */
 		0509026718F45C7B00369B07 /* Translatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translatable.h; sourceTree = "<group>"; };
 		0509026818F45C7B00369B07 /* Translatable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translatable.m; sourceTree = "<group>"; };
+		050E852C190B94CE00B13473 /* information.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = information.xml; sourceTree = "<group>"; };
+		050E852E190B9A3A00B13473 /* InformationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationParser.h; sourceTree = "<group>"; };
+		050E852F190B9A3A00B13473 /* InformationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationParser.m; sourceTree = "<group>"; };
+		051A8A25190081730012B096 /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		051A8A26190081730012B096 /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
+		051A8A2B190082E70012B096 /* TicketsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketsViewController.h; sourceTree = "<group>"; };
+		051A8A2C190082E70012B096 /* TicketsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketsViewController.m; sourceTree = "<group>"; };
+		051A8A2E190084720012B096 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		051A8A2F190084720012B096 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
+		0524326A190B9B5A00FC3242 /* Opening.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Opening.h; sourceTree = "<group>"; };
+		0524326B190B9B5A00FC3242 /* Opening.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Opening.m; sourceTree = "<group>"; };
+		0524326D190B9B6E00FC3242 /* Ticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ticket.h; sourceTree = "<group>"; };
+		0524326E190B9B6E00FC3242 /* Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ticket.m; sourceTree = "<group>"; };
+		05243270190B9DC500FC3242 /* InformationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationData.h; sourceTree = "<group>"; };
+		05243271190B9DC500FC3242 /* InformationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationData.m; sourceTree = "<group>"; };
+		05243273190BB52100FC3242 /* AbstractParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractParser.h; sourceTree = "<group>"; };
+		05243274190BB52100FC3242 /* AbstractParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractParser.m; sourceTree = "<group>"; };
 		0531723F18F4A5B500FEC79F /* DetailsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsMapViewController.h; sourceTree = "<group>"; };
 		0531724018F4A5B500FEC79F /* DetailsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsMapViewController.m; sourceTree = "<group>"; };
 		0533DEFE18DE1520001BCB28 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
@@ -105,9 +135,11 @@
 		05406E4818F31AF6001656FC /* Dish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dish.m; sourceTree = "<group>"; };
 		05406E4A18F31B06001656FC /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
 		05406E4B18F31B06001656FC /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
+		055452C419025B570021884C /* SegmentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentedViewController.h; sourceTree = "<group>"; };
+		055452C519025B570021884C /* SegmentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedViewController.m; sourceTree = "<group>"; };
 		055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalsListViewController.h; sourceTree = "<group>"; };
 		055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalsListViewController.m; sourceTree = "<group>"; };
-		057F9EC618E7760A001DE63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0566C5FB190C497800F0C7CE /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		05A1C12718FAABD3008FE0CB /* history.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = history.xml; path = "XML files/history.xml"; sourceTree = "<group>"; };
 		05A1C12918FAAF9D008FE0CB /* HistoryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryEvent.h; sourceTree = "<group>"; };
 		05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryEvent.m; sourceTree = "<group>"; };
@@ -128,6 +160,10 @@
 		05A1C14D18FAC7F2008FE0CB /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
 		05A1C15318FACB3E008FE0CB /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		05A1C15418FACB3E008FE0CB /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		05C335E2190BFFAE000B705B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		05C335E5190C02DB000B705B /* info_contact_address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_address.png; sourceTree = "<group>"; };
+		05C335E6190C02DB000B705B /* info_contact_phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_phone.png; sourceTree = "<group>"; };
+		05C335E7190C02DB000B705B /* info_contact_url.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_url.png; sourceTree = "<group>"; };
 		05C925D218DDAFAD00C2F746 /* GPS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GPS.md; sourceTree = "<group>"; };
 		05C9265718DDDF1800C2F746 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		05C9265818DDDF1800C2F746 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
@@ -144,8 +180,6 @@
 		05E0209018C1D38000AE76EC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		05E0209618C23B7100AE76EC /* MKAnnotationAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAnnotationAnimal.h; sourceTree = "<group>"; };
 		05E0209718C23B7100AE76EC /* MKAnnotationAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAnnotationAnimal.m; sourceTree = "<group>"; };
-		05E1653C18F17E4800DA3BD7 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
-		05E1653F18F17EAC00DA3BD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		05E1654718F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyDetailsInfoViewController.h; sourceTree = "<group>"; };
 		05E1654818F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastronomyDetailsInfoViewController.m; sourceTree = "<group>"; };
 		05E1654918F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyDetailsMenuTableViewController.h; sourceTree = "<group>"; };
@@ -224,6 +258,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		051A8A24190081350012B096 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				051A8A25190081730012B096 /* InformationViewController.h */,
+				051A8A26190081730012B096 /* InformationViewController.m */,
+				051A8A2B190082E70012B096 /* TicketsViewController.h */,
+				051A8A2C190082E70012B096 /* TicketsViewController.m */,
+				051A8A2E190084720012B096 /* ContactViewController.h */,
+				051A8A2F190084720012B096 /* ContactViewController.m */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
 		05A1C12318FAA436008FE0CB /* History */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +326,9 @@
 			isa = PBXGroup;
 			children = (
 				0533DEFE18DE1520001BCB28 /* menu.png */,
+				05C335E5190C02DB000B705B /* info_contact_address.png */,
+				05C335E6190C02DB000B705B /* info_contact_phone.png */,
+				05C335E7190C02DB000B705B /* info_contact_url.png */,
 				0533DEFF18DE1520001BCB28 /* menu@2x.png */,
 			);
 			path = Images;
@@ -387,6 +437,7 @@
 				05A1C14018FAC7F2008FE0CB /* Libraries */,
 				05C925D418DDBA6000C2F746 /* Images */,
 				3D5EF617189637C000233B64 /* AppDelegate.h */,
+				051A8A24190081350012B096 /* Information */,
 				05A1C12318FAA436008FE0CB /* History */,
 				05E1654618F1B4DE00DA3BD7 /* Gastronomy */,
 				3D5EF618189637C000233B64 /* AppDelegate.m */,
@@ -406,6 +457,8 @@
 				055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */,
 				8426164018DF9BB700927285 /* AnimalDetailsViewController.h */,
 				8426164118DF9BB700927285 /* AnimalDetailsViewController.m */,
+				055452C419025B570021884C /* SegmentedViewController.h */,
+				055452C519025B570021884C /* SegmentedViewController.m */,
 			);
 			path = MyGuide;
 			sourceTree = "<group>";
@@ -460,6 +513,10 @@
 				0509026818F45C7B00369B07 /* Translatable.m */,
 				05A1C12918FAAF9D008FE0CB /* HistoryEvent.h */,
 				05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */,
+				0524326A190B9B5A00FC3242 /* Opening.h */,
+				0524326B190B9B5A00FC3242 /* Opening.m */,
+				0524326D190B9B6E00FC3242 /* Ticket.h */,
+				0524326E190B9B6E00FC3242 /* Ticket.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -475,6 +532,10 @@
 				05406E3E18F2EE1A001656FC /* GastronomyParser.m */,
 				05A1C12F18FAB125008FE0CB /* HistoryParser.h */,
 				05A1C13018FAB125008FE0CB /* HistoryParser.m */,
+				050E852E190B9A3A00B13473 /* InformationParser.h */,
+				050E852F190B9A3A00B13473 /* InformationParser.m */,
+				05243273190BB52100FC3242 /* AbstractParser.h */,
+				05243274190BB52100FC3242 /* AbstractParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -492,6 +553,8 @@
 				05406E4518F31661001656FC /* GastronomyData.m */,
 				05A1C12C18FAB0B8008FE0CB /* HistoryData.h */,
 				05A1C12D18FAB0B8008FE0CB /* HistoryData.m */,
+				05243270190B9DC500FC3242 /* InformationData.h */,
+				05243271190B9DC500FC3242 /* InformationData.m */,
 			);
 			name = Storage;
 			path = Singletons;
@@ -500,6 +563,7 @@
 		84DDCB4618BA91CB00A2F720 /* XML files */ = {
 			isa = PBXGroup;
 			children = (
+				050E852C190B94CE00B13473 /* information.xml */,
 				05A1C12718FAABD3008FE0CB /* history.xml */,
 				84DD035818BA8C7A00DE7178 /* config.xml */,
 				84DD035918BA8C7A00DE7178 /* XMLFetcher.h */,
@@ -591,8 +655,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05C335EA190C02DB000B705B /* info_contact_url.png in Resources */,
 				05C925D318DDAFAD00C2F746 /* GPS.md in Resources */,
+				05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */,
+				050E852D190B94CE00B13473 /* information.xml in Resources */,
 				3DE69DA918C7B83400B54509 /* Localizable.strings in Resources */,
+				05C335E8190C02DB000B705B /* info_contact_address.png in Resources */,
 				05A1C12818FAABD3008FE0CB /* history.xml in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				0533DF0118DE1520001BCB28 /* menu.png in Resources */,
@@ -642,6 +710,7 @@
 				8460875A18BDFA8A00620219 /* Settings.m in Sources */,
 				84DDCB3318BA917800A2F720 /* AFNode.m in Sources */,
 				05E1655018F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.m in Sources */,
+				051A8A30190084720012B096 /* ContactViewController.m in Sources */,
 				84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */,
 				05A1C14E18FAC7F2008FE0CB /* SWRevealViewController.m in Sources */,
 				05CD409918DF6FD60065C04F /* MapViewController.m in Sources */,
@@ -650,7 +719,9 @@
 				05406E3C18F2C6FF001656FC /* DishTableViewCell.m in Sources */,
 				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
 				05E1654F18F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m in Sources */,
+				05243272190B9DC500FC3242 /* InformationData.m in Sources */,
 				05A1C13118FAB125008FE0CB /* HistoryParser.m in Sources */,
+				055452C619025B570021884C /* SegmentedViewController.m in Sources */,
 				05E1655118F1B51100DA3BD7 /* GastronomyDetailsViewController.m in Sources */,
 				0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */,
 				05E1655218F1B51100DA3BD7 /* GastronomyListViewController.m in Sources */,
@@ -670,8 +741,14 @@
 				05E375C918BA872B00A31630 /* main.m in Sources */,
 				0509026918F45C7B00369B07 /* Translatable.m in Sources */,
 				05A1C14F18FAC7F2008FE0CB /* NSBubbleData.m in Sources */,
+				051A8A2D190082E70012B096 /* TicketsViewController.m in Sources */,
+				051A8A27190081730012B096 /* InformationViewController.m in Sources */,
 				05E0209818C23B7100AE76EC /* MKAnnotationAnimal.m in Sources */,
 				05A1C15018FAC7F2008FE0CB /* UIBubbleHeaderTableViewCell.m in Sources */,
+				0524326C190B9B5A00FC3242 /* Opening.m in Sources */,
+				050E8530190B9A3A00B13473 /* InformationParser.m in Sources */,
+				05243275190BB52100FC3242 /* AbstractParser.m in Sources */,
+				0524326F190B9B6E00FC3242 /* Ticket.m in Sources */,
 				8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */,
 				05406E3F18F2EE1A001656FC /* GastronomyParser.m in Sources */,
 			);
@@ -712,9 +789,8 @@
 		3D5EF61A189637C000233B64 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				057F9EC618E7760A001DE63B /* Base */,
-				05E1653C18F17E4800DA3BD7 /* pl */,
-				05E1653F18F17EAC00DA3BD7 /* en */,
+				05C335E2190BFFAE000B705B /* Base */,
+				0566C5FB190C497800F0C7CE /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -838,6 +914,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/Frameworks/OCMock",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;

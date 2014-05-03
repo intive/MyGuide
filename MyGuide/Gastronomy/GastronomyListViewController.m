@@ -16,7 +16,7 @@
 
 @interface GastronomyListViewController ()
 
-@property (strong, nonatomic) GastronomyDetailsViewController *gastronomyDetailsViewController;
+@property (nonatomic) GastronomyDetailsViewController *gastronomyDetailsViewController;
 @property (nonatomic) NSArray *restaurants;
 
 @end

@@ -16,5 +16,8 @@
 @property (nonatomic) NSString *nameToDisplay;
 @property (nonatomic) NSNumber *latitude;
 @property (nonatomic) NSNumber *longitude;
+@property (nonatomic) BOOL     showDirections;
+
+- (void) showZOO;
 
 @end

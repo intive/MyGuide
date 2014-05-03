@@ -7,7 +7,6 @@
 //
 
 #import "GastronomyParser.h"
-#import "XMLFetcher.h"
 #import "Restaurant.h"
 #import "Dish.h"
 #import "GastronomyData.h"
@@ -16,8 +15,6 @@ static NSString *kXmlGastronomy = @"gastronomy";
 static NSString *kXmlRestaurant = @"restaurant";
 static NSString *kXmlLatitude   = @"lat";
 static NSString *kXmlLongitude  = @"lon";
-static NSString *kXmlPL         = @"pl";
-static NSString *kXmlEN         = @"en";
 static NSString *kXmlOpen       = @"open";
 static NSString *kXmlDish       = @"dish";
 static NSString *kXmlPrice      = @"price";
@@ -25,8 +22,6 @@ static NSString *kXmlPrice      = @"price";
 @interface GastronomyParser ()
 
 @property (nonatomic, readonly) NSMutableArray  *restaurants;
-@property (nonatomic, readonly) NSMutableString *cacheElement;
-
 @property (nonatomic) Dish *currentDish;
 @property (nonatomic) Restaurant *currentRestaurant;
 
@@ -40,18 +35,10 @@ static NSString *kXmlPrice      = @"price";
     self = [super init];
     if(self) {
         _restaurants  = [NSMutableArray new];
+        self.fileName = @"gastronomy";
     }
     return self;
 }
-
-- (void) parse
-{
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData: [XMLFetcher fetchDataFromXML: @"gastronomy"]];
-    [parser setDelegate: self];
-    [parser parse];
-}
-
-- (void) parserDidStartDocument: (NSXMLParser *)parser { MWLogInfo(@"Reading restaurants from file..."); }
 
 - (void) parser: (NSXMLParser *)  parser
 didStartElement: (NSString *)     elementName
@@ -59,7 +46,7 @@ didStartElement: (NSString *)     elementName
   qualifiedName: (NSString *)     qName
      attributes: (NSDictionary *) attributeDict
 {
-    _cacheElement = [NSMutableString new];
+    [super parser:parser didStartElement:elementName namespaceURI:namespaceURI qualifiedName:qName attributes:attributeDict];
     
     if ([elementName isEqualToString: kXmlRestaurant]) {
         _currentRestaurant = [[Restaurant alloc] initWithLatitude: [attributeDict valueForKey: kXmlLatitude]
@@ -69,11 +56,6 @@ didStartElement: (NSString *)     elementName
         _insideDish = YES;
         _currentDish = [Dish new];
     }
-}
-
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
-{
-    [_cacheElement appendString: string];
 }
 
 - (void) parser: (NSXMLParser *) parser
@@ -100,23 +82,14 @@ didStartElement: (NSString *)     elementName
         [_currentRestaurant addNewDish: _currentDish];
     }
     else if ([elementName isEqualToString: kXmlPrice]) {
-        _currentDish.price = [NSNumber numberWithDouble: [_cacheElement doubleValue]];
+        _currentDish.price = [NSNumber numberWithDouble: [[self currentElement] doubleValue]];
     }
 }
 
 - (void) parserDidEndDocument: (NSXMLParser *)parser {
+    [super parserDidEndDocument: parser];
     GastronomyData *sharedParsedData = [GastronomyData sharedParsedData];
     sharedParsedData.restaurants = self.restaurants;
-    MWLogInfo(@"Restaurants loaded!");
-}
-
-- (NSString *) currentElement {
-    return [self normalize: _cacheElement];
-}
-
-- (NSString *) normalize: (NSString*)aString
-{
-    return [aString stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 @end

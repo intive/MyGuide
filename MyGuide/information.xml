@@ -1,0 +1,122 @@
+<root>
+	<contact_information>
+		<openings>
+			<opening>
+				<description>
+					<pl>Wiosna (1 - 31 marzec)</pl>
+					<en>Spring</en>
+				</description>
+				<hours>
+					<weekdays>9.00 - 17.00</weekdays>
+					<weekends>9.00 - 17.00</weekends>
+				</hours>
+			</opening>
+			<opening>
+				<description>
+					<pl>Lato (1 kwiecień - 30 wrzesień)</pl>
+					<en>Summer</en>
+				</description>
+				<hours>
+					<weekdays>9.00 - 18.00</weekdays>
+					<weekends>9.00 - 19.00</weekends>
+				</hours>
+			</opening>
+			<opening>
+				<description>
+					<pl>Jesień (1 - 31 październik)</pl>
+					<en>Autumn</en>
+				</description>
+				<hours>
+					<weekdays>9.00 - 17.00</weekdays>
+					<weekends>9.00 - 17.00</weekends>
+				</hours>
+			</opening>
+			<opening>
+				<description>
+					<pl>Zima (1 listopad - 28/29 luty)</pl>
+					<en>Winter</en>
+				</description>
+				<hours>
+					<weekdays>9.00 - 16.00</weekdays>
+					<weekends>9.00 - 16.00</weekends>
+				</hours>
+			</opening>
+		</openings>
+        <opening_information>
+            <en>ZOO Wroclaw Sp. z o.o. is open all year round with no exceptions, seven days a week, every day of the year, including Sundays and holidays.</en>
+            <pl>ZOO Wrocław Sp. z o.o. jest czynne przez cały rok bez najmniejszych wyjątków, we wszystkie dni tygodnia, roku, niedziele i święta.</pl>
+        </opening_information>
+        
+		<website>http://www.zoo.wroclaw.pl/</website>
+		<emails>
+			<email>lutra@zoo.wroc.pl</email>
+			<email>zoo-sekretariat@zoo.wroc.pl</email>
+			<email>zamowienia@zoo.wroc.pl</email>
+			<email>zoo-marketing@zoo.wroc.pl</email>
+			<email>zoo-edukacja@zoo.wroc.pl</email>
+		</emails>
+		<telephone>+48/71 348 30 24</telephone>
+		<address>ul. Wróblewskiego 1-5\n51-618 WROCŁAW</address>
+	</contact_information>
+	
+	<tickets_information>
+		<individual>
+			<ticket>
+				<description>
+					<pl>Dorosły</pl>
+					<en>Adult</en>
+				</description>
+				<price>30</price>
+			</ticket>
+			<ticket>
+				<description>
+					<pl>Dziecko</pl>
+					<en>Child</en>
+				</description>
+				<price>20</price>
+			</ticket>
+			<ticket>
+				<description>
+					<pl>Student</pl>
+					<en>Student</en>
+				</description>
+				<price>25</price>
+			</ticket>
+		</individual>
+		<group>
+			<ticket>
+				<description>
+					<pl>Bilet rodzinny</pl>
+					<en>Family ticket EN</en>
+				</description>
+				<price>85</price>
+			</ticket>
+			<ticket>
+				<description>
+					<pl>Osoba dorosła</pl>
+					<en>Adult</en>
+				</description>
+				<price>25</price>
+            </ticket>
+			<ticket>
+				<description>
+					<pl>Dziecko</pl>
+					<en>Child</en>
+				</description>
+				<price>12</price>
+			</ticket>
+		</group>
+		<information>
+			<pl>Dzieci do lat 3 wchodzą bezpłatnie. Bilety ulgowe obowiązują do 18 roku życia</pl>
+			<en>Information EN</en>
+		</information>
+	</tickets_information>
+	
+	<access_information>
+		<trams>2, 10</trams>
+		<parkings_information>
+			<pl>Mówiąc kolokwialnie masakra ;)</pl>
+			<en>Parkings EN</en>
+		</parkings_information>
+	</access_information>
+</root>
