@@ -51,6 +51,12 @@ double const ZOOM_LEVEL = 15;
     self.mapView.delegate = self;
 }
 
+- (void)      mapView: (MKMapView *)      mapView
+didUpdateUserLocation: (MKUserLocation *) userLocation
+{
+    [self drawDirectionsToLocation];
+}
+
 - (void) zoomOnLocation: (CLLocationCoordinate2D) coordinates
 {
     MKCoordinateSpan span = MKCoordinateSpanMake(180 / pow(2, ZOOM_LEVEL) * self.mapView.frame.size.height / 256, 0);
