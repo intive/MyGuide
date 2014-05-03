@@ -11,5 +11,6 @@
 @interface TrackDetailsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem*rightSidebarButton;
+@property (nonatomic) NSUInteger trackRow;
 
 @end

@@ -93,7 +93,10 @@
 - (void)      tableView: (UITableView *)tableView
 didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    if ([self isChild: indexPath]) { NSLog(@"Ticket tapped!"); return; }
+    if ([self isChild: indexPath]) {
+        NSLog(@"Ticket tapped!");
+        return;
+    }
     
     [self.tableView beginUpdates];
     

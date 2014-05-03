@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "AFTracksData.h"
 #import "AFTrack.h"
+#import "TrackDetailsViewController.h"
 
 @interface TrackSlideMenuViewController ()
 
@@ -73,8 +74,9 @@
 {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     if(indexPath.row != 0){
-        UINavigationController *destViewController = (UINavigationController*) segue.destinationViewController;
+        TrackDetailsViewController *destViewController = (TrackDetailsViewController*) segue.destinationViewController;
         destViewController.title = [[self.tracksArray objectAtIndex:indexPath.row -1] getName];
+        destViewController.trackRow = indexPath.row -1;
     }
     SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
     swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {

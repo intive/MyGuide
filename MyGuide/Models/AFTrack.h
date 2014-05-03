@@ -13,8 +13,8 @@
 @property (nonatomic) NSString *image;
 @property (nonatomic) NSArray  *animalsArray;
 @property (nonatomic) NSString *progressText;
-@property (nonatomic) NSInteger progressBase;
-@property (nonatomic) float    progressRatio;
+@property (nonatomic, setter = changeProgress:) NSUInteger progressBase;
+@property (nonatomic) float     progressRatio;
 
 - (void)setDescription:(NSString *)description withLanguage:(NSString *)language;
 - (NSString *)getDescriptionForLanguage: (NSString *)language;
@@ -25,5 +25,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder;
 - (id)initWithCoder:(NSCoder *)aDecoder;
+
+- (void)changeProgress:(NSUInteger)progressBase;
 
 @end

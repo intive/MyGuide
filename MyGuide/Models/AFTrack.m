@@ -110,5 +110,11 @@
         _progressRatio = (float)(_progressBase / _animalsArray.count);
     }
 }
+- (void)changeProgress:(NSUInteger)progressBase
+{
+    _progressBase = progressBase;
+    _progressRatio = ((float)_progressBase / (float)_animalsArray.count);
+    _progressText = [NSString stringWithFormat:@"%ld/%ld", (long)self.progressBase, (unsigned long)self.animalsArray.count];
+}
 
 @end

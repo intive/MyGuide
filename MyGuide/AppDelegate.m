@@ -35,10 +35,10 @@
     NSString *path;
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracks.plist"];
-    NSLog(@"checking if file exists at path %@", path);
+
 	if (![[NSFileManager defaultManager] fileExistsAtPath:path])
 	{
-        NSLog(@"%d file created", [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil]);
+        [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
     }
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
@@ -55,28 +55,19 @@
     Settings *sharedSettings = [Settings sharedSettingsData];
     sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
 }
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    AFTracksData *sharedData = [AFTracksData sharedParsedData];
-    NSLog(@"%ld count", (unsigned long)sharedData.tracks.count);
-}
+
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    NSLog(@"saving data");
     AFTracksData *sharedData = [AFTracksData sharedParsedData];
-    NSLog(@"%ld count", (unsigned long)sharedData.tracks.count);
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"Tracks2" ofType:@"plist"];
+    
     NSString *path;
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracks.plist"];
 
-    NSLog(@"archiving to %@", path);
-    NSLog(@"%d file archived", [NSKeyedArchiver archiveRootObject:sharedData.tracks toFile:path]);
-    NSLog(@"saved data");
+    [NSKeyedArchiver archiveRootObject:sharedData.tracks toFile:path];
 }
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    NSLog(@"will terminate");
     [self applicationDidEnterBackground:application];
 }
 @end

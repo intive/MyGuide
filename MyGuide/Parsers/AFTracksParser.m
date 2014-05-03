@@ -109,14 +109,12 @@ didStartElement: (NSString *)     elementName
         NSString *path;
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracks.plist"];
-        NSLog(@"unarchiving from %@", path);
-        NSLog(@"%d count before", sharedData.tracks.count);
-        sharedData.tracks = [NSKeyedUnarchiver unarchiveObjectWithFile:path];//[[NSBundle mainBundle] pathForResource:@"Tracks2" ofType:@"plist"]];
-        NSLog(@"%d count after", sharedData.tracks.count);
+
+        sharedData.tracks = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     }
     [userDefaults synchronize];
 
-    [super parserDidEndDocument: parser];
+    [super parserDidEndDocument:parser];
 }
 
 @end
