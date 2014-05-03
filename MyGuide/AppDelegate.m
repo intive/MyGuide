@@ -35,7 +35,6 @@
     NSString *path;
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracks.plist"];
-
 	if (![[NSFileManager defaultManager] fileExistsAtPath:path])
 	{
         [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
@@ -44,7 +43,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
     [[LocationManager sharedLocationManager] requestLocationStatus];
-    [self checkAndCreateTracksPlist];
     [self loadXMLs];
     
     return YES;
@@ -59,7 +57,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     AFTracksData *sharedData = [AFTracksData sharedParsedData];
-    
+    [self checkAndCreateTracksPlist];
     NSString *path;
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracks.plist"];
