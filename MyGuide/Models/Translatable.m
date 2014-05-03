@@ -18,7 +18,7 @@
 @implementation Translatable
 
 - (id) init {
-    self = [super self];
+    self = [super init];
     if(self) {
         self.name = [NSMutableDictionary dictionaryWithDictionary:
                      @{

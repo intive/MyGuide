@@ -93,7 +93,10 @@
 - (void)      tableView: (UITableView *)tableView
 didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
-    if ([self isChild: indexPath]) { NSLog(@"Ticket tapped!"); return; }
+    if ([self isChild: indexPath]) {
+        NSLog(@"Ticket tapped!");
+        return;
+    }
     
     [self.tableView beginUpdates];
     
@@ -125,8 +128,9 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 {
     NSMutableArray *indexPaths   = [NSMutableArray new];
     NSArray *currentTicketsGroup = [self.ticketsGroups objectAtIndex:index];
+    
     NSInteger insertPos = index + 1;
-    for (int i = 0; i < [currentTicketsGroup count]; i++) {
+    for (NSInteger i = 0; i < [currentTicketsGroup count]; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow:insertPos++ inSection:0]];
     }
     [self.tableView insertRowsAtIndexPaths: indexPaths
@@ -140,6 +144,7 @@ didSelectRowAtIndexPath: (NSIndexPath *)indexPath
 - (void) collapseTicketsGroupsAtIndex: (NSInteger)index
 {
     NSMutableArray *indexPaths = [NSMutableArray new];
+    
     for (NSInteger i = index + 1; i <= index + [self childrenCount: index]; i++) {
         [indexPaths addObject:[NSIndexPath indexPathForRow: i
                                                  inSection: 0]];

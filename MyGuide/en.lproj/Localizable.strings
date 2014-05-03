@@ -20,6 +20,8 @@
 
 "gpsDeniedTitle" = "GPS disabeld";
 
+"alertEventWrongMonth" = "This event begins on 1.06";
+
 /******************************
            CONTROLLERS
  ******************************/
@@ -32,6 +34,8 @@
 
 "cellLabelRestaurant" = "Restaurant %d";
 
+"cellLabelMap" = "Map";
+
 "titleControllerHistory" = "History of ZOO";
 
 "yourLocation" = "Your location";
@@ -39,3 +43,5 @@
 "ticketIndividual" = "Individual tickets";
 
 "ticketGroup" = "Group tickets";
+
+"titleControllerEvents" = "Events";

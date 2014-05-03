@@ -40,6 +40,8 @@
 
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
+    _rightSidebarButton.target = self.revealViewController;
+    _rightSidebarButton.action = @selector(rightRevealToggle:);
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
     [[LocationManager sharedLocationManager] checkLocationStatus];

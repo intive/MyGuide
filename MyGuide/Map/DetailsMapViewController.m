@@ -84,12 +84,6 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     self.longitude = [NSNumber numberWithDouble: self.sharedSettings.zooCenter.longitude];
 }
 
-- (void) locationManager: (CLLocationManager *)manager
-      didUpdateLocations: (NSArray *)locations
-{
-    [self drawDirectionsToLocation];
-}
-
 # pragma mark - Rendering directions
 
 - (void) drawDirectionsToLocation

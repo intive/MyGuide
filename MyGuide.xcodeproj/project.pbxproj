@@ -71,6 +71,18 @@
 		8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426164118DF9BB700927285 /* AnimalDetailsViewController.m */; };
 		8460875718BDFA7F00620219 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875618BDFA7F00620219 /* SettingsParser.m */; };
 		8460875A18BDFA8A00620219 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875918BDFA8A00620219 /* Settings.m */; };
+		84BA95D5190FC426008A4237 /* events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84BA95D4190FC426008A4237 /* events.xml */; };
+		84BA95D8191021FB008A4237 /* AFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95D7191021FB008A4237 /* AFEvent.m */; };
+		84BA95DB191121E8008A4237 /* AFEventsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95DA191121E8008A4237 /* AFEventsData.m */; };
+		84BA95DE19112209008A4237 /* AFEventsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95DD19112209008A4237 /* AFEventsParser.m */; };
+		84BA95E219118CE8008A4237 /* AFEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95E119118CE8008A4237 /* AFEventsViewController.m */; };
+		84BA95E51912C6CF008A4237 /* TrackSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95E41912C6CF008A4237 /* TrackSlideMenuViewController.m */; };
+		84BA95E71912DC50008A4237 /* tracks.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84BA95E61912DC50008A4237 /* tracks.xml */; };
+		84BA95EC1912F79F008A4237 /* TrackDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95EB1912F79F008A4237 /* TrackDetailsViewController.m */; };
+		84BA95EF1913B732008A4237 /* AFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95EE1913B732008A4237 /* AFTrack.m */; };
+		84BA95F41913BB9A008A4237 /* AFTracksParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95F31913BB9A008A4237 /* AFTracksParser.m */; };
+		84BA95F819140466008A4237 /* Buzz-Trash-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BA95F719140466008A4237 /* Buzz-Trash-icon.png */; };
+		84BA95FB191409A4008A4237 /* AFTracksData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BA95FA191409A4008A4237 /* AFTracksData.m */; };
 		84C266A518BAA26D00588D63 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF627189637C000233B64 /* XCTest.framework */; };
 		84C2A1851907B21900354036 /* AFVisitedPOIsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A1841907B21900354036 /* AFVisitedPOIsData.m */; };
 		84DD035B18BA8C7A00DE7178 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84DD035818BA8C7A00DE7178 /* config.xml */; };
@@ -205,13 +217,34 @@
 		3D5EF62F189637C000233B64 /* MyGuideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyGuideTests-Info.plist"; sourceTree = "<group>"; };
 		3D5EF633189637C000233B64 /* MyGuideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGuideTests.m; sourceTree = "<group>"; };
 		723A892518CE1AF400861274 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8421D32118BE3B5100B54DC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8421D32118BE3B5100B54DC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MyGuide/Images.xcassets; sourceTree = "<group>"; };
 		8426164018DF9BB700927285 /* AnimalDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalDetailsViewController.h; sourceTree = "<group>"; };
 		8426164118DF9BB700927285 /* AnimalDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalDetailsViewController.m; sourceTree = "<group>"; };
 		8460875518BDFA7F00620219 /* SettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsParser.h; sourceTree = "<group>"; };
 		8460875618BDFA7F00620219 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
 		8460875818BDFA8A00620219 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		8460875918BDFA8A00620219 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		84BA95D4190FC426008A4237 /* events.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = events.xml; path = "XML files/events.xml"; sourceTree = "<group>"; };
+		84BA95D6191021FB008A4237 /* AFEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFEvent.h; sourceTree = "<group>"; };
+		84BA95D7191021FB008A4237 /* AFEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFEvent.m; sourceTree = "<group>"; };
+		84BA95D9191121E7008A4237 /* AFEventsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFEventsData.h; sourceTree = "<group>"; };
+		84BA95DA191121E8008A4237 /* AFEventsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFEventsData.m; sourceTree = "<group>"; };
+		84BA95DC19112209008A4237 /* AFEventsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFEventsParser.h; sourceTree = "<group>"; };
+		84BA95DD19112209008A4237 /* AFEventsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFEventsParser.m; sourceTree = "<group>"; };
+		84BA95E019118CE8008A4237 /* AFEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFEventsViewController.h; path = Events/AFEventsViewController.h; sourceTree = "<group>"; };
+		84BA95E119118CE8008A4237 /* AFEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFEventsViewController.m; path = Events/AFEventsViewController.m; sourceTree = "<group>"; };
+		84BA95E31912C6CF008A4237 /* TrackSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackSlideMenuViewController.h; sourceTree = "<group>"; };
+		84BA95E41912C6CF008A4237 /* TrackSlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackSlideMenuViewController.m; sourceTree = "<group>"; };
+		84BA95E61912DC50008A4237 /* tracks.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = tracks.xml; path = "XML files/tracks.xml"; sourceTree = "<group>"; };
+		84BA95EA1912F79F008A4237 /* TrackDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackDetailsViewController.h; sourceTree = "<group>"; };
+		84BA95EB1912F79F008A4237 /* TrackDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackDetailsViewController.m; sourceTree = "<group>"; };
+		84BA95ED1913B732008A4237 /* AFTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTrack.h; sourceTree = "<group>"; };
+		84BA95EE1913B732008A4237 /* AFTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTrack.m; sourceTree = "<group>"; };
+		84BA95F21913BB9A008A4237 /* AFTracksParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTracksParser.h; sourceTree = "<group>"; };
+		84BA95F31913BB9A008A4237 /* AFTracksParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTracksParser.m; sourceTree = "<group>"; };
+		84BA95F719140466008A4237 /* Buzz-Trash-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buzz-Trash-icon.png"; sourceTree = "<group>"; };
+		84BA95F9191409A4008A4237 /* AFTracksData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTracksData.h; sourceTree = "<group>"; };
+		84BA95FA191409A4008A4237 /* AFTracksData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTracksData.m; sourceTree = "<group>"; };
 		84C2A1831907B21900354036 /* AFVisitedPOIsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFVisitedPOIsData.h; sourceTree = "<group>"; };
 		84C2A1841907B21900354036 /* AFVisitedPOIsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFVisitedPOIsData.m; sourceTree = "<group>"; };
 		84DD035818BA8C7A00DE7178 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = "XML files/config.xml"; sourceTree = "<group>"; };
@@ -286,7 +319,8 @@
 				05A1C14118FAC7F2008FE0CB /* sliding-menu */,
 				05A1C14418FAC7F2008FE0CB /* ui-bubble-table */,
 			);
-			path = Libraries;
+			name = Libraries;
+			path = MyGuide/Libraries;
 			sourceTree = "<group>";
 		};
 		05A1C14118FAC7F2008FE0CB /* sliding-menu */ = {
@@ -326,12 +360,14 @@
 			isa = PBXGroup;
 			children = (
 				0533DEFE18DE1520001BCB28 /* menu.png */,
+				84BA95F719140466008A4237 /* Buzz-Trash-icon.png */,
 				05C335E5190C02DB000B705B /* info_contact_address.png */,
 				05C335E6190C02DB000B705B /* info_contact_phone.png */,
 				05C335E7190C02DB000B705B /* info_contact_url.png */,
 				0533DEFF18DE1520001BCB28 /* menu@2x.png */,
 			);
-			path = Images;
+			name = Images;
+			path = MyGuide/Images;
 			sourceTree = "<group>";
 		};
 		05DA78BE18B968E5005D6C5F /* Parsers */ = {
@@ -402,6 +438,9 @@
 			isa = PBXGroup;
 			children = (
 				3D5EF60E189637C000233B64 /* MyGuide */,
+				05A1C14018FAC7F2008FE0CB /* Libraries */,
+				05C925D418DDBA6000C2F746 /* Images */,
+				8421D32118BE3B5100B54DC3 /* Images.xcassets */,
 				3D5EF62D189637C000233B64 /* MyGuideTests */,
 				3D5EF607189637C000233B64 /* Frameworks */,
 				3D5EF606189637C000233B64 /* Products */,
@@ -434,15 +473,15 @@
 		3D5EF60E189637C000233B64 /* MyGuide */ = {
 			isa = PBXGroup;
 			children = (
-				05A1C14018FAC7F2008FE0CB /* Libraries */,
-				05C925D418DDBA6000C2F746 /* Images */,
 				3D5EF617189637C000233B64 /* AppDelegate.h */,
-				051A8A24190081350012B096 /* Information */,
-				05A1C12318FAA436008FE0CB /* History */,
-				05E1654618F1B4DE00DA3BD7 /* Gastronomy */,
 				3D5EF618189637C000233B64 /* AppDelegate.m */,
 				3D5EF61A189637C000233B64 /* Main.storyboard */,
-				8421D32118BE3B5100B54DC3 /* Images.xcassets */,
+				84BA95E81912F738008A4237 /* Animals */,
+				051A8A24190081350012B096 /* Information */,
+				84BA95DF19118CB3008A4237 /* Events */,
+				05A1C12318FAA436008FE0CB /* History */,
+				05E1654618F1B4DE00DA3BD7 /* Gastronomy */,
+				84BA95E91912F763008A4237 /* Tracks */,
 				05E0209218C1DAFA00AE76EC /* Map */,
 				84DDCB3F18BA91A100A2F720 /* Storage */,
 				84DDCB3518BA919600A2F720 /* Parsers */,
@@ -453,10 +492,6 @@
 				0533DF0818DE333A001BCB28 /* SlideMenuViewController.m */,
 				0533DF0A18DE365D001BCB28 /* HomeViewController.h */,
 				0533DF0B18DE365D001BCB28 /* HomeViewController.m */,
-				055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */,
-				055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */,
-				8426164018DF9BB700927285 /* AnimalDetailsViewController.h */,
-				8426164118DF9BB700927285 /* AnimalDetailsViewController.m */,
 				055452C419025B570021884C /* SegmentedViewController.h */,
 				055452C519025B570021884C /* SegmentedViewController.m */,
 			);
@@ -494,6 +529,37 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		84BA95DF19118CB3008A4237 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				84BA95E019118CE8008A4237 /* AFEventsViewController.h */,
+				84BA95E119118CE8008A4237 /* AFEventsViewController.m */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		84BA95E81912F738008A4237 /* Animals */ = {
+			isa = PBXGroup;
+			children = (
+				055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */,
+				055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */,
+				8426164018DF9BB700927285 /* AnimalDetailsViewController.h */,
+				8426164118DF9BB700927285 /* AnimalDetailsViewController.m */,
+			);
+			name = Animals;
+			sourceTree = "<group>";
+		};
+		84BA95E91912F763008A4237 /* Tracks */ = {
+			isa = PBXGroup;
+			children = (
+				84BA95E31912C6CF008A4237 /* TrackSlideMenuViewController.h */,
+				84BA95E41912C6CF008A4237 /* TrackSlideMenuViewController.m */,
+				84BA95EA1912F79F008A4237 /* TrackDetailsViewController.h */,
+				84BA95EB1912F79F008A4237 /* TrackDetailsViewController.m */,
+			);
+			name = Tracks;
+			sourceTree = "<group>";
+		};
 		84DDCB2818BA917800A2F720 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +571,10 @@
 				84DDCB2E18BA917800A2F720 /* AFNode.m */,
 				84DDCB2F18BA917800A2F720 /* AFWay.h */,
 				84DDCB3018BA917800A2F720 /* AFWay.m */,
+				84BA95D6191021FB008A4237 /* AFEvent.h */,
+				84BA95D7191021FB008A4237 /* AFEvent.m */,
+				84BA95ED1913B732008A4237 /* AFTrack.h */,
+				84BA95EE1913B732008A4237 /* AFTrack.m */,
 				05406E4718F31AF6001656FC /* Dish.h */,
 				05406E4818F31AF6001656FC /* Dish.m */,
 				05406E4A18F31B06001656FC /* Restaurant.h */,
@@ -536,6 +606,10 @@
 				050E852F190B9A3A00B13473 /* InformationParser.m */,
 				05243273190BB52100FC3242 /* AbstractParser.h */,
 				05243274190BB52100FC3242 /* AbstractParser.m */,
+				84BA95DC19112209008A4237 /* AFEventsParser.h */,
+				84BA95DD19112209008A4237 /* AFEventsParser.m */,
+				84BA95F21913BB9A008A4237 /* AFTracksParser.h */,
+				84BA95F31913BB9A008A4237 /* AFTracksParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -555,6 +629,10 @@
 				05A1C12D18FAB0B8008FE0CB /* HistoryData.m */,
 				05243270190B9DC500FC3242 /* InformationData.h */,
 				05243271190B9DC500FC3242 /* InformationData.m */,
+				84BA95D9191121E7008A4237 /* AFEventsData.h */,
+				84BA95DA191121E8008A4237 /* AFEventsData.m */,
+				84BA95F9191409A4008A4237 /* AFTracksData.h */,
+				84BA95FA191409A4008A4237 /* AFTracksData.m */,
 			);
 			name = Storage;
 			path = Singletons;
@@ -565,9 +643,11 @@
 			children = (
 				050E852C190B94CE00B13473 /* information.xml */,
 				05A1C12718FAABD3008FE0CB /* history.xml */,
+				84BA95E61912DC50008A4237 /* tracks.xml */,
+				84BA95D4190FC426008A4237 /* events.xml */,
 				84DD035818BA8C7A00DE7178 /* config.xml */,
-				84DD035918BA8C7A00DE7178 /* XMLFetcher.h */,
 				05406E4018F313A7001656FC /* gastronomy.xml */,
+				84DD035918BA8C7A00DE7178 /* XMLFetcher.h */,
 				84DD035A18BA8C7A00DE7178 /* XMLFetcher.m */,
 				05406E4218F313B6001656FC /* data.xml */,
 			);
@@ -656,6 +736,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05C335EA190C02DB000B705B /* info_contact_url.png in Resources */,
+				84BA95E71912DC50008A4237 /* tracks.xml in Resources */,
 				05C925D318DDAFAD00C2F746 /* GPS.md in Resources */,
 				05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */,
 				050E852D190B94CE00B13473 /* information.xml in Resources */,
@@ -665,7 +746,9 @@
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				0533DF0118DE1520001BCB28 /* menu.png in Resources */,
 				05406E4318F313B6001656FC /* data.xml in Resources */,
+				84BA95F819140466008A4237 /* Buzz-Trash-icon.png in Resources */,
 				0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */,
+				84BA95D5190FC426008A4237 /* events.xml in Resources */,
 				3DDE538818C705B20062D217 /* Main.storyboard in Resources */,
 				05406E4118F313A7001656FC /* gastronomy.xml in Resources */,
 				8421D32218BE3B5100B54DC3 /* Images.xcassets in Resources */,
@@ -708,6 +791,7 @@
 				8460875718BDFA7F00620219 /* SettingsParser.m in Sources */,
 				05A1C15518FACB3E008FE0CB /* HistoryViewController.m in Sources */,
 				8460875A18BDFA8A00620219 /* Settings.m in Sources */,
+				84BA95EC1912F79F008A4237 /* TrackDetailsViewController.m in Sources */,
 				84DDCB3318BA917800A2F720 /* AFNode.m in Sources */,
 				05E1655018F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.m in Sources */,
 				051A8A30190084720012B096 /* ContactViewController.m in Sources */,
@@ -720,16 +804,22 @@
 				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
 				05E1654F18F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m in Sources */,
 				05243272190B9DC500FC3242 /* InformationData.m in Sources */,
+				84BA95DB191121E8008A4237 /* AFEventsData.m in Sources */,
+				84BA95E51912C6CF008A4237 /* TrackSlideMenuViewController.m in Sources */,
 				05A1C13118FAB125008FE0CB /* HistoryParser.m in Sources */,
 				055452C619025B570021884C /* SegmentedViewController.m in Sources */,
 				05E1655118F1B51100DA3BD7 /* GastronomyDetailsViewController.m in Sources */,
+				84BA95EF1913B732008A4237 /* AFTrack.m in Sources */,
+				84BA95D8191021FB008A4237 /* AFEvent.m in Sources */,
 				0533DF0C18DE365D001BCB28 /* HomeViewController.m in Sources */,
+				84BA95DE19112209008A4237 /* AFEventsParser.m in Sources */,
 				05E1655218F1B51100DA3BD7 /* GastronomyListViewController.m in Sources */,
 				05406E4918F31AF6001656FC /* Dish.m in Sources */,
 				05406E4618F31661001656FC /* GastronomyData.m in Sources */,
 				84DD035C18BA8C7A00DE7178 /* XMLFetcher.m in Sources */,
 				0533DF0918DE333A001BCB28 /* SlideMenuViewController.m in Sources */,
 				84DDCB3118BA917800A2F720 /* AFAnimal.m in Sources */,
+				84BA95FB191409A4008A4237 /* AFTracksData.m in Sources */,
 				05406E4C18F31B06001656FC /* Restaurant.m in Sources */,
 				05A1C15118FAC7F2008FE0CB /* UIBubbleTableView.m in Sources */,
 				05A1C12E18FAB0B8008FE0CB /* HistoryData.m in Sources */,
@@ -741,6 +831,7 @@
 				05E375C918BA872B00A31630 /* main.m in Sources */,
 				0509026918F45C7B00369B07 /* Translatable.m in Sources */,
 				05A1C14F18FAC7F2008FE0CB /* NSBubbleData.m in Sources */,
+				84BA95F41913BB9A008A4237 /* AFTracksParser.m in Sources */,
 				051A8A2D190082E70012B096 /* TicketsViewController.m in Sources */,
 				051A8A27190081730012B096 /* InformationViewController.m in Sources */,
 				05E0209818C23B7100AE76EC /* MKAnnotationAnimal.m in Sources */,
@@ -749,6 +840,7 @@
 				050E8530190B9A3A00B13473 /* InformationParser.m in Sources */,
 				05243275190BB52100FC3242 /* AbstractParser.m in Sources */,
 				0524326F190B9B6E00FC3242 /* Ticket.m in Sources */,
+				84BA95E219118CE8008A4237 /* AFEventsViewController.m in Sources */,
 				8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */,
 				05406E3F18F2EE1A001656FC /* GastronomyParser.m in Sources */,
 			);
