@@ -1,12 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
-using Moq;
 using MyGuide.DataServices;
 using MyGuide.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyGuideTests.Tests
@@ -27,13 +24,13 @@ namespace MyGuideTests.Tests
                 correctXmlData = await sr.ReadToEndAsync();
             }
 
-            string animalName = "Żyrafa";
+            string animalName = "Zebra";
             double animalLatitude = 51.1046625;
             double animalLongitude = 17.0771680;
 
-            long id = 32997558;
-            double wayLatitude = 51.1054430;
-            double wayLongitude = 17.0773945;
+            long id = 35948032;
+            double wayLatitude = 51.1057838;
+            double wayLongitude = 17.0751055;
 
             double junctionLatitude = 51.1048329;
             double junctionLongitude = 17.0742639;

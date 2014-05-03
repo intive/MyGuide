@@ -130,6 +130,9 @@
     <Content Include="Data\config.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Data\data.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="TestData\IncorrectStructureData.xml" />
     <Content Include="TestData\IncorrectData.xml" />
     <Content Include="TestData\CorrectData.xml" />
