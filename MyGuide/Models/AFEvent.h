@@ -11,10 +11,10 @@
 
 @interface AFEvent : Translatable
 
-@property (nonatomic) NSString      *time;
-@property (nonatomic) NSString      *timeWeekends;
-@property (nonatomic) NSString      *timeChristmas;
-@property (nonatomic) NSString      *eventImage;
-@property (nonatomic) NSString      *startDate;
+@property (nonatomic) NSString *time;
+@property (nonatomic) NSString *timeWeekends;
+@property (nonatomic) NSString *timeChristmas;
+@property (nonatomic) NSString *eventImage;
+@property (nonatomic) NSString *startDate;
 
 @end
