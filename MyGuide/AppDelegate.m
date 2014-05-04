@@ -40,6 +40,16 @@
         [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
     }
 }
+- (void)archiveTracks
+{
+    AFTracksData *sharedData = [AFTracksData sharedParsedData];
+    [self checkAndCreateTracksPlist];
+    NSString *path;
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracks.plist"];
+    
+    [NSKeyedArchiver archiveRootObject:sharedData.tracks toFile:path];
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
     [[LocationManager sharedLocationManager] requestLocationStatus];
@@ -56,16 +66,11 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    AFTracksData *sharedData = [AFTracksData sharedParsedData];
-    [self checkAndCreateTracksPlist];
-    NSString *path;
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracks.plist"];
-
-    [NSKeyedArchiver archiveRootObject:sharedData.tracks toFile:path];
+    [self archiveTracks];
 }
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [self applicationDidEnterBackground:application];
+    [self archiveTracks];
 }
+
 @end
