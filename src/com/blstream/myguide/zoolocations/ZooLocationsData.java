@@ -22,6 +22,7 @@ public class ZooLocationsData {
 	private ArrayList<Event> mEvents;
 	private TicketsInformation mTicketInformation = new TicketsInformation();
 	private AccessInformation mAccessInfo = new AccessInformation();
+	private ContactInformation mContactInfo;
 
 	public ZooLocationsData() {
 		mAnimals = new ArrayList<Animal>();
@@ -65,6 +66,10 @@ public class ZooLocationsData {
 		return mAccessInfo;
 	}
 
+	public ContactInformation getContactInformation() {
+		return mContactInfo;
+	}
+
 	public void setAnimals(ArrayList<Animal> animals) {
 		mAnimals = animals;
 	}
@@ -103,6 +108,10 @@ public class ZooLocationsData {
 
 	public void setAccessInformation(AccessInformation accessInformation) {
 		mAccessInfo = accessInformation;
+	}
+
+	public void setContactInformation(ContactInformation contactInformation) {
+		mContactInfo = contactInformation;
 	}
 
 }

@@ -31,6 +31,7 @@
     <string name="view_map">Mapa Zoo</string>
     <string name="to_far_from_zoo">Znajdujesz się daleko od Zoo. Chcesz zobaczyć wskazówki dojazdu
          zamiast mapy Zoo?</string>
+    <string name="activity_not_found">Nie znaleziono zgodnej aplikacji!</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Błąd aplikacji</string>
@@ -93,6 +94,11 @@
 	<string name="ticket_individual">Bilety indywidualne</string>
 	<string name="ticket_group">Bilety grupowe</string>
 	<string name="ticket_info">Informacje</string>
+
+	<string name="contact_openings">Godziny otwarcia ZOO</string>
+	<string name="contact_contact">Kontakt</string>
+	<string name="contact_weekdays">pn-pt</string>
+	<string name="contact_weekends">weekendy i święta</string>
 
 </resources>
 
