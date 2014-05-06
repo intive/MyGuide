@@ -19,7 +19,7 @@
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
-			android:text="pn-pt"
+			android:text="@string/contact_weekdays"
 			android:textSize="@dimen/List_text_size_medium"/>
 		<com.blstream.myguide.widget.PaddedTextView
 			android:layout_width="match_parent"
@@ -46,7 +46,7 @@
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
-			android:text="weekendy i święta"
+			android:text="@string/contact_weekends"
 			android:textSize="@dimen/List_text_size_medium"/>
 		<com.blstream.myguide.widget.PaddedTextView
 			android:layout_width="match_parent"

@@ -86,7 +86,10 @@
 	<string name="ticket_group">Bilety grupowe</string>
 	<string name="ticket_info">Informacje</string>
 
-	<string name="mail_sendto">Wybierz adresata</string>
+	<string name="contact_openings">Godziny otwarcia ZOO</string>
+	<string name="contact_contact">Kontakt</string>
+	<string name="contact_weekdays">pn-pt</string>
+	<string name="contact_weekends">weekendy i święta</string>
 
 </resources>
 

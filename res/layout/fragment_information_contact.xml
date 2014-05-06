@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
+	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:paddingTop="3dp"
 	android:paddingBottom="3dp">
@@ -13,7 +12,7 @@
 		<TextView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Godziny otwarcia ZOO"
+			android:text="@string/contact_openings"
 			android:textColor="@color/main_accent"
 			style="@style/header_text"
 			android:gravity="left"
@@ -30,7 +29,7 @@
 		<TextView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Kontakt"
+			android:text="@string/contact_contact"
 			android:textSize="22sp"
 			android:textColor="@color/main_accent"
 			style="@style/header_text"
@@ -61,7 +60,7 @@
 					<TextView
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
-						android:text="ul. Wróblewskiego 1-5\n51-618 Wrocław, Poland"
+						android:text="Ulica\nKod pocztowy Miasto"
 						android:textSize="@dimen/List_text_size_medium"
 						android:gravity="center_vertical"
 						android:layout_marginLeft="15dp"
@@ -83,7 +82,7 @@
 					<TextView
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
-						android:text="+48 71/348 30 24"
+						android:text="123 456 789"
 						android:textSize="@dimen/List_text_size_medium"
 						android:gravity="center_vertical"
 						android:layout_marginLeft="15dp"
@@ -106,7 +105,7 @@
 					<TextView
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
-						android:text="www.zoo.wroclaw.pl"
+						android:text="http://blstream.com"
 						android:textSize="@dimen/List_text_size_medium"
 						android:gravity="center_vertical"
 						android:layout_marginLeft="15dp"
