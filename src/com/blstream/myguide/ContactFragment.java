@@ -1,6 +1,8 @@
 
 package com.blstream.myguide;
 
+import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.blstream.myguide.dialog.CustomDialog;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Address;
 import com.blstream.myguide.zoolocations.ContactInformation;
@@ -145,6 +148,18 @@ public class ContactFragment extends Fragment
 		setUpOnClickListeners();
 	}
 
+	protected Dialog getActivityNotFoundDialog() {
+		final CustomDialog dialog = new CustomDialog(getActivity());
+		return dialog
+				.setMessage(R.string.activity_not_found)
+				.setFirstButton(R.string.ok, new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						dialog.dismiss();
+					}
+				});
+	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -172,6 +187,16 @@ public class ContactFragment extends Fragment
 		setUpViews();
 
 		return rootView;
+	}
+
+	@Override
+	public void startActivity(Intent intent) {
+		try {
+			super.startActivity(intent);
+		} catch (ActivityNotFoundException e) {
+			Dialog dialog = getActivityNotFoundDialog();
+			if (dialog != null) dialog.show();
+		}
 	}
 
 	@Override
