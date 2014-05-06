@@ -234,13 +234,16 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				newFragment = new AnimalListFragment();
 				tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
 				break;
-
 			case 2:
+				newFragment = new EventsFragment();
+				tag = BundleConstants.FRAGMENT_EVENTS;
+				break;
+			case 3:
 				newFragment = createInformationFragment();
 				tag = BundleConstants.FRAGMENT_INFORMATION;
 				break;
 
-			case 4:
+			case 5:
 				newFragment = new GastronomyListFragment();
 				tag = BundleConstants.FRAGMENT_GASTRONOMY;
 				break;

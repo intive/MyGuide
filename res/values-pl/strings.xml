@@ -43,6 +43,7 @@
     <string-array name="nav_drawer_items">
         <item name="map">Mapa</item>
         <item name="animals">Zwierzęta</item>
+        <item name="events">Wydarzenia</item>
         <item name="information">Informacja</item>
         <item name="history">Historia</item>
         <item name="gastronomy">Gastronomia</item>
@@ -74,6 +75,13 @@
     <string name="time_to_item_list">Czas:</string>
 
     <string name="gastronomy_list_title">Gastronomia</string>
+    
+    <!-- Events -->
+    <string name="events_list_title">Wydarzenia</string>
+    <string name="event_start">Godzina:</string>
+    <string name="event_weekends">Weekend:</string>
+    <string name="event_holidays">Święta:</string>
+    <string name="event_date">Data startu:</string>
 
 	<!-- Information tabs name -->
 	<string-array name="information_tabs_name">
