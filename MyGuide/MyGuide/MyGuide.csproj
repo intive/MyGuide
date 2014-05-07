@@ -116,6 +116,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\Interfaces\ICompass.cs" />
+    <Compile Include="Services\Interfaces\IGPSPosition.cs" />
     <Compile Include="Services\Interfaces\IMessageDialogService.cs" />
     <Compile Include="Services\Map\OSMRenderTileSource.cs" />
     <Compile Include="Services\MessageDialogService.cs" />

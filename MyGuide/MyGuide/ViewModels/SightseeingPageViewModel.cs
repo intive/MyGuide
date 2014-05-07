@@ -1,15 +1,15 @@
 ﻿using Caliburn.Micro;
+using Microsoft.Devices.Sensors;
+using Microsoft.Xna.Framework;
 using MyGuide.DataServices.Interfaces;
 using MyGuide.Services.Interfaces;
+using System;
 using System.Device.Location;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows.Navigation;
 using Windows.Devices.Geolocation;
-using Microsoft.Xna.Framework;
 using Windows.Foundation;
-using Microsoft.Devices.Sensors;
-using System;
-using System.Threading;
 
 namespace MyGuide.ViewModels
 {
@@ -49,7 +49,6 @@ namespace MyGuide.ViewModels
         //public void ShowMap()
         //{
         //}
-
 
         //public void ShowInformation()
         //{
@@ -101,15 +100,13 @@ namespace MyGuide.ViewModels
                 //But I say that when it is 100ms, there is problem 9/10 with ending
                 //event when event hendler is removing in OnNavigatedFrom.
                 compass.TimeBetweenUpdates = TimeSpan.FromMilliseconds(400);
+
                 compass.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<CompassReading>>(compass_ReadingChanged);
                 compass.Start();
             }
         }
 
-
         #region UserMarker
-
-        
 
         private void compass_ReadingChanged(object sender, SensorReadingEventArgs<CompassReading> e)
         {
