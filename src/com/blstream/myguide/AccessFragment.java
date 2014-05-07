@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.AccessInformation;
+import com.blstream.myguide.zoolocations.Address;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -38,6 +39,7 @@ public class AccessFragment extends Fragment
 		return new AccessFragment();
 	}
 
+	private Address mAddress;
 	private SupportMapFragment mMapFragment;
 	private LatLng mDestination;
 
@@ -136,6 +138,14 @@ public class AccessFragment extends Fragment
 	}
 
 	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		MyGuideApp app = (MyGuideApp) getActivity().getApplication();
+		mAddress = app.getZooData().getContactInformation().getAddress();
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater layoutInflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		AccessInformation accessInformation = ((MyGuideApp) getActivity().getApplication())
@@ -148,8 +158,8 @@ public class AccessFragment extends Fragment
 				.getParkingInformation(getLanguage()));
 		// TODO: use data parsed from /root/contact_information/
 		// this is just a temporary placeholder
-		((TextView) rootView.findViewById(R.id.txtvOffice)).setText("ZOO Wrocław");
-		((TextView) rootView.findViewById(R.id.txtvAddress)).setText("ul. Wróblewskiego 1-5");
+		((TextView) rootView.findViewById(R.id.txtvOffice)).setText(mAddress.getName());
+		((TextView) rootView.findViewById(R.id.txtvAddress)).setText(mAddress.getStreet());
 
 		configureGrid(
 				(GridLayout) rootView.findViewById(R.id.grid_trams),
