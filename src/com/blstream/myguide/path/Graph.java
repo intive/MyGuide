@@ -4,7 +4,6 @@ package com.blstream.myguide.path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.PriorityQueue;
 
 import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.Node;
@@ -92,12 +91,11 @@ public class Graph {
 	private Vertex findVertexInGraph(Node n) {
 		for (Vertex v : mVertices) {
 			if (v.getPosition().getLatitude() == n.getLatitude()
-			&& v.getPosition().getLongitude() == n.getLongitude() ) {
-				return v;
-			}
+					&& v.getPosition().getLongitude() == n.getLongitude()) { return v; }
 		}
 		return null;
 	}
+
 	/**
 	 * Creates graph using ways and junctions. Additionally it search for way's
 	 * connections not included in xml.
@@ -114,7 +112,7 @@ public class Graph {
 				Vertex v = findVertexInGraph(n);
 				if (v == null) {
 					v = new Vertex();
-					v.setPosition(new Node(n.getLatitude(), n.getLongitude()) );
+					v.setPosition(new Node(n.getLatitude(), n.getLongitude()));
 					mVertices.add(v);
 				}
 				verticesInWay.add(v);
@@ -203,11 +201,11 @@ public class Graph {
 		start.setWeight(0);
 		start.setPredecessor(null);
 
-		PriorityQueue<Vertex> queue = new PriorityQueue<Vertex>();
-		queue.add(start);
+		Heap heap = new Heap(mVertices.size());
+		heap.add(start);
 
 		while (true) {
-			Vertex u = queue.poll();
+			Vertex u = heap.poll();
 			if (u == null || u == end) {
 				break;
 			}
@@ -216,11 +214,15 @@ public class Graph {
 				if (v == u) {
 					v = e.getVertex2();
 				}
-				if (u.getWeight() + e.getLength() < v.getWeight()
-						|| v.getWeight() == Graph.INFINITY) {
+				if (v.getWeight() == Graph.INFINITY) {
 					v.setWeight(u.getWeight() + e.getLength());
 					v.setPredecessor(u);
-					queue.add(v);
+					heap.add(v);
+				}
+				else if (u.getWeight() + e.getLength() < v.getWeight()) {
+					v.setWeight(u.getWeight() + e.getLength());
+					v.setPredecessor(u);
+					heap.repairUp(v.getHeapIndex());
 				}
 			}
 		}

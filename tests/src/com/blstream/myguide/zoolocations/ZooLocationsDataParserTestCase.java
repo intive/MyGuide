@@ -4,6 +4,9 @@ package com.blstream.myguide.zoolocations;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -22,6 +25,52 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	private static final int WAYS = 82;
 	/** Amount of junctions in xml file from userstory */
 	private static final int JUNCTIONS = 20;
+
+	protected void checkParsedOpenings(ArrayList<Opening> openings, String keyBase, String valueBase) {
+		Opening opening = null;
+
+		assertNotNull(openings);
+		assertEquals(2, openings.size());
+
+		opening = openings.get(0);
+		assertEquals(valueBase + "1", opening.getDescription(keyBase + "1"));
+		assertEquals(valueBase + "2", opening.getDescription(keyBase + "2"));
+		assertEquals("1.00", opening.getHours(Opening.When.WEEKDAYS).from());
+		assertEquals("2.00", opening.getHours(Opening.When.WEEKDAYS).to());
+		assertEquals("3.00", opening.getHours(Opening.When.WEEKENDS).from());
+		assertEquals("4.00", opening.getHours(Opening.When.WEEKENDS).to());
+
+		opening = openings.get(1);
+		assertEquals(valueBase + "1", opening.getDescription(keyBase + "1"));
+		assertEquals("1.00", opening.getHours(Opening.When.WEEKDAYS).from());
+		assertEquals("2.00", opening.getHours(Opening.When.WEEKDAYS).to());
+		assertEquals(null, opening.getHours(Opening.When.WEEKENDS));
+	}
+
+	protected void checkParsedWebsite(URL website, String valueBase) {
+		assertNotNull(website);
+		assertEquals("http://" + valueBase + "/", website.toString());
+	}
+
+	protected void checkParsedEmails(List<String> emails, String valueBase) {
+		assertNotNull(emails);
+		assertEquals(2, emails.size());
+		int k = 1;
+		for (String email : emails) assertEquals(valueBase + Integer.toString(k++), email);
+	}
+
+	protected void checkParsedPhoneNumber(String phoneNumber, String valueBase) {
+		assertEquals(valueBase, phoneNumber);
+	}
+
+	protected void checkParsedAddress(Address address) {
+		assertNotNull(address);
+		assertEquals("NAME", address.getName());
+		assertEquals("STREET", address.getStreet());
+		assertEquals("POSTALCODE", address.getPostalCode());
+		assertEquals("CITY", address.getCity());
+		assertEquals("COUNTRY", address.getCountry());
+	}
 
 	/** Checks if tag <animals> is well parsed. */
 	public void testParsingAnimals() throws IOException, XmlPullParserException {
@@ -384,6 +433,66 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		assertNotNull(data);
 		assertEquals("1,2,   3, 4, 5,6", data.getAccessInformation().getTrams());
 		assertEquals(4, data.getAccessInformation().getAllParkingInformation().size());
+	}
+
+	public void testParsingContactInformation() throws IOException, XmlPullParserException {
+		// given
+		String keyBase = "key", valueBase = "value";
+		String xmlMock = "" +
+				"<root>" +
+				"\t<contact_information>" +
+				"\t\t<openings>" +
+				"\t\t\t<opening>" +
+				"\t\t\t\t<description>" +
+				"\t\t\t\t\t<" + keyBase + "1>" + valueBase + "1</" + keyBase + "1>" +
+				"\t\t\t\t\t<" + keyBase + "2>" + valueBase + "2</" + keyBase + "2>" +
+				"\t\t\t\t</description>" +
+				"\t\t\t\t<hours>" +
+				"\t\t\t\t\t<weekdays>1.00 - 2.00</weekdays>" +
+				"\t\t\t\t\t<weekends>3.00 - 4.00</weekends>" +
+				"\t\t\t\t</hours>" +
+				"\t\t\t</opening>" +
+				"\t\t\t<opening>" +
+				"\t\t\t\t<description>" +
+				"\t\t\t\t\t<" + keyBase + "1>" + valueBase + "1</" + keyBase + "1>" +
+				"\t\t\t\t</description>" +
+				"\t\t\t\t<hours>" +
+				"\t\t\t\t\t<weekdays>1.00 - 2.00</weekdays>" +
+				"\t\t\t\t\t<bad_key>3.00 - 4.00</bad_key>" +  // bad key here, shouldn't parse this
+				"\t\t\t\t</hours>" +
+				"\t\t\t</opening>" +
+				"\t\t</openings>" +
+				"\t\t<website>http://" + valueBase + "/</website>" +
+				"\t\t<emails>" +
+				"\t\t\t<email>" + valueBase + "1</email>" +
+				"\t\t\t<email>" + valueBase + "2</email>" +
+				"\t\t</emails>" +
+				"\t\t<telephone>" + valueBase + "</telephone>\n" +
+				// since parsing address is dependant on number of lines in the tests
+				// there will be a few empty lines at the beginning and the end
+				"\t\t<address>\n\n\n" +
+				"\t\t\tNAME   \n" +
+				"\t\t\tSTREET\n" +
+				"\t\t\tPOSTALCODE CITY\n" +
+				"\t\t\tCOUNTRY\n\n" +
+				"\t\t</address>" +
+				"\t</contact_information>" +
+				"</root>";
+		ZooLocationsDataParser parser = new ZooLocationsDataParser();
+		ContactInformation info = null;
+
+		// when
+		InputStream is = new ByteArrayInputStream(xmlMock.getBytes(ENCODING));
+		info = parser.parse(is).getContactInformation();
+		is.close();
+
+		// then
+		assertNotNull(info);
+		checkParsedOpenings(info.getOpenings(), keyBase, valueBase);
+		checkParsedWebsite(info.getWebsiteUrl(), valueBase);
+		checkParsedEmails(info.getEmails(), valueBase);
+		checkParsedPhoneNumber(info.getPhoneNumber(), valueBase);
+		checkParsedAddress(info.getAddress());
 	}
 
 }

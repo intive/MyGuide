@@ -11,6 +11,7 @@ public class Vertex implements Comparable<Vertex> {
 	private ArrayList<Edge> mEdges;
 	private Vertex mPredecessor;
 	private Node mPosition;
+	private int mHeapIndex;
 
 	public Vertex() {
 		mEdges = new ArrayList<Edge>();
@@ -52,9 +53,17 @@ public class Vertex implements Comparable<Vertex> {
 	public int compareTo(Vertex v2) {
 		Double weight1 = this.getWeight();
 		Double weight2 = v2.getWeight();
+		if (weight1 == Graph.INFINITY && weight2 == Graph.INFINITY) { return 0; }
 		if (weight1 == Graph.INFINITY) { return 1; }
 		if (weight2 == Graph.INFINITY) { return -1; }
 		return weight1.compareTo(weight2);
 	}
 
+	public void setHeapIndex(int index) {
+		mHeapIndex = index;
+	}
+
+	public int getHeapIndex() {
+		return mHeapIndex;
+	}
 }
