@@ -8,7 +8,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -60,7 +59,7 @@ public class AccessFragment extends Fragment
 				column = 0;
 				row++;
 			}
-			gridLayout.addView(newTextView(str, newLayoutParams(row, column++)));
+			gridLayout.addView(newGridItem(str, newLayoutParams(row, column++)));
 		}
 	}
 
@@ -73,18 +72,15 @@ public class AccessFragment extends Fragment
 		return params;
 	}
 
-	protected TextView newTextView(String text, ViewGroup.LayoutParams params) {
-		TextView tv = new TextView(getActivity());
+	protected View newGridItem(String text, ViewGroup.LayoutParams params) {
+		LayoutInflater inflater = getActivity().getLayoutInflater();
+		View rootView = inflater.inflate(R.layout.fragment_information_access_griditem, null);
+		TextView textView = (TextView) rootView.findViewById(R.id.txtvText);
 
-		tv.setMinEms(2);
-		tv.setGravity(Gravity.CENTER);
-		tv.setPadding(pixelsFromDp(6), pixelsFromDp(2), pixelsFromDp(6), pixelsFromDp(2));
-		tv.setBackgroundColor(getResources().getColor(R.color.light_background));
-		tv.setLayoutParams(params);
-		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-		tv.setText(text);
+		rootView.setLayoutParams(params);
+		textView.setText(text);
 
-		return tv;
+		return rootView;
 	}
 
 	/**
