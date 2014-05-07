@@ -4,6 +4,7 @@ using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Services.Interfaces;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
 
