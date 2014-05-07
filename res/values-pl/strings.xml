@@ -85,6 +85,7 @@
     <string name="event_date">Data startu:</string>
 
 	<!-- Information tabs name -->
+	<string name="information_ab_title">Informacje</string>
 	<string-array name="information_tabs_name">
 		<item name="tickets">Bilety</item>
 		<item name="getthere">Dojazd</item>
