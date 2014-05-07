@@ -38,6 +38,7 @@
 
     <!-- SightSeeing screen -->
     <string name="search_sightseeing">Szukaj&#8230;</string>
+    <string name="search_sightseeing_not">Nie znaleziono</string>
 
     <!-- SightSeeing menu -->
     <string-array name="nav_drawer_items">

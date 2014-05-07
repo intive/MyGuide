@@ -41,6 +41,7 @@
 
     <!-- SightSeeing screen -->
     <string name="search_sightseeing">Search&#8230;</string>
+    <string name="search_sightseeing_not">Animal not found</string>
     <string name="sliding_icon_Description">Opcje</string>
     <string name="route_icon_Description">Droga</string>
     <string name="drawer_open">Otwórz menu</string>

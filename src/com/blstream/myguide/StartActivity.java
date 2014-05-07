@@ -20,8 +20,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.blstream.myguide.dialog.ConfirmExitDialogFragment;
 import com.blstream.myguide.dialog.EnableGpsDialogFragment;
@@ -31,9 +31,6 @@ import com.blstream.myguide.gps.DistanceFromZooGuard;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.zoolocations.Track;
 import com.google.android.gms.maps.SupportMapFragment;
-
-import com.blstream.myguide.zoolocations.*;
-import java.util.ArrayList;
 
 /**
  * Created by Piotrek on 2014-04-01. Fixed by Angieszka (fragment swap) on
@@ -53,12 +50,13 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private ListView mTrackList;
 	private View mTrackHeader;
 
+	private SearchView mSearchView;
+
 	private boolean mFarFromZooDialogWasShown;
 	private boolean mDistanceFromZooGuardIsBinding;
 	private DistanceFromZooGuard mDistanceFromZooGuard;
 
-
-    private Fragment createInformationFragment() {
+	private Fragment createInformationFragment() {
 		Fragment fragments[] = new Fragment[] {
 				TicketsFragment.newInstance(),
 				AccessFragment.newInstance(),
@@ -68,7 +66,13 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		return FragmentTabManager.newInstance(
 				R.array.information_tabs_name,
 				fragments,
-				getResources().getStringArray(R.array.nav_drawer_items)[2]);    // this needs adjusting if strings.xml is changed
+				getResources().getStringArray(R.array.nav_drawer_items)[2]); // this
+																				// needs
+																				// adjusting
+																				// if
+																				// strings.xml
+																				// is
+																				// changed
 	}
 
 	@Override
@@ -107,6 +111,16 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu_main, menu);
+		MenuItem searchViewMenuItem = menu.findItem(R.id.action_search);
+		mSearchView = (SearchView) searchViewMenuItem.getActionView();
+
+		mSearchView.setOnSearchClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				mDrawerLayout.closeDrawer(mTrackList);
+				mDrawerLayout.closeDrawer(mDrawerList);
+			}
+		});
 
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -269,6 +283,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			clearSearchView();
 			mDrawerLayout.closeDrawer(mTrackList);
 			return true;
 		}
@@ -282,6 +297,13 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			}
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	private void clearSearchView() {
+		mSearchView.setQuery(null, false);
+		mSearchView.setQueryHint(getString(R.string.search_sightseeing));
+		mSearchView.clearFocus();
+		mSearchView.onActionViewCollapsed();
 	}
 
 	private void setNextFragment(Fragment fragment, String tag) {

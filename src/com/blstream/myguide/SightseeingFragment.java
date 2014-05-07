@@ -11,8 +11,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationLogger;
@@ -62,6 +68,7 @@ public class SightseeingFragment extends Fragment {
 	private ArrayList<Marker> mAnimalMarkers;
 
 	private Track mTrack;
+	private SearchView mSearchView;
 
 	private boolean mPathsVisible;
 	private ArrayList<Polyline> mZooPaths;
@@ -117,6 +124,7 @@ public class SightseeingFragment extends Fragment {
 		((StartActivity) getActivity()).getDrawerLayout()
 				.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
 
+		setHasOptionsMenu(true);
 		setUpMapSettings();
 		setUpMap();
 		setUpAnimalMarkers();
@@ -158,6 +166,95 @@ public class SightseeingFragment extends Fragment {
 		if (mLocationLogVisible) {
 			LocationUpdater.getInstance().stopUpdating(mLocationLogger);
 		}
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		final MenuItem searchViewMenuItem = menu.findItem(R.id.action_search);
+		mSearchView = (SearchView) searchViewMenuItem.getActionView();
+
+		if (mSearchView != null) {
+			setUpSearchView();
+			setUpSearchViewListeners();
+		}
+		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.action_filter) {
+			clearSearchView();
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	private void setUpSearchView() {
+		int searchIconId = mSearchView.getContext().getResources().
+				getIdentifier("android:id/search_button", null, null);
+
+		ImageView searchIcon = (ImageView) mSearchView.findViewById(searchIconId);
+		searchIcon.setImageResource(R.drawable.ic_action_search_icon_myguide);
+		mSearchView.setQueryHint(getString(R.string.search_sightseeing));
+
+		int searchPlateId = mSearchView.getContext().getResources()
+				.getIdentifier("android:id/search_plate", null, null);
+		View searchPlate = mSearchView.findViewById(searchPlateId);
+
+		if (searchPlate != null) {
+			searchPlate.setBackgroundResource(R.drawable.rounded_edittext);
+			int searchTextId = searchPlate.getContext().getResources()
+					.getIdentifier("android:id/search_src_text", null, null);
+			TextView searchText = (TextView) searchPlate.findViewById(searchTextId);
+			if (searchText != null) {
+				searchText.setGravity(Gravity.CENTER);
+			}
+		}
+	}
+
+	private void setUpSearchViewListeners() {
+		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+			@Override
+			public boolean onQueryTextSubmit(String s) {
+				boolean findAnimal = false;
+
+				s = toUpperCase(s);
+
+				for (Marker marker : mAnimalMarkers) {
+					if (marker.getTitle().contains(s)) {
+						marker.showInfoWindow();
+						findAnimal = true;
+					}
+				}
+
+				if (findAnimal) {
+					clearSearchView();
+				}
+				else {
+					mSearchView.setQuery(null, false);
+					mSearchView.setQueryHint(getString(R.string.search_sightseeing_not));
+				}
+
+				return false;
+			}
+
+			@Override
+			public boolean onQueryTextChange(String s) {
+				return false;
+			}
+		});
+	}
+
+	private String toUpperCase(String s) {
+		char[] stringArray = s.trim().toCharArray();
+		stringArray[0] = Character.toUpperCase(stringArray[0]);
+		return new String(stringArray);
+	}
+
+	private void clearSearchView() {
+		mSearchView.setQuery(null, false);
+		mSearchView.setQueryHint(getString(R.string.search_sightseeing));
+		mSearchView.clearFocus();
+		mSearchView.onActionViewCollapsed();
 	}
 
 	private void setUpMapSettings() {
@@ -220,6 +317,19 @@ public class SightseeingFragment extends Fragment {
 				} else if (cameraPosition.zoom > mMaxZoom) {
 					mMap.animateCamera(CameraUpdateFactory.zoomTo(mMaxZoom));
 				}
+			}
+		});
+		mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+			@Override
+			public void onMapClick(LatLng latLng) {
+				clearSearchView();
+			}
+		});
+		mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+			@Override
+			public boolean onMarkerClick(Marker marker) {
+				clearSearchView();
+				return false;
 			}
 		});
 		/**
