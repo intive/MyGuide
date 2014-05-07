@@ -71,6 +71,11 @@ public class Animal extends XmlObject implements Serializable, Comparable<Animal
 	public int getId() {
 		return mId;
 	}
+	
+	@Override
+	public boolean equals(Object other) {
+		return ((Animal) other).mId == this.mId;
+	}
 
 	@Override
 	public int compareTo(Animal another) {
