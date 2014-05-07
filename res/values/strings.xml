@@ -80,9 +80,9 @@
     <string name="nearest_animals_waiting_toast">Calculating distances&#8230;</string>
 
     <!-- Placeholders for Custom_Animal_Row -->
-    <string name="placeholder_name">Animal name</string>
-    <string name="placeholder_distance">100m</string>
-    <string name="placeholder_fact">Fun fact</string>
+    <string name="custom_row_placeholder_name">Animal name</string>
+    <string name="custom_row_placeholder_distance">100m</string>
+    <string name="custom_row_placeholder_fact">Fun fact</string>
 
     <!-- Track list -->
     <string name="exploration">Exploration</string>

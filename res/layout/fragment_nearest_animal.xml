@@ -21,7 +21,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_margin="15dp"
-            android:text="@string/placeholder_distance"
+            android:text="@string/custom_row_placeholder_distance"
             android:textAllCaps="false"
             android:gravity="right" />
 
@@ -32,7 +32,7 @@
             android:layout_alignLeft="@+id/txtvClosestAnimalName"
             android:layout_below="@+id/txtvClosestAnimalName"
             android:layout_toLeftOf="@+id/txtvClosestAnimalDistance"
-            android:text="@string/placeholder_fact"
+            android:text="@string/custom_row_placeholder_fact"
             android:textColor="@color/main_text"
             android:textSize="@dimen/Item_text_size" />
 
@@ -43,7 +43,7 @@
             android:layout_toLeftOf="@+id/txtvClosestAnimalDistance"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
-            android:text="@string/placeholder_name" />
+            android:text="@string/custom_row_placeholder_name" />
 
     </RelativeLayout>
 

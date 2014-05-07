@@ -236,20 +236,31 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 						.getApplication(), getActivity());
 
 		AnimalDistance closestAnimal = animalFinderHelper.closestAnimal();
-		if (closestAnimal != null && !sameAsLastAnimal(closestAnimal)) {
-			Bundle data = new Bundle();
-			data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
-			mBottomAnimalFragment = new BottomAnimalFragment();
-			mBottomAnimalFragment.setArguments(data);
-			FragmentManager manager = getChildFragmentManager();
-			FragmentHelper.swapFragment(R.id.closestAnimal,
-					mBottomAnimalFragment, manager,
-					BundleConstants.FRAGMENT_BOTTOM_ANIMAL);
-			mLastAnimalDistance = closestAnimal;
+		
+		if (closestAnimal != null){
+			
+			if(sameAnimalNewDistance(closestAnimal))
+				mBottomAnimalFragment.setDistance(closestAnimal.getDistance());
+			
+			else if(!sameAsLastAnimal(closestAnimal)){
+				Bundle data = new Bundle();
+				data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
+				mBottomAnimalFragment = new BottomAnimalFragment();
+				mBottomAnimalFragment.setArguments(data);
+				FragmentManager manager = getChildFragmentManager();
+				FragmentHelper.swapFragment(R.id.closestAnimal,
+						mBottomAnimalFragment, manager,
+						BundleConstants.FRAGMENT_BOTTOM_ANIMAL);
+				mLastAnimalDistance = closestAnimal;
+			}
 		}
-
 	}
 
+	private boolean sameAnimalNewDistance(AnimalDistance closest){
+		return mLastAnimalDistance != null && 
+				closest.getAnimal() == mLastAnimalDistance.getAnimal() && 
+				(closest.getDistance() != mLastAnimalDistance.getDistance());
+	}
 	private boolean sameAsLastAnimal(AnimalDistance closest) {
 		return mLastAnimalDistance != null
 				&& closest.equals(mLastAnimalDistance);

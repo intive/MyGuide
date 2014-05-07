@@ -54,6 +54,10 @@ public class BottomAnimalFragment extends Fragment {
 				.getText());
 		mDistance.setText(Integer.toString(animal.getDistance())+" m");
 	}
+	
+	public void setDistance(int distance){
+		mDistance.setText(Integer.toString(distance)+" m");
+	}
 
 	private class BottomAnimalOnClickListener implements OnClickListener {
 

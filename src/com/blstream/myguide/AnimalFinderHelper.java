@@ -64,10 +64,6 @@ public class AnimalFinderHelper {
 		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
-				for (int i = 0; i < distances.length; i++) {
-					distances[i] = mGraph.findDistance(position, mAllAnimals
-							.get(i).getNode());
-				}
 				mHandler.post(new Runnable() {
 					@Override
 					public void run() {
@@ -76,6 +72,11 @@ public class AnimalFinderHelper {
 								Toast.LENGTH_SHORT).show();
 					}
 				});
+				
+				for (int i = 0; i < distances.length; i++) {
+					distances[i] = mGraph.findDistance(position, mAllAnimals
+							.get(i).getNode());
+				}
 			}
 		};
 		Thread calculateDistances = new Thread(runnable);

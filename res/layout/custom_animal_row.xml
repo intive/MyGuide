@@ -25,7 +25,7 @@
             style="@style/animal_list_main"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/txtvAnimalDistance"
-            android:text="@string/placeholder_name" />
+            android:text="@string/custom_row_placeholder_name" />
 
         <TextView
             android:id="@+id/txtvAnimalDistance"
@@ -33,7 +33,7 @@
             android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="@string/placeholder_distance" />
+            android:text="@string/custom_row_placeholder_distance" />
 
         <TextView
             android:id="@+id/txtvAnimalFunFact"
@@ -42,7 +42,7 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/txtvAnimalName"
             android:layout_toLeftOf="@+id/txtvAnimalDistance"
-            android:text="@string/placeholder_fact" />
+            android:text="@string/custom_row_placeholder_fact" />
 
     </RelativeLayout>
 
