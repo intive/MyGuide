@@ -22,6 +22,8 @@ public class Settings extends HashMap<String, String> {
 	public static final String KEY_GPS_LOGGING = "gps_logging";
 	public static final String KEY_MAP_MY_POSITION_HIDDEN = "map_my_position_hidden";
 	public static final String KEY_DISTANCE_FROM_ZOO = "distance_from_zoo";
+	public static final String KEY_ZOO_ENTRANCE_LAT = "zoo_entrance_lat";
+	public static final String KEY_ZOO_ENTRANCE_LNG = "zoo_entrance_lng";
 
 	private static final long serialVersionUID = 1L;
 

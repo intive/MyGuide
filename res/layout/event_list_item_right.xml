@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutEventRight"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:paddingTop="@dimen/events_padding_small"
+    android:paddingBottom="@dimen/events_padding_small"
+    android:paddingRight="@dimen/events_padding_medium"
+    android:paddingLeft="@dimen/events_padding_small"
+    android:background="@color/light_background">
+    
+    <ImageView
+        android:id="@+id/imgEvent"
+		android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/events_list_title"
+        android:src="@drawable/placeholder_event" />
+
+    <TextView
+        android:id="@+id/txtEventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/imgEvent"
+        android:gravity="right"
+        android:paddingBottom="@dimen/events_padding_xsmall"
+        android:paddingRight="@dimen/events_padding_large"
+        android:paddingTop="20dp"
+        android:text="@string/placeholder_name"
+        android:textColor="@color/main_accent"
+        android:textSize="@dimen/List_text_size_small"
+        android:textStyle="bold" />
+    
+    
+    <TextView
+        android:id="@+id/txtTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtEventName"
+        android:layout_toLeftOf="@+id/txtTime"
+        android:paddingRight="@dimen/events_padding_small"
+        android:text="@string/event_start"
+        android:textSize="@dimen/events_text_time" />
+    <TextView
+        android:id="@+id/txtTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/imgEvent"
+        android:layout_below="@+id/txtEventName"
+        android:paddingRight="@dimen/events_padding_large"
+        android:text="@string/placeholder_time"
+        android:textSize="@dimen/events_text_time" />
+
+    
+    <TextView
+        android:id="@+id/txtWeekendsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTime"
+        android:layout_toLeftOf="@+id/txtWeekends"
+        android:paddingRight="@dimen/events_padding_small"
+        android:text="@string/event_weekends"
+        android:textSize="@dimen/Item_text_size" />
+    <TextView
+        android:id="@+id/txtWeekends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTime"
+        android:layout_toLeftOf="@+id/imgEvent"
+        android:paddingRight="@dimen/events_padding_large"
+        android:text="@string/placeholder_time"
+        android:textSize="@dimen/Item_text_size" />
+
+
+    <TextView
+        android:id="@+id/txtHolidaysLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtWeekends"
+		android:layout_toLeftOf="@+id/txtHolidays"
+		android:paddingRight="@dimen/events_padding_small"
+        android:text="@string/event_holidays"
+        android:textSize="@dimen/Item_text_size" />
+    <TextView
+        android:id="@+id/txtHolidays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtWeekends"
+        android:layout_toLeftOf="@+id/imgEvent"
+        android:layout_alignLeft="@+id/txtWeekends"
+        android:paddingRight="@dimen/events_padding_large"
+        android:text="@string/placeholder_time"
+        android:textSize="@dimen/Item_text_size" />
+    
+    
+    <TextView
+        android:id="@+id/txtDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtHolidays"
+		android:layout_toLeftOf="@+id/txtDate"
+		android:paddingRight="@dimen/events_padding_small"
+		android:paddingBottom="@dimen/events_padding_small"
+        android:text="@string/event_date"
+        android:textSize="@dimen/Item_text_size" />
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtHolidays"
+        android:layout_toLeftOf="@+id/imgEvent"
+        android:paddingRight="@dimen/events_padding_large"
+        android:text="@string/placeholder_time"
+        android:textSize="@dimen/Item_text_size" />
+    
+</RelativeLayout>

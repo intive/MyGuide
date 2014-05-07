@@ -31,6 +31,7 @@
     <string name="view_map">Mapa Zoo</string>
     <string name="to_far_from_zoo">Znajdujesz się daleko od Zoo. Chcesz zobaczyć wskazówki dojazdu
          zamiast mapy Zoo?</string>
+    <string name="activity_not_found">Nie znaleziono zgodnej aplikacji!</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Błąd aplikacji</string>
@@ -43,6 +44,7 @@
     <string-array name="nav_drawer_items">
         <item name="map">Mapa</item>
         <item name="animals">Zwierzęta</item>
+        <item name="events">Wydarzenia</item>
         <item name="information">Informacja</item>
         <item name="history">Historia</item>
         <item name="gastronomy">Gastronomia</item>
@@ -78,6 +80,13 @@
     <string name="time_to_item_list">Czas:</string>
 
     <string name="gastronomy_list_title">Gastronomia</string>
+    
+    <!-- Events -->
+    <string name="events_list_title">Wydarzenia</string>
+    <string name="event_start">Godzina:</string>
+    <string name="event_weekends">Weekend:</string>
+    <string name="event_holidays">Święta:</string>
+    <string name="event_date">Data startu:</string>
 
 	<!-- Information tabs name -->
 	<string-array name="information_tabs_name">
@@ -89,6 +98,11 @@
 	<string name="ticket_individual">Bilety indywidualne</string>
 	<string name="ticket_group">Bilety grupowe</string>
 	<string name="ticket_info">Informacje</string>
+
+	<string name="contact_openings">Godziny otwarcia ZOO</string>
+	<string name="contact_contact">Kontakt</string>
+	<string name="contact_weekdays">pn-pt</string>
+	<string name="contact_weekends">weekendy i święta</string>
 
 </resources>
 

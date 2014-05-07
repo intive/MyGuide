@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/txtvGastronomyDistance"
         android:layout_toRightOf="@+id/imgvRestaurant"
-        android:minLines="2"
         android:paddingBottom="3dp"
         android:paddingLeft="10dp"
         android:paddingTop="7dp"
@@ -62,7 +61,7 @@
         android:layout_toRightOf="@+id/imgvRestaurant"
         android:paddingLeft="10dp"
         android:text="@string/open_item_list"
-        android:textSize="14sp" />
+        android:textSize="@dimen/Item_text_size" />
 
     <TextView
         android:id="@+id/txtvOpen"

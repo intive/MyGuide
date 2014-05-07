@@ -3,6 +3,7 @@ package com.blstream.myguide.zoolocations;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -32,13 +33,20 @@ public class ZooLocationsDataParser {
 	}
 
 	private static final String ENCODING = "UTF-8";
+	private static final int CONTACT_INFO_ADDRESS_NAME = 0;
+	private static final int CONTACT_INFO_ADDRESS_STREET = 1;
+	private static final int CONTACT_INFO_ADDRESS_CITY = 2;
+	private static final int CONTACT_INFO_ADDRESS_COUNTRY = 3;
 
 	private ArrayList<Animal> mAnimals;
 	private ArrayList<Way> mWays;
 	private ArrayList<Junction> mJunctions;
 	private ArrayList<Track> mTracks;
 	private ArrayList<Restaurant> mRestaurants;
+	private ArrayList<Event> mEvents;
 	private TicketsInformation mTicketInformation;
+	private AccessInformation mAccessInfo;
+	private ContactInformation mContactInfo = new ContactInformation();
 
 	private HashMap<Integer, Way> mWaysMap;
 	private HashMap<Integer, Animal> mAnimalsMap;
@@ -57,9 +65,11 @@ public class ZooLocationsDataParser {
 		mJunctions = new ArrayList<Junction>();
 		mTracks = new ArrayList<Track>();
 		mRestaurants = new ArrayList<Restaurant>();
+		mEvents = new ArrayList<Event>();
 		mTicketInformation = new TicketsInformation();
 		mWaysMap = new HashMap<Integer, Way>();
 		mAnimalsMap = new HashMap<Integer, Animal>();
+		mAccessInfo = new AccessInformation();
 
 		XmlPullParser parser = Xml.newPullParser();
 		parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
@@ -73,7 +83,10 @@ public class ZooLocationsDataParser {
 		data.setJunctions(mJunctions);
 		data.setTracks(mTracks);
 		data.setRestaurants(mRestaurants);
+		data.setEvents(mEvents);
 		data.setTicketInformation(mTicketInformation);
+		data.setAccessInformation(mAccessInfo);
+		data.setContactInformation(mContactInfo);
 
 		return data;
 	}
@@ -96,8 +109,14 @@ public class ZooLocationsDataParser {
 				readTracks(parser);
 			} else if ("gastronomy".equals(name)) {
 				readGastronomy(parser);
+			} else if ("events".equals(name)) {
+				readEvents(parser);
 			} else if ("tickets_information".equals(name)) {
 				readTicketsInformation(parser);
+			} else if ("access_information".equals(name)) {
+				readAccessInformation(parser);
+			} else if ("contact_information".equals(name)) {
+				readContactInformation(parser);
 			} else {
 				skip(parser);
 			}
@@ -441,6 +460,65 @@ public class ZooLocationsDataParser {
 		return animals;
 	}
 
+	private void readEvents(XmlPullParser parser) throws XmlPullParserException, IOException {
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("event".equals(name)) {
+				mEvents.add(readEvent(parser));
+			} else {
+				skip(parser);
+			}
+		}
+	}
+
+	private Event readEvent(XmlPullParser parser) throws XmlPullParserException,
+			IOException {
+		Event event = new Event();
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("name".equals(name)) {
+				event.setNames(readDictionary(parser));
+			} else if ("time".equals(name)) {
+				event.setTime(readText(parser));
+			} else if ("time_weekends".equals(name)) {
+				event.setTimeWeekends(readText(parser));
+			} else if ("time_christmas".equals(name)) {
+				event.setTimeHolidays(readText(parser));
+			} else if ("start".equals(name)) {
+				event.setStartDate(readText(parser));
+			} else if ("image".equals(name)) {
+				event.setImagePath(readText(parser));
+			} else {
+				skip(parser);
+			}
+		}
+
+		return event;
+	}
+
+	private void readAccessInformation(XmlPullParser parser) throws XmlPullParserException, IOException {
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+
+			String name = parser.getName();
+			if ("trams".equals(name)) {
+				mAccessInfo.setTrams(readText(parser).trim());
+			} else if ("parkings_information".equals(name)) {
+				mAccessInfo.setParkingInformation(readDictionary(parser));
+			} else {
+				skip(parser);
+			}
+		}
+	}
 	private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
 		if (parser.getEventType() != XmlPullParser.START_TAG) { throw new IllegalStateException(); }
 		int depth = 1;
@@ -520,6 +598,150 @@ public class ZooLocationsDataParser {
 		}
 
 		return ticket;
+	}
+
+	private void readContactInformation(XmlPullParser parser)
+			throws XmlPullParserException, IOException {
+		ArrayList<Opening> openings = null;
+		URL url = null;
+		ArrayList<String> emails = null;
+		String phoneNumber = null;
+		Address address = null;
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) continue;
+
+			String name = parser.getName();
+			if ("openings".equals(name)) {
+				openings = readOpenings(parser);
+			} else if ("website".equals(name)) {
+				url = new URL(readText(parser));
+			} else if ("emails".equals(name)) {
+				emails = readEmails(parser);
+			} else if ("telephone".equals(name)) {
+				phoneNumber = readText(parser);
+			} else if ("address".equals(name)) {
+				address = readAddress(parser);
+			} else {
+				skip(parser);
+			}
+		}
+
+		mContactInfo
+				.setOpenings(openings)
+				.setWebsiteUrl(url)
+				.setEmails(emails)
+				.setPhoneNumber(phoneNumber)
+				.setAddress(address);
+	}
+
+	private ArrayList<Opening> readOpenings(XmlPullParser parser)
+			throws XmlPullParserException, IOException {
+		ArrayList<Opening> openings = new ArrayList<Opening>();
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) continue;
+
+			String name = parser.getName();
+			if ("opening".equals(name)) {
+				openings.add(readOpening(parser));
+			} else {
+				skip(parser);
+			}
+		}
+
+		return openings;
+	}
+
+	private Opening readOpening(XmlPullParser parser)
+			throws XmlPullParserException, IOException {
+		Opening opening = new Opening();
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) continue;
+
+			String name = parser.getName();
+			if ("description".equals(name)) {
+				opening.setDescription(readDictionary(parser));
+			} else if ("hours".equals(name)) {
+				HashMap<String, String> map = readDictionary(parser);
+				for (String key : map.keySet()) {
+					Opening.When when = Opening.When.parseWhen(key);
+					Opening.Hours hours = parseHours(map.get(key));
+					if (when == null || hours == null) continue;
+
+					opening.setHours(when, hours);
+				}
+			} else {
+				skip(parser);
+			}
+		}
+
+		return opening;
+	}
+
+	private Opening.Hours parseHours(String str) {
+		String hours[] = str.trim().split(" - ");
+		return new Opening.Hours(hours[0], hours[1]);
+	}
+
+	private ArrayList<String> readEmails(XmlPullParser parser)
+			throws XmlPullParserException, IOException {
+		ArrayList<String> emails = new ArrayList<String>();
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) continue;
+
+			String name = parser.getName();
+			if ("email".equals(name)) {
+				emails.add(readText(parser));
+			} else {
+				skip(parser);
+			}
+		}
+
+		return emails;
+	}
+
+	private Address readAddress(XmlPullParser parser)
+			throws XmlPullParserException, IOException {
+		String lines[] = readText(parser).trim().split("\n");
+		Address address = new Address();
+
+		// this loop assumes that address is given in the following format:
+		//  [NAME]
+		//  [STREET]
+		//  [POSTAL-CODE] [CITY]
+		//  [COUNTRY]
+		// where [X] is a text value for X
+		for (int i = 0; i < lines.length; i++) {
+			String value = lines[i].trim();
+			switch (i) {
+				case CONTACT_INFO_ADDRESS_NAME:
+					address.setName(value);
+					break;
+
+				case CONTACT_INFO_ADDRESS_STREET:
+					address.setStreet(value);
+					break;
+
+				case CONTACT_INFO_ADDRESS_CITY:
+					String tmp[] = value.split(" ");
+					address
+							.setPostalCode(tmp[0].trim())
+							.setCity(tmp[1].trim());
+					break;
+
+				case CONTACT_INFO_ADDRESS_COUNTRY:
+					address.setCountry(value);
+					break;
+
+				default:
+					break;
+			}
+		}
+
+		return address;
 	}
 
 }

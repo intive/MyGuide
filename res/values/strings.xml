@@ -34,6 +34,7 @@
     <string name="view_map">Map of the Zoo</string>
     <string name="to_far_from_zoo">You are far away from the Zoo. Would you like to see
         how to get there instead of sightseeing map?</string>
+    <string name="activity_not_found">Could not find compatible application!</string>
 
     <!-- SplashActivity -->
     <string name="splash_dialog_error_title">Application error</string>
@@ -50,6 +51,7 @@
     <string-array name="nav_drawer_items">
         <item name="map">Map</item>
         <item name="animals">Animals</item>
+        <item name="events">Events</item>
         <item name="information">Informations</item>
         <item name="history">History</item>
         <item name="gastronomy">Gastronomy</item>
@@ -94,6 +96,15 @@
 
     <!-- Content Description -->
     <string name="gastronomy_list_image">Gastronomy List Image</string>
+    
+    <!-- Events -->
+    <string name="events_list_title">Events</string>
+    <string name="placeholder_time">11:00</string>
+    <string name="placeholder_name">Event Name</string>
+    <string name="event_start">Start time:</string>
+    <string name="event_weekends">Weekends:</string>
+    <string name="event_holidays">Holidays:</string>
+    <string name="event_date">Start date:</string>
 
 <!-- Information tabs name -->
 	<string-array name="information_tabs_name">
@@ -105,5 +116,10 @@
 	<string name="ticket_individual">Individual tickets</string>
 	<string name="ticket_group">Group tickets</string>
 	<string name="ticket_info">Information</string>
+
+<string name="contact_openings">ZOO Opening Times</string>
+	<string name="contact_contact">Contact</string>
+	<string name="contact_weekdays">mon-fri</string>
+	<string name="contact_weekends">weekends &amp; holidays</string>
 
 </resources>
