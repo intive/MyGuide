@@ -44,8 +44,6 @@
     _rightSidebarButton.action = @selector(rightRevealToggle:);
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     
-    [[LocationManager sharedLocationManager] checkLocationStatus];
-    
     [self configureMapView];
     [self centerMap];
     [self showPaths];
