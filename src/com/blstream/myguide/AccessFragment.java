@@ -152,8 +152,6 @@ public class AccessFragment extends Fragment
 				false);
 		((TextView) rootView.findViewById(R.id.txtv_parking)).setText(accessInformation
 				.getParkingInformation(getLanguage()));
-		// TODO: use data parsed from /root/contact_information/
-		// this is just a temporary placeholder
 		((TextView) rootView.findViewById(R.id.txtvOffice)).setText(mAddress.getName());
 		((TextView) rootView.findViewById(R.id.txtvAddress)).setText(mAddress.getStreet());
 
