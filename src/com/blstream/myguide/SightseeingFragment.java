@@ -239,8 +239,6 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		
 		if (closestAnimal != null){
 			
-			Log.i("", "closest is not null");
-			
 			if(!sameAsLastAnimal(closestAnimal)){
 				Bundle data = new Bundle();
 				data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
@@ -251,12 +249,10 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 						mBottomAnimalFragment, manager,
 						BundleConstants.FRAGMENT_BOTTOM_ANIMAL);
 				mLastAnimalDistance = closestAnimal;
-				Log.i("", "New animal new distance");
 			}
 			
 			else if(sameAnimalNewDistance(closestAnimal)){
 				mBottomAnimalFragment.setDistance(closestAnimal.getDistance());
-				Log.i("", "Same animal new distance");
 			}
 		}
 	}
@@ -414,6 +410,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	@Override
 	public void onPause() {
 		destroyBottomFragment();
+		mLocationUpdater.stopUpdating(this);
 		super.onPause();
 	}
 

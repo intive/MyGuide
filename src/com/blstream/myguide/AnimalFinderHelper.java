@@ -6,11 +6,12 @@ import java.util.Collections;
 import android.content.Context;
 import android.location.Location;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.blstream.myguide.path.Graph;
-import com.blstream.myguide.zoolocations.*;
+import com.blstream.myguide.zoolocations.Animal;
+import com.blstream.myguide.zoolocations.AnimalDistance;
+import com.blstream.myguide.zoolocations.Node;
 
 /**
  * Class which calculates the distance between user and all animals in the ZOO.
@@ -61,33 +62,17 @@ public class AnimalFinderHelper {
 	private double[] distancesToAllAnimals() {
 		final double[] distances = new double[mAllAnimals.size()];
 		final Node position = myPosition();
-		Runnable runnable = new Runnable() {
-			@Override
-			public void run() {
-				mHandler.post(new Runnable() {
-					@Override
-					public void run() {
-						Toast.makeText(mContext,
-								R.string.nearest_animals_waiting_toast,
-								Toast.LENGTH_SHORT).show();
-					}
-				});
-				
-				for (int i = 0; i < distances.length; i++) {
-					distances[i] = mGraph.findDistance(position, mAllAnimals
-							.get(i).getNode());
-				}
-			}
-		};
-		Thread calculateDistances = new Thread(runnable);
-		calculateDistances.start();
-
-		try {
-			calculateDistances.join();
-		} catch (InterruptedException e) {
-			Log.e(LOG_TAG, e.getMessage());
+		
+		Toast.makeText(mContext,
+				R.string.nearest_animals_waiting_toast,
+				Toast.LENGTH_SHORT).show();
+		
+		//TODO MOVE CALCULATIONS INTO ANOTHER THREAD
+		for (int i = 0; i < distances.length; i++) {
+			distances[i] = mGraph.findDistance(position, mAllAnimals
+					.get(i).getNode());
 		}
-
+		
 		return distances;
 	}
 
