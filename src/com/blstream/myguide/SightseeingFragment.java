@@ -332,6 +332,22 @@ public class SightseeingFragment extends Fragment {
 				return false;
 			}
 		});
+		mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+			@Override
+			public View getInfoWindow(Marker marker) {
+				View infoWindow = getActivity().getLayoutInflater().inflate(
+						R.layout.info_window_animal, null);
+				TextView txtvHeader = (TextView) infoWindow.findViewById(R.id.txtvHeaderInfoWindow);
+				txtvHeader.setText(marker.getTitle());
+
+				return infoWindow;
+			}
+
+			@Override
+			public View getInfoContents(Marker marker) {
+				return null;
+			}
+		});
 		/**
 		 * This listener is on Info window click ( Top of Marker ) After click
 		 * animal description fragment is opened

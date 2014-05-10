@@ -12,4 +12,6 @@
     <dimen name="events_padding_xsmall">3dp</dimen>
     <dimen name="events_text_time">14sp</dimen>
 
+    <dimen name="info_window_description">8sp</dimen>
+
 </resources>

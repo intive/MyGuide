@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/animal_window">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/animal_info" />
+
+    <TextView
+        android:id="@+id/txtvHeaderInfoWindow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imageView"
+        android:maxWidth="80dip"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:text="Koalasdass"
+        android:textColor="@color/main_accent"
+        android:textSize="@dimen/Item_text_size" />
+
+    <TextView
+        android:id="@+id/txtvAnimalInfoWindowDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvHeaderInfoWindow"
+        android:layout_toRightOf="@+id/imageView"
+        android:maxWidth="80dip"
+        android:paddingLeft="5dp"
+        android:text="@string/text"
+        android:maxHeight="40dip"
+        android:textSize="@dimen/info_window_description" />
+
+    <TextView
+        android:id="@+id/txtvMoreInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtvAnimalInfoWindowDescription"
+        android:layout_toRightOf="@+id/imageView"
+        android:paddingLeft="5dp"
+        android:text="wiecej..."
+        android:textColor="@color/main_accent"
+        android:textSize="@dimen/info_window_description" />
+
+</RelativeLayout>

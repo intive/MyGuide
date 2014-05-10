@@ -4,6 +4,7 @@ package com.blstream.myguide;
 import java.util.ArrayList;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -12,12 +13,15 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
@@ -161,8 +165,9 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		mDrawerList = (ListView) findViewById(R.id.lvMenu);
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.sliding_menu_item, mDrawerMenuItems));
+		MenuAdapter menuAdapter = new MenuAdapter(StartActivity.this, R.layout.sliding_menu_item,
+				mDrawerMenuItems);
+		mDrawerList.setAdapter(menuAdapter);
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.ic_navigation_drawer, R.string.drawer_open,
@@ -399,5 +404,62 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	@Override
 	public void markDialogAsShown() {
 		mFarFromZooDialogWasShown = true;
+	}
+
+	private static class MenuAdapter extends ArrayAdapter<String> {
+
+		private Activity mContext;
+		private String[] mMenuItem;
+		private int mLayoutResourceId;
+
+		private static int mMenuIcons[] = {
+				R.drawable.menu_icon_map,
+				R.drawable.menu_icon_animal,
+				R.drawable.menu_icon_event,
+				R.drawable.menu_icon_information,
+				R.drawable.menu_icon_history,
+				R.drawable.menu_icon_gastronomy,
+				R.drawable.menu_icon_preferences
+		};
+
+		public MenuAdapter(Activity context, int layoutResourceId,
+				String[] items) {
+			super(context, layoutResourceId, items);
+			mContext = context;
+			mMenuItem = items;
+			mLayoutResourceId = layoutResourceId;
+		}
+
+		static class ViewHolder {
+			public TextView mTxtvName;
+			public ImageView mImgvIcon;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			ViewHolder viewHolder;
+
+			if (convertView == null) {
+				LayoutInflater inflater = mContext.getLayoutInflater();
+				convertView = inflater.inflate(mLayoutResourceId, parent, false);
+
+				viewHolder = new ViewHolder();
+				viewHolder.mTxtvName = (TextView) convertView
+						.findViewById(R.id.txtvSlidingMenuTextView);
+				viewHolder.mImgvIcon = (ImageView) convertView
+						.findViewById(R.id.imgvDrawerIcon);
+
+				convertView.setTag(viewHolder);
+			} else {
+				viewHolder = (ViewHolder) convertView.getTag();
+			}
+
+			String s = mMenuItem[position];
+
+			viewHolder.mTxtvName.setText(s + "");
+			viewHolder.mImgvIcon.setImageResource(mMenuIcons[position]);
+
+			return convertView;
+		}
 	}
 }
