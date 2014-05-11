@@ -32,7 +32,7 @@ double const ZOOM_LEVEL = 15;
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    [self setDestinationCoordinates];
+    self.destinationCoordinates = CLLocationCoordinate2DMake(self.latitude.doubleValue, self.longitude.doubleValue);
     [self drawCoordinatesOnMap: self.destinationCoordinates];
     [self setupMapView];
     
@@ -69,11 +69,6 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     annotationPoint.title       = self.nameToDisplay;
     annotationPoint.coordinate  = coordinates;
     [self.mapView addAnnotation: annotationPoint];
-}
-
-- (void) setDestinationCoordinates
-{
-    self.destinationCoordinates = CLLocationCoordinate2DMake(self.latitude.doubleValue, self.longitude.doubleValue);
 }
 
 - (void) showZOO
