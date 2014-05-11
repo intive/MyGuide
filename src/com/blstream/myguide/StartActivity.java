@@ -58,17 +58,15 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private DistanceFromZooGuard mDistanceFromZooGuard;
 
 
-    private Fragment createInformationFragment() {
-		Fragment fragments[] = new Fragment[] {
-				TicketsFragment.newInstance(),
-				AccessFragment.newInstance(),
-				ContactFragment.newInstance(),
-		};
-
+	private Fragment createInformationFragment() {
 		return FragmentTabManager.newInstance(
 				R.array.information_tabs_name,
-				fragments,
-				getResources().getStringArray(R.array.nav_drawer_items)[2]);    // this needs adjusting if strings.xml is changed
+				new Fragment[] {
+						TicketsFragment.newInstance(),
+						AccessFragment.newInstance(),
+						ContactFragment.newInstance(),
+				},
+				getString(R.string.information_ab_title));
 	}
 
 	@Override
@@ -366,7 +364,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		} else {
 			getSupportFragmentManager().popBackStack();
 			// TODO navigate to "How to get" tabs when it'll be done
-			setNextFragment(new InformationFragment(), BundleConstants.FRAGMENT_INFORMATION);
+			setNextFragment(createInformationFragment(), BundleConstants.FRAGMENT_INFORMATION);
 			position = 2;
 		}
 		mDrawerList.setItemChecked(position, true);
