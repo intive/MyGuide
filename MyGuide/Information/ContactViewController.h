@@ -10,10 +10,10 @@
 
 @interface ContactViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UILabel *labelAddress;
-@property (weak, nonatomic) IBOutlet UILabel *labelPhone;
-@property (weak, nonatomic) IBOutlet UILabel *labelWebsite;
-@property (weak, nonatomic) IBOutlet UITextView  *textViewOpeningInformation;
-@property (weak, nonatomic) IBOutlet UITableView *tableViewHours;
+@property (weak, nonatomic) IBOutlet UILabel      *labelAddress;
+@property (weak, nonatomic) IBOutlet UITextView   *textViewPhone;
+@property (weak, nonatomic) IBOutlet UITextView   *textViewWebsite;
+@property (weak, nonatomic) IBOutlet UITextView   *textViewOpeningInformation;
+@property (weak, nonatomic) IBOutlet UITableView  *tableViewHours;
 
 @end
