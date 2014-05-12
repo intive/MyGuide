@@ -14,6 +14,8 @@
 @property (nonatomic) CLLocationCoordinate2D destinationCoordinates;
 @property (nonatomic) Settings *sharedSettings;
 
+@property BOOL fitToPath;
+
 @end
 
 @implementation DetailsMapViewController
@@ -32,6 +34,7 @@ double const ZOOM_LEVEL = 15;
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    self.fitToPath = YES;
     [self drawCoordinatesOnMap];
     [self setupMapView];
     
@@ -55,6 +58,7 @@ double const ZOOM_LEVEL = 15;
 didUpdateUserLocation: (MKUserLocation *) userLocation
 {
     [self drawDirectionsToLocation];
+    if (self.fitToPath) [self setMapRegion];
 }
 
 - (void) zoomOnLocation: (CLLocationCoordinate2D) coordinates
@@ -135,9 +139,18 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     MKPointAnnotation *annotationDestination  = [MKPointAnnotation new];
     annotationDestination.coordinate          = self.mapView.userLocation.coordinate;
     
-    NSArray *annotations = @[annotationUser, annotationDestination];
-    [self.mapView showAnnotations: annotations animated: YES];
-    [self.mapView removeAnnotations: annotations];
+    if (self.mapView.userLocation.coordinate.latitude  == 0 &&
+        self.mapView.userLocation.coordinate.longitude == 0)
+    {
+        [self zoomOnLocation: self.destinationCoordinates];
+    }
+    else
+    {
+        NSArray *annotations = @[annotationUser, annotationDestination];
+        [self.mapView showAnnotations: annotations animated: YES];
+        [self.mapView removeAnnotations: annotations];
+        self.fitToPath = NO;
+    }
 }
 
 @end

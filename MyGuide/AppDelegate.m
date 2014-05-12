@@ -47,8 +47,14 @@
         [[LocationManager sharedLocationManager] requestLocationStatus];
     }
     [self loadXMLs];
+    [self styleApplication];
     
     return YES;
+}
+
+- (void) styleApplication
+{
+    [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor colorWithRed:255/255.f green:95/255.f blue:0/255.f alpha:1];
 }
 
 - (BOOL) hasBeenLaunched
