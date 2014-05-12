@@ -32,12 +32,12 @@ double const ZOOM_LEVEL = 15;
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    self.destinationCoordinates = CLLocationCoordinate2DMake(self.latitude.doubleValue, self.longitude.doubleValue);
-    [self drawCoordinatesOnMap: self.destinationCoordinates];
+    [self drawCoordinatesOnMap];
     [self setupMapView];
     
     if (self.showDirections) {
         [self drawDirectionsToLocation];
+        [self setMapRegion];
     }
     else {
         [self zoomOnLocation: self.destinationCoordinates];
@@ -63,11 +63,12 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     [self.mapView setRegion: MKCoordinateRegionMake(coordinates, span) animated: YES];
 }
 
-- (void) drawCoordinatesOnMap: (CLLocationCoordinate2D) coordinates
+- (void) drawCoordinatesOnMap
 {
-    MKPointAnnotation *annotationPoint = [MKPointAnnotation new];
-    annotationPoint.title       = self.nameToDisplay;
-    annotationPoint.coordinate  = coordinates;
+    self.destinationCoordinates         = CLLocationCoordinate2DMake(self.latitude.doubleValue, self.longitude.doubleValue);
+    MKPointAnnotation *annotationPoint  = [MKPointAnnotation new];
+    annotationPoint.title               = self.nameToDisplay;
+    annotationPoint.coordinate          = self.destinationCoordinates;
     [self.mapView addAnnotation: annotationPoint];
 }
 
@@ -86,7 +87,7 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     MKMapItem *sourceMapItem = [MKMapItem mapItemForCurrentLocation];
     [sourceMapItem setName: NSLocalizedString(@"yourLocation", nil)];
     
-    MKPlacemark *destination = [[MKPlacemark alloc] initWithCoordinate: self.destinationCoordinates addressDictionary: nil];
+    MKPlacemark *destination      = [[MKPlacemark alloc] initWithCoordinate: self.destinationCoordinates addressDictionary: nil];
     MKMapItem *destinationMapItem = [[MKMapItem alloc] initWithPlacemark: destination];
     [destinationMapItem setName: self.nameToDisplay];
     
@@ -104,7 +105,6 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
             return;
         }
         
-        [self setMapRegion];
         MKRoute *route = [response.routes firstObject];
         NSArray *steps = [route steps];
         [self.mapView removeOverlay: self.mapView.overlays.lastObject];
@@ -123,35 +123,21 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
 - (MKOverlayRenderer *) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline: overlay];
-    renderer.strokeColor = [UIColor orangeColor];
-    renderer.lineWidth = 4.0;
+    renderer.strokeColor         = [UIColor orangeColor];
+    renderer.lineWidth           = 4.0;
     return  renderer;
 }
 
 - (void) setMapRegion
 {
-    const double mapPadding = 1.2;
-    const double minimumVerticalSpan = .1;
+    MKPointAnnotation *annotationUser         = [MKPointAnnotation new];
+    annotationUser.coordinate                 = self.destinationCoordinates;
+    MKPointAnnotation *annotationDestination  = [MKPointAnnotation new];
+    annotationDestination.coordinate          = self.mapView.userLocation.coordinate;
     
-    CLLocationCoordinate2D userCoordinate        = self.mapView.userLocation.coordinate;
-    CLLocationCoordinate2D destinationCoordinate = self.destinationCoordinates;
-    
-    double minLatitude  = MIN(destinationCoordinate.latitude,  userCoordinate.latitude);
-    double minLongitude = MIN(destinationCoordinate.longitude, userCoordinate.longitude);
-    double maxLatitude  = MAX(destinationCoordinate.latitude,  userCoordinate.latitude);
-    double maxLongitude = MAX(destinationCoordinate.longitude, userCoordinate.longitude);
-    
-    MKCoordinateRegion region;
-    region.center.latitude      = (minLatitude + maxLatitude) / 2;
-    region.center.longitude     = (minLongitude + maxLongitude) / 2;
-    region.span.latitudeDelta   = (maxLatitude - minLatitude) * mapPadding;
-    region.span.latitudeDelta   = (region.span.latitudeDelta < minimumVerticalSpan)
-    ? minimumVerticalSpan
-    : region.span.latitudeDelta;
-    region.span.longitudeDelta  = (maxLongitude - minLongitude) * mapPadding;
-    
-    MKCoordinateRegion scaledRegion = [self.mapView regionThatFits: region];
-    [self.mapView setRegion:scaledRegion animated:YES];
+    NSArray *annotations = @[annotationUser, annotationDestination];
+    [self.mapView showAnnotations: annotations animated: YES];
+    [self.mapView removeAnnotations: annotations];
 }
 
 @end
