@@ -116,6 +116,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		getArgs();
 		View rootView = inflater.inflate(R.layout.fragment_sightseeing,
 				container, false);
 
