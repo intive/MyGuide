@@ -29,16 +29,18 @@
 
 - (void) prepareLabels
 {
-    self.labelAddress.text = self.informationData.address;
-    self.labelPhone.text   = self.informationData.telephone;
-    self.labelWebsite.text = self.informationData.website;
+    self.labelAddress.text    = self.informationData.address;
+    self.textViewPhone.text   = self.informationData.telephone;
+    self.textViewWebsite.text = self.informationData.website;
 }
 
 - (void) prepareOpeningHours
 {
     self.openingHours = self.informationData.openings;
-    self.tableViewHours.dataSource = self;
-    self.tableViewHours.delegate   = self;
+    self.tableViewHours.dataSource       = self;
+    self.tableViewHours.delegate         = self;
+    self.tableViewHours.scrollEnabled    = NO;
+    self.tableViewHours.allowsSelection  = NO;
     self.textViewOpeningInformation.text = [self.informationData.openingInformation getName];
 }
 

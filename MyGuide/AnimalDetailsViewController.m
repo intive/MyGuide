@@ -7,10 +7,11 @@
 //
 
 #import "AnimalDetailsViewController.h"
+#import "DetailsMapViewController.h"
 
 @interface AnimalDetailsViewController ()
 
-@property (strong, nonatomic) UIViewController *detailsMapController;
+@property (strong, nonatomic) DetailsMapViewController *detailsMapController;
 
 @end
 
@@ -18,10 +19,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
+    return [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 }
 
 - (void)viewDidLoad
@@ -47,15 +45,17 @@
 - (IBAction) switchControllers: (UISegmentedControl *) segmentControl
 {
     NSInteger selectedIndex = [segmentControl selectedSegmentIndex];
-    if(selectedIndex == 0){
+    if(selectedIndex == 0) {
         [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
         [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"adultDescription"]];
     }
-    else if(selectedIndex == 1){
+    else if(selectedIndex == 1) {
         [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"childImageName"]]];
         [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"childDescription"]];
     }
-    else{
+    else {
+        _detailsMapController.latitude  = [NSNumber numberWithFloat: [_animal.coordinates.latitude floatValue]];
+        _detailsMapController.longitude = [NSNumber numberWithFloat: [_animal.coordinates.longitude floatValue]];
         [self.navigationController pushViewController:_detailsMapController animated:YES];
     }
 }

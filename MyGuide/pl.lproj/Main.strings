@@ -95,8 +95,8 @@
 /* Class = "IBUILabel"; text = "Sightseeing hours"; ObjectID = "wTM-gH-Efv"; */
 "wTM-gH-Efv.text" = "Godziny zwiedzania";
 
-/* Class = "IBUILabel"; text = "ZOO open hours"; ObjectID = "utq-Xi-NNU"; */
-"utq-Xi-NNU.text" = "Godziny otwarcia ZOO";
+/* Class = "IBUILabel"; text = "ZOO open hours"; ObjectID = "xtC-Zd-Oza"; */
+"xtC-Zd-Oza.text" = "Godziny otwarcia ZOO";
 
 /* Class = "IBUISegmentedControl"; Oqy-au-1t4.segmentTitles[0] = "Tickets"; ObjectID = "Oqy-au-1t4"; */
 "Oqy-au-1t4.segmentTitles[0]" = "Bilety";

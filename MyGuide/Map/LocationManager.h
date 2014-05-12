@@ -14,6 +14,5 @@
 + (id) sharedLocationManager;
 
 - (void) requestLocationStatus;
-- (void) checkLocationStatus;
 
 @end

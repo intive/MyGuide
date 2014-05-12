@@ -52,10 +52,39 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
-    [[LocationManager sharedLocationManager] requestLocationStatus];
+    if([self hasBeenLaunched])
+    {
+        [[LocationManager sharedLocationManager] requestLocationStatus];
+    }
     [self loadXMLs];
+    [self styleApplication];
     
     return YES;
+}
+
+- (void) styleApplication
+{
+    [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor colorWithRed:255/255.f green:95/255.f blue:0/255.f alpha:1];
+}
+
+- (BOOL) hasBeenLaunched
+{
+    BOOL result = YES;
+    NSString *hasBeenLaunched = @"HAS_BEEN_LAUNCHED";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    if ([defaults boolForKey:hasBeenLaunched])
+    {
+        result = YES;
+    }
+    else
+    {
+        [defaults setBool:YES forKey:hasBeenLaunched];
+        [defaults synchronize];
+        result = NO;
+    }
+    
+    return result;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

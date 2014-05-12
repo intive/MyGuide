@@ -31,12 +31,6 @@
     [_locationManager startUpdatingLocation];
 }
 
-- (void)checkLocationStatus
-{
-    [self displayLocationStatus:[CLLocationManager authorizationStatus]
-                    withMessage:NSLocalizedString(@"gpsDisabledLaunchMessage", nil)];
-}
-
 #pragma mark - CLLocationMangerDelegate methods
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
