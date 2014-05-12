@@ -42,10 +42,33 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
 {
-    [[LocationManager sharedLocationManager] requestLocationStatus];
+    if([self hasBeenLaunched])
+    {
+        [[LocationManager sharedLocationManager] requestLocationStatus];
+    }
     [self loadXMLs];
     
     return YES;
+}
+
+- (BOOL) hasBeenLaunched
+{
+    BOOL result = YES;
+    NSString *hasBeenLaunched = @"HAS_BEEN_LAUNCHED";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    if ([defaults boolForKey:hasBeenLaunched])
+    {
+        result = YES;
+    }
+    else
+    {
+        [defaults setBool:YES forKey:hasBeenLaunched];
+        [defaults synchronize];
+        result = NO;
+    }
+    
+    return result;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
