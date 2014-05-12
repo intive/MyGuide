@@ -8,7 +8,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,6 +18,7 @@ import android.widget.TextView;
 
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.AccessInformation;
+import com.blstream.myguide.zoolocations.Address;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -38,6 +38,7 @@ public class AccessFragment extends Fragment
 		return new AccessFragment();
 	}
 
+	private Address mAddress;
 	private SupportMapFragment mMapFragment;
 	private LatLng mDestination;
 
@@ -58,7 +59,7 @@ public class AccessFragment extends Fragment
 				column = 0;
 				row++;
 			}
-			gridLayout.addView(newTextView(str, newLayoutParams(row, column++)));
+			gridLayout.addView(newGridItem(str, newLayoutParams(row, column++)));
 		}
 	}
 
@@ -71,18 +72,15 @@ public class AccessFragment extends Fragment
 		return params;
 	}
 
-	protected TextView newTextView(String text, ViewGroup.LayoutParams params) {
-		TextView tv = new TextView(getActivity());
+	protected View newGridItem(String text, ViewGroup.LayoutParams params) {
+		LayoutInflater inflater = getActivity().getLayoutInflater();
+		View rootView = inflater.inflate(R.layout.fragment_information_access_griditem, null);
+		TextView textView = (TextView) rootView.findViewById(R.id.txtvText);
 
-		tv.setMinEms(2);
-		tv.setGravity(Gravity.CENTER);
-		tv.setPadding(pixelsFromDp(6), pixelsFromDp(2), pixelsFromDp(6), pixelsFromDp(2));
-		tv.setBackgroundColor(getResources().getColor(R.color.light_background));
-		tv.setLayoutParams(params);
-		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-		tv.setText(text);
+		rootView.setLayoutParams(params);
+		textView.setText(text);
 
-		return tv;
+		return rootView;
 	}
 
 	/**
@@ -136,6 +134,14 @@ public class AccessFragment extends Fragment
 	}
 
 	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		MyGuideApp app = (MyGuideApp) getActivity().getApplication();
+		mAddress = app.getZooData().getContactInformation().getAddress();
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater layoutInflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		AccessInformation accessInformation = ((MyGuideApp) getActivity().getApplication())
@@ -146,10 +152,8 @@ public class AccessFragment extends Fragment
 				false);
 		((TextView) rootView.findViewById(R.id.txtv_parking)).setText(accessInformation
 				.getParkingInformation(getLanguage()));
-		// TODO: use data parsed from /root/contact_information/
-		// this is just a temporary placeholder
-		((TextView) rootView.findViewById(R.id.txtvOffice)).setText("ZOO Wrocław");
-		((TextView) rootView.findViewById(R.id.txtvAddress)).setText("ul. Wróblewskiego 1-5");
+		((TextView) rootView.findViewById(R.id.txtvOffice)).setText(mAddress.getName());
+		((TextView) rootView.findViewById(R.id.txtvAddress)).setText(mAddress.getStreet());
 
 		configureGrid(
 				(GridLayout) rootView.findViewById(R.id.grid_trams),

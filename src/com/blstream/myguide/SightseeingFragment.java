@@ -5,8 +5,11 @@ import java.util.ArrayList;
 
 import android.app.ActionBar;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,8 +26,10 @@ import android.widget.TextView;
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
+import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
+import com.blstream.myguide.zoolocations.AnimalDistance;
 import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.Language;
 import com.blstream.myguide.zoolocations.Node;
@@ -49,7 +54,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
  * Main fragment of application
  */
 
-public class SightseeingFragment extends Fragment {
+public class SightseeingFragment extends Fragment implements LocationUser {
 
 	private static final String LOG_TAG = SightseeingFragment.class
 			.getSimpleName();
@@ -79,8 +84,11 @@ public class SightseeingFragment extends Fragment {
 	private TrackDrawer mTrackDrawer;
 
 	private LocationLogger mLocationLogger;
+	private LocationUpdater mLocationUpdater;
 
 	private boolean mLocationLogVisible;
+	private BottomAnimalFragment mBottomAnimalFragment;
+	private AnimalDistance mLastAnimalDistance;
 
 	public static SightseeingFragment newInstance() {
 		return new SightseeingFragment();
@@ -106,23 +114,31 @@ public class SightseeingFragment extends Fragment {
 	private void configureAndDisplayUserPosition() {
 		// check if location should be hidden
 		boolean visible = !((MyGuideApp) getActivity().getApplication())
-				.getSettings()
-				.getValueAsBoolean(Settings.KEY_MAP_MY_POSITION_HIDDEN)
+				.getSettings().getValueAsBoolean(
+						Settings.KEY_MAP_MY_POSITION_HIDDEN)
 				&& LocationUpdater.getInstance().isGpsEnable();
 		Log.d(LOG_TAG, String.format("Displaying position: %s", visible));
 		mMap.setMyLocationEnabled(visible);
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		getArgs();
-		View rootView = inflater.inflate(R.layout.fragment_sightseeing, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_sightseeing,
+				container, false);
+
+		mLocationUpdater = LocationUpdater.getInstance();
+		mLocationUpdater.startUpdating(this);
+		mLastAnimalDistance = null;
+		mBottomAnimalFragment = new BottomAnimalFragment();
 
 		getActivity().getActionBar().setTitle("");
-		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		getActivity().getActionBar().setNavigationMode(
+				ActionBar.NAVIGATION_MODE_STANDARD);
 
-		((StartActivity) getActivity()).getDrawerLayout()
-				.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+		((StartActivity) getActivity()).getDrawerLayout().setDrawerLockMode(
+				DrawerLayout.LOCK_MODE_UNLOCKED);
 
 		setHasOptionsMenu(true);
 		setUpMapSettings();
@@ -147,8 +163,8 @@ public class SightseeingFragment extends Fragment {
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
-		((StartActivity) getActivity()).getDrawerLayout()
-				.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);
+		((StartActivity) getActivity()).getDrawerLayout().setDrawerLockMode(
+				DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);
 	}
 
 	@Override
@@ -298,14 +314,57 @@ public class SightseeingFragment extends Fragment {
 	}
 
 	private void setUpMap() {
-		mMap = ((SupportMapFragment) getActivity().getSupportFragmentManager().findFragmentById(
-				R.id.map))
-				.getMap();
+		mMap = ((SupportMapFragment) getActivity().getSupportFragmentManager()
+				.findFragmentById(R.id.map)).getMap();
 		MapsInitializer.initialize(getActivity());
 		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 				mStartCenterLat, mStartCenterLon), mMinZoom));
 		setUpCamera();
 		setUpMapListeners();
+	}
+
+	/**
+	 * Sets up the closest animal showing at the bottom of the screen. Uses
+	 * {@link com.blstream.myguide.AnimalFinderHelper }
+	 */
+	private void setUpClosestAnimal() {
+		if (mBottomAnimalFragment == null) mBottomAnimalFragment = new BottomAnimalFragment();
+
+		AnimalFinderHelper animalFinderHelper = new AnimalFinderHelper(
+				mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
+						.getApplication(), getActivity());
+
+		AnimalDistance closestAnimal = animalFinderHelper.closestAnimal();
+
+		if (closestAnimal != null) {
+
+			if (!sameAsLastAnimal(closestAnimal)) {
+				Bundle data = new Bundle();
+				data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
+				mBottomAnimalFragment = new BottomAnimalFragment();
+				mBottomAnimalFragment.setArguments(data);
+				FragmentManager manager = getChildFragmentManager();
+				FragmentHelper.swapFragment(R.id.closestAnimal,
+						mBottomAnimalFragment, manager,
+						BundleConstants.FRAGMENT_BOTTOM_ANIMAL);
+				mLastAnimalDistance = closestAnimal;
+			}
+
+			else if (sameAnimalNewDistance(closestAnimal)) {
+				mBottomAnimalFragment.setDistance(closestAnimal.getDistance());
+			}
+		}
+	}
+
+	private boolean sameAnimalNewDistance(AnimalDistance closest) {
+		return mLastAnimalDistance != null &&
+				closest.getAnimal().equals(mLastAnimalDistance.getAnimal()) &&
+				(closest.getDistance() != mLastAnimalDistance.getDistance());
+	}
+
+	private boolean sameAsLastAnimal(AnimalDistance closest) {
+		return mLastAnimalDistance != null
+				&& closest.equals(mLastAnimalDistance);
 	}
 
 	private void setUpMapListeners() {
@@ -355,26 +414,27 @@ public class SightseeingFragment extends Fragment {
 		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
-				Animal animal = mAnimalsList.get(Integer.parseInt(marker.getId().substring(1)));
+				Animal animal = mAnimalsList.get(Integer.parseInt(marker
+						.getId().substring(1)));
 
 				SupportMapFragment f = (SupportMapFragment) getActivity()
-						.getSupportFragmentManager()
-						.findFragmentById(R.id.map);
-				if (f != null) getFragmentManager().beginTransaction().remove(f).commit();
+						.getSupportFragmentManager().findFragmentById(R.id.map);
+				if (f != null)
+				getFragmentManager().beginTransaction().remove(f).commit();
 
 				Fragment[] fragments = {
-						AnimalDescriptionTab
-								.newInstance(R.drawable.placeholder_adult, R.string.text),
-						AnimalDescriptionTab
-								.newInstance(R.drawable.placeholder_child, R.string.text),
+						AnimalDescriptionTab.newInstance(
+								R.drawable.placeholder_adult, R.string.text),
+						AnimalDescriptionTab.newInstance(
+								R.drawable.placeholder_child, R.string.text),
 						AnimalDetailsMapFragment.newInstance(animal)
 				};
 				Fragment newFragment = FragmentTabManager.newInstance(
-						R.array.animal_desc_tabs_name,
-						fragments, animal);
+						R.array.animal_desc_tabs_name, fragments, animal);
 
 				FragmentHelper.swapFragment(R.id.flFragmentHolder, newFragment,
-						getFragmentManager(), BundleConstants.FRAGMENT_ANIMAL_DETAIL);
+						getFragmentManager(),
+						BundleConstants.FRAGMENT_ANIMAL_DETAIL);
 			}
 		});
 	}
@@ -422,8 +482,7 @@ public class SightseeingFragment extends Fragment {
 					.strokeWidth(2)
 					.fillColor(Color.YELLOW)
 					.center(new LatLng(a.getNode().getLatitude(), a.getNode()
-							.getLongitude())
-					).visible(mJunctionsVisible));
+							.getLongitude())).visible(mJunctionsVisible));
 		}
 	}
 
@@ -442,7 +501,9 @@ public class SightseeingFragment extends Fragment {
 		mAnimalMarkers = new ArrayList<Marker>();
 		for (Animal a : mAnimalsList) {
 			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions()
-					.position(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()))
+					.position(
+							new LatLng(a.getNode().getLatitude(), a.getNode()
+									.getLongitude()))
 					.title(a.getName(Language.DEFAULT))
 					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal))));
 		}
@@ -460,11 +521,42 @@ public class SightseeingFragment extends Fragment {
 	}
 
 	private void setUpLocationLogger() {
-		mLocationLogVisible = ((MyGuideApp) (getActivity().getApplication())).getSettings()
-				.getValueAsBoolean(Settings.KEY_GPS_LOGGING);
+		mLocationLogVisible = ((MyGuideApp) (getActivity().getApplication()))
+				.getSettings().getValueAsBoolean(Settings.KEY_GPS_LOGGING);
 		if (mLocationLogVisible) {
 			mLocationLogger = new LocationLogger(getActivity(), 3, true);
 		}
+	}
+
+	private void destroyBottomFragment() {
+		if (mBottomAnimalFragment != null && mBottomAnimalFragment.isVisible()) {
+			FragmentManager fm = getChildFragmentManager();
+			FragmentTransaction ft = fm.beginTransaction();
+			ft.remove(mBottomAnimalFragment);
+			ft.commit();
+		}
+	}
+
+	@Override
+	public void onPause() {
+		destroyBottomFragment();
+		mLocationUpdater.stopUpdating(this);
+		super.onPause();
+	}
+
+	@Override
+	public void onLocationUpdate(Location location) {
+		setUpClosestAnimal();
+	}
+
+	@Override
+	public void onGpsAvailable() {
+		setUpClosestAnimal();
+	}
+
+	@Override
+	public void onGpsUnavailable() {
+		destroyBottomFragment();
 	}
 
 	public void drawTrack() {

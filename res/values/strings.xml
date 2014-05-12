@@ -59,12 +59,16 @@
         <item name="preferences">Preferences</item>
     </string-array>
 
-    <!--Animals description tabs name -->
+    <!-- Animals description tabs name -->
     <string-array name="animal_desc_tabs_name">
         <item name="description">Description</item>
         <item name="child">For children</item>
         <item name="map_view">Map</item>
     </string-array>
+
+    <!-- Animal List title -->
+    <string name="animal_list_title">Animals</string>
+    <string name="animal_image">Animal Image</string>
 
     <!-- Gastronomy description tabs -->
     <string-array name="gastronomy_desc_tabs_name">
@@ -72,9 +76,14 @@
         <item name="menu">Menu</item>
     </string-array>
 
-    <!-- Animal List title -->
-    <string name="animal_list_title">Animals</string>
-    <string name="animal_image">Animal Image</string>
+    <!-- Nearest animals -->
+    <string name="nearest_animals_title">Nearest animals</string>
+    <string name="nearest_animals_waiting_toast">Calculating distances&#8230;</string>
+
+    <!-- Placeholders for Custom_Animal_Row -->
+    <string name="custom_row_placeholder_name">Animal name</string>
+    <string name="custom_row_placeholder_distance">100m</string>
+    <string name="custom_row_placeholder_fact">Fun fact</string>
 
     <!-- Track list -->
     <string name="exploration">Exploration</string>
@@ -84,12 +93,11 @@
     <string name="menu_item_list">Menu:</string>
     <string name="open_item_list">Opening hours:</string>
     <string name="time_to_item_list">Time:</string>
-
     <string name="gastronomy_list_title">Gastronomy</string>
 
     <!-- Content Description -->
     <string name="gastronomy_list_image">Gastronomy List Image</string>
-    
+
     <!-- Events -->
     <string name="events_list_title">Events</string>
     <string name="placeholder_time">11:00</string>
@@ -99,21 +107,22 @@
     <string name="event_holidays">Holidays:</string>
     <string name="event_date">Start date:</string>
 
-	<!-- Information tabs name -->
-	<string-array name="information_tabs_name">
-		<item name="tickets">Tickets</item>
-		<item name="getthere">Get to ZOO</item>
-		<item name="contact">Contact</item>
-	</string-array>
+    <!-- Information tabs name -->
+    <string name="information_ab_title">Information</string>
 
-	<string name="ticket_individual">Individual tickets</string>
-	<string name="ticket_group">Group tickets</string>
-	<string name="ticket_info">Information</string>
+    <string-array name="information_tabs_name">
+        <item name="tickets">Tickets</item>
+        <item name="getthere">Get to ZOO</item>
+        <item name="contact">Contact</item>
+    </string-array>
 
-	<string name="contact_openings">ZOO Opening Times</string>
-	<string name="contact_contact">Contact</string>
-	<string name="contact_weekdays">mon-fri</string>
-	<string name="contact_weekends">weekends &amp; holidays</string>
+    <string name="ticket_individual">Individual tickets</string>
+    <string name="ticket_group">Group tickets</string>
+    <string name="ticket_info">Information</string>
+    <string name="contact_openings">ZOO Opening Times</string>
+    <string name="contact_contact">Contact</string>
+    <string name="contact_weekdays">mon-fri</string>
+    <string name="contact_weekends">weekends &amp; holidays</string>
 
     <string name="more_info">more</string>
 

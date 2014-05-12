@@ -57,14 +57,22 @@
 						android:layout_height="wrap_content"
 						android:src="@drawable/ic_information_contact_home"
 						android:layout_gravity="center_vertical"/>
-					<TextView
+
+					<LinearLayout
 						android:layout_width="match_parent"
-						android:layout_height="match_parent"
-						android:text="Ulica\nKod pocztowy Miasto"
-						android:textSize="@dimen/List_text_size_medium"
-						android:gravity="center_vertical"
-						android:layout_marginLeft="15dp"
-						android:id="@+id/txtvAddress"/>
+						android:layout_height="wrap_content"
+						android:layout_gravity="center_vertical"
+						android:orientation="vertical">
+						<TextView
+							android:id="@+id/txtvAddress"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_gravity="center_vertical"
+							android:layout_marginLeft="15dp"
+							android:gravity="center_vertical"
+							android:text="Ulica\nKod pocztowy Miasto"
+							android:textSize="@dimen/List_text_size_medium"/>
+					</LinearLayout>
 				</LinearLayout>
 				<LinearLayout
 					android:orientation="horizontal"

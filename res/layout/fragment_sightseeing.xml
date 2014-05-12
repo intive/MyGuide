@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rlSightseeingActivityContent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
     <fragment
         android:id="@+id/map"
-        class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/closestAnimal"
+        class="com.google.android.gms.maps.SupportMapFragment" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/closestAnimal"
         android:background="@android:color/transparent" />
 
-</RelativeLayout>
+    <FrameLayout
+        android:id="@+id/closestAnimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
+</RelativeLayout>

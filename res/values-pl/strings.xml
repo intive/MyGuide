@@ -52,7 +52,7 @@
         <item name="preferences">Preferencje</item>
     </string-array>
 
-    <!--Animals description tabs name -->
+    <!-- Animals description tabs name -->
     <string-array name="animal_desc_tabs_name">
         <item name="description">Opis</item>
         <item name="child">Dla Dzieci</item>
@@ -61,6 +61,10 @@
 
     <!-- Animal List title -->
     <string name="animal_list_title">Zwierzęta</string>
+    
+    <!-- Nearest animals -->
+    <string name="nearest_animals_title">Najbliższe zwierzęta</string>
+    <string name="nearest_animals_waiting_toast">Obliczanie dystansów&#8230;</string>
 
     <!-- Gastronomy description tabs -->
     <string-array name="gastronomy_desc_tabs_name">
@@ -86,6 +90,7 @@
     <string name="event_date">Data startu:</string>
 
 	<!-- Information tabs name -->
+	<string name="information_ab_title">Informacje</string>
 	<string-array name="information_tabs_name">
 		<item name="tickets">Bilety</item>
 		<item name="getthere">Dojazd</item>

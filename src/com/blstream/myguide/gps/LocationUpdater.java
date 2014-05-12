@@ -140,6 +140,7 @@ public class LocationUpdater {
 	 */
 	public void stopUpdating(LocationUser user) {
 		mLocationUsers.remove(user);
+		mNewUsers.remove(user);
 		if (mLocationUsers.isEmpty()) {
 			mLocationClient.removeLocationUpdates(mLocationListener);
 			mRequestingForUpdates = false;
