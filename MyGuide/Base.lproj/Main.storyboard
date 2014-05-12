@@ -19,7 +19,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dAr-Rb-Jpc">
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="gOT-Ro-L9p"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="gOT-Ro-L9p">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="gOT-Ro-L9p" id="KwX-Fy-0m8"/>
@@ -49,6 +51,7 @@
                                     <segment title="Menu"/>
                                     <segment title="Map"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="0.37254901959999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="switchControllers:" destination="DSz-JZ-KzA" eventType="valueChanged" id="V92-5W-qUv"/>
                                 </connections>
@@ -132,6 +135,7 @@
                                         <progressView opaque="NO" tag="103" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dag-ox-Kmo">
                                             <rect key="frame" x="132" y="30" width="126" height="2"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="tintColor" red="1" green="0.37254901959999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                         </progressView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -177,6 +181,7 @@
                             <progressView opaque="NO" tag="102" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VvW-QJ-hUn">
                                 <rect key="frame" x="85" y="227" width="150" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="1" green="0.37254901959999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             </progressView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20/55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoX-VE-Jm4">
                                 <rect key="frame" x="116" y="198" width="89" height="21"/>
@@ -203,7 +208,9 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Qm9-bi-OyI">
-                        <barButtonItem key="rightBarButtonItem" image="menu.png" id="8L0-Zk-gUb"/>
+                        <barButtonItem key="rightBarButtonItem" image="menu.png" id="8L0-Zk-gUb">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -352,8 +359,12 @@
                     <tabBarItem key="tabBarItem" title="Explore" id="dfN-EF-0Uk"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="oGh-e1-68r">
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="o8H-0S-uza"/>
-                        <barButtonItem key="rightBarButtonItem" image="menu.png" id="5PM-mz-KeS"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="o8H-0S-uza">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="menu.png" id="5PM-mz-KeS">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -390,6 +401,7 @@
                                     <segment title="Contact"/>
                                     <segment title="Commute"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="0.37254901959999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="switchControllers:" destination="0ex-qL-zTD" eventType="valueChanged" id="I59-wJ-tUC"/>
                                 </connections>
@@ -406,7 +418,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="W8a-MP-yhf">
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="eku-m0-XDF"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="eku-m0-XDF">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="BGE-mT-mIf" id="6ae-FC-JtA"/>
@@ -649,7 +663,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="N2I-9G-Hjy">
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="110-Ul-i6f"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="110-Ul-i6f">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="110-Ul-i6f" id="laz-5X-obI"/>
@@ -699,7 +715,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pac-fJ-BOj">
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="fYD-of-KS9"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="fYD-of-KS9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="dvk-PK-CXo" id="a8Q-hA-T23"/>
@@ -740,6 +758,7 @@
                                     <segment title="For Kids"/>
                                     <segment title="Map"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="0.37254901959999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="switchControllers:" destination="M8A-t7-eRn" eventType="valueChanged" id="Vnd-Ca-xCX"/>
                                 </connections>
@@ -863,6 +882,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="25T-fL-dEY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="0.37254901959999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -956,7 +980,9 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="tnt-ej-gcH">
-                        <barButtonItem key="rightBarButtonItem" image="menu.png" id="EBj-uQ-HDj"/>
+                        <barButtonItem key="rightBarButtonItem" image="menu.png" id="EBj-uQ-HDj">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
