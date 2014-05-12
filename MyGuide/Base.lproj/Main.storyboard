@@ -463,7 +463,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ioj-em-4G3">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sightseeing hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTM-gH-Efv">
@@ -474,15 +474,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="ykH-c5-xwy">
-                                                <rect key="frame" x="9" y="124" width="303" height="260"/>
+                                                <rect key="frame" x="10" y="124" width="300" height="260"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OpeningHoursCell" id="7aJ-cJ-3RI">
-                                                        <rect key="frame" x="0.0" y="1" width="303" height="65"/>
+                                                        <rect key="frame" x="0.0" y="1" width="300" height="65"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7aJ-cJ-3RI" id="w56-ZK-Poa">
-                                                            <rect key="frame" x="0.0" y="0.0" width="303" height="64"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="64"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Summer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Anr-An-3Ld">
@@ -498,7 +498,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9.00 - 16.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiH-Hn-HoQ">
-                                                                    <rect key="frame" x="210" y="20" width="93" height="21"/>
+                                                                    <rect key="frame" x="207" y="20" width="93" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
@@ -509,8 +509,8 @@
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9.00 - 16.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIj-u3-qd5">
-                                                                    <rect key="frame" x="210" y="39" width="93" height="21"/>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="9.00 - 16.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIj-u3-qd5">
+                                                                    <rect key="frame" x="207" y="39" width="93" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
@@ -552,7 +552,7 @@
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="+48/71 348 30 24" translatesAutoresizingMaskIntoConstraints="NO" id="vdj-WE-jrl">
-                                                        <rect key="frame" x="64" y="69" width="178" height="36"/>
+                                                        <rect key="frame" x="64" y="70" width="178" height="40"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -560,7 +560,7 @@
                                                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="http://www.zoo.wroclaw.pl/" translatesAutoresizingMaskIntoConstraints="NO" id="Tnt-ac-ULy">
-                                                        <rect key="frame" x="64" y="113" width="236" height="34"/>
+                                                        <rect key="frame" x="64" y="113" width="236" height="40"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -588,28 +588,28 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="680" id="8mu-tf-Xa8"/>
-                                            <constraint firstAttribute="width" constant="320" id="efS-RW-Bfj"/>
+                                            <constraint firstAttribute="width" constant="320" id="5LC-5L-W4z"/>
+                                            <constraint firstAttribute="height" constant="568" id="ggE-NO-ORF"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Ioj-em-4G3" firstAttribute="leading" secondItem="PSt-TR-Seu" secondAttribute="leading" id="9mx-BZ-Drh"/>
-                                    <constraint firstItem="Ioj-em-4G3" firstAttribute="top" secondItem="PSt-TR-Seu" secondAttribute="top" id="Shd-MR-Aec"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ioj-em-4G3" secondAttribute="bottom" constant="-112" id="gzZ-cK-pW1"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ioj-em-4G3" secondAttribute="trailing" id="yQb-fB-98R"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ioj-em-4G3" secondAttribute="bottom" constant="80" id="MGy-bQ-3tK"/>
+                                    <constraint firstItem="Ioj-em-4G3" firstAttribute="top" secondItem="PSt-TR-Seu" secondAttribute="top" id="hSO-Rt-DnX"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ioj-em-4G3" secondAttribute="trailing" id="kGp-ta-4NZ"/>
+                                    <constraint firstItem="Ioj-em-4G3" firstAttribute="leading" secondItem="PSt-TR-Seu" secondAttribute="leading" id="rcz-RO-04h"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PSt-TR-Seu" firstAttribute="leading" secondItem="uUF-fC-Uv2" secondAttribute="leading" id="4Tx-ts-Kgk"/>
-                            <constraint firstItem="RM6-LI-ofS" firstAttribute="top" secondItem="PSt-TR-Seu" secondAttribute="bottom" id="TyQ-yz-myf"/>
-                            <constraint firstItem="PSt-TR-Seu" firstAttribute="top" secondItem="uUF-fC-Uv2" secondAttribute="top" id="cvh-Lx-Sht"/>
-                            <constraint firstAttribute="trailing" secondItem="PSt-TR-Seu" secondAttribute="trailing" id="go3-yE-2Up"/>
+                            <constraint firstItem="PSt-TR-Seu" firstAttribute="leading" secondItem="uUF-fC-Uv2" secondAttribute="leading" id="5Lp-xN-dvk"/>
+                            <constraint firstItem="PSt-TR-Seu" firstAttribute="top" secondItem="uUF-fC-Uv2" secondAttribute="top" id="90Z-T9-gRU"/>
+                            <constraint firstAttribute="bottom" secondItem="PSt-TR-Seu" secondAttribute="bottom" id="HYa-Lp-kj5"/>
+                            <constraint firstAttribute="trailing" secondItem="PSt-TR-Seu" secondAttribute="trailing" id="ZJV-s3-AIA"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="labelAddress" destination="ZEf-z4-3UM" id="GLs-5q-4ey"/>
                         <outlet property="tableViewHours" destination="ykH-c5-xwy" id="pgr-4A-JCI"/>
