@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_background" >
+
+    <ImageView
+        android:id="@+id/imgvAnimalIcon"
+        style="@style/animal_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dip"
+        android:layout_weight="0.3"
+        android:contentDescription="@string/animal_image"
+        android:src="@drawable/placeholder_animal_icon" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dip"
+        android:layout_weight="0.7" >
+
+        <TextView
+            android:id="@+id/txtvAnimalName"
+            style="@style/animal_list_main"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/txtvAnimalDistance"
+            android:text="@string/custom_row_placeholder_name" />
+
+        <TextView
+            android:id="@+id/txtvAnimalDistance"
+            style="@style/animal_list_main"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/custom_row_placeholder_distance" />
+
+        <TextView
+            android:id="@+id/txtvAnimalFunFact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/txtvAnimalName"
+            android:layout_toLeftOf="@+id/txtvAnimalDistance"
+            android:text="@string/custom_row_placeholder_fact" />
+
+    </RelativeLayout>
+
+</LinearLayout>
