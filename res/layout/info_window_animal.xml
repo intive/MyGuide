@@ -3,12 +3,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/animal_window">
+    android:background="@drawable/window_animal">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgvInfoWindowAnimal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:src="@drawable/animal_info" />
@@ -17,11 +18,11 @@
         android:id="@+id/txtvHeaderInfoWindow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/imageView"
+        android:layout_toRightOf="@+id/imgvInfoWindowAnimal"
         android:maxWidth="80dip"
         android:paddingLeft="5dp"
         android:paddingTop="10dp"
-        android:text="Koalasdass"
+        android:text="Koala"
         android:textColor="@color/main_accent"
         android:textSize="@dimen/Item_text_size" />
 
@@ -30,11 +31,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtvHeaderInfoWindow"
-        android:layout_toRightOf="@+id/imageView"
+        android:layout_toRightOf="@+id/imgvInfoWindowAnimal"
+        android:maxHeight="30dip"
         android:maxWidth="80dip"
         android:paddingLeft="5dp"
         android:text="@string/text"
-        android:maxHeight="40dip"
         android:textSize="@dimen/info_window_description" />
 
     <TextView
@@ -42,9 +43,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtvAnimalInfoWindowDescription"
-        android:layout_toRightOf="@+id/imageView"
+        android:layout_toRightOf="@+id/imgvInfoWindowAnimal"
         android:paddingLeft="5dp"
-        android:text="wiecej..."
+        android:text="@string/more_info"
         android:textColor="@color/main_accent"
         android:textSize="@dimen/info_window_description" />
 

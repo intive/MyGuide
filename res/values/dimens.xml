@@ -4,7 +4,7 @@
     <dimen name="List_text_size">25sp</dimen>
     <dimen name="List_text_size_medium">20sp</dimen>
     <dimen name="List_text_size_small">16sp</dimen>
-    <dimen name="Item_text_size">12sp</dimen>
+    <dimen name="Item_text_size">11sp</dimen>
     
     <dimen name="events_padding_large">30dp</dimen>
     <dimen name="events_padding_medium">10dp</dimen>
