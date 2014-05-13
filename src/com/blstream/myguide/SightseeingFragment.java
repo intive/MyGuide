@@ -35,6 +35,7 @@ import com.blstream.myguide.zoolocations.Language;
 import com.blstream.myguide.zoolocations.Node;
 import com.blstream.myguide.zoolocations.Track;
 import com.blstream.myguide.zoolocations.Way;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
@@ -237,6 +238,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 
 				for (Marker marker : mAnimalMarkers) {
 					if (marker.getTitle().contains(s)) {
+						setUpAnimalCamera(marker);
 						marker.showInfoWindow();
 						findAnimal = true;
 					}
@@ -382,13 +384,16 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 			@Override
 			public void onMapClick(LatLng latLng) {
 				clearSearchView();
+				setUpCamera();
 			}
 		});
 		mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 			@Override
 			public boolean onMarkerClick(Marker marker) {
+				setUpAnimalCamera(marker);
+				marker.showInfoWindow();
 				clearSearchView();
-				return false;
+				return true;
 			}
 		});
 		mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
@@ -513,6 +518,10 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		for (Marker m : mAnimalMarkers) {
 			m.setVisible(display);
 		}
+	}
+
+	private void setUpAnimalCamera(Marker marker) {
+		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 17));
 	}
 
 	private void setUpCamera() {
