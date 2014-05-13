@@ -116,11 +116,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\Interfaces\ICompass.cs" />
-    <Compile Include="Services\Interfaces\IGPSPosition.cs" />
+    <Compile Include="Services\CompassReading.cs" />
+    <Compile Include="Services\EmulatedCompass.cs" />
+    <Compile Include="Services\GeolocationService.cs" />
+    <Compile Include="Services\GeolocationReading.cs" />
+    <Compile Include="Services\Interfaces\ICompassReading.cs" />
+    <Compile Include="Services\Interfaces\ICompassService.cs" />
+    <Compile Include="Services\Interfaces\IGeolocationService.cs" />
+    <Compile Include="Services\Interfaces\IGeolocationReading.cs" />
     <Compile Include="Services\Interfaces\IMessageDialogService.cs" />
     <Compile Include="Services\Map\OSMRenderTileSource.cs" />
     <Compile Include="Services\MessageDialogService.cs" />
+    <Compile Include="Services\RealCompassService.cs" />
     <Compile Include="ViewModels\AboutZooPageViewModel.cs" />
     <Compile Include="ViewModels\DebugOptionsPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
@@ -179,6 +186,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\CalibrateCompass.png" />
     <Content Include="NLog.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

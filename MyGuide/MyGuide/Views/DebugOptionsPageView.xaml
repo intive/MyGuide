@@ -59,6 +59,14 @@
                         <TextBlock Text="internalObjectRadius"></TextBlock>
                         <TextBox x:Name="InternalObjectRadius" Grid.Column="1" />
                     </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="userLayerVisibility"></TextBlock>
+                        <CheckBox Name="UserLayerVisibility"  Grid.Column="1"></CheckBox>
+                    </Grid>
                 </StackPanel>
             </ScrollViewer>
             <Button x:Name="SaveOpt" Content="Save" Grid.Row="1" />

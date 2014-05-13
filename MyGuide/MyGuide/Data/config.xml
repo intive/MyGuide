@@ -7,4 +7,8 @@
 
     <!-- Radius outside which the information that user got close to an object disappears -->
     <external_object_radius>2</external_object_radius>
+
+    <!-- Visibility of user position marker layer -->
+    <user_layer_visibility>true</user_layer_visibility>
+
 </configuration>

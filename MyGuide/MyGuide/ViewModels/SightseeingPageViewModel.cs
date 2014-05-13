@@ -2,14 +2,20 @@
 using Microsoft.Devices.Sensors;
 using Microsoft.Xna.Framework;
 using MyGuide.DataServices.Interfaces;
+using MyGuide.Services;
 using MyGuide.Services.Interfaces;
 using System;
 using System.Device.Location;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
+using Windows.UI.Core;
 
 namespace MyGuide.ViewModels
 {
@@ -17,8 +23,8 @@ namespace MyGuide.ViewModels
     {
         private double _headingAngle;
         private GeoCoordinate _userPositionLocation;
-        private Compass compass;
-        private Geolocator geolocator;
+        private ICompassService compass { get; set; }
+        private IGeolocationService geolocator { get; set; }
 
         public SightseeingPageViewModel(INavigationService navigationService,
             IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService)
@@ -70,54 +76,165 @@ namespace MyGuide.ViewModels
 
         public override void OnNavigatedFrom(NavigationMode navigationMode)
         {
-            compass.CurrentValueChanged -= compass_ReadingChanged;
-            Thread.Sleep(100);
-            if (Compass.IsSupported)
+            Task.Run(() =>
             {
-                Debug.WriteLine(compass.IsDataValid);
-                compass.Stop();
-                Debug.WriteLine(compass.IsDataValid);
-            }
 
-            Debug.WriteLine(geolocator.LocationStatus);
-            geolocator.PositionChanged -= geolocator_PositionChanged;
-            Debug.WriteLine(geolocator.LocationStatus);
+                try
+                {
+                    if (Compass.IsSupported)
+                    {
+
+                        compass.Stop();
+                        
+                    }
+                }
+                finally
+                {
+
+
+                    compass.Calibrate -= compass_Calibrate;
+                    compass.CurrentValueChanged -= compass_CurrentValueChanged;
+
+                    //Geolocator don't want to unsubscribe when start button clicked sometimes
+                    geolocator.StopGeolocationTracker();
+                    geolocator.PositionChanged -= geolocator_PositionChanged;
+                }
+            });
+           
+        }
+
+        ~SightseeingPageViewModel()
+        {
         }
 
         public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
         {
             UserPositionLocation = new GeoCoordinate(51.104642, 17.073520);
+            UserLayerVisibility = _optionService.ConfigData.userLayerVisibility;
 
-            geolocator = new Geolocator();
-            geolocator.MovementThreshold = 1;
-            geolocator.DesiredAccuracy = PositionAccuracy.High;
-            geolocator.PositionChanged += geolocator_PositionChanged;
+            geolocator = new GeolocationService();
+            geolocator.PositionChanged += new EventHandler < IGeolocationReading > (geolocator_PositionChanged);
 
             if (Compass.IsSupported)
             {
-                compass = new Compass();
-                //It is a crucial point. TimeBetweenUpdates should be multiple of 20.
-                //But I say that when it is 100ms, there is problem 9/10 with ending
-                //event when event hendler is removing in OnNavigatedFrom.
-                compass.TimeBetweenUpdates = TimeSpan.FromMilliseconds(400);
+                compass = new RealCompassService();
 
-                compass.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<CompassReading>>(compass_ReadingChanged);
+                //Crucial point
+                compass.TimeBetweenUpdates = TimeSpan.FromMilliseconds(200);
+                compass.Calibrate += new EventHandler<CalibrationEventArgs>(compass_Calibrate);
+                compass.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<ICompassReading>>(compass_CurrentValueChanged);
+                
+                compass.Start();
+            }
+            else
+            {
+                compass = new EmulatedCompass();
+                compass.TimeBetweenUpdates = TimeSpan.FromMilliseconds(200);
+                compass.Calibrate += new EventHandler<CalibrationEventArgs>(compass_Calibrate);
+                compass.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<ICompassReading>>(compass_CurrentValueChanged);
+
                 compass.Start();
             }
         }
 
+        
+
         #region UserMarker
 
-        private void compass_ReadingChanged(object sender, SensorReadingEventArgs<CompassReading> e)
+        private void compass_CurrentValueChanged(object sender, SensorReadingEventArgs<ICompassReading> e)
         {
-            HeadingAngle = e.SensorReading.MagneticHeading;
+            HeadingAngle = e.SensorReading.MagneticNorthHeading;
+            HeadingAccuracy = e.SensorReading.AccuracyHeading;
+            if (HeadingAccuracy <= 10 && calibrationStackPanelVisibility)
+            {
+                Brush brush;
+
+                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    brush = new SolidColorBrush(Colors.Green);
+                    CalibrationButtonColor = brush; ;
+                });
+                
+            }
         }
 
-        private void geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
+        private void geolocator_PositionChanged(object sender, IGeolocationReading e)
         {
-            UserPositionLocation = new GeoCoordinate(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude);
+
+            UserPositionLocation = new GeoCoordinate(e.Position.Coordinate.Latitude, e.Position.Coordinate.Longitude);
+      
+        }
+
+        private bool userLayerVisibility;
+        public bool UserLayerVisibility
+        {
+            get
+            {
+                return userLayerVisibility;
+            }
+            set
+            {
+                userLayerVisibility = value;
+                NotifyOfPropertyChange(() => UserLayerVisibility);
+            }
         }
 
         #endregion UserMarker
+
+
+
+        #region CalibrationStackPanel
+
+        private void compass_Calibrate(object sender, CalibrationEventArgs e)
+        {
+            CalibrationStackPanelVisibility = true;
+
+        }
+
+        private double headingAccuracy;
+        public double HeadingAccuracy
+        {
+            get
+            {
+                return headingAccuracy;
+            }
+            set
+            {
+                headingAccuracy = value; NotifyOfPropertyChange(() => HeadingAccuracy);
+            }
+        }
+
+        private Brush calibrationButtonColor;
+        public Brush CalibrationButtonColor
+        {
+            get
+            {
+                return calibrationButtonColor;
+            }
+            set
+            {
+                calibrationButtonColor = value; NotifyOfPropertyChange(() => CalibrationButtonColor);
+            }
+        }
+
+        private bool calibrationStackPanelVisibility;
+        public bool CalibrationStackPanelVisibility
+        {
+            get
+            {
+                return calibrationStackPanelVisibility;
+            }
+            set
+            {
+                calibrationStackPanelVisibility = value; NotifyOfPropertyChange(() => CalibrationStackPanelVisibility);
+            }
+        }
+
+        public void CalibrationButton()
+        {
+            CalibrationStackPanelVisibility = false;
+            
+        }
+        #endregion CalibrationStackPanel
     }
 }

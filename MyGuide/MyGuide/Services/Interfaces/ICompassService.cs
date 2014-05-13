@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 
 namespace MyGuide.Services.Interfaces
 {
-    public interface ICompass
+    public interface ICompassService
     {
         event EventHandler<CalibrationEventArgs> Calibrate;
 
-        event EventHandler<SensorReadingEventArgs<CompassReading>> CurrentValueChanged;
+        event EventHandler<SensorReadingEventArgs<ICompassReading>> CurrentValueChanged;
 
         TimeSpan TimeBetweenUpdates { get; set; }
 
         void Start();
+
+        void Stop();
     }
 }
