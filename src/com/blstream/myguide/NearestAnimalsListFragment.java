@@ -11,10 +11,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.zoolocations.Animal;
@@ -34,6 +38,7 @@ public class NearestAnimalsListFragment extends Fragment implements
 		LocationUser {
 
 	private ListView mAnimalListView;
+	private ActionBar mActionBar;
 
 	private ArrayList<AnimalDistance> mAnimalsAndDistances;
 	private LocationUpdater mLocationUpdater;
@@ -66,12 +71,35 @@ public class NearestAnimalsListFragment extends Fragment implements
 				getActivity(), R.layout.custom_animal_row, mAnimalsAndDistances);
 
 		mAnimalListView.setAdapter(mListAdapter);
+		mAnimalListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+
+				AnimalDetailsMapFragment wayToAnimal = new AnimalDetailsMapFragment();
+
+				Bundle arguments = new Bundle();
+				arguments.putSerializable(BundleConstants.SELECTED_ANIMAL,
+						mAnimalsAndDistances.get(position).getAnimal());
+				arguments.putSerializable(
+						BundleConstants.SHOW_CLOSE_ANIMALS_ON_MAP, true);
+				wayToAnimal.setArguments(arguments);
+
+				FragmentHelper.swapFragment(R.id.flFragmentHolder, wayToAnimal,
+						getFragmentManager(),
+						BundleConstants.FRAGMENT_CLOSEST_ANIMALS_MAP);
+
+				mActionBar.setTitle(mAnimalsAndDistances.get(position)
+						.getAnimal().getName());
+			}
+		});
 	};
 
 	private void setActionBar() {
-		ActionBar actionBar = getActivity().getActionBar();
-		actionBar.setTitle(R.string.nearest_animals_title);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		mActionBar = getActivity().getActionBar();
+		mActionBar.setTitle(R.string.nearest_animals_title);
+		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 	}
 
 	@Override
