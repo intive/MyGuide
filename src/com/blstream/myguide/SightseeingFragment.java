@@ -1,6 +1,7 @@
 package com.blstream.myguide;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.app.ActionBar;
 import android.graphics.Color;
@@ -374,7 +375,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 					.position(
 							new LatLng(a.getNode().getLatitude(), a.getNode()
 									.getLongitude()))
-					.title(a.getName(Language.DEFAULT))
+					.title(a.getName(Locale.getDefault().getLanguage()))
 					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal))));
 		}
 	}
