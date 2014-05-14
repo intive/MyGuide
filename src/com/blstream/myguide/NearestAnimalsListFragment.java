@@ -76,9 +76,8 @@ public class NearestAnimalsListFragment extends Fragment implements
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-
 				AnimalDetailsMapFragment wayToAnimal = new AnimalDetailsMapFragment();
-
+				
 				Bundle arguments = new Bundle();
 				arguments.putSerializable(BundleConstants.SELECTED_ANIMAL,
 						mAnimalsAndDistances.get(position).getAnimal());
