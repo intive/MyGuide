@@ -58,12 +58,12 @@ static NSString *kXmlOpeningInformation  = @"opening_information";
 - (id) init {
     self = [super init];
     if(self) {
-        _openings           = [NSMutableArray arrayWithArray: @[]];
-        _ticketsIndividual  = [NSMutableArray arrayWithArray: @[]];
-        _ticketsGroup       = [NSMutableArray arrayWithArray: @[]];
-        _emails             = [NSMutableArray arrayWithArray: @[]];
+        _openings           = [NSMutableArray new];
+        _ticketsIndividual  = [NSMutableArray new];
+        _ticketsGroup       = [NSMutableArray new];
+        _emails             = [NSMutableArray new];
         _sharedParsedData   = [InformationData sharedParsedData];
-        
+
         self.fileName = @"information";
     }
     return self;
@@ -76,7 +76,7 @@ didStartElement: (NSString *)     elementName
      attributes: (NSDictionary *) attributeDict
 {
     [super parser: parser didStartElement:elementName namespaceURI:namespaceURI qualifiedName:qName attributes:attributeDict];
-    
+
     if ([elementName isEqualToString: kXmlOpening]) {
         self.insideOpening = YES;
         self.currentOpening = [Opening new];
@@ -122,7 +122,7 @@ didStartElement: (NSString *)     elementName
     }
     else if ([elementName isEqualToString: kXmlTicket]) {
         self.insideTicket = NO;
-        
+
         if(self.insideGroup) {
             [self.ticketsGroup addObject: self.currentTicket];
         }
@@ -194,11 +194,11 @@ didStartElement: (NSString *)     elementName
 
 - (void) parserDidEndDocument: (NSXMLParser *)parser {
     [super parserDidEndDocument: parser];
-    
+
     [self.sharedParsedData setTicketsInformation: self.currentTicketsInformation];
     [self.sharedParsedData setParkingInformation: self.currentParkingsInformation];
     [self.sharedParsedData setOpeningInformation: self.currentOpeningInformation];
-    
+
     [self.sharedParsedData setOpenings:          self.openings];
     [self.sharedParsedData setTicketsIndividual: self.ticketsIndividual];
     [self.sharedParsedData setTicketsGroup:      self.ticketsGroup];

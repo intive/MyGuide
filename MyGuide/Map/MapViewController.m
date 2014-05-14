@@ -43,13 +43,13 @@
     _rightSidebarButton.target = self.revealViewController;
     _rightSidebarButton.action = @selector(rightRevealToggle:);
     [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    
+
     [self configureMapView];
     [self centerMap];
     [self showPaths];
     [self showJunctions];
     [self loadAnnotationsFromSingleton];
-    
+
     [self setTitle: NSLocalizedString(@"titleControllerMap", nil)];
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -65,7 +65,7 @@
     _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
     _lastGoodCamera = [self.mapView.camera copy];
-    
+
     [self configureToolbarItems];
     [self configureTableData];
     [self showUserPosition];
@@ -183,7 +183,7 @@
         CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([node.latitude doubleValue], [node.longitude doubleValue]);
         coordinatesArray[i++] = coordinate;
     }
-    
+
     MKPolyline *path = [MKPolyline polylineWithCoordinates:coordinatesArray count:[nodesArray count]];
     [self.mapView addOverlay:path];
 }
@@ -227,7 +227,7 @@
 {
     CLLocation *mapCenter = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];
     double distanceFromZooCenter = [mapCenter distanceFromLocation:_zooCenterLocation];
-    
+
     if(distanceFromZooCenter <= _settings.centerRadius) {
         if(OLD_iOS_VERSION) {
             _lastGoodRegion = mapView.region;
@@ -350,16 +350,16 @@
     }
     UIImageView *animalImage = (UIImageView *)[cell viewWithTag:100];
     animalImage.image = [UIImage imageNamed:[[[_nearestAnimals objectAtIndex:indexPath.section] animalInfoDictionary] valueForKey:@"adultImageName"]];
-    
+
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
     nameLabel.text = [NSString stringWithFormat:@"%@", [[_nearestAnimals objectAtIndex:indexPath.section] name]];
-    
+
     UITextView *funFact = (UITextView *)[cell viewWithTag:102];
     funFact.text = [NSString stringWithFormat:@"Fun Fact #%ld", (long)indexPath.section];
-    
+
     UILabel *distanceLabel = (UILabel *)[cell viewWithTag:103];
     distanceLabel.text = [NSString stringWithFormat:@"%ldm", (long)[[_nearestAnimals objectAtIndex:indexPath.section] distanceFromUser]];
-    
+
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -402,11 +402,7 @@
 }
 - (BOOL)compareCoordinate:(CLLocationCoordinate2D)coordinateOne withCoordinate:(CLLocationCoordinate2D)coordinateTwo
 {
-    BOOL ans = NO;
-    if(fabs(coordinateOne.latitude - coordinateTwo.latitude) <= 1e-8 && fabs(coordinateOne.longitude - coordinateTwo.longitude) <= 1e-8){
-        ans = YES;
-    }
-    return ans;
+    return fabs(coordinateOne.latitude - coordinateTwo.latitude) <= 1e-8 && fabs(coordinateOne.longitude - coordinateTwo.longitude) <= 1e-8;
 }
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
 {

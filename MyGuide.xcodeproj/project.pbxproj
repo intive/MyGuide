@@ -95,6 +95,11 @@
 		84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4118BA91A100A2F720 /* AFParsedData.m */; };
 		84DDCB4A18BA944800A2F720 /* DataParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4918BA944800A2F720 /* DataParserTests.m */; };
 		84F184A218B9537200658238 /* MyGuideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF633189637C000233B64 /* MyGuideTests.m */; };
+		CAAC74A7ED48257F5F1313C4 /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC793A45FEE0B15CC68841 /* Edge.m */; };
+		CAAC7701DE3E27E7F769FACE /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC705BCAD342F6CE48BA1E /* Vertex.m */; };
+		CAAC77FBE290AD4B00953C47 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC7614828F038538E66549 /* Graph.m */; };
+		CAAC7EF012239BD42C99A14F /* Heap.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC797A8A91D92CBF06B107 /* Heap.m */; };
+		CAAC7F7A498BB0F07EE12B37 /* DijkstraAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC755DF045630988F00E6A /* DijkstraAlgorithm.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -263,6 +268,16 @@
 		84DDCB4018BA91A100A2F720 /* AFParsedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFParsedData.h; sourceTree = "<group>"; };
 		84DDCB4118BA91A100A2F720 /* AFParsedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFParsedData.m; sourceTree = "<group>"; };
 		84DDCB4918BA944800A2F720 /* DataParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataParserTests.m; sourceTree = "<group>"; };
+		CAAC705BCAD342F6CE48BA1E /* Vertex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vertex.m; sourceTree = "<group>"; };
+		CAAC70F932EBC60FDF18AF30 /* Heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Heap.h; sourceTree = "<group>"; };
+		CAAC73F9CC48B196CF655823 /* Edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edge.h; sourceTree = "<group>"; };
+		CAAC749DC81D38F50B3C5972 /* DijkstraAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DijkstraAlgorithm.h; sourceTree = "<group>"; };
+		CAAC755DF045630988F00E6A /* DijkstraAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DijkstraAlgorithm.m; sourceTree = "<group>"; };
+		CAAC7614828F038538E66549 /* Graph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graph.m; sourceTree = "<group>"; };
+		CAAC781D144335586AF8E8D9 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
+		CAAC793A45FEE0B15CC68841 /* Edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edge.m; sourceTree = "<group>"; };
+		CAAC797A8A91D92CBF06B107 /* Heap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Heap.m; sourceTree = "<group>"; };
+		CAAC7D6959CECB608525E94B /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,6 +509,7 @@
 				0533DF0B18DE365D001BCB28 /* HomeViewController.m */,
 				055452C419025B570021884C /* SegmentedViewController.h */,
 				055452C519025B570021884C /* SegmentedViewController.m */,
+				CAAC7FEF5ACB0DEDA8DA2989 /* Dijkstra */,
 			);
 			path = MyGuide;
 			sourceTree = "<group>";
@@ -652,6 +668,23 @@
 				05406E4218F313B6001656FC /* data.xml */,
 			);
 			name = "XML files";
+			sourceTree = "<group>";
+		};
+		CAAC7FEF5ACB0DEDA8DA2989 /* Dijkstra */ = {
+			isa = PBXGroup;
+			children = (
+				CAAC755DF045630988F00E6A /* DijkstraAlgorithm.m */,
+				CAAC749DC81D38F50B3C5972 /* DijkstraAlgorithm.h */,
+				CAAC793A45FEE0B15CC68841 /* Edge.m */,
+				CAAC73F9CC48B196CF655823 /* Edge.h */,
+				CAAC705BCAD342F6CE48BA1E /* Vertex.m */,
+				CAAC7D6959CECB608525E94B /* Vertex.h */,
+				CAAC797A8A91D92CBF06B107 /* Heap.m */,
+				CAAC70F932EBC60FDF18AF30 /* Heap.h */,
+				CAAC7614828F038538E66549 /* Graph.m */,
+				CAAC781D144335586AF8E8D9 /* Graph.h */,
+			);
+			path = Dijkstra;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -843,6 +876,11 @@
 				84BA95E219118CE8008A4237 /* AFEventsViewController.m in Sources */,
 				8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */,
 				05406E3F18F2EE1A001656FC /* GastronomyParser.m in Sources */,
+				CAAC7F7A498BB0F07EE12B37 /* DijkstraAlgorithm.m in Sources */,
+				CAAC74A7ED48257F5F1313C4 /* Edge.m in Sources */,
+				CAAC7701DE3E27E7F769FACE /* Vertex.m in Sources */,
+				CAAC7EF012239BD42C99A14F /* Heap.m in Sources */,
+				CAAC77FBE290AD4B00953C47 /* Graph.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
