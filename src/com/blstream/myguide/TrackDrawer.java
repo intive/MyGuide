@@ -28,6 +28,7 @@ public class TrackDrawer {
 	private static final float TRACK_WIDTH = 8.5f;
 	private static final int POLYLINE_ZINDEX = 3;
 	private static final int TRACK_PADDING = 60;
+	private static final double MARKER_ACCURACY = 0.0000002;
 
 	private Graph mGraph;
 	private Polyline mCurrentTrackPolyline;
@@ -105,7 +106,7 @@ public class TrackDrawer {
 			trackBoundsBuilder
 					.include(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()));
 			for (Marker m : mAnimalMarkers) {
-				if (m.getTitle().equals(a.getName(Language.DEFAULT))) {
+				if (isMarkerRepresentsAnimal(m, a)) {
 					m.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal_on_track));
 					m.setAlpha(1.0f);
 					mAnimalOnTrackMarkers.add(m);
@@ -126,5 +127,20 @@ public class TrackDrawer {
 		}
 		path.addAll(mGraph.findPath(previousAnimal.getNode(), track.getAnimals().get(0).getNode()));
 		return path;
+	}
+	
+	private boolean isMarkerRepresentsAnimal(Marker m, Animal a) {
+		/*
+		 * In Google Maps API v2 Markers don't have extra field to store
+		 * additional data, so Animal ID can not be stored inside it. To check
+		 * if Marker correspond to Animal their location can be compare.
+		 * MARKER_ACCURACY must be used to compensate small inaccuracy, become
+		 * Markers are not in exactly the same location as Animal.
+		 */
+		if (a.getNode().getLatitude() + MARKER_ACCURACY > m.getPosition().latitude
+				&& a.getNode().getLatitude() - MARKER_ACCURACY < m.getPosition().latitude
+				&& a.getNode().getLongitude() + MARKER_ACCURACY > m.getPosition().longitude
+				&& a.getNode().getLongitude() - MARKER_ACCURACY < m.getPosition().longitude) return true;
+		else return false;
 	}
 }
