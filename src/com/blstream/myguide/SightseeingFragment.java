@@ -1,6 +1,7 @@
 package com.blstream.myguide;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 import android.app.ActionBar;
@@ -25,7 +26,6 @@ import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.AnimalDistance;
 import com.blstream.myguide.zoolocations.Junction;
-import com.blstream.myguide.zoolocations.Language;
 import com.blstream.myguide.zoolocations.Node;
 import com.blstream.myguide.zoolocations.Track;
 import com.blstream.myguide.zoolocations.Way;
@@ -64,7 +64,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	private double mStartCenterLat;
 	private double mStartCenterLon;
 	private boolean mAnimalsVisible;
-	private ArrayList<Marker> mAnimalMarkers;
+	private HashMap<Marker, Animal> mAnimalMarkersMap;
 
 	private Track mTrack;
 
@@ -117,6 +117,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		getArgs();
 		View rootView = inflater.inflate(R.layout.fragment_sightseeing,
 				container, false);
 
@@ -144,7 +145,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		displayAllJunctions(mJunctionsVisible);
 
 		mTrackDrawer = new TrackDrawer(
-				((MyGuideApp) getActivity().getApplication()).getGraph(), mMap, mAnimalMarkers);
+				((MyGuideApp) getActivity().getApplication()).getGraph(), mMap, mAnimalMarkersMap);
 
 		if (mTrack != null) drawTrack();
 
@@ -286,8 +287,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
-				Animal animal = mAnimalsList.get(Integer.parseInt(marker
-						.getId().substring(1)));
+				Animal animal = mAnimalMarkersMap.get(marker);
 
 				SupportMapFragment f = (SupportMapFragment) getActivity()
 						.getSupportFragmentManager().findFragmentById(R.id.map);
@@ -369,19 +369,19 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	private void setUpAnimalMarkers() {
 		MyGuideApp mga = (MyGuideApp) (getActivity().getApplication());
 		mAnimalsList = mga.getZooData().getAnimals();
-		mAnimalMarkers = new ArrayList<Marker>();
+		mAnimalMarkersMap = new HashMap<Marker, Animal>();
 		for (Animal a : mAnimalsList) {
-			mAnimalMarkers.add(mMap.addMarker(new MarkerOptions()
+			mAnimalMarkersMap.put(mMap.addMarker(new MarkerOptions()
 					.position(
 							new LatLng(a.getNode().getLatitude(), a.getNode()
 									.getLongitude()))
 					.title(a.getName(Locale.getDefault().getLanguage()))
-					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal))));
+					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal))), a);
 		}
 	}
 
 	private void displayAnimalMarkers(boolean display) {
-		for (Marker m : mAnimalMarkers) {
+		for (Marker m : mAnimalMarkersMap.keySet()) {
 			m.setVisible(display);
 		}
 	}

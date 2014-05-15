@@ -2,11 +2,11 @@
 package com.blstream.myguide;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ListIterator;
 
 import com.blstream.myguide.path.Graph;
 import com.blstream.myguide.zoolocations.Animal;
-import com.blstream.myguide.zoolocations.Language;
 import com.blstream.myguide.zoolocations.Node;
 import com.blstream.myguide.zoolocations.Track;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,17 +28,17 @@ public class TrackDrawer {
 	private static final float TRACK_WIDTH = 8.5f;
 	private static final int POLYLINE_ZINDEX = 3;
 	private static final int TRACK_PADDING = 60;
-	private static final double MARKER_ACCURACY = 0.0000002;
 
 	private Graph mGraph;
 	private Polyline mCurrentTrackPolyline;
-	private ArrayList<Marker> mAnimalMarkers;
+	
+	private HashMap<Marker, Animal> mAnimalMarkersMap;
 	private ArrayList<Marker> mAnimalOnTrackMarkers;
 	private GoogleMap mMap;
 
-	public TrackDrawer(Graph graph, GoogleMap map, ArrayList<Marker> animalMarkers) {
+	public TrackDrawer(Graph graph, GoogleMap map, HashMap<Marker, Animal> animalMarkersMap) {
 		mGraph = graph;
-		mAnimalMarkers = animalMarkers;
+		mAnimalMarkersMap = animalMarkersMap;
 		mAnimalOnTrackMarkers = new ArrayList<Marker>();
 		mMap = map;
 	}
@@ -91,7 +91,7 @@ public class TrackDrawer {
 			for (Marker m : mAnimalOnTrackMarkers) {
 				m.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal));
 			}
-			for (Marker m : mAnimalMarkers) {
+			for (Marker m : mAnimalMarkersMap.keySet()) {
 				m.setAlpha(1.0f);
 			}
 		}
@@ -99,14 +99,14 @@ public class TrackDrawer {
 
 	private void markAnimalsOnTrack(Track track, LatLngBounds.Builder trackBoundsBuilder) {
 		mAnimalOnTrackMarkers.clear();
-		for (Marker m : mAnimalMarkers) {
+		for (Marker m : mAnimalMarkersMap.keySet()) {
 			m.setAlpha(0.5f);
 		}
 		for (Animal a : track.getAnimals()) {
 			trackBoundsBuilder
 					.include(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()));
-			for (Marker m : mAnimalMarkers) {
-				if (isMarkerRepresentsAnimal(m, a)) {
+			for (Marker m : mAnimalMarkersMap.keySet()) {
+				if (mAnimalMarkersMap.get(m).equals(a)) {
 					m.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal_on_track));
 					m.setAlpha(1.0f);
 					mAnimalOnTrackMarkers.add(m);
@@ -127,20 +127,5 @@ public class TrackDrawer {
 		}
 		path.addAll(mGraph.findPath(previousAnimal.getNode(), track.getAnimals().get(0).getNode()));
 		return path;
-	}
-	
-	private boolean isMarkerRepresentsAnimal(Marker m, Animal a) {
-		/*
-		 * In Google Maps API v2 Markers don't have extra field to store
-		 * additional data, so Animal ID can not be stored inside it. To check
-		 * if Marker correspond to Animal their location can be compare.
-		 * MARKER_ACCURACY must be used to compensate small inaccuracy, become
-		 * Markers are not in exactly the same location as Animal.
-		 */
-		if (a.getNode().getLatitude() + MARKER_ACCURACY > m.getPosition().latitude
-				&& a.getNode().getLatitude() - MARKER_ACCURACY < m.getPosition().latitude
-				&& a.getNode().getLongitude() + MARKER_ACCURACY > m.getPosition().longitude
-				&& a.getNode().getLongitude() - MARKER_ACCURACY < m.getPosition().longitude) return true;
-		else return false;
 	}
 }
