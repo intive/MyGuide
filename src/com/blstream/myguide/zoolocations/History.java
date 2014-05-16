@@ -25,7 +25,7 @@ public class History {
 		return mInformation.get(Language.DEFAULT);
 	}
 
-	public String getName(String language) {
+	public String getInformation(String language) {
 		String info = mInformation.get(language);
 		if (info == null) { return this.getInformation(); }
 		return info;

@@ -2,8 +2,8 @@
 package com.blstream.myguide.zoolocations;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +56,8 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		assertNotNull(emails);
 		assertEquals(2, emails.size());
 		int k = 1;
-		for (String email : emails) assertEquals(valueBase + Integer.toString(k++), email);
+		for (String email : emails)
+			assertEquals(valueBase + Integer.toString(k++), email);
 	}
 
 	protected void checkParsedPhoneNumber(String phoneNumber, String valueBase) {
@@ -397,7 +398,8 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 					groupTicketsCount++;
 					break;
 
-				default: break;
+				default:
+					break;
 			}
 		}
 		assertEquals(2, individualTicketsCount);
@@ -458,7 +460,9 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 				"\t\t\t\t</description>" +
 				"\t\t\t\t<hours>" +
 				"\t\t\t\t\t<weekdays>1.00 - 2.00</weekdays>" +
-				"\t\t\t\t\t<bad_key>3.00 - 4.00</bad_key>" +  // bad key here, shouldn't parse this
+				"\t\t\t\t\t<bad_key>3.00 - 4.00</bad_key>" + // bad key here,
+																// shouldn't
+																// parse this
 				"\t\t\t\t</hours>" +
 				"\t\t\t</opening>" +
 				"\t\t</openings>" +
@@ -468,7 +472,8 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 				"\t\t\t<email>" + valueBase + "2</email>" +
 				"\t\t</emails>" +
 				"\t\t<telephone>" + valueBase + "</telephone>\n" +
-				// since parsing address is dependant on number of lines in the tests
+				// since parsing address is dependant on number of lines in the
+				// tests
 				// there will be a few empty lines at the beginning and the end
 				"\t\t<address>\n\n\n" +
 				"\t\t\tNAME   \n" +
@@ -493,6 +498,50 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		checkParsedEmails(info.getEmails(), valueBase);
 		checkParsedPhoneNumber(info.getPhoneNumber(), valueBase);
 		checkParsedAddress(info.getAddress());
+	}
+
+	public void testParsingHistory() throws IOException, XmlPullParserException {
+
+		// given
+		String xml = "<root><history>"
+				+ "<history_event>"
+				+ "<date>01.01.2000</date>"
+				+ "<image>img1.jpg</image>"
+				+ "<heading>"
+				+ "<pl>Historia1</pl>"
+				+ "<en>History1</en>"
+				+ "</heading>"
+				+ "</history_event>"
+				+ "<history_event>"
+				+ "<date>2012</date> "
+				+ "<image>img2.jpg</image>"
+				+ "<heading>"
+				+ "<pl>Historia2</pl>"
+				+ "<en>History2</en>"
+				+ "</heading>"
+				+ "</history_event>"
+				+ "</history></root>";
+
+		ZooLocationsDataParser parser = new ZooLocationsDataParser();
+		InputStream is = null;
+		ZooLocationsData data = null;
+
+		// when
+		is = new ByteArrayInputStream(xml.getBytes(ENCODING));
+		data = parser.parse(is);
+		is.close();
+
+		// then
+		assertEquals(2, data.getHistory().size());
+		assertEquals("Historia1", data.getHistory().get(1).getInformation(Language.PL));
+		assertEquals("History1", data.getHistory().get(1).getInformation(Language.EN));
+		assertEquals("01.01.2000", data.getHistory().get(1).getDate());
+		assertEquals("img1.jpg", data.getHistory().get(1).getImagePath());
+		assertEquals("Historia2", data.getHistory().get(0).getInformation(Language.PL));
+		assertEquals("History2", data.getHistory().get(0).getInformation(Language.EN));
+		assertEquals("2012", data.getHistory().get(0).getDate());
+		assertEquals("img2.jpg", data.getHistory().get(0).getImagePath());
+
 	}
 
 }
