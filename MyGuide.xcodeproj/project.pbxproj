@@ -704,6 +704,11 @@
 				TargetAttributes = {
 					3D5EF604189637C000233B64 = {
 						DevelopmentTeam = XTRY58ZV6V;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					3D5EF625189637C000233B64 = {
 						TestTargetID = 3D5EF604189637C000233B64;
