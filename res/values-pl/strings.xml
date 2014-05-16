@@ -18,6 +18,9 @@
     <string name="play_services_unavailable">Usługi Google Play, od których zależy działanie 
         głównych funkcji aplikacji, nie są dostępne na tym urządzeniu. Aplikacja MyGuide nie może 
         zostać uruchomiona. Usługi można pobrać bezpośrednio z Google Play.</string>
+        
+    <!-- General -->
+    <string name="visiting_animal_toast">Odwiedzasz zwierzę: </string>
 
     <!-- Dialogs -->
     <string name="ok">OK</string>

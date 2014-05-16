@@ -2,9 +2,11 @@
 package com.blstream.myguide;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.app.ActionBar;
 import android.content.res.Configuration;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,17 +32,25 @@ import com.blstream.myguide.dialog.FarFromZooDialog.NavigationConfirmation;
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.DistanceFromZooGuard;
 import com.blstream.myguide.gps.LocationUpdater;
+import com.blstream.myguide.gps.LocationUser;
+import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Track;
 import com.google.android.gms.maps.SupportMapFragment;
 
 import com.blstream.myguide.zoolocations.*;
-import java.util.ArrayList;
 
 /**
  * Created by Piotrek on 2014-04-01. Fixed by Angieszka (fragment swap) on
  * 2014-04-04.
  */
-public class StartActivity extends FragmentActivity implements NavigationConfirmation {
+public class StartActivity extends FragmentActivity implements NavigationConfirmation, LocationUser {
+	
+	/**
+	 * Remembers if application is in tracking mode
+	 * (user is going along the track).
+	 */
+	public static boolean TRACKING_MODE = false;
+	private static Track EXPLORED_TRACK = null;
 
 	private FragmentManager mFragmentManager;
 	private ActionBar mActionBar;
@@ -56,7 +67,10 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private boolean mFarFromZooDialogWasShown;
 	private boolean mDistanceFromZooGuardIsBinding;
 	private DistanceFromZooGuard mDistanceFromZooGuard;
-
+	
+	private LocationUpdater mLocationUpdater;
+	private double mDistanceFromAnimal;
+	private ArrayList<Animal> mAnimals;
 
 	private Fragment createInformationFragment() {
 		return FragmentTabManager.newInstance(
@@ -99,6 +113,13 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			mDistanceFromZooGuard = new DistanceFromZooGuard(getSupportFragmentManager(),
 					((MyGuideApp) getApplication()).getSettings());
 		}
+		
+		mLocationUpdater = LocationUpdater.getInstance();
+		mLocationUpdater.startUpdating(this);
+		mAnimals = ((MyGuideApp) this.getApplication()).getZooData().getAnimals();
+		mDistanceFromAnimal = ((MyGuideApp) this.getApplication())
+				.getSettings().getValueAsDouble(Settings.KEY_EXTER_RADIOUS);
+
 	}
 
 	@Override
@@ -375,5 +396,81 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	@Override
 	public void markDialogAsShown() {
 		mFarFromZooDialogWasShown = true;
+	}
+	
+	/**
+	 * Checks if user is nearby any of the animals, to mark animal as visited.
+	 * @param location User's location
+	 */
+	private void checkAnimalProximinity(Location location) {
+		for(Animal a : mAnimals){
+			if (distanceBetweenAnimalAndUserInMeters(a, location) < mDistanceFromAnimal){
+				Log.i("checkAnimalProximinity", "I'm visiting animal: " + a.getName());
+				Toast.makeText(getApplicationContext(), this.getString(R.string.visiting_animal_toast) 
+						+ a.getName(Locale.getDefault().getLanguage()), Toast.LENGTH_SHORT).show();
+				//TODO mark animal as visited
+				//TODO update track's progress
+				if (isVisitedAnimalPartOfTrack(a)){
+					Log.i("StartActivity", "Visited animal from explored track.");
+					//TODO change navigation point to next animal
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Checks if there's explored track and if animal is on it.
+	 * @param visited Considered animal
+	 */
+	private boolean isVisitedAnimalPartOfTrack (Animal visited){
+		return StartActivity.EXPLORED_TRACK != null 
+				&& StartActivity.EXPLORED_TRACK.getAnimals().contains(visited);
+	}
+	
+	/**
+	 * Calculated by the Haversine method, returns distance (straight line,
+	 * unlike in nearest animal implementation) in meters.
+	 */
+	private double distanceBetweenAnimalAndUserInMeters(Animal animal, Location location){
+		
+		double latitude = toRadians(animal.getNode().getLatitude() - location.getLatitude());
+		double longitude = toRadians(animal.getNode().getLongitude() - location.getLongitude());
+		
+		double earthRadius = 6371;
+		
+		double a = Math.sin(latitude/2) * Math.sin(latitude/2) +
+	               Math.cos(Math.toRadians(animal.getNode().getLatitude())) *
+	               Math.cos(Math.toRadians(location.getLatitude())) *
+	               Math.sin(longitude/2) * Math.sin(longitude/2);
+		
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		
+		return (earthRadius * c) * 1000;
+	}
+	
+	private double toRadians(double value){
+		return value * (Math.PI / 180);
+	}
+
+	@Override
+	public void onLocationUpdate(Location location) {
+		if (StartActivity.TRACKING_MODE){
+			checkAnimalProximinity(location);
+		}
+	}
+	
+	public static void setExploredTrack(Track track){
+		StartActivity.EXPLORED_TRACK = track;
+	}
+
+	@Override
+	public void onGpsAvailable() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void onGpsUnavailable() {
+		// TODO Auto-generated method stub
+		
 	}
 }
