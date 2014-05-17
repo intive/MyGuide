@@ -27,12 +27,13 @@
     [super viewDidLoad];
     self.track = [[[AFTracksData sharedParsedData] tracks] objectAtIndex:self.trackRow];
     [self loadMenuBar];
+}
+- (void)viewDidAppear:(BOOL)animated
+{
     [self loadViewContent];
 }
-
 - (void)loadViewContent
 {
-    
     UILabel *progressLabel = (UILabel *)[self.view viewWithTag:101];
     progressLabel.text = self.track.progressText;
     
@@ -74,6 +75,13 @@
 }
 - (void)clearProgress
 {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    UIBarButtonItem *startButton = [[self.navigationItem leftBarButtonItems] objectAtIndex:0];
+    self.track.activeStatus = @"start";
+    startButton.title = self.track.activeStatus;
+    [userDefaults setObject:EXPLORATION_TRACK_NAME forKey:@"current track"];
+    [userDefaults synchronize];
+    [[LocationManager sharedLocationManager] clearMonitoredTrack];
     [[[[AFTracksData sharedParsedData] tracks] objectAtIndex:self.trackRow] clearProgress];
     [self loadViewContent];
 }

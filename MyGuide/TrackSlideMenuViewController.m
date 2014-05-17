@@ -23,7 +23,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     self.tracksArray = [[AFTracksData sharedParsedData] tracks];
 }
 - (void)viewDidAppear:(BOOL)animated

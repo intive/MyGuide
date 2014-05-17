@@ -16,6 +16,8 @@
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) AFTrack           *monitoredTrack;
 @property (nonatomic) NSMutableArray    *animalIndexesArray;
+@property (nonatomic) NSMutableSet      *backgroundLocationsArray;
+@property (nonatomic) NSMutableString   *debugString;
 
 @end
 
@@ -43,25 +45,50 @@
     [_locationManager setDelegate: self];
     [_locationManager startUpdatingLocation];
     
-    _animalIndexesArray = [NSMutableArray new];
-    _monitoredTrack = [[AFTrack alloc] init];
+    _debugString = [NSMutableString new];
+    [self prepareFileToSaveLocationsForTesting];
+    
+    _animalIndexesArray       = [NSMutableArray new];
+    _backgroundLocationsArray = [NSMutableSet new];
+    _monitoredTrack           = [[AFTrack alloc] init];
 }
 
 #pragma mark - CLLocationMangerDelegate methods
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    for(CLLocation *location in locations){
-        NSMutableArray *tempAnimalIDArray = [NSMutableArray new];
-        for(NSString *animalID in self.animalIndexesArray){
-            AFAnimal *animal = [self findAnimalByID:animalID.integerValue];
-            if([animal isWithinDistance:20 fromLocation:location]){
-                [self.monitoredTrack incrementProgress];
-                [tempAnimalIDArray addObject:animalID];
+    [self.debugString appendFormat:@"%@ didUpdateLocations with #%d locations\n", [(CLLocation*)locations.firstObject timestamp], locations.count];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if(![userDefaults boolForKey:@"isInBackground"]){
+        [self.debugString appendFormat:@"is in foreground\n"];
+        [self.debugString appendFormat:@"background locations count before(fr): %d\n", self.backgroundLocationsArray.count];
+
+        [self.backgroundLocationsArray addObjectsFromArray:locations];
+        
+        [self.debugString appendFormat:@"background locations count after(fr): %d\n\n", self.backgroundLocationsArray.count];
+
+        for(CLLocation *location in self.backgroundLocationsArray){
+            NSMutableArray *tempAnimalIDArray = [NSMutableArray new];
+            for(NSString *animalID in self.animalIndexesArray){
+                AFAnimal *animal = [self findAnimalByID:animalID.integerValue];
+                if([animal isWithinDistance:20 fromLocation:location]){
+                    [self.monitoredTrack incrementProgress];
+                    [tempAnimalIDArray addObject:animalID];
+                }
             }
+            [self.animalIndexesArray removeObjectsInArray:tempAnimalIDArray];
         }
-        [self.animalIndexesArray removeObjectsInArray:tempAnimalIDArray];
     }
+    else{
+        [self.debugString appendFormat:@"is in background\n"];
+        [self.debugString appendFormat:@"background locations count before(bg): %d\n", self.backgroundLocationsArray.count];
+        
+        [self.backgroundLocationsArray addObjectsFromArray:locations];
+        
+        [self.debugString appendFormat:@"background locations count after(bg): %d\n\n", self.backgroundLocationsArray.count];
+    }
+    [userDefaults synchronize];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -124,5 +151,26 @@
     }
     return animalToReturn;
 }
+
+- (void)prepareFileToSaveLocationsForTesting
+{
+    NSString *path;
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracking_Debug.txt"];
+	if (![[NSFileManager defaultManager] fileExistsAtPath:path])
+	{
+        [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
+    }
+}
+- (void)saveLocationsForTesting
+{
+    NSString *path;
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracking_Debug.txt"];
+    [self.debugString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+}
+
+
+
 
 @end

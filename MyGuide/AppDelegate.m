@@ -67,35 +67,39 @@
     [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor colorWithRed:255/255.f green:95/255.f blue:0/255.f alpha:1];
 }
 
-- (BOOL) hasBeenLaunched
+- (BOOL)hasBeenLaunched
 {
     BOOL result = YES;
     NSString *hasBeenLaunched = @"HAS_BEEN_LAUNCHED";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    if ([defaults boolForKey:hasBeenLaunched])
-    {
+    if ([defaults boolForKey:hasBeenLaunched]){
         result = YES;
     }
-    else
-    {
+    else{
         [defaults setBool:YES forKey:hasBeenLaunched];
         [defaults synchronize];
         result = NO;
     }
-    
     return result;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:NO forKey:@"isInBackground"];
+    [userDefaults synchronize];
     Settings *sharedSettings = [Settings sharedSettingsData];
     sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
 }
-
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     [self archiveTracks];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:YES forKey:@"isInBackground"];
+    [userDefaults synchronize];
+    
+    [[LocationManager sharedLocationManager] saveLocationsForTesting];
 }
 - (void)applicationWillTerminate:(UIApplication *)application
 {

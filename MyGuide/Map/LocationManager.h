@@ -17,4 +17,6 @@
 - (void)loadTrackRegionsToMonitor:(AFTrack *)currentTrack;
 - (void)clearMonitoredTrack;
 
+- (void)saveLocationsForTesting;
+
 @end
