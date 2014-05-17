@@ -234,10 +234,14 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 			public boolean onQueryTextSubmit(String s) {
 				boolean findAnimal = false;
 
-				s = toUpperCase(s);
-
 				for (Marker marker : mAnimalMarkers) {
-					if (marker.getTitle().contains(s)) {
+
+					if (marker.getTitle().contains(s)
+							|| marker.getTitle().contains(toUpperCase(s))
+							|| replacePolishChar(toLowerCase(marker.getTitle())).contains(s)
+							|| replacePolishChar(toLowerCase(marker.getTitle())).contains(
+									toLowerCase(s)))
+					{
 						setUpAnimalCamera(marker);
 						marker.showInfoWindow();
 						findAnimal = true;
@@ -262,9 +266,21 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		});
 	}
 
+	private String replacePolishChar(String s) {
+		return s.replace("ą", "a").replace("ć", "c").replace("ę", "e").replace("ł", "l")
+				.replace("ń", "n").replace("ó", "o").replace("ś", "s").replace("ż", "z")
+				.replace("ź", "z");
+	}
+
 	private String toUpperCase(String s) {
 		char[] stringArray = s.trim().toCharArray();
 		stringArray[0] = Character.toUpperCase(stringArray[0]);
+		return new String(stringArray);
+	}
+
+	private String toLowerCase(String s) {
+		char[] stringArray = s.trim().toCharArray();
+		stringArray[0] = Character.toLowerCase(stringArray[0]);
 		return new String(stringArray);
 	}
 
