@@ -13,11 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.path.Graph;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
+import com.blstream.myguide.zoolocations.AnimalDistance;
 import com.blstream.myguide.zoolocations.Node;
 import com.blstream.myguide.zoolocations.Way;
 
@@ -27,9 +29,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -61,10 +66,14 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 	private GoogleMap mMap;
 
 	private Animal mAnimal;
+	private ArrayList<Animal> mAnimalsOnMap;
+	private HashMap<String, Animal> mMarkerIDsAnimals;
 	private Graph mGraph;
 
 	private LocationObserver mLocationObserver;
 	private boolean mLocationServiceBounded = false;
+	
+	private boolean markClosestAnimals = false;
 
 	// this part handles Location Service updates
 	// Fragment itself may implement this interface but it's a nicely separated
@@ -93,8 +102,8 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 			LatLng sourceLoc = new LatLng(location.getLatitude(), location.getLongitude());
 
 			mFragment.mMap.clear();
-			mFragment.drawAllWays();
-			mFragment.markPosition(animalLoc, mFragment.mAnimal.getName());
+			mFragment.drawAllWays(); //Logic of drawing has been changed to handle close animals
+			mFragment.markAnimals(location);
 			LatLngBounds bounds = mFragment.findAndDrawShortestPath(animalLoc, sourceLoc).build();
 			if (mFirstUpdate) {
 				mFragment.mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 16));
@@ -151,7 +160,13 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		}
 
 		mAnimal = (Animal) arguments.getSerializable(BundleConstants.SELECTED_ANIMAL);
-		if (mAnimal == null) Log.w(LOG_TAG, "NULL is not an Animal");
+		
+		/* Added by Agnieszka 13-05-2014 to handle new boolean. */ 
+		markClosestAnimals = arguments
+				.containsKey(BundleConstants.SHOW_CLOSE_ANIMALS_ON_MAP) ? arguments.getBoolean(
+						BundleConstants.SHOW_CLOSE_ANIMALS_ON_MAP) : false;
+		if (mAnimal == null)
+			Log.w(LOG_TAG, "NULL is not an Animal");
 	}
 
 	private void bindLocationService() {
@@ -172,9 +187,22 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		mLocationServiceBounded = false;
 	}
 
-	private void markPosition(LatLng pos, String text) {
-		mMap.addMarker(new MarkerOptions().position(pos).title(text)
-				.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal)));
+	/**
+	 * Added by Agnieszka 13-05-2014.
+	 * Marks animal based on it's position and 
+	 * saves pair (Marker.ID, Animal) to HashMap.
+	 * @param animal Animal to be marked
+	 */
+	private void markPosition(Animal animal) {
+		LatLng position = new LatLng(animal.getNode().getLatitude(), animal
+				.getNode().getLongitude());
+		
+		Marker marker = mMap.addMarker(new MarkerOptions()
+				.position(position)
+				.title(animal.getName())
+				.icon(BitmapDescriptorFactory
+						.fromResource(R.drawable.ic_animal)));
+		mMarkerIDsAnimals.put(marker.getId(), animal);
 	}
 
 	private void drawAllWays() {
@@ -192,6 +220,69 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 			}
 			mMap.addPolyline(plo).setVisible(visible);
 		}
+	}
+	
+	/**
+	 * Added by Agnieszka for marking close animals. Reads user's position,
+	 * checks closest Animals using {@link AnimalFinderHelper} and marks them on
+	 * the map using
+	 * {@link AnimalDetailsMapFragment#markPosition(Animal)}
+	 * 
+	 * @param location
+	 *            Location of application user
+	 */
+	private void markAnimals(Location location) {
+		mAnimalsOnMap = new ArrayList<Animal>();
+		mMarkerIDsAnimals = new HashMap<String, Animal>();
+		mAnimalsOnMap.add(mAnimal);
+
+		if (markClosestAnimals) {
+			AnimalFinderHelper animalFinder = new AnimalFinderHelper(location,
+					(MyGuideApp) this.getActivity().getApplication(), this
+							.getActivity().getApplicationContext());
+			ArrayList<AnimalDistance> allAnimals = animalFinder
+					.allAnimalsWithDistances();
+
+			for (int i = 0; i < 4; i++) {
+				Animal current = allAnimals.get(i).getAnimal();
+				if (!current.equals(mAnimal))
+					mAnimalsOnMap.add(current);
+			}
+		}
+
+		for (Animal closest : mAnimalsOnMap) {
+			markPosition(closest);
+		}
+	}
+	
+	/**
+	 * Code is changed copy from {@link SightseeingFragment#setUpMapListeners}
+	 */
+	private void setUpMapListeners() {
+		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+			@Override
+			public void onInfoWindowClick(Marker marker) {
+				Animal animal = mMarkerIDsAnimals.get(marker.getId());
+
+				SupportMapFragment f = (SupportMapFragment) getActivity()
+						.getSupportFragmentManager().findFragmentById(R.id.map);
+				if (f != null)
+					getFragmentManager().beginTransaction().remove(f).commit();
+
+				Fragment[] fragments = {
+						AnimalDescriptionTab.newInstance(
+								R.drawable.placeholder_adult, R.string.text),
+						AnimalDescriptionTab.newInstance(
+								R.drawable.placeholder_child, R.string.text),
+						AnimalDetailsMapFragment.newInstance(animal) };
+				Fragment newFragment = FragmentTabManager.newInstance(
+						R.array.animal_desc_tabs_name, fragments, animal);
+
+				FragmentHelper.swapFragment(R.id.flFragmentHolder, newFragment,
+						getFragmentManager(),
+						BundleConstants.FRAGMENT_ANIMAL_DETAIL);
+			}
+		});
 	}
 
 	protected void configureAndShowProgressDialog() {
@@ -290,7 +381,10 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		// please note that GoogleMap object will not be available at the spot
 		// so GoogleMap object will be requested in the next Fragment's
 		// lifecycle method
-
+		
+		if(mAnimal != null)
+			getActivity().getActionBar().setTitle(mAnimal.getName());
+		
 		return mRootView;
 	}
 
@@ -317,6 +411,9 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 				bindLocationService();
 			}
 		});
+		
+		if (markClosestAnimals)
+			setUpMapListeners();
 	}
 
 	@Override

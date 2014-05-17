@@ -1,4 +1,3 @@
-
 package com.blstream.myguide;
 
 /**
@@ -19,6 +18,7 @@ public class BundleConstants {
 	public static final String SELECTED_RESTAURANT = "selected_restaurant";
 	public static final String CLOSEST_ANIMAL = "closest_animal";
 	public static final String FAR_FROM_ZOO = "far_from_zoo";
+	public static final String SHOW_CLOSE_ANIMALS_ON_MAP = "show_close_animals";
 
 	// FRAGMENT TAGS
 	public static final String FRAGMENT_ANIMAL_DETAIL = "fragment_animal_details";
@@ -31,6 +31,7 @@ public class BundleConstants {
 	public static final String FRAGMENT_MAP = "fragment_sightseeing_map";
 	public static final String FRAGMENT_INFORMATION = "fragment_information";
 	public static final String FRAGMENT_EVENTS = "fragment_events";
+	public static final String FRAGMENT_CLOSEST_ANIMALS_MAP = "closest_animal_map";
 
 	// FONT PATH BOLD
 	public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";
