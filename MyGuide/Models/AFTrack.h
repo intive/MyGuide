@@ -14,7 +14,7 @@
 @property (nonatomic) NSString *activeStatus;
 @property (nonatomic) NSString *progressText;
 @property (nonatomic) NSArray  *animalsArray;
-@property (nonatomic) NSArray  *visitedAnimalsArray;
+@property (nonatomic) NSArray  *notVisitedAnimalsArray;
 @property (nonatomic, setter = changeProgress:) NSUInteger progressBase;
 @property (nonatomic) float     progressRatio;
 

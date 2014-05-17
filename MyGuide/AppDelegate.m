@@ -96,11 +96,10 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     [self archiveTracks];
-    [[LocationManager sharedLocationManager] saveLocationsForTesting];
 }
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [[LocationManager sharedLocationManager] clearMonitoredTracks];
+    [[LocationManager sharedLocationManager] clearMonitoredTrack];
     [self archiveTracks];
 }
 

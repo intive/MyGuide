@@ -15,8 +15,6 @@
 + (id) sharedLocationManager;
 - (void)requestLocationStatus;
 - (void)loadTrackRegionsToMonitor:(AFTrack *)currentTrack;
-- (void)clearMonitoredTracks;
-
-- (void)saveLocationsForTesting;
+- (void)clearMonitoredTrack;
 
 @end

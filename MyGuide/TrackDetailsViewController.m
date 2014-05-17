@@ -66,7 +66,7 @@
         self.track.activeStatus = @"start";
         startButton.title = self.track.activeStatus;
         [userDefaults setObject:EXPLORATION_TRACK_NAME forKey:@"current track"];
-        [[LocationManager sharedLocationManager] clearMonitoredTracks];
+        [[LocationManager sharedLocationManager] clearMonitoredTrack];
     }
     [userDefaults synchronize];
     [self loadViewContent];
