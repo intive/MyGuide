@@ -98,8 +98,6 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:YES forKey:@"isInBackground"];
     [userDefaults synchronize];
-    
-    [[LocationManager sharedLocationManager] saveLocationsForTesting];
 }
 - (void)applicationWillTerminate:(UIApplication *)application
 {
