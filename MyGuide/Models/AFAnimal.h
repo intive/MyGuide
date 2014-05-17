@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) AFNode   *coordinates;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSInteger distanceFromUser;
+@property (nonatomic)           NSInteger animalID;
 @property (nonatomic, readonly) NSDictionary *animalInfoDictionary;
 
 - (id)init;
@@ -24,5 +25,6 @@
 - (void)setName:(NSString *)name;
 - (void)setDistanceFromUser:(NSInteger)distanceFromUser;
 - (BOOL)isWithinDistance:(NSInteger)distance fromLocation:(CLLocation *)location;
+- (CLLocationCoordinate2D)getLocationCoordinate;
 
 @end

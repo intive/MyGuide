@@ -78,6 +78,7 @@
     fixedSpaceButton.width = 262.5f;
     self.mapToolbar.items = @[fixedSpaceButton, button];
     [self.mapToolbar setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    [button setEnabled:NO];
 }
 - (void)configureTableData
 {
