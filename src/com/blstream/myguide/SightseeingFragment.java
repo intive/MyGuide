@@ -235,7 +235,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 			public boolean onQueryTextSubmit(String s) {
 				boolean findAnimal = false;
 
-				for (Marker marker : mAnimalMarkers) {
+				for (Marker marker : mAnimalMarkersMap.keySet()) {
 
 					if (marker.getTitle().contains(s)
 							|| marker.getTitle().contains(toUpperCase(s))
