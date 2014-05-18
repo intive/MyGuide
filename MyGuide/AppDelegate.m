@@ -19,6 +19,44 @@
 
 @implementation AppDelegate
 
+#pragma mark - delegate methods
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
+{
+    if([self hasBeenLaunched])
+    {
+        [[LocationManager sharedLocationManager] requestLocationStatus];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setBool:NO forKey:@"isInBackground"];
+    }
+    [self loadXMLs];
+    [self styleApplication];
+    [[LocationManager sharedLocationManager] loadExplorationTrack];
+    
+    return YES;
+}
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:NO forKey:@"isInBackground"];
+    [userDefaults synchronize];
+    Settings *sharedSettings = [Settings sharedSettingsData];
+    sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
+}
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [self archiveTracks];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:YES forKey:@"isInBackground"];
+    [userDefaults synchronize];
+}
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [[LocationManager sharedLocationManager] clearMonitoredTrack];
+    [self archiveTracks];
+}
+
+
+#pragma mark - helper methods
 - (void)loadXMLs
 {
     [[SettingsParser new] loadSettings];
@@ -50,19 +88,8 @@
     
     [NSKeyedArchiver archiveRootObject:sharedData.tracks toFile:path];
 }
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
-{
-    if([self hasBeenLaunched])
-    {
-        [[LocationManager sharedLocationManager] requestLocationStatus];
-    }
-    [self loadXMLs];
-    [self styleApplication];
-    
-    return YES;
-}
 
-- (void) styleApplication
+- (void)styleApplication
 {
     [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor colorWithRed:255/255.f green:95/255.f blue:0/255.f alpha:1];
 }
@@ -82,27 +109,6 @@
         result = NO;
     }
     return result;
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:NO forKey:@"isInBackground"];
-    [userDefaults synchronize];
-    Settings *sharedSettings = [Settings sharedSettingsData];
-    sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
-}
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    [self archiveTracks];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:YES forKey:@"isInBackground"];
-    [userDefaults synchronize];
-}
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    [[LocationManager sharedLocationManager] clearMonitoredTrack];
-    [self archiveTracks];
 }
 
 @end

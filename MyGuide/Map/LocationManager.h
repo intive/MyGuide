@@ -14,6 +14,7 @@
 
 + (id) sharedLocationManager;
 - (void)requestLocationStatus;
+- (void)loadExplorationTrack;
 - (void)loadTrackRegionsToMonitor:(AFTrack *)currentTrack;
 - (void)clearMonitoredTrack;
 
