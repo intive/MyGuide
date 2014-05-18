@@ -1,6 +1,6 @@
 <root>
     <visiting_tracks>
-        <version>21</version>
+        <version>22</version>
         <track>
             <name>
                 <pl>Eksploracja</pl>
@@ -145,24 +145,5 @@
 				<animal_id>36</animal_id>
 			</animals>
 		</track>
-<!-- trasy testowe ================================================================================================================== -->
-        <track>
-            <name>
-                <pl>Trasa testowa</pl>
-                <en>Test track</en>
-            </name>
-            <description>
-                <pl>Trasa stworzona na potrzeby testów po mojej okolicy.</pl>
-                <en>Track around my neighbourhood created for testing puropses.</en>
-            </description>
-            <image>track_placeholder.png</image>
-            <animals>
-                <animal_id>55</animal_id>
-                <animal_id>56</animal_id>
-                <animal_id>57</animal_id>
-                <animal_id>58</animal_id>
-            </animals>
-        </track>
-<!-- /trasy testowe ================================================================================================================== -->
 	</visiting_tracks>
 </root>
