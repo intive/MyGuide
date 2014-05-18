@@ -3,6 +3,7 @@
 
     <!-- English language version -->
     <string name="app_name">MyGuide</string>
+    <string name="notif_text">Application is running in the background...</string>
 
     <!-- Welcome screen -->
     <string name="header_main_screen">Welcome to the guide\nWroclaw Zoo</string>

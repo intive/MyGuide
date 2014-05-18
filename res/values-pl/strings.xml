@@ -3,6 +3,7 @@
 
     <!-- Polish language version -->
     <string name="app_name">MyGuide</string>
+    <string name="notif_text">Aplikacja działa w tle...</string>
 
     <!-- Welcome screen -->
     <string name="header_main_screen">Witamy w przewodniku\nZoo Wrocław</string>
