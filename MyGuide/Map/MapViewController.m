@@ -60,6 +60,7 @@
     [super viewWillAppear:animated];
     [self showAnimals];
     [self.mapToolbar.items.lastObject setEnabled:NO];
+    [self updateVisitedLocations];
 }
 
 #pragma mark - Initial configuration
