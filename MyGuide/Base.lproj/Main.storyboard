@@ -109,7 +109,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="0.37254901959999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <segue destination="k7A-NH-zPr" kind="custom" customClass="SWRevealViewControllerSegue" id="0f7-du-PIJ"/>
                                 </connections>
@@ -1035,7 +1034,6 @@
                                         <constraint firstAttribute="centerY" secondItem="bJF-YD-tQ1" secondAttribute="centerY" id="pKa-ne-JGg"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="0.37254901959999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <segue destination="k7A-NH-zPr" kind="custom" customClass="SWRevealViewControllerSegue" id="bDn-LD-z3i"/>
                                 </connections>
@@ -1408,6 +1406,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bDn-LD-z3i"/>
+        <segue reference="lUA-99-4r3"/>
     </inferredMetricsTieBreakers>
 </document>

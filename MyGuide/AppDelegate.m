@@ -64,7 +64,7 @@
 
 - (void) styleApplication
 {
-    [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor colorWithRed:255/255.f green:95/255.f blue:0/255.f alpha:1];
+    [[UIApplication sharedApplication] keyWindow].backgroundColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
 }
 
 - (BOOL)hasBeenLaunched
