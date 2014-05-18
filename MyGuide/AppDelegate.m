@@ -31,6 +31,7 @@
     [self loadXMLs];
     [self styleApplication];
     [[LocationManager sharedLocationManager] loadExplorationTrack];
+    [[LocationManager sharedLocationManager] loadVisitedPOIs];
     
     return YES;
 }

@@ -115,6 +115,16 @@
     [alertView show];
 }
 
+- (void)loadVisitedPOIs
+{
+    NSMutableArray *tempIndexesArray = [self.explorationTrack.animalsArray mutableCopy];
+    [tempIndexesArray removeObjectsInArray:self.explorationTrack.notVisitedAnimalsArray];
+    NSMutableSet *tempAnimalsSet = [NSMutableSet new];
+    for(NSString *index in tempIndexesArray){
+        [tempAnimalsSet addObject:[self findAnimalByID:index.integerValue]];
+    }
+    [[AFVisitedPOIsData sharedData] setVisitedPOIs:tempAnimalsSet];
+}
 # define EXPLORATION_TRACK_NAME [[[[AFTracksData sharedParsedData] tracks] objectAtIndex:0] getName]
 - (void)loadExplorationTrack
 {
