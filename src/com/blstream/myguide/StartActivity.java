@@ -51,6 +51,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 */
 	public static boolean TRACKING_MODE = false;
 	private static Track EXPLORED_TRACK = null;
+	private static final double EARTH_RADIUS = 6371;
 
 	private FragmentManager mFragmentManager;
 	private ActionBar mActionBar;
@@ -422,7 +423,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * Checks if there's explored track and if animal is on it.
 	 * @param visited Considered animal
 	 */
-	private boolean isVisitedAnimalPartOfTrack (Animal visited){
+	private boolean isVisitedAnimalPartOfTrack (Animal visited) {
 		return StartActivity.EXPLORED_TRACK != null 
 				&& StartActivity.EXPLORED_TRACK.getAnimals().contains(visited);
 	}
@@ -431,12 +432,9 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * Calculated by the Haversine method, returns distance (straight line,
 	 * unlike in nearest animal implementation) in meters.
 	 */
-	private double distanceBetweenAnimalAndUserInMeters(Animal animal, Location location){
-		
-		double latitude = toRadians(animal.getNode().getLatitude() - location.getLatitude());
-		double longitude = toRadians(animal.getNode().getLongitude() - location.getLongitude());
-		
-		double earthRadius = 6371;
+	private double distanceBetweenAnimalAndUserInMeters(Animal animal, Location location) {
+		double latitude = Math.toRadians(animal.getNode().getLatitude() - location.getLatitude());
+		double longitude = Math.toRadians(animal.getNode().getLongitude() - location.getLongitude());
 		
 		double a = Math.sin(latitude/2) * Math.sin(latitude/2) +
 	               Math.cos(Math.toRadians(animal.getNode().getLatitude())) *
@@ -445,11 +443,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		
 		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 		
-		return (earthRadius * c) * 1000;
-	}
-	
-	private double toRadians(double value){
-		return value * (Math.PI / 180);
+		return (EARTH_RADIUS * c) * 1000;
 	}
 
 	@Override
@@ -459,7 +453,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		}
 	}
 	
-	public static void setExploredTrack(Track track){
+	public static void setExploredTrack(Track track) {
 		StartActivity.EXPLORED_TRACK = track;
 	}
 
@@ -471,6 +465,5 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	@Override
 	public void onGpsUnavailable() {
 		// TODO Auto-generated method stub
-		
 	}
 }
