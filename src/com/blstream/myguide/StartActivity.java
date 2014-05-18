@@ -46,10 +46,9 @@ import com.blstream.myguide.zoolocations.*;
 public class StartActivity extends FragmentActivity implements NavigationConfirmation, LocationUser {
 	
 	/**
-	 * Remembers if application is in tracking mode
-	 * (user is going along the track).
+	 * The track user is following.
+	 * NULL if user isn't following any.
 	 */
-	public static boolean TRACKING_MODE = false;
 	private static Track EXPLORED_TRACK = null;
 	private static final double EARTH_RADIUS = 6371;
 
@@ -448,7 +447,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 	@Override
 	public void onLocationUpdate(Location location) {
-		if (StartActivity.TRACKING_MODE){
+		if (((MyGuideApp)this.getApplication()).isInTrackingMode()){
 			checkAnimalProximinity(location);
 		}
 	}
