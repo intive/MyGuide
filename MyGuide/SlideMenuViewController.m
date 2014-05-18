@@ -9,6 +9,11 @@
 #import "SlideMenuViewController.h"
 #import "SWRevealViewController.h"
 
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE_5 (IS_IPHONE && ( fabsf([ [ UIScreen mainScreen ] bounds ].size.height - 568.0f ) < FLT_EPSILON ))
+
+static CGFloat sEmptyCellHeight;
+
 @interface SlideMenuViewController ()
 
 @property (nonatomic, strong) NSArray *menuItems;
@@ -17,15 +22,27 @@
 
 @implementation SlideMenuViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
++ (void)initialize
 {
-    return [super initWithStyle:style];
+    sEmptyCellHeight = (IS_IPHONE_5 ? 120.0f : 40.0f);
+}
+
+- (void)setupControls
+{
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+        self.edgesForExtendedLayout = UIRectEdgeAll;
+    }
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 44.0f)];
+    headerView.backgroundColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
+    self.tableView.tableHeaderView = headerView;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.menuItems = @[@"map", @"animals", @"events", @"info", @"history", @"gastronomy", @"preferences"];
+    [self setupControls];
+    self.menuItems = @[@"map", @"animals", @"events", @"info", @"history", @"gastronomy", @"empty", @"preferences"];
 }
 
 #pragma mark - Table view data source
@@ -38,6 +55,17 @@
 {
     NSString *cellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
     return [tableView dequeueReusableCellWithIdentifier: cellIdentifier forIndexPath:indexPath];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
+    if ([cellIdentifier isEqualToString:@"empty"] == NO) {
+        return 52.0f;
+    }
+    else {
+        return sEmptyCellHeight;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

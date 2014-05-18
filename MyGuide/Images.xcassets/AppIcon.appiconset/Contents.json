@@ -1,19 +1,32 @@
 {
   "images" : [
     {
+      "size" : "29x29",
       "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "60x60"
+      "filename" : "appSettingsIcon_58px.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "40x40"
+      "size" : "40x40",
+      "scale" : "2x"
     },
     {
+      "size" : "57x57",
       "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "29x29"
+      "filename" : "appIcon_57px.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "appIcon_120px.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "76x76",
+      "scale" : "1x"
     }
   ],
   "info" : {
