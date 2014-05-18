@@ -68,7 +68,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private boolean mDistanceFromZooGuardIsBinding;
 	private DistanceFromZooGuard mDistanceFromZooGuard;
 	
-	private LocationUpdater mLocationUpdater;
 	private double mDistanceFromAnimal;
 	private ArrayList<Animal> mAnimals;
 
@@ -114,8 +113,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 					((MyGuideApp) getApplication()).getSettings());
 		}
 		
-		mLocationUpdater = LocationUpdater.getInstance();
-		mLocationUpdater.startUpdating(this);
 		mAnimals = ((MyGuideApp) this.getApplication()).getZooData().getAnimals();
 		mDistanceFromAnimal = ((MyGuideApp) this.getApplication())
 				.getSettings().getValueAsDouble(Settings.KEY_EXTER_RADIOUS);
@@ -145,11 +142,18 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			}
 		}
 	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		LocationUpdater.getInstance().startUpdating(this);
+	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
 		LocationUpdater.getInstance().stopUpdating(mDistanceFromZooGuard);
+		LocationUpdater.getInstance().stopUpdating(this);
 	}
 
 	@Override
@@ -403,8 +407,11 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * @param location User's location
 	 */
 	private void checkAnimalProximinity(Location location) {
+		double lat = location.getLatitude();
+		double lng = location.getLongitude();
+		
 		for(Animal a : mAnimals){
-			if (distanceBetweenAnimalAndUserInMeters(a, location) < mDistanceFromAnimal){
+			if (distanceBetweenAnimalAndUserInMeters(a, lat, lng) < mDistanceFromAnimal){
 				Log.i("checkAnimalProximinity", "I'm visiting animal: " + a.getName());
 				Toast.makeText(getApplicationContext(), this.getString(R.string.visiting_animal_toast) 
 						+ a.getName(Locale.getDefault().getLanguage()), Toast.LENGTH_SHORT).show();
@@ -428,21 +435,17 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	}
 	
 	/**
-	 * Calculated by the Haversine method, returns distance (straight line,
+	 * Calculated by the Euclidean method, returns distance (straight line,
 	 * unlike in nearest animal implementation) in meters.
 	 */
-	private double distanceBetweenAnimalAndUserInMeters(Animal animal, Location location) {
-		double latitude = Math.toRadians(animal.getNode().getLatitude() - location.getLatitude());
-		double longitude = Math.toRadians(animal.getNode().getLongitude() - location.getLongitude());
+	private double distanceBetweenAnimalAndUserInMeters(Animal animal, double lat, double lng) {
+		double latitude = Math.toRadians(animal.getNode().getLatitude() - lat);
+		double longitude = Math.toRadians(animal.getNode().getLongitude() - lng);
 		
-		double a = Math.sin(latitude/2) * Math.sin(latitude/2) +
-	               Math.cos(Math.toRadians(animal.getNode().getLatitude())) *
-	               Math.cos(Math.toRadians(location.getLatitude())) *
-	               Math.sin(longitude/2) * Math.sin(longitude/2);
+		double x = longitude * Math.cos(0.5 * (animal.getNode().getLatitude() + lat));
+		double sqrt = Math.sqrt(Math.pow(x, 2) + Math.pow(latitude, 2));
 		
-		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-		
-		return (EARTH_RADIUS * c) * 1000;
+		return (EARTH_RADIUS * sqrt) * 1000;
 	}
 
 	@Override
