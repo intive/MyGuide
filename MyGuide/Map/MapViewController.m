@@ -105,6 +105,11 @@
 {
     if(_settings.showAnimalsOnMap) {
         NSArray *animals = [MKAnnotationAnimal buildAnimalMKAnnotations:_data.animalsArray];
+        
+        for(MKAnnotationAnimal *annotation in animals){
+            MKCircle *circle = [MKCircle circleWithCenterCoordinate:annotation.coordinate radius:20];
+            [self.mapView addOverlay:circle];
+        }
         [self.mapView addAnnotations:animals];
     }
 }
@@ -216,6 +221,13 @@
             routeRenderer.alpha       = 0.7;
         }
         return routeRenderer;
+    }
+    else if([overlay isKindOfClass:[MKCircle class]]){
+        MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
+        circleRenderer.strokeColor = [UIColor redColor];
+        circleRenderer.lineWidth = 3;
+        circleRenderer.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.4];
+        return circleRenderer;
     }
     else return nil;
 }
