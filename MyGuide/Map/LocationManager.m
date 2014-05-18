@@ -9,14 +9,17 @@
 #import "LocationManager.h"
 #import "AFTracksData.h"
 #import "AFParsedData.h"
+#import "AFVisitedPOIsData.h"
 #import "AFAnimal.h"
 
 @interface LocationManager ()
 
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) AFTrack           *monitoredTrack;
+@property (nonatomic) AFTrack           *explorationTrack;
 @property (nonatomic) NSMutableArray    *animalIndexesArray;
-@property (nonatomic) NSMutableSet      *backgroundLocationsArray;
+@property (nonatomic) NSMutableArray    *explorationAnimalIndexesArray;
+@property (nonatomic) NSMutableSet      *backgroundLocationsSet;
 
 @end
 
@@ -44,9 +47,12 @@
     [_locationManager setDelegate: self];
     [_locationManager startUpdatingLocation];
     
-    _animalIndexesArray       = [NSMutableArray new];
-    _backgroundLocationsArray = [NSMutableSet new];
-    _monitoredTrack           = [[AFTrack alloc] init];
+    _explorationTrack              = [[AFTrack alloc] init];
+    _explorationAnimalIndexesArray = [NSMutableArray new];
+    
+    _animalIndexesArray     = [NSMutableArray new];
+    _backgroundLocationsSet = [NSMutableSet new];
+    _monitoredTrack         = [[AFTrack alloc] init];
 }
 
 #pragma mark - CLLocationMangerDelegate methods
@@ -55,9 +61,10 @@
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if(![userDefaults boolForKey:@"isInBackground"]){
-        [self.backgroundLocationsArray addObjectsFromArray:locations];
-        for(CLLocation *location in self.backgroundLocationsArray){
-            NSMutableArray *tempAnimalIDArray = [NSMutableArray new];
+        [self.backgroundLocationsSet addObjectsFromArray:locations];
+        for(CLLocation *location in self.backgroundLocationsSet){
+            NSMutableArray *tempAnimalIDArray            = [NSMutableArray new];
+            NSMutableArray *tempExplorationAnimalIDArray = [NSMutableArray new];
             for(NSString *animalID in self.animalIndexesArray){
                 AFAnimal *animal = [self findAnimalByID:animalID.integerValue];
                 if([animal isWithinDistance:20 fromLocation:location]){
@@ -65,11 +72,21 @@
                     [tempAnimalIDArray addObject:animalID];
                 }
             }
+            for(NSString *animalID in self.explorationAnimalIndexesArray){
+                AFAnimal *animal = [self findAnimalByID:animalID.integerValue];
+                if([animal isWithinDistance:20 fromLocation:location]){
+                    [self.explorationTrack incrementProgress];
+                    [[[AFVisitedPOIsData sharedData] visitedPOIs] addObject:animal];
+                    [tempExplorationAnimalIDArray addObject:animalID];
+                }
+            }
+            [self.explorationAnimalIndexesArray removeObjectsInArray:tempExplorationAnimalIDArray];
             [self.animalIndexesArray removeObjectsInArray:tempAnimalIDArray];
         }
+        self.backgroundLocationsSet = [NSMutableSet new];
     }
     else{
-        [self.backgroundLocationsArray addObjectsFromArray:locations];
+        [self.backgroundLocationsSet addObjectsFromArray:locations];
     }
     [userDefaults synchronize];
 }
@@ -98,11 +115,29 @@
     [alertView show];
 }
 
+- (void)loadVisitedPOIs
+{
+    NSMutableArray *tempIndexesArray = [self.explorationTrack.animalsArray mutableCopy];
+    [tempIndexesArray removeObjectsInArray:self.explorationTrack.notVisitedAnimalsArray];
+    NSMutableSet *tempAnimalsSet = [NSMutableSet new];
+    for(NSString *index in tempIndexesArray){
+        [tempAnimalsSet addObject:[self findAnimalByID:index.integerValue]];
+    }
+    [[AFVisitedPOIsData sharedData] setVisitedPOIs:tempAnimalsSet];
+}
 # define EXPLORATION_TRACK_NAME [[[[AFTracksData sharedParsedData] tracks] objectAtIndex:0] getName]
+- (void)loadExplorationTrack
+{
+    [self checkBackgroundAppRefreshAvailability];
+    self.explorationTrack              = [[[AFTracksData sharedParsedData] tracks] objectAtIndex:0];
+    self.explorationAnimalIndexesArray = [self.explorationTrack.notVisitedAnimalsArray mutableCopy];
+    self.explorationTrack.activeStatus = @"stop";
+}
 - (void)loadTrackRegionsToMonitor:(AFTrack *)currentTrack
 {
     [self checkBackgroundAppRefreshAvailability];
     [self clearMonitoredTrack];
+    self.explorationAnimalIndexesArray = [self.explorationTrack.notVisitedAnimalsArray mutableCopy];
     self.monitoredTrack = currentTrack;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
@@ -114,14 +149,17 @@
 - (void)clearMonitoredTrack
 {
     [self saveCurrentTrackContext];
-    self.animalIndexesArray = [NSMutableArray new];
-    self.monitoredTrack = [[AFTrack alloc] init];
+    self.animalIndexesArray            = [NSMutableArray new];
+    self.explorationAnimalIndexesArray = [NSMutableArray new];
+    self.monitoredTrack                = [[AFTrack alloc] init];
 }
 - (void)saveCurrentTrackContext
 {
     if(![self.monitoredTrack.image isEqualToString:@""]){
         self.monitoredTrack.activeStatus = @"start";
         self.monitoredTrack.notVisitedAnimalsArray = [self.animalIndexesArray copy];
+        
+        self.explorationTrack.notVisitedAnimalsArray = [self.explorationAnimalIndexesArray copy];
     }
 }
 - (AFAnimal *)findAnimalByID:(NSInteger)animalID

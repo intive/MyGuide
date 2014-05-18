@@ -17,6 +17,7 @@
 @property (nonatomic) CLLocation        *zooCenterLocation;
 @property (nonatomic) NSArray           *nearestAnimals;
 @property (nonatomic) BOOL               isSlidingView;
+@property (nonatomic) BOOL               slidingViewIsDown;
 @property (nonatomic) BOOL               visitedLocationFlag;
 
 @end
@@ -32,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.slidingViewIsDown = YES;
+    
     _settings      = [Settings sharedSettingsData];
     _data          = [AFParsedData sharedParsedData];
     _visitedPOIs   = [AFVisitedPOIsData sharedData];
@@ -48,7 +51,7 @@
     [self centerMap];
     [self showPaths];
     [self showJunctions];
-    [self loadAnnotationsFromSingleton];
+    [self updateVisitedLocations];
 
     [self setTitle: NSLocalizedString(@"titleControllerMap", nil)];
 }
@@ -56,6 +59,8 @@
 {
     [super viewWillAppear:animated];
     [self showAnimals];
+    [self.mapToolbar.items.lastObject setEnabled:NO];
+    [self updateVisitedLocations];
 }
 
 #pragma mark - Initial configuration
@@ -78,12 +83,12 @@
     fixedSpaceButton.width = 262.5f;
     self.mapToolbar.items = @[fixedSpaceButton, button];
     [self.mapToolbar setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    [button setEnabled:NO];
 }
 - (void)configureTableData
 {
     _nearestAnimalsTableView.dataSource = self;
     _nearestAnimalsTableView.delegate   = self;
+    [self prepareNearestAnimalsListImageViewForTapping];
 }
 - (void)showUserPosition
 {
@@ -137,13 +142,12 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     [self updateNearestAnimalsArrayWithLocation:userLocation.location];
-    [self updateVisitedLocationsWithLocation:userLocation.location];
     [_nearestAnimalsTableView reloadData];
     double distance = [self calculateUserDistance:userLocation];
     if(distance <= _settings.maxUserDistance){
         [[self.mapToolbar.items lastObject] setEnabled:YES];
     }
-    else{
+    else if(distance > _settings.maxUserDistance){
         [[self.mapToolbar.items lastObject] setEnabled:NO];
     }
     if([self shouldShowAlertDistance:distance]) {
@@ -289,6 +293,26 @@
 }
 
 #pragma mark - Scrolling nearest animals list
+- (void)prepareNearestAnimalsListImageViewForTapping
+{
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.nearestAnimalImageView addGestureRecognizer:singleTap];
+}
+-(void)tapDetected{
+    [UIView beginAnimations:@"move" context:nil];
+    [UIView setAnimationDuration:0.5];
+    if(self.slidingViewIsDown) {
+        _nearestAnimalImageView.frame=CGRectMake(75, self.view.frame.size.height - _nearestAnimalImageView.frame.size.height, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
+        self.slidingViewIsDown = NO;
+    }
+    else {
+        _nearestAnimalImageView.frame=CGRectMake(75, 60, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
+        self.slidingViewIsDown = YES;
+    }
+    _nearestAnimalsList.frame=CGRectMake(0, _nearestAnimalImageView.frame.origin.y + _nearestAnimalImageView.frame.size.height, _nearestAnimalsList.frame.size.width, _nearestAnimalsList.frame.size.height);
+    [UIView commitAnimations];
+}
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch *touch = [touches anyObject];
@@ -332,7 +356,7 @@
 		if(point.y>(self.view.frame.size.height - self.view.frame.size.height/2)) {
 			_nearestAnimalImageView.frame=CGRectMake(75, self.view.frame.size.height - _nearestAnimalImageView.frame.size.height, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
 		}
-        else {
+        else{
 			_nearestAnimalImageView.frame=CGRectMake(75, 60, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
 		}
 		_nearestAnimalsList.frame=CGRectMake(0, _nearestAnimalImageView.frame.origin.y + _nearestAnimalImageView.frame.size.height, _nearestAnimalsList.frame.size.width, _nearestAnimalsList.frame.size.height);
@@ -383,7 +407,6 @@
     CLLocationCoordinate2D selectedAnimalLocation =  CLLocationCoordinate2DMake(lat, lon);
     for(MKAnnotationAnimal *annotation in _mapView.annotations){
         if([self compareCoordinate:selectedAnimalLocation withCoordinate:annotation.coordinate]){
-            [_visitedPOIs.visitedPOIs addObject:annotation];
             [self.mapView selectAnnotation:annotation animated:YES];
             break;
         }
@@ -398,17 +421,14 @@
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     _nearestAnimals = [_data.animalsArray sortedArrayUsingDescriptors:sortDescriptors];
 }
-- (void)updateVisitedLocationsWithLocation:(CLLocation *)location
+- (void)updateVisitedLocations
 {
-    for(int i=0; i<5; i++){
-        if([_nearestAnimals[i] isWithinDistance:_settings.visitedRadius fromLocation:location]){
-            for(MKAnnotationAnimal *annotation in _mapView.annotations){
-                if([annotation.title isEqualToString:[_nearestAnimals[i] name]]){
-                    _visitedLocationFlag = YES;
-                    [_visitedPOIs.visitedPOIs addObject:annotation];
-                    [self.mapView selectAnnotation:annotation animated:YES];
-                    break;
-                }
+    for(AFAnimal *animal in _visitedPOIs.visitedPOIs){
+        for(MKAnnotationAnimal *annotation in _mapView.annotations){
+            if([annotation.title isEqualToString:animal.name]){
+                _visitedLocationFlag = YES;
+                [self.mapView selectAnnotation:annotation animated:YES];
+                break;
             }
         }
     }
@@ -431,13 +451,6 @@
 {
     if(view.pinColor == MKPinAnnotationColorPurple) {
         view.pinColor = MKPinAnnotationColorRed;
-    }
-}
-- (void)loadAnnotationsFromSingleton
-{
-    for(MKAnnotationAnimal *annotation in _visitedPOIs.visitedPOIs){
-        _visitedLocationFlag = YES;
-        [self.mapView selectAnnotation:annotation animated:YES];
     }
 }
 
