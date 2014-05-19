@@ -49,7 +49,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * The track user is following.
 	 * NULL if user isn't following any.
 	 */
-	private static Track EXPLORED_TRACK = null;
+	private static Track sExploredTrack = null;
 	private static final double EARTH_RADIUS = 6371;
 
 	private FragmentManager mFragmentManager;
@@ -406,7 +406,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * Checks if user is nearby any of the animals, to mark animal as visited.
 	 * @param location User's location
 	 */
-	private void checkAnimalProximinity(Location location) {
+	private void checkAnimalProximity(Location location) {
 		double lat = location.getLatitude();
 		double lng = location.getLongitude();
 		
@@ -430,8 +430,8 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * @param visited Considered animal
 	 */
 	private boolean isVisitedAnimalPartOfTrack (Animal visited) {
-		return StartActivity.EXPLORED_TRACK != null 
-				&& StartActivity.EXPLORED_TRACK.getAnimals().contains(visited);
+		return StartActivity.sExploredTrack != null 
+				&& StartActivity.sExploredTrack.getAnimals().contains(visited);
 	}
 	
 	/**
@@ -451,12 +451,12 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	@Override
 	public void onLocationUpdate(Location location) {
 		if (((MyGuideApp)this.getApplication()).isInTrackingMode()){
-			checkAnimalProximinity(location);
+			checkAnimalProximity(location);
 		}
 	}
 	
 	public static void setExploredTrack(Track track) {
-		StartActivity.EXPLORED_TRACK = track;
+		StartActivity.sExploredTrack = track;
 	}
 
 	@Override
