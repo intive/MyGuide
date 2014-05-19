@@ -20,6 +20,9 @@
     <string name="play_services_unavailable">Google Play services, which main application features 
         rely on, is not available on this device. MyGuide can not be lunched.
         Services can be downloaded directly from Google Play.</string>
+        
+    <!-- General -->
+    <string name="visiting_animal_toast">You are visiting animal: </string>
 
     <!-- Dialogs -->
     <string name="ok">OK</string>

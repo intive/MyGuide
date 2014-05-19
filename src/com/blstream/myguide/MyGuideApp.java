@@ -26,6 +26,11 @@ public class MyGuideApp extends Application {
 	private Settings mSettings = null;
 	private ZooLocationsData mZooData = null;
 	private Graph mGraph;
+	/**
+	 * Remembers if application is in tracking mode
+	 * (user is going along the track).
+	 */
+	private boolean mIsInTrackingMode = false;
 
 	private void showNotification() {
 		// display notification
@@ -120,6 +125,18 @@ public class MyGuideApp extends Application {
 
 	public synchronized Graph getGraph() {
 		return mGraph;
+	}
+	
+	public void setTrackingModeOn() {
+		mIsInTrackingMode = true;
+	}
+	
+	public void setTrackingModeOff() {
+		mIsInTrackingMode = false;
+	}
+	
+	public boolean isInTrackingMode(){
+		return mIsInTrackingMode;
 	}
 
 }
