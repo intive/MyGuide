@@ -94,6 +94,8 @@ public class FragmentTrackDetails extends Fragment {
 		itemStart.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 			@Override
 			public boolean onMenuItemClick(MenuItem menuItem) {
+				((MyGuideApp)getActivity().getApplication()).setTrackingModeOn();
+				StartActivity.setExploredTrack(mTrack);
 				FragmentHelper.swapFragment(R.id.flFragmentHolder,
 						SightseeingFragment.newInstance(mTrack),
 						getActivity().getSupportFragmentManager(),
