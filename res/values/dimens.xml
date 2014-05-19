@@ -4,12 +4,14 @@
     <dimen name="List_text_size">25sp</dimen>
     <dimen name="List_text_size_medium">20sp</dimen>
     <dimen name="List_text_size_small">16sp</dimen>
-    <dimen name="Item_text_size">12sp</dimen>
+    <dimen name="Item_text_size">11sp</dimen>
     
     <dimen name="events_padding_large">30dp</dimen>
     <dimen name="events_padding_medium">10dp</dimen>
     <dimen name="events_padding_small">5dp</dimen>
     <dimen name="events_padding_xsmall">3dp</dimen>
     <dimen name="events_text_time">14sp</dimen>
+
+    <dimen name="info_window_description">8sp</dimen>
 
 </resources>

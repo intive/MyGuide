@@ -3,6 +3,7 @@
 
     <!-- English language version -->
     <string name="app_name">MyGuide</string>
+    <string name="notif_text">Application is running in the background...</string>
 
     <!-- Welcome screen -->
     <string name="header_main_screen">Welcome to the guide\nWroclaw Zoo</string>
@@ -45,6 +46,7 @@
 
     <!-- SightSeeing screen -->
     <string name="search_sightseeing">Search&#8230;</string>
+    <string name="search_sightseeing_not">Animal not found</string>
     <string name="sliding_icon_Description">Opcje</string>
     <string name="route_icon_Description">Droga</string>
     <string name="drawer_open">Otwórz menu</string>
@@ -55,7 +57,7 @@
         <item name="map">Map</item>
         <item name="animals">Animals</item>
         <item name="events">Events</item>
-        <item name="information">Informations</item>
+        <item name="information">Information</item>
         <item name="history">History</item>
         <item name="gastronomy">Gastronomy</item>
         <item name="preferences">Preferences</item>
@@ -125,5 +127,7 @@
     <string name="contact_contact">Contact</string>
     <string name="contact_weekdays">mon-fri</string>
     <string name="contact_weekends">weekends &amp; holidays</string>
+
+    <string name="more_info">more</string>
 
 </resources>

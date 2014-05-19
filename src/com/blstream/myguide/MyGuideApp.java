@@ -1,7 +1,12 @@
 
 package com.blstream.myguide;
 
+import android.app.Activity;
 import android.app.Application;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.path.Graph;
@@ -16,6 +21,8 @@ import com.blstream.myguide.zoolocations.ZooLocationsData;
  */
 public class MyGuideApp extends Application {
 
+	private static final int NOTIFICATION_ID = 0x1;
+
 	private Settings mSettings = null;
 	private ZooLocationsData mZooData = null;
 	private Graph mGraph;
@@ -25,10 +32,74 @@ public class MyGuideApp extends Application {
 	 */
 	private boolean mIsInTrackingMode = false;
 
+	private void showNotification() {
+		// display notification
+		((NotificationManager) getSystemService(NOTIFICATION_SERVICE))
+				.notify(NOTIFICATION_ID, createNotification());
+	}
+
+	private void hideNotification() {
+		// remove notification
+		((NotificationManager) getSystemService(NOTIFICATION_SERVICE))
+				.cancel(NOTIFICATION_ID);
+	}
+
+	protected Notification createNotification() {
+		return new NotificationCompat.Builder(this)
+				.setSmallIcon(R.drawable.ic_launcher)
+				.setContentTitle(getString(R.string.app_name))
+				.setContentText(getString(R.string.notif_text))
+				.setOngoing(true)   // cannot be cancelled
+				.setAutoCancel(true)
+				.build();
+	}
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
+
 		LocationUpdater.setAppContext(this);
+		registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+			@Override
+			public void onActivityCreated(Activity activity, Bundle bundle) {
+				if (!(activity instanceof StartActivity)) return;
+
+				hideNotification();
+				showNotification();
+			}
+
+			@Override
+			public void onActivityStarted(Activity activity) {
+
+			}
+
+			@Override
+			public void onActivityResumed(Activity activity) {
+
+			}
+
+			@Override
+			public void onActivityPaused(Activity activity) {
+
+			}
+
+			@Override
+			public void onActivityStopped(Activity activity) {
+
+			}
+
+			@Override
+			public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
+
+			}
+
+			@Override
+			public void onActivityDestroyed(Activity activity) {
+				if (!(activity instanceof StartActivity)) return;
+
+				hideNotification();
+			}
+		});
 	}
 
 	protected synchronized void setZooData(ZooLocationsData data) {
