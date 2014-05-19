@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Piotrek on 2014-05-19.
  */
-public class DbVistedAnimalTest extends AndroidTestCase {
+public class DbVisitedAnimalTest extends AndroidTestCase {
 
 	public void testIsNotVisitedAnimal() {
 		DbDataManager dbManager = DbDataManager.getInstance(mContext);
