@@ -460,9 +460,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 				"\t\t\t\t</description>" +
 				"\t\t\t\t<hours>" +
 				"\t\t\t\t\t<weekdays>1.00 - 2.00</weekdays>" +
-				"\t\t\t\t\t<bad_key>3.00 - 4.00</bad_key>" + // bad key here,
-																// shouldn't
-																// parse this
+				"\t\t\t\t\t<bad_key>3.00 - 4.00</bad_key>" + // bad key here, shouldn't parse this
 				"\t\t\t\t</hours>" +
 				"\t\t\t</opening>" +
 				"\t\t</openings>" +
@@ -472,8 +470,7 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 				"\t\t\t<email>" + valueBase + "2</email>" +
 				"\t\t</emails>" +
 				"\t\t<telephone>" + valueBase + "</telephone>\n" +
-				// since parsing address is dependant on number of lines in the
-				// tests
+				// since parsing address is dependant on number of lines in the tests
 				// there will be a few empty lines at the beginning and the end
 				"\t\t<address>\n\n\n" +
 				"\t\t\tNAME   \n" +
@@ -501,7 +498,6 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	}
 
 	public void testParsingHistory() throws IOException, XmlPullParserException {
-
 		// given
 		String xml = "<root><history>"
 				+ "<history_event>"
@@ -541,7 +537,6 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 		assertEquals("History2", data.getHistory().get(0).getInformation(Language.EN));
 		assertEquals("2012", data.getHistory().get(0).getDate());
 		assertEquals("img2.jpg", data.getHistory().get(0).getImagePath());
-
 	}
 
 }
