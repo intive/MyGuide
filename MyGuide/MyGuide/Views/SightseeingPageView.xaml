@@ -97,8 +97,8 @@
 
             
             
-            <StackPanel Name="CalibrationStackPanel" Background="Black" Opacity="1" Visibility="Collapsed">
-            <!--<StackPanel Name="CalibrationStackPanel" Background="Black" Opacity="1" Visibility="{Binding Path=CalibrationStackPanelVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">-->
+            <!--<StackPanel Name="CalibrationStackPanel" Background="Black" Opacity="1" Visibility="Collapsed">-->
+            <StackPanel Name="CalibrationStackPanel" Background="Black" Opacity="1" Visibility="{Binding Path=CalibrationStackPanelVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">
                 <Image Source="/Assets/CalibrateCompass.png" Opacity=".95" HorizontalAlignment="Center"/>
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">The compass on your device needs to be calibrated.
                         Hold the device in front of you and sweep it through a figure 8 pattern as shown
