@@ -117,7 +117,9 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\CompassReading.cs" />
-    <Compile Include="Services\EmulatedCompass.cs" />
+    <Compile Include="Services\EmulatedCompassService.cs" />
+    <Compile Include="Services\FakeCompassService.cs" />
+    <Compile Include="Services\FakeGeolocationService.cs" />
     <Compile Include="Services\GeolocationService.cs" />
     <Compile Include="Services\GeolocationReading.cs" />
     <Compile Include="Services\Interfaces\ICompassReading.cs" />
@@ -187,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CalibrateCompass.png" />
+    <Content Include="Assets\MapOverlays\UsMark.png" />
     <Content Include="NLog.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

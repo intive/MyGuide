@@ -128,7 +128,7 @@ namespace MyGuide.ViewModels
             }
             else
             {
-                compass = new EmulatedCompass();
+                compass = new EmulatedCompassService();
                 compass.TimeBetweenUpdates = TimeSpan.FromMilliseconds(200);
                 compass.Calibrate += new EventHandler<CalibrationEventArgs>(compass_Calibrate);
                 compass.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<ICompassReading>>(compass_CurrentValueChanged);

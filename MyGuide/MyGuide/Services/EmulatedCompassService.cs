@@ -5,7 +5,7 @@ using MyGuide.Services.Interfaces;
 
 namespace MyGuide.Services
 {
-    public class EmulatedCompass : ICompassService
+    public class EmulatedCompassService : ICompassService
     {
         Timer simulatorTimer;
         TimeSpan _timeBetweenUpdates;

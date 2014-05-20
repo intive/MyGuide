@@ -32,6 +32,7 @@
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Mode=OneWay, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" />
             <TextBlock Text="sightseeing" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" />
+            <TextBlock TextWrapping="Wrap" Foreground="Red"  Text="{Binding Path=HeadingAngle}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -57,39 +58,47 @@
                         </maps:MapTileLayer.TileSources>
                     </maps:MapTileLayer>
 
-                    <maps:MapLayer x:Name="UserPositionLayer" Visibility="{Binding Path=UserLayerVisibility, Converter={StaticResource BooleanToVisibilityConverter}}"> 
+                    <maps:MapLayer x:Name="UserPositionLayer" Visibility="{Binding Path=UserLayerVisibility, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <maps:Pushpin PositionOrigin="0.5,0.5" Location="{Binding UserPositionLocation, Mode=TwoWay}">
                             <maps:Pushpin.Template>
                                 <ControlTemplate>
-                                    <Grid Width="100" Height="100">
-                                        <Border RenderTransformOrigin="0.5,0.5" Margin="0,0" Padding="0,0" UseLayoutRounding="False">
+                                    <Grid Width="100" Height="100" RenderTransformOrigin="0.5,0.5">
+                                        <Border  RenderTransformOrigin="0.5,0.5" Margin="0,0" Padding="0,0" UseLayoutRounding="False">
                                             <Border.RenderTransform>
-                                                <RotateTransform  Angle="{Binding Path=HeadingAngle }" />
+                                                <RotateTransform  Angle="{Binding Path=HeadingAngle }" /> <!--{Binding Path=HeadingAngle }-->
                                             </Border.RenderTransform>
-                                            <Grid RenderTransformOrigin="0.5,0.5">
+                                            <Grid Width="40" Height="40" RenderTransformOrigin="0.5,0.5">
+                                                <Grid.Background>
+                                                    <ImageBrush ImageSource="/Assets/MapOverlays/UsMark.png" />
+                                                </Grid.Background>
 
-                                                <Rectangle Width="24" Height="24" Fill="Black" RenderTransformOrigin="0.5,0.5">
+                                                <!--<Rectangle Width="24" Height="24" Fill="Black" RenderTransformOrigin="0.5,0.5">
                                                     <Rectangle.RenderTransform>
                                                         <CompositeTransform Rotation="45" />
                                                     </Rectangle.RenderTransform>
+
                                                 </Rectangle>
-                                                <Ellipse Width="18" Height="18" Fill="Red" />
-                                                <Rectangle Fill="Black" Height="10" Width="20">
+                                                <Ellipse Width="18" Height="18" Fill="Red" />-->
+                                                <!--<Rectangle Fill="Black" Height="10" Width="20">
                                                     <Rectangle.RenderTransform>
                                                         <CompositeTransform Rotation="90" TranslateX="15" TranslateY="-30" />
                                                     </Rectangle.RenderTransform>
-                                                </Rectangle>
+                                                </Rectangle>-->
                                             </Grid>
                                         </Border>
                                     </Grid>
                                 </ControlTemplate>
                             </maps:Pushpin.Template>
+                            
                         </maps:Pushpin>
                     </maps:MapLayer>
                 </maps:Map.Children>
             </maps:Map>
 
-            <StackPanel Name="CalibrationStackPanel" Background="Black" Opacity="1" Visibility="{Binding Path=CalibrationStackPanelVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">
+            
+            
+            <StackPanel Name="CalibrationStackPanel" Background="Black" Opacity="1" Visibility="Collapsed">
+            <!--<StackPanel Name="CalibrationStackPanel" Background="Black" Opacity="1" Visibility="{Binding Path=CalibrationStackPanelVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">-->
                 <Image Source="/Assets/CalibrateCompass.png" Opacity=".95" HorizontalAlignment="Center"/>
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">The compass on your device needs to be calibrated.
                         Hold the device in front of you and sweep it through a figure 8 pattern as shown
