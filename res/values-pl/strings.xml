@@ -109,6 +109,9 @@
 	<string name="contact_contact">Kontakt</string>
 	<string name="contact_weekdays">pn-pt</string>
 	<string name="contact_weekends">weekendy i święta</string>
+	
+	<!-- History -->
+    <string name="history_list_title">Historia</string>
 
     <string name="more_info">więcej</string>
 

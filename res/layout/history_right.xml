@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutHistoryRight"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@color/light_background"
+    android:paddingBottom="@dimen/events_padding_small"
+    android:paddingLeft="@dimen/events_padding_medium"
+    android:paddingRight="@dimen/events_padding_small"
+    android:paddingTop="@dimen/events_padding_small" >
+
+    <ImageView
+        android:id="@+id/imgHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtInfo"
+        android:layout_marginRight="15dp"
+        android:contentDescription="@string/history_list_title"
+        android:src="@drawable/bird_odwrocony" />
+
+    <RelativeLayout
+        android:id="@+id/txtInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtDate"
+        android:layout_toLeftOf="@+id/imgHistory"
+        android:paddingBottom="22dp" >
+
+        <TextView
+            android:id="@+id/txtInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bubble_r"
+            android:text="@string/text" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="3dp"
+        android:text="11.11.2011"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

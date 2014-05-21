@@ -127,7 +127,10 @@
     <string name="contact_contact">Contact</string>
     <string name="contact_weekdays">mon-fri</string>
     <string name="contact_weekends">weekends &amp; holidays</string>
-
+    
+    <!-- History -->
+    <string name="history_list_title">History</string>
+    
     <string name="more_info">more</string>
 
 </resources>

@@ -32,6 +32,7 @@ public class BundleConstants {
 	public static final String FRAGMENT_INFORMATION = "fragment_information";
 	public static final String FRAGMENT_EVENTS = "fragment_events";
 	public static final String FRAGMENT_CLOSEST_ANIMALS_MAP = "closest_animal_map";
+	public static final String FRAGMENT_HISTORY = "fragment_history";
 
 	// FONT PATH BOLD
 	public static final String FONT_PATH_BOLD = "fonts/Roboto-Bold.ttf";

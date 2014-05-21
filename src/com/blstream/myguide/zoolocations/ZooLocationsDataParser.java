@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import android.util.Log;
 import android.util.Xml;
 
 /** Class containing function parsing xml file and messages for exceptions. */
@@ -47,6 +47,7 @@ public class ZooLocationsDataParser {
 	private TicketsInformation mTicketInformation;
 	private AccessInformation mAccessInfo;
 	private ContactInformation mContactInfo = new ContactInformation();
+	private ArrayList<History> mHistory;
 
 	private HashMap<Integer, Way> mWaysMap;
 	private HashMap<Integer, Animal> mAnimalsMap;
@@ -70,6 +71,7 @@ public class ZooLocationsDataParser {
 		mWaysMap = new HashMap<Integer, Way>();
 		mAnimalsMap = new HashMap<Integer, Animal>();
 		mAccessInfo = new AccessInformation();
+		mHistory = new ArrayList<History>();
 
 		XmlPullParser parser = Xml.newPullParser();
 		parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
@@ -87,6 +89,8 @@ public class ZooLocationsDataParser {
 		data.setTicketInformation(mTicketInformation);
 		data.setAccessInformation(mAccessInfo);
 		data.setContactInformation(mContactInfo);
+		Collections.reverse(mHistory);
+		data.setHistory(mHistory);
 
 		return data;
 	}
@@ -117,6 +121,8 @@ public class ZooLocationsDataParser {
 				readAccessInformation(parser);
 			} else if ("contact_information".equals(name)) {
 				readContactInformation(parser);
+			} else if ("history".equals(name)) {
+				readHistory(parser);
 			} else {
 				skip(parser);
 			}
@@ -503,7 +509,8 @@ public class ZooLocationsDataParser {
 		return event;
 	}
 
-	private void readAccessInformation(XmlPullParser parser) throws XmlPullParserException, IOException {
+	private void readAccessInformation(XmlPullParser parser) throws XmlPullParserException,
+			IOException {
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
 				continue;
@@ -519,6 +526,7 @@ public class ZooLocationsDataParser {
 			}
 		}
 	}
+
 	private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
 		if (parser.getEventType() != XmlPullParser.START_TAG) { throw new IllegalStateException(); }
 		int depth = 1;
@@ -709,10 +717,10 @@ public class ZooLocationsDataParser {
 		Address address = new Address();
 
 		// this loop assumes that address is given in the following format:
-		//  [NAME]
-		//  [STREET]
-		//  [POSTAL-CODE] [CITY]
-		//  [COUNTRY]
+		// [NAME]
+		// [STREET]
+		// [POSTAL-CODE] [CITY]
+		// [COUNTRY]
 		// where [X] is a text value for X
 		for (int i = 0; i < lines.length; i++) {
 			String value = lines[i].trim();
@@ -742,6 +750,43 @@ public class ZooLocationsDataParser {
 		}
 
 		return address;
+	}
+
+	private void readHistory(XmlPullParser parser) throws XmlPullParserException, IOException {
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("history_event".equals(name)) {
+				mHistory.add(readHistoryEvent(parser));
+			} else {
+				skip(parser);
+			}
+		}
+	}
+
+	private History readHistoryEvent(XmlPullParser parser) throws XmlPullParserException,
+			IOException {
+		History history = new History();
+
+		while (parser.next() != XmlPullParser.END_TAG) {
+			if (parser.getEventType() != XmlPullParser.START_TAG) {
+				continue;
+			}
+			String name = parser.getName();
+			if ("heading".equals(name)) {
+				history.setInformation(readDictionary(parser));
+			} else if ("date".equals(name)) {
+				history.setDate(readText(parser));
+			} else if ("image".equals(name)) {
+				history.setImagePath(readText(parser));
+			} else {
+				skip(parser);
+			}
+		}
+
+		return history;
 	}
 
 }
