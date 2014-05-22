@@ -23,8 +23,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "iphone",
       "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "appIcon_104px.png",
       "scale" : "2x"
     },
     {
