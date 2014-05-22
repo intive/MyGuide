@@ -8,7 +8,7 @@
 
 @interface Vertex : NSObject
 
-@property (nonatomic) NSNumber       *weight;
+@property (nonatomic) double         weight;
 @property (nonatomic) NSMutableArray *edges;
 @property (nonatomic) Vertex         *predecessor;
 @property (nonatomic) AFNode         *position;

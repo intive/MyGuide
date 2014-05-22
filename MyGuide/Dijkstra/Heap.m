@@ -4,7 +4,6 @@
 //
 
 #import "Heap.h"
-#import "Vertex.h"
 
 @interface Heap ()
 
@@ -15,12 +14,12 @@
 
 @implementation Heap
 
-- (id) initWithMaxSize: (NSUInteger)maxSize
+- (id) initWithCapacity: (NSInteger)capacity
 {
     self = [super init];
     if (self) {
         _lastIndex = 0;
-        _values    = [NSMutableArray arrayWithCapacity: maxSize + 1];
+        _values    = [NSMutableArray arrayWithCapacity: capacity + 1];
     }
     return self;
 }
@@ -51,7 +50,7 @@
 
 - (Vertex *) poll
 {
-    if (self.lastIndex < 1) return null;
+    if (self.lastIndex < 1) return nil;
     Vertex *vertex = self.values[1];
     self.values[1] = [self.values objectAtIndex: self.lastIndex];
     self.lastIndex--;

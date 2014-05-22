@@ -16,9 +16,11 @@
     return self;
 }
 
-- (NSComparisonResult) compare: (id)other
+- (NSComparisonResult) compare: (Vertex *)other
 {
-    return [self.weight compare: [(Vertex *)other weight]];
+    if (other.weight > self.weight) return NSOrderedDescending;
+    if (other.weight < self.weight) return NSOrderedAscending;
+    return NSOrderedSame;
 }
 
 @end

@@ -7,6 +7,17 @@
 
 @implementation Edge
 
+- (id) initWithFirstVertex: (Vertex *)firstVertex secondVertex: (Vertex *)secondVertex length: (double)length
+{
+    self = [super init];
+    if (self) {
+        _firstVertex  = firstVertex;
+        _secondVertex = secondVertex;
+        _length       = length;
+    }
+    return self;
+}
+
 - (BOOL) isEqual: (id)other
 {
     if (self == other) {
