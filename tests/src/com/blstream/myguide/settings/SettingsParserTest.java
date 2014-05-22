@@ -16,7 +16,7 @@ public class SettingsParserTest extends AndroidTestCase {
 
 	private static final String LANG_FALLBACK = "pl";
 	private static final float INTER_RADIOUS = 1;
-	private static final float EXTER_RADIOUS = 2;
+	private static final float EXTER_RADIOUS = 10;
 	private static final String TAG_LANG = "lang_fallback";
 	private static final String TAG_INTER_RADIOUS = "internal_object_radius";
 	private static final String TAG_EXTER_RADIOUS = "external_object_radius";
