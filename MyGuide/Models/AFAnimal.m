@@ -18,6 +18,7 @@
         _name = [[NSString alloc] init];
         _animalInfoDictionary = [[NSDictionary alloc] init];
         _distanceFromUser = 0;
+        _animalID = 0;
     }
     return self;
 }
@@ -45,6 +46,10 @@
         ans = YES;
     }
     return ans;
+}
+- (CLLocationCoordinate2D)getLocationCoordinate
+{
+    return CLLocationCoordinate2DMake([self.coordinates.latitude doubleValue], [self.coordinates.longitude doubleValue]);
 }
 
 @end

@@ -8,11 +8,15 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
+#import "AFTrack.h"
 
 @interface LocationManager : NSObject <CLLocationManagerDelegate>
 
 + (id) sharedLocationManager;
-
-- (void) requestLocationStatus;
+- (void)requestLocationStatus;
+- (void)loadVisitedPOIs;
+- (void)loadExplorationTrack;
+- (void)loadTrackRegionsToMonitor:(AFTrack *)currentTrack;
+- (void)clearMonitoredTrack;
 
 @end

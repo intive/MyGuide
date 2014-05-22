@@ -11,11 +11,12 @@
 #import <MapKit/MapKit.h>
 #import "AFTracksData.h"
 #import "AFTrack.h"
+#import "LocationManager.h"
 
 @interface TrackDetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (nonatomic) AFTrack                  *track;
+@property (nonatomic) AFTrack *track;
 
 @end
 
@@ -24,14 +25,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.track = [[[AFTracksData sharedParsedData] tracks] objectAtIndex:self.trackRow];
     [self loadMenuBar];
+}
+- (void)viewDidAppear:(BOOL)animated
+{
     [self loadViewContent];
 }
-
 - (void)loadViewContent
 {
-    self.track = [[[AFTracksData sharedParsedData] tracks] objectAtIndex:self.trackRow];
-    
     UILabel *progressLabel = (UILabel *)[self.view viewWithTag:101];
     progressLabel.text = self.track.progressText;
     
@@ -43,7 +45,7 @@
 }
 - (void)loadMenuBar
 {
-    UIBarButtonItem *start = [[UIBarButtonItem alloc] initWithTitle:@"start" style:UIBarButtonItemStylePlain target:self action:@selector(startOrStopProgress)];
+    UIBarButtonItem *start = [[UIBarButtonItem alloc] initWithTitle:self.track.activeStatus style:UIBarButtonItemStylePlain target:self action:@selector(startOrStopProgress)];
     UIBarButtonItem *trash = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Buzz-Trash-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(clearProgress)];
     [self.navigationItem setLeftBarButtonItems:@[start, trash]];
     self.rightSidebarButton.target = self.revealViewController;
@@ -56,19 +58,31 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     UIBarButtonItem *startButton = [[self.navigationItem leftBarButtonItems] objectAtIndex:0];
     if([startButton.title isEqualToString:@"start"]){
-        startButton.title = @"stop";
+        self.track.activeStatus = @"stop";
+        startButton.title = self.track.activeStatus;
         [userDefaults setObject:[self.track getName] forKey:@"current track"];
+        [[LocationManager sharedLocationManager] loadTrackRegionsToMonitor:self.track];
     }
     else{
-        startButton.title = @"start";
+        self.track.activeStatus = @"start";
+        startButton.title = self.track.activeStatus;
         [userDefaults setObject:EXPLORATION_TRACK_NAME forKey:@"current track"];
+        [[LocationManager sharedLocationManager] clearMonitoredTrack];
     }
     [userDefaults synchronize];
+    [self loadViewContent];
     [self returnToMainMap];
 }
 - (void)clearProgress
 {
-    [[[[AFTracksData sharedParsedData] tracks] objectAtIndex:self.trackRow] changeProgress:0];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    UIBarButtonItem *startButton = [[self.navigationItem leftBarButtonItems] objectAtIndex:0];
+    self.track.activeStatus = @"start";
+    startButton.title = self.track.activeStatus;
+    [userDefaults setObject:EXPLORATION_TRACK_NAME forKey:@"current track"];
+    [userDefaults synchronize];
+    [[LocationManager sharedLocationManager] clearMonitoredTrack];
+    [[[[AFTracksData sharedParsedData] tracks] objectAtIndex:self.trackRow] clearProgress];
     [self loadViewContent];
 }
 - (void)returnToMainMap

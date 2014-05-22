@@ -11,8 +11,10 @@
 @interface AFTrack : NSObject <NSCoding>
 
 @property (nonatomic) NSString *image;
-@property (nonatomic) NSArray  *animalsArray;
+@property (nonatomic) NSString *activeStatus;
 @property (nonatomic) NSString *progressText;
+@property (nonatomic) NSArray  *animalsArray;
+@property (nonatomic) NSArray  *notVisitedAnimalsArray;
 @property (nonatomic, setter = changeProgress:) NSUInteger progressBase;
 @property (nonatomic) float     progressRatio;
 
@@ -27,5 +29,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder;
 
 - (void)changeProgress:(NSUInteger)progressBase;
+- (void)clearProgress;
+- (void)incrementProgress;
 
 @end
