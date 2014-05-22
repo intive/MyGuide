@@ -111,7 +111,7 @@
 - (void)setAnimalsArray:(NSArray *)animalsArray
 {
     _animalsArray = animalsArray;
-    _notVisitedAnimalsArray = [animalsArray copy];
+    _notVisitedAnimalsArray = animalsArray;
     _progressText = [NSString stringWithFormat:@"%ld/%ld", (long)self.progressBase, (unsigned long)self.animalsArray.count];
     if(_progressRatio == 0.0f && _animalsArray.count != 0) {
         _progressRatio = (float)(_progressBase / _animalsArray.count);
@@ -126,7 +126,7 @@
 - (void)clearProgress
 {
     [self changeProgress:0];
-    self.notVisitedAnimalsArray = [self.animalsArray copy];
+    self.notVisitedAnimalsArray = self.animalsArray;
 }
 - (void)incrementProgress
 {

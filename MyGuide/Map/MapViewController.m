@@ -213,7 +213,7 @@
     if ([overlay isKindOfClass:[MKPolyline class]]) {
         MKPolyline *route = overlay;
         MKPolylineRenderer *routeRenderer = [[MKPolylineRenderer alloc] initWithPolyline:route];
-        if(route.pointCount == 2 && fabs(route.points[0].x - route.points[1].x) < 1e-8){
+        if(route.pointCount == 2 && fabs(route.points[0].x - route.points[1].x) < DBL_EPSILON){
             routeRenderer.strokeColor = [UIColor blackColor];
             routeRenderer.lineWidth = 5;
         }
@@ -435,7 +435,7 @@
 }
 - (BOOL)compareCoordinate:(CLLocationCoordinate2D)coordinateOne withCoordinate:(CLLocationCoordinate2D)coordinateTwo
 {
-    return fabs(coordinateOne.latitude - coordinateTwo.latitude) <= 1e-8 && fabs(coordinateOne.longitude - coordinateTwo.longitude) <= 1e-8;
+    return fabs(coordinateOne.latitude - coordinateTwo.latitude) <= DBL_EPSILON && fabs(coordinateOne.longitude - coordinateTwo.longitude) <= DBL_EPSILON;
 }
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
 {

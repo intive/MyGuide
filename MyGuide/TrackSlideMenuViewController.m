@@ -32,7 +32,7 @@
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 1.0f)];
     footerView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableFooterView = footerView;
-        
+    
     CALayer *bgLayer = [CALayer layer];
     bgLayer.backgroundColor = headerView.backgroundColor.CGColor;
     bgLayer.frame = CGRectMake(0, -22.0f, 320.0f, 44.0f+22.0f);
@@ -43,7 +43,7 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - Table view data source
+#pragma mark - Table view methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.tracksArray.count+1;

@@ -1384,20 +1384,20 @@
         </scene>
     </scenes>
     <resources>
-        <image name="animals" width="30" height="24"/>
+        <image name="animals" width="25" height="25"/>
         <image name="buttonBackgroundImage" width="175" height="171"/>
-        <image name="events" width="30" height="24"/>
-        <image name="history" width="30" height="24"/>
+        <image name="events" width="25" height="25"/>
+        <image name="history" width="25" height="25"/>
         <image name="info_contact_address.png" width="60" height="60"/>
         <image name="info_contact_phone.png" width="60" height="60"/>
         <image name="info_contact_url.png" width="60" height="60"/>
-        <image name="informations" width="30" height="24"/>
-        <image name="map" width="30" height="24"/>
+        <image name="informations" width="25" height="25"/>
+        <image name="map" width="25" height="25"/>
         <image name="menu.png" width="28" height="20"/>
         <image name="placeholder_adult" width="150" height="125"/>
         <image name="placeholder_event" width="226" height="227"/>
-        <image name="restaurants" width="30" height="24"/>
-        <image name="settings" width="30" height="24"/>
+        <image name="restaurants" width="25" height="25"/>
+        <image name="settings" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
