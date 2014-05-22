@@ -19,6 +19,45 @@
 
 @implementation AppDelegate
 
+#pragma mark - delegate methods
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
+{
+    if([self hasBeenLaunched])
+    {
+        [[LocationManager sharedLocationManager] requestLocationStatus];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setBool:NO forKey:@"isInBackground"];
+    }
+    [self loadXMLs];
+    [self styleApplication];
+    [[LocationManager sharedLocationManager] loadExplorationTrack];
+    [[LocationManager sharedLocationManager] loadVisitedPOIs];
+    
+    return YES;
+}
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:NO forKey:@"isInBackground"];
+    [userDefaults synchronize];
+    Settings *sharedSettings = [Settings sharedSettingsData];
+    sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
+}
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [self archiveTracks];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:YES forKey:@"isInBackground"];
+    [userDefaults synchronize];
+}
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [[LocationManager sharedLocationManager] clearMonitoredTrack];
+    [self archiveTracks];
+}
+
+
+#pragma mark - helper methods
 - (void)loadXMLs
 {
     [[SettingsParser new] loadSettings];
@@ -40,61 +79,37 @@
         [[NSFileManager defaultManager] createFileAtPath:path contents:nil attributes:nil];
     }
 }
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary  *)launchOptions
-{
-    if([self hasBeenLaunched])
-    {
-        [[LocationManager sharedLocationManager] requestLocationStatus];
-    }
-    [self loadXMLs];
-    [self styleApplication];
-    
-    return YES;
-}
-
-- (void) styleApplication
-{
-    [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor colorWithRed:255/255.f green:95/255.f blue:0/255.f alpha:1];
-}
-
-- (BOOL) hasBeenLaunched
-{
-    BOOL result = YES;
-    NSString *hasBeenLaunched = @"HAS_BEEN_LAUNCHED";
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    if ([defaults boolForKey:hasBeenLaunched])
-    {
-        result = YES;
-    }
-    else
-    {
-        [defaults setBool:YES forKey:hasBeenLaunched];
-        [defaults synchronize];
-        result = NO;
-    }
-    
-    return result;
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    Settings *sharedSettings = [Settings sharedSettingsData];
-    sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
+- (void)archiveTracks
 {
     AFTracksData *sharedData = [AFTracksData sharedParsedData];
     [self checkAndCreateTracksPlist];
     NSString *path;
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracks.plist"];
-
+    
     [NSKeyedArchiver archiveRootObject:sharedData.tracks toFile:path];
 }
-- (void)applicationWillTerminate:(UIApplication *)application
+
+- (void)styleApplication
 {
-    [self applicationDidEnterBackground:application];
+    [[UIApplication sharedApplication] keyWindow].backgroundColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
 }
+
+- (BOOL)hasBeenLaunched
+{
+    BOOL result = YES;
+    NSString *hasBeenLaunched = @"HAS_BEEN_LAUNCHED";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    if ([defaults boolForKey:hasBeenLaunched]){
+        result = YES;
+    }
+    else{
+        [defaults setBool:YES forKey:hasBeenLaunched];
+        [defaults synchronize];
+        result = NO;
+    }
+    return result;
+}
+
 @end

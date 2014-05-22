@@ -216,6 +216,10 @@ static NSString *kXmlEN                 = @"en";
             [_animalInfoDictionaryEN setValue:_elementValue forKey:@"childDescription"];
         }
     }
+    else if ([elementName isEqualToString:@"id"]) {
+        [_currentAnimalEN setAnimalID:[_elementValue integerValue]];
+        [_currentAnimalPL setAnimalID:[_elementValue integerValue]];
+    }
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser

@@ -84,7 +84,7 @@ didStartElement: (NSString *)     elementName
         self.animalsArray = [NSMutableArray new];
     }
     else if ([elementName isEqualToString:kXmlAnimalID]){
-        [self.animalsArray addObject:elementName];
+        [self.animalsArray addObject:self.currentElement];
     }
     else if ([elementName isEqualToString: kXmlImage]) {
         self.currentTrack.image = self.currentElement;

@@ -10,7 +10,7 @@
 
 @interface AFVisitedPOIsData : NSObject
 
-@property (nonatomic) NSMutableArray *visitedPOIs;
+@property (nonatomic) NSMutableSet *visitedPOIs;
 
 + (id)sharedData;
 

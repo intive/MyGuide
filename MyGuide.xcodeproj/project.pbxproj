@@ -95,11 +95,6 @@
 		84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4118BA91A100A2F720 /* AFParsedData.m */; };
 		84DDCB4A18BA944800A2F720 /* DataParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DDCB4918BA944800A2F720 /* DataParserTests.m */; };
 		84F184A218B9537200658238 /* MyGuideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EF633189637C000233B64 /* MyGuideTests.m */; };
-		CAAC74A7ED48257F5F1313C4 /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC793A45FEE0B15CC68841 /* Edge.m */; };
-		CAAC7701DE3E27E7F769FACE /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC705BCAD342F6CE48BA1E /* Vertex.m */; };
-		CAAC77FBE290AD4B00953C47 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC7614828F038538E66549 /* Graph.m */; };
-		CAAC7EF012239BD42C99A14F /* Heap.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC797A8A91D92CBF06B107 /* Heap.m */; };
-		CAAC7F7A498BB0F07EE12B37 /* DijkstraAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC755DF045630988F00E6A /* DijkstraAlgorithm.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -497,6 +492,7 @@
 				05A1C12318FAA436008FE0CB /* History */,
 				05E1654618F1B4DE00DA3BD7 /* Gastronomy */,
 				84BA95E91912F763008A4237 /* Tracks */,
+				CAAC7FEF5ACB0DEDA8DA2989 /* Dijkstra */,
 				05E0209218C1DAFA00AE76EC /* Map */,
 				84DDCB3F18BA91A100A2F720 /* Storage */,
 				84DDCB3518BA919600A2F720 /* Parsers */,
@@ -509,7 +505,6 @@
 				0533DF0B18DE365D001BCB28 /* HomeViewController.m */,
 				055452C419025B570021884C /* SegmentedViewController.h */,
 				055452C519025B570021884C /* SegmentedViewController.m */,
-				CAAC7FEF5ACB0DEDA8DA2989 /* Dijkstra */,
 			);
 			path = MyGuide;
 			sourceTree = "<group>";
@@ -737,6 +732,11 @@
 				TargetAttributes = {
 					3D5EF604189637C000233B64 = {
 						DevelopmentTeam = XTRY58ZV6V;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					3D5EF625189637C000233B64 = {
 						TestTargetID = 3D5EF604189637C000233B64;
@@ -876,11 +876,6 @@
 				84BA95E219118CE8008A4237 /* AFEventsViewController.m in Sources */,
 				8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */,
 				05406E3F18F2EE1A001656FC /* GastronomyParser.m in Sources */,
-				CAAC7F7A498BB0F07EE12B37 /* DijkstraAlgorithm.m in Sources */,
-				CAAC74A7ED48257F5F1313C4 /* Edge.m in Sources */,
-				CAAC7701DE3E27E7F769FACE /* Vertex.m in Sources */,
-				CAAC7EF012239BD42C99A14F /* Heap.m in Sources */,
-				CAAC77FBE290AD4B00953C47 /* Graph.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

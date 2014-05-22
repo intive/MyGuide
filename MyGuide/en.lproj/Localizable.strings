@@ -16,11 +16,15 @@
 
 "gpsDisabledLaunchMessage" = "Turning on location services will impove application quality.";
 
-"gpsDisabledMapMessage" = "Enable location services in device settings to see your current position on the map.";
+"gpsDisabledMapMessage" = "Enable location services in the device settings to see your current position on the map.";
 
 "gpsDeniedTitle" = "GPS disabeld";
 
 "alertEventWrongMonth" = "This event begins on 1.06";
+
+"backgroundAppRefreshDeniedTitle" = "Background App Refresh is disabled.";
+
+"backgroundAppRefreshDeniedMessage" = "To track visited animals and fully experience our app enable background app refresh in the device settings";
 
 /******************************
            CONTROLLERS
