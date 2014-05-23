@@ -14,4 +14,6 @@
 @property (nonatomic) AFNode         *position;
 @property (nonatomic) NSInteger      heapIndex;
 
+- (NSComparisonResult) compare: (Vertex *)other;
+
 @end

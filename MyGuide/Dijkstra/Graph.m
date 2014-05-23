@@ -11,7 +11,6 @@
 #import "AFWay.h"
 #import "AFJunction.h"
 
-static double const ZOO_LATITUDE       = 51.10503;
 static double const LON_COEFFICIENT    = 0.6278947332157663;
 static double const METERS_COEFFICIENT = 111324.25554213152;
 
@@ -38,8 +37,8 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
 - (double) distanceApproximateBetween: (AFNode *)sourceNode and: (AFNode *)destinationNode
 {
     double deltaLat = [sourceNode.latitude doubleValue] - [destinationNode.latitude doubleValue];
-    double deltaLon = [sourceNode.longitude doubleValue] - [destinationNode.longitude doubleValue];
-    return sqrt(pow(deltaLat, 2) + pow(deltaLon, 2));
+    double deltaLon = ([sourceNode.longitude doubleValue] - [destinationNode.longitude doubleValue]) * LON_COEFFICIENT;
+    return sqrt(deltaLat * deltaLat + deltaLon * deltaLon);
 }
 
 - (double) findDistanceBetweenNode: (AFNode *)sourceNode andNode: (AFNode *)destinationNode
@@ -66,15 +65,14 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
 {
     if (!self.toRemove) return;
     for (Vertex *v in self.toRemove) {
-        Edge   *sourceEdge        = [v.edges firstObject];
-        Edge   *destinationEdge   = [v.edges objectAtIndex: 1];
+        Edge   *sourceEdge        = v.edges[0];
+        Edge   *destinationEdge   = v.edges[1];
         Vertex *sourceVertex      = sourceEdge.secondVertex;
         Vertex *destinationVertex = destinationEdge.secondVertex;
         [self.vertices removeObject: v];
         [sourceVertex.edges removeObject: sourceEdge];
         [destinationVertex.edges removeObject: destinationEdge];
     }
-
     self.toRemove = nil;
 }
 
@@ -140,9 +138,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
 - (Vertex *) findVertexInGraph: (AFNode *)node
 {
     for (Vertex *v in self.vertices) {
-        if (v.position.latitude == node.latitude && v.position.longitude == node.longitude) {
-            return v;
-        }
+        if (v.position.latitude == node.latitude && v.position.longitude == node.longitude) return v;
     }
     return nil;
 }
@@ -150,14 +146,14 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
 - (void) createGraphWithWays: (NSArray *)ways andJunctions: (NSArray *)junctions
 {
     self.vertices = [NSMutableArray new];
-    self.edges = [NSMutableArray new];
+    self.edges    = [NSMutableArray new];
 
     NSMutableDictionary *verticesInWays = [NSMutableDictionary new];
 
     for (AFWay *w in ways) {
         NSMutableArray *verticesInWay = [NSMutableArray new];
-        Vertex      *last = nil;
-        for (AFNode *n in w.nodesArray) {
+        Vertex         *last          = nil;
+        for (AFNode    *n in w.nodesArray) {
             Vertex *v = [self findVertexInGraph: n];
             if (!v) {
                 v = [Vertex new];
@@ -171,8 +167,8 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
                                                      length: [self distanceApproximateBetween: last.position
                                                                                           and: v.position]];
                 [self.edges addObject: e];
-                [last.edges addObject: e];
                 [v.edges addObject: e];
+                [last.edges addObject: e];
             }
             last = v;
         }
@@ -210,6 +206,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
 
 - (NSArray *) findPathBetweenNode: (AFNode *)sourceNode andNode: (AFNode *)destinationNode
 {
+    self.toRemove = [NSMutableArray new];
     Vertex         *startVertex = [self findNearVertex: sourceNode];
     Vertex         *endVertex   = [self findNearVertex: destinationNode];
     NSMutableArray *path        = [NSMutableArray new];
@@ -218,7 +215,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
         NSArray *vertices = [self findPathBetweenVertex: startVertex andVertex: endVertex];
 
         for (int i = vertices.count - 1; i >= 0; i--) {
-            [path addObject: ((Vertex *) vertices[i]).position];
+            [path addObject: ((Vertex *) vertices[(NSUInteger) i]).position];
         }
     }
     [self removeTemporaryVertices];
@@ -258,9 +255,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
     }
 
     NSMutableArray *path = [NSMutableArray new];
-    if (!destinationVertex.predecessor && sourceVertex != destinationVertex) {
-        return path;
-    }
+    if (!destinationVertex.predecessor && sourceVertex != destinationVertex) return path;
     [path addObject: destinationVertex];
     while (destinationVertex.predecessor) {
         [path addObject: destinationVertex.predecessor];

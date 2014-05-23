@@ -18,7 +18,7 @@
     return self;
 }
 
-- (BOOL) isEqual: (id)other
+- (BOOL) isEqual: (Edge *)otherEdge
 {
     if (self == other) {
         return YES;
@@ -27,8 +27,6 @@
     if (![other isKindOfClass: [Edge class]]) {
         return NO;
     }
-
-    Edge *otherEdge = (Edge *) other;
 
     return ([self.firstVertex isEqual: otherEdge.firstVertex] && [self.secondVertex isEqual: otherEdge.secondVertex])
            ||

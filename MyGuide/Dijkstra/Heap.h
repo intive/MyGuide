@@ -8,7 +8,7 @@
 
 @interface Heap : NSObject
 
-- (id) initWithCapacity: (double)capacity;
+- (id) initWithCapacity: (NSUInteger)capacity;
 
 - (void) add: (Vertex *)vertex;
 - (Vertex *) poll;

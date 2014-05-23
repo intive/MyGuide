@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AFWay : NSObject
+@interface AFWay : NSObject <NSCopying>
 
 @property (nonatomic, readonly) NSString *wayID;
 @property (nonatomic, readonly) NSArray *nodesArray;

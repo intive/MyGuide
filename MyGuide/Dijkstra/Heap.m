@@ -14,7 +14,7 @@
 
 @implementation Heap
 
-- (id) initWithCapacity: (NSInteger)capacity
+- (id) initWithCapacity: (NSUInteger)capacity
 {
     self = [super init];
     if (self) {
@@ -37,22 +37,23 @@
 {
     if (index > self.lastIndex) return;
     Vertex *vertex = self.values[index];
-    while (
-            [self parent: index] >= 1
-            &&
-            [self.values[[self parent: index]] compare: vertex] == NSOrderedAscending) {
+    while ([self parent: index] >= 1
+           &&
+           [((Vertex *)self.values[[self parent: index]]) compare: vertex] == NSOrderedAscending) {
 
         self.values[index] = self.values[[self parent: index]];
-        [(Vertex *) self.values[index] setHeapIndex: index];
+        ((Vertex *) self.values[index]).heapIndex = index;
         index = [self parent: index];
     }
+    self.values[index] = vertex;
+    vertex.heapIndex = index;
 }
 
 - (Vertex *) poll
 {
     if (self.lastIndex < 1) return nil;
     Vertex *vertex = self.values[1];
-    self.values[1] = [self.values objectAtIndex: self.lastIndex];
+    self.values[1] = self.values[self.lastIndex];
     self.lastIndex--;
     [self repairDown: 1];
     return vertex;
@@ -70,11 +71,11 @@
         }
         if ([self.values[smallest] compare: vertex] == NSOrderedDescending) break;
         self.values[index] = self.values[smallest];
-        [(Vertex *) self.values[index] setHeapIndex: index];
+        ((Vertex *) self.values[index]).heapIndex = index;
         index = smallest;
     }
     self.values[index] = vertex;
-    [(Vertex *) self.values[index] setHeapIndex: index];
+    ((Vertex *) self.values[index]).heapIndex = index;
 }
 
 - (NSUInteger) parent: (NSUInteger)i

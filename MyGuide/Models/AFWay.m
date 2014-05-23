@@ -40,4 +40,14 @@
     _nodesArray = nodesArray;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    id copy = [[self class] new];
+    if(copy) {
+        [copy setWayID:      self.wayID];
+        [copy setNodesArray: self.nodesArray];
+    }
+    return copy;
+}
+
 @end
