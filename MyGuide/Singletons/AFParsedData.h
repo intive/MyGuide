@@ -8,19 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import "Settings.h"
+#import "Graph.h"
 
 @interface AFParsedData : NSObject
 
 @property (nonatomic, readonly, getter = localizeAnimalsArray) NSArray *animalsArray;
-@property (nonatomic) NSArray *animalsPL;
-@property (nonatomic) NSArray *animalsEN;
-@property (nonatomic, readonly) NSArray *waysArray;
-@property (nonatomic, readonly) NSArray *junctionsArray;
+@property (nonatomic) NSArray                                          *animalsPL;
+@property (nonatomic) NSArray                                          *animalsEN;
+@property (nonatomic, readonly) NSArray                                *waysArray;
+@property (nonatomic, readonly) NSArray                                *junctionsArray;
+@property (nonatomic) Graph                                            *graph;
 
-+ (id)sharedParsedData;
++ (id) sharedParsedData;
 
-- (void)setWaysArray:     (NSArray *)waysArray;
-- (void)setJunctionsArray:(NSArray *)junctionsArray;
-- (NSArray *)localizeAnimalsArray;
+- (void) setWaysArray:      (NSArray *)waysArray;
+- (void) setJunctionsArray: (NSArray *)junctionsArray;
+
+- (NSArray *) localizeAnimalsArray;
 
 @end

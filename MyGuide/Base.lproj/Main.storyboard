@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AFq-2d-P2X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AFq-2d-P2X">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -1384,20 +1384,20 @@
         </scene>
     </scenes>
     <resources>
-        <image name="animals" width="25" height="25"/>
+        <image name="animals" width="26" height="26"/>
         <image name="buttonBackgroundImage" width="175" height="171"/>
-        <image name="events" width="25" height="25"/>
-        <image name="history" width="25" height="25"/>
+        <image name="events" width="26" height="26"/>
+        <image name="history" width="26" height="26"/>
         <image name="info_contact_address.png" width="60" height="60"/>
         <image name="info_contact_phone.png" width="60" height="60"/>
         <image name="info_contact_url.png" width="60" height="60"/>
-        <image name="informations" width="25" height="25"/>
-        <image name="map" width="25" height="25"/>
+        <image name="informations" width="26" height="26"/>
+        <image name="map" width="26" height="26"/>
         <image name="menu.png" width="28" height="20"/>
         <image name="placeholder_adult" width="150" height="125"/>
         <image name="placeholder_event" width="226" height="227"/>
-        <image name="restaurants" width="25" height="25"/>
-        <image name="settings" width="25" height="25"/>
+        <image name="restaurants" width="26" height="26"/>
+        <image name="settings" width="26" height="26"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

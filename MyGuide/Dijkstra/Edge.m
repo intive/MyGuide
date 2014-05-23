@@ -20,11 +20,11 @@
 
 - (BOOL) isEqual: (Edge *)otherEdge
 {
-    if (self == other) {
+    if (self == otherEdge) {
         return YES;
     }
 
-    if (![other isKindOfClass: [Edge class]]) {
+    if (![otherEdge isKindOfClass: [Edge class]]) {
         return NO;
     }
 

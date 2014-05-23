@@ -143,65 +143,70 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
     return nil;
 }
 
-- (void) createGraphWithWays: (NSArray *)ways andJunctions: (NSArray *)junctions
+- (id) initWithWays: (NSArray *)ways andJunctions: (NSArray *)junctions
 {
-    self.vertices = [NSMutableArray new];
-    self.edges    = [NSMutableArray new];
+    self = [super init];
 
-    NSMutableDictionary *verticesInWays = [NSMutableDictionary new];
+    if(self) {
+        self.vertices = [NSMutableArray new];
+        self.edges    = [NSMutableArray new];
 
-    for (AFWay *w in ways) {
-        NSMutableArray *verticesInWay = [NSMutableArray new];
-        Vertex         *last          = nil;
-        for (AFNode    *n in w.nodesArray) {
-            Vertex *v = [self findVertexInGraph: n];
+        NSMutableDictionary *verticesInWays = [NSMutableDictionary new];
+
+        for (AFWay *w in ways) {
+            NSMutableArray *verticesInWay = [NSMutableArray new];
+            Vertex         *last          = nil;
+            for (AFNode    *n in w.nodesArray) {
+                Vertex *v = [self findVertexInGraph: n];
+                if (!v) {
+                    v = [Vertex new];
+                    v.position = [[AFNode alloc] initWithLatitude: n.latitude andLongitude: n.longitude];
+                    [self.vertices addObject: v];
+                }
+                [verticesInWay addObject: v];
+                if (last) {
+                    Edge *e = [[Edge alloc] initWithFirstVertex: last
+                                                   secondVertex: v
+                                                         length: [self distanceApproximateBetween: last.position
+                                                                                              and: v.position]];
+                    [self.edges addObject: e];
+                    [v.edges addObject: e];
+                    [last.edges addObject: e];
+                }
+                last = v;
+            }
+            [verticesInWays setObject: verticesInWay forKey: w];
+        }
+
+        for (AFJunction *j in junctions) {
+            Vertex *v = [self findVertexInGraph: j.coordinates];
             if (!v) {
                 v = [Vertex new];
-                v.position = [[AFNode alloc] initWithLatitude: n.latitude andLongitude: n.longitude];
+                v.position = [[AFNode alloc] initWithLatitude: j.coordinates.latitude andLongitude: j.coordinates.longitude];
                 [self.vertices addObject: v];
             }
-            [verticesInWay addObject: v];
-            if (last) {
-                Edge *e = [[Edge alloc] initWithFirstVertex: last
-                                               secondVertex: v
-                                                     length: [self distanceApproximateBetween: last.position
-                                                                                          and: v.position]];
-                [self.edges addObject: e];
-                [v.edges addObject: e];
-                [last.edges addObject: e];
-            }
-            last = v;
-        }
-        [verticesInWays setObject: verticesInWay forKey: w];
-    }
-
-    for (AFJunction *j in junctions) {
-        Vertex *v = [self findVertexInGraph: j.coordinates];
-        if (!v) {
-            v = [Vertex new];
-            v.position = [[AFNode alloc] initWithLatitude: j.coordinates.latitude andLongitude: j.coordinates.longitude];
-            [self.vertices addObject: v];
-        }
-        for (AFWay *w in j.waysArray) {
-            double      length = INFINITY;
-            Vertex      *near  = nil;
-            for (Vertex *v2 in [verticesInWays objectForKey: w]) {
-                double distance = [self distanceApproximateBetween: v.position and: v2.position];
-                if (length == INFINITY || length > distance) {
-                    near   = v2;
-                    length = distance;
+            for (AFWay *w in j.waysArray) {
+                double      length = INFINITY;
+                Vertex      *near  = nil;
+                for (Vertex *v2 in [verticesInWays objectForKey: w]) {
+                    double distance = [self distanceApproximateBetween: v.position and: v2.position];
+                    if (length == INFINITY || length > distance) {
+                        near   = v2;
+                        length = distance;
+                    }
                 }
-            }
-            if (near) {
-                Edge *e = [[Edge alloc] initWithFirstVertex: v secondVertex: near length: length];
-                if (v != near && [near.edges indexOfObject: e] == -1) {
-                    [self.edges addObject: e];
-                    [near.edges addObject: e];
-                    [v.edges addObject: e];
+                if (near) {
+                    Edge *e = [[Edge alloc] initWithFirstVertex: v secondVertex: near length: length];
+                    if (v != near && [near.edges indexOfObject: e] == -1) {
+                        [self.edges addObject: e];
+                        [near.edges addObject: e];
+                        [v.edges addObject: e];
+                    }
                 }
             }
         }
     }
+    return self;
 }
 
 - (NSArray *) findPathBetweenNode: (AFNode *)sourceNode andNode: (AFNode *)destinationNode
@@ -214,7 +219,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
     if (startVertex && endVertex) {
         NSArray *vertices = [self findPathBetweenVertex: startVertex andVertex: endVertex];
 
-        for (int i = vertices.count - 1; i >= 0; i--) {
+        for (int i = (int)vertices.count - 1; i >= 0; i--) {
             [path addObject: ((Vertex *) vertices[(NSUInteger) i]).position];
         }
     }

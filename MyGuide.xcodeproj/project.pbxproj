@@ -59,6 +59,10 @@
 		05E375CA18BA872B00A31630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C418BA872B00A31630 /* main.m */; };
 		05E375CB18BA872B00A31630 /* MWLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C618BA872B00A31630 /* MWLogging.m */; };
 		05E375CC18BA872B00A31630 /* MWLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C618BA872B00A31630 /* MWLogging.m */; };
+		05FA3485192FE90C007A730E /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC7614828F038538E66549 /* Graph.m */; };
+		05FA3486192FE930007A730E /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC793A45FEE0B15CC68841 /* Edge.m */; };
+		05FA3487192FE930007A730E /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC705BCAD342F6CE48BA1E /* Vertex.m */; };
+		05FA3488192FE930007A730E /* Heap.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC797A8A91D92CBF06B107 /* Heap.m */; };
 		3D5EF609189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF60B189637C000233B64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60A189637C000233B64 /* CoreGraphics.framework */; };
 		3D5EF60D189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
@@ -266,8 +270,6 @@
 		CAAC705BCAD342F6CE48BA1E /* Vertex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vertex.m; sourceTree = "<group>"; };
 		CAAC70F932EBC60FDF18AF30 /* Heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Heap.h; sourceTree = "<group>"; };
 		CAAC73F9CC48B196CF655823 /* Edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edge.h; sourceTree = "<group>"; };
-		CAAC749DC81D38F50B3C5972 /* DijkstraAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DijkstraAlgorithm.h; sourceTree = "<group>"; };
-		CAAC755DF045630988F00E6A /* DijkstraAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DijkstraAlgorithm.m; sourceTree = "<group>"; };
 		CAAC7614828F038538E66549 /* Graph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graph.m; sourceTree = "<group>"; };
 		CAAC781D144335586AF8E8D9 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		CAAC793A45FEE0B15CC68841 /* Edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edge.m; sourceTree = "<group>"; };
@@ -668,8 +670,6 @@
 		CAAC7FEF5ACB0DEDA8DA2989 /* Dijkstra */ = {
 			isa = PBXGroup;
 			children = (
-				CAAC755DF045630988F00E6A /* DijkstraAlgorithm.m */,
-				CAAC749DC81D38F50B3C5972 /* DijkstraAlgorithm.h */,
 				CAAC793A45FEE0B15CC68841 /* Edge.m */,
 				CAAC73F9CC48B196CF655823 /* Edge.h */,
 				CAAC705BCAD342F6CE48BA1E /* Vertex.m */,
@@ -818,6 +818,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05FA3486192FE930007A730E /* Edge.m in Sources */,
+				05FA3487192FE930007A730E /* Vertex.m in Sources */,
+				05FA3488192FE930007A730E /* Heap.m in Sources */,
+				05FA3485192FE90C007A730E /* Graph.m in Sources */,
 				055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */,
 				84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */,
 				84C2A1851907B21900354036 /* AFVisitedPOIsData.m in Sources */,

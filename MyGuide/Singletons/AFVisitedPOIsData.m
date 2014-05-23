@@ -25,15 +25,9 @@
 {
     self = [super init];
     if(self) {
-        [self initDefaults];
+        _visitedPOIs = [NSMutableSet new];
     }
     return self;
 }
-
-- (void)initDefaults
-{
-    _visitedPOIs = [[NSMutableArray alloc] init];
-}
-
 
 @end

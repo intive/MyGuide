@@ -6,4 +6,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Graph : NSObject
+
+- (id) initWithWays: (NSArray *)ways andJunctions: (NSArray *)junctions;
+
 @end
