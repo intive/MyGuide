@@ -69,7 +69,18 @@ public class DbDataManager {
 
 			@Override
 			public void run() {
-				mDbHelper.updateVistedAnimal(animalId, isVisited);
+				mDbHelper.updateVisitedAnimal(animalId, isVisited);
+			}
+		};
+		executor.execute(runnable);
+	}
+
+	public void resetAllVistedAnimals() {
+		Runnable runnable = new Runnable() {
+
+			@Override
+			public void run() {
+				mDbHelper.resetAllVisitedAnimal();
 			}
 		};
 		executor.execute(runnable);

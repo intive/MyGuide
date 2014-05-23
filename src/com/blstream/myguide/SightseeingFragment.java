@@ -9,6 +9,8 @@ import android.app.ActionBar;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -36,7 +38,6 @@ import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.Node;
 import com.blstream.myguide.zoolocations.Track;
 import com.blstream.myguide.zoolocations.Way;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
@@ -51,6 +52,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.blstream.myguide.database.*;
 
 /**
  * Main fragment of application
@@ -91,6 +93,8 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	private boolean mLocationLogVisible;
 	private BottomAnimalFragment mBottomAnimalFragment;
 	private AnimalDistance mLastAnimalDistance;
+
+	private DbDataManager mDbManager;
 
 	public static SightseeingFragment newInstance() {
 		return new SightseeingFragment();
@@ -134,6 +138,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		mLocationUpdater.startUpdating(this);
 		mLastAnimalDistance = null;
 		mBottomAnimalFragment = new BottomAnimalFragment();
+		mDbManager = DbDataManager.getInstance(getActivity());
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(
@@ -509,15 +514,34 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 					.position(
 							new LatLng(a.getNode().getLatitude(), a.getNode()
 									.getLongitude()))
-					.title(a.getName(Locale.getDefault().getLanguage()))
-					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal))), a);
+					.title(a.getName(Locale.getDefault().getLanguage()))), a);
 		}
 	}
 
-	private void displayAnimalMarkers(boolean display) {
-		for (Marker m : mAnimalMarkersMap.keySet()) {
-			m.setVisible(display);
+	private void displayAnimalMarkers(final boolean display) {
+		for (final Marker m : mAnimalMarkersMap.keySet()) {
+			mDbManager.checkVisitAnimal(new DbDataManager.OnCheckVisitAnimalListener() {
+				@Override
+				public void onCheckLoaded(boolean isVisited) {
+					if (isVisited) {
+						setMarkerIcon(m, R.drawable.ic_animal_visited, display);
+					} else {
+						setMarkerIcon(m, R.drawable.ic_animal, display);
+					}
+
+				}
+			}, mAnimalMarkersMap.get(m).getId());
 		}
+	}
+
+	private void setMarkerIcon(final Marker m, final int id, final boolean display) {
+		new Handler(Looper.getMainLooper()).post(new Runnable() {
+			@Override
+			public void run() {
+				m.setIcon(BitmapDescriptorFactory.fromResource(id));
+				m.setVisible(display);
+			}
+		});
 	}
 
 	private void setUpAnimalCamera(Marker marker) {

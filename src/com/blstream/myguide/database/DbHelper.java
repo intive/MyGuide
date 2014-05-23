@@ -89,16 +89,36 @@ public class DbHelper extends SQLiteOpenHelper {
 		return result;
 	}
 
-	public void updateVistedAnimal(int animalId, boolean isVisited) {
+	public void updateVisitedAnimal(int animalId, boolean isVisited) {
+        mDatabase.beginTransaction();
+
 		ContentValues values = new ContentValues();
 
 		values.put(DbTable.AnimalTable.Column.VISITED, String.valueOf(isVisited));
 
-		mDatabase.update(DbTable.AnimalTable.TABLE_NAME, values,
-				DbTable.AnimalTable.Column.ANIMAL_ID + " = " + Integer.toString(animalId), null);
+		mDatabase.updateWithOnConflict(DbTable.AnimalTable.TABLE_NAME, values,
+				DbTable.AnimalTable.Column.ANIMAL_ID + " = " + Integer.toString(animalId), null, SQLiteDatabase.CONFLICT_REPLACE);
+
+        mDatabase.setTransactionSuccessful();
+        mDatabase.endTransaction();
 
 		Log.d(LOG_TAG, "Update animal id: " + animalId + " visited: " + isVisited);
 	}
+
+    public void resetAllVisitedAnimal() {
+        mDatabase.beginTransaction();
+
+        ContentValues values = new ContentValues();
+
+        values.put(DbTable.AnimalTable.Column.VISITED, String.valueOf(false));
+
+        mDatabase.updateWithOnConflict(DbTable.AnimalTable.TABLE_NAME, values, null, null, SQLiteDatabase.CONFLICT_REPLACE);
+
+        mDatabase.setTransactionSuccessful();
+        mDatabase.endTransaction();
+
+        Log.d(LOG_TAG, "Update all animal to not visited");
+    }
 
 	public boolean getVisitAnimal(int animalId) {
 		boolean isVisited = false;
