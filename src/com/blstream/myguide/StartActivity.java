@@ -72,8 +72,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private TrackAdapter mTrackListAdapter;
 	private ListView mTrackListView;
 	private ArrayList<Track> mTrackList;
-	private int mAnimalsCount;
-	private int mCheckedAnimals;
 
 	private SearchView mSearchView;
 
@@ -125,8 +123,8 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		setUpDrawerListView();
 
 		createTrackList();
-		updateVisited();
 		setUpTrackList();
+		updateVisited();
 
 		if (!mFarFromZooDialogWasShown) {
 			mDistanceFromZooGuard = new DistanceFromZooGuard(getSupportFragmentManager(),
@@ -251,30 +249,13 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * This method check visited animals and update Track
 	 */
 	private void updateVisited() {
-		mCheckedAnimals = 0;
-		mAnimalsCount = 0;
-
 		for (final Track track : mTrackList) {
-			mAnimalsCount += track.getAnimals().size();
 			track.setVisited(0);
 			for (Animal animal : track.getAnimals()) {
-				mDbManager.checkVisitAnimal(new DbDataManager.OnCheckVisitAnimalListener() {
-					@Override
-					public void onCheckLoaded(boolean isVisited) {
-						if (isVisited) track.setVisited(track.getVisited() + 1);
-						refillListAdapter();
-					}
-				}, animal.getId());
+				if (animal.getVisited()) track.setVisited(track.getVisited() + 1);
 			}
 		}
-	}
-
-	/**
-	 * This method update TrackAdapter when all tracks are updated
-	 */
-	private void refillListAdapter() {
-		++mCheckedAnimals;
-		if (mCheckedAnimals == mAnimalsCount) mTrackListAdapter.refill();
+		mTrackListAdapter.refill();
 	}
 
 	/** Sets up track list (right drawer). */
@@ -491,6 +472,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 	/**
 	 * Checks if user is nearby any of the animals, to mark animal as visited.
+	 * 
 	 * @param location User's location
 	 */
 	private void checkAnimalProximity(Location location) {
@@ -504,11 +486,16 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 						this.getString(R.string.visiting_animal_toast)
 								+ a.getName(Locale.getDefault().getLanguage()), Toast.LENGTH_SHORT)
 						.show();
-				// TODO mark animal as visited
 
 				// Update animal in database
 				mDbManager.updateAnimalInDb(a.getId(), true);
+				a.setVisited(true);
+                //update track listview adapter
 				updateVisited();
+                //update animal marker color
+				SightseeingFragment fragment = (SightseeingFragment) getSupportFragmentManager()
+						.findFragmentByTag(BundleConstants.FRAGMENT_SIGHTSEEING);
+				fragment.updateAnimalVisitedMarker(a.getId());
 
 				if (isVisitedAnimalPartOfTrack(a)) {
 					Log.i("StartActivity", "Visited animal from explored track.");

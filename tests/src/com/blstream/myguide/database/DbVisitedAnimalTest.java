@@ -21,12 +21,12 @@ public class DbVisitedAnimalTest extends AndroidTestCase {
 		mAnimalsList.add(animal1);
 
 		dbManager.insertAnimalsListToDb(mAnimalsList);
-		dbManager.checkVisitAnimal(new DbDataManager.OnCheckVisitAnimalListener() {
-			@Override
-			public void onCheckLoaded(boolean isVisited) {
-				assertFalse(isVisited);
-			}
-		}, mAnimalsList.get(0).getId());
+		dbManager.getIsAnimalVisited(new DbDataManager.OnCheckVisitAnimalListener() {
+            @Override
+            public void onCheckLoaded(boolean isVisited) {
+                assertFalse(isVisited);
+            }
+        }, mAnimalsList.get(0).getId());
 	}
 
 	public void testIsVisitedAnimal() {
@@ -38,11 +38,11 @@ public class DbVisitedAnimalTest extends AndroidTestCase {
 		animalsList.add(animal2);
 
 		dbManager.updateAnimalInDb(animalsList.get(0).getId(), true);
-		dbManager.checkVisitAnimal(new DbDataManager.OnCheckVisitAnimalListener() {
-			@Override
-			public void onCheckLoaded(boolean isVisited) {
-				assertTrue(isVisited);
-			}
-		}, animalsList.get(0).getId());
+		dbManager.getIsAnimalVisited(new DbDataManager.OnCheckVisitAnimalListener() {
+            @Override
+            public void onCheckLoaded(boolean isVisited) {
+                assertTrue(isVisited);
+            }
+        }, animalsList.get(0).getId());
 	}
 }

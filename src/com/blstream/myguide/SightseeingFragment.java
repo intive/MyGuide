@@ -94,8 +94,6 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	private BottomAnimalFragment mBottomAnimalFragment;
 	private AnimalDistance mLastAnimalDistance;
 
-	private DbDataManager mDbManager;
-
 	public static SightseeingFragment newInstance() {
 		return new SightseeingFragment();
 	}
@@ -138,7 +136,6 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		mLocationUpdater.startUpdating(this);
 		mLastAnimalDistance = null;
 		mBottomAnimalFragment = new BottomAnimalFragment();
-		mDbManager = DbDataManager.getInstance(getActivity());
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(
@@ -233,6 +230,17 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 			}
 		}
 	}
+
+    /**
+     * Method change marker color where animal.id == id
+     * @param id animal id to change marker color
+     */
+    public void updateAnimalVisitedMarker(int id) {
+        for (Marker m : mAnimalMarkersMap.keySet()) {
+            if (mAnimalMarkersMap.get(m).getId() == id) m.setIcon(BitmapDescriptorFactory
+                    .fromResource(R.drawable.ic_animal_visited));
+        }
+    }
 
 	private void setUpSearchViewListeners() {
 		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -514,34 +522,18 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 					.position(
 							new LatLng(a.getNode().getLatitude(), a.getNode()
 									.getLongitude()))
-					.title(a.getName(Locale.getDefault().getLanguage()))), a);
+					.title(a.getName(Locale.getDefault().getLanguage()))
+					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal))), a);
 		}
 	}
 
 	private void displayAnimalMarkers(final boolean display) {
 		for (final Marker m : mAnimalMarkersMap.keySet()) {
-			mDbManager.checkVisitAnimal(new DbDataManager.OnCheckVisitAnimalListener() {
-				@Override
-				public void onCheckLoaded(boolean isVisited) {
-					if (isVisited) {
-						setMarkerIcon(m, R.drawable.ic_animal_visited, display);
-					} else {
-						setMarkerIcon(m, R.drawable.ic_animal, display);
-					}
-
-				}
-			}, mAnimalMarkersMap.get(m).getId());
-		}
-	}
-
-	private void setMarkerIcon(final Marker m, final int id, final boolean display) {
-		new Handler(Looper.getMainLooper()).post(new Runnable() {
-			@Override
-			public void run() {
-				m.setIcon(BitmapDescriptorFactory.fromResource(id));
-				m.setVisible(display);
+			if (mAnimalMarkersMap.get(m).getVisited()) {
+				m.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal_visited));
 			}
-		});
+			m.setVisible(display);
+		}
 	}
 
 	private void setUpAnimalCamera(Marker marker) {

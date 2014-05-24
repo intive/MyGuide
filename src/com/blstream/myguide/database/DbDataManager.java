@@ -86,13 +86,13 @@ public class DbDataManager {
 		executor.execute(runnable);
 	}
 
-	public void checkVisitAnimal(final OnCheckVisitAnimalListener listener, final int animalId) {
+	public void getIsAnimalVisited(final OnCheckVisitAnimalListener listener, final int animalId) {
 		Runnable runnable = new Runnable() {
 
 			@Override
 			public void run() {
 				if (listener != null) {
-					listener.onCheckLoaded(mDbHelper.getVisitAnimal(animalId));
+					listener.onCheckLoaded(mDbHelper.getIsAnimalVisited(animalId));
 				}
 			}
 		};

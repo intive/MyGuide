@@ -90,37 +90,39 @@ public class DbHelper extends SQLiteOpenHelper {
 	}
 
 	public void updateVisitedAnimal(int animalId, boolean isVisited) {
-        mDatabase.beginTransaction();
+		mDatabase.beginTransaction();
 
 		ContentValues values = new ContentValues();
 
 		values.put(DbTable.AnimalTable.Column.VISITED, String.valueOf(isVisited));
 
 		mDatabase.updateWithOnConflict(DbTable.AnimalTable.TABLE_NAME, values,
-				DbTable.AnimalTable.Column.ANIMAL_ID + " = " + Integer.toString(animalId), null, SQLiteDatabase.CONFLICT_REPLACE);
+				DbTable.AnimalTable.Column.ANIMAL_ID + " = " + Integer.toString(animalId), null,
+				SQLiteDatabase.CONFLICT_REPLACE);
 
-        mDatabase.setTransactionSuccessful();
-        mDatabase.endTransaction();
+		mDatabase.setTransactionSuccessful();
+		mDatabase.endTransaction();
 
 		Log.d(LOG_TAG, "Update animal id: " + animalId + " visited: " + isVisited);
 	}
 
-    public void resetAllVisitedAnimal() {
-        mDatabase.beginTransaction();
+	public void resetAllVisitedAnimal() {
+		mDatabase.beginTransaction();
 
-        ContentValues values = new ContentValues();
+		ContentValues values = new ContentValues();
 
-        values.put(DbTable.AnimalTable.Column.VISITED, String.valueOf(false));
+		values.put(DbTable.AnimalTable.Column.VISITED, String.valueOf(false));
 
-        mDatabase.updateWithOnConflict(DbTable.AnimalTable.TABLE_NAME, values, null, null, SQLiteDatabase.CONFLICT_REPLACE);
+		mDatabase.updateWithOnConflict(DbTable.AnimalTable.TABLE_NAME, values, null, null,
+				SQLiteDatabase.CONFLICT_REPLACE);
 
-        mDatabase.setTransactionSuccessful();
-        mDatabase.endTransaction();
+		mDatabase.setTransactionSuccessful();
+		mDatabase.endTransaction();
 
-        Log.d(LOG_TAG, "Update all animal to not visited");
-    }
+		Log.d(LOG_TAG, "Update all animal to not visited");
+	}
 
-	public boolean getVisitAnimal(int animalId) {
+	public boolean getIsAnimalVisited(int animalId) {
 		boolean isVisited = false;
 
 		Cursor cursor = mDatabase.query(DbTable.AnimalTable.TABLE_NAME, null,

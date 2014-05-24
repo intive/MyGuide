@@ -25,9 +25,10 @@ import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.ParserHelper;
 import com.blstream.myguide.zoolocations.Way;
 import com.blstream.myguide.zoolocations.ZooLocationsData;
-import com.blstream.myguide.database.*;
+import com.blstream.myguide.database.DbDataManager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.blstream.myguide.zoolocations.Animal;
 
 /**
  * Display splash screen while loading assets in the backgroud. Splash will be
@@ -200,6 +201,8 @@ public class SplashActivity extends FragmentActivity {
 
 		addDataToDatabase();
 		Log.i(LOG_TAG, "animals added to database");
+
+        updateAnimalsObjectFromDatabase();
 	}
 
 	private void prepareGraph() {
@@ -237,6 +240,17 @@ public class SplashActivity extends FragmentActivity {
 			}
 		}
 	}
+
+    private synchronized void updateAnimalsObjectFromDatabase() {
+        for (final Animal animal : data.getAnimals()) {
+            mDbManager.getIsAnimalVisited(new DbDataManager.OnCheckVisitAnimalListener() {
+                @Override
+                public void onCheckLoaded(boolean isVisited) {
+                    if (isVisited) animal.setVisited(true);
+                }
+            }, animal.getId());
+        }
+    }
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
