@@ -63,6 +63,7 @@
 		05FA3486192FE930007A730E /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC793A45FEE0B15CC68841 /* Edge.m */; };
 		05FA3487192FE930007A730E /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC705BCAD342F6CE48BA1E /* Vertex.m */; };
 		05FA3488192FE930007A730E /* Heap.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC797A8A91D92CBF06B107 /* Heap.m */; };
+		05FA348B192FEBF0007A730E /* GraphDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FA348A192FEBF0007A730E /* GraphDrawer.m */; };
 		3D5EF609189637C000233B64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF608189637C000233B64 /* Foundation.framework */; };
 		3D5EF60B189637C000233B64 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60A189637C000233B64 /* CoreGraphics.framework */; };
 		3D5EF60D189637C000233B64 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5EF60C189637C000233B64 /* UIKit.framework */; };
@@ -209,6 +210,8 @@
 		05E375C618BA872B00A31630 /* MWLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MWLogging.m; path = "Supporting Files/MWLogging.m"; sourceTree = "<group>"; };
 		05E375C718BA872B00A31630 /* MyGuide-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MyGuide-Info.plist"; path = "Supporting Files/MyGuide-Info.plist"; sourceTree = "<group>"; };
 		05E375C818BA872B00A31630 /* MyGuide-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyGuide-Prefix.pch"; path = "Supporting Files/MyGuide-Prefix.pch"; sourceTree = "<group>"; };
+		05FA3489192FEBF0007A730E /* GraphDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDrawer.h; sourceTree = "<group>"; };
+		05FA348A192FEBF0007A730E /* GraphDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDrawer.m; sourceTree = "<group>"; };
 		3D5EF605189637C000233B64 /* MyGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5EF608189637C000233B64 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3D5EF60A189637C000233B64 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -678,6 +681,8 @@
 				CAAC70F932EBC60FDF18AF30 /* Heap.h */,
 				CAAC7614828F038538E66549 /* Graph.m */,
 				CAAC781D144335586AF8E8D9 /* Graph.h */,
+				05FA3489192FEBF0007A730E /* GraphDrawer.h */,
+				05FA348A192FEBF0007A730E /* GraphDrawer.m */,
 			);
 			path = Dijkstra;
 			sourceTree = "<group>";
@@ -876,6 +881,7 @@
 				0524326C190B9B5A00FC3242 /* Opening.m in Sources */,
 				050E8530190B9A3A00B13473 /* InformationParser.m in Sources */,
 				05243275190BB52100FC3242 /* AbstractParser.m in Sources */,
+				05FA348B192FEBF0007A730E /* GraphDrawer.m in Sources */,
 				0524326F190B9B6E00FC3242 /* Ticket.m in Sources */,
 				84BA95E219118CE8008A4237 /* AFEventsViewController.m in Sources */,
 				8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */,

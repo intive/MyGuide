@@ -26,32 +26,24 @@
 {
     if(!self) {
         self = [super init];
-        _waysArray      = [[NSArray alloc] init];
-        _animalsPL = [[NSArray alloc] init];
-        _animalsEN = [[NSArray alloc] init];
-        _junctionsArray = [[NSArray alloc] init];
+        _waysArray      = [NSArray new];
+        _animalsPL      = [NSArray new];
+        _animalsEN      = [NSArray new];
+        _junctionsArray = [NSArray new];
+        _graph          = [Graph   new];
+        _sharedSettings = [Settings sharedSettingsData];
     }
     return self;
 }
 
 - (NSArray *)localizeAnimalsArray
 {
-    _sharedSettings = [Settings sharedSettingsData];
     if([_sharedSettings.currentLanguageCode isEqualToString:@"PL"]){
         return _animalsPL;
     }
     else {
         return _animalsEN;
     }
-}
-- (void)setWaysArray:(NSArray *)waysArray
-{
-    _waysArray = waysArray;
-}
-
-- (void)setJunctionsArray:(NSArray *)junctionsArray
-{
-    _junctionsArray = junctionsArray;
 }
 
 @end

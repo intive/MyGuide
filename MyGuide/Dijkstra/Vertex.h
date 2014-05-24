@@ -15,5 +15,6 @@
 @property (nonatomic) NSInteger      heapIndex;
 
 - (NSComparisonResult) compare: (Vertex *)other;
+- (BOOL) isEqual: (id)object;
 
 @end

@@ -142,11 +142,11 @@ didStartElement: (NSString *)elementName
         _animalsArrayEN = nil;
     }
     else if ([elementName isEqualToString: kXmlWays]) {
-        [self.sharedData setWaysArray: _waysArray];
+        self.sharedData.waysArray = _waysArray;
         _nodesArray = nil;
     }
     else if ([elementName isEqualToString: kXmlJunctions]) {
-        [self.sharedData setJunctionsArray: _junctionsArray];
+        self.sharedData.junctionsArray = _junctionsArray;
         _junctionsArray = nil;
     }
     else if ([elementName isEqualToString: kXmlAnimal]) {
@@ -169,7 +169,7 @@ didStartElement: (NSString *)elementName
     }
     else if ([elementName isEqualToString: kXmlNode]) {
         if (_nodesArray == nil) {
-            _nodesArray = [[NSMutableArray new];
+            _nodesArray = [NSMutableArray new];
         }
         [_nodesArray addObject: _currentNode];
     }
@@ -214,7 +214,8 @@ didStartElement: (NSString *)elementName
 - (void) parserDidEndDocument: (NSXMLParser *)parser
 {
     if (!_parsingError) {
-        self.sharedData.graph = [[Graph alloc] initWithWays:self.waysArray andJunctions:self.junctionsArray];
+        self.sharedData.graph = [[Graph alloc] initWithWays:self.sharedData.waysArray
+                                               andJunctions:self.sharedData.junctionsArray];
 
         MWLogInfo(@"animals count: %d", [self.sharedData.animalsArray count]);
         MWLogInfo(@"ways count: %d", [self.sharedData.waysArray count]);

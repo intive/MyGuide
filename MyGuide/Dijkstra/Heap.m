@@ -20,6 +20,10 @@
     if (self) {
         _lastIndex = 0;
         _values    = [NSMutableArray arrayWithCapacity: capacity + 1];
+        for (NSInteger i = 0; i < capacity + 1; ++i)
+        {
+            [_values addObject: [NSNull null]];
+        }
     }
     return self;
 }
@@ -69,7 +73,7 @@
         if (rightIndex <= self.lastIndex && [self.values[rightIndex] compare: self.values[leftIndex]] == NSOrderedDescending) {
             smallest = rightIndex;
         }
-        if ([self.values[smallest] compare: vertex] == NSOrderedDescending) break;
+        if ([(Vertex *)self.values[smallest] compare: vertex] == NSOrderedDescending) break;
         self.values[index] = self.values[smallest];
         ((Vertex *) self.values[index]).heapIndex = index;
         index = smallest;

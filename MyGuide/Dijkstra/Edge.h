@@ -13,5 +13,6 @@
 @property (nonatomic) Vertex *secondVertex;
 
 - (id) initWithFirstVertex: (Vertex *)firstVertex secondVertex: (Vertex *)secondVertex length: (double)length;
+- (BOOL) isEqual: (id)object;
 
 @end

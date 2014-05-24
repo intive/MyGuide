@@ -23,4 +23,17 @@
     return NSOrderedSame;
 }
 
+- (BOOL) isEqual: (id)object {
+    if (self == object) {
+        return YES;
+    }
+    
+    if (![object isKindOfClass:[Vertex class]]) {
+        return NO;
+    }
+    
+    Vertex *other = (Vertex *)object;
+    return self.weight == other.weight && [self.edges isEqualToArray: other.edges];
+}
+
 @end

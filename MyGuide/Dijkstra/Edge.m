@@ -18,19 +18,20 @@
     return self;
 }
 
-- (BOOL) isEqual: (Edge *)otherEdge
+- (BOOL) isEqual: (id)object
 {
-    if (self == otherEdge) {
+    if (self == object) {
         return YES;
     }
 
-    if (![otherEdge isKindOfClass: [Edge class]]) {
+    if (![object isKindOfClass: [Edge class]]) {
         return NO;
     }
-
-    return ([self.firstVertex isEqual: otherEdge.firstVertex] && [self.secondVertex isEqual: otherEdge.secondVertex])
+    
+    Edge *other = (Edge *)object;
+    return ([self.firstVertex isEqual: other.firstVertex] && [self.secondVertex isEqual: other.secondVertex])
            ||
-           ([self.firstVertex isEqual: otherEdge.secondVertex] && [self.secondVertex isEqual: otherEdge.firstVertex]);
+           ([self.firstVertex isEqual: other.secondVertex] && [self.secondVertex isEqual: other.firstVertex]);
 }
 
 @end

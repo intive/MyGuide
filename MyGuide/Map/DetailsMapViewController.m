@@ -22,7 +22,7 @@
 
 double const ZOOM_LEVEL = 15;
 
-- (instancetype)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder: (NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self) {
@@ -35,6 +35,9 @@ double const ZOOM_LEVEL = 15;
 {
     [super viewDidLoad];
     self.fitToPath = YES;
+}
+
+- (void) viewWillAppear: (BOOL) animated {
     [self drawCoordinatesOnMap];
     [self setupMapView];
     
@@ -69,6 +72,7 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
 
 - (void) drawCoordinatesOnMap
 {
+    [self.mapView removeAnnotations: self.mapView.annotations];
     self.destinationCoordinates         = CLLocationCoordinate2DMake(self.latitude.doubleValue, self.longitude.doubleValue);
     MKPointAnnotation *annotationPoint  = [MKPointAnnotation new];
     annotationPoint.title               = self.nameToDisplay;
@@ -124,7 +128,8 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     }];
 }
 
-- (MKOverlayRenderer *) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+- (MKOverlayRenderer *) mapView:(MKMapView *)mapView
+             rendererForOverlay:(id<MKOverlay>)overlay
 {
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline: overlay];
     renderer.strokeColor         = [UIColor orangeColor];

@@ -4,7 +4,6 @@
 //
 
 #import "Graph.h"
-#import "AFNode.h"
 #import "Vertex.h"
 #import "Edge.h"
 #import "Heap.h"
@@ -82,7 +81,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
     Vertex      *nearVertex = nil;
     Edge        *nearEdge   = nil;
     for (Vertex *v in self.vertices) {
-        double l = [self findDistanceBetweenNode: node andNode: v.position];
+        double l = [self distanceApproximateBetween: node and: v.position];
         if (l < minLength || minLength == INFINITY) {
             nearVertex = v;
             minLength  = l;
@@ -101,7 +100,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
             double x3       = x2 + (x1 - x2) * t;
             double y3       = (y2 + (y1 - y2) * t) / LON_COEFFICIENT;
             AFNode *newNode = [[AFNode alloc] initWithLatitude: [NSString stringWithFormat: @"%f", x3] andLongitude: [NSString stringWithFormat: @"%f", y3]];
-            double l        = [self findDistanceBetweenNode: node andNode: newNode];
+            double l = [self distanceApproximateBetween: node and: newNode];
             if (l < minLength) {
                 minLength  = l;
                 nearVertex = [Vertex new];
@@ -197,7 +196,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
                 }
                 if (near) {
                     Edge *e = [[Edge alloc] initWithFirstVertex: v secondVertex: near length: length];
-                    if (v != near && [near.edges indexOfObject: e] == -1) {
+                    if (![v isEqual: near] && [near.edges indexOfObject: e] == -1) {
                         [self.edges addObject: e];
                         [near.edges addObject: e];
                         [v.edges addObject: e];
@@ -230,19 +229,18 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
 - (NSArray *) findPathBetweenVertex: (Vertex *)sourceVertex andVertex: (Vertex *)destinationVertex
 {
     for (Vertex *v in self.vertices) {
-        v.weight = INFINITY;
+        v.weight      = INFINITY;
+        v.predecessor = nil;
     }
     sourceVertex.weight      = 0;
-    sourceVertex.predecessor = nil;
 
     Heap *heap = [[Heap alloc] initWithCapacity: [self.vertices count]];
-    [heap add: sourceVertex];
 
-    Vertex *u = [heap poll];
-    while (u && u != destinationVertex) {
+    Vertex *u = sourceVertex;
+    while (u && ![u isEqual: destinationVertex]) {
         for (Edge *e in u.edges) {
             Vertex *v = e.firstVertex;
-            if (v == u) {
+            if ([v isEqual: u]) {
                 v = e.secondVertex;
             }
             if (v.weight == INFINITY) {
@@ -260,7 +258,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
     }
 
     NSMutableArray *path = [NSMutableArray new];
-    if (!destinationVertex.predecessor && sourceVertex != destinationVertex) return path;
+    if (!destinationVertex.predecessor && ![sourceVertex isEqual: destinationVertex]) return path;
     [path addObject: destinationVertex];
     while (destinationVertex.predecessor) {
         [path addObject: destinationVertex.predecessor];
