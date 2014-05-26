@@ -11,6 +11,7 @@ public class Track implements Serializable {
 	private HashMap<String, String> mNames;
 	private HashMap<String, String> mDescriptions;
 	private ArrayList<Animal> mAnimals;
+	private int mVisited;
 
 	public Track() {
 		mNames = new HashMap<String, String>();
@@ -60,6 +61,14 @@ public class Track implements Serializable {
 
 	public ArrayList<Animal> getAnimals() {
 		return mAnimals;
+	}
+
+	public void setVisited(int visited) {
+		mVisited = visited;
+	}
+
+	public int getVisited() {
+		return mVisited;
 	}
 
 }

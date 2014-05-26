@@ -74,8 +74,8 @@ public class FragmentTrackDetails extends Fragment {
 
 		imgvTrackDetails.setImageResource(getResources().getIdentifier(
 				mTrack.getImage().substring(4), "drawable", getActivity().getPackageName()));
-		txtvTrackProgress.setText(1 + "/" + mTrack.getAnimals().size());
-		pbTrackDetails.setProgress(1);
+		txtvTrackProgress.setText(mTrack.getVisited() + "/" + mTrack.getAnimals().size());
+		pbTrackDetails.setProgress(mTrack.getVisited());
 		pbTrackDetails.setMax(mTrack.getAnimals().size());
 		txtvTrackDescription.setText(mTrack.getDescription() + "");
 	}

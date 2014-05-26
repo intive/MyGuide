@@ -9,6 +9,8 @@ import android.app.ActionBar;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -36,7 +38,6 @@ import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.Node;
 import com.blstream.myguide.zoolocations.Track;
 import com.blstream.myguide.zoolocations.Way;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
@@ -51,6 +52,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.blstream.myguide.database.*;
 
 /**
  * Main fragment of application
@@ -228,6 +230,17 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 			}
 		}
 	}
+
+    /**
+     * Method change marker color where animal.id == id
+     * @param id animal id to change marker color
+     */
+    public void updateAnimalVisitedMarker(int id) {
+        for (Marker m : mAnimalMarkersMap.keySet()) {
+            if (mAnimalMarkersMap.get(m).getId() == id) m.setIcon(BitmapDescriptorFactory
+                    .fromResource(R.drawable.ic_animal_visited));
+        }
+    }
 
 	private void setUpSearchViewListeners() {
 		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -514,8 +527,11 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		}
 	}
 
-	private void displayAnimalMarkers(boolean display) {
-		for (Marker m : mAnimalMarkersMap.keySet()) {
+	private void displayAnimalMarkers(final boolean display) {
+		for (final Marker m : mAnimalMarkersMap.keySet()) {
+			if (mAnimalMarkersMap.get(m).getVisited()) {
+				m.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal_visited));
+			}
 			m.setVisible(display);
 		}
 	}

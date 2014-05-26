@@ -1,3 +1,4 @@
+
 package com.blstream.myguide;
 
 /**
@@ -39,5 +40,8 @@ public class BundleConstants {
 
 	// FONT PATH REGULAR
 	public static final String FONT_PATH_REGULAR = "fonts/Roboto-Regular.ttf";
+
+	public static final String KEY_LOAD_DATABASE = "load_database";
+	public static final String KEY_SHARED_PREFERENCES = "com.blstream.myguide.database";
 
 }

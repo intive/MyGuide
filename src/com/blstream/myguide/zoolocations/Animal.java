@@ -15,6 +15,7 @@ public class Animal extends XmlObject implements Serializable, Comparable<Animal
 	private Node mNode;
 	private Description mDescriptionAdult;
 	private Description mDescriptionChild;
+	private boolean mVisited;
 
 	public Animal() {
 		mNames = new HashMap<String, String>();
@@ -70,6 +71,14 @@ public class Animal extends XmlObject implements Serializable, Comparable<Animal
 
 	public int getId() {
 		return mId;
+	}
+
+	public void setVisited(boolean visited) {
+		mVisited = visited;
+	}
+
+	public boolean getVisited() {
+		return mVisited;
 	}
 
 	@Override

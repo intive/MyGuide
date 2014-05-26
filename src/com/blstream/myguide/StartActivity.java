@@ -2,6 +2,8 @@
 package com.blstream.myguide;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import android.app.ActionBar;
@@ -9,6 +11,7 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -41,19 +44,18 @@ import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Track;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.blstream.myguide.database.*;
 
 import com.blstream.myguide.zoolocations.*;
 
-
 /**
  * Created by Piotrek on 2014-04-01. Fixed by Angieszka (fragment swap) on
- * 2014-04-04.
+ * 2014-04-04.Piotrek add method to update visted Animal on 2014-05-23.
  */
 public class StartActivity extends FragmentActivity implements NavigationConfirmation, LocationUser {
-	
+
 	/**
-	 * The track user is following.
-	 * NULL if user isn't following any.
+	 * The track user is following. NULL if user isn't following any.
 	 */
 	private static Track sExploredTrack = null;
 	private static final double EARTH_RADIUS = 6371;
@@ -66,18 +68,20 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private String[] mDrawerMenuItems;
 	private ListView mDrawerList;
 
-	private TrackListAdapter mTrackListAdapter;
-	private ListView mTrackList;
-	private View mTrackHeader;
+	private TrackAdapter mTrackListAdapter;
+	private ListView mTrackListView;
+	private ArrayList<Track> mTrackList;
 
 	private SearchView mSearchView;
 
 	private boolean mFarFromZooDialogWasShown;
 	private boolean mDistanceFromZooGuardIsBinding;
 	private DistanceFromZooGuard mDistanceFromZooGuard;
-	
+
 	private double mDistanceFromAnimal;
 	private ArrayList<Animal> mAnimals;
+
+	private DbDataManager mDbManager;
 
 	private Fragment createInformationFragment() {
 		return FragmentTabManager.newInstance(
@@ -94,6 +98,8 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
+
+		mDbManager = DbDataManager.getInstance(this);
 
 		if (savedInstanceState == null) {
 			mFragmentManager = getSupportFragmentManager();
@@ -114,13 +120,16 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			mActionBar.setDisplayHomeAsUpEnabled(true);
 		}
 		setUpDrawerListView();
+
+		createTrackList();
 		setUpTrackList();
+		updateVisited();
 
 		if (!mFarFromZooDialogWasShown) {
 			mDistanceFromZooGuard = new DistanceFromZooGuard(getSupportFragmentManager(),
 					((MyGuideApp) getApplication()).getSettings());
 		}
-		
+
 		mAnimals = ((MyGuideApp) this.getApplication()).getZooData().getAnimals();
 		mDistanceFromAnimal = ((MyGuideApp) this.getApplication())
 				.getSettings().getValueAsDouble(Settings.KEY_EXTER_RADIOUS);
@@ -137,7 +146,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		mSearchView.setOnSearchClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				mDrawerLayout.closeDrawer(mTrackList);
+				mDrawerLayout.closeDrawer(mTrackListView);
 				mDrawerLayout.closeDrawer(mDrawerList);
 			}
 		});
@@ -160,7 +169,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			}
 		}
 	}
-	
+
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -200,18 +209,60 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 	}
 
+	/**
+	 * This method create List with all track ( include header - exploration )
+	 */
+	private void createTrackList() {
+		mTrackList = new ArrayList<Track>();
+		mTrackList.add(createHeaderListTrack());
+		for (Track track : ((MyGuideApp) this.getApplication()).getZooData().getTracks()) {
+			mTrackList.add(track);
+		}
+	}
+
+	/**
+	 * This method create Exploration track ( All track information in this one)
+	 * 
+	 * @return Exploration Track
+	 */
+	private Track createHeaderListTrack() {
+		Track exploration = new Track();
+		HashMap<String, String> names = new HashMap<String, String>();
+		ArrayList<Animal> animals = new ArrayList<Animal>();
+
+		names.put("en", "Exploration");
+		names.put("pl", "Eksploracja");
+		exploration.setNames(names);
+
+		for (Track track : ((MyGuideApp) getApplication()).getZooData().getTracks()) {
+			for (Animal animal : track.getAnimals()) {
+				animals.add(animal);
+			}
+		}
+		exploration.setAnimals(animals);
+
+		return exploration;
+	}
+
+	/**
+	 * This method check visited animals and update Track
+	 */
+	private void updateVisited() {
+		for (final Track track : mTrackList) {
+			track.setVisited(0);
+			for (Animal animal : track.getAnimals()) {
+				if (animal.getVisited()) track.setVisited(track.getVisited() + 1);
+			}
+		}
+		mTrackListAdapter.refill();
+	}
+
 	/** Sets up track list (right drawer). */
 	public void setUpTrackList() {
-		mTrackList = (ListView) findViewById(R.id.lvTracks);
-		ArrayList<Track> tracks = new ArrayList<Track>();
-		mTrackListAdapter = new TrackListAdapter(this, R.layout.right_drawer_item, tracks);
-		mTrackHeader = getLayoutInflater().inflate(R.layout.right_drawer_item, null);
-		mTrackList.addHeaderView(mTrackHeader);
-
-		mTrackList.setAdapter(mTrackListAdapter);
-		mTrackListAdapter.clear();
-		mTrackListAdapter.addAll(((MyGuideApp) getApplication()).getZooData().getTracks());
-		mTrackList.setOnItemClickListener(new ListView.OnItemClickListener() {
+		mTrackListView = (ListView) findViewById(R.id.lvTracks);
+		mTrackListAdapter = new TrackAdapter(this, R.layout.right_drawer_item, mTrackList);
+		mTrackListView.setAdapter(mTrackListAdapter);
+		mTrackListView.setOnItemClickListener(new ListView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if (position == 0) {
@@ -223,7 +274,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 						StartActivity.this.runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								mDrawerLayout.closeDrawer(mTrackList);
+								mDrawerLayout.closeDrawer(mTrackListView);
 							}
 						});
 					}
@@ -235,8 +286,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 								.get(position - 1)), "track");
 			}
 		});
-
-		setUpTrackHeader();
 	}
 
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -318,16 +367,16 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			clearSearchView();
-			mDrawerLayout.closeDrawer(mTrackList);
+			mDrawerLayout.closeDrawer(mTrackListView);
 			return true;
 		}
 		if (item.getItemId() == R.id.action_filter) {
 			mDrawerLayout.closeDrawer(mDrawerList);
-			if (mDrawerLayout.isDrawerVisible(mTrackList)) {
-				mDrawerLayout.closeDrawer(mTrackList);
+			if (mDrawerLayout.isDrawerVisible(mTrackListView)) {
+				mDrawerLayout.closeDrawer(mTrackListView);
 			}
 			else {
-				mDrawerLayout.openDrawer(mTrackList);
+				mDrawerLayout.openDrawer(mTrackListView);
 			}
 		}
 		return super.onOptionsItemSelected(item);
@@ -393,18 +442,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		return mDrawerLayout;
 	}
 
-	private void setUpTrackHeader() {
-		TextView text = (TextView) mTrackHeader.findViewById(R.id.txtvTrackName);
-		TextView progressText = (TextView) mTrackHeader.findViewById(R.id.txtvProgressText);
-		ProgressBar progressBar = (ProgressBar) mTrackHeader.findViewById(R.id.pbProgressBar);
-		int animals = ((MyGuideApp) getApplication()).getZooData().sumOfAnimalsOnTracks();
-		text.setText(R.string.exploration);
-		// TODO set real progress
-		progressText.setText(1 + "/" + animals);
-		progressBar.setMax(animals);
-		progressBar.setProgress(1);
-	}
-
 	/**
 	 * Invoke, when user made a choice which screen should be shown when he is
 	 * far away from zoo: Sightseeing or How to get.
@@ -431,39 +468,52 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	public void markDialogAsShown() {
 		mFarFromZooDialogWasShown = true;
 	}
-	
+
 	/**
 	 * Checks if user is nearby any of the animals, to mark animal as visited.
+	 * 
 	 * @param location User's location
 	 */
 	private void checkAnimalProximity(Location location) {
 		double lat = location.getLatitude();
 		double lng = location.getLongitude();
-		
-		for(Animal a : mAnimals){
-			if (distanceBetweenAnimalAndUserInMeters(a, lat, lng) < mDistanceFromAnimal){
+
+		for (Animal a : mAnimals) {
+			if (distanceBetweenAnimalAndUserInMeters(a, lat, lng) < mDistanceFromAnimal) {
 				Log.i("checkAnimalProximinity", "I'm visiting animal: " + a.getName());
-				Toast.makeText(getApplicationContext(), this.getString(R.string.visiting_animal_toast) 
-						+ a.getName(Locale.getDefault().getLanguage()), Toast.LENGTH_SHORT).show();
-				//TODO mark animal as visited
-				//TODO update track's progress
-				if (isVisitedAnimalPartOfTrack(a)){
+				Toast.makeText(getApplicationContext(),
+						this.getString(R.string.visiting_animal_toast)
+								+ a.getName(Locale.getDefault().getLanguage()), Toast.LENGTH_SHORT)
+						.show();
+
+				// Update animal in database
+				mDbManager.updateAnimalInDb(a.getId(), true);
+				a.setVisited(true);
+				// update track listview adapter
+				updateVisited();
+				// update animal marker color
+				SightseeingFragment fragment = (SightseeingFragment) getSupportFragmentManager()
+						.findFragmentByTag(BundleConstants.FRAGMENT_SIGHTSEEING);
+				fragment.updateAnimalVisitedMarker(a.getId());
+
+				if (isVisitedAnimalPartOfTrack(a)) {
 					Log.i("StartActivity", "Visited animal from explored track.");
-					//TODO change navigation point to next animal
+					// TODO change navigation point to next animal
 				}
 			}
 		}
 	}
-	
+
 	/**
 	 * Checks if there's explored track and if animal is on it.
+	 * 
 	 * @param visited Considered animal
 	 */
-	private boolean isVisitedAnimalPartOfTrack (Animal visited) {
-		return StartActivity.sExploredTrack != null 
+	private boolean isVisitedAnimalPartOfTrack(Animal visited) {
+		return StartActivity.sExploredTrack != null
 				&& StartActivity.sExploredTrack.getAnimals().contains(visited);
 	}
-	
+
 	/**
 	 * Calculated by the Euclidean method, returns distance (straight line,
 	 * unlike in nearest animal implementation) in meters.
@@ -471,20 +521,20 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private double distanceBetweenAnimalAndUserInMeters(Animal animal, double lat, double lng) {
 		double latitude = Math.toRadians(animal.getNode().getLatitude() - lat);
 		double longitude = Math.toRadians(animal.getNode().getLongitude() - lng);
-		
+
 		double x = longitude * Math.cos(0.5 * (animal.getNode().getLatitude() + lat));
 		double sqrt = Math.sqrt(Math.pow(x, 2) + Math.pow(latitude, 2));
-		
+
 		return (EARTH_RADIUS * sqrt) * 1000;
 	}
 
 	@Override
 	public void onLocationUpdate(Location location) {
-		if (((MyGuideApp)this.getApplication()).isInTrackingMode()){
+		if (((MyGuideApp) this.getApplication()).isInTrackingMode()) {
 			checkAnimalProximity(location);
 		}
 	}
-	
+
 	public static void setExploredTrack(Track track) {
 		StartActivity.sExploredTrack = track;
 	}
@@ -555,5 +605,72 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			return convertView;
 		}
 	}
-}
 
+	/**
+	 * This Adapter is use to show Track Menu Drawer in SightseeingFragment.
+	 */
+	private static class TrackAdapter extends ArrayAdapter<Track> {
+
+		private Activity mContext;
+		private List<Track> mTracks;
+		private int mLayoutResourceId;
+		private Handler uiHandler = new Handler();
+
+		public TrackAdapter(Activity context, int layoutResourceId,
+				List<Track> tracks) {
+			super(context, layoutResourceId, tracks);
+			mContext = context;
+			mTracks = tracks;
+			mLayoutResourceId = layoutResourceId;
+		}
+
+		static class ViewHolder {
+			public TextView mTxtvName;
+			public TextView mTxtvProgress;
+			public ProgressBar mProgressBar;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			final ViewHolder viewHolder;
+
+			if (convertView == null) {
+				LayoutInflater inflater = mContext.getLayoutInflater();
+				convertView = inflater.inflate(mLayoutResourceId, parent, false);
+
+				viewHolder = new ViewHolder();
+				if (convertView != null) {
+					viewHolder.mTxtvName = (TextView) convertView.findViewById(R.id.txtvTrackName);
+					viewHolder.mTxtvProgress = (TextView) convertView
+							.findViewById(R.id.txtvProgressText);
+					viewHolder.mProgressBar = (ProgressBar) convertView
+							.findViewById(R.id.pbProgressBar);
+
+					convertView.setTag(viewHolder);
+				}
+			} else {
+				viewHolder = (ViewHolder) convertView.getTag();
+			}
+
+			Track track = mTracks.get(position);
+
+			viewHolder.mTxtvName.setText(track.getName() + "");
+			viewHolder.mTxtvProgress.setText(track.getVisited() + "/" + track.getAnimals().size());
+			viewHolder.mProgressBar.setMax(track.getAnimals().size());
+			viewHolder.mProgressBar.setProgress(track.getVisited());
+
+			return convertView;
+		}
+
+		public void refill() {
+			uiHandler.post(new Runnable() {
+				@Override
+				public void run() {
+					notifyDataSetChanged();
+				}
+			});
+		}
+
+	}
+
+}

@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
@@ -23,8 +25,10 @@ import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.ParserHelper;
 import com.blstream.myguide.zoolocations.Way;
 import com.blstream.myguide.zoolocations.ZooLocationsData;
+import com.blstream.myguide.database.DbDataManager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.blstream.myguide.zoolocations.Animal;
 
 /**
  * Display splash screen while loading assets in the backgroud. Splash will be
@@ -43,6 +47,9 @@ public class SplashActivity extends FragmentActivity {
 	private MyGuideApp mApp;
 
 	private boolean mBackgroundThreadRunning = false;
+
+	private ZooLocationsData data;
+	private DbDataManager mDbManager;
 
 	protected long mMinDisplayMillis = DEFAULT_MIN_DISPLAY_MILLIS;
 
@@ -164,7 +171,6 @@ public class SplashActivity extends FragmentActivity {
 		Log.i(LOG_TAG, "Parsing data XML");
 
 		ParserHelper ph = new ParserHelper();
-		ZooLocationsData data = null;
 		try {
 			try {
 				// reading data from external file
@@ -191,8 +197,12 @@ public class SplashActivity extends FragmentActivity {
 		}
 
 		mApp.setZooData(data);
-
 		Log.i(LOG_TAG, "data XML parsed");
+
+		addDataToDatabase();
+		Log.i(LOG_TAG, "animals added to database");
+
+        updateAnimalsObjectFromDatabase();
 	}
 
 	private void prepareGraph() {
@@ -213,11 +223,41 @@ public class SplashActivity extends FragmentActivity {
 		Log.i(LOG_TAG, "graph created");
 	}
 
+	private synchronized void addDataToDatabase() {
+		SharedPreferences mShared;
+		boolean flag = false;
+		mShared = this.getSharedPreferences(BundleConstants.KEY_SHARED_PREFERENCES,
+				Context.MODE_PRIVATE);
+
+		if (mShared != null) {
+			flag = mShared.getBoolean(BundleConstants.KEY_LOAD_DATABASE, false);
+		}
+		if (!flag) {
+			mDbManager.insertAnimalsListToDb(data.getAnimals());
+
+			if (mShared != null) {
+				mShared.edit().putBoolean(BundleConstants.KEY_LOAD_DATABASE, true).commit();
+			}
+		}
+	}
+
+    private synchronized void updateAnimalsObjectFromDatabase() {
+        for (final Animal animal : data.getAnimals()) {
+            mDbManager.getIsAnimalVisited(new DbDataManager.OnCheckVisitAnimalListener() {
+                @Override
+                public void onCheckLoaded(boolean isVisited) {
+                    if (isVisited) animal.setVisited(true);
+                }
+            }, animal.getId());
+        }
+    }
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		mApp = (MyGuideApp) this.getApplication();
+		mDbManager = DbDataManager.getInstance(this);
 
 		setContentView(R.layout.activity_splash);
 
@@ -263,10 +303,8 @@ public class SplashActivity extends FragmentActivity {
 	}
 
 	/**
-	 * Operations to be performed on background thread.
-     *
-	 * All uncatched exceptions will trigger an error dialog to appear and eventually kill the
-	 * Activity.
+	 * Operations to be performed on background thread. All uncatched exceptions
+	 * will trigger an error dialog to appear and eventually kill the Activity.
 	 */
 	protected void doInBackground() {
 		parseSettingsXML();

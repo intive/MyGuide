@@ -107,7 +107,9 @@ public class TrackDrawer {
 					.include(new LatLng(a.getNode().getLatitude(), a.getNode().getLongitude()));
 			for (Marker m : mAnimalMarkersMap.keySet()) {
 				if (mAnimalMarkersMap.get(m).equals(a)) {
-					m.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal_on_track));
+					if (!a.getVisited()) {
+                        m.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_animal_on_track));
+                    }
 					m.setAlpha(1.0f);
 					mAnimalOnTrackMarkers.add(m);
 				}
