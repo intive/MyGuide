@@ -12,6 +12,7 @@
 
 @interface GraphDrawer : NSObject
 
++ (id) sharedInstance;
 - (MKPolyline *) findShortestPathBetweenLocation: (CLLocation *)sourceLocation andLocation: (CLLocation *)destinationLocation;
 
 @end

@@ -94,7 +94,9 @@ didStartElement: (NSString *)elementName
         _junctionsArray = [NSMutableArray new];
     }
     else if ([elementName isEqualToString: kXmlAnimal]) {
-        _temporaryNode          = [[AFNode alloc] initWithLatitude: [attributeDict valueForKey: kXmlLatitude] andLongitude: [attributeDict valueForKey: kXmlLongitude]];
+        double latitude  = [[attributeDict valueForKey: kXmlLatitude] doubleValue];
+        double longitude = [[attributeDict valueForKey: kXmlLongitude] doubleValue];
+        _temporaryNode          = [[AFNode alloc] initWithLatitude: latitude andLongitude: longitude];
         _currentAnimalPL        = [AFAnimal new];
         _currentAnimalEN        = [AFAnimal new];
         _animalInfoDictionaryPL = [NSMutableDictionary new];
@@ -106,10 +108,14 @@ didStartElement: (NSString *)elementName
         [_currentWay setWayID: [attributeDict valueForKey: kXmlId]];
     }
     else if ([elementName isEqualToString: kXmlNode]) {
-        _currentNode = [[AFNode alloc] initWithLatitude: [attributeDict valueForKey: kXmlLatitude] andLongitude: [attributeDict valueForKey: kXmlLongitude]];
+        double latitude  = [[attributeDict valueForKey: kXmlLatitude] doubleValue];
+        double longitude = [[attributeDict valueForKey: kXmlLongitude] doubleValue];
+        _currentNode = [[AFNode alloc] initWithLatitude: latitude andLongitude: longitude];
     }
     else if ([elementName isEqualToString: kXmlJunction]) {
-        AFNode *tempNode = [[AFNode alloc] initWithLatitude: [attributeDict valueForKey: kXmlLatitude] andLongitude: [attributeDict valueForKey: kXmlLongitude]];
+        double latitude  = [[attributeDict valueForKey: kXmlLatitude] doubleValue];
+        double longitude = [[attributeDict valueForKey: kXmlLongitude] doubleValue];
+        AFNode *tempNode = [[AFNode alloc] initWithLatitude: latitude andLongitude: longitude];
         _waysArray       = nil;
         _currentJunction = [AFJunction new];
         [_currentJunction setCoordinates: tempNode];

@@ -14,10 +14,10 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (nonatomic) NSString *nameToDisplay;
-@property (nonatomic) NSNumber *latitude;
-@property (nonatomic) NSNumber *longitude;
-@property (nonatomic) BOOL     showDirections;
+@property (nonatomic) double   latitude;
+@property (nonatomic) double   longitude;
 
 - (void) showZOO;
+- (void) drawPathToAnimal;
 
 @end

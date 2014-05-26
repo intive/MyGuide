@@ -49,7 +49,7 @@
 }
 - (CLLocationCoordinate2D)getLocationCoordinate
 {
-    return CLLocationCoordinate2DMake([self.coordinates.latitude doubleValue], [self.coordinates.longitude doubleValue]);
+    return CLLocationCoordinate2DMake(self.coordinates.latitude, self.coordinates.longitude);
 }
 
 @end

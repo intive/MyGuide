@@ -190,7 +190,7 @@
     CLLocationCoordinate2D coordinatesArray[[nodesArray count]];
     NSUInteger i = 0;
     for(AFNode* node in nodesArray){
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([node.latitude doubleValue], [node.longitude doubleValue]);
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(node.latitude, node.longitude);
         coordinatesArray[i++] = coordinate;
     }
 
@@ -202,8 +202,8 @@
 - (void)drawJunction:(AFNode *)node
 {
     CLLocationCoordinate2D coordinatesArray[2];
-    coordinatesArray[0] = CLLocationCoordinate2DMake([node.latitude doubleValue], [node.longitude doubleValue]);
-    coordinatesArray[1] = CLLocationCoordinate2DMake([node.latitude doubleValue], [node.longitude doubleValue]);
+    coordinatesArray[0] = CLLocationCoordinate2DMake(node.latitude, node.longitude);
+    coordinatesArray[1] = CLLocationCoordinate2DMake(node.latitude, node.longitude);
     MKPolyline *junction = [MKPolyline polylineWithCoordinates:coordinatesArray count:2];
     [self.mapView addOverlay:junction];
 }
@@ -402,8 +402,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AFNode* coordinates = [[_nearestAnimals objectAtIndex:indexPath.section] coordinates];
-    double lat = [coordinates.latitude doubleValue];
-    double lon = [coordinates.longitude doubleValue];
+    double lat = coordinates.latitude;
+    double lon = coordinates.longitude;
     CLLocationCoordinate2D selectedAnimalLocation =  CLLocationCoordinate2DMake(lat, lon);
     for(MKAnnotationAnimal *annotation in _mapView.annotations){
         if([self compareCoordinate:selectedAnimalLocation withCoordinate:annotation.coordinate]){

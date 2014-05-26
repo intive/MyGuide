@@ -35,8 +35,8 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
 
 - (double) distanceApproximateBetween: (AFNode *)sourceNode and: (AFNode *)destinationNode
 {
-    double deltaLat = [sourceNode.latitude doubleValue] - [destinationNode.latitude doubleValue];
-    double deltaLon = ([sourceNode.longitude doubleValue] - [destinationNode.longitude doubleValue]) * LON_COEFFICIENT;
+    double deltaLat = sourceNode.latitude  - destinationNode.latitude;
+    double deltaLon = (sourceNode.longitude - destinationNode.longitude) * LON_COEFFICIENT;
     return sqrt(deltaLat * deltaLat + deltaLon * deltaLon);
 }
 
@@ -88,18 +88,18 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
         }
     }
     for (Edge   *e in self.edges) {
-        double x0 = [node.latitude doubleValue];
-        double y0 = [node.longitude doubleValue] * LON_COEFFICIENT;
-        double x1 = [e.firstVertex.position.latitude doubleValue];
-        double y1 = [e.firstVertex.position.longitude doubleValue] * LON_COEFFICIENT;
-        double x2 = [e.secondVertex.position.latitude doubleValue];
-        double y2 = [e.secondVertex.position.longitude doubleValue] * LON_COEFFICIENT;
+        double x0 = node.latitude;
+        double y0 = node.longitude * LON_COEFFICIENT;
+        double x1 = e.firstVertex.position.latitude;
+        double y1 = e.firstVertex.position.longitude * LON_COEFFICIENT;
+        double x2 = e.secondVertex.position.latitude;
+        double y2 = e.secondVertex.position.longitude * LON_COEFFICIENT;
         double t  = ((x0 - x2) * (x1 - x2) + (y0 - y2) * (y1 - y2))
                     / ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
         if (t > 0 && t < 1) {
             double x3       = x2 + (x1 - x2) * t;
             double y3       = (y2 + (y1 - y2) * t) / LON_COEFFICIENT;
-            AFNode *newNode = [[AFNode alloc] initWithLatitude: [NSString stringWithFormat: @"%f", x3] andLongitude: [NSString stringWithFormat: @"%f", y3]];
+            AFNode *newNode = [[AFNode alloc] initWithLatitude: x3 andLongitude: y3];
             double l = [self distanceApproximateBetween: node and: newNode];
             if (l < minLength) {
                 minLength  = l;
@@ -137,10 +137,19 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
 - (Vertex *) findVertexInGraph: (AFNode *)node
 {
     for (Vertex *v in self.vertices) {
-        if (v.position.latitude == node.latitude && v.position.longitude == node.longitude) return v;
+        if ([self doubleEqual:v.position.latitude withDouble:node.latitude] &&
+            [self doubleEqual:v.position.longitude withDouble:node.longitude]) {
+            return v;
+        }
     }
     return nil;
 }
+
+- (BOOL) doubleEqual:(double)firstDouble withDouble:(double)secondDouble
+{
+    return fabs(firstDouble - secondDouble) <= DBL_EPSILON;
+}
+
 
 - (id) initWithWays: (NSArray *)ways andJunctions: (NSArray *)junctions
 {
@@ -174,7 +183,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
                 }
                 last = v;
             }
-            [verticesInWays setObject: verticesInWay forKey: w];
+            [verticesInWays setObject: verticesInWay forKey: w.wayID];
         }
 
         for (AFJunction *j in junctions) {
@@ -187,7 +196,7 @@ static double const METERS_COEFFICIENT = 111324.25554213152;
             for (AFWay *w in j.waysArray) {
                 double      length = INFINITY;
                 Vertex      *near  = nil;
-                for (Vertex *v2 in [verticesInWays objectForKey: w]) {
+                for (Vertex *v2 in [verticesInWays objectForKey: w.wayID]) {
                     double distance = [self distanceApproximateBetween: v.position and: v2.position];
                     if (length == INFINITY || length > distance) {
                         near   = v2;

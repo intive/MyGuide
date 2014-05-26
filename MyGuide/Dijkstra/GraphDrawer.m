@@ -21,6 +21,17 @@
 
 @implementation GraphDrawer
 
++ (id) sharedInstance
+{
+    static GraphDrawer *sharedInstance = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [self new];
+    });
+    return sharedInstance;
+}
+
 - (id) init
 {
     self = [super self];
@@ -51,9 +62,8 @@
 
     CLLocationCoordinate2D coordinates[[shortestPath count]];
 
-    for (Vertex *v in shortestPath) {
-        AFNode *node = v.position;
-        coordinates[counter++] = CLLocationCoordinate2DMake([node.latitude doubleValue], [node.longitude doubleValue]);
+    for (AFNode *node in shortestPath) {
+        coordinates[counter++] = CLLocationCoordinate2DMake(node.latitude, node.longitude);
     }
 
     return [MKPolyline polylineWithCoordinates: coordinates count: [shortestPath count]];

@@ -10,17 +10,7 @@
 
 @implementation AFNode
 
-- (id)init
-{
-    self = [super init];
-    if(self) {
-        _latitude  = nil;
-        _longitude = nil;
-    }
-    return self;
-}
-
-- (id)initWithLatitude:(NSString *)latitude andLongitude:(NSString *)longitude
+- (id) initWithLatitude: (double)latitude andLongitude:(double)longitude
 {
     self = [super init];
     if(self) {
@@ -30,18 +20,18 @@
     return self;
 }
 
-- (void)setLatitude:(NSString *)latitude
+- (void) setLatitude: (double)latitude
 {
-    _latitude = latitude;
+    self.latitude = latitude;
 }
 
-- (void)setLongitude:(NSString *)longitude
+- (void) setLongitude: (double)longitude
 {
-    _longitude = longitude;
+    self.longitude = longitude;
 }
 - (NSInteger)distanceFromLocation:(CLLocation *)location
 {
-    CLLocation *nodeLocation  = [[CLLocation alloc] initWithLatitude:[_latitude doubleValue] longitude:[_longitude doubleValue]];
+    CLLocation *nodeLocation  = [[CLLocation alloc] initWithLatitude: self.latitude longitude: self.longitude];
     return [location distanceFromLocation:nodeLocation];
 }
 
