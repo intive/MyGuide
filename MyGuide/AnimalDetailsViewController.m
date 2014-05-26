@@ -50,10 +50,6 @@
         [self.descriptionTextView setText:[self.animal.animalInfoDictionary valueForKey:@"adultDescription"]];
     }
     else if(selectedIndex == 1) {
-        [self.animalImage setImage:[UIImage imageNamed:[self.animal.animalInfoDictionary valueForKey:@"childImageName"]]];
-        [self.descriptionTextView setText:[self.animal.animalInfoDictionary valueForKey:@"childDescription"]];
-    }
-    else {
         self.detailsMapController.latitude  = self.animal.coordinates.latitude;
         self.detailsMapController.longitude = self.animal.coordinates.longitude;
         [self.detailsMapController drawPathToAnimal];

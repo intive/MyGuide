@@ -59,11 +59,8 @@
 /* Class = "IBUISegmentedControl"; iSu-gc-aO2.segmentTitles[0] = "Informacje"; ObjectID = "iSu-gc-aO2"; */
 "iSu-gc-aO2.segmentTitles[0]" = "Informacje";
 
-/* Class = "IBUISegmentedControl"; iSu-gc-aO2.segmentTitles[1] = "Dla dzieci"; ObjectID = "iSu-gc-aO2"; */
-"iSu-gc-aO2.segmentTitles[1]" = "Dla dzieci";
-
-/* Class = "IBUISegmentedControl"; iSu-gc-aO2.segmentTitles[2] = "Mapa"; ObjectID = "iSu-gc-aO2"; */
-"iSu-gc-aO2.segmentTitles[2]" = "Mapa";
+/* Class = "IBUISegmentedControl"; iSu-gc-aO2.segmentTitles[1] = "Mapa"; ObjectID = "iSu-gc-aO2"; */
+"iSu-gc-aO2.segmentTitles[1]" = "Mapa";
 
 /* Class = "IBUILabel"; text = "Zwierzęta"; ObjectID = "pVK-nv-tKx"; */
 "pVK-nv-tKx.text" = "Zwierzęta";

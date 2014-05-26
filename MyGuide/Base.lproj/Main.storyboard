@@ -755,7 +755,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="About"/>
-                                    <segment title="For Kids"/>
                                     <segment title="Map"/>
                                 </segments>
                                 <color key="tintColor" red="1" green="0.37254901959999998" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
