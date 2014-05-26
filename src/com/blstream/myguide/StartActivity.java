@@ -55,8 +55,7 @@ import com.blstream.myguide.zoolocations.*;
 public class StartActivity extends FragmentActivity implements NavigationConfirmation, LocationUser {
 
 	/**
-	 * The track user is following.
-	 * NULL if user isn't following any.
+	 * The track user is following. NULL if user isn't following any.
 	 */
 	private static Track sExploredTrack = null;
 	private static final double EARTH_RADIUS = 6371;
@@ -214,7 +213,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * This method create List with all track ( include header - exploration )
 	 */
 	private void createTrackList() {
-        mTrackList = new ArrayList<Track>();
+		mTrackList = new ArrayList<Track>();
 		mTrackList.add(createHeaderListTrack());
 		for (Track track : ((MyGuideApp) this.getApplication()).getZooData().getTracks()) {
 			mTrackList.add(track);
@@ -479,8 +478,8 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		double lat = location.getLatitude();
 		double lng = location.getLongitude();
 
-		for(Animal a : mAnimals){
-			if (distanceBetweenAnimalAndUserInMeters(a, lat, lng) < mDistanceFromAnimal){
+		for (Animal a : mAnimals) {
+			if (distanceBetweenAnimalAndUserInMeters(a, lat, lng) < mDistanceFromAnimal) {
 				Log.i("checkAnimalProximinity", "I'm visiting animal: " + a.getName());
 				Toast.makeText(getApplicationContext(),
 						this.getString(R.string.visiting_animal_toast)
@@ -490,9 +489,9 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				// Update animal in database
 				mDbManager.updateAnimalInDb(a.getId(), true);
 				a.setVisited(true);
-                //update track listview adapter
+				// update track listview adapter
 				updateVisited();
-                //update animal marker color
+				// update animal marker color
 				SightseeingFragment fragment = (SightseeingFragment) getSupportFragmentManager()
 						.findFragmentByTag(BundleConstants.FRAGMENT_SIGHTSEEING);
 				fragment.updateAnimalVisitedMarker(a.getId());
@@ -510,7 +509,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * 
 	 * @param visited Considered animal
 	 */
-	private boolean isVisitedAnimalPartOfTrack (Animal visited) {
+	private boolean isVisitedAnimalPartOfTrack(Animal visited) {
 		return StartActivity.sExploredTrack != null
 				&& StartActivity.sExploredTrack.getAnimals().contains(visited);
 	}
@@ -531,7 +530,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 	@Override
 	public void onLocationUpdate(Location location) {
-		if (((MyGuideApp)this.getApplication()).isInTrackingMode()){
+		if (((MyGuideApp) this.getApplication()).isInTrackingMode()) {
 			checkAnimalProximity(location);
 		}
 	}
@@ -608,7 +607,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	}
 
 	/**
-	 * This Adapter is used to show Restaurants in GastronomyListFragment.
+	 * This Adapter is use to show Track Menu Drawer in SightseeingFragment.
 	 */
 	private static class TrackAdapter extends ArrayAdapter<Track> {
 
