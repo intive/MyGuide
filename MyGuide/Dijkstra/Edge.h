@@ -8,8 +8,11 @@
 
 @interface Edge : NSObject
 
-@property (nonatomic) NSNumber *length;
-@property (nonatomic) Vertex   *firstVertex;
-@property (nonatomic) Vertex   *secondVertex;
+@property (nonatomic) double length;
+@property (nonatomic) Vertex *firstVertex;
+@property (nonatomic) Vertex *secondVertex;
+
+- (id) initWithFirstVertex: (Vertex *)firstVertex secondVertex: (Vertex *)secondVertex length: (double)length;
+- (BOOL) isEqual: (id)object;
 
 @end

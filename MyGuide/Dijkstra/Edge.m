@@ -7,21 +7,31 @@
 
 @implementation Edge
 
-- (BOOL) isEqual: (id)other
+- (id) initWithFirstVertex: (Vertex *)firstVertex secondVertex: (Vertex *)secondVertex length: (double)length
 {
-    if (self == other) {
+    self = [super init];
+    if (self) {
+        _firstVertex  = firstVertex;
+        _secondVertex = secondVertex;
+        _length       = length;
+    }
+    return self;
+}
+
+- (BOOL) isEqual: (id)object
+{
+    if (self == object) {
         return YES;
     }
 
-    if (![other isKindOfClass: [Edge class]]) {
+    if (![object isKindOfClass: [Edge class]]) {
         return NO;
     }
-
-    Edge *otherEdge = (Edge *) other;
-
-    return ([self.firstVertex isEqual: otherEdge.firstVertex] && [self.secondVertex isEqual: otherEdge.secondVertex])
+    
+    Edge *other = (Edge *)object;
+    return ([self.firstVertex isEqual: other.firstVertex] && [self.secondVertex isEqual: other.secondVertex])
            ||
-           ([self.firstVertex isEqual: otherEdge.secondVertex] && [self.secondVertex isEqual: otherEdge.firstVertex]);
+           ([self.firstVertex isEqual: other.secondVertex] && [self.secondVertex isEqual: other.firstVertex]);
 }
 
 @end

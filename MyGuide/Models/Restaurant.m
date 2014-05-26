@@ -24,8 +24,8 @@
     self = [super init];
     if (self) {
         _dishes    = [NSMutableArray new];
-        _latitude  = [NSNumber numberWithDouble: [latitude doubleValue]];
-        _longitude = [NSNumber numberWithDouble: [longitude doubleValue]];
+        _latitude  = [latitude doubleValue];
+        _longitude = [longitude doubleValue];
     }
     return self;
 }

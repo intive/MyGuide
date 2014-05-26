@@ -83,7 +83,7 @@ static unsigned long vJunctionsAmount = 20;
     bool check = NO;
     for(AFAnimal *animal in _sharedData.animalsArray)
     {
-        if([animal.coordinates.latitude length] == 0 || [animal.coordinates.longitude length] == 0) check = YES;
+        if(animal.coordinates.latitude == 0 || animal.coordinates.longitude == 0) check = YES;
     }
     XCTAssertFalse(check, @"There is an animal without coordinates");
 }
@@ -112,8 +112,8 @@ static unsigned long vJunctionsAmount = 20;
     {
         double lat = -360;
         double lon = -360;
-        if(animal.coordinates.latitude != nil && [animal.coordinates.latitude length] > 0) lat = [animal.coordinates.latitude doubleValue];
-        if(animal.coordinates.longitude != nil && [animal.coordinates.longitude length] > 0) lon = [animal.coordinates.longitude doubleValue];
+        if(animal.coordinates.latitude  > 0) lat = animal.coordinates.latitude;
+        if(animal.coordinates.longitude > 0) lon = animal.coordinates.longitude;
         if(lat > 90 || lat < -90 || lon > 180 || lon < -180 ) check = YES;
     }
     for(AFWay *way in _sharedData.waysArray)
@@ -122,8 +122,8 @@ static unsigned long vJunctionsAmount = 20;
         {
             double lat = -360;
             double lon = -360;
-            if(node.latitude != nil && [node.latitude length] > 0) lat = [node.latitude doubleValue];
-            if(node.longitude != nil && [node.longitude length] > 0) lon = [node.longitude doubleValue];
+            if(node.latitude  > 0) lat = node.latitude ;
+            if(node.longitude > 0) lon = node.longitude;
             if(lat > 90 || lat < -90 || lon > 180 || lon < -180 ) check = YES;
         }
     }
@@ -131,8 +131,8 @@ static unsigned long vJunctionsAmount = 20;
     {
         double lat = -360;
         double lon = -360;
-        if(junction.coordinates.latitude != nil && [junction.coordinates.latitude length] > 0) lat = [junction.coordinates.latitude doubleValue];
-        if(junction.coordinates.longitude != nil && [junction.coordinates.longitude length] > 0) lon = [junction.coordinates.longitude doubleValue];
+        if(junction.coordinates.latitude  > 0) lat = junction.coordinates.latitude;
+        if(junction.coordinates.longitude > 0) lon = junction.coordinates.longitude;
         if(lat > 90 || lat < -90 || lon > 180 || lon < -180 ) check = YES;
     }
     XCTAssertFalse(check, @"There is an node with invalid coordinates");
@@ -142,7 +142,7 @@ static unsigned long vJunctionsAmount = 20;
     bool check = NO;
     for(AFJunction *junction in _sharedData.junctionsArray)
     {
-        if([junction.coordinates.latitude length] == 0 || [junction.coordinates.longitude length] == 0) check = YES;
+        if(junction.coordinates.latitude == 0 || junction.coordinates.longitude == 0) check = YES;
     }
     XCTAssertFalse(check, @"There is a junction without coordinates");
 }

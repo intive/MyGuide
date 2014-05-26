@@ -8,13 +8,17 @@
 
 #import "DetailsMapViewController.h"
 #import "Settings.h"
+#import "GraphDrawer.h"
 
 @interface DetailsMapViewController ()
 
 @property (nonatomic) CLLocationCoordinate2D destinationCoordinates;
-@property (nonatomic) Settings *sharedSettings;
+@property (nonatomic) Settings    *sharedSettings;
+@property (nonatomic) GraphDrawer *graphDrawer;
 
 @property BOOL fitToPath;
+@property BOOL showDirections;
+@property BOOL drawPath;
 
 @end
 
@@ -22,11 +26,12 @@
 
 double const ZOOM_LEVEL = 15;
 
-- (instancetype)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder: (NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self) {
-        self.sharedSettings = [Settings sharedSettingsData];
+        _sharedSettings = [Settings sharedSettingsData];
+        _graphDrawer    = [GraphDrawer sharedInstance];
     }
     return self;
 }
@@ -35,12 +40,22 @@ double const ZOOM_LEVEL = 15;
 {
     [super viewDidLoad];
     self.fitToPath = YES;
-    [self drawCoordinatesOnMap];
+}
+
+- (void) viewWillAppear: (BOOL) animated {
     [self setupMapView];
-    
+    [self drawTargetPoint];
+    [self drawCoordinatesOnMap];
+}
+
+- (void) drawCoordinatesOnMap
+{
     if (self.showDirections) {
         [self drawDirectionsToLocation];
         [self setMapRegion];
+    }
+    else if (self.drawPath) {
+        [self drawPathToAnimal];
     }
     else {
         [self zoomOnLocation: self.destinationCoordinates];
@@ -57,7 +72,7 @@ double const ZOOM_LEVEL = 15;
 - (void)      mapView: (MKMapView *)      mapView
 didUpdateUserLocation: (MKUserLocation *) userLocation
 {
-    [self drawDirectionsToLocation];
+    [self drawCoordinatesOnMap];
     if (self.fitToPath) [self setMapRegion];
 }
 
@@ -67,9 +82,10 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     [self.mapView setRegion: MKCoordinateRegionMake(coordinates, span) animated: YES];
 }
 
-- (void) drawCoordinatesOnMap
+- (void) drawTargetPoint
 {
-    self.destinationCoordinates         = CLLocationCoordinate2DMake(self.latitude.doubleValue, self.longitude.doubleValue);
+    [self.mapView removeAnnotations: self.mapView.annotations];
+    self.destinationCoordinates         = CLLocationCoordinate2DMake(self.latitude, self.longitude);
     MKPointAnnotation *annotationPoint  = [MKPointAnnotation new];
     annotationPoint.title               = self.nameToDisplay;
     annotationPoint.coordinate          = self.destinationCoordinates;
@@ -80,8 +96,16 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
 {
     self.showDirections = YES;
     self.nameToDisplay  = @"ZOO";
-    self.latitude  = [NSNumber numberWithDouble: self.sharedSettings.zooCenter.latitude];
-    self.longitude = [NSNumber numberWithDouble: self.sharedSettings.zooCenter.longitude];
+    self.latitude  = self.sharedSettings.zooCenter.latitude;
+    self.longitude = self.sharedSettings.zooCenter.longitude;
+}
+
+- (void) drawPathToAnimal {
+    self.drawPath = YES;
+    CLLocation *destinationLocation = [[CLLocation alloc] initWithLatitude:self.destinationCoordinates.latitude longitude:self.destinationCoordinates.longitude];
+    CLLocation *userLocation = self.mapView.userLocation.location;
+    MKPolyline *path = [self.graphDrawer findShortestPathBetweenLocation: userLocation andLocation: destinationLocation];
+    if(path) [self.mapView addOverlay: path];
 }
 
 # pragma mark - Rendering directions
@@ -124,7 +148,8 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     }];
 }
 
-- (MKOverlayRenderer *) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+- (MKOverlayRenderer *) mapView:(MKMapView *)mapView
+             rendererForOverlay:(id<MKOverlay>)overlay
 {
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline: overlay];
     renderer.strokeColor         = [UIColor orangeColor];

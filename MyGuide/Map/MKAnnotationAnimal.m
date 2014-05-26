@@ -22,10 +22,7 @@
 
 - (CLLocationCoordinate2D)buildCoordinates:(AFAnimal *)animal
 {
-    AFNode* coordinates = animal.coordinates;
-    double lat = [coordinates.latitude doubleValue];
-    double lng = [coordinates.longitude doubleValue];
-    return CLLocationCoordinate2DMake(lat, lng);
+    return CLLocationCoordinate2DMake(animal.coordinates.latitude, animal.coordinates.longitude);
 }
 
 + (NSArray *)buildAnimalMKAnnotations:(NSArray *)animals

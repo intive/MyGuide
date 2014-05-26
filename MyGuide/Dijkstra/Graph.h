@@ -4,6 +4,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNode.h"
 
 @interface Graph : NSObject
+
+- (id) initWithWays: (NSArray *)ways andJunctions: (NSArray *)junctions;
+- (NSArray *) findPathBetweenNode: (AFNode *)sourceNode andNode: (AFNode *)destinationNode;
+
 @end

@@ -31,32 +31,29 @@
 {
     [super viewWillAppear:animated];
     
-    [_segmentedControl setSelectedSegmentIndex: 0];
-    [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
-    [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"adultDescription"]];
+    [self.segmentedControl setSelectedSegmentIndex: 0];
+    [self.animalImage setImage:[UIImage imageNamed:[self.animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
+    [self.descriptionTextView setText:[self.animal.animalInfoDictionary valueForKey:@"adultDescription"]];
 }
 
 - (void)prepareNextViewController
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    _detailsMapController = [storyboard instantiateViewControllerWithIdentifier:@"detailsMap"];
+    self.detailsMapController = [storyboard instantiateViewControllerWithIdentifier:@"detailsMap"];
 }
 
 - (IBAction) switchControllers: (UISegmentedControl *) segmentControl
 {
     NSInteger selectedIndex = [segmentControl selectedSegmentIndex];
     if(selectedIndex == 0) {
-        [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
-        [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"adultDescription"]];
+        [self.animalImage setImage:[UIImage imageNamed:[self.animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
+        [self.descriptionTextView setText:[self.animal.animalInfoDictionary valueForKey:@"adultDescription"]];
     }
     else if(selectedIndex == 1) {
-        [_animalImage setImage:[UIImage imageNamed:[_animal.animalInfoDictionary valueForKey:@"childImageName"]]];
-        [_descriptionTextView setText:[_animal.animalInfoDictionary valueForKey:@"childDescription"]];
-    }
-    else {
-        _detailsMapController.latitude  = [NSNumber numberWithFloat: [_animal.coordinates.latitude floatValue]];
-        _detailsMapController.longitude = [NSNumber numberWithFloat: [_animal.coordinates.longitude floatValue]];
-        [self.navigationController pushViewController:_detailsMapController animated:YES];
+        self.detailsMapController.latitude  = self.animal.coordinates.latitude;
+        self.detailsMapController.longitude = self.animal.coordinates.longitude;
+        [self.detailsMapController drawPathToAnimal];
+        [self.navigationController pushViewController:self.detailsMapController animated:YES];
     }
 }
 

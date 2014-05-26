@@ -14,8 +14,8 @@
 
 @property (nonatomic) NSString *openHours;
 @property (nonatomic) NSMutableArray *dishes;
-@property (nonatomic) NSNumber* latitude;
-@property (nonatomic) NSNumber* longitude;
+@property (nonatomic) double latitude;
+@property (nonatomic) double longitude;
 
 - (id) initWithLatitude: (NSString *)latitude andLongitude: (NSString *)longitude;
 - (void) addNewDish: (Dish *) dish;

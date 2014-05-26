@@ -8,10 +8,13 @@
 
 @interface Vertex : NSObject
 
-@property (nonatomic) NSNumber       *weight;
+@property (nonatomic) double         weight;
 @property (nonatomic) NSMutableArray *edges;
 @property (nonatomic) Vertex         *predecessor;
 @property (nonatomic) AFNode         *position;
 @property (nonatomic) NSInteger      heapIndex;
+
+- (NSComparisonResult) compare: (Vertex *)other;
+- (BOOL) isEqual: (id)object;
 
 @end
