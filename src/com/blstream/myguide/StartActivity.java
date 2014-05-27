@@ -450,8 +450,11 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	public void onNavigationConfirm(boolean confirm) {
 		int position;
 		if (confirm) {
-			getSupportFragmentManager().popBackStack(null,
-					FragmentManager.POP_BACK_STACK_INCLUSIVE);
+			Fragment current = getSupportFragmentManager().findFragmentById(R.id.flFragmentHolder);
+			if (!current.getTag().equals(BundleConstants.FRAGMENT_SIGHTSEEING)) {
+				getSupportFragmentManager().popBackStack(null,
+						FragmentManager.POP_BACK_STACK_INCLUSIVE);
+			}
 			position = 0;
 		} else {
 			getSupportFragmentManager().popBackStack();
