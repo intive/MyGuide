@@ -27,6 +27,8 @@
         [[LocationManager sharedLocationManager] requestLocationStatus];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setBool:NO forKey:@"isInBackground"];
+        [userDefaults setValue:[[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString] forKey:@"current language code"];
+        [userDefaults synchronize];
     }
     [self loadXMLs];
     [self styleApplication];
@@ -39,9 +41,8 @@
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:NO forKey:@"isInBackground"];
+    [userDefaults setValue:[[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString] forKey:@"current language code"];
     [userDefaults synchronize];
-    Settings *sharedSettings = [Settings sharedSettingsData];
-    sharedSettings.currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
 }
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
