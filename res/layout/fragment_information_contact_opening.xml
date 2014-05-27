@@ -3,13 +3,14 @@
 	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:layout_marginTop="20dp">
+	android:layout_marginTop="30dp">
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:text="Okres czasu"
-		android:textSize="22sp"
-		android:layout_marginTop="10dp"
+		android:textSize="@dimen/list_regular_text"
+		android:textStyle="bold"
+		android:padding="5dp"
 		android:id="@+id/txtvTitle"
 		android:background="@color/main_accent_transparent"/>
 	<LinearLayout
@@ -22,12 +23,12 @@
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
 			android:text="@string/contact_weekdays"
-			android:textSize="@dimen/List_text_size_medium"/>
+			android:textSize="@dimen/list_regular_text"/>
 		<com.blstream.myguide.widget.PaddedTextView
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_weight="1"
-			android:textSize="@dimen/List_text_size_medium"
+			android:textSize="@dimen/list_regular_text"
 			android:layout_marginLeft="3dp"
 			android:layout_marginRight="3dp"
 			android:textColor="@color/main_accent"
@@ -36,7 +37,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
 			android:text="9.00 - 17.00"
-			android:textSize="@dimen/List_text_size_medium"
+			android:textSize="@dimen/list_regular_text"
 			android:id="@+id/txtvWeekdaysHours"/>
 	</LinearLayout>
 	<LinearLayout
@@ -44,17 +45,17 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="2dp"
-		android:layout_marginBottom="2dp">
+		android:layout_marginBottom="10dp">
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
 			android:text="@string/contact_weekends"
-			android:textSize="@dimen/List_text_size_medium"/>
+			android:textSize="@dimen/list_regular_text"/>
 		<com.blstream.myguide.widget.PaddedTextView
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_weight="1"
-			android:textSize="@dimen/List_text_size_medium"
+			android:textSize="@dimen/list_regular_text"
 			android:layout_marginLeft="3dp"
 			android:layout_marginRight="3dp"
 			android:textColor="@color/main_accent"
@@ -63,7 +64,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="match_parent"
 			android:text="9.00 - 17.00"
-			android:textSize="@dimen/List_text_size_medium"
+			android:textSize="@dimen/list_regular_text"
 			android:id="@+id/txtvWeekendsHours"/>
 	</LinearLayout>
 </LinearLayout>

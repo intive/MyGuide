@@ -13,10 +13,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/contact_openings"
-			android:textColor="@color/main_accent"
-			style="@style/header_text"
-			android:gravity="left"
-			android:layout_margin="0dp"/>
+			style="@style/information_header"/>
 		<LinearLayout
 			android:orientation="vertical"
 			android:layout_width="match_parent"
@@ -30,17 +27,13 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/contact_contact"
-			android:textSize="22sp"
-			android:textColor="@color/main_accent"
-			style="@style/header_text"
-			android:gravity="left"
-			android:layout_margin="0dp"/>
+			style="@style/information_header"/>
 		<LinearLayout
 			android:orientation="vertical"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="10dp"
-			android:layout_marginBottom="10dp">
+			android:layout_marginBottom="5dp">
 			<LinearLayout
 				android:orientation="vertical"
 				android:layout_width="match_parent"
@@ -52,11 +45,12 @@
 					android:layout_marginBottom="5dp"
 					android:paddingTop="3dp"
 					android:paddingBottom="3dp">
+
 					<ImageView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:src="@drawable/ic_information_contact_home"
-						android:layout_gravity="center_vertical"/>
+					    android:layout_width="@dimen/information_image_size"
+					    android:layout_height="@dimen/information_image_size"
+					    android:layout_marginRight="@dimen/information_image_margin"
+					    android:src="@drawable/ic_information_contact_home" />
 
 					<LinearLayout
 						android:layout_width="match_parent"
@@ -68,10 +62,9 @@
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
 							android:layout_gravity="center_vertical"
-							android:layout_marginLeft="15dp"
 							android:gravity="center_vertical"
 							android:text="Ulica\nKod pocztowy Miasto"
-							android:textSize="@dimen/List_text_size_medium"/>
+							style="@style/information_basic_text"/>
 					</LinearLayout>
 				</LinearLayout>
 				<LinearLayout
@@ -81,19 +74,19 @@
 					android:layout_marginBottom="5dp"
 					android:paddingTop="3dp"
 					android:paddingBottom="3dp">
+
 					<ImageView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:src="@drawable/ic_information_contact_phone"
-						android:layout_gravity="center_vertical"/>
+					    android:layout_width="@dimen/information_image_size"
+					    android:layout_height="@dimen/information_image_size"
+					    android:layout_marginRight="@dimen/information_image_margin"
+					    android:src="@drawable/ic_information_contact_phone" />
 
 					<TextView
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:text="123 456 789"
-						android:textSize="@dimen/List_text_size_medium"
 						android:gravity="center_vertical"
-						android:layout_marginLeft="15dp"
+						style="@style/information_basic_text"
 						android:id="@+id/txtvPhone"/>
 				</LinearLayout>
 				<LinearLayout
@@ -105,18 +98,16 @@
 					android:paddingBottom="3dp">
 
 					<ImageView
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:src="@drawable/ic_information_contact_link"
-						android:layout_gravity="center_vertical"/>
+					    android:layout_width="@dimen/information_image_size"
+					    android:layout_height="@dimen/information_image_size"
+					    android:layout_marginRight="@dimen/information_image_margin"
+					    android:src="@drawable/ic_information_contact_link" />
 
 					<TextView
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:text="http://blstream.com"
-						android:textSize="@dimen/List_text_size_medium"
-						android:gravity="center_vertical"
-						android:layout_marginLeft="15dp"
+						style="@style/information_basic_text"
 						android:textColor="@color/main_accent"
 						android:id="@+id/txtvWebsite"/>
 				</LinearLayout>

@@ -73,17 +73,31 @@
     </style>
     
     <style name="animal_list_main">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/list_big_text</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
     
     <style name="animal_description_text">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/list_regular_text</item>
         <item name="android:gravity">left</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_margin">10dp</item>
+    </style>
+    
+    <style name="information_header">
+        <item name="android:textSize">@dimen/list_big_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textColor">@color/main_accent</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    
+    <style name="information_basic_text">
+        <item name="android:textSize">@dimen/list_regular_text</item>
+        <item name="android:gravity">left</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
    <style name="dialog_btn">
