@@ -105,7 +105,10 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     CLLocation *destinationLocation = [[CLLocation alloc] initWithLatitude:self.destinationCoordinates.latitude longitude:self.destinationCoordinates.longitude];
     CLLocation *userLocation = self.mapView.userLocation.location;
     MKPolyline *path = [self.graphDrawer findShortestPathBetweenLocation: userLocation andLocation: destinationLocation];
-    if(path) [self.mapView addOverlay: path];
+    if(path) {
+        [self.mapView removeOverlays:self.mapView.overlays];
+        [self.mapView addOverlay: path];
+    }
 }
 
 # pragma mark - Rendering directions

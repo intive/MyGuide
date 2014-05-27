@@ -38,12 +38,14 @@
 
 - (NSArray *)localizeAnimalsArray
 {
-    if([_sharedSettings.currentLanguageCode isEqualToString:@"PL"]){
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if([[userDefaults valueForKey:@"current language code"] isEqualToString:@"PL"]){
         return _animalsPL;
     }
     else {
         return _animalsEN;
     }
+    [userDefaults synchronize];
 }
 
 @end

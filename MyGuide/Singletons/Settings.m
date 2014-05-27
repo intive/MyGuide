@@ -45,8 +45,7 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
 
 - (void)initDefaults
 {
-    _currentLanguageCode = [[[[NSLocale preferredLanguages] objectAtIndex:0] substringToIndex:2] uppercaseString];
-    _languageFallback    = @"en";
+    _languageFallback    = @"EN";
     _innerRadius         = 1;
     _externalRadius      = 2;
     _visitedRadius       = 10;
