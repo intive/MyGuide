@@ -97,7 +97,7 @@ public class FragmentTrackDetails extends Fragment {
 				((MyGuideApp)getActivity().getApplication()).setTrackingModeOn();
 				StartActivity.setExploredTrack(mTrack);
 				FragmentHelper.swapFragment(R.id.flFragmentHolder,
-						SightseeingFragment.newInstance(mTrack),
+						SightseeingFragment.newInstance(),
 						getActivity().getSupportFragmentManager(),
 						BundleConstants.FRAGMENT_SIGHTSEEING);
 				return true;

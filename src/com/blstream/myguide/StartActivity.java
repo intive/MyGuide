@@ -538,6 +538,10 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	public static void setExploredTrack(Track track) {
 		StartActivity.sExploredTrack = track;
 	}
+	
+	public Track getExploredTrack(){
+		return StartActivity.sExploredTrack;
+	}
 
 	@Override
 	public void onGpsAvailable() {

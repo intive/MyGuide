@@ -9,8 +9,6 @@ import android.app.ActionBar;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -52,7 +50,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.blstream.myguide.database.*;
 
 /**
  * Main fragment of application
@@ -98,21 +95,8 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		return new SightseeingFragment();
 	}
 
-	public static SightseeingFragment newInstance(Track track) {
-		SightseeingFragment fragment = new SightseeingFragment();
-
-		Bundle bundle = new Bundle();
-		bundle.putSerializable(BundleConstants.SELECTED_TRACK, track);
-		fragment.setArguments(bundle);
-
-		return fragment;
-	}
-
-	private void getArgs() {
-		Bundle args = getArguments();
-		if (args != null) {
-			mTrack = (Track) args.getSerializable(BundleConstants.SELECTED_TRACK);
-		}
+	private void getTrack() {
+		mTrack = ((StartActivity) getActivity()).getExploredTrack();
 	}
 
 	private void configureAndDisplayUserPosition() {
@@ -128,7 +112,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		getArgs();
+		getTrack();
 		View rootView = inflater.inflate(R.layout.fragment_sightseeing,
 				container, false);
 
