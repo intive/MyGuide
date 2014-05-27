@@ -2,6 +2,7 @@
 using MyGuide.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -31,9 +32,10 @@ namespace MyGuide.Services
 
         }
 
-        private Geoposition GetFakePosition()
+        private GeoCoordinate GetFakePosition()
         {
-            throw new NotImplementedException();
+
+            return new GeoCoordinate(51.1047078,17.0784479);
         }
 
         public TimeSpan TimeBetweenUpdates

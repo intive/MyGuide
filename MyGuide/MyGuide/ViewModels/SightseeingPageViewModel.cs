@@ -160,9 +160,7 @@ namespace MyGuide.ViewModels
 
         private void geolocator_PositionChanged(object sender, IGeolocationReading e)
         {
-
-            UserPositionLocation = new GeoCoordinate(e.Position.Coordinate.Latitude, e.Position.Coordinate.Longitude);
-      
+            UserPositionLocation = new GeoCoordinate(e.Position.Latitude, e.Position.Longitude);
         }
 
         private bool userLayerVisibility;

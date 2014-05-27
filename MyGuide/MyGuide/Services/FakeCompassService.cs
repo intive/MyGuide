@@ -41,9 +41,7 @@ namespace MyGuide.Services
 
         private double GetFakeAngle()
         {
-            Random r = new Random();
-           
-            return (r.NextDouble() * 360);
+            return 180.0;
         }
 
         private void SimmulateValueChange(object state)

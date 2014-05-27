@@ -2,6 +2,7 @@
 using MyGuide.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace MyGuide.Services
             var handler = PositionChanged;
             if (handler != null)
             {
-                PositionChanged(this, new GeolocationReading() { Position = args.Position });
+                PositionChanged(this, new GeolocationReading() { Position = new GeoCoordinate(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude) });
             }
         }
 
