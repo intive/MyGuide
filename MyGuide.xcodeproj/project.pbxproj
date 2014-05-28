@@ -74,6 +74,7 @@
 		3DE69DA918C7B83400B54509 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D5EF611189637C000233B64 /* Localizable.strings */; };
 		8421D32218BE3B5100B54DC3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8421D32118BE3B5100B54DC3 /* Images.xcassets */; };
 		8426164218DF9BB700927285 /* AnimalDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426164118DF9BB700927285 /* AnimalDetailsViewController.m */; };
+		8458140A1936773000061933 /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 845814091936773000061933 /* UIImage+Compare.m */; };
 		8460875718BDFA7F00620219 /* SettingsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875618BDFA7F00620219 /* SettingsParser.m */; };
 		8460875A18BDFA8A00620219 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460875918BDFA8A00620219 /* Settings.m */; };
 		84BA95D5190FC426008A4237 /* events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84BA95D4190FC426008A4237 /* events.xml */; };
@@ -227,6 +228,8 @@
 		8421D32118BE3B5100B54DC3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MyGuide/Images.xcassets; sourceTree = "<group>"; };
 		8426164018DF9BB700927285 /* AnimalDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalDetailsViewController.h; sourceTree = "<group>"; };
 		8426164118DF9BB700927285 /* AnimalDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalDetailsViewController.m; sourceTree = "<group>"; };
+		845814081936773000061933 /* UIImage+Compare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Compare.h"; sourceTree = "<group>"; };
+		845814091936773000061933 /* UIImage+Compare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Compare.m"; sourceTree = "<group>"; };
 		8460875518BDFA7F00620219 /* SettingsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsParser.h; sourceTree = "<group>"; };
 		8460875618BDFA7F00620219 /* SettingsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsParser.m; sourceTree = "<group>"; };
 		8460875818BDFA8A00620219 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
@@ -510,6 +513,8 @@
 				0533DF0B18DE365D001BCB28 /* HomeViewController.m */,
 				055452C419025B570021884C /* SegmentedViewController.h */,
 				055452C519025B570021884C /* SegmentedViewController.m */,
+				845814081936773000061933 /* UIImage+Compare.h */,
+				845814091936773000061933 /* UIImage+Compare.m */,
 			);
 			path = MyGuide;
 			sourceTree = "<group>";
@@ -830,6 +835,7 @@
 				055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */,
 				84DDCB4418BA91A100A2F720 /* AFParsedData.m in Sources */,
 				84C2A1851907B21900354036 /* AFVisitedPOIsData.m in Sources */,
+				8458140A1936773000061933 /* UIImage+Compare.m in Sources */,
 				8460875718BDFA7F00620219 /* SettingsParser.m in Sources */,
 				05A1C15518FACB3E008FE0CB /* HistoryViewController.m in Sources */,
 				8460875A18BDFA8A00620219 /* Settings.m in Sources */,

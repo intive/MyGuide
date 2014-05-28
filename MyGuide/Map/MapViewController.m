@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "UIImage+Compare.h"
 #import "DetailsMapViewController.h"
 
 @interface MapViewController ()
@@ -33,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.slidingViewIsDown = YES;
+    self.slidingViewIsDown = NO;
     
     _settings      = [Settings sharedSettingsData];
     _data          = [AFParsedData sharedParsedData];
@@ -59,7 +60,7 @@
 {
     [super viewWillAppear:animated];
     [self showAnimals];
-    [self.mapToolbar.items.lastObject setEnabled:NO];
+    [self.mapToolbar.items.firstObject setEnabled:NO];
     [self updateVisitedLocations];
 }
 
@@ -77,12 +78,29 @@
 }
 
 - (void)configureToolbarItems
-{    
+{
+    UIBarButtonItem *mapTypebButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mapType"] style:UIBarButtonItemStylePlain target:self action:@selector(changeMapType)];
+    mapTypebButton.enabled = YES;
+    mapTypebButton.tintColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
     MKUserTrackingBarButtonItem *button = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    button.customView.backgroundColor = [UIColor clearColor];
+    button.customView.tintColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
     UIBarButtonItem *fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedSpaceButton.width = 262.5f;
-    self.mapToolbar.items = @[fixedSpaceButton, button];
+    fixedSpaceButton.width = 218.5f;
     [self.mapToolbar setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+//    self.mapToolbar.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:0.5];
+//    self.mapToolbar.barTintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+//    self.mapToolbar.tintColor = [[UIColor clearColor] colorWithAlphaComponent:0.5];
+    self.mapToolbar.items = @[button, fixedSpaceButton, mapTypebButton];
+}
+- (void)changeMapType
+{
+    if(self.mapView.mapType == MKMapTypeStandard){
+        self.mapView.mapType = MKMapTypeHybrid;
+    }
+    else{
+        self.mapView.mapType = MKMapTypeStandard;
+    }
 }
 - (void)configureTableData
 {
@@ -145,10 +163,10 @@
     [_nearestAnimalsTableView reloadData];
     double distance = [self calculateUserDistance:userLocation];
     if(distance <= _settings.maxUserDistance){
-        [[self.mapToolbar.items lastObject] setEnabled:YES];
+        [[self.mapToolbar.items firstObject] setEnabled:YES];
     }
     else if(distance > _settings.maxUserDistance){
-        [[self.mapToolbar.items lastObject] setEnabled:NO];
+        [[self.mapToolbar.items firstObject] setEnabled:NO];
     }
     if([self shouldShowAlertDistance:distance]) {
         [_alertDistance show];
@@ -311,59 +329,13 @@
         self.slidingViewIsDown = YES;
     }
     _nearestAnimalsList.frame=CGRectMake(0, _nearestAnimalImageView.frame.origin.y + _nearestAnimalImageView.frame.size.height, _nearestAnimalsList.frame.size.width, _nearestAnimalsList.frame.size.height);
+    if([self.nearestAnimalImageView.image isEqualToImage:[UIImage imageNamed:@"arrowDown"]]){
+        self.nearestAnimalImageView.image = [UIImage imageNamed:@"arrowUp"];
+    }
+    else{
+        self.nearestAnimalImageView.image = [UIImage imageNamed:@"arrowDown"];
+    }
     [UIView commitAnimations];
-}
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	UITouch *touch = [touches anyObject];
-	CGPoint point = [touch locationInView:self.view];
-	CGRect rect = _nearestAnimalImageView.frame;
-	BOOL xRange = point.x >= rect.origin.x && point.x<=rect.origin.x+rect.size.width;
-	BOOL yRange = point.y >= rect.origin.y && point.y<=rect.origin.y+rect.size.height;
-	if(xRange && yRange) {
-		_isSlidingView=YES;
-        [self.mapView setScrollEnabled:NO];
-        [self.mapView setZoomEnabled:NO];
-	}
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	if(_isSlidingView) {
-		UITouch *touch = [touches anyObject];
-		CGPoint point  = [touch locationInView:self.view];
-		CGRect rect = _nearestAnimalImageView.frame;
-		if((point.y-rect.size.height/2)<0) {
-			point = CGPointMake(point.x,rect.size.height/2);
-		}
-        else if(((point.y+rect.size.height/2)>self.view.frame.size.height)) {
-			point = CGPointMake(point.x,self.view.frame.size.height-rect.size.height/2);
-		}
-		CGRect newRect = CGRectMake(rect.origin.x, point.y - rect.size.height/2, rect.size.width, rect.size.height);
-		_nearestAnimalImageView.frame=newRect;
-		_nearestAnimalsList.frame=CGRectMake(0, _nearestAnimalImageView.frame.origin.y + _nearestAnimalImageView.frame.size.height, _nearestAnimalsList.frame.size.width, _nearestAnimalsList.frame.size.height);
-	}
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	if([self isSlidingView]) {
-		_isSlidingView = NO;
-		UITouch *touch = [touches anyObject];
-		CGPoint point  = [touch locationInView:self.view];
-		[UIView beginAnimations:@"move" context:nil];
-		[UIView setAnimationDuration:0.5];
-		if(point.y>(self.view.frame.size.height - self.view.frame.size.height/2)) {
-			_nearestAnimalImageView.frame=CGRectMake(75, self.view.frame.size.height - _nearestAnimalImageView.frame.size.height, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
-		}
-        else{
-			_nearestAnimalImageView.frame=CGRectMake(75, 60, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
-		}
-		_nearestAnimalsList.frame=CGRectMake(0, _nearestAnimalImageView.frame.origin.y + _nearestAnimalImageView.frame.size.height, _nearestAnimalsList.frame.size.width, _nearestAnimalsList.frame.size.height);
-		[UIView commitAnimations];
-        [self.mapView setScrollEnabled:YES];
-        [self.mapView setZoomEnabled:YES];
-	}
 }
 
 #pragma mark - Nearest animals list's table view
