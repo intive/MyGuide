@@ -492,7 +492,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				// Update animal in database
 				mDbManager.updateAnimalInDb(a.getId(), true);
 				a.setVisited(true);
-				// update track listview adapter
+				// update track listview mAnimaladapter
 				updateVisited();
 				// update animal marker color
 				SightseeingFragment fragment = (SightseeingFragment) getSupportFragmentManager()
