@@ -426,8 +426,6 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 				Fragment[] fragments = {
 						AnimalDescriptionTab.newInstance(
 								R.drawable.placeholder_adult, R.string.text),
-						AnimalDescriptionTab.newInstance(
-								R.drawable.placeholder_child, R.string.text),
 						AnimalDetailsMapFragment.newInstance(animal)
 				};
 				Fragment newFragment = FragmentTabManager.newInstance(
