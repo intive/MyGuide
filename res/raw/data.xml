@@ -113,9 +113,9 @@
 	</tickets_information>
 	
 	<access_information>
-		<trams>2, 10</trams>
+		<trams>1, 2, 4, 10</trams>
 		<parkings_information>
-			<pl>Mówiąc kolokwialnie masakra ;)</pl>
+			<pl>ul. Wystawowa, ul. Mickiewicza (kierunek na Stadion Olimpijski)</pl>
 			<en>Parkings EN</en>
 		</parkings_information>
 	</access_information>

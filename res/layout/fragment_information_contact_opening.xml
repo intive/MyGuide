@@ -12,7 +12,7 @@
 		android:textStyle="bold"
 		android:padding="5dp"
 		android:id="@+id/txtvTitle"
-		android:background="@color/main_accent_transparent"/>
+		android:background="@color/light_background"/>
 	<LinearLayout
 		android:orientation="horizontal"
 		android:layout_width="match_parent"
