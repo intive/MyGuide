@@ -59,7 +59,6 @@
     <!-- Animals description tabs name -->
     <string-array name="animal_desc_tabs_name">
         <item name="description">Opis</item>
-        <item name="child">Dla Dzieci</item>
         <item name="map_view">Mapa</item>
     </string-array>
 
