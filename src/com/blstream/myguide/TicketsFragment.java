@@ -1,6 +1,12 @@
 
 package com.blstream.myguide;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,16 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.blstream.myguide.zoolocations.Language;
 import com.blstream.myguide.zoolocations.Ticket;
 import com.blstream.myguide.zoolocations.TicketsInformation;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 public class TicketsFragment extends ListFragment
 		implements Parcelable {
