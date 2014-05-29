@@ -34,6 +34,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blstream.myguide.database.DbDataManager;
 import com.blstream.myguide.dialog.ConfirmExitDialogFragment;
 import com.blstream.myguide.dialog.EnableGpsDialogFragment;
 import com.blstream.myguide.dialog.FarFromZooDialog.NavigationConfirmation;
@@ -42,11 +43,9 @@ import com.blstream.myguide.gps.DistanceFromZooGuard;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.settings.Settings;
+import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.Track;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.blstream.myguide.database.*;
-
-import com.blstream.myguide.zoolocations.*;
 
 /**
  * Created by Piotrek on 2014-04-01. Fixed by Angieszka (fragment swap) on
@@ -498,11 +497,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				SightseeingFragment fragment = (SightseeingFragment) getSupportFragmentManager()
 						.findFragmentByTag(BundleConstants.FRAGMENT_SIGHTSEEING);
 				fragment.updateAnimalVisitedMarker(a.getId());
-
-				if (isVisitedAnimalPartOfTrack(a)) {
-					Log.i("StartActivity", "Visited animal from explored track.");
-					// TODO change navigation point to next animal
-				}
 			}
 		}
 	}

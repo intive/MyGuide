@@ -51,6 +51,7 @@
     <string name="route_icon_Description">Droga</string>
     <string name="drawer_open">Otwórz menu</string>
     <string name="drawer_close">Zamknij menu</string>
+    <string name="navigate_to">Navigation destination:&#160;</string>
 
     <!-- SightSeeing menu -->
     <string-array name="nav_drawer_items">

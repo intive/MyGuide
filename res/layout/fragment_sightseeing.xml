@@ -11,6 +11,18 @@
         android:layout_above="@+id/closestAnimal"
         class="com.google.android.gms.maps.SupportMapFragment" />
 
+    <ToggleButton
+        android:id="@+id/tgbtn_navigationOnOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:visibility= "invisible"
+        android:textOn=""
+        android:textOff=""
+        android:checked="false"
+        android:background="@drawable/tgbtn_navigation_selector" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
