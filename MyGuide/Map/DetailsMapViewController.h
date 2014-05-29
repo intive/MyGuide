@@ -12,6 +12,7 @@
 @interface DetailsMapViewController : UIViewController <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIToolbar *mapToolbar;
 
 @property (nonatomic) NSString *nameToDisplay;
 @property (nonatomic) double   latitude;

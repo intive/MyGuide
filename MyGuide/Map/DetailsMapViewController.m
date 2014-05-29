@@ -40,6 +40,7 @@ double const ZOOM_LEVEL = 15;
 {
     [super viewDidLoad];
     self.fitToPath = YES;
+    [self configureToolbar];
 }
 
 - (void) viewWillAppear: (BOOL) animated {
@@ -47,7 +48,26 @@ double const ZOOM_LEVEL = 15;
     [self drawTargetPoint];
     [self drawCoordinatesOnMap];
 }
+- (void)configureToolbar
+{
+    UIBarButtonItem *mapTypebButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mapType"] style:UIBarButtonItemStylePlain target:self action:@selector(changeMapType)];
+    mapTypebButton.enabled = YES;
+    mapTypebButton.tintColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
 
+    UIBarButtonItem *fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpaceButton.width = 238.5f;
+    [self.mapToolbar setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    self.mapToolbar.items = @[fixedSpaceButton, mapTypebButton];
+}
+- (void)changeMapType
+{
+    if(self.mapView.mapType == MKMapTypeStandard){
+        self.mapView.mapType = MKMapTypeHybrid;
+    }
+    else{
+        self.mapView.mapType = MKMapTypeStandard;
+    }
+}
 - (void) drawCoordinatesOnMap
 {
     if (self.showDirections) {
@@ -65,7 +85,7 @@ double const ZOOM_LEVEL = 15;
 - (void) setupMapView
 {
     [self.mapView setShowsUserLocation: YES];
-    [self.mapView setMapType: MKMapTypeSatellite];
+    [self.mapView setMapType: MKMapTypeStandard];
     self.mapView.delegate = self;
 }
 
