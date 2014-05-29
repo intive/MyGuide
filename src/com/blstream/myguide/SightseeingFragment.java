@@ -21,15 +21,20 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.blstream.myguide.database.DbDataManager;
+import com.blstream.myguide.TrackNavigation.NavigationHolder;
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.gps.LocationUser;
+import com.blstream.myguide.path.Graph;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.AnimalDistance;
@@ -56,7 +61,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
  * Main fragment of application
  */
 
-public class SightseeingFragment extends Fragment implements LocationUser {
+public class SightseeingFragment extends Fragment implements LocationUser, NavigationHolder {
 
 	private static final String LOG_TAG = SightseeingFragment.class
 			.getSimpleName();
@@ -73,6 +78,8 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	private double mStartCenterLon;
 	private boolean mAnimalsVisible;
 	private HashMap<Marker, Animal> mAnimalMarkersMap;
+	private ToggleButton mNavigationToggleButton;
+	private Marker mNavigationMarker;
 
 	private Track mTrack;
 	private SearchView mSearchView;
@@ -84,6 +91,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	private ArrayList<Circle> mZooJunctions;
 	private ArrayList<Animal> mAnimalsList;
 	private TrackDrawer mTrackDrawer;
+	private TrackNavigation mTrackNavigation;
 
 	private LocationLogger mLocationLogger;
 	private LocationUpdater mLocationUpdater;
@@ -124,6 +132,8 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		View rootView = inflater.inflate(R.layout.fragment_sightseeing,
 				container, false);
 		mDbManager = DbDataManager.getInstance(getActivity());
+		mNavigationToggleButton = (ToggleButton) rootView.findViewById(
+				R.id.tgbtn_navigationOnOff);
 
 		mLocationUpdater = LocationUpdater.getInstance();
 		mLocationUpdater.startUpdating(this);
@@ -149,10 +159,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		displayAllWays(mPathsVisible);
 		displayAllJunctions(mJunctionsVisible);
 
-		mTrackDrawer = new TrackDrawer(
-				((MyGuideApp) getActivity().getApplication()).getGraph(), mMap, mAnimalMarkersMap);
-
-		if (mTrack != null) drawTrack();
+		setUpNavigation();
 
 		return rootView;
 	}
@@ -178,6 +185,10 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		super.onStop();
 		if (mLocationLogVisible) {
 			LocationUpdater.getInstance().stopUpdating(mLocationLogger);
+		}
+		if (mTrackNavigation != null) {
+			mTrackNavigation.stopNavigate();
+			mNavigationToggleButton.setVisibility(View.VISIBLE);
 		}
 	}
 
@@ -435,11 +446,12 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 			@Override
 			public boolean onMarkerClick(Marker marker) {
-				mCheckMarker = marker;
-				openCheckedButton();
-				setUpAnimalCamera();
-				marker.showInfoWindow();
-				clearSearchView();
+				if (mNavigationMarker == null || !marker.getId().equals(mNavigationMarker.getId())) {
+                    mCheckMarker = marker;
+                    setUpAnimalCamera();
+					marker.showInfoWindow();
+					clearSearchView();
+				}
 				return true;
 			}
 		});
@@ -607,6 +619,32 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		}
 	}
 
+	private void setUpNavigation() {
+		if (mTrack != null) {
+			Graph graph = ((MyGuideApp) getActivity().getApplication()).getGraph();
+			mTrackDrawer = new TrackDrawer(graph, mMap, mAnimalMarkersMap);
+			drawTrack();
+			mTrackNavigation = new TrackNavigation(mMap, graph, mTrack, this,
+					((MyGuideApp) getActivity().getApplication()).getSettings());
+
+			// Reference to navigation marker is needed to prevent from showing
+			// InfoWindows, which does not exist for navigation marker
+			mNavigationMarker = mTrackNavigation.getNavigationMarker();
+
+			mNavigationToggleButton.setVisibility(View.VISIBLE);
+			mNavigationToggleButton
+					.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+						public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+							if (isChecked) {
+								mTrackNavigation.setCameraAutoCenterOn();
+							} else {
+								mTrackNavigation.setCameraAutoCenterOff();
+							}
+						}
+					});
+		}
+	}
+
 	private void destroyBottomFragment() {
 		if (mBottomAnimalFragment != null && mBottomAnimalFragment.isVisible()) {
 			FragmentManager fm = getChildFragmentManager();
@@ -620,7 +658,20 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	public void onPause() {
 		destroyBottomFragment();
 		mLocationUpdater.stopUpdating(this);
+		if (mTrackNavigation != null) {
+			mTrackNavigation.stopNavigate();
+			mNavigationToggleButton.setVisibility(View.INVISIBLE);
+		}
 		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
+		if (mTrackNavigation != null && mTrack != null) {
+			mTrackNavigation.startNavigate();
+			mNavigationToggleButton.setVisibility(View.VISIBLE);
+		}
+		super.onResume();
 	}
 
 	@Override
@@ -647,4 +698,17 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		mTrackDrawer.cleanTrack();
 	}
 
+	@Override
+	public void onCameraCenterStateChange(boolean cameraAutoCenterIsOn) {
+		if (mNavigationToggleButton != null) mNavigationToggleButton
+				.setChecked(cameraAutoCenterIsOn);
+
+	}
+
+	@Override
+	public void onDestinationChange(Animal newDestination) {
+		Toast.makeText(getActivity(), getString(R.string.navigate_to) + newDestination.getName(),
+				Toast.LENGTH_SHORT).show();
+
+	}
 }

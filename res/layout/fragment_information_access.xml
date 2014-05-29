@@ -29,13 +29,13 @@
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
 					android:text="OUR OFFICE"
-					android:textSize="24sp"/>
+					style="@style/information_header"/>
 				<TextView
 					android:id="@+id/txtvAddress"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="state, district"
-					android:textSize="18sp"
+					style="@style/information_basic_text"
 					android:layout_weight="1"/>
 			</LinearLayout>
 		</RelativeLayout>
@@ -45,15 +45,16 @@
 			android:padding="10dp"
 			android:orientation="horizontal">
 			<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
+				android:layout_width="@dimen/information_image_size"
+				android:layout_height="@dimen/information_image_size"
+				android:layout_marginRight="@dimen/information_image_margin"
 				android:src="@drawable/ic_information_access_bus"/>
 			<ScrollView
 				android:layout_width="fill_parent"
-				android:layout_height="fill_parent">
+				android:layout_height="fill_parent"
+				>
 				<GridLayout
 					android:id="@+id/grid_buses"
-					android:layout_gravity="center"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:columnCount="6"/>
@@ -69,15 +70,16 @@
 			android:padding="10dp"
 			android:orientation="horizontal">
 			<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
+				android:layout_width="@dimen/information_image_size"
+				android:layout_height="@dimen/information_image_size"
+				android:layout_marginRight="@dimen/information_image_margin"
 				android:src="@drawable/ic_information_access_tram"/>
 			<ScrollView
 				android:layout_width="fill_parent"
-				android:layout_height="fill_parent">
+				android:layout_height="fill_parent"
+				>
 				<GridLayout
 					android:id="@+id/grid_trams"
-					android:layout_gravity="center"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:columnCount="6"/>
@@ -93,16 +95,16 @@
 			android:padding="10dp"
 			android:orientation="horizontal">
 			<ImageView
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
+				android:layout_width="@dimen/information_image_size"
+				android:layout_height="@dimen/information_image_size"
+				android:layout_marginRight="@dimen/information_image_margin"
 				android:src="@drawable/ic_information_access_parking"/>
 			<TextView
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:id="@+id/txtv_parking"
 				android:text="Parkingi"
-				android:gravity="center"
-				android:textSize="20sp"/>
+				style="@style/information_basic_text"/>
 		</LinearLayout>
 	</LinearLayout>
 </ScrollView>

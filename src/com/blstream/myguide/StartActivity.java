@@ -34,6 +34,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blstream.myguide.database.DbDataManager;
 import com.blstream.myguide.dialog.ConfirmExitDialogFragment;
 import com.blstream.myguide.dialog.EnableGpsDialogFragment;
 import com.blstream.myguide.dialog.FarFromZooDialog.NavigationConfirmation;
@@ -42,11 +43,9 @@ import com.blstream.myguide.gps.DistanceFromZooGuard;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.settings.Settings;
+import com.blstream.myguide.zoolocations.Animal;
 import com.blstream.myguide.zoolocations.Track;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.blstream.myguide.database.*;
-
-import com.blstream.myguide.zoolocations.*;
 
 /**
  * Created by Piotrek on 2014-04-01. Fixed by Angieszka (fragment swap) on
@@ -482,7 +481,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		double lng = location.getLongitude();
 
 		for (Animal a : mAnimals) {
-			if (distanceBetweenAnimalAndUserInMeters(a, lat, lng) < mDistanceFromAnimal) {
+			if (MathHelper.distanceBetween(a.getNode(), lat, lng) < mDistanceFromAnimal) {
 				Log.i("checkAnimalProximinity", "I'm visiting animal: " + a.getName());
 				Toast.makeText(getApplicationContext(),
 						this.getString(R.string.visiting_animal_toast)
@@ -492,17 +491,12 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				// Update animal in database
 				mDbManager.updateAnimalInDb(a.getId(), true);
 				a.setVisited(true);
-				// update track listview adapter
+				// update track listview mAnimaladapter
 				updateVisited();
 				// update animal marker color
 				SightseeingFragment fragment = (SightseeingFragment) getSupportFragmentManager()
 						.findFragmentByTag(BundleConstants.FRAGMENT_SIGHTSEEING);
 				fragment.updateAnimalVisitedMarker(a.getId());
-
-				if (isVisitedAnimalPartOfTrack(a)) {
-					Log.i("StartActivity", "Visited animal from explored track.");
-					// TODO change navigation point to next animal
-				}
 			}
 		}
 	}
@@ -515,20 +509,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private boolean isVisitedAnimalPartOfTrack(Animal visited) {
 		return StartActivity.sExploredTrack != null
 				&& StartActivity.sExploredTrack.getAnimals().contains(visited);
-	}
-
-	/**
-	 * Calculated by the Euclidean method, returns distance (straight line,
-	 * unlike in nearest animal implementation) in meters.
-	 */
-	private double distanceBetweenAnimalAndUserInMeters(Animal animal, double lat, double lng) {
-		double latitude = Math.toRadians(animal.getNode().getLatitude() - lat);
-		double longitude = Math.toRadians(animal.getNode().getLongitude() - lng);
-
-		double x = longitude * Math.cos(0.5 * (animal.getNode().getLatitude() + lat));
-		double sqrt = Math.sqrt(Math.pow(x, 2) + Math.pow(latitude, 2));
-
-		return (EARTH_RADIUS * sqrt) * 1000;
 	}
 
 	@Override

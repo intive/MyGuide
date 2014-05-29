@@ -30,7 +30,7 @@
 	<paths_visible>true</paths_visible>
 	
 	<!-- Show or hide junctions on map-->	
-	<junctions_visible>true</junctions_visible>
+	<junctions_visible>false</junctions_visible>
 					
 	<!-- Desired interval between location updates(in ms)- approximate value-->
 	<gps_interval>1000</gps_interval>
@@ -57,4 +57,8 @@
 	<!-- ZOO entrance coordinates -->
 	<zoo_entrance_lat>51.106395</zoo_entrance_lat>
 	<zoo_entrance_lng>17.074899</zoo_entrance_lng>
+
+	<!-- Radius around junction within which navigation will project location to this junction  -->
+	<junction_enter_radius>2.0</junction_enter_radius>
+	<junction_exit_radius>2.5</junction_exit_radius>
 </configuration>

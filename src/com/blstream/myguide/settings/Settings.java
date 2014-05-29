@@ -24,6 +24,8 @@ public class Settings extends HashMap<String, String> {
 	public static final String KEY_DISTANCE_FROM_ZOO = "distance_from_zoo";
 	public static final String KEY_ZOO_ENTRANCE_LAT = "zoo_entrance_lat";
 	public static final String KEY_ZOO_ENTRANCE_LNG = "zoo_entrance_lng";
+	public static final String JUNCTION_EXIT_RADIUS = "junction_exit_radius";
+	public static final String JUNCTION_ENTER_RADIUS = "junction_enter_radius";
 
 	private static final long serialVersionUID = 1L;
 

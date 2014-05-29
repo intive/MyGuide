@@ -13,5 +13,11 @@
     <dimen name="events_text_time">14sp</dimen>
 
     <dimen name="info_window_description">8sp</dimen>
+    
+    <dimen name="list_big_text">18dp</dimen>
+    <dimen name="list_regular_text">14dp</dimen>
+    
+    <dimen name="information_image_size">35dp</dimen>
+    <dimen name="information_image_margin">10dp</dimen>
 
 </resources>
