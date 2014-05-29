@@ -16,7 +16,6 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -57,7 +56,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * The track user is following. NULL if user isn't following any.
 	 */
 	private static Track sExploredTrack = null;
-	private static final double EARTH_RADIUS = 6371;
 
 	private FragmentManager mFragmentManager;
 	private ActionBar mActionBar;
@@ -396,16 +394,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				tag);
 	}
 
-	/*
-	 * This method show use animation between fragments, when we back.
-	 */
-	private void setPreviousFragment(Fragment fragment) {
-		FragmentTransaction ft = mFragmentManager.beginTransaction();
-		ft.setCustomAnimations(R.anim.left_in, R.anim.right_out);
-		ft.replace(R.id.flFragmentHolder, fragment);
-		ft.commit();
-	}
-
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
@@ -499,16 +487,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				fragment.updateAnimalVisitedMarker(a.getId());
 			}
 		}
-	}
-
-	/**
-	 * Checks if there's explored track and if animal is on it.
-	 * 
-	 * @param visited Considered animal
-	 */
-	private boolean isVisitedAnimalPartOfTrack(Animal visited) {
-		return StartActivity.sExploredTrack != null
-				&& StartActivity.sExploredTrack.getAnimals().contains(visited);
 	}
 
 	@Override
