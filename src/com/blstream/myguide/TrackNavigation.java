@@ -35,7 +35,6 @@ public class TrackNavigation implements LocationUser {
 
 	private static final String LOG_TAG = TrackNavigation.class.getSimpleName();
 
-	private static final double EARTH_RADIUS = 6371;
 	private static final double MAX_DISTANCE_TO_PROJECT = 20.0;
 	private static final double MAX_DISTANCE_TO_AUTO_CENTER = 600.0;
 	private static final double JUNCTION_EXIT_RADIUS_DEFAULT = 2.5;
@@ -104,7 +103,7 @@ public class TrackNavigation implements LocationUser {
 		moveAndRotateArrow(currentLocation, nodeList);
 		// center camera if necessary
 		if (mAutoCenter
-				&& distanceBetween(nodeList.get(0), currentLocation.getLatitude(),
+				&& MathHelper.distanceBetween(nodeList.get(0), currentLocation.getLatitude(),
 						currentLocation.getLongitude()) < MAX_DISTANCE_TO_AUTO_CENTER) {
 			mMap.animateCamera(CameraUpdateFactory.newLatLng(mMarker.getPosition()));
 			mCameraMovedByNavigation = true;
@@ -129,23 +128,23 @@ public class TrackNavigation implements LocationUser {
 		 */
 		double JunctionRange = (mUserIsWithinJunction) ? mJunctionExitRadius : mJunctionEnterRadius;
 		if (nodeList.size() > 2
-				&& distanceBetween(nodeList.get(1), realLat, realLng) < JunctionRange) {
+				&& MathHelper.distanceBetween(nodeList.get(1), realLat, realLng) < JunctionRange) {
 			// project to junction
 			projectedLat = nodeList.get(1).getLatitude();
 			projectedLng = nodeList.get(1).getLongitude();
-			direction = vectorToAngle(nodeList.get(1), nodeList.get(2));
+			direction = MathHelper.vectorToAngle(nodeList.get(1), nodeList.get(2));
 			mUserIsWithinJunction = true;
-		} else if (distanceBetween(nodeList.get(0), realLat, realLng) < MAX_DISTANCE_TO_PROJECT) {
+		} else if (MathHelper.distanceBetween(nodeList.get(0), realLat, realLng) < MAX_DISTANCE_TO_PROJECT) {
 			// project to way
 			projectedLat = nodeList.get(0).getLatitude();
 			projectedLng = nodeList.get(0).getLongitude();
-			direction = vectorToAngle(nodeList.get(0), nodeList.get(1));
+			direction = MathHelper.vectorToAngle(nodeList.get(0), nodeList.get(1));
 			mUserIsWithinJunction = false;
 		} else {
 			// too far form way/junction - no projection
 			projectedLat = realLat;
 			projectedLng = realLng;
-			direction = vectorToAngle(new Node(realLat, realLng), nodeList.get(0));
+			direction = MathHelper.vectorToAngle(new Node(realLat, realLng), nodeList.get(0));
 			mUserIsWithinJunction = false;
 		}
 
@@ -189,50 +188,6 @@ public class TrackNavigation implements LocationUser {
 		return mDestination;
 	}
 
-	/**
-	 * Calculated by the Euclidean method, returns distance in meters.
-	 */
-	private double distanceBetween(Node node, double lat, double lng) {
-		double latitude = Math.toRadians(node.getLatitude() - lat);
-		double longitude = Math.toRadians(node.getLongitude() - lng);
-
-		double x = longitude * Math.cos(0.5 * (node.getLatitude() + lat));
-		double sqrt = Math.sqrt(Math.pow(x, 2) + Math.pow(latitude, 2));
-
-		return (EARTH_RADIUS * sqrt) * 1000;
-	}
-
-
-	/**
-	 * Convert given vector to angel. Angle is in radians and it is positive in
-	 * the clockwise direction.
-	 *
-	 * @param firstPoint is start of vector
-	 * @param SecondPoint is end of vector
-	 * @return angel of given vector
-	 */
-	private double vectorToAngle(Node firstPoint, Node SecondPoint) {
-		double x = SecondPoint.getLongitude() - firstPoint.getLongitude();
-		double y = SecondPoint.getLatitude() - firstPoint.getLatitude();
-		if (x >= 0) {
-			if (y >= 0) {
-				// 1st quarter
-				return Math.atan2(x, y);
-			} else {
-				// 2nd quarter
-				return Math.PI / 2 + Math.atan2(-y, x);
-			}
-		} else {
-			if (y <= 0) {
-				// 3rd quarter
-				return Math.PI + Math.atan2(-x, -y);
-			} else {
-				// 4th quarter
-				return 3 * Math.PI / 2 + Math.atan2(y, -x);
-			}
-		}
-	}
-
 	@Override
 	public void onGpsAvailable() {
 		mMarker.setVisible(true);
@@ -257,7 +212,8 @@ public class TrackNavigation implements LocationUser {
 		mAutoCenter = true;
 		if (mLastKnownLocation != null
 				&& mDestination.getNode() != null
-				&& distanceBetween(mDestination.getNode(), mLastKnownLocation.getLatitude(),
+				&& MathHelper.distanceBetween(mDestination.getNode(),
+						mLastKnownLocation.getLatitude(),
 						mLastKnownLocation.getLongitude()) < MAX_DISTANCE_TO_AUTO_CENTER) {
 			mMap.animateCamera(CameraUpdateFactory.newLatLng(new LatLng(
 					mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude())));

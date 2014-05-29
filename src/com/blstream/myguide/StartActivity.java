@@ -481,7 +481,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		double lng = location.getLongitude();
 
 		for (Animal a : mAnimals) {
-			if (distanceBetweenAnimalAndUserInMeters(a, lat, lng) < mDistanceFromAnimal) {
+			if (MathHelper.distanceBetween(a.getNode(), lat, lng) < mDistanceFromAnimal) {
 				Log.i("checkAnimalProximinity", "I'm visiting animal: " + a.getName());
 				Toast.makeText(getApplicationContext(),
 						this.getString(R.string.visiting_animal_toast)
@@ -509,20 +509,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private boolean isVisitedAnimalPartOfTrack(Animal visited) {
 		return StartActivity.sExploredTrack != null
 				&& StartActivity.sExploredTrack.getAnimals().contains(visited);
-	}
-
-	/**
-	 * Calculated by the Euclidean method, returns distance (straight line,
-	 * unlike in nearest animal implementation) in meters.
-	 */
-	private double distanceBetweenAnimalAndUserInMeters(Animal animal, double lat, double lng) {
-		double latitude = Math.toRadians(animal.getNode().getLatitude() - lat);
-		double longitude = Math.toRadians(animal.getNode().getLongitude() - lng);
-
-		double x = longitude * Math.cos(0.5 * (animal.getNode().getLatitude() + lat));
-		double sqrt = Math.sqrt(Math.pow(x, 2) + Math.pow(latitude, 2));
-
-		return (EARTH_RADIUS * sqrt) * 1000;
 	}
 
 	@Override
