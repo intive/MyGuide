@@ -112,6 +112,8 @@
 	<!-- History -->
     <string name="history_list_title">Historia</string>
 
+    <string name="clear_track">Wyszyść trasy</string>
+
     <string name="more_info">więcej</string>
 
 </resources>

@@ -101,9 +101,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		setContentView(R.layout.activity_start);
 
 		mDbManager = DbDataManager.getInstance(this);
-		mDbManager.updateAnimalInDb(1, true);
-		mDbManager.updateAnimalInDb(2, true);
-		mDbManager.updateAnimalInDb(23, true);
+
 		if (savedInstanceState == null) {
 			mFragmentManager = getSupportFragmentManager();
 			// The main Fragment
