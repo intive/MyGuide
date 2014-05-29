@@ -135,7 +135,7 @@ public class TicketsFragment extends ListFragment
 				.getTickets());
 
 		prepareFooter(app.getZooData().getTicketInformation());
-		// prior to KITKAT footer and header must have been set before adapter
+		// prior to KITKAT footer and header must have been set before mAnimaladapter
 		getListView().addFooterView(mFooterView);
 		setListAdapter(new ArrayAdapter<ListRowModel>(
 				getActivity(),
