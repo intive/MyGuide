@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.blstream.myguide.database.DbDataManager;
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationLogger;
 import com.blstream.myguide.gps.LocationUpdater;
@@ -91,6 +92,13 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	private BottomAnimalFragment mBottomAnimalFragment;
 	private AnimalDistance mLastAnimalDistance;
 
+	private MenuItem mItemSearch;
+	private MenuItem mItemFilter;
+	private MenuItem mItemCheck;
+
+	private Marker mCheckMarker;
+	private DbDataManager mDbManager;
+
 	public static SightseeingFragment newInstance() {
 		return new SightseeingFragment();
 	}
@@ -115,6 +123,7 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		getTrack();
 		View rootView = inflater.inflate(R.layout.fragment_sightseeing,
 				container, false);
+		mDbManager = DbDataManager.getInstance(getActivity());
 
 		mLocationUpdater = LocationUpdater.getInstance();
 		mLocationUpdater.startUpdating(this);
@@ -175,6 +184,14 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		final MenuItem searchViewMenuItem = menu.findItem(R.id.action_search);
+		mItemSearch = menu.findItem(R.id.action_search);
+		mItemFilter = menu.findItem(R.id.action_filter);
+		mItemCheck = menu.add(getString(R.string.select_animal));
+
+		mItemCheck.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		mItemCheck.setVisible(false);
+		setUpMenuItemListeners();
+
 		mSearchView = (SearchView) searchViewMenuItem.getActionView();
 
 		if (mSearchView != null) {
@@ -190,6 +207,34 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 			clearSearchView();
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	private void setUpMenuItemListeners() {
+		mItemCheck.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+			@Override
+			public boolean onMenuItemClick(MenuItem menuItem) {
+				if (mAnimalMarkersMap.get(mCheckMarker).getVisited()) {
+					mDbManager.updateAnimalInDb(mAnimalMarkersMap.get(mCheckMarker).getId(), false);
+					mAnimalMarkersMap.get(mCheckMarker).setVisited(false);
+					if (mTrack != null) {
+						if (mTrack.getAnimals().contains(mAnimalMarkersMap.get(mCheckMarker))) {
+                            changeAnimalMarkerIcon(R.drawable.ic_animal_on_track);
+						} else {
+                            changeAnimalMarkerIcon(R.drawable.ic_animal);
+						}
+					} else {
+                        changeAnimalMarkerIcon(R.drawable.ic_animal);
+					}
+				} else {
+					mDbManager.updateAnimalInDb(mAnimalMarkersMap.get(mCheckMarker).getId(), true);
+					mAnimalMarkersMap.get(mCheckMarker).setVisited(true);
+                    changeAnimalMarkerIcon(R.drawable.ic_animal_visited);
+				}
+				closeCheckButton(false);
+
+				return false;
+			}
+		});
 	}
 
 	private void setUpSearchView() {
@@ -234,9 +279,11 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 
 				for (Marker marker : mAnimalMarkersMap.keySet()) {
 
-					if (replacePolishChar(marker.getTitle().toLowerCase()).contains(replacePolishChar(s.toLowerCase())))
+					if (replacePolishChar(marker.getTitle().toLowerCase()).contains(
+							replacePolishChar(s.toLowerCase())))
 					{
-						setUpAnimalCamera(marker);
+						mCheckMarker = marker;
+						setUpAnimalCamera();
 						marker.showInfoWindow();
 						findAnimal = true;
 					}
@@ -382,12 +429,15 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 			public void onMapClick(LatLng latLng) {
 				clearSearchView();
 				setUpCamera();
+				closeCheckButton(true);
 			}
 		});
 		mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 			@Override
 			public boolean onMarkerClick(Marker marker) {
-				setUpAnimalCamera(marker);
+				mCheckMarker = marker;
+				openCheckedButton();
+				setUpAnimalCamera();
 				marker.showInfoWindow();
 				clearSearchView();
 				return true;
@@ -436,6 +486,24 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 						BundleConstants.FRAGMENT_ANIMAL_DETAIL);
 			}
 		});
+	}
+
+	private void openCheckedButton() {
+		if (mItemSearch != null) mItemSearch.setVisible(false);
+		if (mItemFilter != null) mItemFilter.setVisible(false);
+
+		if (mAnimalMarkersMap.get(mCheckMarker).getVisited()) mItemCheck.setTitle(getString(R.string.unselect_animal));
+        else mItemCheck.setTitle(getString(R.string.select_animal));
+
+		mItemCheck.setVisible(true);
+	}
+
+	private void closeCheckButton(boolean visibility) {
+		if (mItemSearch != null) mItemSearch.setVisible(true);
+		if (mItemFilter != null) mItemFilter.setVisible(true);
+
+		mItemCheck.setVisible(false);
+		if (!visibility) mCheckMarker.showInfoWindow();
 	}
 
 	/**
@@ -517,8 +585,13 @@ public class SightseeingFragment extends Fragment implements LocationUser {
 		}
 	}
 
-	private void setUpAnimalCamera(Marker marker) {
-		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 17));
+    private void changeAnimalMarkerIcon(int icon) {
+        mCheckMarker.setIcon(BitmapDescriptorFactory
+                .fromResource(icon));
+    }
+
+	private void setUpAnimalCamera() {
+		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mCheckMarker.getPosition(), 17));
 	}
 
 	private void setUpCamera() {
