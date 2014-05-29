@@ -52,7 +52,7 @@ public class ContactInformation {
 	}
 
 	public List<String> getEmails() {
-		return new LinkedList(mEmails);
+		return new LinkedList<String>(mEmails);
 	}
 
 	public ArrayList<Opening> getOpenings() {
