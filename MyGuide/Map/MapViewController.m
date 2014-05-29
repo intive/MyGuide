@@ -88,9 +88,6 @@
     UIBarButtonItem *fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceButton.width = 218.5f;
     [self.mapToolbar setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-//    self.mapToolbar.backgroundColor = [[UIColor clearColor] colorWithAlphaComponent:0.5];
-//    self.mapToolbar.barTintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
-//    self.mapToolbar.tintColor = [[UIColor clearColor] colorWithAlphaComponent:0.5];
     self.mapToolbar.items = @[button, fixedSpaceButton, mapTypebButton];
 }
 - (void)changeMapType
