@@ -45,7 +45,6 @@
     else {
         return _animalsEN;
     }
-    [userDefaults synchronize];
 }
 
 @end
