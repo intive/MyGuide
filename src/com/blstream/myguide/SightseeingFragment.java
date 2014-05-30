@@ -229,17 +229,17 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 					mAnimalMarkersMap.get(mCheckMarker).setVisited(false);
 					if (mTrack != null) {
 						if (mTrack.getAnimals().contains(mAnimalMarkersMap.get(mCheckMarker))) {
-                            changeAnimalMarkerIcon(R.drawable.ic_animal_on_track);
+							changeAnimalMarkerIcon(R.drawable.ic_animal_on_track);
 						} else {
-                            changeAnimalMarkerIcon(R.drawable.ic_animal);
+							changeAnimalMarkerIcon(R.drawable.ic_animal);
 						}
 					} else {
-                        changeAnimalMarkerIcon(R.drawable.ic_animal);
+						changeAnimalMarkerIcon(R.drawable.ic_animal);
 					}
 				} else {
 					mDbManager.updateAnimalInDb(mAnimalMarkersMap.get(mCheckMarker).getId(), true);
 					mAnimalMarkersMap.get(mCheckMarker).setVisited(true);
-                    changeAnimalMarkerIcon(R.drawable.ic_animal_visited);
+					changeAnimalMarkerIcon(R.drawable.ic_animal_visited);
 				}
 				closeCheckButton(false);
 
@@ -463,8 +463,9 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 			@Override
 			public boolean onMarkerClick(Marker marker) {
 				if (mNavigationMarker == null || !marker.getId().equals(mNavigationMarker.getId())) {
-                    mCheckMarker = marker;
-                    setUpAnimalCamera();
+					mCheckMarker = marker;
+					setUpAnimalCamera();
+					openCheckedButton();
 					marker.showInfoWindow();
 					clearSearchView();
 				}
@@ -520,8 +521,9 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 		if (mItemSearch != null) mItemSearch.setVisible(false);
 		if (mItemFilter != null) mItemFilter.setVisible(false);
 
-		if (mAnimalMarkersMap.get(mCheckMarker).getVisited()) mItemCheck.setTitle(getString(R.string.unselect_animal));
-        else mItemCheck.setTitle(getString(R.string.select_animal));
+		if (mAnimalMarkersMap.get(mCheckMarker).getVisited()) mItemCheck
+				.setTitle(getString(R.string.unselect_animal));
+		else mItemCheck.setTitle(getString(R.string.select_animal));
 
 		mItemCheck.setVisible(true);
 	}
@@ -613,10 +615,10 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 		}
 	}
 
-    private void changeAnimalMarkerIcon(int icon) {
-        mCheckMarker.setIcon(BitmapDescriptorFactory
-                .fromResource(icon));
-    }
+	private void changeAnimalMarkerIcon(int icon) {
+		mCheckMarker.setIcon(BitmapDescriptorFactory
+				.fromResource(icon));
+	}
 
 	private void setUpAnimalCamera() {
 		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mCheckMarker.getPosition(), 17));
