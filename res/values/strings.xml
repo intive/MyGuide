@@ -135,4 +135,7 @@
     
     <string name="more_info">more</string>
 
+    <string name="select_animal">Select</string>
+    <string name="unselect_animal">Unselect</string>
+
 </resources>

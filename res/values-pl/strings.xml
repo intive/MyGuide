@@ -117,5 +117,8 @@
 
     <string name="more_info">więcej</string>
 
+    <string name="select_animal">Zaznacz</string>
+    <string name="unselect_animal">Odznacz</string>
+
 </resources>
 
