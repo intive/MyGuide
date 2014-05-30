@@ -79,6 +79,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private ArrayList<Animal> mAnimals;
 
 	private DbDataManager mDbManager;
+	private MenuItem mItemClearTrack;
 
 	private Fragment createInformationFragment() {
 		return FragmentTabManager.newInstance(
@@ -138,11 +139,31 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu_main, menu);
 		MenuItem searchViewMenuItem = menu.findItem(R.id.action_search);
+		mItemClearTrack = menu.findItem(R.id.action_clear);
+
+		mItemClearTrack.setVisible(false);
+
+		mItemClearTrack.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+			@Override
+			public boolean onMenuItemClick(MenuItem menuItem) {
+				mDbManager.resetAllVistedAnimals();
+				for (Animal a : mAnimals) {
+					a.setVisited(false);
+				}
+				SightseeingFragment fragment = (SightseeingFragment) getSupportFragmentManager()
+						.findFragmentByTag(BundleConstants.FRAGMENT_SIGHTSEEING);
+				fragment.updateAnimalMarker();
+				updateVisited();
+				return false;
+			}
+		});
+
 		mSearchView = (SearchView) searchViewMenuItem.getActionView();
 
 		mSearchView.setOnSearchClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
+				mItemClearTrack.setVisible(false);
 				mDrawerLayout.closeDrawer(mTrackListView);
 				mDrawerLayout.closeDrawer(mDrawerList);
 			}
@@ -200,7 +221,22 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.ic_navigation_drawer, R.string.drawer_open,
-				R.string.drawer_close);
+				R.string.drawer_close) {
+			@Override
+			public void onDrawerClosed(View drawerView) {
+				super.onDrawerClosed(drawerView);
+				if (mItemClearTrack != null) mItemClearTrack.setVisible(false);
+			}
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                if (mDrawerLayout.isDrawerVisible(mTrackListView)) {
+                    if (mItemClearTrack != null) mItemClearTrack.setVisible(true);
+                }
+            }
+        };
+
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
@@ -212,9 +248,20 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	private void createTrackList() {
 		mTrackList = new ArrayList<Track>();
 		mTrackList.add(createHeaderListTrack());
+
 		for (Track track : ((MyGuideApp) this.getApplication()).getZooData().getTracks()) {
 			mTrackList.add(track);
 		}
+
+		Track noTrack = new Track();
+		HashMap<String, String> names = new HashMap<String, String>();
+
+		names.put("en", "No track");
+		names.put("pl", "Bez trasy");
+		noTrack.setNames(names);
+		noTrack.setVisited(-1);
+
+		mTrackList.add(noTrack);
 	}
 
 	/**
@@ -245,11 +292,15 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	 * This method check visited animals and update Track
 	 */
 	private void updateVisited() {
+		int i = 0;
 		for (final Track track : mTrackList) {
-			track.setVisited(0);
-			for (Animal animal : track.getAnimals()) {
-				if (animal.getVisited()) track.setVisited(track.getVisited() + 1);
+			if (i != mTrackList.size() - 1) {
+				track.setVisited(0);
+				for (Animal animal : track.getAnimals()) {
+					if (animal.getVisited()) track.setVisited(track.getVisited() + 1);
+				}
 			}
+			i++;
 		}
 		mTrackListAdapter.refill();
 	}
@@ -265,6 +316,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				if (position == 0) {
 				return;
 				}
+
 				new Thread() {
 					@Override
 					public void run() {
@@ -277,12 +329,22 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 					}
 				}.start();
 
-				setNextFragment(
-						FragmentTrackDetails.newInstance(((MyGuideApp) getApplication())
-								.getZooData().getTracks()
-								.get(position - 1)), "track");
+				if (position == mTrackList.size() - 1) {
+					StartActivity.setExploredTrack(null);
+					SupportMapFragment f = (SupportMapFragment) getSupportFragmentManager()
+							.findFragmentById(R.id.map);
+					if (f != null) getSupportFragmentManager().beginTransaction().remove(f)
+							.commit();
+					navigateToSightseeing();
+				} else {
+					setNextFragment(
+							FragmentTrackDetails.newInstance(((MyGuideApp) getApplication())
+									.getZooData().getTracks()
+									.get(position - 1)), "track");
+				}
 			}
 		});
+
 	}
 
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -499,8 +561,8 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	public static void setExploredTrack(Track track) {
 		StartActivity.sExploredTrack = track;
 	}
-	
-	public Track getExploredTrack(){
+
+	public Track getExploredTrack() {
 		return StartActivity.sExploredTrack;
 	}
 
@@ -618,11 +680,17 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			}
 
 			Track track = mTracks.get(position);
-
-			viewHolder.mTxtvName.setText(track.getName() + "");
-			viewHolder.mTxtvProgress.setText(track.getVisited() + "/" + track.getAnimals().size());
-			viewHolder.mProgressBar.setMax(track.getAnimals().size());
-			viewHolder.mProgressBar.setProgress(track.getVisited());
+			if (track.getVisited() == -1) {
+				viewHolder.mTxtvName.setText(track.getName() + "");
+				viewHolder.mTxtvProgress.setVisibility(View.GONE);
+				viewHolder.mProgressBar.setVisibility(View.GONE);
+			} else {
+				viewHolder.mTxtvName.setText(track.getName() + "");
+				viewHolder.mTxtvProgress.setText(track.getVisited() + "/"
+						+ track.getAnimals().size());
+				viewHolder.mProgressBar.setMax(track.getAnimals().size());
+				viewHolder.mProgressBar.setProgress(track.getVisited());
+			}
 
 			return convertView;
 		}

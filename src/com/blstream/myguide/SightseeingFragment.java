@@ -271,16 +271,32 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 		}
 	}
 
-    /**
-     * Method change marker color where animal.id == id
-     * @param id animal id to change marker color
-     */
-    public void updateAnimalVisitedMarker(int id) {
-        for (Marker m : mAnimalMarkersMap.keySet()) {
-            if (mAnimalMarkersMap.get(m).getId() == id) m.setIcon(BitmapDescriptorFactory
-                    .fromResource(R.drawable.ic_animal_visited));
-        }
-    }
+	/**
+	 * Method change marker color where animal.id == id
+	 * 
+	 * @param id animal id to change marker color
+	 */
+	public void updateAnimalVisitedMarker(int id) {
+		for (Marker m : mAnimalMarkersMap.keySet()) {
+			if (mAnimalMarkersMap.get(m).getId() == id) m.setIcon(BitmapDescriptorFactory
+					.fromResource(R.drawable.ic_animal_visited));
+		}
+	}
+
+	public void updateAnimalMarker() {
+		for (Marker m : mAnimalMarkersMap.keySet()) {
+			if (mAnimalMarkersMap.get(m).getVisited()) m.setIcon(BitmapDescriptorFactory
+					.fromResource(R.drawable.ic_animal_visited));
+			else m.setIcon(BitmapDescriptorFactory
+					.fromResource(R.drawable.ic_animal));
+
+			if (mTrack != null) {
+				if (mTrack.getAnimals().contains(mAnimalMarkersMap.get(m))) m
+						.setIcon(BitmapDescriptorFactory
+								.fromResource(R.drawable.ic_animal_on_track));
+			}
+		}
+	}
 
 	private void setUpSearchViewListeners() {
 		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -295,6 +311,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 					{
 						mCheckMarker = marker;
 						setUpAnimalCamera();
+
 						marker.showInfoWindow();
 						findAnimal = true;
 					}
@@ -302,8 +319,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 
 				if (findAnimal) {
 					clearSearchView();
-				}
-				else {
+				} else {
 					mSearchView.setQuery(null, false);
 					mSearchView.setQueryHint(getString(R.string.search_sightseeing_not));
 				}
