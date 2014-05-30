@@ -156,7 +156,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				SightseeingFragment fragment = (SightseeingFragment) getSupportFragmentManager()
 						.findFragmentByTag(BundleConstants.FRAGMENT_SIGHTSEEING);
 				fragment.updateAnimalMarker();
-				mItemClearTrack.setVisible(false);
 				updateVisited();
 				return false;
 			}
@@ -225,7 +224,22 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.ic_navigation_drawer, R.string.drawer_open,
-				R.string.drawer_close);
+				R.string.drawer_close) {
+			@Override
+			public void onDrawerClosed(View drawerView) {
+				super.onDrawerClosed(drawerView);
+				if (mItemClearTrack != null) mItemClearTrack.setVisible(false);
+			}
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                if (mDrawerLayout.isDrawerVisible(mTrackListView)) {
+                    if (mItemClearTrack != null) mItemClearTrack.setVisible(true);
+                }
+            }
+        };
+
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
@@ -415,7 +429,6 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			clearSearchView();
-			mItemClearTrack.setVisible(false);
 			mDrawerLayout.closeDrawer(mTrackListView);
 			return true;
 		}
@@ -423,11 +436,9 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			mDrawerLayout.closeDrawer(mDrawerList);
 			if (mDrawerLayout.isDrawerVisible(mTrackListView)) {
 				mDrawerLayout.closeDrawer(mTrackListView);
-				mItemClearTrack.setVisible(false);
 			}
 			else {
 				mDrawerLayout.openDrawer(mTrackListView);
-				mItemClearTrack.setVisible(true);
 			}
 		}
 		return super.onOptionsItemSelected(item);
