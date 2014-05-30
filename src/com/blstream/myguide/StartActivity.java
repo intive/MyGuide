@@ -99,6 +99,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 		mDbManager = DbDataManager.getInstance(this);
 
+		StartActivity.setExploredTrack(null);
 		if (savedInstanceState == null) {
 			mFragmentManager = getSupportFragmentManager();
 			// The main Fragment
@@ -228,15 +229,17 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				if (mItemClearTrack != null) mItemClearTrack.setVisible(false);
 			}
 
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                if (mDrawerLayout.isDrawerVisible(mTrackListView)) {
-                    if (mItemClearTrack != null) mItemClearTrack.setVisible(true);
-                }
-            }
-        };
-
+			@Override
+			public void onDrawerOpened(View drawerView) {
+				super.onDrawerOpened(drawerView);
+				if (mDrawerLayout.isDrawerVisible(mTrackListView)) {
+					if (mItemClearTrack != null) {
+						mItemClearTrack.setVisible(true);
+						updateVisited();
+					}
+				}
+			}
+		};
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
@@ -307,6 +310,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 	/** Sets up track list (right drawer). */
 	public void setUpTrackList() {
+
 		mTrackListView = (ListView) findViewById(R.id.lvTracks);
 		mTrackListAdapter = new TrackAdapter(this, R.layout.right_drawer_item, mTrackList);
 		mTrackListView.setAdapter(mTrackListAdapter);
@@ -329,7 +333,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 					}
 				}.start();
 
-				if (position == mTrackList.size() - 1) {
+				if (position == mTrackList.size() - 1 && getExploredTrack() != null) {
 					StartActivity.setExploredTrack(null);
 					SupportMapFragment f = (SupportMapFragment) getSupportFragmentManager()
 							.findFragmentById(R.id.map);
