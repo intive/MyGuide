@@ -67,14 +67,14 @@
             NSMutableArray *tempExplorationAnimalIDArray = [NSMutableArray new];
             for(NSString *animalID in self.animalIndexesArray){
                 AFAnimal *animal = [self findAnimalByID:animalID.integerValue];
-                if([animal isWithinDistance:20 fromLocation:location]){
+                if([animal isWithinDistance:animal.radius fromLocation:location]){
                     [self.monitoredTrack incrementProgress];
                     [tempAnimalIDArray addObject:animalID];
                 }
             }
             for(NSString *animalID in self.explorationAnimalIndexesArray){
                 AFAnimal *animal = [self findAnimalByID:animalID.integerValue];
-                if([animal isWithinDistance:20 fromLocation:location]){
+                if([animal isWithinDistance:animal.radius fromLocation:location]){
                     [self.explorationTrack incrementProgress];
                     [[[AFVisitedPOIsData sharedData] visitedPOIs] addObject:animal];
                     [tempExplorationAnimalIDArray addObject:animalID];

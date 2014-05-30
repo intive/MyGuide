@@ -15,8 +15,12 @@
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly, copy) NSString *title;
+@property (nonatomic) BOOL visited;
+@property (nonatomic) BOOL isOnTrack;
+@property (nonatomic) AFAnimal *animal;
 
 - (id)initWithAnimal:(AFAnimal *)animal;
+- (MKAnnotationView *)annotationView;
 + (NSArray *)buildAnimalMKAnnotations:(NSArray *)animals;
 
 @end

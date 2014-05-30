@@ -48,12 +48,13 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
     _languageFallback    = @"EN";
     _innerRadius         = 1;
     _externalRadius      = 2;
-    _visitedRadius       = 10;
+    _visitedRadius       = 20;
     _showAnimalsOnMap    = YES;
     _showUserPosition    = YES;
     _showPathsOnMap      = YES;
-    _showJunctionsOnMap  = YES;
+    _showJunctionsOnMap  = NO;
     _showDistanceAlert   = YES;
+    _showDebugRadiiOnMap = NO;
 }
 
 - (void)injectDataWithName:(NSString*)name andValue:(NSString*)value
@@ -117,6 +118,9 @@ static const double meterInLongitudeDegrees = 1/70038.85259649946;
     }
     else if ([name isEqualToString:  @"map_camera_min_altitude"]) {
         _cameraMinAltitude = [value doubleValue];
+    }
+    else if ([name isEqualToString:  @"map_show_debug_radii"]) {
+        _showDebugRadiiOnMap = [value boolValue];
     }
 }
 

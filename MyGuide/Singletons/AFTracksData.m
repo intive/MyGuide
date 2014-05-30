@@ -25,6 +25,8 @@
     self = [super init];
     if(self) {
         _tracks = @[];
+        _currentTrackForMap = @[];
+        self.shouldShowTrackOnMap = NO;
     }
     return self;
 }

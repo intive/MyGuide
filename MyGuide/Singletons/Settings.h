@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) BOOL showUserPosition;
 @property (nonatomic, readonly) BOOL showPathsOnMap;
 @property (nonatomic, readonly) BOOL showJunctionsOnMap;
+@property (nonatomic, readonly) BOOL showDebugRadiiOnMap;
 
 @property (nonatomic, readonly) double cameraMaxAltitude;
 @property (nonatomic, readonly) double cameraMinAltitude;

@@ -26,6 +26,7 @@ static NSString *kXmlDescriptionChild = @"description_child";
 static NSString *kXmlImage            = @"image";
 static NSString *kXmlPL               = @"pl";
 static NSString *kXmlEN               = @"en";
+static NSString *kXmlRadius           = @"radius";
 
 @interface AFXMLParser ()
 
@@ -211,9 +212,13 @@ didStartElement: (NSString *)elementName
             [_animalInfoDictionaryEN setValue: _elementValue forKey: _descriptionAdultFlag ? @"adultDescription" : @"childDescription"];
         }
     }
-    else if ([elementName isEqualToString: @"id"]) {
+    else if ([elementName isEqualToString: kXmlId]) {
         [_currentAnimalEN setAnimalID: [_elementValue integerValue]];
         [_currentAnimalPL setAnimalID: [_elementValue integerValue]];
+    }
+    else if ([elementName isEqualToString: kXmlRadius]) {
+        [_currentAnimalEN setRadius:[_elementValue integerValue]];
+        [_currentAnimalPL setRadius:[_elementValue integerValue]];
     }
 }
 

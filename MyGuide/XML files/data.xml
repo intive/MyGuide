@@ -2,6 +2,7 @@
 	<animals>
 		<animal lat="51.1052072" lon="17.0754498">
 			<id>0</id>
+			<radius>50</radius>
 			<name>
 				<pl>Żyrafa</pl>
 				<en>Żyrafa EN</en>
@@ -19,6 +20,7 @@
 		</animal>
 		<animal lat="51.1050185" lon="17.0759970">
 			<id>1</id>
+			<radius>50</radius>
 			<name>
 				<pl>Struś</pl>
 				<en>Struś EN</en>
@@ -36,6 +38,7 @@
 		</animal>
 		<animal lat="51.1046625" lon="17.0771680">
 			<id>2</id>
+			<radius>30</radius>
 			<name>
 				<pl>Lew angolański</pl>
 				<en>Lew angolański EN</en>
@@ -53,6 +56,7 @@
 		</animal>
 		<animal lat="51.1053988" lon="17.0737940">
 			<id>3</id>
+			<radius>25</radius>
 			<name>
 				<pl>Zebra</pl>
 				<en>Zebra EN</en>
@@ -70,6 +74,7 @@
 		</animal>
 		<animal lat="51.1031447" lon="17.0756473">
 			<id>4</id>
+			<radius>30</radius>
 			<name>
 				<pl>Żubr</pl>
 				<en>Żubr EN</en>
@@ -87,6 +92,7 @@
 		</animal>
 		<animal lat="51.1042875" lon="17.0786295">
 			<id>5</id>
+			<radius>20</radius>
 			<name>
 				<pl>Gnu białobrode</pl>
 				<en>Gnu białobrode EN</en>
@@ -104,6 +110,7 @@
 		</animal>
 		<animal lat="51.1047078" lon="17.0784479">
 			<id>6</id>
+			<radius>20</radius>
 			<name>
 				<pl>Oryks szablorogi</pl>
 				<en>Oryks szablorogi EN</en>
@@ -121,6 +128,7 @@
 		</animal>
 		<animal lat="51.1049038" lon="17.0778135">
 			<id>7</id>
+			<radius>20</radius>
 			<name>
 				<pl>Osioł Domowy</pl>
 				<en>Osioł Domowy EN</en>
@@ -138,6 +146,7 @@
 		</animal>
 		<animal lat="51.1051282" lon="17.0774613">
 			<id>8</id>
+			<radius>20</radius>
 			<name>
 				<pl>Wielbłąd jednogarbny</pl>
 				<en>Wielbłąd jednogarbny EN</en>
@@ -155,6 +164,7 @@
 		</animal>
 		<animal lat="51.1040432" lon="17.0774597">
 			<id>9</id>
+			<radius>20</radius>
 			<name>
 				<pl>Kob Singsing</pl>
 				<en>Kob Singsing EN</en>
@@ -172,6 +182,7 @@
 		</animal>
 		<animal lat="51.1039061" lon="17.0773532">
 			<id>10</id>
+			<radius>20</radius>
 			<name>
 				<pl>Sitatunga</pl>
 				<en>Sitatunga EN</en>
@@ -189,6 +200,7 @@
 		</animal>
 		<animal lat="51.1016737" lon="17.0785009">
 			<id>11</id>
+			<radius>20</radius>
 			<name>
 				<pl>Niedźwiedź brunatny</pl>
 				<en>Niedźwiedź brunatny EN</en>
@@ -206,6 +218,7 @@
 		</animal>
 		<animal lat="51.1015091" lon="17.0778810">
 			<id>12</id>
+			<radius>40  </radius>
 			<name>
 				<pl>Magot</pl>
 				<en>Magot EN</en>
@@ -223,6 +236,7 @@
 		</animal>
 		<animal lat="51.1042993" lon="17.0778709">
 			<id>13</id>
+			<radius>20</radius>
 			<name>
 				<pl>Garna</pl>
 				<en>Garna EN</en>
@@ -240,6 +254,7 @@
 		</animal>
 		<animal lat="51.1024655" lon="17.0756415">
 			<id>14</id>
+			<radius>35</radius>
 			<name>
 				<pl>Pelikan różowy</pl>
 				<en>Pelikan różowy EN</en>
@@ -257,6 +272,7 @@
 		</animal>
 		<animal lat="51.1061405" lon="17.0741774">
 			<id>15</id>
+			<radius>20</radius>
 			<name>
 				<pl>Kotik afrykański</pl>
 				<en>Kotik afrykański EN</en>
@@ -274,6 +290,7 @@
 		</animal>
 		<animal lat="51.1017737" lon="17.0779163">
 			<id>16</id>
+			<radius>25</radius>
 			<name>
 				<pl>Muflon</pl>
 				<en>Muflon EN</en>
@@ -291,6 +308,7 @@
 		</animal>
 		<animal lat="51.1042374" lon="17.0777086">
 			<id>17</id>
+			<radius>20</radius>
 			<name>
 				<pl>Nilgau</pl>
 				<en>Nilgau EN</en>
@@ -308,6 +326,7 @@
 		</animal>
 		<animal lat="51.1047396" lon="17.0782172">
 			<id>18</id>
+			<radius>20</radius>
 			<name>
 				<pl>Fenek</pl>
 				<en>Fenek EN</en>
@@ -325,6 +344,7 @@
 		</animal>
 		<animal lat="51.1042030" lon="17.0767175">
 			<id>19</id>
+			<radius>25</radius>
 			<name>
 				<pl>Likaon</pl>
 				<en>Likaon EN</en>
@@ -342,6 +362,7 @@
 		</animal>
 		<animal lat="51.1042048" lon="17.0731681">
 			<id>20</id>
+			<radius>20</radius>
 			<name>
 				<pl>Kapibara</pl>
 				<en>Kapibara EN</en>
@@ -359,6 +380,7 @@
 		</animal>
 		<animal lat="51.1037581" lon="17.0728256">
 			<id>21</id>
+			<radius>20</radius>
 			<name>
 				<pl>Aguti złociste</pl>
 				<en>Aguti złociste EN</en>
@@ -376,6 +398,7 @@
 		</animal>
 		<animal lat="51.1066934" lon="17.0724480">
 			<id>22</id>
+			<radius>20</radius>
 			<name>
 				<pl>Mangaba czarna</pl>
 				<en>Mangaba czarna EN</en>
@@ -393,6 +416,7 @@
 		</animal>
 		<animal lat="51.1056874" lon="17.0738775">
 			<id>23</id>
+			<radius>20</radius>
 			<name>
 				<pl>Urson</pl>
 				<en>Urson EN</en>
@@ -410,6 +434,7 @@
 		</animal>
 		<animal lat="51.1058086" lon="17.0739829">
 			<id>24</id>
+			<radius>20</radius>
 			<name>
 				<pl>Niedźwiedź Brunatny</pl>
 				<en>Niedźwiedź Brunatny EN</en>
@@ -427,6 +452,7 @@
 		</animal>
 		<animal lat="51.1064215" lon="17.0732379">
 			<id>25</id>
+			<radius>20</radius>
 			<name>
 				<pl>Wilk</pl>
 				<en>Wilk EN</en>
@@ -444,6 +470,7 @@
 		</animal>
 		<animal lat="51.1060238" lon="17.0716045">
 			<id>26</id>
+			<radius>27</radius>
 			<name>
 				<pl>Słoń indyjski</pl>
 				<en>Słoń indyjski EN</en>
@@ -461,6 +488,7 @@
 		</animal>
 		<animal lat="51.1039169" lon="17.0729268">
 			<id>27</id>
+			<radius>20</radius>
 			<name>
 				<pl>Lama</pl>
 				<en>Lama EN</en>
@@ -478,6 +506,7 @@
 		</animal>
 		<animal lat="51.1035765" lon="17.0726617">
 			<id>28</id>
+			<radius>20</radius>
 			<name>
 				<pl>Mara patagońska</pl>
 				<en>Mara patagońska EN</en>
@@ -495,6 +524,7 @@
 		</animal>
 		<animal lat="51.1040441" lon="17.0734620">
 			<id>29</id>
+			<radius>20</radius>
 			<name>
 				<pl>Nandu szare</pl>
 				<en>Nandu szare EN</en>
@@ -512,6 +542,7 @@
 		</animal>
 		<animal lat="51.1040605" lon="17.0706544">
 			<id>30</id>
+			<radius>25</radius>
 			<name>
 				<pl>Daniel mezopotamski</pl>
 				<en>Daniel mezopotamski EN</en>
@@ -529,6 +560,7 @@
 		</animal>
 		<animal lat="51.1034744" lon="17.0728319">
 			<id>31</id>
+			<radius>40</radius>
 			<name>
 				<pl>Alpaka</pl>
 				<en>Alpaka EN</en>
@@ -546,6 +578,7 @@
 		</animal>
 		<animal lat="51.1063327" lon="17.0740033">
 			<id>32</id>
+			<radius>20</radius>
 			<name>
 				<pl>Niedźwiedź himalajski</pl>
 				<en>Niedźwiedź himalajski EN</en>
@@ -563,6 +596,7 @@
 		</animal>
 		<animal lat="51.1068418" lon="17.0723794">
 			<id>33</id>
+			<radius>20</radius>
 			<name>
 				<pl>Makak czubaty</pl>
 				<en>Makak czubaty EN</en>
@@ -580,6 +614,7 @@
 		</animal>
 		<animal lat="51.1067633" lon="17.0724229">
 			<id>34</id>
+			<radius>20</radius>
 			<name>
 				<pl>Mangaba rudoczelna</pl>
 				<en>Mangaba rudoczelna EN</en>
@@ -597,6 +632,7 @@
 		</animal>
 		<animal lat="51.1046240" lon="17.0698661">
 			<id>35</id>
+			<radius>25</radius>
 			<name>
 				<pl>Sajmiri</pl>
 				<en>Sajmiri EN</en>
@@ -614,6 +650,7 @@
 		</animal>
 		<animal lat="51.1040646" lon="17.0731295">
 			<id>36</id>
+			<radius>25</radius>
 			<name>
 				<pl>Gwanako</pl>
 				<en>Gwanako EN</en>
@@ -631,6 +668,7 @@
 		</animal>
 		<animal lat="51.1035167" lon="17.0766332">
 			<id>37</id>
+			<radius>20</radius>
 			<name>
 				<pl>Marabut afrykański</pl>
 				<en>Marabut afrykański EN</en>
@@ -648,6 +686,7 @@
 		</animal>
 		<animal lat="51.1063553" lon="17.0722136">
 			<id>38</id>
+			<radius>20</radius>
 			<name>
 				<pl>Hipopotam nilowy</pl>
 				<en>Hipopotam nilowy EN</en>
@@ -665,6 +704,7 @@
 		</animal>
 		<animal lat="51.1050439" lon="17.0696709">
 			<id>39</id>
+			<radius>20</radius>
 			<name>
 				<pl>Jeleń aksis</pl>
 				<en>Jeleń aksis EN</en>
@@ -682,6 +722,7 @@
 		</animal>
 		<animal lat="51.1069080" lon="17.0722911">
 			<id>40</id>
+			<radius>20</radius>
 			<name>
 				<pl>Makak rezus</pl>
 				<en>Makak rezus EN</en>
@@ -699,6 +740,7 @@
 		</animal>
 		<animal lat="51.1043066" lon="17.0717151">
 			<id>41</id>
+			<radius>25</radius>
 			<name>
 				<pl>Lemur katta</pl>
 				<en>Lemur katta EN</en>
@@ -716,6 +758,7 @@
 		</animal>
 		<animal lat="51.1042855" lon="17.0699521">
 			<id>42</id>
+			<radius>20</radius>
 			<name>
 				<pl>Sika Dybowskiego</pl>
 				<en>Sika Dybowskiego EN</en>
@@ -733,6 +776,7 @@
 		</animal>
 		<animal lat="51.1053321" lon="17.0695383">
 			<id>43</id>
+			<radius>33</radius>
 			<name>
 				<pl>Jeleń milu</pl>
 				<en>Jeleń milu EN</en>
@@ -750,6 +794,7 @@
 		</animal>
 		<animal lat="51.1034212" lon="17.0725676">
 			<id>44</id>
+			<radius>40</radius>
 			<name>
 				<pl>Skrzydłoszpon obrożny</pl>
 				<en>Skrzydłoszpon obrożny EN</en>
@@ -767,6 +812,7 @@
 		</animal>
 		<animal lat="51.1016967" lon="17.0771516">
 			<id>45</id>
+			<radius>20</radius>
 			<name>
 				<pl>Żbik</pl>
 				<en>Żbik EN</en>
@@ -784,6 +830,7 @@
 		</animal>
 		<animal lat="51.1032748" lon="17.0750735">
 			<id>46</id>
+			<radius>30</radius>
 			<name>
 				<pl>Banteng</pl>
 				<en>Banteng EN</en>
@@ -801,6 +848,7 @@
 		</animal>
 		<animal lat="51.1068641" lon="17.0702596">
 			<id>47</id>
+			<radius>20</radius>
 			<name>
 				<pl>Czerwonak różowy</pl>
 				<en>Czerwonak różowy EN</en>
@@ -818,6 +866,7 @@
 		</animal>
 		<animal lat="51.1067957" lon="17.0724032">
 			<id>48</id>
+			<radius>20</radius>
 			<name>
 				<pl>Patas</pl>
 				<en>Patas EN</en>
@@ -835,6 +884,7 @@
 		</animal>
 		<animal lat="51.1048820" lon="17.0693605">
 			<id>49</id>
+			<radius>30</radius>
 			<name>
 				<pl>Renifer</pl>
 				<en>Renifer EN</en>
@@ -852,6 +902,7 @@
 		</animal>
 		<animal lat="51.1019258" lon="17.0771623">
 			<id>50</id>
+			<radius>20</radius>
 			<name>
 				<pl>Ryś</pl>
 				<en>Ryś EN</en>
@@ -869,6 +920,7 @@
 		</animal>
 		<animal lat="51.1063146" lon="17.0728767">
 			<id>51</id>
+			<radius>20</radius>
 			<name>
 				<pl>Tygrys Sumatrzański</pl>
 				<en>Tygrys Sumatrzański EN</en>
@@ -886,6 +938,7 @@
 		</animal>
 		<animal lat="51.1061018" lon="17.0721245">
 			<id>52</id>
+			<radius>20</radius>
 			<name>
 				<pl>Tapir anta</pl>
 				<en>Tapir anta EN</en>
@@ -903,6 +956,7 @@
 		</animal>
 		<animal lat="51.1045571" lon="17.0730667">
 			<id>53</id>
+			<radius>35</radius>
 			<name>
 				<pl>Panda Mała</pl>
 				<en>Panda Mała EN</en>
@@ -920,6 +974,7 @@
 		</animal>
 		<animal lat="51.1058351" lon="17.0732203">
 			<id>54</id>
+			<radius>50</radius>
 			<name>
 				<pl>Nosorożec indyjski</pl>
 				<en>Nosorożec indyjski EN</en>

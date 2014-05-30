@@ -9,6 +9,8 @@
 #import "MapViewController.h"
 #import "UIImage+Compare.h"
 #import "DetailsMapViewController.h"
+#import "GraphDrawer.h"
+#import "AFTracksData.h"
 
 @interface MapViewController ()
 
@@ -19,7 +21,6 @@
 @property (nonatomic) NSArray           *nearestAnimals;
 @property (nonatomic) BOOL               isSlidingView;
 @property (nonatomic) BOOL               slidingViewIsDown;
-@property (nonatomic) BOOL               visitedLocationFlag;
 
 @end
 
@@ -62,6 +63,10 @@
     [self showAnimals];
     [self.mapToolbar.items.firstObject setEnabled:NO];
     [self updateVisitedLocations];
+    if([[AFTracksData sharedParsedData] shouldShowTrackOnMap]){
+        NSLog(@"should draw track");
+        [self drawTrack];
+    }
 }
 
 #pragma mark - Initial configuration
@@ -87,7 +92,7 @@
     button.customView.tintColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
     UIBarButtonItem *fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceButton.width = 218.5f;
-    [self.mapToolbar setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    [self.mapToolbar setBackgroundImage:[UIImage imageNamed:@"buttonBackgroundImage"] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     self.mapToolbar.items = @[button, fixedSpaceButton, mapTypebButton];
 }
 - (void)changeMapType
@@ -127,8 +132,10 @@
         NSArray *animals = [MKAnnotationAnimal buildAnimalMKAnnotations:_data.animalsArray];
         
         for(MKAnnotationAnimal *annotation in animals){
-            MKCircle *circle = [MKCircle circleWithCenterCoordinate:annotation.coordinate radius:20];
-            [self.mapView addOverlay:circle];
+            if(_settings.showDebugRadiiOnMap){
+                MKCircle *circle = [MKCircle circleWithCenterCoordinate:annotation.coordinate radius:[(AFAnimal*)[(MKAnnotationAnimal*)annotation animal] radius]];
+                [self.mapView addOverlay:circle];
+            }
         }
         [self.mapView addAnnotations:animals];
     }
@@ -199,7 +206,7 @@
     return mapViewController;
 }
 
-#pragma mark - Drawing paths on the map
+#pragma mark - Drawing paths, track and animals on the map
 - (void)drawPath:(NSArray *)nodesArray
 {
     CLLocationCoordinate2D coordinatesArray[[nodesArray count]];
@@ -212,7 +219,49 @@
     MKPolyline *path = [MKPolyline polylineWithCoordinates:coordinatesArray count:[nodesArray count]];
     [self.mapView addOverlay:path];
 }
-
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if([annotation isKindOfClass:[MKAnnotationAnimal class]]){
+        MKAnnotationAnimal *animalAnnotation = (MKAnnotationAnimal *)annotation;
+        MKAnnotationView   *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"animalAnnotationView"];
+        if(annotationView == nil){
+            annotationView = animalAnnotation.annotationView;
+        }
+        else{
+            annotationView.annotation = annotation;
+        }
+        return annotationView;
+    }
+    else{
+        return nil;
+    }
+}
+- (void)drawTrack
+{
+//    zostawiam tu ten komentarz, bo nad tym obecnie pracuję, żeby działało dużo lepiej, ale mimo to,
+//    niech obecna wersja tej metody będzie w appce (ze świadomością, że jest chwilowa)
+    
+    GraphDrawer *graphDrawer = [GraphDrawer sharedInstance];
+    NSMutableArray *trackPolylines = [NSMutableArray new];
+    NSArray *currentTrackAnimalsArray = [[AFTracksData sharedParsedData] currentTrackForMap];
+    for(int i=0; i<currentTrackAnimalsArray.count-1; i++){
+        AFAnimal *startAnimal = _data.animalsArray[[[currentTrackAnimalsArray objectAtIndex:i] integerValue]];
+        AFAnimal *endAnimal   = _data.animalsArray[[[currentTrackAnimalsArray objectAtIndex:i+1] integerValue]];
+        CLLocation *startNode = [[CLLocation alloc] initWithLatitude:startAnimal.getLocationCoordinate.latitude longitude:startAnimal.getLocationCoordinate.longitude];
+        CLLocation *endNode   = [[CLLocation alloc] initWithLatitude:endAnimal.getLocationCoordinate.latitude longitude:endAnimal.getLocationCoordinate.longitude];
+        
+        [trackPolylines addObject:[graphDrawer findShortestPathBetweenLocation:startNode andLocation:endNode]];
+    }
+    AFAnimal *startAnimal = _data.animalsArray[[[currentTrackAnimalsArray lastObject] integerValue]];
+    AFAnimal *endAnimal   = _data.animalsArray[[[currentTrackAnimalsArray firstObject] integerValue]];
+    CLLocation *startNode = [[CLLocation alloc] initWithLatitude:startAnimal.getLocationCoordinate.latitude longitude:startAnimal.getLocationCoordinate.longitude];
+    CLLocation *endNode   = [[CLLocation alloc] initWithLatitude:endAnimal.getLocationCoordinate.latitude longitude:endAnimal.getLocationCoordinate.longitude];    [trackPolylines addObject:[graphDrawer findShortestPathBetweenLocation:startNode andLocation:endNode]];
+    
+    for(MKPolyline *trackFragment in trackPolylines){
+        trackFragment.title = @"trackPolyline";
+        [self.mapView addOverlay:trackFragment];
+    }
+}
 #pragma mark - Drawing junctions on the map
 - (void)drawJunction:(AFNode *)node
 {
@@ -233,11 +282,20 @@
             routeRenderer.lineWidth = 5;
         }
         else{
-            routeRenderer.strokeColor = [UIColor brownColor];
-            routeRenderer.lineCap     = kCGLineCapRound;
-            routeRenderer.lineJoin    = kCGLineJoinRound;
-            routeRenderer.lineWidth   = 3;
-            routeRenderer.alpha       = 0.7;
+            if([route.title isEqualToString:@"trackPolyline"]){
+                routeRenderer.strokeColor = [UIColor orangeColor];
+                routeRenderer.lineCap     = kCGLineCapRound;
+                routeRenderer.lineJoin    = kCGLineJoinRound;
+                routeRenderer.lineWidth   = 4;
+                routeRenderer.alpha       = 0.9;
+            }
+            else{
+                routeRenderer.strokeColor = [UIColor brownColor];
+                routeRenderer.lineCap     = kCGLineCapRound;
+                routeRenderer.lineJoin    = kCGLineJoinRound;
+                routeRenderer.lineWidth   = 3;
+                routeRenderer.alpha       = 0.7;
+            }
         }
         return routeRenderer;
     }
@@ -355,7 +413,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     UIImageView *animalImage = (UIImageView *)[cell viewWithTag:100];
-    animalImage.image = [UIImage imageNamed:[[[_nearestAnimals objectAtIndex:indexPath.section] animalInfoDictionary] valueForKey:@"adultImageName"]];
+    animalImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[[[_nearestAnimals objectAtIndex:indexPath.section] animalInfoDictionary] valueForKey:@"adultImageName"]]];
 
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:101];
     nameLabel.text = [NSString stringWithFormat:@"%@", [[_nearestAnimals objectAtIndex:indexPath.section] name]];
@@ -395,8 +453,7 @@
     for(AFAnimal *animal in _visitedPOIs.visitedPOIs){
         for(MKAnnotationAnimal *annotation in _mapView.annotations){
             if([annotation.title isEqualToString:animal.name]){
-                _visitedLocationFlag = YES;
-                [self.mapView selectAnnotation:annotation animated:YES];
+                annotation.visited = YES;
                 break;
             }
         }
@@ -408,19 +465,12 @@
 }
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
 {
-    if(_visitedLocationFlag){
-        _visitedLocationFlag = NO;
-        view.pinColor = MKPinAnnotationColorGreen;
-    }
-    else if(view.pinColor == MKPinAnnotationColorRed){
-        view.pinColor = MKPinAnnotationColorPurple;
-    }
+    view.image = [UIImage imageNamed:@"pinGreen"];
 }
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKPinAnnotationView *)view
 {
-    if(view.pinColor == MKPinAnnotationColorPurple) {
-        view.pinColor = MKPinAnnotationColorRed;
-    }
+    MKAnnotationAnimal *annotation = view.annotation;
+    view.image = [UIImage imageNamed:annotation.isOnTrack ? @"pinOrange" : (annotation.visited ? @"pinGreen" : @"pinBlack")];
 }
 
 @end

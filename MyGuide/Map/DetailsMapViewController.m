@@ -9,6 +9,8 @@
 #import "DetailsMapViewController.h"
 #import "Settings.h"
 #import "GraphDrawer.h"
+#import "AFParsedData.h"
+#import "AFWay.h"
 
 @interface DetailsMapViewController ()
 
@@ -56,7 +58,7 @@ double const ZOOM_LEVEL = 15;
 
     UIBarButtonItem *fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceButton.width = 238.5f;
-    [self.mapToolbar setBackgroundImage:[[UIImage alloc] init] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    [self.mapToolbar setBackgroundImage:[UIImage imageNamed:@"buttonBackgroundImage"] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     self.mapToolbar.items = @[fixedSpaceButton, mapTypebButton];
 }
 - (void)changeMapType
@@ -128,7 +130,25 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     if(path) {
         [self.mapView removeOverlays:self.mapView.overlays];
         [self.mapView addOverlay: path];
+        [self showPaths];
     }
+}
+- (void)showPaths
+{
+    for(AFWay *way in [[AFParsedData sharedParsedData] waysArray]) [self drawPath:way.nodesArray];
+}
+- (void)drawPath:(NSArray *)nodesArray
+{
+    CLLocationCoordinate2D coordinatesArray[[nodesArray count]];
+    NSUInteger i = 0;
+    for(AFNode* node in nodesArray){
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(node.latitude, node.longitude);
+        coordinatesArray[i++] = coordinate;
+    }
+    
+    MKPolyline *path = [MKPolyline polylineWithCoordinates:coordinatesArray count:[nodesArray count]];
+    path.title = @"regularPath";
+    [self.mapView addOverlay:path];
 }
 
 # pragma mark - Rendering directions
@@ -175,8 +195,20 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
              rendererForOverlay:(id<MKOverlay>)overlay
 {
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline: overlay];
-    renderer.strokeColor         = [UIColor orangeColor];
-    renderer.lineWidth           = 4.0;
+    MKPolyline *path = overlay;
+    if([path.title isEqualToString:@"regularPath"]){
+        renderer.strokeColor = [UIColor brownColor];
+        renderer.lineCap     = kCGLineCapRound;
+        renderer.lineJoin    = kCGLineJoinRound;
+        renderer.lineWidth   = 3;
+        renderer.alpha       = 0.7;
+    }
+    else{
+        renderer.strokeColor = [UIColor orangeColor];
+        renderer.lineCap     = kCGLineCapRound;
+        renderer.lineJoin    = kCGLineJoinRound;
+        renderer.lineWidth   = 4.0;
+    }
     return  renderer;
 }
 

@@ -8,6 +8,7 @@
 
 #import "TrackDetailsViewController.h"
 #import "SWRevealViewController.h"
+#import "MapViewController.h"
 #import <MapKit/MapKit.h>
 #import "AFTracksData.h"
 #import "AFTrack.h"
@@ -87,7 +88,18 @@
 }
 - (void)returnToMainMap
 {
+    UIViewController *initialViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+    if([self.track.activeStatus isEqualToString:@"stop"]){
+        [[AFTracksData sharedParsedData] setCurrentTrackForMap:self.track.animalsArray];
+        [[AFTracksData sharedParsedData] setShouldShowTrackOnMap:YES];
+    }
+    else{
+        [[AFTracksData sharedParsedData] setShouldShowTrackOnMap:NO];
+    }
     
+    [self presentViewController:initialViewController animated:NO completion:^{
+        self.view = nil;
+    }];
 }
 
 @end
