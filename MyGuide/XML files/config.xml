@@ -1,6 +1,6 @@
 <configuration>
 	<!-- Fallback to language if string is not available -->
-	<lang_fallback>EN</lang_fallback>
+	<lang_fallback>PL</lang_fallback>
 
 	<!-- Radius within which the information that user got close to an object appears -->
 	<internal_object_radius>1</internal_object_radius>

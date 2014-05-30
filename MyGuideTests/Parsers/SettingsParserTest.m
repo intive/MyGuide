@@ -29,6 +29,6 @@
 {
     XCTAssertEqual(settings.innerRadius, (NSInteger)1);
     XCTAssertEqual(settings.externalRadius, (NSInteger)2);
-    XCTAssertEqualObjects(settings.languageFallback, @"pl");
+    XCTAssertEqualObjects(settings.languageFallback, @"PL");
 }
 @end
