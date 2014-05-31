@@ -281,7 +281,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		names.put("pl", "Eksploracja");
 		exploration.setNames(names);
 
-		for (Track track : ((MyGuideApp) getApplication()).getZooData().getTracks()) {
+		for (Track track : ((MyGuideApp) this.getApplication()).getZooData().getTracks()) {
 			for (Animal animal : track.getAnimals()) {
 				animals.add(animal);
 			}
