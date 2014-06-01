@@ -117,10 +117,8 @@ public class GastronomyListFragment extends Fragment {
 		static class ViewHolder {
 			public TextView mTxtvRestaurantName;
 			public ImageView mImgvRestaurant;
-			public TextView mTxtvTimeTo;
 			public TextView mTxtvMeter;
 			public TextView mTxtvOpenTime;
-			public TextView mTxtvMenu;
 		}
 
 		@Override
@@ -136,11 +134,9 @@ public class GastronomyListFragment extends Fragment {
 							.findViewById(R.id.txtvGastronomyName);
 					viewHolder.mImgvRestaurant = (ImageView) convertView
 							.findViewById(R.id.imgvRestaurant);
-					viewHolder.mTxtvTimeTo = (TextView) convertView.findViewById(R.id.txtvTimeTo);
 					viewHolder.mTxtvMeter = (TextView) convertView
 							.findViewById(R.id.txtvGastronomyDistance);
 					viewHolder.mTxtvOpenTime = (TextView) convertView.findViewById(R.id.txtvOpen);
-					viewHolder.mTxtvMenu = (TextView) convertView.findViewById(R.id.txtvMenu);
 
 					convertView.setTag(viewHolder);
 			} else {
