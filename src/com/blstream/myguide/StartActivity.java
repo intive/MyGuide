@@ -404,6 +404,9 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				newFragment = new GastronomyListFragment();
 				tag = BundleConstants.FRAGMENT_GASTRONOMY;
 				break;
+			case 7:
+				mDrawerLayout.openDrawer(mTrackListView);
+				break;
 
 			default:
 				break;
@@ -593,7 +596,8 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				R.drawable.menu_icon_information,
 				R.drawable.menu_icon_history,
 				R.drawable.menu_icon_gastronomy,
-				R.drawable.menu_icon_preferences
+				R.drawable.menu_icon_preferences,
+				R.drawable.ic_action_map_icon_myguide
 		};
 
 		public MenuAdapter(Activity context, int layoutResourceId,

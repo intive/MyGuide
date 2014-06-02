@@ -62,6 +62,7 @@
         <item name="history">History</item>
         <item name="gastronomy">Gastronomy</item>
         <item name="preferences">Preferences</item>
+        <item name="navigation_mode">Navigation</item>
     </string-array>
 
     <!-- Animals description tabs name -->

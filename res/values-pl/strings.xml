@@ -55,6 +55,7 @@
         <item name="history">Historia</item>
         <item name="gastronomy">Gastronomia</item>
         <item name="preferences">Preferencje</item>
+        <item name="navigation_mode">Nawigacja</item>
     </string-array>
 
     <!-- Animals description tabs name -->
