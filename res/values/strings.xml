@@ -83,6 +83,7 @@
     <!-- Nearest animals -->
     <string name="nearest_animals_title">Nearest animals</string>
     <string name="nearest_animals_waiting_toast">Calculating distances&#8230;</string>
+    <string name="nearest_animal_label_text">The closest animal</string>
 
     <!-- Placeholders for Custom_Animal_Row -->
     <string name="custom_row_placeholder_name">Animal name</string>

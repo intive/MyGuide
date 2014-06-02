@@ -69,6 +69,7 @@
     <!-- Nearest animals -->
     <string name="nearest_animals_title">Najbliższe zwierzęta</string>
     <string name="nearest_animals_waiting_toast">Obliczanie dystansów&#8230;</string>
+    <string name="nearest_animal_label_text">Najbliższe zwierzę</string>
 
     <!-- Gastronomy description tabs -->
     <string-array name="gastronomy_desc_tabs_name">
