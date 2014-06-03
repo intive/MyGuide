@@ -45,28 +45,28 @@ public class AnimalFinderHelper {
 	/**
 	 * Creates Node from user's position for mGraph method findDistance
 	 * {@linkplain com.blstream.myguide.zoolocations.Graph#findDistance}.
+	 * Currently unused due to replacing {@link Graph#findDistance(Node, Node)}
+	 * with {@link MathHelper#distanceBetween(Node, double, double)}
 	 * */
 	private Node myPosition() {
 		return new Node(mLocation.getLatitude(), mLocation.getLongitude());
 	}
 
 	/**
-	 * Calculates distances of all animals (using new thread) and returns the
-	 * array of results.
+	 * Calculates distances of all animals and returns the array of results.
 	 * 
 	 * @return double array containing distances to every animal
 	 */
 
 	private double[] distancesToAllAnimals() {
 		final double[] distances = new double[mAllAnimals.size()];
-		final Node position = myPosition();
-		
-		//TODO MOVE CALCULATIONS INTO ANOTHER THREAD
+
 		for (int i = 0; i < distances.length; i++) {
-			distances[i] = mGraph.findDistance(position, mAllAnimals
-					.get(i).getNode());
+			distances[i] = MathHelper.distanceBetween(mAllAnimals.get(i)
+					.getNode(), mLocation.getLatitude(), mLocation
+					.getLongitude());
 		}
-		
+
 		return distances;
 	}
 

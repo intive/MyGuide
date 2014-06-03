@@ -407,6 +407,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 		AnimalFinderHelper animalFinderHelper = new AnimalFinderHelper(
 				mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
 						.getApplication(), getActivity());
+						
 
 		AnimalDistance closestAnimal = animalFinderHelper.closestAnimal();
 
