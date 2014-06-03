@@ -226,7 +226,9 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			@Override
 			public void onDrawerClosed(View drawerView) {
 				super.onDrawerClosed(drawerView);
-				if (mItemClearTrack != null) mItemClearTrack.setVisible(false);
+				if (!mDrawerLayout.isDrawerVisible(mTrackListView)) {
+					if (mItemClearTrack != null) mItemClearTrack.setVisible(false);
+				}
 			}
 
 			@Override
@@ -281,11 +283,10 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		names.put("pl", "Eksploracja");
 		exploration.setNames(names);
 
-		for (Track track : ((MyGuideApp) this.getApplication()).getZooData().getTracks()) {
-			for (Animal animal : track.getAnimals()) {
-				animals.add(animal);
-			}
+		for (Animal animal : ((MyGuideApp) this.getApplication()).getZooData().getAnimals()) {
+			animals.add(animal);
 		}
+
 		exploration.setAnimals(animals);
 
 		return exploration;
@@ -539,7 +540,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 		for (Animal a : mAnimals) {
 			if (MathHelper.distanceBetween(a.getNode(), lat, lng) < mDistanceFromAnimal) {
-				
+
 				if (!a.getVisited()) {
 					Toast.makeText(
 							getApplicationContext(),
