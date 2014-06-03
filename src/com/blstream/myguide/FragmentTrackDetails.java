@@ -4,6 +4,7 @@ package com.blstream.myguide;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -71,10 +72,12 @@ public class FragmentTrackDetails extends Fragment {
 		ProgressBar pbTrackDetails = (ProgressBar) mRootView.findViewById(R.id.pbTrackDetails);
 		TextView txtvTrackDescription = (TextView) mRootView
 				.findViewById(R.id.txtvTrackDetailsDescription);
+        String [] name = mTrack.getImage().substring(4).split("\\.");
+        int id = getResources().getIdentifier(name[0], "drawable", getActivity().getPackageName());
+        imgvTrackDetails.setImageResource(id);
+       // imgvTrackDetails.setImageResource(R.drawable.horned);
 
-		imgvTrackDetails.setImageResource(getResources().getIdentifier(
-				mTrack.getImage().substring(4), "drawable", getActivity().getPackageName()));
-		txtvTrackProgress.setText(mTrack.getVisited() + "/" + mTrack.getAnimals().size());
+        txtvTrackProgress.setText(mTrack.getVisited() + "/" + mTrack.getAnimals().size());
 		pbTrackDetails.setProgress(mTrack.getVisited());
 		pbTrackDetails.setMax(mTrack.getAnimals().size());
 		txtvTrackDescription.setText(mTrack.getDescription() + "");
