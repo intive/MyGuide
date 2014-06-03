@@ -11,54 +11,37 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imgvTrackDetails"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/africa" />
+
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:padding="20dp"
-                android:src="@drawable/track_placeholder" />
+                android:layout_below="@+id/imgvTrackDetails">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txtvTrackDetailsDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="@string/text"
+                    android:textSize="@dimen/List_text_size_small" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            </ScrollView>
 
-            <TextView
-                android:id="@+id/txtvTrackProgress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:paddingTop="20dp"
-                android:text="10/15"
-                android:textSize="@dimen/List_text_size_small" />
-
-            <ProgressBar
-                android:id="@+id/pbTrackDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="5dp"
-                android:indeterminateOnly="false"
-                android:maxHeight="10dp"
-                android:minHeight="10dp"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="20dp"
-                android:progressDrawable="@drawable/progress_bar" />
-
-        </LinearLayout>
-
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -67,22 +50,42 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/txtvTrackDetailsDescription"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="20dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="@string/text"
+                android:id="@+id/txtvTrackProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="10dp"
+                android:text="10/15"
                 android:textSize="@dimen/List_text_size_small" />
 
-        </ScrollView>
+            <ProgressBar
+                android:id="@+id/pbTrackDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtvTrackProgress"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:indeterminateOnly="false"
+                android:maxHeight="13dp"
+                android:minHeight="13dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:progressDrawable="@drawable/progress_bar" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pbTrackDetails"
+                android:src="@drawable/bottom_animals_track" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
