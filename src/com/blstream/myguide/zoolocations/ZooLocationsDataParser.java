@@ -263,6 +263,8 @@ public class ZooLocationsDataParser {
 				animal.setDescriptionAdult(readDescription(parser));
 			} else if ("description_child".equals(name)) {
 				animal.setDescriptionChild(readDescription(parser));
+			} else if ("desc".equals(name)) {
+				animal.setInfoWeb(readDictionary(parser));
 			} else {
 				skip(parser);
 			}

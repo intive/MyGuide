@@ -65,6 +65,7 @@
 
     <!-- Animal List title -->
     <string name="animal_list_title">Zwierzęta</string>
+    <string name="animal_info_not_found">Brak szczegółowych informacji o zwierzęciu.</string>
     
     <!-- Nearest animals -->
     <string name="nearest_animals_title">Najbliższe zwierzęta</string>
