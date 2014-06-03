@@ -28,21 +28,4 @@ public class DbVisitedAnimalTest extends AndroidTestCase {
             }
         }, mAnimalsList.get(0).getId());
 	}
-
-	public void testIsVisitedAnimal() {
-		DbDataManager dbManager = DbDataManager.getInstance(mContext);
-		List<Animal> animalsList = new ArrayList<Animal>();
-		Animal animal2 = new Animal();
-		animal2.setId(101);
-
-		animalsList.add(animal2);
-
-		dbManager.updateAnimalInDb(animalsList.get(0).getId(), true);
-		dbManager.getIsAnimalVisited(new DbDataManager.OnCheckVisitAnimalListener() {
-            @Override
-            public void onCheckLoaded(boolean isVisited) {
-                assertTrue(isVisited);
-            }
-        }, animalsList.get(0).getId());
-	}
 }

@@ -15,10 +15,12 @@ public class Animal extends XmlObject implements Serializable, Comparable<Animal
 	private Node mNode;
 	private Description mDescriptionAdult;
 	private Description mDescriptionChild;
+	private HashMap<String, String> mInfoWebName;
 	private boolean mVisited;
 
 	public Animal() {
 		mNames = new HashMap<String, String>();
+		mInfoWebName = new HashMap<String, String>();
 	}
 
 	@Override
@@ -89,5 +91,23 @@ public class Animal extends XmlObject implements Serializable, Comparable<Animal
 	@Override
 	public int compareTo(Animal another) {
 		return -(another.getName().compareTo(getName()));
+	}
+
+	public void addInfoWeb(String lang, String text) {
+		mInfoWebName.put(lang, text);
+	}
+
+	public String getInfoWeb() {
+		return mInfoWebName.get(Language.DEFAULT);
+	}
+
+	public String getInfoWeb(String language) {
+		String infoWeb = mInfoWebName.get(language);
+		if (infoWeb == null) { return this.getInfoWeb(); }
+		return infoWeb;
+	}
+
+	public void setInfoWeb(HashMap<String, String> infoWeb) {
+		mInfoWebName = infoWeb;
 	}
 }

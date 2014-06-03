@@ -522,6 +522,10 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>zyrafa_siatkowana_pl.html</pl>
+				<en>zyrafa_siatkowana_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1050185" lon="17.0759970" id="2">
 			<name>
@@ -538,6 +542,10 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>strus_pl.html</pl>
+				<en>strus_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1046625" lon="17.0771680" id="3">
 			<name>

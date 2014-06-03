@@ -1,0 +1,30 @@
+body
+{
+	max-width: 1000px;
+}
+
+img
+{
+	width: 100%;
+	height: auto;
+}
+
+_body { border: dashed, red; }
+section {border-style:dotted;border-color:red;}
+content {border: green, dotted;}
+
+.image_placeholder {width:100%;height:auto;max-width:800px;}
+.species_name { font-size: 120%; font-weight: bold; }
+.latin_name { font-style: italic; }
+.classification { margin-top:10px; }
+.rank_name { margin-right: 5px; font-weight: bold; }
+.rank_value { }
+.section { margin-top: 10px; }
+.section_name { font-weight:bold; }
+.light_blue { background-color: rgb(173,216,230); }
+.light_orange { background-color: rgb(255,140,0); }
+.light_red { background-color: rgb(219,112,147); }
+.light_green { background-color: rgb(144,238,144); }
+.light_pink { background-color: rgb(255,182,193); }
+.content { margin-left:auto; margin-right: auto; width:96%; }
+.image_placeholder { margin-left: auto; margin-right: auto; }

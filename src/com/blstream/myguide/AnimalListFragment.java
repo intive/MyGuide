@@ -171,8 +171,7 @@ public class AnimalListFragment extends Fragment {
 			Animal animal = mZooData.getAnimals().get(position);
 
 			Fragment[] fragments = {
-					AnimalDescriptionTab
-							.newInstance(R.drawable.placeholder_adult, R.string.text),
+					AnimalDescriptionTab.newInstance(animal),
 					AnimalDetailsMapFragment.newInstance(animal)
 			};
 			Fragment newFragment = FragmentTabManager.newInstance(R.array.animal_desc_tabs_name,
