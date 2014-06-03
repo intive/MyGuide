@@ -9,5 +9,6 @@
     <item name="paths" type="color">#e7d79f</item>
     <item name="paths_on_track" type="color">#fec71e</item>
     <color name="list_divider">#efede9</color>
+    <item name="action_bar_icon" type="color">#B66D00</item>
 
 </resources>

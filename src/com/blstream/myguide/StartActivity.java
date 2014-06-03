@@ -536,11 +536,15 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 		for (Animal a : mAnimals) {
 			if (MathHelper.distanceBetween(a.getNode(), lat, lng) < mDistanceFromAnimal) {
-				Log.i("checkAnimalProximinity", "I'm visiting animal: " + a.getName());
-				Toast.makeText(getApplicationContext(),
-						this.getString(R.string.visiting_animal_toast)
-								+ a.getName(Locale.getDefault().getLanguage()), Toast.LENGTH_SHORT)
-						.show();
+				
+				if (!a.getVisited()) {
+					Toast.makeText(
+							getApplicationContext(),
+							getString(R.string.visiting_animal_toast)
+									+ a.getName(Locale.getDefault()
+											.getLanguage()), Toast.LENGTH_SHORT)
+							.show();
+				}
 
 				// Update animal in database
 				mDbManager.updateAnimalInDb(a.getId(), true);
