@@ -56,13 +56,12 @@
     <!-- SightSeeing menu -->
     <string-array name="nav_drawer_items">
         <item name="map">Map</item>
+        <item name="navigation_mode">Navigation</item>
         <item name="animals">Animals</item>
         <item name="events">Events</item>
         <item name="information">Information</item>
         <item name="history">History</item>
         <item name="gastronomy">Gastronomy</item>
-        <item name="preferences">Preferences</item>
-        <item name="navigation_mode">Navigation</item>
     </string-array>
 
     <!-- Animals description tabs name -->

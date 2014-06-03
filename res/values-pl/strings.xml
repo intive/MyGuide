@@ -49,13 +49,12 @@
     <!-- SightSeeing menu -->
     <string-array name="nav_drawer_items">
         <item name="map">Mapa</item>
+        <item name="navigation_mode">Nawigacja</item>
         <item name="animals">Zwierzęta</item>
         <item name="events">Wydarzenia</item>
         <item name="information">Informacje</item>
         <item name="history">Historia</item>
-        <item name="gastronomy">Gastronomia</item>
-        <item name="preferences">Preferencje</item>
-        <item name="navigation_mode">Nawigacja</item>
+        <item name="gastronomy">Gastronomia</item>   
     </string-array>
 
     <!-- Animals description tabs name -->
