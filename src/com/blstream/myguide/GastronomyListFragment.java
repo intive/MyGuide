@@ -106,6 +106,14 @@ public class GastronomyListFragment extends Fragment {
 		private List<Restaurant> mRestaurants;
 		private int mLayoutResourceId;
 
+        private static int mRestaurantIcons[] = {
+                R.drawable.lv_item_res_letnia,
+                R.drawable.lv_item_res_papugami,
+                R.drawable.lv_item_bar_zoo,
+                R.drawable.lv_item_karczma_koala,
+                R.drawable.lv_item_karczma_lwa
+        };
+
 		public GastronomyAdapter(Activity context, int layoutResourceId,
 				List<Restaurant> restaurants) {
 			super(context, layoutResourceId, restaurants);
@@ -147,6 +155,7 @@ public class GastronomyListFragment extends Fragment {
 
 			viewHolder.mTxtvRestaurantName.setText(restaurant.getName() + "");
 			viewHolder.mTxtvOpenTime.setText(restaurant.getOpen() + "");
+            viewHolder.mImgvRestaurant.setImageResource(mRestaurantIcons[position]);
 
 			return convertView;
 		}
