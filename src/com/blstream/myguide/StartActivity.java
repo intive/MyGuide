@@ -140,6 +140,10 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu_main, menu);
 		MenuItem searchViewMenuItem = menu.findItem(R.id.action_search);
+		// track drawer menu ( change visible to true if you want show )
+		MenuItem trackDrawer = menu.findItem(R.id.action_filter);
+		trackDrawer.setVisible(false);
+
 		mItemClearTrack = menu.findItem(R.id.action_clear);
 
 		mItemClearTrack.setVisible(false);
@@ -349,6 +353,9 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				}
 			}
 		});
+
+		// disable mode right drawer (track drawer)
+		mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
 	}
 
