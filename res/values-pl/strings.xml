@@ -49,12 +49,12 @@
     <!-- SightSeeing menu -->
     <string-array name="nav_drawer_items">
         <item name="map">Mapa</item>
+        <item name="navigation_mode">Nawigacja</item>
         <item name="animals">Zwierzęta</item>
         <item name="events">Wydarzenia</item>
         <item name="information">Informacje</item>
         <item name="history">Historia</item>
-        <item name="gastronomy">Gastronomia</item>
-        <item name="preferences">Preferencje</item>
+        <item name="gastronomy">Gastronomia</item>   
     </string-array>
 
     <!-- Animals description tabs name -->
@@ -65,10 +65,12 @@
 
     <!-- Animal List title -->
     <string name="animal_list_title">Zwierzęta</string>
+    <string name="animal_info_not_found">Brak szczegółowych informacji o zwierzęciu.</string>
     
     <!-- Nearest animals -->
     <string name="nearest_animals_title">Najbliższe zwierzęta</string>
     <string name="nearest_animals_waiting_toast">Obliczanie dystansów&#8230;</string>
+    <string name="nearest_animal_label_text">Najbliższe zwierzę</string>
 
     <!-- Gastronomy description tabs -->
     <string-array name="gastronomy_desc_tabs_name">

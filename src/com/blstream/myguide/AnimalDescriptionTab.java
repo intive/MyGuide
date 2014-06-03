@@ -1,39 +1,49 @@
 
 package com.blstream.myguide;
 
+import java.util.Locale;
+
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
-import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import com.blstream.myguide.zoolocations.Animal;
 
 public class AnimalDescriptionTab extends Fragment implements Parcelable {
 
+	private static final String LOG_TAG = AnimalDescriptionTab.class.getSimpleName();
+
 	private View mView;
-	private TextView mDescription;
-	private ImageView mImage;
-	private String mText;
-	private int mTextID;
-	private int mImageID;
+	private WebView mBrowser;
+	private Animal mAnimal;
 
 	public static AnimalDescriptionTab newInstance() {
 		return new AnimalDescriptionTab();
 	}
 
-	public static AnimalDescriptionTab newInstance(int image, int text) {
-		AnimalDescriptionTab mTabs = new AnimalDescriptionTab();
-
+	public static AnimalDescriptionTab newInstance(Animal animal) {
 		Bundle bundle = new Bundle();
-		bundle.putInt(BundleConstants.TAB_TEXT_ID, text);
-		bundle.putInt(BundleConstants.TAB_IMAGE_ID, image);
-		mTabs.setArguments(bundle);
+		bundle.putSerializable(BundleConstants.SELECTED_ANIMAL, animal);
+		AnimalDescriptionTab f = new AnimalDescriptionTab();
+		f.setArguments(bundle);
+		return f;
+	}
 
-		return mTabs;
+	private void parseArguments() {
+		Bundle arguments = getArguments();
+		if (arguments == null) {
+			Log.w(LOG_TAG, "No arguments given");
+			return;
+		}
+		mAnimal = (Animal) arguments.getSerializable(BundleConstants.SELECTED_ANIMAL);
+		if (mAnimal == null) Log.w(LOG_TAG, "NULL is not an Animal");
 	}
 
 	@Override
@@ -41,19 +51,23 @@ public class AnimalDescriptionTab extends Fragment implements Parcelable {
 			Bundle savedInstanceState) {
 
 		Bundle bundle = getArguments();
-		mView = View.inflate(getActivity(), R.layout.tabs, null);
+		parseArguments();
+
+		mView = View.inflate(getActivity(), R.layout.webview_animal_description, null);
 
 		if (bundle != null) {
-			mTextID = bundle.getInt(BundleConstants.TAB_TEXT_ID);
-			mImageID = bundle.getInt(BundleConstants.TAB_IMAGE_ID);
+			mBrowser = (WebView) mView.findViewById(R.id.webv_animal_description);
 
-			mDescription = (TextView) mView.findViewById(R.id.textDescription);
-			mDescription.setMovementMethod(new ScrollingMovementMethod());
-			mImage = (ImageView) mView.findViewById(R.id.animal_image);
-
-			mImage.setImageResource(mImageID);
-			mText = getResources().getString(mTextID);
-			mDescription.setText(mText);
+			mBrowser.setWebViewClient(new WebViewClient() {
+				@Override
+				public void onReceivedError(WebView view, int errorCode, String description,
+						String failingUrl) {
+					mBrowser.loadData(getResources().getString(R.string.animal_info_not_found),
+							"text/plain", "utf-8");
+				}
+			});
+			mBrowser.loadUrl("file:///android_asset/animals/"
+					+ mAnimal.getInfoWeb(Locale.getDefault().getLanguage()));
 		}
 
 		return mView;

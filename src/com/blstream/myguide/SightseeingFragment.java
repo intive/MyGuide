@@ -407,6 +407,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 		AnimalFinderHelper animalFinderHelper = new AnimalFinderHelper(
 				mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
 						.getApplication(), getActivity());
+						
 
 		AnimalDistance closestAnimal = animalFinderHelper.closestAnimal();
 
@@ -503,8 +504,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 				getFragmentManager().beginTransaction().remove(f).commit();
 
 				Fragment[] fragments = {
-						AnimalDescriptionTab.newInstance(
-								R.drawable.placeholder_adult, R.string.text),
+						AnimalDescriptionTab.newInstance(animal),
 						AnimalDetailsMapFragment.newInstance(animal)
 				};
 				Fragment newFragment = FragmentTabManager.newInstance(

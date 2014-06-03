@@ -89,6 +89,10 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 				+ "<en>Description child</en>"
 				+ "<pl>Opis dziecko</pl>"
 				+ "</description_child>"
+				+ "<desc>"
+				+ "<pl>zyrafa_siatkowana_pl.html</pl>"
+				+ "<en>zyrafa_siatkowana_en.html</en>"
+				+ "</desc>"
 				+ "</animal>"
 				+ "</animals></root>";
 		ZooLocationsDataParser parser = new ZooLocationsDataParser();
@@ -119,6 +123,8 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 				data.getAnimals().get(0).getDescriptionChild().getText(Language.EN));
 		assertEquals("Opis dziecko",
 				data.getAnimals().get(0).getDescriptionChild().getText(Language.PL));
+		assertEquals("zyrafa_siatkowana_en.html", data.getAnimals().get(0).getInfoWeb(Language.EN));
+		assertEquals("zyrafa_siatkowana_pl.html", data.getAnimals().get(0).getInfoWeb(Language.PL));
 		assertEquals(51.1052072, data.getAnimals().get(0).getNode().getLatitude());
 		assertEquals(17.0754498, data.getAnimals().get(0).getNode().getLongitude());
 	}

@@ -385,22 +385,25 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				break;
 
 			case 1:
+				mDrawerLayout.openDrawer(mTrackListView);
+				break;
+			case 2:
 				newFragment = new AnimalListFragment();
 				tag = BundleConstants.FRAGMENT_ANIMAL_LIST;
 				break;
-			case 2:
+			case 3:
 				newFragment = new EventsFragment();
 				tag = BundleConstants.FRAGMENT_EVENTS;
 				break;
-			case 3:
+			case 4:
 				newFragment = createInformationFragment();
 				tag = BundleConstants.FRAGMENT_INFORMATION;
 				break;
-			case 4:
+			case 5:
 				newFragment = new HistoryFragment();
 				tag = BundleConstants.FRAGMENT_HISTORY;
 				break;
-			case 5:
+			case 6:
 				newFragment = new GastronomyListFragment();
 				tag = BundleConstants.FRAGMENT_GASTRONOMY;
 				break;
@@ -592,12 +595,12 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 		private static int mMenuIcons[] = {
 				R.drawable.menu_icon_map,
+				R.drawable.menu_icon_navigation,
 				R.drawable.menu_icon_animal,
 				R.drawable.menu_icon_event,
 				R.drawable.menu_icon_information,
 				R.drawable.menu_icon_history,
-				R.drawable.menu_icon_gastronomy,
-				R.drawable.menu_icon_preferences
+				R.drawable.menu_icon_gastronomy
 		};
 
 		public MenuAdapter(Activity context, int layoutResourceId,
