@@ -73,6 +73,7 @@
     <!-- Animal List title -->
     <string name="animal_list_title">Animals</string>
     <string name="animal_image">Animal Image</string>
+    <string name="animal_info_not_found">No detailed information about the animal.</string>
 
     <!-- Gastronomy description tabs -->
     <string-array name="gastronomy_desc_tabs_name">

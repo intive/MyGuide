@@ -72,7 +72,7 @@ public class GastronomyListFragment extends Fragment {
 				Restaurant restaurant = mZooData.getRestaurant().get(position);
 
 				Fragment[] fragments = {
-						AnimalDescriptionTab
+						GastronomyDescriptionTab
 								.newInstance(R.drawable.placeholder_adult, R.string.text),
 						GastronomyMenuTab
 								.newInstance(restaurant)

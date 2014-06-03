@@ -270,8 +270,7 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 					getFragmentManager().beginTransaction().remove(f).commit();
 
 				Fragment[] fragments = {
-						AnimalDescriptionTab.newInstance(
-								R.drawable.placeholder_adult, R.string.text),
+						AnimalDescriptionTab.newInstance(animal),
 						AnimalDetailsMapFragment.newInstance(animal) };
 				Fragment newFragment = FragmentTabManager.newInstance(
 						R.array.animal_desc_tabs_name, fragments, animal);
