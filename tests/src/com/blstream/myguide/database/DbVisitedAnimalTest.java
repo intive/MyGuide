@@ -37,6 +37,7 @@ public class DbVisitedAnimalTest extends AndroidTestCase {
 
 		animalsList.add(animal2);
 
+		dbManager.insertAnimalsListToDb(animalsList);
 		dbManager.updateAnimalInDb(animalsList.get(0).getId(), true);
 		dbManager.getIsAnimalVisited(new DbDataManager.OnCheckVisitAnimalListener() {
             @Override
