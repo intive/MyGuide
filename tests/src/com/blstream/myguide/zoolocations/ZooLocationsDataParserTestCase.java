@@ -19,13 +19,6 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 
 	private static final String ENCODING = "UTF-8";
 
-	/** Amount of animals in xml file from userstory */
-	private static final int ANIMALS = 55;
-	/** Amount of ways in xml file from userstory */
-	private static final int WAYS = 82;
-	/** Amount of junctions in xml file from userstory */
-	private static final int JUNCTIONS = 20;
-
 	protected void checkParsedOpenings(ArrayList<Opening> openings, String keyBase, String valueBase) {
 		Opening opening = null;
 
@@ -227,27 +220,6 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 	}
 
 	/**
-	 * Checks if xml from userstory is well parsed (check if amount of animals,
-	 * ways and junctions are good).
-	 */
-	public void testParsingXmlFromUserStory() throws IOException, XmlPullParserException {
-		// given
-		ZooLocationsDataParser parser = new ZooLocationsDataParser();
-		InputStream is = null;
-		ZooLocationsData data = null;
-
-		// when
-		is = this.getContext().getResources().openRawResource(R.raw.data);
-		data = parser.parse(is);
-		is.close();
-
-		// then
-		assertEquals(ANIMALS, data.getAnimals().size());
-		assertEquals(WAYS, data.getWays().size());
-		assertEquals(JUNCTIONS, data.getJunctions().size());
-	}
-
-	/**
 	 * Checks if parser throws XmlPullParserException with adequate message when
 	 * there is a way in junctions tag but not in ways tag.
 	 */
@@ -421,12 +393,12 @@ public class ZooLocationsDataParserTestCase extends AndroidTestCase {
 				"\t\t<trams>\n" +
 				"\t\t\t1,2,   3, 4, 5,6\n" +
 				"\t\t</trams>\n" +
-				"\t\t<parkings_information>\n" +
+				"\t\t<parking_information>\n" +
 				"\t\t\t<key1>value1</key1>\n" +
 				"\t\t\t<key2>value2</key2>\n" +
 				"\t\t\t<key3>value3</key3>\n" +
 				"\t\t\t<key4>value4</key4>\n" +
-				"\t\t</parkings_information>\n" +
+				"\t\t</parking_information>\n" +
 				"\t</access_information>\n" +
 				"</root>\n";
 		ZooLocationsDataParser parser = new ZooLocationsDataParser();
