@@ -121,9 +121,7 @@ public class GastronomyListFragment extends Fragment implements LocationUser {
 	}
 
 	@Override
-	public void onGpsAvailable() {
-		setUpRestaurantDistance();
-	}
+	public void onGpsAvailable() {}
 
 	@Override
 	public void onGpsUnavailable() {
