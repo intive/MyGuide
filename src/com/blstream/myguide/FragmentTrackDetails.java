@@ -71,9 +71,10 @@ public class FragmentTrackDetails extends Fragment {
 		ProgressBar pbTrackDetails = (ProgressBar) mRootView.findViewById(R.id.pbTrackDetails);
 		TextView txtvTrackDescription = (TextView) mRootView
 				.findViewById(R.id.txtvTrackDetailsDescription);
+		String[] name = mTrack.getImage().substring(4).split("\\.");
+		int id = getResources().getIdentifier(name[0], "drawable", getActivity().getPackageName());
+		imgvTrackDetails.setImageResource(id);
 
-		imgvTrackDetails.setImageResource(getResources().getIdentifier(
-				mTrack.getImage().substring(4), "drawable", getActivity().getPackageName()));
 		txtvTrackProgress.setText(mTrack.getVisited() + "/" + mTrack.getAnimals().size());
 		pbTrackDetails.setProgress(mTrack.getVisited());
 		pbTrackDetails.setMax(mTrack.getAnimals().size());
@@ -94,7 +95,7 @@ public class FragmentTrackDetails extends Fragment {
 		itemStart.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 			@Override
 			public boolean onMenuItemClick(MenuItem menuItem) {
-				((MyGuideApp)getActivity().getApplication()).setTrackingModeOn();
+				((MyGuideApp) getActivity().getApplication()).setTrackingModeOn();
 				StartActivity.setExploredTrack(mTrack);
 				FragmentHelper.swapFragment(R.id.flFragmentHolder,
 						SightseeingFragment.newInstance(),

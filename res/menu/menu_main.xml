@@ -2,16 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_clear"
-        android:icon="@drawable/ic_clear_track"
-        android:showAsAction="always"
-        android:title="@string/clear_track" />
-
-    <item
         android:id="@+id/action_search"
+        android:actionViewClass="android.widget.SearchView"
         android:icon="@drawable/ic_action_search_icon_myguide"
         android:showAsAction="always"
-        android:actionViewClass="android.widget.SearchView"
         android:title="@string/search_sightseeing" />
 
     <item
@@ -19,6 +13,12 @@
         android:icon="@drawable/ic_action_map_icon_myguide"
         android:showAsAction="always"
         android:title="@string/exploration" />
+
+    <item
+        android:id="@+id/action_clear"
+        android:icon="@drawable/ic_clear_track"
+        android:showAsAction="always"
+        android:title="@string/clear_track" />
 
 
 </menu>
