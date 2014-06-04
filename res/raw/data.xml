@@ -319,7 +319,7 @@
 			<time>11:00;14:00</time>
 			<time_weekends>11:00;14:00;17:00</time_weekends>
 			<time_christmas>11:00;14:00;17:00</time_christmas>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/kotiki.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -327,7 +327,7 @@
 				<en>Reticulated Giraffe</en>
 			</name>
 			<time>9:15</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/zyrafa.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -335,7 +335,7 @@
 				<en>Brown Bear</en>
 			</name>
 			<time>9:30</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/niedzwiedz.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -343,7 +343,7 @@
 				<en>Maasai Baboons</en>
 			</name>
 			<time>11:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/pawiany.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -351,7 +351,7 @@
 				<en>Hippos</en>
 			</name>
 			<time>11:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/hipo.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -359,7 +359,7 @@
 				<en>Birds (aviary)</en>
 			</name>
 			<time>12:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/ptaki.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -367,7 +367,7 @@
 				<en>Lemurs</en>
 			</name>
 			<time>13:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/lemury.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -375,7 +375,7 @@
 				<en>Indian Elephants</en>
 			</name>
 			<time>12:30</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/slonie.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -384,7 +384,7 @@
 			</name>
 			<time>12:00</time>
 			<start>1.06</start>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/zolwie.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -392,7 +392,7 @@
 				<en>Pelicans</en>
 			</name>
 			<time>13:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/pelikany.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -400,7 +400,7 @@
 				<en>Earth Hogs</en>
 			</name>
 			<time>13:30</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/mrownik.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -408,7 +408,7 @@
 				<en>Piranie lub płaszczki EN</en>
 			</name>
 			<time>16:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/plaszczka.jpg</image>
 		</event>
 	</events>
 	<history>
