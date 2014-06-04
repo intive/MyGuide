@@ -521,7 +521,7 @@ public class ZooLocationsDataParser {
 			String name = parser.getName();
 			if ("trams".equals(name)) {
 				mAccessInfo.setTrams(readText(parser).trim());
-			} else if ("parkings_information".equals(name)) {
+			} else if ("parking_information".equals(name)) {
 				mAccessInfo.setParkingInformation(readDictionary(parser));
 			} else {
 				skip(parser);
