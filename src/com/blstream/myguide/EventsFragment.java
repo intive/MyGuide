@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -127,6 +128,7 @@ public class EventsFragment extends Fragment {
 				viewHolder.mHolidays = (TextView) convertView.findViewById(R.id.txtHolidays);
 				viewHolder.mDateLabel = (TextView) convertView.findViewById(R.id.txtDateLabel);
 				viewHolder.mDate = (TextView) convertView.findViewById(R.id.txtDate);
+				viewHolder.mImageEvent = (ImageView) convertView.findViewById(R.id.imgEvent);
 
 				convertView.setTag(viewHolder);
 
@@ -138,6 +140,10 @@ public class EventsFragment extends Fragment {
 
 			viewHolder.mEventName.setText(event.getName());
 			viewHolder.mTime.setText(event.getTime().replaceAll(";", " "));
+			String[] name = event.getImagePath().substring(4).split("\\.");
+			int id = getResources().getIdentifier(name[0], "drawable",
+					getActivity().getPackageName());
+			viewHolder.mImageEvent.setImageResource(id);
 
 			if (event.getTimeWeekends() != null) {
 				viewHolder.mWeekends.setText(event.getTimeWeekends().replaceAll(";", " "));
@@ -178,6 +184,7 @@ public class EventsFragment extends Fragment {
 			public TextView mWeekends;
 			public TextView mDateLabel;
 			public TextView mDate;
+			public ImageView mImageEvent;
 		}
 
 		@Override
