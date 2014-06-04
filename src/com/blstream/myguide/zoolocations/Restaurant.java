@@ -14,6 +14,7 @@ public class Restaurant extends XmlObject implements Serializable {
 	private Node mNode;
 	private String mOpen;
 	private ArrayList<Dish> mDishes;
+	private int mDistance;
 
 	public Restaurant() {
 		mNames = new HashMap<String, String>();
@@ -28,6 +29,7 @@ public class Restaurant extends XmlObject implements Serializable {
 		mNode = node;
 	}
 
+	@Override
 	public Node getNode() {
 		return mNode;
 	}
@@ -61,5 +63,13 @@ public class Restaurant extends XmlObject implements Serializable {
 		String name = mNames.get(language);
 		if (name == null) { return this.getName(); }
 		return name;
+	}
+
+	public void setDistance(int distance) {
+		mDistance = distance;
+	}
+
+	public int getDistance() {
+		return mDistance;
 	}
 }

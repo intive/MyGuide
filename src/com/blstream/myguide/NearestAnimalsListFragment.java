@@ -25,11 +25,11 @@ import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.zoolocations.Animal;
-import com.blstream.myguide.zoolocations.AnimalDistance;
+import com.blstream.myguide.zoolocations.XmlObjectDistance;
 
 /**
  * Fragment showing the list of nearest animals. Uses user's current location,
- * AnimalFinderHelper {@link com.blstream.myguide.AnimalFinderHelper} and
+ * XmlObjectFinderHelper {@link XmlObjectFinderHelper} and
  * NearestAnimalsAdapter
  * {@link com.blstream.myguide.adapters.NearestAnimalsAdapter} to create and
  * display the list of nearest animals.
@@ -43,10 +43,10 @@ public class NearestAnimalsListFragment extends Fragment implements
 	private ListView mAnimalListView;
 	private ActionBar mActionBar;
 
-	private ArrayList<AnimalDistance> mAnimalsAndDistances;
+	private ArrayList<XmlObjectDistance> mAnimalsAndDistances;
 	private LocationUpdater mLocationUpdater;
 
-	private AnimalFinderHelper mAnimalFinder;
+	private XmlObjectFinderHelper mAnimalFinder;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,15 +63,15 @@ public class NearestAnimalsListFragment extends Fragment implements
 
 		mAnimalListView = (ListView) view.findViewById(R.id.lvListItem);
 
-		mAnimalFinder = new AnimalFinderHelper(mLocationUpdater.getLocation(),
-				(MyGuideApp) getActivity().getApplication(), getActivity());
+		mAnimalFinder = new XmlObjectFinderHelper(mLocationUpdater.getLocation(),
+				(MyGuideApp) getActivity().getApplication(), getActivity(), new Animal());
 		return view;
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		mAnimalsAndDistances = mAnimalFinder.allAnimalsWithDistances();
+		mAnimalsAndDistances = mAnimalFinder.allXmlObjectsWithDistances();
 		NearestAnimalsAdapter mListAdapter = new NearestAnimalsListFragment.NearestAnimalsAdapter(
 				getActivity(), R.layout.custom_animal_row, mAnimalsAndDistances);
 
@@ -81,7 +81,7 @@ public class NearestAnimalsListFragment extends Fragment implements
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				AnimalDetailsMapFragment wayToAnimal = new AnimalDetailsMapFragment();
+				XmlObjectDetailsMapFragment wayToAnimal = new XmlObjectDetailsMapFragment();
 				
 				Bundle arguments = new Bundle();
 				arguments.putSerializable(BundleConstants.SELECTED_ANIMAL,
@@ -119,10 +119,10 @@ public class NearestAnimalsListFragment extends Fragment implements
 	}
 
 	private static class NearestAnimalsAdapter extends
-			ArrayAdapter<AnimalDistance> {
+			ArrayAdapter<XmlObjectDistance> {
 
 		public NearestAnimalsAdapter(Context context, int resource,
-				ArrayList<AnimalDistance> objects) {
+				ArrayList<XmlObjectDistance> objects) {
 			super(context, resource, objects);
 		}
 
@@ -159,8 +159,8 @@ public class NearestAnimalsListFragment extends Fragment implements
 				viewHolder = (ViewHolder) convertView.getTag();
 			}
 
-			Animal animal = ((AnimalDistance) getItem(position)).getAnimal();
-			int distance = ((AnimalDistance) getItem(position)).getDistance();
+			Animal animal = (Animal)((XmlObjectDistance) getItem(position)).getAnimal();
+			int distance = ((XmlObjectDistance) getItem(position)).getDistance();
 
 			if (animal != null) {
 				viewHolder.animalDistance.setText(Integer.toString(distance)

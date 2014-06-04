@@ -21,11 +21,10 @@
         android:id="@+id/txtvGastronomyName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/txtvGastronomyDistance"
         android:layout_toRightOf="@+id/imgvRestaurant"
-        android:paddingBottom="3dp"
+        android:paddingBottom="5dp"
         android:paddingLeft="10dp"
-        android:paddingTop="7dp"
+        android:paddingTop="10dp"
         android:text="Letnia Restaurant"
         android:textColor="@color/main_accent"
         android:textSize="@dimen/List_text_size_small"
@@ -39,7 +38,7 @@
         android:layout_toRightOf="@+id/imgvRestaurant"
         android:paddingLeft="10dp"
         android:text="@string/open_item_list"
-        android:textSize="@dimen/Item_text_size" />
+        android:textSize="@dimen/events_text_time" />
 
     <TextView
         android:id="@+id/txtvOpen"
@@ -49,16 +48,15 @@
         android:layout_toRightOf="@+id/txtvOpenTime"
         android:paddingLeft="5dp"
         android:text="10.00-17.00"
-        android:textSize="@dimen/Item_text_size" />
+        android:textSize="@dimen/events_text_time" />
 
     <TextView
         android:id="@+id/txtvGastronomyDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:paddingRight="8dp"
-        android:paddingTop="7dp"
+        android:layout_alignBottom="@+id/imgvRestaurant"
+        android:layout_toRightOf="@+id/imgvRestaurant"
+        android:padding="10dp"
         android:text="200 m"
         android:textColor="@color/main_accent"
         android:textSize="@dimen/List_text_size_small"
