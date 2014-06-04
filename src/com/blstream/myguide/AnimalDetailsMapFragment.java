@@ -1,6 +1,7 @@
 
 package com.blstream.myguide;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.location.Location;
 import android.os.Bundle;
@@ -10,9 +11,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blstream.myguide.database.DbDataManager;
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.gps.LocationUpdater;
 import com.blstream.myguide.gps.LocationUser;
@@ -65,14 +70,19 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 	private ProgressDialog mProgressDialog;
 	private GoogleMap mMap;
 
+	private MenuItem mItemCheck;
+	private ActionBar mActionBar;
 	private Animal mAnimal;
 	private ArrayList<Animal> mAnimalsOnMap;
 	private HashMap<String, Animal> mMarkerIDsAnimals;
 	private Graph mGraph;
 
+	private DbDataManager mDbManager;
+	private Marker mCheckMarker;
+
 	private LocationObserver mLocationObserver;
 	private boolean mLocationServiceBounded = false;
-	
+
 	private boolean markClosestAnimals = false;
 
 	// this part handles Location Service updates
@@ -102,7 +112,8 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 			LatLng sourceLoc = new LatLng(location.getLatitude(), location.getLongitude());
 
 			mFragment.mMap.clear();
-			mFragment.drawAllWays(); //Logic of drawing has been changed to handle close animals
+			mFragment.drawAllWays(); // Logic of drawing has been changed to
+										// handle close animals
 			mFragment.markAnimals(location);
 			LatLngBounds bounds = mFragment.findAndDrawShortestPath(animalLoc, sourceLoc).build();
 			if (mFirstUpdate) {
@@ -160,13 +171,12 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		}
 
 		mAnimal = (Animal) arguments.getSerializable(BundleConstants.SELECTED_ANIMAL);
-		
-		/* Added by Agnieszka 13-05-2014 to handle new boolean. */ 
+
+		/* Added by Agnieszka 13-05-2014 to handle new boolean. */
 		markClosestAnimals = arguments
 				.containsKey(BundleConstants.SHOW_CLOSE_ANIMALS_ON_MAP) ? arguments.getBoolean(
-						BundleConstants.SHOW_CLOSE_ANIMALS_ON_MAP) : false;
-		if (mAnimal == null)
-			Log.w(LOG_TAG, "NULL is not an Animal");
+				BundleConstants.SHOW_CLOSE_ANIMALS_ON_MAP) : false;
+		if (mAnimal == null) Log.w(LOG_TAG, "NULL is not an Animal");
 	}
 
 	private void bindLocationService() {
@@ -188,26 +198,32 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 	}
 
 	/**
-	 * Added by Agnieszka 13-05-2014.
-	 * Marks animal based on it's position and 
+	 * Added by Agnieszka 13-05-2014. Marks animal based on it's position and
 	 * saves pair (Marker.ID, Animal) to HashMap.
+	 * 
 	 * @param animal Animal to be marked
 	 */
 	private void markPosition(Animal animal) {
 		LatLng position = new LatLng(animal.getNode().getLatitude(), animal
 				.getNode().getLongitude());
-		
+
 		Marker marker = mMap.addMarker(new MarkerOptions()
 				.position(position)
-				.title(animal.getName())
-				.icon(BitmapDescriptorFactory
-						.fromResource(R.drawable.ic_animal)));
+				.title(animal.getName()));
+		if (animal.getVisited()) {
+			marker.setIcon(BitmapDescriptorFactory
+					.fromResource(R.drawable.ic_animal_visited));
+		} else {
+			marker.setIcon(BitmapDescriptorFactory
+					.fromResource(R.drawable.ic_animal));
+		}
+
 		mMarkerIDsAnimals.put(marker.getId(), animal);
 	}
 
 	private void drawAllWays() {
 		// check whether paths should be drawn
-		MyGuideApp app = ((MyGuideApp) getActivity().getApplication());
+		MyGuideApp app = ((MyGuideApp) this.getActivity().getApplication());
 		boolean visible = app.getSettings().getValueAsBoolean(Settings.KEY_PATHS_VISIBLE);
 
 		// draw paths
@@ -221,15 +237,13 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 			mMap.addPolyline(plo).setVisible(visible);
 		}
 	}
-	
+
 	/**
 	 * Added by Agnieszka for marking close animals. Reads user's position,
 	 * checks closest Animals using {@link AnimalFinderHelper} and marks them on
-	 * the map using
-	 * {@link AnimalDetailsMapFragment#markPosition(Animal)}
+	 * the map using {@link AnimalDetailsMapFragment#markPosition(Animal)}
 	 * 
-	 * @param location
-	 *            Location of application user
+	 * @param location Location of application user
 	 */
 	private void markAnimals(Location location) {
 		mAnimalsOnMap = new ArrayList<Animal>();
@@ -245,8 +259,7 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 
 			for (int i = 0; i < 4; i++) {
 				Animal current = allAnimals.get(i).getAnimal();
-				if (!current.equals(mAnimal))
-					mAnimalsOnMap.add(current);
+				if (!current.equals(mAnimal)) mAnimalsOnMap.add(current);
 			}
 		}
 
@@ -254,11 +267,22 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 			markPosition(closest);
 		}
 	}
-	
+
 	/**
 	 * Code is changed copy from {@link SightseeingFragment#setUpMapListeners}
 	 */
 	private void setUpMapListeners() {
+		mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+
+		mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+			@Override
+			public boolean onMarkerClick(Marker marker) {
+				mCheckMarker = marker;
+				openCheckedButton();
+				mCheckMarker.showInfoWindow();
+				return true;
+			}
+		});
 		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
@@ -267,11 +291,12 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 				SupportMapFragment f = (SupportMapFragment) getActivity()
 						.getSupportFragmentManager().findFragmentById(R.id.map);
 				if (f != null)
-					getFragmentManager().beginTransaction().remove(f).commit();
+				getFragmentManager().beginTransaction().remove(f).commit();
 
 				Fragment[] fragments = {
 						AnimalDescriptionTab.newInstance(animal),
-						AnimalDetailsMapFragment.newInstance(animal) };
+						AnimalDetailsMapFragment.newInstance(animal)
+				};
 				Fragment newFragment = FragmentTabManager.newInstance(
 						R.array.animal_desc_tabs_name, fragments, animal);
 
@@ -280,6 +305,19 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 						BundleConstants.FRAGMENT_ANIMAL_DETAIL);
 			}
 		});
+	}
+
+	private void openCheckedButton() {
+
+		if (mAnimal.getVisited()) mItemCheck.setTitle(getString(R.string.unselect_animal));
+		else mItemCheck.setTitle(getString(R.string.select_animal));
+
+		mItemCheck.setVisible(true);
+	}
+
+	private void closeCheckButton(boolean visibility) {
+		mItemCheck.setVisible(false);
+		if (!visibility) mCheckMarker.showInfoWindow();
 	}
 
 	protected void configureAndShowProgressDialog() {
@@ -351,8 +389,11 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		Log.d(LOG_TAG, "onCreateView");
-
 		parseArguments();
+		mDbManager = DbDataManager.getInstance(getActivity());
+
+		setActionBar();
+		setHasOptionsMenu(true);
 
 		// check if layout is already created
 		// if true it should be removed
@@ -378,11 +419,55 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		// please note that GoogleMap object will not be available at the spot
 		// so GoogleMap object will be requested in the next Fragment's
 		// lifecycle method
-		
-		if(mAnimal != null)
-			getActivity().getActionBar().setTitle(mAnimal.getName());
-		
+
 		return mRootView;
+	}
+
+	private void setActionBar() {
+		mActionBar = getActivity().getActionBar();
+		mActionBar.setTitle(mAnimal.getName());
+	}
+
+	private void changeAnimalMarkerIcon(int icon) {
+		mCheckMarker.setIcon(BitmapDescriptorFactory
+				.fromResource(icon));
+	}
+
+	private void setUpMenuItemListeners() {
+		mItemCheck.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+			@Override
+			public boolean onMenuItemClick(MenuItem menuItem) {
+				if (mAnimal.getVisited()) {
+					mDbManager.updateAnimalInDb(mAnimal.getId(), false);
+					mAnimal.setVisited(false);
+
+					changeAnimalMarkerIcon(R.drawable.ic_animal);
+
+				} else {
+					mDbManager.updateAnimalInDb(mAnimal.getId(), true);
+					mAnimal.setVisited(true);
+					changeAnimalMarkerIcon(R.drawable.ic_animal_visited);
+				}
+				closeCheckButton(false);
+
+				return false;
+			}
+		});
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		MenuItem itemSearch = menu.findItem(R.id.action_search);
+		MenuItem itemFilter = menu.findItem(R.id.action_filter);
+		if (itemSearch != null) itemSearch.setVisible(false);
+		if (itemFilter != null) itemFilter.setVisible(false);
+
+		mItemCheck = menu.add(getString(R.string.select_animal));
+
+		mItemCheck.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		mItemCheck.setVisible(false);
+		setUpMenuItemListeners();
 	}
 
 	@Override
@@ -408,9 +493,8 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 				bindLocationService();
 			}
 		});
-		
-		if (markClosestAnimals)
-			setUpMapListeners();
+
+		if (markClosestAnimals) setUpMapListeners();
 	}
 
 	@Override
