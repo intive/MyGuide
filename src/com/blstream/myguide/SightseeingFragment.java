@@ -431,7 +431,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 
 	private boolean sameAnimalNewDistance(XmlObjectDistance closest) {
 		return mLastAnimalDistance != null &&
-				closest.getAnimal().equals(mLastAnimalDistance.getAnimal()) &&
+				closest.getXmlObject().equals(mLastAnimalDistance.getXmlObject()) &&
 				(closest.getDistance() != mLastAnimalDistance.getDistance());
 	}
 

@@ -32,7 +32,7 @@ public class XmlObjectFinderHelper {
 	private static final String LOG_TAG = XmlObjectFinderHelper.class
 			.getSimpleName();
 	Location mLocation;
-	ArrayList<XmlObject> mAllctXmlObjects = new ArrayList<XmlObject>();
+	ArrayList<XmlObject> mAllXmlObjects = new ArrayList<XmlObject>();
 	Graph mGraph;
 	Handler mHandler;
 	Context mContext;
@@ -41,9 +41,9 @@ public class XmlObjectFinderHelper {
 			XmlObject object) {
 		mLocation = location;
 		if (object.getClass().equals(Animal.class)) {
-			mAllctXmlObjects.addAll(app.getZooData().getAnimals());
+			mAllXmlObjects.addAll(app.getZooData().getAnimals());
 		} else if (object.getClass().equals(Restaurant.class)) {
-			mAllctXmlObjects.addAll(app.getZooData().getRestaurant());
+			mAllXmlObjects.addAll(app.getZooData().getRestaurant());
 		}
 		mGraph = app.getGraph();
 		mContext = context;
@@ -67,10 +67,10 @@ public class XmlObjectFinderHelper {
 	 */
 
 	private double[] distancesToAllXmlObjects() {
-		final double[] distances = new double[mAllctXmlObjects.size()];
+		final double[] distances = new double[mAllXmlObjects.size()];
 
 		for (int i = 0; i < distances.length; i++) {
-			distances[i] = MathHelper.distanceBetween(mAllctXmlObjects.get(i)
+			distances[i] = MathHelper.distanceBetween(mAllXmlObjects.get(i)
 					.getNode(), mLocation.getLatitude(), mLocation
 					.getLongitude());
 		}
@@ -87,7 +87,7 @@ public class XmlObjectFinderHelper {
 		ArrayList<XmlObjectDistance> result = new ArrayList<XmlObjectDistance>();
 		double[] distances = distancesToAllXmlObjects();
 		for (int i = 0; i < distances.length; i++) {
-			result.add(new XmlObjectDistance(mAllctXmlObjects.get(i), distances[i]));
+			result.add(new XmlObjectDistance(mAllXmlObjects.get(i), distances[i]));
 		}
 
 		Collections.sort(result);

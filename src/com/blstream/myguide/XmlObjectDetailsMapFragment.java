@@ -245,7 +245,7 @@ public class XmlObjectDetailsMapFragment extends Fragment implements Parcelable 
 					.allXmlObjectsWithDistances();
 
 			for (int i = 0; i < 4; i++) {
-				XmlObject current = allAnimals.get(i).getAnimal();
+				XmlObject current = allAnimals.get(i).getXmlObject();
 				if (!current.equals(mXmlObject))
 					mXmlObjectOnMap.add(current);
 			}

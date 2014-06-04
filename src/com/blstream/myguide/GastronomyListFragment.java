@@ -146,7 +146,7 @@ public class GastronomyListFragment extends Fragment implements LocationUser {
 		if (xmlObjectDistance != null) {
 			mRestaurants.clear();
 			for (XmlObjectDistance xmlObject : xmlObjectDistance) {
-				Restaurant restaurant = (Restaurant) xmlObject.getAnimal();
+				Restaurant restaurant = (Restaurant) xmlObject.getXmlObject();
 				restaurant.setDistance(xmlObject.getDistance());
 				mRestaurants.add(restaurant);
 			}

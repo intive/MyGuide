@@ -85,7 +85,7 @@ public class NearestAnimalsListFragment extends Fragment implements
 				
 				Bundle arguments = new Bundle();
 				arguments.putSerializable(BundleConstants.SELECTED_ANIMAL,
-						mAnimalsAndDistances.get(position).getAnimal());
+						mAnimalsAndDistances.get(position).getXmlObject());
 				arguments.putSerializable(
 						BundleConstants.SHOW_CLOSE_ANIMALS_ON_MAP, true);
 				wayToAnimal.setArguments(arguments);
@@ -95,7 +95,7 @@ public class NearestAnimalsListFragment extends Fragment implements
 						BundleConstants.FRAGMENT_CLOSEST_ANIMALS_MAP);
 
 				mActionBar.setTitle(mAnimalsAndDistances.get(position)
-						.getAnimal().getName());
+						.getXmlObject().getName());
 			}
 		});
 	};
@@ -159,7 +159,7 @@ public class NearestAnimalsListFragment extends Fragment implements
 				viewHolder = (ViewHolder) convertView.getTag();
 			}
 
-			Animal animal = (Animal)((XmlObjectDistance) getItem(position)).getAnimal();
+			Animal animal = (Animal)((XmlObjectDistance) getItem(position)).getXmlObject();
 			int distance = ((XmlObjectDistance) getItem(position)).getDistance();
 
 			if (animal != null) {

@@ -51,7 +51,7 @@ public class BottomAnimalFragment extends Fragment {
 	private void setAllValues(Bundle data) {
 		XmlObjectDistance animal = (XmlObjectDistance) data
 				.getSerializable(BundleConstants.CLOSEST_ANIMAL);
-		Animal a = (Animal) animal.getAnimal();
+		Animal a = (Animal) animal.getXmlObject();
 		mAnimalName.setText(a.getName());
 		mAnimalFunfact.setText(a.getDescriptionAdult()
 				.getText());

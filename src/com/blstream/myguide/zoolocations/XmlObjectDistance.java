@@ -10,17 +10,17 @@ public class XmlObjectDistance implements Comparable<XmlObjectDistance>, Seriali
 	private XmlObject mXmlObject;
 	private double mDistance;
 
-	public XmlObjectDistance(XmlObject animal, double distance) {
-		this.mXmlObject = animal;
+	public XmlObjectDistance(XmlObject object, double distance) {
+		this.mXmlObject = object;
 		this.mDistance = distance;
 	}
 
-	public XmlObject getAnimal() {
+	public XmlObject getXmlObject() {
 		return mXmlObject;
 	}
 
-	public void setAnimal(XmlObject mAnimal) {
-		this.mXmlObject = mAnimal;
+	public void setXmlObject(XmlObject object) {
+		this.mXmlObject = object;
 	}
 
 	public int getDistance() {
@@ -38,7 +38,7 @@ public class XmlObjectDistance implements Comparable<XmlObjectDistance>, Seriali
 
 	@Override
 	public boolean equals(Object o) {
-		return ((XmlObjectDistance) o).getAnimal().equals(mXmlObject)
+		return ((XmlObjectDistance) o).getXmlObject().equals(mXmlObject)
 				&& ((XmlObjectDistance) o).getDistance() == (int) mDistance;
 	}
 
