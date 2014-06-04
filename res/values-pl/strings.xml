@@ -74,8 +74,8 @@
 
     <!-- Gastronomy description tabs -->
     <string-array name="gastronomy_desc_tabs_name">
-        <item name="description">Opis</item>
-        <item name="menu">Menu</item>
+        <item name="description">Menu</item>
+        <item name="menu">Mapa</item>
     </string-array>
 
     <!-- Track list -->

@@ -77,8 +77,8 @@
 
     <!-- Gastronomy description tabs -->
     <string-array name="gastronomy_desc_tabs_name">
-        <item name="description">Description</item>
-        <item name="menu">Menu</item>
+        <item name="description">Menu</item>
+        <item name="menu">Map</item>
     </string-array>
 
     <!-- Nearest animals -->

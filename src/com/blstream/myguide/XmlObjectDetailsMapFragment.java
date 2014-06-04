@@ -24,9 +24,10 @@ import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.path.Graph;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
-import com.blstream.myguide.zoolocations.AnimalDistance;
+import com.blstream.myguide.zoolocations.XmlObjectDistance;
 import com.blstream.myguide.zoolocations.Node;
 import com.blstream.myguide.zoolocations.Way;
+import com.blstream.myguide.zoolocations.XmlObject;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -52,9 +53,9 @@ import java.util.concurrent.TimeUnit;
  * @author Rafal
  */
 // TODO: Robotium tests (moving through tabs and back to the main screen)
-public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
+public class XmlObjectDetailsMapFragment extends Fragment implements Parcelable {
 
-	private static final String LOG_TAG = AnimalDetailsMapFragment.class.getSimpleName();
+	private static final String LOG_TAG = XmlObjectDetailsMapFragment.class.getSimpleName();
 
 	private static final float SHORTEST_PATH_WIDTH = 8.5f;
 	private static final float PATH_WIDTH = 7.5f;
@@ -72,9 +73,10 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 
 	private MenuItem mItemCheck;
 	private ActionBar mActionBar;
-	private Animal mAnimal;
-	private ArrayList<Animal> mAnimalsOnMap;
-	private HashMap<String, Animal> mMarkerIDsAnimals;
+
+	private XmlObject mXmlObject;
+	private ArrayList<XmlObject> mXmlObjectOnMap;
+	private HashMap<String, XmlObject> mMarkerIDsXmlObject;
 	private Graph mGraph;
 
 	private DbDataManager mDbManager;
@@ -98,23 +100,24 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		private long mLastUpdateTime = 0;
 		private boolean mFirstUpdate = true;
 
-		private AnimalDetailsMapFragment mFragment;
+		private XmlObjectDetailsMapFragment mFragment;
 
-		public LocationObserver(AnimalDetailsMapFragment fragment) {
+		public LocationObserver(XmlObjectDetailsMapFragment fragment) {
 			mFragment = fragment;
 		}
 
 		protected void onUpdateAccepted(Location location) {
-			LatLng animalLoc = new LatLng(mFragment.mAnimal.getNode().getLatitude(),
-					mFragment.mAnimal.getNode().getLongitude());
+			LatLng animalLoc = new LatLng(mFragment.mXmlObject.getNode().getLatitude(),
+					mFragment.mXmlObject.getNode().getLongitude());
 			// LatLng sourceLoc = new LatLng(51.1046625, 17.0771680); // good
 			// spot for testing purposes
 			LatLng sourceLoc = new LatLng(location.getLatitude(), location.getLongitude());
 
 			mFragment.mMap.clear();
-			mFragment.drawAllWays(); // Logic of drawing has been changed to
-										// handle close animals
-			mFragment.markAnimals(location);
+
+			mFragment.drawAllWays(); //Logic of drawing has been changed to handle close animals
+			mFragment.markXmlObjects(location);
+
 			LatLngBounds bounds = mFragment.findAndDrawShortestPath(animalLoc, sourceLoc).build();
 			if (mFirstUpdate) {
 				mFragment.mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 16));
@@ -153,11 +156,11 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 
 	}
 
-	public static AnimalDetailsMapFragment newInstance(Animal animal) {
+	public static XmlObjectDetailsMapFragment newInstance(XmlObject object) {
 		Bundle bundle = new Bundle();
-		bundle.putSerializable(BundleConstants.SELECTED_ANIMAL, animal);
+		bundle.putSerializable(BundleConstants.SELECTED_ANIMAL, object);
 
-		AnimalDetailsMapFragment f = new AnimalDetailsMapFragment();
+		XmlObjectDetailsMapFragment f = new XmlObjectDetailsMapFragment();
 		f.setArguments(bundle);
 
 		return f;
@@ -170,13 +173,16 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 			return;
 		}
 
-		mAnimal = (Animal) arguments.getSerializable(BundleConstants.SELECTED_ANIMAL);
 
-		/* Added by Agnieszka 13-05-2014 to handle new boolean. */
+		mXmlObject = (XmlObject) arguments.getSerializable(BundleConstants.SELECTED_ANIMAL);
+		
+		/* Added by Agnieszka 13-05-2014 to handle new boolean. */ 
 		markClosestAnimals = arguments
 				.containsKey(BundleConstants.SHOW_CLOSE_ANIMALS_ON_MAP) ? arguments.getBoolean(
-				BundleConstants.SHOW_CLOSE_ANIMALS_ON_MAP) : false;
-		if (mAnimal == null) Log.w(LOG_TAG, "NULL is not an Animal");
+						BundleConstants.SHOW_CLOSE_ANIMALS_ON_MAP) : false;
+		if (mXmlObject == null)
+			Log.w(LOG_TAG, "NULL is not an XmlObject");
+
 	}
 
 	private void bindLocationService() {
@@ -203,22 +209,17 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 	 * 
 	 * @param animal Animal to be marked
 	 */
-	private void markPosition(Animal animal) {
+	private void markPosition(XmlObject animal) {
 		LatLng position = new LatLng(animal.getNode().getLatitude(), animal
 				.getNode().getLongitude());
 
 		Marker marker = mMap.addMarker(new MarkerOptions()
 				.position(position)
-				.title(animal.getName()));
-		if (animal.getVisited()) {
-			marker.setIcon(BitmapDescriptorFactory
-					.fromResource(R.drawable.ic_animal_visited));
-		} else {
-			marker.setIcon(BitmapDescriptorFactory
-					.fromResource(R.drawable.ic_animal));
-		}
+				.title(animal.getName())
+				.icon(BitmapDescriptorFactory
+						.fromResource(R.drawable.ic_animal)));
+		mMarkerIDsXmlObject.put(marker.getId(), animal);
 
-		mMarkerIDsAnimals.put(marker.getId(), animal);
 	}
 
 	private void drawAllWays() {
@@ -240,30 +241,37 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 
 	/**
 	 * Added by Agnieszka for marking close animals. Reads user's position,
+<<<<<<< HEAD:src/com/blstream/myguide/AnimalDetailsMapFragment.java
 	 * checks closest Animals using {@link AnimalFinderHelper} and marks them on
-	 * the map using {@link AnimalDetailsMapFragment#markPosition(Animal)}
+	 * the map using {@link XmlDetailsMapFragment#markPosition(Animal)}
+=======
+	 * checks closest Animals using {@link XmlObjectFinderHelper} and marks them on
+	 * the map using
+	 * {@link XmlObjectDetailsMapFragment#markPosition(XmlObject)}
+>>>>>>> upstream/android:src/com/blstream/myguide/XmlObjectDetailsMapFragment.java
 	 * 
 	 * @param location Location of application user
 	 */
-	private void markAnimals(Location location) {
-		mAnimalsOnMap = new ArrayList<Animal>();
-		mMarkerIDsAnimals = new HashMap<String, Animal>();
-		mAnimalsOnMap.add(mAnimal);
+	private void markXmlObjects(Location location) {
+		mXmlObjectOnMap = new ArrayList<XmlObject>();
+		mMarkerIDsXmlObject = new HashMap<String, XmlObject>();
+		mXmlObjectOnMap.add(mXmlObject);
 
 		if (markClosestAnimals) {
-			AnimalFinderHelper animalFinder = new AnimalFinderHelper(location,
+			XmlObjectFinderHelper animalFinder = new XmlObjectFinderHelper(location,
 					(MyGuideApp) this.getActivity().getApplication(), this
-							.getActivity().getApplicationContext());
-			ArrayList<AnimalDistance> allAnimals = animalFinder
-					.allAnimalsWithDistances();
+							.getActivity().getApplicationContext(), new Animal());
+			ArrayList<XmlObjectDistance> allAnimals = animalFinder
+					.allXmlObjectsWithDistances();
 
 			for (int i = 0; i < 4; i++) {
-				Animal current = allAnimals.get(i).getAnimal();
-				if (!current.equals(mAnimal)) mAnimalsOnMap.add(current);
+				XmlObject current = allAnimals.get(i).getXmlObject();
+				if (!current.equals(mXmlObject))
+					mXmlObjectOnMap.add(current);
 			}
 		}
 
-		for (Animal closest : mAnimalsOnMap) {
+		for (XmlObject closest : mXmlObjectOnMap) {
 			markPosition(closest);
 		}
 	}
@@ -286,7 +294,7 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
 			@Override
 			public void onInfoWindowClick(Marker marker) {
-				Animal animal = mMarkerIDsAnimals.get(marker.getId());
+				XmlObject animal = mMarkerIDsXmlObject.get(marker.getId());
 
 				SupportMapFragment f = (SupportMapFragment) getActivity()
 						.getSupportFragmentManager().findFragmentById(R.id.map);
@@ -294,9 +302,8 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 				getFragmentManager().beginTransaction().remove(f).commit();
 
 				Fragment[] fragments = {
-						AnimalDescriptionTab.newInstance(animal),
-						AnimalDetailsMapFragment.newInstance(animal)
-				};
+						AnimalDescriptionTab.newInstance((Animal)animal),
+						XmlObjectDetailsMapFragment.newInstance(animal) };
 				Fragment newFragment = FragmentTabManager.newInstance(
 						R.array.animal_desc_tabs_name, fragments, animal);
 
@@ -308,7 +315,7 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 	}
 
 	private void openCheckedButton() {
-
+        Animal mAnimal = (Animal) mXmlObject;
 		if (mAnimal.getVisited()) mItemCheck.setTitle(getString(R.string.unselect_animal));
 		else mItemCheck.setTitle(getString(R.string.select_animal));
 
@@ -419,13 +426,16 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		// please note that GoogleMap object will not be available at the spot
 		// so GoogleMap object will be requested in the next Fragment's
 		// lifecycle method
+		
+		if(mXmlObject != null)
+			getActivity().getActionBar().setTitle(mXmlObject.getName());
 
 		return mRootView;
 	}
 
 	private void setActionBar() {
 		mActionBar = getActivity().getActionBar();
-		mActionBar.setTitle(mAnimal.getName());
+		mActionBar.setTitle(mXmlObject.getName());
 	}
 
 	private void changeAnimalMarkerIcon(int icon) {
@@ -437,15 +447,16 @@ public class AnimalDetailsMapFragment extends Fragment implements Parcelable {
 		mItemCheck.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
 			@Override
 			public boolean onMenuItemClick(MenuItem menuItem) {
-				if (mAnimal.getVisited()) {
-					mDbManager.updateAnimalInDb(mAnimal.getId(), false);
-					mAnimal.setVisited(false);
+                Animal animal = (Animal) mXmlObject;
+				if (animal.getVisited()) {
+					mDbManager.updateAnimalInDb(animal.getId(), false);
+					animal.setVisited(false);
 
 					changeAnimalMarkerIcon(R.drawable.ic_animal);
 
 				} else {
-					mDbManager.updateAnimalInDb(mAnimal.getId(), true);
-					mAnimal.setVisited(true);
+					mDbManager.updateAnimalInDb(animal.getId(), true);
+					animal.setVisited(true);
 					changeAnimalMarkerIcon(R.drawable.ic_animal_visited);
 				}
 				closeCheckButton(false);

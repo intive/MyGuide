@@ -3,42 +3,42 @@
 		<openings>
 			<opening>
 				<description>
-					<pl>Wiosna (1 - 31 marzec)</pl>
-					<en>Spring</en>
+					<pl>Wiosna (1 Marzec - 31 Marzec)</pl>
+					<en>Spring (1 March - 31 March)</en>
 				</description>
 				<hours>
-					<weekdays>9.00 - 17.00</weekdays>
-					<weekends>9.00 - 17.00</weekends>
+					<weekdays>9:00 - 17:00</weekdays>
+					<weekends>9:00 - 17:00</weekends>
 				</hours>
 			</opening>
 			<opening>
 				<description>
-					<pl>Lato (1 kwiecień - 30 wrzesień)</pl>
-					<en>Summer</en>
+					<pl>Lato (1 Kwiecień - 30 Wrzesień)</pl>
+					<en>Summer (1 April - 30 September)</en>
 				</description>
 				<hours>
-					<weekdays>9.00 - 18.00</weekdays>
-					<weekends>9.00 - 19.00</weekends>
+					<weekdays>9:00 - 18:00</weekdays>
+					<weekends>9:00 - 19:00 </weekends>
 				</hours>
 			</opening>
 			<opening>
 				<description>
-					<pl>Jesień (1 - 31 październik)</pl>
-					<en>Autumn</en>
+					<pl>Jesień (1  Październik - 31 Październik)</pl>
+					<en>Autumn (1 October - 31 October)</en>
 				</description>
 				<hours>
-					<weekdays>9.00 - 17.00</weekdays>
-					<weekends>9.00 - 17.00</weekends>
+					<weekdays>9:00 - 17:00</weekdays>
+					<weekends>9:00 - 17:00</weekends>
 				</hours>
 			</opening>
 			<opening>
 				<description>
-					<pl>Zima (1 listopad - 28/29 luty)</pl>
-					<en>Winter</en>
+					<pl>Zima (1 listopad - 28/29 Luty)</pl>
+					<en>Winter (1 November - 28/29 February)</en>
 				</description>
 				<hours>
-					<weekdays>9.00 - 16.00</weekdays>
-					<weekends>9.00 - 16.00</weekends>
+					<weekdays>9:00 - 16:00</weekdays>
+					<weekends>9:00 - 16:00</weekends>
 				</hours>
 			</opening>
 		</openings>
@@ -87,7 +87,7 @@
 			<ticket>
 				<description>
 					<pl>Bilet rodzinny (2 dorosłych + maksymalnie 3 dzieci)</pl>
-					<en>Family ticket EN</en>
+					<en>Family ticket (2 adult + max 3 children)</en>
 				</description>
 				<price>85</price>
 			</ticket>
@@ -97,7 +97,7 @@
 					<en>Adult</en>
 				</description>
 				<price>25</price>
-			</ticket>
+			</ticket>			
 			<ticket>
 				<description>
 					<pl>Dziecko/os</pl>
@@ -108,99 +108,82 @@
 		</group>
 		<information>
 			<pl>Dzieci do lat 3 wchodzą bezpłatnie. Bilety ulgowe obowiązują do 18 roku życia</pl>
-			<en>Information EN</en>
+			<en>Children under 3 can go for free. Reduced tickets are valid until 18 years old</en>
 		</information>
 	</tickets_information>
 	
 	<access_information>
-		<trams>1, 2, 4, 10</trams>
-		<parkings_information>
-			<pl>ul. Wystawowa, ul. Mickiewicza (kierunek na Stadion Olimpijski)</pl>
-			<en>Parkings EN</en>
-		</parkings_information>
+		<buses>145, 146, 253, 255, 701</buses>
+		<trams>2, 10</trams>
+		<parking_information>
+			<pl>ZOO nie posiada miejsc parkingowych dla gości. Można poszukiwać miejsca do parkowania wzdłuż ulicy Zygmunta Wróblewskiego. Najbiższym parkingiem jest parking naprzeciwko Hali Stulecia.</pl>
+			<en>ZOO doesn't have parking dedicated for visitors. You can look for parking slots along Zygmunta Wroblewskiego street. The nearest parking is in front of Hala Ludowa</en>
+		</parking_information>
 	</access_information>
 	
 	<visiting_tracks>
 		<track>
 			<name>
-				<pl>Track 1</pl>
-				<en>EN Track 1</en>
+				<pl>Afryka</pl>
+				<en>Africa</en>
 			</name>
 			<description>
-				<pl>Track 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
-				<en>EN Track 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
+				<pl>Trasa prowadzi przez zwierzęta afrykańskie dzięki czemu poczujesz się jak na prawdziwym safari.</pl>
+				<en>This track takes you through all african animals so you can feel like being on a safari.</en>
 			</description>
-			<image>img/track_placeholder.jpg</image>
+			<image>img/africa.jpg</image>
 			<animals>
-				<animal_id>1</animal_id>
-				<animal_id>2</animal_id>
-				<animal_id>3</animal_id>
-				<animal_id>4</animal_id>
-				<animal_id>5</animal_id>
-				<animal_id>6</animal_id>
+				<animal_id>56</animal_id> <!-- antylopa kama -->
+				<animal_id>19</animal_id> <!-- fenek -->
+				<animal_id>6</animal_id>  <!-- gnu -->
+				<animal_id>10</animal_id> <!-- kob -->
+				<animal_id>3</animal_id>  <!-- lew -->
+				<animal_id>7</animal_id>  <!-- oryks -->
+				<animal_id>8</animal_id>  <!-- perlica -->
+				<animal_id>11</animal_id> <!-- sitatunga -->
+				<animal_id>1</animal_id>  <!-- zyrafa -->
+				<animal_id>4</animal_id>  <!-- zebra-->
 			</animals>
 		</track>
 		<track>
 			<name>
-				<pl>Track 2</pl>
-				<en>EN Track 2</en>
+				<pl>Drapieżniki</pl>
+				<en>Predators</en>
 			</name>
 			<description>
-				<pl>Track 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
-				<en>EN Track 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
+				<pl>Trasa dla odważnych i szukających przygód. Czy nie wystraszysz się Lwa?</pl>
+				<en>Track for brave and looking for an adventure. Wouldn't the Lion scare You?</en>
 			</description>
-			<image>img/track_placeholder.jpg</image>
+			<image>img/predators.jpg</image>
 			<animals>
-				<animal_id>11</animal_id>
-				<animal_id>12</animal_id>
-				<animal_id>13</animal_id>
-				<animal_id>14</animal_id>
-				<animal_id>15</animal_id>
-				<animal_id>16</animal_id>
+				<animal_id>3</animal_id>  <!-- lew -->
+				<animal_id>19</animal_id> <!-- fenek -->
+				<animal_id>2</animal_id>  <!-- foka -->
 			</animals>
 		</track>
 		<track>
 			<name>
-				<pl>Track 3</pl>
-				<en>EN Track 3</en>
+				<pl>Rogate</pl>
+				<en>Horned</en>
 			</name>
 			<description>
-				<pl>Track 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
-				<en>EN Track 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
+				<pl>Trasa na której wszystko jest rogate duże i małe.</pl>
+				<en>Everything is horned on this track, big and small.</en>
 			</description>
-			<image>img/track_placeholder.jpg</image>
+			<image>img/horned.jpg</image>
 			<animals>
-				<animal_id>21</animal_id>
-				<animal_id>22</animal_id>
-				<animal_id>23</animal_id>
-				<animal_id>24</animal_id>
-				<animal_id>25</animal_id>
-				<animal_id>26</animal_id>
-			</animals>
-		</track>
-		<track>
-			<name>
-				<pl>Track 4</pl>
-				<en>EN Track 4</en>
-			</name>
-			<description>
-				<pl>Track 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
-				<en>EN Track 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
-			</description>
-			<image>img/track_placeholder.jpg</image>
-			<animals>
-				<animal_id>31</animal_id>
-				<animal_id>32</animal_id>
-				<animal_id>33</animal_id>
-				<animal_id>34</animal_id>
-				<animal_id>35</animal_id>
-				<animal_id>36</animal_id>
+				<animal_id>6</animal_id>  <!-- gnu -->
+				<animal_id>56</animal_id> <!-- antylopa -->
+				<animal_id>10</animal_id> <!-- kob -->
+				<animal_id>7</animal_id>  <!-- oryks -->
+				<animal_id>11</animal_id> <!-- sitatunga -->
 			</animals>
 		</track>
 	</visiting_tracks>
 	
 	<gastronomy>
 		<restaurant lat="51.1052072" lon="17.0754498"> <!-- these lat and long are fakes at the moment -->
+			<image>img/letnia.png</image>
 			<name>
 				<pl>Restauracja Letnia</pl>
 				<en>Restauracja Letnia EN</en>
@@ -259,6 +242,7 @@
 			</dishes>
 		</restaurant>
 		<restaurant lat="51.1052072" lon="17.0754498">
+		<image>img/pod_papugami.png</image>
 			<name>
 				<pl>Restauracja Pod Papugami</pl>
 				<en>Restauracja Pod Papugami EN</en>
@@ -275,6 +259,7 @@
 			</dishes>
 		</restaurant>
 		<restaurant lat="51.1052072" lon="17.0754498">
+			<image>img/przystanek_zoo.png</image>
 			<name>
 				<pl>Przystanek ZOO</pl>
 				<en>Przystanek ZOO EN</en>
@@ -291,6 +276,7 @@
 			</dishes>
 		</restaurant>
 		<restaurant lat="51.1052072" lon="17.0754498">
+			<image>img/karczma_koala.png</image>
 			<name>
 				<pl>Karczma Koala</pl>
 				<en>Karczma Koala EN</en>
@@ -307,6 +293,7 @@
 			</dishes>
 		</restaurant>
 		<restaurant lat="51.1052072" lon="17.0754498">
+			<image>img/karczma_lwa.png</image>
 			<name>
 				<pl>Karczma Lwa</pl>
 				<en>Karczma Lwa EN</en>
@@ -327,7 +314,7 @@
 		<event>
 			<name>
 				<pl>Kotiki afrykańkie</pl>
-				<en>Kotiki afrykańkie EN</en>
+				<en>African Kotik</en>
 			</name>
 			<time>11:00;14:00</time>
 			<time_weekends>11:00;14:00;17:00</time_weekends>
@@ -337,7 +324,7 @@
 		<event>
 			<name>
 				<pl>Żyrafy siatkowane</pl>
-				<en>Żyrafy siatkowane EN</en>
+				<en>Reticulated Giraffe</en>
 			</name>
 			<time>9:15</time>
 			<image>img/zyrafa.jpg</image>
@@ -345,7 +332,7 @@
 		<event>
 			<name>
 				<pl>Niedźwiedzie brunatne</pl>
-				<en>Niedźwiedzie brunatne EN</en>
+				<en>Brown Bear</en>
 			</name>
 			<time>9:30</time>
 			<image>img/niedzwiedz.jpg</image>
@@ -353,7 +340,7 @@
 		<event>
 			<name>
 				<pl>Pawiany masajskie</pl>
-				<en>Pawiany masajskie EN</en>
+				<en>Maasai Baboons</en>
 			</name>
 			<time>11:00</time>
 			<image>img/pawiany.jpg</image>
@@ -361,7 +348,7 @@
 		<event>
 			<name>
 				<pl>Hipopotamy</pl>
-				<en>Hipopotamy EN</en>
+				<en>Hippos</en>
 			</name>
 			<time>11:00</time>
 			<image>img/hipo.jpg</image>
@@ -369,7 +356,7 @@
 		<event>
 			<name>
 				<pl>Ptaki (ptaszarnia)</pl>
-				<en>Ptaki (ptaszarnia) EN</en>
+				<en>Birds (aviary)</en>
 			</name>
 			<time>12:00</time>
 			<image>img/ptaki.jpg</image>
@@ -377,7 +364,7 @@
 		<event>
 			<name>
 				<pl>Lemury</pl>
-				<en>Lemury EN</en>
+				<en>Lemurs</en>
 			</name>
 			<time>13:00</time>
 			<image>img/lemury.jpg</image>
@@ -385,7 +372,7 @@
 		<event>
 			<name>
 				<pl>Słonie indyjskie</pl>
-				<en>Słonie indyjskie EN</en>
+				<en>Indian Elephants</en>
 			</name>
 			<time>12:30</time>
 			<image>img/slonie.jpg</image>
@@ -393,7 +380,7 @@
 		<event>
 			<name>
 				<pl>Żółwie pustynne</pl>
-				<en>Żółwie pustynne EN</en>
+				<en>Desert Turtles</en>
 			</name>
 			<time>12:00</time>
 			<start>1.06</start>
@@ -402,7 +389,7 @@
 		<event>
 			<name>
 				<pl>Pelikany</pl>
-				<en>Pelikany EN</en>
+				<en>Pelicans</en>
 			</name>
 			<time>13:00</time>
 			<image>img/pelikany.jpg</image>
@@ -410,7 +397,7 @@
 		<event>
 			<name>
 				<pl>Mrówniki</pl>
-				<en>Mrówniki EN</en>
+				<en>Earth Hogs</en>
 			</name>
 			<time>13:30</time>
 			<image>img/mrownik.jpg</image>
@@ -430,7 +417,7 @@
 			<image>img/placeholder_history.jpg</image>
 			<heading>
 				<pl>Otwarcie ogrodu zoologicznego we Wrocławiu</pl>
-				<en>EN</en>
+				<en>Opening of a zoological garden in Wroclaw</en>
 			</heading>
 		</history_event>
 		<history_event>
@@ -438,7 +425,7 @@
 			<image>img/placeholder_history.jpg</image>
 			<heading>
 				<pl>Rozkwit ogrodu, zaliczanego w tym czasie do wiodących placówek na świecie</pl>
-				<en>EN</en>
+				<en>Expansion of Wroclaw ZOO, which is one of the biggest in the World at the time</en>
 			</heading>
 		</history_event>
 		<history_event>
@@ -446,7 +433,7 @@
 			<image>img/placeholder_history.jpg</image>
 			<heading>
 				<pl>Zamknięcie ZOO po kryzysie lat powojennych</pl>
-				<en>EN</en>
+				<en>ZOO got closed because of after - war crysis</en>
 			</heading>
 		</history_event>
 		<history_event>
@@ -454,7 +441,7 @@
 			<image>img/placeholder_history.jpg</image>
 			<heading>
 				<pl>Ponowne udostępnienie ogrodu dla publiczności</pl>
-				<en>EN</en>
+				<en>ZOO is open to public again</en>
 			</heading>
 		</history_event>
 		<history_event>
@@ -462,7 +449,7 @@
 			<image>img/placeholder_history.jpg</image>
 			<heading>
 				<pl>Zniszczenie ogrodu podczas oblężenia miasta przez wojska radzieckie</pl>
-				<en>EN</en>
+				<en>Wroclaw zoological garden got destroyed by soviet armed forces</en>
 			</heading>
 		</history_event>
 		<history_event>
@@ -470,7 +457,7 @@
 			<image>img/placeholder_history.jpg</image>
 			<heading>
 				<pl>Otwarcie ZOO po II Wojnie Światowej</pl>
-				<en>EN</en>
+				<en>Reopening of Wroclaw ZOO after the II World War</en>
 			</heading>
 		</history_event>
 		<history_event>
@@ -478,15 +465,15 @@
 			<image>img/placeholder_history.jpg</image>
 			<heading>
 				<pl>Podwojenie dotychczasowego obszaru ogrodu poprzez zajęcie terenów po Wystawie Ziem Odzyskanych</pl>
-				<en>EN</en>
+				<en>Doubling actual ZOO area by acquiring terrains after Recovered Land Display</en>
 			</heading>
 		</history_event>
 		<history_event>
-			<date>70s</date> <!-- 1970 - 1979 should we put it some other way or can you handle this? -->
+			<date>1970 - 1980</date> <!-- 1970 - 1979 should we put it some other way or can you handle this? -->
 			<image>img/placeholder_history.jpg</image>
 			<heading>
 				<pl>Kolekcja zwierząt należy do większych w Europie, a dzięki medialnemu sukcesowi "Z kamerą wśród zwierząt", prowadzonego przez Hannę i Antoniego Gucwińskich, ZOO przez wiele lat pozostaje najbardziej znanym ogrodem w Polsce</pl>
-				<en>EN</en>
+				<en>Animals collection is among the biggest in Europe thanks to a big medial success "Z kamerą wśród zwierząt" (eng. With camera among animals), created by Hanna and Antoni Gucwinski, for many years Worclaw ZOO is the best known in Poland</en>
 			</heading>
 		</history_event>
 		<history_event>
@@ -494,7 +481,7 @@
 			<image>img/placeholder_history.jpg</image>
 			<heading>
 				<pl>Dyrektorem zostaje Radosław Ratajszczak, który zapoczątkowuje proces zmian mających wprowadzić ogród w XXI wiek </pl>
-				<en>EN</en>
+				<en>Radoslaw Ratajszczak becomes ZOO director and started a process of changes thet will move ZOO to the XXI century</en>
 			</heading>
 		</history_event>
 		<history_event>
@@ -502,14 +489,14 @@
 			<image>img/placeholder_history.jpg</image>
 			<heading>
 				<pl>Wrocławskie ZOO jako pierwsze w Polsce przekształca się w spółkę</pl>
-				<en>EN</en>
+				<en>Wroclaw ZOO is the first in Poland that got transformed into a company</en>
 			</heading>
 		</history_event>
 	</history>
 	<animals>
 		<animal lat="51.1052072" lon="17.0754498" id="1">
 			<name>
-				<pl>Żyrafa</pl>
+				<pl>Żyrafa siatkowana</pl>
 				<en>Żyrafa EN</en>
 			</name>
 			<description_adult>
@@ -547,6 +534,26 @@
 				<en>strus_en.html</en>
 			</desc>
 		</animal>
+		<animal lat="51.1050185" lon="17.0759970" id="2">
+			<name>
+				<pl>Foka zwyczajna</pl>
+				<en> EN</en>
+			</name>
+			<description_adult>
+				<image>img/placeholder_adult.jpg</image>
+				<pl>PL </pl>
+				<en>EN </en>
+			</description_adult>
+			<description_child>
+				<image>img/placeholder_child.jpg</image>
+				<pl>PL </pl>
+				<en>EN </en>
+			</description_child>
+			<desc>
+				<pl>foka_zwyczajna_pl.html</pl>
+				<en>foka_zwyczajna_en.html</en>
+			</desc>
+		</animal>
 		<animal lat="51.1046625" lon="17.0771680" id="3">
 			<name>
 				<pl>Lew angolański</pl>
@@ -562,10 +569,14 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>lew_angolanski_pl.html</pl>
+				<en>lew_angolanski_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1053988" lon="17.0737940" id="4">
 			<name>
-				<pl>Zebra</pl>
+				<pl>Zebra chapmana</pl>
 				<en> EN</en>
 			</name>
 			<description_adult>
@@ -578,6 +589,10 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>zebra_chapmana_pl.html</pl>
+				<en>zebra_chapmana_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1031447" lon="17.0756473" id="5">
 			<name>
@@ -610,6 +625,30 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>gnu_bialobrode_pl.html</pl>
+				<en>gnu_bialobrode_en.html</en>
+			</desc>
+		</animal>
+		<animal lat="51.1042875" lon="17.0786295" id="6">
+			<name>
+				<pl>Kangur rudy</pl>
+				<en> EN</en>
+			</name>
+			<description_adult>
+				<image>img/placeholder_adult.jpg</image>
+				<pl>PL </pl>
+				<en>EN </en>
+			</description_adult>
+			<description_child>
+				<image>img/placeholder_child.jpg</image>
+				<pl>PL </pl>
+				<en>EN </en>
+			</description_child>
+			<desc>
+				<pl>kangur_rudy_pl.html</pl>
+				<en>kangur_rudy_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1047078" lon="17.0784479" id="7">
 			<name>
@@ -626,6 +665,10 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>oryks_szablorogi_pl.html</pl>
+				<en>oryks_szablorogi_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1049038" lon="17.0778135" id="8">
 			<name>
@@ -642,6 +685,30 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>osiol_domowy_pl.html</pl>
+				<en>osiol_domowy_en.html</en>
+			</desc>
+		</animal>
+		<animal lat="51.1049038" lon="17.0778135" id="8">
+			<name>
+				<pl>Perlica sępia</pl>
+				<en> EN</en>
+			</name>
+			<description_adult>
+				<image>img/placeholder_adult.jpg</image>
+				<pl>PL </pl>
+				<en>EN </en>
+			</description_adult>
+			<description_child>
+				<image>img/placeholder_child.jpg</image>
+				<pl>PL </pl>
+				<en>EN </en>
+			</description_child>
+			<desc>
+				<pl>perlica_sepia_pl.html</pl>
+				<en>perlica_sepia_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1051282" lon="17.0774613" id="9">
 			<name>
@@ -674,6 +741,10 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>kob_pl.html</pl>
+				<en>kob_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1039061" lon="17.0773532" id="11">
 			<name>
@@ -690,6 +761,10 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>sitatunga_pl.html</pl>
+				<en>sitatunga_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1016737" lon="17.0785009" id="12">
 			<name>
@@ -710,22 +785,6 @@
 		<animal lat="51.1015091" lon="17.0778810" id="13">
 			<name>
 				<pl>Magot</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1042993" lon="17.0778709" id="14">
-			<name>
-				<pl>Garna</pl>
 				<en> EN</en>
 			</name>
 			<description_adult>
@@ -818,6 +877,10 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>fenek_pl.html</pl>
+				<en>fenek_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1042030" lon="17.0767175" id="20">
 			<name>
@@ -867,54 +930,6 @@
 				<en>EN </en>
 			</description_child>
 		</animal>
-		<animal lat="51.1066934" lon="17.0724480" id="23">
-			<name>
-				<pl>Mangaba czarna</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1056874" lon="17.0738775" id="24">
-			<name>
-				<pl>Urson</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1058086" lon="17.0739829" id="25">
-			<name>
-				<pl>Niedźwiedź Brunatny</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
 		<animal lat="51.1064215" lon="17.0732379" id="26">
 			<name>
 				<pl>Wilk</pl>
@@ -946,6 +961,10 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>slon_indyjski_pl.html</pl>
+				<en>slon_indyjski_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1039169" lon="17.0729268" id="28">
 			<name>
@@ -1075,22 +1094,6 @@
 				<en>EN </en>
 			</description_child>
 		</animal>
-		<animal lat="51.1046240" lon="17.0698661" id="36">
-			<name>
-				<pl>Sajmiri</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
 		<animal lat="51.1040646" lon="17.0731295" id="37">
 			<name>
 				<pl>Gwanako</pl>
@@ -1138,26 +1141,14 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>desc/hipopotam_nilowy_pl.html</pl>
+				<en>desc/hipopotam_nilowy_en.html</en>
+			</desc>
 		</animal>
 		<animal lat="51.1050439" lon="17.0696709" id="40">
 			<name>
 				<pl>Jeleń aksis</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1069080" lon="17.0722911" id="41">
-			<name>
-				<pl>Makak rezus</pl>
 				<en> EN</en>
 			</name>
 			<description_adult>
@@ -1283,22 +1274,6 @@
 				<en>EN </en>
 			</description_child>
 		</animal>
-		<animal lat="51.1067957" lon="17.0724032" id="49">
-			<name>
-				<pl>Patas</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
 		<animal lat="51.1048820" lon="17.0693605" id="50">
 			<name>
 				<pl>Renifer</pl>
@@ -1331,22 +1306,6 @@
 				<en>EN </en>
 			</description_child>
 		</animal>
-		<animal lat="51.1063146" lon="17.0728767" id="52">
-			<name>
-				<pl>Tygrys Sumatrzański</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
 		<animal lat="51.1061018" lon="17.0721245" id="53">
 			<name>
 				<pl>Tapir anta</pl>
@@ -1363,9 +1322,9 @@
 				<en>EN </en>
 			</description_child>
 		</animal>
-		<animal lat="51.1045571" lon="17.0730667" id="54">
+		<animal lat="51.1058351" lon="17.0732203" id="56">
 			<name>
-				<pl>Panda Mała</pl>
+				<pl>Antylopa kama</pl>
 				<en> EN</en>
 			</name>
 			<description_adult>
@@ -1378,11 +1337,15 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>desc/antylopa_kama_pl.html</pl>
+				<en>desc/antylopa_kama_en.html</en>
+			</desc>
 		</animal>
-		<animal lat="51.1058351" lon="17.0732203" id="55">
+		<animal lat="51.1058351" lon="17.0732203" id="57">
 			<name>
-				<pl>Nosorożec indyjski</pl>
-				<en> EN</en>
+				<pl>Flaming</pl>
+				<en>Flaming</en>
 			</name>
 			<description_adult>
 				<image>img/placeholder_adult.jpg</image>
@@ -1394,14 +1357,13 @@
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_child>
+			<desc>
+				<pl>desc/flaming_pl.html</pl>
+				<en>desc/flaming_en.html</en>
+			</desc>
 		</animal>
 	</animals>
-	<ways>
-		<way id="32997558">
-			<node lat="51.1054430" lon="17.0773945" />
-			<node lat="51.1054595" lon="17.0774086" />
-			<node lat="51.1058005" lon="17.0777018" />
-		</way>
+		<ways>
 		<way id="35948032">
 			<node lat="51.1057838" lon="17.0751055" />
 			<node lat="51.1051115" lon="17.0745007" />
@@ -1936,10 +1898,6 @@
 			<node lat="51.1039196" lon="17.0709198" />
 			<node lat="51.1041004" lon="17.0710542" />
 		</way>
-		<way id="224710098">
-			<node lat="51.1069169" lon="17.0729287" />
-			<node lat="51.1069836" lon="17.0729754" />
-		</way>
 		<way id="225121365">
 			<node lat="51.1038212" lon="17.0742998" />
 			<node lat="51.1034343" lon="17.0739317" />
@@ -2001,32 +1959,6 @@
 		<way id="61374785">
 			<node lat="51.1050720" lon="17.0771950" />
 			<node lat="51.1045253" lon="17.0767239" />
-		</way>
-		<way id="233306873">
-			<node lat="51.1069836" lon="17.0729754" />
-			<node lat="51.1068829" lon="17.0731657" />
-			<node lat="51.1063119" lon="17.0748599" />
-			<node lat="51.1061493" lon="17.0753286" />
-			<node lat="51.1061025" lon="17.0754673" />
-			<node lat="51.1058798" lon="17.0761279" />
-			<node lat="51.1058158" lon="17.0761495" />
-			<node lat="51.1057696" lon="17.0761880" />
-			<node lat="51.1057119" lon="17.0763470" />
-			<node lat="51.1056541" lon="17.0765116" />
-			<node lat="51.1056440" lon="17.0766376" />
-			<node lat="51.1056474" lon="17.0767181" />
-			<node lat="51.1054290" lon="17.0773797" />
-			<node lat="51.1048036" lon="17.0793628" />
-			<node lat="51.1046453" lon="17.0800226" />
-			<node lat="51.1045140" lon="17.0807361" />
-			<node lat="51.1043549" lon="17.0820882" />
-			<node lat="51.1043469" lon="17.0821536" />
-			<node lat="51.1041870" lon="17.0834520" />
-			<node lat="51.1041616" lon="17.0836587" />
-			<node lat="51.1041452" lon="17.0841961" />
-			<node lat="51.1042599" lon="17.0852814" />
-			<node lat="51.1042795" lon="17.0855266" />
-			<node lat="51.1041485" lon="17.0868311" />
 		</way>
 		<way id="237637434">
 			<node lat="51.1020530" lon="17.0769605" />
@@ -2185,10 +2117,6 @@
 		<junction lat="51.1051115" lon="17.0745007">
 			<way id="226244353" />
 			<way id="226233347" />
-		</junction>
-		<junction lat="51.1069836" lon="17.0729754">
-			<way id="224710098" />
-			<way id="233306873" />
 		</junction>
 	</junctions>
 </root>

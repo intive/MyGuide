@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Created by Piotrek on 2014-04-07.
  */
-public class Dish extends XmlObject implements Serializable {
+public class Dish implements Serializable {
 
 	private HashMap<String, String> mNames;
 	private float mPrice;
@@ -28,12 +28,10 @@ public class Dish extends XmlObject implements Serializable {
 		mNames = names;
 	}
 
-	@Override
 	public void addName(String lang, String name) {
 		mNames.put(lang, name);
 	}
 
-	@Override
 	public String getName() {
 		return mNames.get(Language.DEFAULT);
 	}

@@ -140,6 +140,10 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu_main, menu);
 		MenuItem searchViewMenuItem = menu.findItem(R.id.action_search);
+		// track drawer menu ( change visible to true if you want show )
+		MenuItem trackDrawer = menu.findItem(R.id.action_filter);
+		trackDrawer.setVisible(false);
+
 		mItemClearTrack = menu.findItem(R.id.action_clear);
 
 		mItemClearTrack.setVisible(false);
@@ -226,7 +230,9 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 			@Override
 			public void onDrawerClosed(View drawerView) {
 				super.onDrawerClosed(drawerView);
-				if (mItemClearTrack != null) mItemClearTrack.setVisible(false);
+				if (!mDrawerLayout.isDrawerVisible(mTrackListView)) {
+					if (mItemClearTrack != null) mItemClearTrack.setVisible(false);
+				}
 			}
 
 			@Override
@@ -281,11 +287,10 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 		names.put("pl", "Eksploracja");
 		exploration.setNames(names);
 
-		for (Track track : ((MyGuideApp) this.getApplication()).getZooData().getTracks()) {
-			for (Animal animal : track.getAnimals()) {
-				animals.add(animal);
-			}
+		for (Animal animal : ((MyGuideApp) this.getApplication()).getZooData().getAnimals()) {
+			animals.add(animal);
 		}
+
 		exploration.setAnimals(animals);
 
 		return exploration;
@@ -348,6 +353,9 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 				}
 			}
 		});
+
+		// disable mode right drawer (track drawer)
+		mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
 	}
 
@@ -539,7 +547,7 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 		for (Animal a : mAnimals) {
 			if (MathHelper.distanceBetween(a.getNode(), lat, lng) < mDistanceFromAnimal) {
-				
+
 				if (!a.getVisited()) {
 					Toast.makeText(
 							getApplicationContext(),

@@ -4,7 +4,7 @@ package com.blstream.myguide.zoolocations;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Event extends XmlObject implements Serializable {
+public class Event implements Serializable {
 
 	private HashMap<String, String> mNames;
 	private String mTime;
