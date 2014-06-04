@@ -1,6 +1,6 @@
 <configuration>
 	<!-- Fallback to language if string is not available -->
-	<lang_fallback>pl</lang_fallback>
+	<lang_fallback>PL</lang_fallback>
 
 	<!-- Radius within which the information that user got close to an object appears -->
 	<internal_object_radius>1</internal_object_radius>
@@ -28,12 +28,13 @@
     <map_show_animals>true</map_show_animals>
     <map_show_user_position>true</map_show_user_position>
     <map_show_paths>true</map_show_paths>
-    <map_show_junctions>true</map_show_junctions>
+    <map_show_junctions>false</map_show_junctions>
+    <map_show_debug_radii>false</map_show_debug_radii>
     
     <!-- ZOO coordinates -->
     <map_zoo_lat>51.1051588</map_zoo_lat>
     <map_zoo_lng>17.0742023</map_zoo_lng>
     
     <!-- Maximum allowed user distance in meters from zoo -->
-    <map_max_user_distance>1000</map_max_user_distance>
+    <map_max_user_distance>600</map_max_user_distance>
 </configuration>

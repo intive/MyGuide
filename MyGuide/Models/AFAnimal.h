@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSInteger distanceFromUser;
 @property (nonatomic)           NSInteger animalID;
+@property (nonatomic)           NSInteger radius;
 @property (nonatomic, readonly) NSDictionary *animalInfoDictionary;
 
 - (id)init;

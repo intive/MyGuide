@@ -11,6 +11,8 @@
 @interface AFTracksData : NSObject
 
 @property (nonatomic) NSArray *tracks;
+@property (nonatomic) NSArray *currentTrackForMap;
+@property (nonatomic) BOOL     shouldShowTrackOnMap;
 
 + (id)sharedParsedData;
 

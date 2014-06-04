@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AFq-2d-P2X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AFq-2d-P2X">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -234,31 +234,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3f-u0-kV8">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3f-u0-kV8">
                                 <rect key="frame" x="0.0" y="0.0" width="328" height="569"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </mapView>
-                            <imageView userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buttonBackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="n7Q-9x-eqU">
-                                <rect key="frame" x="280" y="486" width="35" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="3z0-Hl-dzn"/>
-                                    <constraint firstAttribute="height" constant="33" id="xQv-e5-oHc"/>
-                                </constraints>
-                            </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xy3-W9-HAD">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Item" id="Cg8-NJ-iWE"/>
-                                </items>
+                                <items/>
+                                <color key="tintColor" red="1" green="0.65507595504054672" blue="0.16229017657370659" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="nearestAnimalsTableView" translatesAutoresizingMaskIntoConstraints="NO" id="R3T-sz-zN8">
                                 <rect key="frame" x="0.0" y="568" width="320" height="475"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView opaque="NO" clipsSubviews="YES" alpha="0.69999999999999973" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qY9-Ya-213">
+                                    <tableView opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qY9-Ya-213">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="475"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -327,12 +318,12 @@
                                     <constraint firstAttribute="centerX" secondItem="qY9-Ya-213" secondAttribute="centerX" id="pFR-Sd-W9j"/>
                                 </constraints>
                             </view>
-                            <imageView alpha="0.79999999999999982" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buttonBackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="Xkc-3l-77k">
-                                <rect key="frame" x="75" y="530" width="170" height="38"/>
+                            <imageView alpha="0.79999999999999982" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowUp" translatesAutoresizingMaskIntoConstraints="NO" id="Xkc-3l-77k">
+                                <rect key="frame" x="75" y="517" width="170" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="FGC-16-rHR"/>
                                     <constraint firstAttribute="width" constant="170" id="QqR-QC-jxt"/>
-                                    <constraint firstAttribute="height" constant="38" id="ZBf-lH-CjK"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -340,18 +331,15 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xy3-W9-HAD" secondAttribute="trailing" id="0Pu-0z-Zwh"/>
                             <constraint firstItem="R3T-sz-zN8" firstAttribute="top" secondItem="xy3-W9-HAD" secondAttribute="bottom" id="4VQ-it-LJJ"/>
-                            <constraint firstItem="n7Q-9x-eqU" firstAttribute="leading" secondItem="Xto-8I-Kia" secondAttribute="leading" constant="280" id="5ft-0G-7zt"/>
                             <constraint firstItem="q3f-u0-kV8" firstAttribute="top" secondItem="Xto-8I-Kia" secondAttribute="top" id="6U1-Dl-pCr"/>
                             <constraint firstAttribute="bottom" secondItem="xy3-W9-HAD" secondAttribute="bottom" id="A0K-rF-5nR"/>
                             <constraint firstAttribute="bottom" secondItem="R3T-sz-zN8" secondAttribute="bottom" constant="-475" id="TcS-7Q-dVQ"/>
                             <constraint firstAttribute="bottom" secondItem="Xkc-3l-77k" secondAttribute="bottom" id="WWE-qD-eav"/>
                             <constraint firstAttribute="bottom" secondItem="q3f-u0-kV8" secondAttribute="bottom" constant="-1" id="dC7-Kc-xbW"/>
-                            <constraint firstAttribute="trailing" secondItem="n7Q-9x-eqU" secondAttribute="trailing" constant="5" id="e2A-FX-VTa"/>
                             <constraint firstItem="R3T-sz-zN8" firstAttribute="leading" secondItem="xy3-W9-HAD" secondAttribute="leading" id="f5k-Y4-wOw"/>
                             <constraint firstItem="q3f-u0-kV8" firstAttribute="leading" secondItem="Xto-8I-Kia" secondAttribute="leading" id="fWL-db-ffO"/>
                             <constraint firstAttribute="trailing" secondItem="q3f-u0-kV8" secondAttribute="trailing" constant="-8" id="gPG-rO-9He"/>
                             <constraint firstItem="Xkc-3l-77k" firstAttribute="leading" secondItem="Xto-8I-Kia" secondAttribute="leading" constant="75" id="wW9-Si-jmS"/>
-                            <constraint firstItem="O5o-Za-FAd" firstAttribute="top" secondItem="n7Q-9x-eqU" secondAttribute="bottom" constant="5" id="xjB-OD-NSy"/>
                             <constraint firstItem="R3T-sz-zN8" firstAttribute="trailing" secondItem="xy3-W9-HAD" secondAttribute="trailing" id="yPl-az-foa"/>
                             <constraint firstItem="xy3-W9-HAD" firstAttribute="leading" secondItem="Xto-8I-Kia" secondAttribute="leading" id="yzE-a6-ZdQ"/>
                         </constraints>
@@ -856,6 +844,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FQx-ar-s4H">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -866,6 +859,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mapToolbar" destination="FQx-ar-s4H" id="96e-jy-LdN"/>
                         <outlet property="mapView" destination="zns-nO-zs7" id="vAa-Iq-lLm"/>
                     </connections>
                 </viewController>
@@ -1384,7 +1378,7 @@
     </scenes>
     <resources>
         <image name="animals" width="26" height="26"/>
-        <image name="buttonBackgroundImage" width="175" height="171"/>
+        <image name="arrowUp" width="252" height="84"/>
         <image name="events" width="26" height="26"/>
         <image name="history" width="26" height="26"/>
         <image name="info_contact_address.png" width="60" height="60"/>
@@ -1404,6 +1398,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bDn-LD-z3i"/>
+        <segue reference="lUA-99-4r3"/>
     </inferredMetricsTieBreakers>
 </document>

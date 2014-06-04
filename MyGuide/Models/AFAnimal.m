@@ -19,6 +19,7 @@
         _animalInfoDictionary = [[NSDictionary alloc] init];
         _distanceFromUser = 0;
         _animalID = 0;
+        _radius = 20;
     }
     return self;
 }

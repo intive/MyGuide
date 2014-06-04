@@ -9,6 +9,8 @@
 #import "DetailsMapViewController.h"
 #import "Settings.h"
 #import "GraphDrawer.h"
+#import "AFParsedData.h"
+#import "AFWay.h"
 
 @interface DetailsMapViewController ()
 
@@ -40,6 +42,7 @@ double const ZOOM_LEVEL = 15;
 {
     [super viewDidLoad];
     self.fitToPath = YES;
+    [self configureToolbar];
 }
 
 - (void) viewWillAppear: (BOOL) animated {
@@ -47,7 +50,26 @@ double const ZOOM_LEVEL = 15;
     [self drawTargetPoint];
     [self drawCoordinatesOnMap];
 }
+- (void)configureToolbar
+{
+    UIBarButtonItem *mapTypebButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mapType"] style:UIBarButtonItemStylePlain target:self action:@selector(changeMapType)];
+    mapTypebButton.enabled = YES;
+    mapTypebButton.tintColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
 
+    UIBarButtonItem *fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpaceButton.width = 238.5f;
+    [self.mapToolbar setBackgroundImage:[UIImage imageNamed:@"buttonBackgroundImage"] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    self.mapToolbar.items = @[fixedSpaceButton, mapTypebButton];
+}
+- (void)changeMapType
+{
+    if(self.mapView.mapType == MKMapTypeStandard){
+        self.mapView.mapType = MKMapTypeHybrid;
+    }
+    else{
+        self.mapView.mapType = MKMapTypeStandard;
+    }
+}
 - (void) drawCoordinatesOnMap
 {
     if (self.showDirections) {
@@ -65,7 +87,7 @@ double const ZOOM_LEVEL = 15;
 - (void) setupMapView
 {
     [self.mapView setShowsUserLocation: YES];
-    [self.mapView setMapType: MKMapTypeSatellite];
+    [self.mapView setMapType: MKMapTypeStandard];
     self.mapView.delegate = self;
 }
 
@@ -108,7 +130,25 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     if(path) {
         [self.mapView removeOverlays:self.mapView.overlays];
         [self.mapView addOverlay: path];
+        [self showPaths];
     }
+}
+- (void)showPaths
+{
+    for(AFWay *way in [[AFParsedData sharedParsedData] waysArray]) [self drawPath:way.nodesArray];
+}
+- (void)drawPath:(NSArray *)nodesArray
+{
+    CLLocationCoordinate2D coordinatesArray[[nodesArray count]];
+    NSUInteger i = 0;
+    for(AFNode* node in nodesArray){
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(node.latitude, node.longitude);
+        coordinatesArray[i++] = coordinate;
+    }
+    
+    MKPolyline *path = [MKPolyline polylineWithCoordinates:coordinatesArray count:[nodesArray count]];
+    path.title = @"regularPath";
+    [self.mapView addOverlay:path];
 }
 
 # pragma mark - Rendering directions
@@ -155,8 +195,20 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
              rendererForOverlay:(id<MKOverlay>)overlay
 {
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline: overlay];
-    renderer.strokeColor         = [UIColor orangeColor];
-    renderer.lineWidth           = 4.0;
+    MKPolyline *path = overlay;
+    if([path.title isEqualToString:@"regularPath"]){
+        renderer.strokeColor = [UIColor brownColor];
+        renderer.lineCap     = kCGLineCapRound;
+        renderer.lineJoin    = kCGLineJoinRound;
+        renderer.lineWidth   = 3;
+        renderer.alpha       = 0.7;
+    }
+    else{
+        renderer.strokeColor = [UIColor orangeColor];
+        renderer.lineCap     = kCGLineCapRound;
+        renderer.lineJoin    = kCGLineJoinRound;
+        renderer.lineWidth   = 4.0;
+    }
     return  renderer;
 }
 
