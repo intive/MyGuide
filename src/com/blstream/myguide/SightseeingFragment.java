@@ -37,7 +37,7 @@ import com.blstream.myguide.gps.LocationUser;
 import com.blstream.myguide.path.Graph;
 import com.blstream.myguide.settings.Settings;
 import com.blstream.myguide.zoolocations.Animal;
-import com.blstream.myguide.zoolocations.AnimalDistance;
+import com.blstream.myguide.zoolocations.XmlObjectDistance;
 import com.blstream.myguide.zoolocations.Junction;
 import com.blstream.myguide.zoolocations.Node;
 import com.blstream.myguide.zoolocations.Track;
@@ -98,7 +98,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 
 	private boolean mLocationLogVisible;
 	private BottomAnimalFragment mBottomAnimalFragment;
-	private AnimalDistance mLastAnimalDistance;
+	private XmlObjectDistance mLastAnimalDistance;
 
 	private MenuItem mItemSearch;
 	private MenuItem mItemFilter;
@@ -399,17 +399,16 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 
 	/**
 	 * Sets up the closest animal showing at the bottom of the screen. Uses
-	 * {@link com.blstream.myguide.AnimalFinderHelper }
+	 * {@link XmlObjectFinderHelper }
 	 */
 	private void setUpClosestAnimal() {
 		if (mBottomAnimalFragment == null) mBottomAnimalFragment = new BottomAnimalFragment();
 
-		AnimalFinderHelper animalFinderHelper = new AnimalFinderHelper(
+		XmlObjectFinderHelper animalFinderHelper = new XmlObjectFinderHelper(
 				mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
-						.getApplication(), getActivity());
-						
+						.getApplication(), getActivity(), new Animal());
 
-		AnimalDistance closestAnimal = animalFinderHelper.closestAnimal();
+		XmlObjectDistance closestAnimal = animalFinderHelper.closestXmlObject();
 
 		if (closestAnimal != null) {
 
@@ -430,13 +429,13 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 		}
 	}
 
-	private boolean sameAnimalNewDistance(AnimalDistance closest) {
+	private boolean sameAnimalNewDistance(XmlObjectDistance closest) {
 		return mLastAnimalDistance != null &&
-				closest.getAnimal().equals(mLastAnimalDistance.getAnimal()) &&
+				closest.getXmlObject().equals(mLastAnimalDistance.getXmlObject()) &&
 				(closest.getDistance() != mLastAnimalDistance.getDistance());
 	}
 
-	private boolean sameAsLastAnimal(AnimalDistance closest) {
+	private boolean sameAsLastAnimal(XmlObjectDistance closest) {
 		return mLastAnimalDistance != null
 				&& closest.equals(mLastAnimalDistance);
 	}
@@ -505,7 +504,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 
 				Fragment[] fragments = {
 						AnimalDescriptionTab.newInstance(animal),
-						AnimalDetailsMapFragment.newInstance(animal)
+						XmlObjectDetailsMapFragment.newInstance(animal)
 				};
 				Fragment newFragment = FragmentTabManager.newInstance(
 						R.array.animal_desc_tabs_name, fragments, animal);

@@ -1,7 +1,9 @@
+
 package com.blstream.myguide;
 
 import com.blstream.myguide.fragments.FragmentHelper;
-import com.blstream.myguide.zoolocations.AnimalDistance;
+import com.blstream.myguide.zoolocations.XmlObjectDistance;
+import com.blstream.myguide.zoolocations.Animal;
 
 import android.view.View.OnClickListener;
 import android.os.Bundle;
@@ -47,22 +49,23 @@ public class BottomAnimalFragment extends Fragment {
 	}
 
 	private void setAllValues(Bundle data) {
-		AnimalDistance animal = (AnimalDistance) data
+		XmlObjectDistance animal = (XmlObjectDistance) data
 				.getSerializable(BundleConstants.CLOSEST_ANIMAL);
-		mAnimalName.setText(animal.getAnimal().getName());
-		mAnimalFunfact.setText(animal.getAnimal().getDescriptionAdult()
+		Animal a = (Animal) animal.getXmlObject();
+		mAnimalName.setText(a.getName());
+		mAnimalFunfact.setText(a.getDescriptionAdult()
 				.getText());
-		mDistance.setText(Integer.toString(animal.getDistance())+" m");
+		mDistance.setText(Integer.toString(animal.getDistance()) + " m");
 	}
-	
-	public void setDistance(int distance){
-		if (mDistance != null )mDistance.setText(Integer.toString(distance)+" m");
+
+	public void setDistance(int distance) {
+		if (mDistance != null) mDistance.setText(Integer.toString(distance) + " m");
 	}
 
 	private class BottomAnimalOnClickListener implements OnClickListener {
 
 		@Override
-		public void onClick(View v) { 
+		public void onClick(View v) {
 			FragmentManager manager = getActivity().getSupportFragmentManager();
 			Fragment map = manager.findFragmentById(R.id.map);
 			FragmentTransaction transation = manager.beginTransaction();
@@ -70,7 +73,7 @@ public class BottomAnimalFragment extends Fragment {
 			transation.commit();
 			Fragment nearestAnimals = new NearestAnimalsListFragment();
 			FragmentHelper.swapFragment(R.id.flFragmentHolder, nearestAnimals,
-				manager, BundleConstants.FRAGMENT_NEAREST_ANIMALS);
+					manager, BundleConstants.FRAGMENT_NEAREST_ANIMALS);
 		}
 
 	}

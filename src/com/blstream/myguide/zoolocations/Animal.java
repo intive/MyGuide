@@ -59,6 +59,7 @@ public class Animal extends XmlObject implements Serializable, Comparable<Animal
 		return name;
 	}
 
+	@Override
 	public Node getNode() {
 		return mNode;
 	}

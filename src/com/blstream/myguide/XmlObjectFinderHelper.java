@@ -1,3 +1,4 @@
+
 package com.blstream.myguide;
 
 import java.util.ArrayList;
@@ -8,35 +9,42 @@ import android.location.Location;
 import android.os.Handler;
 import com.blstream.myguide.path.Graph;
 import com.blstream.myguide.zoolocations.Animal;
-import com.blstream.myguide.zoolocations.AnimalDistance;
+import com.blstream.myguide.zoolocations.XmlObjectDistance;
 import com.blstream.myguide.zoolocations.Node;
+import com.blstream.myguide.zoolocations.XmlObject;
+import com.blstream.myguide.zoolocations.Restaurant;
 
 /**
- * Class which calculates the distance between user and all animals in the ZOO.
- * Returns the closest animal and/or the list of all animals sorted by distance
- * from given location.
+ * Class which calculates the distance between user and all xmlObject in the
+ * ZOO. Returns the closest animal and/or the list of all animals sorted by
+ * distance from given location.
  * 
  * @author Agnieszka
  */
 
-public class AnimalFinderHelper {
+public class XmlObjectFinderHelper {
 
 	private static final double FURTHEST_NORTH = 51.107912;
 	private static final double FURTHEST_SOUTH = 51.101359;
 	private static final double FURTHEST_EAST = 17.078696;
 	private static final double FURTHEST_WEST = 17.068376;
 
-	private static final String LOG_TAG = AnimalFinderHelper.class
+	private static final String LOG_TAG = XmlObjectFinderHelper.class
 			.getSimpleName();
 	Location mLocation;
-	ArrayList<Animal> mAllAnimals;
+	ArrayList<XmlObject> mAllXmlObjects = new ArrayList<XmlObject>();
 	Graph mGraph;
 	Handler mHandler;
 	Context mContext;
 
-	public AnimalFinderHelper(Location location, MyGuideApp app, Context context) {
+	public XmlObjectFinderHelper(Location location, MyGuideApp app, Context context,
+			XmlObject object) {
 		mLocation = location;
-		mAllAnimals = app.getZooData().getAnimals();
+		if (object.getClass().equals(Animal.class)) {
+			mAllXmlObjects.addAll(app.getZooData().getAnimals());
+		} else if (object.getClass().equals(Restaurant.class)) {
+			mAllXmlObjects.addAll(app.getZooData().getRestaurant());
+		}
 		mGraph = app.getGraph();
 		mContext = context;
 		mHandler = new Handler();
@@ -47,7 +55,7 @@ public class AnimalFinderHelper {
 	 * {@linkplain com.blstream.myguide.zoolocations.Graph#findDistance}.
 	 * Currently unused due to replacing {@link Graph#findDistance(Node, Node)}
 	 * with {@link MathHelper#distanceBetween(Node, double, double)}
-	 * */
+	 */
 	private Node myPosition() {
 		return new Node(mLocation.getLatitude(), mLocation.getLongitude());
 	}
@@ -58,11 +66,11 @@ public class AnimalFinderHelper {
 	 * @return double array containing distances to every animal
 	 */
 
-	private double[] distancesToAllAnimals() {
-		final double[] distances = new double[mAllAnimals.size()];
+	private double[] distancesToAllXmlObjects() {
+		final double[] distances = new double[mAllXmlObjects.size()];
 
 		for (int i = 0; i < distances.length; i++) {
-			distances[i] = MathHelper.distanceBetween(mAllAnimals.get(i)
+			distances[i] = MathHelper.distanceBetween(mAllXmlObjects.get(i)
 					.getNode(), mLocation.getLatitude(), mLocation
 					.getLongitude());
 		}
@@ -75,11 +83,11 @@ public class AnimalFinderHelper {
 	 * list of distances
 	 * {@link com.blstream.myguide.NearestAnimalsListFragment#distancesToAllAnimals()}
 	 */
-	public ArrayList<AnimalDistance> allAnimalsWithDistances() {
-		ArrayList<AnimalDistance> result = new ArrayList<AnimalDistance>();
-		double[] distances = distancesToAllAnimals();
+	public ArrayList<XmlObjectDistance> allXmlObjectsWithDistances() {
+		ArrayList<XmlObjectDistance> result = new ArrayList<XmlObjectDistance>();
+		double[] distances = distancesToAllXmlObjects();
 		for (int i = 0; i < distances.length; i++) {
-			result.add(new AnimalDistance(mAllAnimals.get(i), distances[i]));
+			result.add(new XmlObjectDistance(mAllXmlObjects.get(i), distances[i]));
 		}
 
 		Collections.sort(result);
@@ -91,10 +99,9 @@ public class AnimalFinderHelper {
 	 * User; if user's localization is unknown or not within bounds of the Zoo,
 	 * returns null.
 	 */
-	public AnimalDistance closestAnimal() {
-		if (mLocation != null && withinBoundsOfZoo(mLocation)) {
-			return allAnimalsWithDistances().get(0);
-		}
+	public XmlObjectDistance closestXmlObject() {
+		if (mLocation != null && withinBoundsOfZoo(mLocation)) { return allXmlObjectsWithDistances()
+				.get(0); }
 		return null;
 	}
 

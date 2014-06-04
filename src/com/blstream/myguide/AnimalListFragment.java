@@ -35,8 +35,8 @@ public class AnimalListFragment extends Fragment {
 
 	private ZooLocationsData mZooData;
 	private SearchView mSearchView;
-    private ArrayAdapter<String> mAnimaladapter;
-    private ListView mAnimalListView;
+	private ArrayAdapter<String> mAnimaladapter;
+	private ListView mAnimalListView;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,7 +47,7 @@ public class AnimalListFragment extends Fragment {
 		setActionBar();
 		setHasOptionsMenu(true);
 
-	    mAnimalListView = (ListView) view.findViewById(R.id.lvAnimalList);
+		mAnimalListView = (ListView) view.findViewById(R.id.lvAnimalList);
 		mZooData = ((MyGuideApp) this.getActivity().getApplication())
 				.getZooData();
 
@@ -57,7 +57,7 @@ public class AnimalListFragment extends Fragment {
 			setUpSearchViewListeners();
 		}
 
-        setUpAdapter(getAnimalNames(mZooData.getAnimals()));
+		setUpAdapter(getAnimalNames(mZooData.getAnimals()));
 		mAnimalListView.setOnItemClickListener(new AnimalListOnClickListener());
 
 		return view;
@@ -82,7 +82,7 @@ public class AnimalListFragment extends Fragment {
 			TextView searchText = (TextView) searchPlate.findViewById(searchTextId);
 			if (searchText != null) {
 				searchText.setGravity(Gravity.CENTER);
-                searchText.setTextSize(20.f);
+				searchText.setTextSize(20.f);
 			}
 		}
 	}
@@ -92,19 +92,19 @@ public class AnimalListFragment extends Fragment {
 			@Override
 			public boolean onQueryTextSubmit(String s) {
 				boolean findAnimal = false;
-                ArrayList<Animal> animals = new ArrayList<Animal>();
+				ArrayList<Animal> animals = new ArrayList<Animal>();
 
 				for (Animal animal : mZooData.getAnimals()) {
 					if (replacePolishChar(animal.getName().toLowerCase()).contains(
 							replacePolishChar(s.toLowerCase())))
 					{
-                        animals.add(animal);
+						animals.add(animal);
 						findAnimal = true;
 					}
 				}
 
 				if (findAnimal) {
-                    setUpAdapter(getAnimalNames(animals));
+					setUpAdapter(getAnimalNames(animals));
 				}
 				else {
 					mSearchView.setQuery(null, false);
@@ -119,13 +119,13 @@ public class AnimalListFragment extends Fragment {
 				return false;
 			}
 		});
-        mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                setUpAdapter(getAnimalNames(mZooData.getAnimals()));
-                return false;
-            }
-        });
+		mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
+			@Override
+			public boolean onClose() {
+				setUpAdapter(getAnimalNames(mZooData.getAnimals()));
+				return false;
+			}
+		});
 	}
 
 	private String replacePolishChar(String s) {
@@ -136,14 +136,14 @@ public class AnimalListFragment extends Fragment {
 
 	private void clearSearchView() {
 		mSearchView.clearFocus();
-        mSearchView.setQuery(null, false);
+		mSearchView.setQuery(null, false);
 	}
 
-    private void setUpAdapter(String[] data) {
-        mAnimaladapter = new ArrayAdapter<String>(
-                getActivity(), R.layout.animal_list_item, data);
-        mAnimalListView.setAdapter(mAnimaladapter);
-    }
+	private void setUpAdapter(String[] data) {
+		mAnimaladapter = new ArrayAdapter<String>(
+				getActivity(), R.layout.animal_list_item, data);
+		mAnimalListView.setAdapter(mAnimaladapter);
+	}
 
 	/**
 	 * Reads names of animals from ZooLocationsData.
@@ -166,13 +166,13 @@ public class AnimalListFragment extends Fragment {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view,
 				int position, long id) {
-            clearSearchView();
+			clearSearchView();
 
 			Animal animal = mZooData.getAnimals().get(position);
 
 			Fragment[] fragments = {
 					AnimalDescriptionTab.newInstance(animal),
-					AnimalDetailsMapFragment.newInstance(animal)
+					XmlObjectDetailsMapFragment.newInstance(animal)
 			};
 			Fragment newFragment = FragmentTabManager.newInstance(R.array.animal_desc_tabs_name,
 					fragments, animal);
