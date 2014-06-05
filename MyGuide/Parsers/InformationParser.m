@@ -23,6 +23,7 @@ static NSString *kXmlGroup      = @"group";
 static NSString *kXmlIndividual = @"individual";
 static NSString *kXmlPrice      = @"price";
 static NSString *kXmlTrams      = @"trams";
+static NSString *kXmlBuses      = @"buses";
 
 static NSString *kXmlParkingsInformation = @"parkings_information";
 static NSString *kXmlTicketsInformation  = @"information";
@@ -179,6 +180,9 @@ didStartElement: (NSString *)     elementName
     }
     else if ([elementName isEqualToString: kXmlTrams]) {
         [self.sharedParsedData setTrams: self.currentElement];
+    }
+    else if ([elementName isEqualToString: kXmlBuses]) {
+        [self.sharedParsedData setBuses: self.currentElement];
     }
     else if ([elementName isEqualToString: kXmlAddress]) {
         NSString *address = [self.currentElement stringByReplacingOccurrencesOfString: @"\\n" withString: @"\n"];

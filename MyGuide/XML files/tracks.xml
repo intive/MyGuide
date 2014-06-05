@@ -1,149 +1,87 @@
 <root>
     <visiting_tracks>
-        <version>23</version>
         <track>
             <name>
-                <pl>Eksploracja</pl>
-                <en>Free roam</en>
+                <pl>Afryka</pl>
+                <en>Africa</en>
             </name>
             <description>
-                <pl>Wszystkie zwierzęta</pl>
-                <en>All animals</en>
+                <pl>
+                    Trasa prowadzi przez zwierzęta afrykańskie dzięki czemu poczujesz się jak na prawdziwym safari.
+                </pl>
+                <en>
+                    This track takes you through all african animals so you can feel like being on a safari.
+                </en>
             </description>
-            <image>track_placeholder.png</image>
+            <image>img/africa.jpg</image>
             <animals>
-                <animal_id>0</animal_id>
-                <animal_id>1</animal_id>
-				<animal_id>2</animal_id>
-				<animal_id>3</animal_id>
-				<animal_id>4</animal_id>
-				<animal_id>5</animal_id>
-				<animal_id>6</animal_id>
-                <animal_id>7</animal_id>
-				<animal_id>8</animal_id>
-				<animal_id>9</animal_id>
-				<animal_id>10</animal_id>
-				<animal_id>11</animal_id>
-				<animal_id>12</animal_id>
-                <animal_id>13</animal_id>
-				<animal_id>14</animal_id>
-				<animal_id>15</animal_id>
-				<animal_id>16</animal_id>
-				<animal_id>17</animal_id>
-				<animal_id>18</animal_id>
+                <animal_id>56</animal_id>
+                <!--  antylopa kama  -->
                 <animal_id>19</animal_id>
-				<animal_id>20</animal_id>
-				<animal_id>21</animal_id>
-				<animal_id>22</animal_id>
-				<animal_id>23</animal_id>
-				<animal_id>24</animal_id>
-                <animal_id>25</animal_id>
-				<animal_id>26</animal_id>
-				<animal_id>27</animal_id>
-				<animal_id>28</animal_id>
-				<animal_id>29</animal_id>
-				<animal_id>30</animal_id>
-                <animal_id>31</animal_id>
-				<animal_id>32</animal_id>
-				<animal_id>33</animal_id>
-				<animal_id>34</animal_id>
-				<animal_id>35</animal_id>
-				<animal_id>36</animal_id>
-                <animal_id>37</animal_id>
-				<animal_id>38</animal_id>
-				<animal_id>39</animal_id>
-				<animal_id>40</animal_id>
-				<animal_id>41</animal_id>
-				<animal_id>42</animal_id>
-                <animal_id>43</animal_id>
-				<animal_id>44</animal_id>
-				<animal_id>45</animal_id>
-				<animal_id>46</animal_id>
-				<animal_id>47</animal_id>
-				<animal_id>48</animal_id>
-                <animal_id>49</animal_id>
-				<animal_id>50</animal_id>
-				<animal_id>51</animal_id>
-				<animal_id>52</animal_id>
-				<animal_id>53</animal_id>
-				<animal_id>54</animal_id>
+                <!--  fenek  -->
+                <animal_id>6</animal_id>
+                <!--  gnu  -->
+                <animal_id>10</animal_id>
+                <!--  kob  -->
+                <animal_id>3</animal_id>
+                <!--  lew  -->
+                <animal_id>7</animal_id>
+                <!--  oryks  -->
+                <animal_id>8</animal_id>
+                <!--  perlica  -->
+                <animal_id>11</animal_id>
+                <!--  sitatunga  -->
+                <animal_id>1</animal_id>
+                <!--  zyrafa  -->
+                <animal_id>4</animal_id>
+                <!--  zebra -->
             </animals>
         </track>
-		<track>
-			<name>
-				<pl>Track 1</pl>
-				<en>EN Track 1</en>
-			</name>
-			<description>
-				<pl>Track 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
-				<en>EN Track 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
-			</description>
-			<image>track_placeholder.png</image>
-			<animals>
-				<animal_id>1</animal_id>
-				<animal_id>2</animal_id>
-				<animal_id>3</animal_id>
-				<animal_id>4</animal_id>
-				<animal_id>5</animal_id>
-				<animal_id>6</animal_id>
-			</animals>
-		</track>
-		<track>
-			<name>
-				<pl>Track 2</pl>
-				<en>EN Track 2</en>
-			</name>
-			<description>
-				<pl>Track 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
-				<en>EN Track 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
-			</description>
-			<image>track_placeholder.png</image>
-			<animals>
-				<animal_id>11</animal_id>
-				<animal_id>12</animal_id>
-				<animal_id>13</animal_id>
-				<animal_id>14</animal_id>
-				<animal_id>15</animal_id>
-				<animal_id>16</animal_id>
-			</animals>
-		</track>
-		<track>
-			<name>
-				<pl>Track 3</pl>
-				<en>EN Track 3</en>
-			</name>
-			<description>
-				<pl>Track 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
-				<en>EN Track 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
-			</description>
-			<image>track_placeholder.png</image>
-			<animals>
-				<animal_id>21</animal_id>
-				<animal_id>22</animal_id>
-				<animal_id>23</animal_id>
-				<animal_id>24</animal_id>
-				<animal_id>25</animal_id>
-				<animal_id>26</animal_id>
-			</animals>
-		</track>
-		<track>
-			<name>
-				<pl>Track 4</pl>
-				<en>EN Track 4</en>
-			</name>
-			<description>
-				<pl>Track 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</pl>
-				<en>EN Track 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis nisi quis enim fringilla dignissim. Suspendisse vehicula odio vel turpis venenatis, et hendrerit libero volutpat. Cras ut neque vitae nisi rhoncus blandit. Sed eu pulvinar arcu. Pellentesque vel vulputate odio. Sed ornare lectus quis lectus varius, quis auctor felis pellentesque. Aliquam molestie ipsum sit amet ante facilisis mollis. Aliquam quis convallis est, quis sagittis diam. Suspendisse potenti. Vivamus porttitor odio id vulputate molestie. Vestibulum et magna non massa cursus pellentesque tincidunt et tellus.</en>
-			</description>
-			<image>track_placeholder.png</image>
-			<animals>
-				<animal_id>31</animal_id>
-				<animal_id>32</animal_id>
-				<animal_id>33</animal_id>
-				<animal_id>34</animal_id>
-				<animal_id>35</animal_id>
-				<animal_id>36</animal_id>
-			</animals>
-		</track>
-	</visiting_tracks>
+        <track>
+            <name>
+                <pl>Drapieżniki</pl>
+                <en>Predators</en>
+            </name>
+            <description>
+                <pl>
+                    Trasa dla odważnych i szukających przygód. Czy nie wystraszysz się Lwa?
+                </pl>
+                <en>
+                    Track for brave and looking for an adventure. Wouldn't the Lion scare You?
+                </en>
+            </description>
+            <image>img/predators.jpg</image>
+            <animals>
+                <animal_id>3</animal_id>
+                <!--  lew  -->
+                <animal_id>19</animal_id>
+                <!--  fenek  -->
+                <animal_id>2</animal_id>
+                <!--  foka  -->
+            </animals>
+        </track>
+        <track>
+            <name>
+                <pl>Rogate</pl>
+                <en>Horned</en>
+            </name>
+            <description>
+                <pl>Trasa na której wszystko jest rogate duże i małe.</pl>
+                <en>Everything is horned on this track, big and small.</en>
+            </description>
+            <image>img/horned.jpg</image>
+            <animals>
+                <animal_id>6</animal_id>
+                <!--  gnu  -->
+                <animal_id>56</animal_id>
+                <!--  antylopa  -->
+                <animal_id>10</animal_id>
+                <!--  kob  -->
+                <animal_id>7</animal_id>
+                <!--  oryks  -->
+                <animal_id>11</animal_id>
+                <!--  sitatunga  -->
+            </animals>
+        </track>
+    </visiting_tracks>
 </root>
