@@ -1,4 +1,4 @@
-﻿using Microsoft.Devices.Sensors;
+﻿using MyGuide.Services;
 using MyGuide.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Devices.Geolocation;
 
-namespace MyGuide.Services
+namespace MyGuideTests.Mocks
 {
     public class FakeGeolocationService : IGeolocationService
     {
@@ -35,7 +34,7 @@ namespace MyGuide.Services
         private GeoCoordinate GetFakePosition()
         {
 
-            return new GeoCoordinate(51.1047078,17.0784479);
+            return new GeoCoordinate(51.1047078, 17.0784479);
         }
 
         public TimeSpan TimeBetweenUpdates

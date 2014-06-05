@@ -23,13 +23,14 @@ namespace MyGuide.ViewModels
     {
         private double _headingAngle;
         private GeoCoordinate _userPositionLocation;
-        private ICompassService compass { get; set; }
+        private ICompassService _compassService { get; set; }
         private IGeolocationService geolocator { get; set; }
 
         public SightseeingPageViewModel(INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService)
+            IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService, ICompassService compassService)
             : base(navigationService, messageDialogService, dataService, optionService)
         {
+            _compassService = compassService;
         }
 
         public double HeadingAngle
@@ -84,7 +85,7 @@ namespace MyGuide.ViewModels
                     if (Compass.IsSupported)
                     {
 
-                        compass.Stop();
+                        _compassService.Stop();
                         
                     }
                 }
@@ -92,8 +93,8 @@ namespace MyGuide.ViewModels
                 {
 
 
-                    compass.Calibrate -= compass_Calibrate;
-                    compass.CurrentValueChanged -= compass_CurrentValueChanged;
+                    _compassService.Calibrate -= compass_Calibrate;
+                    _compassService.CurrentValueChanged -= compass_CurrentValueChanged;
 
                     //Geolocator don't want to unsubscribe when start button clicked sometimes
                     geolocator.StopGeolocationTracker();
@@ -101,10 +102,6 @@ namespace MyGuide.ViewModels
                 }
             });
            
-        }
-
-        ~SightseeingPageViewModel()
-        {
         }
 
         public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
@@ -117,24 +114,15 @@ namespace MyGuide.ViewModels
 
             if (Compass.IsSupported)
             {
-                compass = new RealCompassService();
 
                 //Crucial point
-                compass.TimeBetweenUpdates = TimeSpan.FromMilliseconds(200);
-                compass.Calibrate += new EventHandler<CalibrationEventArgs>(compass_Calibrate);
-                compass.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<ICompassReading>>(compass_CurrentValueChanged);
-                
-                compass.Start();
-            }
-            else
-            {
-                compass = new EmulatedCompassService();
-                compass.TimeBetweenUpdates = TimeSpan.FromMilliseconds(200);
-                compass.Calibrate += new EventHandler<CalibrationEventArgs>(compass_Calibrate);
-                compass.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<ICompassReading>>(compass_CurrentValueChanged);
+                _compassService.TimeBetweenUpdates = TimeSpan.FromMilliseconds(200);
+                _compassService.Calibrate += new EventHandler<CalibrationEventArgs>(compass_Calibrate);
+                _compassService.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<ICompassReading>>(compass_CurrentValueChanged);
 
-                compass.Start();
+                _compassService.Start();
             }
+
         }
 
         
