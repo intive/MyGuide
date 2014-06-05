@@ -19,12 +19,20 @@
 
 @implementation ContactViewController
 
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     [super viewDidLoad];
     self.informationData = [InformationData sharedParsedData];
+    [self setupScrollViewConstraints];
     [self prepareLabels];
     [self prepareOpeningHours];
+}
+
+-(void) setupScrollViewConstraints
+{
+    if ([[UIScreen mainScreen] bounds].size.height == 568) {
+        self.scrollViewConstraint.constant = -10;
+    }
 }
 
 - (void) prepareLabels

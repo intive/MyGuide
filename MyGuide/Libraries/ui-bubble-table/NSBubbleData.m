@@ -10,10 +10,13 @@ const UIEdgeInsets textInsetsSomeone = {5, 15, 11, 10};
 
 - (id) initWithText:(NSString *)text date:(NSString *)date type:(NSBubbleType)type
 {
-    UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    CGSize size = [(text ? text : @"") sizeWithFont:font constrainedToSize:CGSizeMake(220, 9999) lineBreakMode:NSLineBreakByWordWrapping];
+    UIFont *font = [UIFont fontWithName: @"HelveticaNeue-Light" size: [UIFont systemFontSize]];
+    CGRect rect = [(text ? text : @"") boundingRectWithSize: CGSizeMake(220, MAXFLOAT)
+                                                    options: NSStringDrawingUsesLineFragmentOrigin | NSLineBreakByWordWrapping
+                                                 attributes: @{ NSFontAttributeName: [UIFont systemFontOfSize:[UIFont systemFontSize]] }
+                                                    context: nil];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height)];
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.text = (text ? text : @"");

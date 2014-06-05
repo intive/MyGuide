@@ -1266,7 +1266,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MyGuide/Supporting Files/MyGuide-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Frameworks/OCMock",
@@ -1290,7 +1290,7 @@
 				GCC_PREFIX_HEADER = "MyGuide/Supporting Files/MyGuide-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "$(SRCROOT)/MyGuide/Supporting Files/MyGuide-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Frameworks/OCMock",

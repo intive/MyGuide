@@ -47,7 +47,7 @@
     if (self.showAvatar)
     {
         [self.avatarImage removeFromSuperview];
-        self.avatarImage = [[UIImageView alloc] initWithImage:(self.data.avatar ? self.data.avatar : [UIImage imageNamed:@"placeholder_history.png"])];
+        self.avatarImage = [[UIImageView alloc] initWithImage: [UIImage imageNamed: type == BubbleRight ? @"historyRight" : @"historyLeft"] ];
         self.avatarImage.layer.cornerRadius = 9.0;
         self.avatarImage.layer.masksToBounds = YES;
         self.avatarImage.layer.borderColor = [UIColor colorWithWhite:0.0 alpha:0.2].CGColor;
@@ -63,7 +63,7 @@
         if (delta > 0) y = delta;
         
         if (type == BubbleRight) x += 54;
-        if (type == BubbleLeft) x -= 54;
+        if (type == BubbleLeft)  x -= 54;
     }
 
     [self.customView removeFromSuperview];
