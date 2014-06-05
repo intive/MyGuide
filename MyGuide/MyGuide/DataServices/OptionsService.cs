@@ -13,7 +13,7 @@ namespace MyGuide.DataServices
     {
         private ILog _log = LogManager.GetLog(typeof(DataService));
 
-        public Configuration ConfigData { get; set; }
+        public virtual Configuration ConfigData { get; set; }
 
         public async Task Initialize()
         {

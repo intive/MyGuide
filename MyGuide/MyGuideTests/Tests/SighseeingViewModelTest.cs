@@ -24,9 +24,12 @@ namespace MyGuideTests.Tests
             var messageDialogService = new Mock<IMessageDialogService>(MockBehavior.Strict);
             var dataService = new Mock<IDataService>(MockBehavior.Strict);
             var optionService = new Mock<IOptionsService>(MockBehavior.Strict);
+            optionService.SetupGet(x => x.ConfigData.userLayerVisibility).Returns(true);
 
             var SightPViewModel = new SightseeingPageViewModel(navService.Object, messageDialogService.Object, dataService.Object, optionService.Object,new FakeCompassService());
+            SightPViewModel.OnNavigatedTo(NavigationMode.New,true);
             
+            Assert.IsFalse(false);
         }
     }
 }

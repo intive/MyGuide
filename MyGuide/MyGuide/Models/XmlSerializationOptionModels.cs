@@ -15,6 +15,6 @@ namespace MyGuide.Models
         public string langFallback { get; set; }
 
         [XmlElement("user_layer_visibility")]
-        public bool userLayerVisibility { get; set; }
+        public virtual bool userLayerVisibility { get; set; }
     }
 }
