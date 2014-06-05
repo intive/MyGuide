@@ -116,6 +116,18 @@
 		05F36EB4194081F9000949E4 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EB3194081F9000949E4 /* img */; };
 		05F36EB919409520000949E4 /* 404_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EB719409520000949E4 /* 404_en.html */; };
 		05F36EBA19409520000949E4 /* 404_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EB819409520000949E4 /* 404_pl.html */; };
+		05F36EC719411072000949E4 /* event_hipo.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EBB19411072000949E4 /* event_hipo.png */; };
+		05F36EC819411072000949E4 /* event_kotiki.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EBC19411072000949E4 /* event_kotiki.png */; };
+		05F36EC919411072000949E4 /* event_lemury.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EBD19411072000949E4 /* event_lemury.png */; };
+		05F36ECA19411072000949E4 /* event_mrownik.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EBE19411072000949E4 /* event_mrownik.png */; };
+		05F36ECB19411072000949E4 /* event_niedzwiedz_brunatny.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EBF19411072000949E4 /* event_niedzwiedz_brunatny.png */; };
+		05F36ECC19411072000949E4 /* event_pawiany_masajskie.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EC019411072000949E4 /* event_pawiany_masajskie.png */; };
+		05F36ECD19411072000949E4 /* event_pelikany.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EC119411072000949E4 /* event_pelikany.png */; };
+		05F36ECE19411072000949E4 /* event_plaszczka.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EC219411072000949E4 /* event_plaszczka.png */; };
+		05F36ECF19411072000949E4 /* event_ptaki.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EC319411072000949E4 /* event_ptaki.png */; };
+		05F36ED019411072000949E4 /* event_slonie_indyjskie.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EC419411072000949E4 /* event_slonie_indyjskie.png */; };
+		05F36ED119411072000949E4 /* event_zolwie_pustynne.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EC519411072000949E4 /* event_zolwie_pustynne.png */; };
+		05F36ED219411072000949E4 /* event_zyrafa_siatkowana.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EC619411072000949E4 /* event_zyrafa_siatkowana.png */; };
 		05FA3485192FE90C007A730E /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC7614828F038538E66549 /* Graph.m */; };
 		05FA3486192FE930007A730E /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC793A45FEE0B15CC68841 /* Edge.m */; };
 		05FA3487192FE930007A730E /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC705BCAD342F6CE48BA1E /* Vertex.m */; };
@@ -324,6 +336,18 @@
 		05F36EB3194081F9000949E4 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		05F36EB719409520000949E4 /* 404_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404_en.html; sourceTree = "<group>"; };
 		05F36EB819409520000949E4 /* 404_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404_pl.html; sourceTree = "<group>"; };
+		05F36EBB19411072000949E4 /* event_hipo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_hipo.png; sourceTree = "<group>"; };
+		05F36EBC19411072000949E4 /* event_kotiki.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_kotiki.png; sourceTree = "<group>"; };
+		05F36EBD19411072000949E4 /* event_lemury.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_lemury.png; sourceTree = "<group>"; };
+		05F36EBE19411072000949E4 /* event_mrownik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_mrownik.png; sourceTree = "<group>"; };
+		05F36EBF19411072000949E4 /* event_niedzwiedz_brunatny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_niedzwiedz_brunatny.png; sourceTree = "<group>"; };
+		05F36EC019411072000949E4 /* event_pawiany_masajskie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_pawiany_masajskie.png; sourceTree = "<group>"; };
+		05F36EC119411072000949E4 /* event_pelikany.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_pelikany.png; sourceTree = "<group>"; };
+		05F36EC219411072000949E4 /* event_plaszczka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_plaszczka.png; sourceTree = "<group>"; };
+		05F36EC319411072000949E4 /* event_ptaki.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_ptaki.png; sourceTree = "<group>"; };
+		05F36EC419411072000949E4 /* event_slonie_indyjskie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_slonie_indyjskie.png; sourceTree = "<group>"; };
+		05F36EC519411072000949E4 /* event_zolwie_pustynne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_zolwie_pustynne.png; sourceTree = "<group>"; };
+		05F36EC619411072000949E4 /* event_zyrafa_siatkowana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = event_zyrafa_siatkowana.png; sourceTree = "<group>"; };
 		05FA3489192FEBF0007A730E /* GraphDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDrawer.h; sourceTree = "<group>"; };
 		05FA348A192FEBF0007A730E /* GraphDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDrawer.m; sourceTree = "<group>"; };
 		3D5EF605189637C000233B64 /* MyGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -555,6 +579,18 @@
 		05C925D418DDBA6000C2F746 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				05F36EBB19411072000949E4 /* event_hipo.png */,
+				05F36EBC19411072000949E4 /* event_kotiki.png */,
+				05F36EBD19411072000949E4 /* event_lemury.png */,
+				05F36EBE19411072000949E4 /* event_mrownik.png */,
+				05F36EBF19411072000949E4 /* event_niedzwiedz_brunatny.png */,
+				05F36EC019411072000949E4 /* event_pawiany_masajskie.png */,
+				05F36EC119411072000949E4 /* event_pelikany.png */,
+				05F36EC219411072000949E4 /* event_plaszczka.png */,
+				05F36EC319411072000949E4 /* event_ptaki.png */,
+				05F36EC419411072000949E4 /* event_slonie_indyjskie.png */,
+				05F36EC519411072000949E4 /* event_zolwie_pustynne.png */,
+				05F36EC619411072000949E4 /* event_zyrafa_siatkowana.png */,
 				0533DEFE18DE1520001BCB28 /* menu.png */,
 				84BA95F719140466008A4237 /* Buzz-Trash-icon.png */,
 				05C335E5190C02DB000B705B /* info_contact_address.png */,
@@ -955,6 +991,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F36ECF19411072000949E4 /* event_ptaki.png in Resources */,
 				05985280194049FA0089FC34 /* oryks_szablorogi_en.html in Resources */,
 				05985290194049FA0089FC34 /* zyrafa_siatkowana_pl.html in Resources */,
 				05985289194049FA0089FC34 /* slon_indyjski_pl.html in Resources */,
@@ -964,6 +1001,7 @@
 				059851FA194049F90089FC34 /* alpaka_en.html in Resources */,
 				05985206194049F90089FC34 /* flaming_en.html in Resources */,
 				0598528C194049FA0089FC34 /* szablon_pl.html in Resources */,
+				05F36EC819411072000949E4 /* event_kotiki.png in Resources */,
 				05985285194049FA0089FC34 /* perlica_sepia_pl.html in Resources */,
 				05985278194049FA0089FC34 /* kob_en.html in Resources */,
 				05C335EA190C02DB000B705B /* info_contact_url.png in Resources */,
@@ -972,6 +1010,7 @@
 				05985274194049FA0089FC34 /* jelen_milu_pl.html in Resources */,
 				059851F8194049F90089FC34 /* aguti_zlocisty_en.html in Resources */,
 				84BA95E71912DC50008A4237 /* tracks.xml in Resources */,
+				05F36ECC19411072000949E4 /* event_pawiany_masajskie.png in Resources */,
 				05985208194049F90089FC34 /* foka_zwyczajna_en.html in Resources */,
 				05C925D318DDAFAD00C2F746 /* GPS.md in Resources */,
 				05985284194049FA0089FC34 /* perlica_sepia_en.html in Resources */,
@@ -985,21 +1024,29 @@
 				05F36EB4194081F9000949E4 /* img in Resources */,
 				05985276194049FA0089FC34 /* kangur_rudy_pl.html in Resources */,
 				0598520A194049F90089FC34 /* gnu_bialobrode_en.html in Resources */,
+				05F36EC719411072000949E4 /* event_hipo.png in Resources */,
 				3DE69DA918C7B83400B54509 /* Localizable.strings in Resources */,
 				0598520E194049F90089FC34 /* hipopotam_nilowy_en.html in Resources */,
+				05F36ED019411072000949E4 /* event_slonie_indyjskie.png in Resources */,
 				05985203194049F90089FC34 /* daniel_mezopotamski_pl.html in Resources */,
 				0598527F194049FA0089FC34 /* opis.css in Resources */,
+				05F36EC919411072000949E4 /* event_lemury.png in Resources */,
 				05C335E8190C02DB000B705B /* info_contact_address.png in Resources */,
 				05A1C12818FAABD3008FE0CB /* history.xml in Resources */,
 				05985200194049F90089FC34 /* czerwonak_rozowy_en.html in Resources */,
+				05F36ECD19411072000949E4 /* event_pelikany.png in Resources */,
 				0598528F194049FA0089FC34 /* zyrafa_siatkowana_en.html in Resources */,
 				059851FE194049F90089FC34 /* banteng_en.html in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				05985201194049F90089FC34 /* czerwonak_rozowy_pl.html in Resources */,
 				059851FD194049F90089FC34 /* antylopa_kama_pl.html in Resources */,
+				05F36ECA19411072000949E4 /* event_mrownik.png in Resources */,
+				05F36ECE19411072000949E4 /* event_plaszczka.png in Resources */,
 				0533DF0118DE1520001BCB28 /* menu.png in Resources */,
 				05985286194049FA0089FC34 /* sitatunga_en.html in Resources */,
+				05F36ECB19411072000949E4 /* event_niedzwiedz_brunatny.png in Resources */,
 				05985273194049FA0089FC34 /* jelen_aksis_pl.html in Resources */,
+				05F36ED219411072000949E4 /* event_zyrafa_siatkowana.png in Resources */,
 				0598527E194049FA0089FC34 /* lew_angolanski_pl.html in Resources */,
 				05406E4318F313B6001656FC /* data.xml in Resources */,
 				0598528D194049FA0089FC34 /* zebra_chapmana_en.html in Resources */,
@@ -1011,6 +1058,7 @@
 				84BA95D5190FC426008A4237 /* events.xml in Resources */,
 				05985205194049F90089FC34 /* fenek_pl.html in Resources */,
 				0598528E194049FA0089FC34 /* zebra_chapmana_pl.html in Resources */,
+				05F36ED119411072000949E4 /* event_zolwie_pustynne.png in Resources */,
 				3DDE538818C705B20062D217 /* Main.storyboard in Resources */,
 				05F36EB919409520000949E4 /* 404_en.html in Resources */,
 				05985288194049FA0089FC34 /* slon_indyjski_en.html in Resources */,

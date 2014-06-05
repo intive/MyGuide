@@ -5,10 +5,10 @@
 				<pl>Kotiki afrykańkie</pl>
 				<en>Kotiki afrykańkie EN</en>
 			</name>
-			<time>11:00;14:00</time>
+			<time>14:00</time>
 			<time_weekends>11:00;14:00;17:00</time_weekends>
 			<time_christmas>11:00;14:00;17:00</time_christmas>
-			<image>placeholder_event.png</image>
+			<image>event_kotiki.png</image>
 		</event>
 		<event>
 			<name>
@@ -16,7 +16,7 @@
 				<en>Żyrafy siatkowane EN</en>
 			</name>
 			<time>9:15</time>
-			<image>placeholder_event.png</image>
+			<image>event_zyrafa_siatkowana.png</image>
 		</event>
 		<event>
 			<name>
@@ -24,7 +24,7 @@
 				<en>Niedźwiedzie brunatne EN</en>
 			</name>
 			<time>9:30</time>
-			<image>placeholder_event.png</image>
+			<image>event_niedzwiedz_brunatny.png</image>
 		</event>
 		<event>
 			<name>
@@ -32,7 +32,7 @@
 				<en>Pawiany masajskie EN</en>
 			</name>
 			<time>11:00</time>
-			<image>placeholder_event.png</image>
+			<image>event_pawiany_masajskie.png</image>
 		</event>
 		<event>
 			<name>
@@ -40,7 +40,7 @@
 				<en>Hipopotamy EN</en>
 			</name>
 			<time>11:00</time>
-			<image>placeholder_event.png</image>
+			<image>event_hipo.png</image>
 		</event>
 		<event>
 			<name>
@@ -48,7 +48,7 @@
 				<en>Ptaki (ptaszarnia) EN</en>
 			</name>
 			<time>12:00</time>
-			<image>placeholder_event.png</image>
+			<image>event_ptaki.png</image>
 		</event>
 		<event>
 			<name>
@@ -56,7 +56,7 @@
 				<en>Lemury EN</en>
 			</name>
 			<time>13:00</time>
-			<image>placeholder_event.png</image>
+			<image>event_lemury.png</image>
 		</event>
 		<event>
 			<name>
@@ -64,7 +64,7 @@
 				<en>Słonie indyjskie EN</en>
 			</name>
 			<time>12:30</time>
-			<image>placeholder_event.png</image>
+			<image>event_slonie_indyjskie.png</image>
 		</event>
 		<event>
 			<name>
@@ -73,7 +73,7 @@
 			</name>
 			<time>12:00</time>
 			<start>1.06</start>
-			<image>placeholder_event.png</image>
+			<image>event_zolwie_pustynne.png</image>
 		</event>
 		<event>
 			<name>
@@ -81,7 +81,7 @@
 				<en>Pelikany EN</en>
 			</name>
 			<time>13:00</time>
-			<image>placeholder_event.png</image>
+			<image>event_pelikany.png</image>
 		</event>
 		<event>
 			<name>
@@ -89,7 +89,7 @@
 				<en>Mrówniki EN</en>
 			</name>
 			<time>13:30</time>
-			<image>placeholder_event.png</image>
+			<image>event_mrownik.png</image>
 		</event>
 		<event>
 			<name>
@@ -97,7 +97,7 @@
 				<en>Piranie lub płaszczki EN</en>
 			</name>
 			<time>16:00</time>
-			<image>placeholder_event.png</image>
+			<image>event_plaszczka.png</image>
 		</event>
 	</events>
 </root>
