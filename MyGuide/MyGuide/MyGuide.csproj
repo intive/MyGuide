@@ -106,6 +106,7 @@
     <Compile Include="DataServices\Interfaces\IDataService.cs" />
     <Compile Include="DataServices\Interfaces\IOptionsService.cs" />
     <Compile Include="Models\LackOfXmlFileException.cs" />
+    <Compile Include="Models\MapModels\AnimalPushpin.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="DataServices\OptionsService.cs" />
     <Compile Include="Models\XmlSerializationOptionModels.cs" />
@@ -190,6 +191,7 @@
   <ItemGroup>
     <Content Include="Assets\CalibrateCompass.png" />
     <Content Include="Assets\MapOverlays\UsMark.png" />
+    <Content Include="Assets\MapOverlays\VisitedAnimal.png" />
     <Content Include="NLog.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

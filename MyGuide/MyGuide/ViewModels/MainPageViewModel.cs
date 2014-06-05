@@ -26,7 +26,7 @@ namespace MyGuide.ViewModels
 #if (DEBUG)
             IsVisibleDebugOptionsItem = true;
 #else
-            IsVisibleDebugOptionsItem = false;
+            IsVisibleDebugOptionsItem = false; 
 #endif
         }
 

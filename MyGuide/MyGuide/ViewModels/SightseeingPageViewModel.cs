@@ -1,21 +1,18 @@
 ﻿using Caliburn.Micro;
 using Microsoft.Devices.Sensors;
-using Microsoft.Xna.Framework;
+using Microsoft.Phone.Controls.Maps;
 using MyGuide.DataServices.Interfaces;
+using MyGuide.Models;
+using MyGuide.Models.MapModels;
 using MyGuide.Services;
 using MyGuide.Services.Interfaces;
 using System;
 using System.Device.Location;
 using System.Diagnostics;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Navigation;
-using System.Windows.Threading;
-using Windows.Devices.Geolocation;
-using Windows.Foundation;
-using Windows.UI.Core;
 
 namespace MyGuide.ViewModels
 {
@@ -23,6 +20,7 @@ namespace MyGuide.ViewModels
     {
         private double _headingAngle;
         private GeoCoordinate _userPositionLocation;
+        private GeoCoordinate _centerMapPositionLocation;
         private ICompassService compass { get; set; }
         private IGeolocationService geolocator { get; set; }
 
@@ -30,6 +28,7 @@ namespace MyGuide.ViewModels
             IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService)
             : base(navigationService, messageDialogService, dataService, optionService)
         {
+            AnimalsPushpins = new BindableCollection<AnimalPushpin>();
         }
 
         public double HeadingAngle
@@ -44,16 +43,24 @@ namespace MyGuide.ViewModels
             set { _userPositionLocation = value; NotifyOfPropertyChange(() => UserPositionLocation); }
         }
 
+        public GeoCoordinate CenterMapPositionLocation
+        {
+            get { return _centerMapPositionLocation; }
+            set { _centerMapPositionLocation = value; NotifyOfPropertyChange(() => CenterMapPositionLocation); }
+        }
+
         #region Commands
         //Uncomment all method and set some instructions when we'll implement appbar clickable
         //Remeber to add icons for appbar buttons!
 
-        //public void ShowAnimals()
-        //{
-        //}
+        public void ShowAnimals()
+        {
+            WritePushpinList();
+        }
 
         //public void ShowMap()
         //{
+           
         //}
 
         //public void ShowInformation()
@@ -110,6 +117,7 @@ namespace MyGuide.ViewModels
         public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
         {
             UserPositionLocation = new GeoCoordinate(51.104642, 17.073520);
+            CenterMapPositionLocation = new GeoCoordinate(51.104642, 17.073520);
             UserLayerVisibility = _optionService.ConfigData.userLayerVisibility;
 
             geolocator = new GeolocationService();
@@ -162,6 +170,8 @@ namespace MyGuide.ViewModels
         {
 
             UserPositionLocation = new GeoCoordinate(e.Position.Coordinate.Latitude, e.Position.Coordinate.Longitude);
+            CenterMapPositionLocation = new GeoCoordinate(e.Position.Coordinate.Latitude, e.Position.Coordinate.Longitude);
+            SearchForAnimals();
       
         }
 
@@ -236,5 +246,57 @@ namespace MyGuide.ViewModels
             
         }
         #endregion CalibrationStackPanel
+
+        #region AnimalsPushpins
+        private IObservableCollection<AnimalPushpin> animalsPushpins { get; set; }
+        public IObservableCollection<AnimalPushpin> AnimalsPushpins
+        {
+            get
+            {
+                return animalsPushpins;
+            }
+            set
+            {
+                animalsPushpins = value; 
+                NotifyOfPropertyChange(() => AnimalsPushpins);
+            }
+        }
+
+        public void SearchForAnimals()
+        {
+            foreach(Animal a in _dataService.Datas.AnimalsList.Items)
+            {
+                GeoCoordinate animalPosition = new GeoCoordinate(a.Latitude, a.Longitude);
+                double dist = UserPositionLocation.GetDistanceTo(animalPosition);
+                if (dist <= _optionService.ConfigData.internalObjectRadius && !isAnimalPushpinExist(a.Name))
+                {
+                    AnimalsPushpins.Add(new AnimalPushpin() { Coordinate = animalPosition, Description = "description", Name = a.Name });
+                }
+            }   
+        }
+
+        private bool isAnimalPushpinExist(string animalName)
+        {
+            bool result = false;
+            foreach (AnimalPushpin ap in AnimalsPushpins)
+            {
+                if (ap.Name != null && ap.Name.Equals(animalName))
+                {
+                    result = true;
+                }
+            }
+            return result;
+        }
+
+        public void WritePushpinList()
+        {
+            foreach (AnimalPushpin ap in AnimalsPushpins)
+            {
+                Debug.WriteLine(ap.Name + " " + ap.Coordinate.Latitude + " " + ap.Coordinate.Longitude);
+            }
+        }
+
+       
+        #endregion AnimalsPushpins
     }
 }
