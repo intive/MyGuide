@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AFq-2d-P2X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AFq-2d-P2X">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -739,7 +739,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="iSu-gc-aO2">
-                                <rect key="frame" x="20" y="30" width="280" height="29"/>
+                                <rect key="frame" x="20" y="35" width="280" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="About"/>
@@ -750,77 +750,25 @@
                                     <action selector="switchControllers:" destination="M8A-t7-eRn" eventType="valueChanged" id="Vnd-Ca-xCX"/>
                                 </connections>
                             </segmentedControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V0U-O9-wlz">
-                                <rect key="frame" x="20" y="62" width="280" height="502"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_adult" translatesAutoresizingMaskIntoConstraints="NO" id="SFj-n6-zfZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="280" id="0Q4-fb-KO4"/>
-                                            <constraint firstAttribute="height" constant="200" id="HMP-kF-24Y"/>
-                                        </constraints>
-                                    </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yoO-jN-vOU">
-                                        <rect key="frame" x="0.0" y="208" width="280" height="100"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="RBT-x7-yBb"/>
-                                            <constraint firstAttribute="width" constant="280" id="zTm-Xf-xxi"/>
-                                        </constraints>
-                                        <string key="text">EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS EVENTS </string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIf-F5-yY5">
-                                        <rect key="frame" x="0.0" y="316" width="280" height="186"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="280" id="N7j-sr-qqn"/>
-                                            <constraint firstAttribute="height" constant="186" id="wv6-Uy-qPC"/>
-                                        </constraints>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="yIf-F5-yY5" secondAttribute="bottom" id="2A8-bD-qid"/>
-                                    <constraint firstAttribute="centerX" secondItem="yIf-F5-yY5" secondAttribute="centerX" id="5AD-Ck-Y1Y"/>
-                                    <constraint firstItem="yoO-jN-vOU" firstAttribute="top" secondItem="V0U-O9-wlz" secondAttribute="top" constant="208" id="77v-xj-WEC"/>
-                                    <constraint firstAttribute="trailing" secondItem="yoO-jN-vOU" secondAttribute="trailing" id="Jd6-Ec-ZfG"/>
-                                    <constraint firstAttribute="bottom" secondItem="yoO-jN-vOU" secondAttribute="bottom" constant="194" id="PGJ-0b-0FK"/>
-                                    <constraint firstAttribute="centerX" secondItem="yoO-jN-vOU" secondAttribute="centerX" id="Sdo-Ke-l7q"/>
-                                    <constraint firstAttribute="trailing" secondItem="yIf-F5-yY5" secondAttribute="trailing" id="WMH-cx-1Vs"/>
-                                    <constraint firstItem="yIf-F5-yY5" firstAttribute="top" secondItem="V0U-O9-wlz" secondAttribute="top" constant="316" id="cnx-Zd-tc8"/>
-                                    <constraint firstAttribute="bottom" secondItem="SFj-n6-zfZ" secondAttribute="bottom" constant="302" id="e0h-jN-yYi"/>
-                                    <constraint firstItem="yoO-jN-vOU" firstAttribute="leading" secondItem="V0U-O9-wlz" secondAttribute="leading" id="g3F-mx-DfA"/>
-                                    <constraint firstAttribute="trailing" secondItem="SFj-n6-zfZ" secondAttribute="trailing" id="kbG-yF-Lyh"/>
-                                    <constraint firstAttribute="centerX" secondItem="SFj-n6-zfZ" secondAttribute="centerX" id="qQd-ps-bdG"/>
-                                    <constraint firstItem="yIf-F5-yY5" firstAttribute="leading" secondItem="V0U-O9-wlz" secondAttribute="leading" id="qXE-Xi-ek0"/>
-                                    <constraint firstItem="SFj-n6-zfZ" firstAttribute="top" secondItem="V0U-O9-wlz" secondAttribute="top" id="x1h-H4-Yab"/>
-                                    <constraint firstItem="SFj-n6-zfZ" firstAttribute="leading" secondItem="V0U-O9-wlz" secondAttribute="leading" id="xOC-Wc-5H7"/>
-                                </constraints>
-                            </scrollView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAK-gQ-odC">
+                                <rect key="frame" x="0.0" y="71" width="320" height="497"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="0.96872148722627749" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="iSu-gc-aO2" secondAttribute="trailing" constant="20" id="21g-AC-zI7"/>
                             <constraint firstItem="iSu-gc-aO2" firstAttribute="leading" secondItem="Kpz-Pe-3eP" secondAttribute="leading" constant="20" id="2qv-fh-tJN"/>
-                            <constraint firstItem="iSu-gc-aO2" firstAttribute="top" secondItem="ePJ-Tt-JPo" secondAttribute="bottom" constant="10" id="3IW-Ef-emy"/>
-                            <constraint firstItem="Gjv-vX-jvn" firstAttribute="top" secondItem="V0U-O9-wlz" secondAttribute="bottom" constant="4" id="4xX-TZ-P9O"/>
-                            <constraint firstItem="V0U-O9-wlz" firstAttribute="top" secondItem="iSu-gc-aO2" secondAttribute="bottom" constant="4" id="9Pw-HW-Di2"/>
+                            <constraint firstItem="iSu-gc-aO2" firstAttribute="top" secondItem="ePJ-Tt-JPo" secondAttribute="bottom" constant="15" id="3IW-Ef-emy"/>
+                            <constraint firstAttribute="trailing" secondItem="kAK-gQ-odC" secondAttribute="trailing" id="5BR-Vd-hh2"/>
+                            <constraint firstItem="kAK-gQ-odC" firstAttribute="leading" secondItem="Kpz-Pe-3eP" secondAttribute="leading" id="Qdf-Mh-3wp"/>
                             <constraint firstAttribute="centerX" secondItem="iSu-gc-aO2" secondAttribute="centerX" id="Uuc-zJ-qUk"/>
-                            <constraint firstItem="iSu-gc-aO2" firstAttribute="trailing" secondItem="V0U-O9-wlz" secondAttribute="trailing" id="fSX-vb-UJo"/>
-                            <constraint firstItem="iSu-gc-aO2" firstAttribute="leading" secondItem="V0U-O9-wlz" secondAttribute="leading" id="iCh-J8-k3U"/>
+                            <constraint firstItem="kAK-gQ-odC" firstAttribute="top" secondItem="iSu-gc-aO2" secondAttribute="bottom" constant="8" id="VRi-Xd-TeK"/>
+                            <constraint firstAttribute="bottom" secondItem="kAK-gQ-odC" secondAttribute="bottom" id="hff-PM-vHB"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="animalImage" destination="SFj-n6-zfZ" id="Vni-e8-8Bg"/>
-                        <outlet property="descriptionTextView" destination="yIf-F5-yY5" id="XHo-1O-2zY"/>
                         <outlet property="segmentedControl" destination="iSu-gc-aO2" id="mG8-Wl-JXz"/>
                     </connections>
                 </viewController>

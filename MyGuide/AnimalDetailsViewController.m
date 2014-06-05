@@ -17,10 +17,6 @@
 
 @implementation AnimalDetailsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    return [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-}
 
 - (void)viewDidLoad
 {
@@ -30,10 +26,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self.segmentedControl setSelectedSegmentIndex: 0];
-    [self.animalImage setImage:[UIImage imageNamed:[self.animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
-    [self.descriptionTextView setText:[self.animal.animalInfoDictionary valueForKey:@"adultDescription"]];
 }
 
 - (void)prepareNextViewController
@@ -46,15 +39,24 @@
 {
     NSInteger selectedIndex = [segmentControl selectedSegmentIndex];
     if(selectedIndex == 0) {
-        [self.animalImage setImage:[UIImage imageNamed:[self.animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
-        [self.descriptionTextView setText:[self.animal.animalInfoDictionary valueForKey:@"adultDescription"]];
+        [self prepareWebView];
     }
     else if(selectedIndex == 1) {
-        self.detailsMapController.latitude  = self.animal.coordinates.latitude;
-        self.detailsMapController.longitude = self.animal.coordinates.longitude;
-        [self.detailsMapController drawPathToAnimal];
-        [self.navigationController pushViewController:self.detailsMapController animated:YES];
+        [self prepareMapView];
     }
+}
+
+- (void) prepareWebView
+{
+    
+}
+
+- (void) prepareMapView
+{
+    self.detailsMapController.latitude  = self.animal.coordinates.latitude;
+    self.detailsMapController.longitude = self.animal.coordinates.longitude;
+    [self.detailsMapController drawPathToAnimal];
+    [self.navigationController pushViewController:self.detailsMapController animated:YES];
 }
 
 @end
