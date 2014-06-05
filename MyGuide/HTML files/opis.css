@@ -1,0 +1,98 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body
+{
+	max-width: 1000px; font-size: 50px;
+}
+
+img
+{
+	width: 100%;
+	height: auto;
+}
+
+div.light_orange img, div.light_green img, div.light_pink img
+{
+	display:none;
+}
+
+li 
+{
+	list-style-type:none;
+}
+
+ul
+{
+	margin-left:0;
+	list-style-type:none;
+}
+
+_body { border: dashed, red; }
+section {border-style:dotted;border-color:red;}
+content {border: green, dotted;}
+
+.image_placeholder {width:100%;height:auto;max-width:800px;}
+.species_name { font-size: 60px; font-weight: bold; }
+.latin_name { font-style: italic; }
+.classification { margin-top:10px; }
+.rank_name { margin-right: 5px; font-weight: bold; }
+.rank_value { }
+.section { margin-top: 10px; }
+.section_name { font-weight:bold; margin-top:20px; margin-bottom:10px; text-decoration:underline;}
+.light_blue { background-color: rgb(173,216,230); }
+.light_orange { background-color: rgb(255,140,0); }
+.light_red { background-color: rgb(219,112,147); }
+.light_green { background-color: rgb(144,238,144); }
+.light_pink { background-color: rgb(255,182,193); }
+.content { margin-left:auto; margin-right: auto; width:96%; }
+.image_placeholder { margin-left: auto; margin-right: auto; }
+.section_text {padding:20px;}
+
+.section_placeholder 
+{
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-bottom:50px;
+}

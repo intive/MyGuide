@@ -28,6 +28,7 @@
 
 # pragma mark - Access
 @property (nonatomic) NSString     *trams;
+@property (nonatomic) NSString     *buses;
 @property (nonatomic) Translatable *parkingInformation;
 
 + (id) sharedParsedData;

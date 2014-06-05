@@ -31,6 +31,61 @@
 		05406E4C18F31B06001656FC /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 05406E4B18F31B06001656FC /* Restaurant.m */; };
 		055452C619025B570021884C /* SegmentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055452C519025B570021884C /* SegmentedViewController.m */; };
 		055E88E918DF0D6F001CE07B /* AnimalsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */; };
+		059851F8194049F90089FC34 /* aguti_zlocisty_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 0598515E194049F90089FC34 /* aguti_zlocisty_en.html */; };
+		059851F9194049F90089FC34 /* aguti_zlocisty_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 0598515F194049F90089FC34 /* aguti_zlocisty_pl.html */; };
+		059851FA194049F90089FC34 /* alpaka_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985160194049F90089FC34 /* alpaka_en.html */; };
+		059851FB194049F90089FC34 /* alpaka_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985161194049F90089FC34 /* alpaka_pl.html */; };
+		059851FC194049F90089FC34 /* antylopa_kama_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985162194049F90089FC34 /* antylopa_kama_en.html */; };
+		059851FD194049F90089FC34 /* antylopa_kama_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985163194049F90089FC34 /* antylopa_kama_pl.html */; };
+		059851FE194049F90089FC34 /* banteng_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985164194049F90089FC34 /* banteng_en.html */; };
+		059851FF194049F90089FC34 /* banteng_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985165194049F90089FC34 /* banteng_pl.html */; };
+		05985200194049F90089FC34 /* czerwonak_rozowy_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985166194049F90089FC34 /* czerwonak_rozowy_en.html */; };
+		05985201194049F90089FC34 /* czerwonak_rozowy_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985167194049F90089FC34 /* czerwonak_rozowy_pl.html */; };
+		05985202194049F90089FC34 /* daniel_mezopotamski_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985168194049F90089FC34 /* daniel_mezopotamski_en.html */; };
+		05985203194049F90089FC34 /* daniel_mezopotamski_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985169194049F90089FC34 /* daniel_mezopotamski_pl.html */; };
+		05985204194049F90089FC34 /* fenek_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 0598516A194049F90089FC34 /* fenek_en.html */; };
+		05985205194049F90089FC34 /* fenek_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 0598516B194049F90089FC34 /* fenek_pl.html */; };
+		05985206194049F90089FC34 /* flaming_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 0598516C194049F90089FC34 /* flaming_en.html */; };
+		05985207194049F90089FC34 /* flaming_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 0598516D194049F90089FC34 /* flaming_pl.html */; };
+		05985208194049F90089FC34 /* foka_zwyczajna_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 0598516E194049F90089FC34 /* foka_zwyczajna_en.html */; };
+		05985209194049F90089FC34 /* foka_zwyczajna_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 0598516F194049F90089FC34 /* foka_zwyczajna_pl.html */; };
+		0598520A194049F90089FC34 /* gnu_bialobrode_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985170194049F90089FC34 /* gnu_bialobrode_en.html */; };
+		0598520B194049F90089FC34 /* gnu_bialobrode_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985171194049F90089FC34 /* gnu_bialobrode_pl.html */; };
+		0598520C194049F90089FC34 /* gwanako_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985172194049F90089FC34 /* gwanako_en.html */; };
+		0598520D194049F90089FC34 /* gwanako_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985173194049F90089FC34 /* gwanako_pl.html */; };
+		0598520E194049F90089FC34 /* hipopotam_nilowy_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985174194049F90089FC34 /* hipopotam_nilowy_en.html */; };
+		0598520F194049FA0089FC34 /* hipopotam_nilowy_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05985175194049F90089FC34 /* hipopotam_nilowy_pl.html */; };
+		05985272194049FA0089FC34 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851D9194049F90089FC34 /* index.html */; };
+		05985273194049FA0089FC34 /* jelen_aksis_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851DA194049F90089FC34 /* jelen_aksis_pl.html */; };
+		05985274194049FA0089FC34 /* jelen_milu_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851DB194049F90089FC34 /* jelen_milu_pl.html */; };
+		05985275194049FA0089FC34 /* kangur_rudy_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851DC194049F90089FC34 /* kangur_rudy_en.html */; };
+		05985276194049FA0089FC34 /* kangur_rudy_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851DD194049F90089FC34 /* kangur_rudy_pl.html */; };
+		05985277194049FA0089FC34 /* kapibara_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851DE194049F90089FC34 /* kapibara_pl.html */; };
+		05985278194049FA0089FC34 /* kob_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851DF194049F90089FC34 /* kob_en.html */; };
+		05985279194049FA0089FC34 /* kob_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851E0194049F90089FC34 /* kob_pl.html */; };
+		0598527A194049FA0089FC34 /* kotik_afrykanski_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851E1194049F90089FC34 /* kotik_afrykanski_pl.html */; };
+		0598527B194049FA0089FC34 /* lama_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851E2194049F90089FC34 /* lama_pl.html */; };
+		0598527C194049FA0089FC34 /* lemur_katta_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851E3194049F90089FC34 /* lemur_katta_pl.html */; };
+		0598527D194049FA0089FC34 /* lew_angolanski_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851E4194049F90089FC34 /* lew_angolanski_en.html */; };
+		0598527E194049FA0089FC34 /* lew_angolanski_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851E5194049F90089FC34 /* lew_angolanski_pl.html */; };
+		0598527F194049FA0089FC34 /* opis.css in Resources */ = {isa = PBXBuildFile; fileRef = 059851E6194049F90089FC34 /* opis.css */; };
+		05985280194049FA0089FC34 /* oryks_szablorogi_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851E7194049F90089FC34 /* oryks_szablorogi_en.html */; };
+		05985281194049FA0089FC34 /* oryks_szablorogi_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851E8194049F90089FC34 /* oryks_szablorogi_pl.html */; };
+		05985282194049FA0089FC34 /* osiol_domowy_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851E9194049F90089FC34 /* osiol_domowy_en.html */; };
+		05985283194049FA0089FC34 /* osiol_domowy_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851EA194049F90089FC34 /* osiol_domowy_pl.html */; };
+		05985284194049FA0089FC34 /* perlica_sepia_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851EB194049F90089FC34 /* perlica_sepia_en.html */; };
+		05985285194049FA0089FC34 /* perlica_sepia_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851EC194049F90089FC34 /* perlica_sepia_pl.html */; };
+		05985286194049FA0089FC34 /* sitatunga_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851ED194049F90089FC34 /* sitatunga_en.html */; };
+		05985287194049FA0089FC34 /* sitatunga_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851EE194049F90089FC34 /* sitatunga_pl.html */; };
+		05985288194049FA0089FC34 /* slon_indyjski_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851EF194049F90089FC34 /* slon_indyjski_en.html */; };
+		05985289194049FA0089FC34 /* slon_indyjski_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851F0194049F90089FC34 /* slon_indyjski_pl.html */; };
+		0598528A194049FA0089FC34 /* strus_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851F1194049F90089FC34 /* strus_en.html */; };
+		0598528B194049FA0089FC34 /* strus_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851F2194049F90089FC34 /* strus_pl.html */; };
+		0598528C194049FA0089FC34 /* szablon_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851F3194049F90089FC34 /* szablon_pl.html */; };
+		0598528D194049FA0089FC34 /* zebra_chapmana_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851F4194049F90089FC34 /* zebra_chapmana_en.html */; };
+		0598528E194049FA0089FC34 /* zebra_chapmana_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851F5194049F90089FC34 /* zebra_chapmana_pl.html */; };
+		0598528F194049FA0089FC34 /* zyrafa_siatkowana_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851F6194049F90089FC34 /* zyrafa_siatkowana_en.html */; };
+		05985290194049FA0089FC34 /* zyrafa_siatkowana_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 059851F7194049F90089FC34 /* zyrafa_siatkowana_pl.html */; };
 		05A1C12818FAABD3008FE0CB /* history.xml in Resources */ = {isa = PBXBuildFile; fileRef = 05A1C12718FAABD3008FE0CB /* history.xml */; };
 		05A1C12B18FAAF9D008FE0CB /* HistoryEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */; };
 		05A1C12E18FAB0B8008FE0CB /* HistoryData.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C12D18FAB0B8008FE0CB /* HistoryData.m */; };
@@ -59,6 +114,9 @@
 		05E375CA18BA872B00A31630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C418BA872B00A31630 /* main.m */; };
 		05E375CB18BA872B00A31630 /* MWLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C618BA872B00A31630 /* MWLogging.m */; };
 		05E375CC18BA872B00A31630 /* MWLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C618BA872B00A31630 /* MWLogging.m */; };
+		05F36EB4194081F9000949E4 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EB3194081F9000949E4 /* img */; };
+		05F36EB919409520000949E4 /* 404_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EB719409520000949E4 /* 404_en.html */; };
+		05F36EBA19409520000949E4 /* 404_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EB819409520000949E4 /* 404_pl.html */; };
 		05FA3485192FE90C007A730E /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC7614828F038538E66549 /* Graph.m */; };
 		05FA3486192FE930007A730E /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC793A45FEE0B15CC68841 /* Edge.m */; };
 		05FA3487192FE930007A730E /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC705BCAD342F6CE48BA1E /* Vertex.m */; };
@@ -158,6 +216,61 @@
 		055E88E718DF0D6F001CE07B /* AnimalsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimalsListViewController.h; sourceTree = "<group>"; };
 		055E88E818DF0D6F001CE07B /* AnimalsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimalsListViewController.m; sourceTree = "<group>"; };
 		0566C5FB190C497800F0C7CE /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
+		0598515E194049F90089FC34 /* aguti_zlocisty_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aguti_zlocisty_en.html; sourceTree = "<group>"; };
+		0598515F194049F90089FC34 /* aguti_zlocisty_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aguti_zlocisty_pl.html; sourceTree = "<group>"; };
+		05985160194049F90089FC34 /* alpaka_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = alpaka_en.html; sourceTree = "<group>"; };
+		05985161194049F90089FC34 /* alpaka_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = alpaka_pl.html; sourceTree = "<group>"; };
+		05985162194049F90089FC34 /* antylopa_kama_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = antylopa_kama_en.html; sourceTree = "<group>"; };
+		05985163194049F90089FC34 /* antylopa_kama_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = antylopa_kama_pl.html; sourceTree = "<group>"; };
+		05985164194049F90089FC34 /* banteng_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = banteng_en.html; sourceTree = "<group>"; };
+		05985165194049F90089FC34 /* banteng_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = banteng_pl.html; sourceTree = "<group>"; };
+		05985166194049F90089FC34 /* czerwonak_rozowy_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = czerwonak_rozowy_en.html; sourceTree = "<group>"; };
+		05985167194049F90089FC34 /* czerwonak_rozowy_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = czerwonak_rozowy_pl.html; sourceTree = "<group>"; };
+		05985168194049F90089FC34 /* daniel_mezopotamski_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = daniel_mezopotamski_en.html; sourceTree = "<group>"; };
+		05985169194049F90089FC34 /* daniel_mezopotamski_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = daniel_mezopotamski_pl.html; sourceTree = "<group>"; };
+		0598516A194049F90089FC34 /* fenek_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = fenek_en.html; sourceTree = "<group>"; };
+		0598516B194049F90089FC34 /* fenek_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = fenek_pl.html; sourceTree = "<group>"; };
+		0598516C194049F90089FC34 /* flaming_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = flaming_en.html; sourceTree = "<group>"; };
+		0598516D194049F90089FC34 /* flaming_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = flaming_pl.html; sourceTree = "<group>"; };
+		0598516E194049F90089FC34 /* foka_zwyczajna_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = foka_zwyczajna_en.html; sourceTree = "<group>"; };
+		0598516F194049F90089FC34 /* foka_zwyczajna_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = foka_zwyczajna_pl.html; sourceTree = "<group>"; };
+		05985170194049F90089FC34 /* gnu_bialobrode_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gnu_bialobrode_en.html; sourceTree = "<group>"; };
+		05985171194049F90089FC34 /* gnu_bialobrode_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gnu_bialobrode_pl.html; sourceTree = "<group>"; };
+		05985172194049F90089FC34 /* gwanako_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gwanako_en.html; sourceTree = "<group>"; };
+		05985173194049F90089FC34 /* gwanako_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gwanako_pl.html; sourceTree = "<group>"; };
+		05985174194049F90089FC34 /* hipopotam_nilowy_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = hipopotam_nilowy_en.html; sourceTree = "<group>"; };
+		05985175194049F90089FC34 /* hipopotam_nilowy_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = hipopotam_nilowy_pl.html; sourceTree = "<group>"; };
+		059851D9194049F90089FC34 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		059851DA194049F90089FC34 /* jelen_aksis_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jelen_aksis_pl.html; sourceTree = "<group>"; };
+		059851DB194049F90089FC34 /* jelen_milu_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jelen_milu_pl.html; sourceTree = "<group>"; };
+		059851DC194049F90089FC34 /* kangur_rudy_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = kangur_rudy_en.html; sourceTree = "<group>"; };
+		059851DD194049F90089FC34 /* kangur_rudy_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = kangur_rudy_pl.html; sourceTree = "<group>"; };
+		059851DE194049F90089FC34 /* kapibara_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = kapibara_pl.html; sourceTree = "<group>"; };
+		059851DF194049F90089FC34 /* kob_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = kob_en.html; sourceTree = "<group>"; };
+		059851E0194049F90089FC34 /* kob_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = kob_pl.html; sourceTree = "<group>"; };
+		059851E1194049F90089FC34 /* kotik_afrykanski_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = kotik_afrykanski_pl.html; sourceTree = "<group>"; };
+		059851E2194049F90089FC34 /* lama_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lama_pl.html; sourceTree = "<group>"; };
+		059851E3194049F90089FC34 /* lemur_katta_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lemur_katta_pl.html; sourceTree = "<group>"; };
+		059851E4194049F90089FC34 /* lew_angolanski_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lew_angolanski_en.html; sourceTree = "<group>"; };
+		059851E5194049F90089FC34 /* lew_angolanski_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lew_angolanski_pl.html; sourceTree = "<group>"; };
+		059851E6194049F90089FC34 /* opis.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = opis.css; sourceTree = "<group>"; };
+		059851E7194049F90089FC34 /* oryks_szablorogi_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = oryks_szablorogi_en.html; sourceTree = "<group>"; };
+		059851E8194049F90089FC34 /* oryks_szablorogi_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = oryks_szablorogi_pl.html; sourceTree = "<group>"; };
+		059851E9194049F90089FC34 /* osiol_domowy_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = osiol_domowy_en.html; sourceTree = "<group>"; };
+		059851EA194049F90089FC34 /* osiol_domowy_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = osiol_domowy_pl.html; sourceTree = "<group>"; };
+		059851EB194049F90089FC34 /* perlica_sepia_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = perlica_sepia_en.html; sourceTree = "<group>"; };
+		059851EC194049F90089FC34 /* perlica_sepia_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = perlica_sepia_pl.html; sourceTree = "<group>"; };
+		059851ED194049F90089FC34 /* sitatunga_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sitatunga_en.html; sourceTree = "<group>"; };
+		059851EE194049F90089FC34 /* sitatunga_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sitatunga_pl.html; sourceTree = "<group>"; };
+		059851EF194049F90089FC34 /* slon_indyjski_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = slon_indyjski_en.html; sourceTree = "<group>"; };
+		059851F0194049F90089FC34 /* slon_indyjski_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = slon_indyjski_pl.html; sourceTree = "<group>"; };
+		059851F1194049F90089FC34 /* strus_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = strus_en.html; sourceTree = "<group>"; };
+		059851F2194049F90089FC34 /* strus_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = strus_pl.html; sourceTree = "<group>"; };
+		059851F3194049F90089FC34 /* szablon_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = szablon_pl.html; sourceTree = "<group>"; };
+		059851F4194049F90089FC34 /* zebra_chapmana_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = zebra_chapmana_en.html; sourceTree = "<group>"; };
+		059851F5194049F90089FC34 /* zebra_chapmana_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = zebra_chapmana_pl.html; sourceTree = "<group>"; };
+		059851F6194049F90089FC34 /* zyrafa_siatkowana_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = zyrafa_siatkowana_en.html; sourceTree = "<group>"; };
+		059851F7194049F90089FC34 /* zyrafa_siatkowana_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = zyrafa_siatkowana_pl.html; sourceTree = "<group>"; };
 		05A1C12718FAABD3008FE0CB /* history.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = history.xml; path = "XML files/history.xml"; sourceTree = "<group>"; };
 		05A1C12918FAAF9D008FE0CB /* HistoryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryEvent.h; sourceTree = "<group>"; };
 		05A1C12A18FAAF9D008FE0CB /* HistoryEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryEvent.m; sourceTree = "<group>"; };
@@ -211,6 +324,9 @@
 		05E375C618BA872B00A31630 /* MWLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MWLogging.m; path = "Supporting Files/MWLogging.m"; sourceTree = "<group>"; };
 		05E375C718BA872B00A31630 /* MyGuide-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MyGuide-Info.plist"; path = "Supporting Files/MyGuide-Info.plist"; sourceTree = "<group>"; };
 		05E375C818BA872B00A31630 /* MyGuide-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyGuide-Prefix.pch"; path = "Supporting Files/MyGuide-Prefix.pch"; sourceTree = "<group>"; };
+		05F36EB3194081F9000949E4 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
+		05F36EB719409520000949E4 /* 404_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404_en.html; sourceTree = "<group>"; };
+		05F36EB819409520000949E4 /* 404_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404_pl.html; sourceTree = "<group>"; };
 		05FA3489192FEBF0007A730E /* GraphDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDrawer.h; sourceTree = "<group>"; };
 		05FA348A192FEBF0007A730E /* GraphDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDrawer.m; sourceTree = "<group>"; };
 		3D5EF605189637C000233B64 /* MyGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,6 +436,71 @@
 				051A8A2F190084720012B096 /* ContactViewController.m */,
 			);
 			path = Information;
+			sourceTree = "<group>";
+		};
+		0598515D194049F90089FC34 /* HTML files */ = {
+			isa = PBXGroup;
+			children = (
+				05F36EB3194081F9000949E4 /* img */,
+				0598515E194049F90089FC34 /* aguti_zlocisty_en.html */,
+				0598515F194049F90089FC34 /* aguti_zlocisty_pl.html */,
+				05985160194049F90089FC34 /* alpaka_en.html */,
+				05985161194049F90089FC34 /* alpaka_pl.html */,
+				05985162194049F90089FC34 /* antylopa_kama_en.html */,
+				05985163194049F90089FC34 /* antylopa_kama_pl.html */,
+				05985164194049F90089FC34 /* banteng_en.html */,
+				05985165194049F90089FC34 /* banteng_pl.html */,
+				05985166194049F90089FC34 /* czerwonak_rozowy_en.html */,
+				05985167194049F90089FC34 /* czerwonak_rozowy_pl.html */,
+				05985168194049F90089FC34 /* daniel_mezopotamski_en.html */,
+				05985169194049F90089FC34 /* daniel_mezopotamski_pl.html */,
+				0598516A194049F90089FC34 /* fenek_en.html */,
+				0598516B194049F90089FC34 /* fenek_pl.html */,
+				0598516C194049F90089FC34 /* flaming_en.html */,
+				0598516D194049F90089FC34 /* flaming_pl.html */,
+				0598516E194049F90089FC34 /* foka_zwyczajna_en.html */,
+				0598516F194049F90089FC34 /* foka_zwyczajna_pl.html */,
+				05985170194049F90089FC34 /* gnu_bialobrode_en.html */,
+				05985171194049F90089FC34 /* gnu_bialobrode_pl.html */,
+				05985172194049F90089FC34 /* gwanako_en.html */,
+				05985173194049F90089FC34 /* gwanako_pl.html */,
+				05985174194049F90089FC34 /* hipopotam_nilowy_en.html */,
+				05985175194049F90089FC34 /* hipopotam_nilowy_pl.html */,
+				059851D9194049F90089FC34 /* index.html */,
+				059851DA194049F90089FC34 /* jelen_aksis_pl.html */,
+				059851DB194049F90089FC34 /* jelen_milu_pl.html */,
+				059851DC194049F90089FC34 /* kangur_rudy_en.html */,
+				059851DD194049F90089FC34 /* kangur_rudy_pl.html */,
+				059851DE194049F90089FC34 /* kapibara_pl.html */,
+				059851DF194049F90089FC34 /* kob_en.html */,
+				059851E0194049F90089FC34 /* kob_pl.html */,
+				059851E1194049F90089FC34 /* kotik_afrykanski_pl.html */,
+				059851E2194049F90089FC34 /* lama_pl.html */,
+				059851E3194049F90089FC34 /* lemur_katta_pl.html */,
+				059851E4194049F90089FC34 /* lew_angolanski_en.html */,
+				059851E5194049F90089FC34 /* lew_angolanski_pl.html */,
+				059851E6194049F90089FC34 /* opis.css */,
+				059851E7194049F90089FC34 /* oryks_szablorogi_en.html */,
+				059851E8194049F90089FC34 /* oryks_szablorogi_pl.html */,
+				059851E9194049F90089FC34 /* osiol_domowy_en.html */,
+				059851EA194049F90089FC34 /* osiol_domowy_pl.html */,
+				059851EB194049F90089FC34 /* perlica_sepia_en.html */,
+				059851EC194049F90089FC34 /* perlica_sepia_pl.html */,
+				059851ED194049F90089FC34 /* sitatunga_en.html */,
+				059851EE194049F90089FC34 /* sitatunga_pl.html */,
+				059851EF194049F90089FC34 /* slon_indyjski_en.html */,
+				059851F0194049F90089FC34 /* slon_indyjski_pl.html */,
+				059851F1194049F90089FC34 /* strus_en.html */,
+				059851F2194049F90089FC34 /* strus_pl.html */,
+				059851F3194049F90089FC34 /* szablon_pl.html */,
+				059851F4194049F90089FC34 /* zebra_chapmana_en.html */,
+				059851F5194049F90089FC34 /* zebra_chapmana_pl.html */,
+				059851F6194049F90089FC34 /* zyrafa_siatkowana_en.html */,
+				059851F7194049F90089FC34 /* zyrafa_siatkowana_pl.html */,
+				05F36EB719409520000949E4 /* 404_en.html */,
+				05F36EB819409520000949E4 /* 404_pl.html */,
+			);
+			path = "HTML files";
 			sourceTree = "<group>";
 		};
 		05A1C12318FAA436008FE0CB /* History */ = {
@@ -503,6 +684,7 @@
 				CAAC7FEF5ACB0DEDA8DA2989 /* Dijkstra */,
 				05E0209218C1DAFA00AE76EC /* Map */,
 				84DDCB3F18BA91A100A2F720 /* Storage */,
+				0598515D194049F90089FC34 /* HTML files */,
 				84DDCB3518BA919600A2F720 /* Parsers */,
 				84DDCB4618BA91CB00A2F720 /* XML files */,
 				84DDCB2818BA917800A2F720 /* Models */,
@@ -778,23 +960,81 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05985280194049FA0089FC34 /* oryks_szablorogi_en.html in Resources */,
+				05985290194049FA0089FC34 /* zyrafa_siatkowana_pl.html in Resources */,
+				05985289194049FA0089FC34 /* slon_indyjski_pl.html in Resources */,
+				059851F9194049F90089FC34 /* aguti_zlocisty_pl.html in Resources */,
+				05985283194049FA0089FC34 /* osiol_domowy_pl.html in Resources */,
+				0598527D194049FA0089FC34 /* lew_angolanski_en.html in Resources */,
+				059851FA194049F90089FC34 /* alpaka_en.html in Resources */,
+				05985206194049F90089FC34 /* flaming_en.html in Resources */,
+				0598528C194049FA0089FC34 /* szablon_pl.html in Resources */,
+				05985285194049FA0089FC34 /* perlica_sepia_pl.html in Resources */,
+				05985278194049FA0089FC34 /* kob_en.html in Resources */,
 				05C335EA190C02DB000B705B /* info_contact_url.png in Resources */,
+				05985287194049FA0089FC34 /* sitatunga_pl.html in Resources */,
+				0598520D194049F90089FC34 /* gwanako_pl.html in Resources */,
+				05985274194049FA0089FC34 /* jelen_milu_pl.html in Resources */,
+				059851F8194049F90089FC34 /* aguti_zlocisty_en.html in Resources */,
 				84BA95E71912DC50008A4237 /* tracks.xml in Resources */,
+				05985208194049F90089FC34 /* foka_zwyczajna_en.html in Resources */,
 				05C925D318DDAFAD00C2F746 /* GPS.md in Resources */,
+				05985284194049FA0089FC34 /* perlica_sepia_en.html in Resources */,
+				059851FF194049F90089FC34 /* banteng_pl.html in Resources */,
 				05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */,
+				05985275194049FA0089FC34 /* kangur_rudy_en.html in Resources */,
+				05F36EBA19409520000949E4 /* 404_pl.html in Resources */,
 				050E852D190B94CE00B13473 /* information.xml in Resources */,
+				0598520B194049F90089FC34 /* gnu_bialobrode_pl.html in Resources */,
+				0598527C194049FA0089FC34 /* lemur_katta_pl.html in Resources */,
+				05F36EB4194081F9000949E4 /* img in Resources */,
+				05985276194049FA0089FC34 /* kangur_rudy_pl.html in Resources */,
+				0598520A194049F90089FC34 /* gnu_bialobrode_en.html in Resources */,
 				3DE69DA918C7B83400B54509 /* Localizable.strings in Resources */,
+				0598520E194049F90089FC34 /* hipopotam_nilowy_en.html in Resources */,
+				05985203194049F90089FC34 /* daniel_mezopotamski_pl.html in Resources */,
+				0598527F194049FA0089FC34 /* opis.css in Resources */,
 				05C335E8190C02DB000B705B /* info_contact_address.png in Resources */,
 				05A1C12818FAABD3008FE0CB /* history.xml in Resources */,
+				05985200194049F90089FC34 /* czerwonak_rozowy_en.html in Resources */,
+				0598528F194049FA0089FC34 /* zyrafa_siatkowana_en.html in Resources */,
+				059851FE194049F90089FC34 /* banteng_en.html in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
+				05985201194049F90089FC34 /* czerwonak_rozowy_pl.html in Resources */,
+				059851FD194049F90089FC34 /* antylopa_kama_pl.html in Resources */,
 				0533DF0118DE1520001BCB28 /* menu.png in Resources */,
+				05985286194049FA0089FC34 /* sitatunga_en.html in Resources */,
+				05985273194049FA0089FC34 /* jelen_aksis_pl.html in Resources */,
+				0598527E194049FA0089FC34 /* lew_angolanski_pl.html in Resources */,
 				05406E4318F313B6001656FC /* data.xml in Resources */,
+				0598528D194049FA0089FC34 /* zebra_chapmana_en.html in Resources */,
 				84BA95F819140466008A4237 /* Buzz-Trash-icon.png in Resources */,
 				0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */,
+				0598527B194049FA0089FC34 /* lama_pl.html in Resources */,
+				05985282194049FA0089FC34 /* osiol_domowy_en.html in Resources */,
+				05985209194049F90089FC34 /* foka_zwyczajna_pl.html in Resources */,
 				84BA95D5190FC426008A4237 /* events.xml in Resources */,
+				05985205194049F90089FC34 /* fenek_pl.html in Resources */,
+				0598528E194049FA0089FC34 /* zebra_chapmana_pl.html in Resources */,
 				3DDE538818C705B20062D217 /* Main.storyboard in Resources */,
+				05F36EB919409520000949E4 /* 404_en.html in Resources */,
+				05985288194049FA0089FC34 /* slon_indyjski_en.html in Resources */,
+				05985281194049FA0089FC34 /* oryks_szablorogi_pl.html in Resources */,
+				0598528B194049FA0089FC34 /* strus_pl.html in Resources */,
+				05985272194049FA0089FC34 /* index.html in Resources */,
+				0598520C194049F90089FC34 /* gwanako_en.html in Resources */,
+				05985207194049F90089FC34 /* flaming_pl.html in Resources */,
+				05985202194049F90089FC34 /* daniel_mezopotamski_en.html in Resources */,
+				0598520F194049FA0089FC34 /* hipopotam_nilowy_pl.html in Resources */,
+				059851FB194049F90089FC34 /* alpaka_pl.html in Resources */,
+				059851FC194049F90089FC34 /* antylopa_kama_en.html in Resources */,
+				0598528A194049FA0089FC34 /* strus_en.html in Resources */,
+				05985279194049FA0089FC34 /* kob_pl.html in Resources */,
+				0598527A194049FA0089FC34 /* kotik_afrykanski_pl.html in Resources */,
 				05406E4118F313A7001656FC /* gastronomy.xml in Resources */,
+				05985277194049FA0089FC34 /* kapibara_pl.html in Resources */,
 				8421D32218BE3B5100B54DC3 /* Images.xcassets in Resources */,
+				05985204194049F90089FC34 /* fenek_en.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
