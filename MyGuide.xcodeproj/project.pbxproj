@@ -115,7 +115,8 @@
 		05E375CB18BA872B00A31630 /* MWLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C618BA872B00A31630 /* MWLogging.m */; };
 		05E375CC18BA872B00A31630 /* MWLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C618BA872B00A31630 /* MWLogging.m */; };
 		05F36EB4194081F9000949E4 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EB3194081F9000949E4 /* img */; };
-		05F36EB619408418000949E4 /* 404.html in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EB519408418000949E4 /* 404.html */; };
+		05F36EB919409520000949E4 /* 404_en.html in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EB719409520000949E4 /* 404_en.html */; };
+		05F36EBA19409520000949E4 /* 404_pl.html in Resources */ = {isa = PBXBuildFile; fileRef = 05F36EB819409520000949E4 /* 404_pl.html */; };
 		05FA3485192FE90C007A730E /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC7614828F038538E66549 /* Graph.m */; };
 		05FA3486192FE930007A730E /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC793A45FEE0B15CC68841 /* Edge.m */; };
 		05FA3487192FE930007A730E /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC705BCAD342F6CE48BA1E /* Vertex.m */; };
@@ -324,7 +325,8 @@
 		05E375C718BA872B00A31630 /* MyGuide-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MyGuide-Info.plist"; path = "Supporting Files/MyGuide-Info.plist"; sourceTree = "<group>"; };
 		05E375C818BA872B00A31630 /* MyGuide-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MyGuide-Prefix.pch"; path = "Supporting Files/MyGuide-Prefix.pch"; sourceTree = "<group>"; };
 		05F36EB3194081F9000949E4 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
-		05F36EB519408418000949E4 /* 404.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404.html; sourceTree = "<group>"; };
+		05F36EB719409520000949E4 /* 404_en.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404_en.html; sourceTree = "<group>"; };
+		05F36EB819409520000949E4 /* 404_pl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 404_pl.html; sourceTree = "<group>"; };
 		05FA3489192FEBF0007A730E /* GraphDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDrawer.h; sourceTree = "<group>"; };
 		05FA348A192FEBF0007A730E /* GraphDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDrawer.m; sourceTree = "<group>"; };
 		3D5EF605189637C000233B64 /* MyGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -495,7 +497,8 @@
 				059851F5194049F90089FC34 /* zebra_chapmana_pl.html */,
 				059851F6194049F90089FC34 /* zyrafa_siatkowana_en.html */,
 				059851F7194049F90089FC34 /* zyrafa_siatkowana_pl.html */,
-				05F36EB519408418000949E4 /* 404.html */,
+				05F36EB719409520000949E4 /* 404_en.html */,
+				05F36EB819409520000949E4 /* 404_pl.html */,
 			);
 			path = "HTML files";
 			sourceTree = "<group>";
@@ -980,9 +983,9 @@
 				059851FF194049F90089FC34 /* banteng_pl.html in Resources */,
 				05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */,
 				05985275194049FA0089FC34 /* kangur_rudy_en.html in Resources */,
+				05F36EBA19409520000949E4 /* 404_pl.html in Resources */,
 				050E852D190B94CE00B13473 /* information.xml in Resources */,
 				0598520B194049F90089FC34 /* gnu_bialobrode_pl.html in Resources */,
-				05F36EB619408418000949E4 /* 404.html in Resources */,
 				0598527C194049FA0089FC34 /* lemur_katta_pl.html in Resources */,
 				05F36EB4194081F9000949E4 /* img in Resources */,
 				05985276194049FA0089FC34 /* kangur_rudy_pl.html in Resources */,
@@ -1014,6 +1017,7 @@
 				05985205194049F90089FC34 /* fenek_pl.html in Resources */,
 				0598528E194049FA0089FC34 /* zebra_chapmana_pl.html in Resources */,
 				3DDE538818C705B20062D217 /* Main.storyboard in Resources */,
+				05F36EB919409520000949E4 /* 404_en.html in Resources */,
 				05985288194049FA0089FC34 /* slon_indyjski_en.html in Resources */,
 				05985281194049FA0089FC34 /* oryks_szablorogi_pl.html in Resources */,
 				0598528B194049FA0089FC34 /* strus_pl.html in Resources */,

@@ -66,8 +66,12 @@
 - (NSString *) getFilePath
 {
     NSString *animalName = [self cleanUp:self.title];
-    NSString *fileName   = [NSString stringWithFormat: @"%@_%@", animalName, [[NSLocale preferredLanguages] objectAtIndex: 0]];
-    return [self getHtmlFile: fileName] ? [self getHtmlFile: fileName] : [self getHtmlFile: @"404"];
+    NSString *locale     = [[NSLocale preferredLanguages] objectAtIndex: 0];
+    NSString *filePath   = [NSString stringWithFormat: @"%@_%@", animalName, locale];
+    NSString *fileName   = [self getHtmlFile: filePath];
+
+    self.webView.scrollView.scrollEnabled = !!fileName;
+    return fileName ? fileName : [self getLocalized404File: locale];
 }
 
 - (NSString *) getHtmlFile: (NSString *) fileName
@@ -90,6 +94,11 @@
     aString = [aString stringByReplacingOccurrencesOfString: @"ż" withString:@"z"];
     aString = [aString  stringByReplacingOccurrencesOfString:@" " withString:@"_"];
 	return aString;
+}
+
+- (NSString *) getLocalized404File: (NSString *)locale
+{
+    return [self getHtmlFile: [NSString stringWithFormat: @"404_%@", locale]];
 }
 
 @end
