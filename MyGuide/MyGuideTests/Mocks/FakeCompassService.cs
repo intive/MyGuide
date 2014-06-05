@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MyGuide.Services
+namespace MyGuideTests.Mocks
 {
     public class FakeCompassService : ICompassService
     {
@@ -46,11 +46,10 @@ namespace MyGuide.Services
 
         private void SimmulateValueChange(object state)
         {
-            var fakeCompassReading = new CompassReading()
+            var fakeCompassReading = new FakeCompassReading()
             {
                 MagneticNorthHeading = GetFakeAngle(),
                 TrueNorthHeading = (GetFakeAngle() + MagneticDeclination) % 360,
-                Timestamp = DateTime.Now,
                 AccuracyHeading = 0.0
             };
             if (fakeCompassReading.MagneticNorthHeading > -1)

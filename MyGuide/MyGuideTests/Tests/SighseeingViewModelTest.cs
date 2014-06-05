@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
 using Caliburn.Micro;
+using MyGuideTests.Mocks;
 
 namespace MyGuideTests.Tests
 {
@@ -24,7 +25,7 @@ namespace MyGuideTests.Tests
             var dataService = new Mock<IDataService>(MockBehavior.Strict);
             var optionService = new Mock<IOptionsService>(MockBehavior.Strict);
 
-            var SightPViewModel = new SightseeingPageViewModel(INavigationService nav, messageDialogService.Object, dataService.Object, optionService.Object);
+            var SightPViewModel = new SightseeingPageViewModel(navService.Object, messageDialogService.Object, dataService.Object, optionService.Object,new FakeCompassService());
             
         }
     }
