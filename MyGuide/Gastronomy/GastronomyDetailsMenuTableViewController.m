@@ -7,7 +7,6 @@
 //
 
 #import "GastronomyDetailsMenuTableViewController.h"
-#import "DishTableViewCell.h"
 #import "Dish.h"
 
 @implementation GastronomyDetailsMenuTableViewController
@@ -27,16 +26,15 @@
 {
     static NSString *simpleTableIdentifier = @"DishCell";
     
-    DishTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
-        cell = [[DishTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
     
     Dish *dish = _dishes[indexPath.row];
-    cell.labelName.text  = [dish getName];
-    cell.labelPrice.text = [NSString stringWithFormat: @"%.2f", [dish.price doubleValue]];
-    cell.imageLogo.image = [UIImage imageNamed: @"placeholder_adult"];
+    cell.textLabel.text       = [dish getName];
+    cell.detailTextLabel.text = [NSString stringWithFormat: @"%.2fzł", [dish.price doubleValue]];
     
     return cell;
 }
