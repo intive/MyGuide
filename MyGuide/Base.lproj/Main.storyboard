@@ -750,10 +750,11 @@
                                     <action selector="switchControllers:" destination="M8A-t7-eRn" eventType="valueChanged" id="Vnd-Ca-xCX"/>
                                 </connections>
                             </segmentedControl>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAK-gQ-odC">
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kAK-gQ-odC">
                                 <rect key="frame" x="0.0" y="71" width="320" height="497"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="0.96872148722627749" alpha="1" colorSpace="calibratedWhite"/>
@@ -770,6 +771,7 @@
                     </view>
                     <connections>
                         <outlet property="segmentedControl" destination="iSu-gc-aO2" id="mG8-Wl-JXz"/>
+                        <outlet property="webView" destination="kAK-gQ-odC" id="wLp-zq-pxR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gob-US-j4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -788,7 +790,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zns-nO-zs7">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zns-nO-zs7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>

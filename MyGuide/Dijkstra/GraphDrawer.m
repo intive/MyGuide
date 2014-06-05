@@ -9,7 +9,6 @@
 #import "GraphDrawer.h"
 #import "AFParsedData.h"
 #import "AFWay.h"
-#import "Vertex.h"
 
 @interface GraphDrawer ()
 
@@ -24,7 +23,7 @@
 + (id) sharedInstance
 {
     static GraphDrawer *sharedInstance = nil;
-    
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [self new];

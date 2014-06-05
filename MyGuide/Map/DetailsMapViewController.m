@@ -49,17 +49,23 @@ double const ZOOM_LEVEL = 15;
     [self setupMapView];
     [self drawTargetPoint];
     [self drawCoordinatesOnMap];
+    self.mapView.mapType = MKMapTypeHybrid;
 }
 - (void)configureToolbar
 {
+    UIColor *tintColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
+    
+    MKUserTrackingBarButtonItem *trackingButton = [[MKUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    trackingButton.customView.backgroundColor   = [UIColor clearColor];
+    trackingButton.customView.tintColor         = tintColor;
+    
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
     UIBarButtonItem *mapTypebButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mapType"] style:UIBarButtonItemStylePlain target:self action:@selector(changeMapType)];
-    mapTypebButton.enabled = YES;
-    mapTypebButton.tintColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
-
-    UIBarButtonItem *fixedSpaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedSpaceButton.width = 238.5f;
+    mapTypebButton.tintColor        = tintColor;
+    
     [self.mapToolbar setBackgroundImage:[UIImage imageNamed:@"buttonBackgroundImage"] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-    self.mapToolbar.items = @[fixedSpaceButton, mapTypebButton];
+    self.mapToolbar.items = @[trackingButton, flexibleSpace, mapTypebButton];
 }
 - (void)changeMapType
 {

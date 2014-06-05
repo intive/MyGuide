@@ -11,9 +11,8 @@
 @interface AnimalDetailsViewController : UIViewController
 
 @property (nonatomic) AFAnimal *animal;
-@property (weak, nonatomic) IBOutlet UITextView  *descriptionTextView;
-@property (weak, nonatomic) IBOutlet UIImageView *animalImage;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 - (IBAction) switchControllers: (UISegmentedControl *) segmentControl;
 
