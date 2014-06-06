@@ -14,7 +14,8 @@ namespace MyGuide.DataServices.Interfaces
     {
         Task Initialize();
         Task SaveList();
-        IObservableCollection<AnimalPushpin> SearchForAnimals(GeoCoordinate userPosition);
+        Task<IObservableCollection<AnimalPushpin>> SearchForAnimals(GeoCoordinate userPosition);
+        Task DeleteVisitedAnimalsMark();
     }
 }
 

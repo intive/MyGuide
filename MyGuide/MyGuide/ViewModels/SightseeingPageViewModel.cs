@@ -61,6 +61,12 @@ namespace MyGuide.ViewModels
             WritePushpinList();
         }
 
+        public void DeleteVisitedAnimals()
+        {
+            _animalService.DeleteVisitedAnimalsMark();
+            AnimalsPushpins = new BindableCollection<AnimalPushpin>();
+        }
+
         //public void ShowMap()
         //{
            
@@ -84,11 +90,11 @@ namespace MyGuide.ViewModels
 
         #endregion Commands
 
-        public override async void OnNavigatedFrom(NavigationMode navigationMode)
+        public override void OnNavigatedFrom(NavigationMode navigationMode)
         {
-            await _animalService.SaveList();
+            _animalService.SaveList();
 
-            await Task.Run(() =>
+            Task.Run(() =>
             {
 
                 try
@@ -120,10 +126,15 @@ namespace MyGuide.ViewModels
             UserPositionLocation = new GeoCoordinate(51.104642, 17.073520);
             CenterMapPositionLocation = new GeoCoordinate(51.104642, 17.073520);
             UserLayerVisibility =  _optionService.ConfigData.userLayerVisibility;
-
+            
             _geolocationService.PositionChanged += new EventHandler < IGeolocationReading > (_geolocationService_PositionChanged);
-			_animalService = new VisitedAnimalService(_dataService,_optionService);
-            await _animalService.Initialize();
+            _geolocationService.StartGeolocationTracker();
+            _animalService = new VisitedAnimalService(_dataService,_optionService);
+            try
+            {
+                await _animalService.Initialize();
+            }
+            catch { }
 
             AnimalsPushpins = new BindableCollection<AnimalPushpin>();
 
@@ -161,12 +172,12 @@ namespace MyGuide.ViewModels
             }
         }
 
-        private void _geolocationService_PositionChanged(object sender, IGeolocationReading e)
+        private async void _geolocationService_PositionChanged(object sender, IGeolocationReading e)
         {
 
             UserPositionLocation = new GeoCoordinate(e.Position.Latitude, e.Position.Longitude);
-            CenterMapPositionLocation = new GeoCoordinate(e.Position.Coordinate.Latitude, e.Position.Coordinate.Longitude);
-            AnimalsPushpins = _animalService.SearchForAnimals(UserPositionLocation);
+            CenterMapPositionLocation = new GeoCoordinate(e.Position.Latitude, e.Position.Longitude);
+            AnimalsPushpins = await _animalService.SearchForAnimals(UserPositionLocation);
       
         }
 

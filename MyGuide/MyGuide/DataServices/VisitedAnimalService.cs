@@ -77,18 +77,21 @@ namespace MyGuide.DataServices
 
         }
 
-        public IObservableCollection<AnimalPushpin> SearchForAnimals(GeoCoordinate userPosition)
+        public async Task<IObservableCollection<AnimalPushpin>> SearchForAnimals(GeoCoordinate userPosition)
         {
-            foreach (Animal a in _dataService.Datas.AnimalsList.Items)
+            return await Task.Run(() =>
             {
-                GeoCoordinate animalPosition = new GeoCoordinate(a.Latitude, a.Longitude);
-                double dist = userPosition.GetDistanceTo(animalPosition);
-                if (dist <= _optionService.ConfigData.internalObjectRadius && !isAnimalPushpinExist(a.Name))
+                foreach (Animal a in _dataService.Datas.AnimalsList.Items)
                 {
-                    AnimalsPushpins.Add(new AnimalPushpin() { Coordinate = animalPosition, Description = "description", Name = a.Name });
+                    GeoCoordinate animalPosition = new GeoCoordinate(a.Latitude, a.Longitude);
+                    double dist = userPosition.GetDistanceTo(animalPosition);
+                    if (dist <= _optionService.ConfigData.internalObjectRadius && !isAnimalPushpinExist(a.Name))
+                    {
+                        AnimalsPushpins.Add(new AnimalPushpin() { Coordinate = animalPosition, Description = "description", Name = a.Name });
+                    }
                 }
-            }
-            return AnimalsPushpins;
+                return AnimalsPushpins;
+            });
         }
 
         private bool isAnimalPushpinExist(string animalName)
@@ -108,22 +111,37 @@ namespace MyGuide.DataServices
         {
             XmlParser<AnimalsList> xmlPars = new XmlParser<AnimalsList>();
             AnimalsList animalsList = new AnimalsList();
-
-            foreach (AnimalPushpin ap in AnimalsPushpins)
+            if (AnimalsPushpins.Count > 0)
             {
-                animalsList.Items.Add(new Animal() { Latitude = ap.Coordinate.Latitude, Longitude= ap.Coordinate.Longitude, Name = ap.Name });
-            }
-
-            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                using (IsolatedStorageFileStream stream = myIsolatedStorage.OpenFile("Data/visitedAnimals.xml", FileMode.Create))
+                foreach (AnimalPushpin ap in AnimalsPushpins)
                 {
-                    using (StreamWriter sw = new StreamWriter(stream))
+                    animalsList.Items.Add(new Animal() { Latitude = ap.Coordinate.Latitude, Longitude = ap.Coordinate.Longitude, Name = ap.Name });
+                }
+
+                using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    using (IsolatedStorageFileStream stream = myIsolatedStorage.OpenFile("Data/visitedAnimals.xml", FileMode.Create))
                     {
-                        await sw.WriteAsync(await xmlPars.SerializeXml(animalsList));
+                        using (StreamWriter sw = new StreamWriter(stream))
+                        {
+                            await sw.WriteAsync(await xmlPars.SerializeXml(animalsList));
+                        }
                     }
                 }
             }
+        }
+
+
+        public async Task DeleteVisitedAnimalsMark()
+        {
+            using (IsolatedStorageFile myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                if (myIsolatedStorage.FileExists("Data/visitedAnimals.xml"))
+                {
+                    myIsolatedStorage.DeleteFile("Data/visitedAnimals.xml");
+                }
+            }
+            AnimalsPushpins = new BindableCollection<AnimalPushpin>();
         }
     }
 }

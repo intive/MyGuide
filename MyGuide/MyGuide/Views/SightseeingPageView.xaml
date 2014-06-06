@@ -154,6 +154,9 @@
             <bindappbar:BindableAppBarMenuItem
                 x:Name="ShowPreferences"
                 Text="{Binding LocalizedResources.Preferences, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+            <bindappbar:BindableAppBarMenuItem
+                x:Name="DeleteVisitedAnimals"
+                Text="{Binding LocalizedResources.DeleteVisitedAnimal, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
         </bindappbar:BindableAppBar>
     </Grid>
 </views:PageViewBase>
