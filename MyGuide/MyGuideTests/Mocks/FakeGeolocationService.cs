@@ -67,5 +67,12 @@ namespace MyGuideTests.Mocks
             simulatorTimer = null;
         }
 
+
+
+        public void StartGeolocationTracker()
+        {
+            simulatorTimer = new Timer(SimmulateValueChange);
+            simulatorTimer.Change((long)_timeBetweenUpdates.TotalMilliseconds, (long)_timeBetweenUpdates.TotalMilliseconds);
+        }
     }
 }
