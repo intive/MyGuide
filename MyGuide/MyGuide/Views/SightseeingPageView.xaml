@@ -13,6 +13,7 @@
     xmlns:maps="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps"
     xmlns:mapsCore="clr-namespace:Microsoft.Phone.Controls.Maps.Core;assembly=Microsoft.Phone.Controls.Maps"
     xmlns:TileSources="clr-namespace:MyGuide.Services.Map"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Maps.Toolkit;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -31,18 +32,22 @@
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="{Binding LocalizedResources.ApplicationTitle, Mode=OneWay, Source={StaticResource LocalizedStrings}}" Style="{StaticResource PhoneTextNormalStyle}" />
             <TextBlock Text="sightseeing" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" />
+            <TextBlock TextWrapping="Wrap" Foreground="Red"  Text="{Binding Path=HeadingAngle}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+
+           
+
             <maps:Map
                 x:Name="MapControl"
                 Margin="10"
                 CredentialsProvider="Aqzt3lCfs-qg6pzuvrW7qCuGToXeff-Ii_ELq7piZ4HcKe6uLE2SHKuKJgZXZwTF"
                 LogoVisibility="Collapsed"
                 Center="51.104642, 17.073520"
-                ZoomLevel="15"
->
+                ZoomLevel="15">
+                
                 <maps:Map.Mode>
                     <mapsCore:MercatorMode />
                 </maps:Map.Mode>
@@ -52,8 +57,59 @@
                             <TileSources:OSMRenderTileSource />
                         </maps:MapTileLayer.TileSources>
                     </maps:MapTileLayer>
+
+                    <maps:MapLayer x:Name="UserPositionLayer" Visibility="{Binding Path=UserLayerVisibility, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <maps:Pushpin PositionOrigin="0.5,0.5" Location="{Binding UserPositionLocation, Mode=TwoWay}">
+                            <maps:Pushpin.Template>
+                                <ControlTemplate>
+                                    <Grid Width="100" Height="100" RenderTransformOrigin="0.5,0.5">
+                                        <Border  RenderTransformOrigin="0.5,0.5" Margin="0,0" Padding="0,0" UseLayoutRounding="False">
+                                            <Border.RenderTransform>
+                                                <RotateTransform  Angle="{Binding Path=HeadingAngle }" /> <!--{Binding Path=HeadingAngle }-->
+                                            </Border.RenderTransform>
+                                            <Grid Width="40" Height="40" RenderTransformOrigin="0.5,0.5">
+                                                <Grid.Background>
+                                                    <ImageBrush ImageSource="/Assets/MapOverlays/UsMark.png" />
+                                                </Grid.Background>
+
+                                                <!--<Rectangle Width="24" Height="24" Fill="Black" RenderTransformOrigin="0.5,0.5">
+                                                    <Rectangle.RenderTransform>
+                                                        <CompositeTransform Rotation="45" />
+                                                    </Rectangle.RenderTransform>
+
+                                                </Rectangle>
+                                                <Ellipse Width="18" Height="18" Fill="Red" />-->
+                                                <!--<Rectangle Fill="Black" Height="10" Width="20">
+                                                    <Rectangle.RenderTransform>
+                                                        <CompositeTransform Rotation="90" TranslateX="15" TranslateY="-30" />
+                                                    </Rectangle.RenderTransform>
+                                                </Rectangle>-->
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </ControlTemplate>
+                            </maps:Pushpin.Template>
+                            
+                        </maps:Pushpin>
+                    </maps:MapLayer>
                 </maps:Map.Children>
             </maps:Map>
+
+            
+            
+            <!--<StackPanel Name="CalibrationStackPanel" Background="Black" Opacity="1" Visibility="Collapsed">-->
+            <StackPanel Name="CalibrationStackPanel" Background="Black" Opacity="1" Visibility="{Binding Path=CalibrationStackPanelVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">
+                <Image Source="/Assets/CalibrateCompass.png" Opacity=".95" HorizontalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center">The compass on your device needs to be calibrated.
+                        Hold the device in front of you and sweep it through a figure 8 pattern as shown
+                        until the calibration is complete.</TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Center">
+                    <TextBlock>heading accuracy: </TextBlock>
+                    <TextBlock Name="HeadingAccuracy"></TextBlock>
+                    <TextBlock >°</TextBlock>
+                </StackPanel>
+                <Button Name="CalibrationButton" Content="Done" Background="{Binding Path=CalibrationButtonColor, Mode=OneWay}" ></Button>
+            </StackPanel>
         </Grid>
 
         <!--AppBar - bindable replacement of standard ApplicationBar-->
@@ -75,7 +131,7 @@
                 IconUri="/Assets/AppBarIcons/information.png" />
             <bindappbar:BindableAppBarButton
                 x:Name="ShowGastronomy"
-                
+
                 Text="{Binding LocalizedResources.Gastronomy, Mode=OneWay, Source={StaticResource LocalizedStrings}}"
                 IconUri="/Assets/AppBarIcons/food.png" />
             <bindappbar:BindableAppBarMenuItem

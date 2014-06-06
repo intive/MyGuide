@@ -21,6 +21,8 @@ namespace MyGuide.ViewModels
 
         private string langFallback;
 
+        private bool userLayerVisibility;
+
         public Configuration ConfData { get; set; }
 
         public int ExternalObjectRadius
@@ -62,6 +64,19 @@ namespace MyGuide.ViewModels
             }
         }
 
+        public bool UserLayerVisibility
+        {
+            get
+            {
+                return userLayerVisibility;
+            }
+            set
+            {
+                userLayerVisibility = value;
+                NotifyOfPropertyChange(() => UserLayerVisibility);
+            }
+        }
+
         #endregion Properties
 
         public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
@@ -70,6 +85,8 @@ namespace MyGuide.ViewModels
             ExternalObjectRadius = ConfData.externalObjectRadius;
             InternalObjectRadius = ConfData.internalObjectRadius;
             LangFallback = ConfData.langFallback;
+            UserLayerVisibility = ConfData.userLayerVisibility;
+            
         }
 
         public async void SaveOpt()
@@ -77,6 +94,7 @@ namespace MyGuide.ViewModels
             ConfData.externalObjectRadius = ExternalObjectRadius;
             ConfData.internalObjectRadius = InternalObjectRadius;
             ConfData.langFallback = LangFallback;
+            ConfData.userLayerVisibility = UserLayerVisibility;
             await _optionService.SaveOptions();
             _navigation.GoBack();
         }
