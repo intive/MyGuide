@@ -8,7 +8,6 @@
 
 #import "TrackDetailsViewController.h"
 #import "SWRevealViewController.h"
-#import "MapViewController.h"
 #import <MapKit/MapKit.h>
 #import "AFTracksData.h"
 #import "AFTrack.h"
@@ -16,7 +15,6 @@
 
 @interface TrackDetailsViewController ()
 
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) AFTrack *track;
 
 @end
@@ -27,12 +25,15 @@
 {
     [super viewDidLoad];
     self.track = [[[AFTracksData sharedParsedData] tracks] objectAtIndex:self.trackRow];
+    self.trackImage.image = [UIImage imageNamed: [NSString stringWithFormat:@"tracks_%@", [[self.track getName] lowercaseString]]];
     [self loadMenuBar];
 }
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [self loadViewContent];
 }
+
 - (void)loadViewContent
 {
     UILabel *progressLabel = (UILabel *)[self.view viewWithTag:101];
@@ -44,6 +45,7 @@
     UITextView *description = (UITextView *)[self.view viewWithTag:103];
     description.text = self.track.getDescription;
 }
+
 - (void)loadMenuBar
 {
     UIBarButtonItem *start = [[UIBarButtonItem alloc] initWithTitle:self.track.activeStatus style:UIBarButtonItemStylePlain target:self action:@selector(startOrStopProgress)];
@@ -58,13 +60,13 @@
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     UIBarButtonItem *startButton = [[self.navigationItem leftBarButtonItems] objectAtIndex:0];
-    if([startButton.title isEqualToString:@"start"]){
+    if([startButton.title isEqualToString:@"start"]) {
         self.track.activeStatus = @"stop";
         startButton.title = self.track.activeStatus;
         [userDefaults setObject:[self.track getName] forKey:@"current track"];
         [[LocationManager sharedLocationManager] loadTrackRegionsToMonitor:self.track];
     }
-    else{
+    else {
         self.track.activeStatus = @"start";
         startButton.title = self.track.activeStatus;
         [userDefaults setObject:EXPLORATION_TRACK_NAME forKey:@"current track"];
@@ -74,6 +76,7 @@
     [self loadViewContent];
     [self returnToMainMap];
 }
+
 - (void)clearProgress
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -86,6 +89,7 @@
     [[[[AFTracksData sharedParsedData] tracks] objectAtIndex:self.trackRow] clearProgress];
     [self loadViewContent];
 }
+
 - (void)returnToMainMap
 {
     UIViewController *initialViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];

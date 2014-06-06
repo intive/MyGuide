@@ -132,6 +132,10 @@
 		05F76E4A1941868700FCB4B5 /* access_bus.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F76E471941868700FCB4B5 /* access_bus.png */; };
 		05F76E4B1941868700FCB4B5 /* access_park.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F76E481941868700FCB4B5 /* access_park.png */; };
 		05F76E4C1941868700FCB4B5 /* access_tram.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F76E491941868700FCB4B5 /* access_tram.png */; };
+		05F76E591942446200FCB4B5 /* tracks_afryka.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F76E551942446200FCB4B5 /* tracks_afryka.png */; };
+		05F76E5A1942446200FCB4B5 /* tracks_rogate.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F76E561942446200FCB4B5 /* tracks_rogate.png */; };
+		05F76E5B1942446200FCB4B5 /* tracks_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F76E571942446200FCB4B5 /* tracks_logo.png */; };
+		05F76E5C1942446200FCB4B5 /* tracks_drapieżniki.png in Resources */ = {isa = PBXBuildFile; fileRef = 05F76E581942446200FCB4B5 /* tracks_drapieżniki.png */; };
 		05FA3485192FE90C007A730E /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC7614828F038538E66549 /* Graph.m */; };
 		05FA3486192FE930007A730E /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC793A45FEE0B15CC68841 /* Edge.m */; };
 		05FA3487192FE930007A730E /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAC705BCAD342F6CE48BA1E /* Vertex.m */; };
@@ -357,6 +361,10 @@
 		05F76E471941868700FCB4B5 /* access_bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = access_bus.png; sourceTree = "<group>"; };
 		05F76E481941868700FCB4B5 /* access_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = access_park.png; sourceTree = "<group>"; };
 		05F76E491941868700FCB4B5 /* access_tram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = access_tram.png; sourceTree = "<group>"; };
+		05F76E551942446200FCB4B5 /* tracks_afryka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tracks_afryka.png; sourceTree = "<group>"; };
+		05F76E561942446200FCB4B5 /* tracks_rogate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tracks_rogate.png; sourceTree = "<group>"; };
+		05F76E571942446200FCB4B5 /* tracks_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tracks_logo.png; sourceTree = "<group>"; };
+		05F76E581942446200FCB4B5 /* tracks_drapieżniki.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tracks_drapieżniki.png"; sourceTree = "<group>"; };
 		05FA3489192FEBF0007A730E /* GraphDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphDrawer.h; sourceTree = "<group>"; };
 		05FA348A192FEBF0007A730E /* GraphDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphDrawer.m; sourceTree = "<group>"; };
 		3D5EF605189637C000233B64 /* MyGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -605,6 +613,10 @@
 				05F36EC419411072000949E4 /* event_slonie_indyjskie.png */,
 				05F36EC519411072000949E4 /* event_zolwie_pustynne.png */,
 				05F36EC619411072000949E4 /* event_zyrafa_siatkowana.png */,
+				05F76E551942446200FCB4B5 /* tracks_afryka.png */,
+				05F76E561942446200FCB4B5 /* tracks_rogate.png */,
+				05F76E571942446200FCB4B5 /* tracks_logo.png */,
+				05F76E581942446200FCB4B5 /* tracks_drapieżniki.png */,
 				0533DEFE18DE1520001BCB28 /* menu.png */,
 				84BA95F719140466008A4237 /* Buzz-Trash-icon.png */,
 				05C335E5190C02DB000B705B /* info_contact_address.png */,
@@ -1057,6 +1069,7 @@
 				05985201194049F90089FC34 /* czerwonak_rozowy_pl.html in Resources */,
 				059851FD194049F90089FC34 /* antylopa_kama_pl.html in Resources */,
 				05F76E4B1941868700FCB4B5 /* access_park.png in Resources */,
+				05F76E5B1942446200FCB4B5 /* tracks_logo.png in Resources */,
 				05F36ECA19411072000949E4 /* event_mrownik.png in Resources */,
 				05F36ECE19411072000949E4 /* event_plaszczka.png in Resources */,
 				0533DF0118DE1520001BCB28 /* menu.png in Resources */,
@@ -1068,11 +1081,13 @@
 				05406E4318F313B6001656FC /* data.xml in Resources */,
 				0598528D194049FA0089FC34 /* zebra_chapmana_en.html in Resources */,
 				84BA95F819140466008A4237 /* Buzz-Trash-icon.png in Resources */,
+				05F76E5A1942446200FCB4B5 /* tracks_rogate.png in Resources */,
 				0533DF0218DE1520001BCB28 /* menu@2x.png in Resources */,
 				0598527B194049FA0089FC34 /* lama_pl.html in Resources */,
 				05985282194049FA0089FC34 /* osiol_domowy_en.html in Resources */,
 				05985209194049F90089FC34 /* foka_zwyczajna_pl.html in Resources */,
 				84BA95D5190FC426008A4237 /* events.xml in Resources */,
+				05F76E5C1942446200FCB4B5 /* tracks_drapieżniki.png in Resources */,
 				05985205194049F90089FC34 /* fenek_pl.html in Resources */,
 				0598528E194049FA0089FC34 /* zebra_chapmana_pl.html in Resources */,
 				05F36ED119411072000949E4 /* event_zolwie_pustynne.png in Resources */,
@@ -1094,6 +1109,7 @@
 				05406E4118F313A7001656FC /* gastronomy.xml in Resources */,
 				05985277194049FA0089FC34 /* kapibara_pl.html in Resources */,
 				8421D32218BE3B5100B54DC3 /* Images.xcassets in Resources */,
+				05F76E591942446200FCB4B5 /* tracks_afryka.png in Resources */,
 				05985204194049F90089FC34 /* fenek_en.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
