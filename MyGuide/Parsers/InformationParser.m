@@ -25,7 +25,7 @@ static NSString *kXmlPrice      = @"price";
 static NSString *kXmlTrams      = @"trams";
 static NSString *kXmlBuses      = @"buses";
 
-static NSString *kXmlParkingsInformation = @"parkings_information";
+static NSString *kXmlParkingsInformation = @"parking_information";
 static NSString *kXmlTicketsInformation  = @"information";
 static NSString *kXmlOpeningInformation  = @"opening_information";
 

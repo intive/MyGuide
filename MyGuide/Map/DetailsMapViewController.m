@@ -157,6 +157,23 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     [self.mapView addOverlay:path];
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapview viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]]) return nil;
+    
+    static NSString *AnnotationIdentifier = @"ZOO";
+    MKAnnotationView *annotationView = [self.mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationIdentifier];
+    
+    if(annotationView) return annotationView;
+    else
+    {
+        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
+        annotationView.image = [UIImage imageNamed:@"pinOrange"];
+        return annotationView;
+    }
+    return nil;
+}
+
 # pragma mark - Rendering directions
 
 - (void) drawDirectionsToLocation

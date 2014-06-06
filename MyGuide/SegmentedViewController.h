@@ -22,7 +22,9 @@
 - (IBAction) switchControllers: (UISegmentedControl *) segmentControl;
 
 - (void) prepareControllers;
-- (void) prepareFirstViewController: (NSString *) storyboardId;
+- (void) prepareFirstViewController:  (NSString *) storyboardId;
 - (void) prepareSecondViewController: (NSString *) storyboardId;
+- (BOOL) switchController: (UIViewController *) newController withAnimation: (BOOL) animation;
+- (UIViewController *) getControllerById: (NSString *) controllerID;
 
 @end

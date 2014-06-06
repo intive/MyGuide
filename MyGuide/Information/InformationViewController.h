@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SegmentedViewController.h"
 
-@interface InformationViewController : SegmentedViewController  
+@interface InformationViewController : SegmentedViewController
 
 @end

@@ -18,11 +18,6 @@
 
 @implementation AnimalsListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    return [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
