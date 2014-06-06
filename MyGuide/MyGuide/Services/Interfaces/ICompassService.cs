@@ -18,5 +18,7 @@ namespace MyGuide.Services.Interfaces
         void Start();
 
         void Stop();
+
+        bool IsSupported { get; }
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MyGuide.Services
+namespace MyGuideTests.Mocks
 {
     public class FakeCompassService : ICompassService
     {
@@ -41,18 +41,15 @@ namespace MyGuide.Services
 
         private double GetFakeAngle()
         {
-            Random r = new Random();
-           
-            return (r.NextDouble() * 360);
+            return 180.0;
         }
 
-        private void SimmulateValueChange(object state)
+        public void SimmulateValueChange(object state)
         {
-            var fakeCompassReading = new CompassReading()
+            var fakeCompassReading = new FakeCompassReading()
             {
                 MagneticNorthHeading = GetFakeAngle(),
                 TrueNorthHeading = (GetFakeAngle() + MagneticDeclination) % 360,
-                Timestamp = DateTime.Now,
                 AccuracyHeading = 0.0
             };
             if (fakeCompassReading.MagneticNorthHeading > -1)
@@ -73,6 +70,13 @@ namespace MyGuide.Services
         public void Stop()
         {
             simulatorTimer = null;
+        }
+
+
+
+        public bool IsSupported
+        {
+            get { return true; }
         }
     }
 }

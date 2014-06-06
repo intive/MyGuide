@@ -85,5 +85,11 @@ namespace MyGuide.Services
                 }
             });
         }
+
+
+        public bool IsSupported
+        {
+            get { return Compass.IsSupported; }
+        }
     }
 }

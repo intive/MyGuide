@@ -97,5 +97,11 @@ namespace MyGuide.Services
                 _timeBetweenUpdates = value;
             }
         }
+
+
+        public bool IsSupported
+        {
+            get { return true; }
+        }
     }
 }

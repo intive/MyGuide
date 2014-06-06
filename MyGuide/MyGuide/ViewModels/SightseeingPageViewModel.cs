@@ -21,16 +21,17 @@ namespace MyGuide.ViewModels
     {
         private double _headingAngle;
         private GeoCoordinate _userPositionLocation;
-        private GeoCoordinate _centerMapPositionLocation;
-        private ICompassService compass { get; set; }
-        private IGeolocationService geolocator { get; set; }
+        private ICompassService _compassService { get; set; }
+        private IGeolocationService _geolocationService { get; set; }
+		 private GeoCoordinate _centerMapPositionLocation;
         private IAnimalService _animalService;
 
         public SightseeingPageViewModel(INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService)
+            IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService, ICompassService compassService, IGeolocationService geolocationService)
             : base(navigationService, messageDialogService, dataService, optionService)
         {
-            
+            _compassService = compassService;
+            _geolocationService = geolocationService;
         }
 
         public double HeadingAngle
@@ -95,7 +96,7 @@ namespace MyGuide.ViewModels
                     if (Compass.IsSupported)
                     {
 
-                        compass.Stop();
+                        _compassService.Stop();
                         
                     }
                 }
@@ -103,19 +104,15 @@ namespace MyGuide.ViewModels
                 {
 
 
-                    compass.Calibrate -= compass_Calibrate;
-                    compass.CurrentValueChanged -= compass_CurrentValueChanged;
+                    _compassService.Calibrate -= compass_Calibrate;
+                    _compassService.CurrentValueChanged -= compass_CurrentValueChanged;
 
-                    //Geolocator don't want to unsubscribe when start button clicked sometimes
-                    geolocator.StopGeolocationTracker();
-                    geolocator.PositionChanged -= geolocator_PositionChanged;
+                    //_geolocationService don't want to unsubscribe when start button clicked sometimes
+                    _geolocationService.StopGeolocationTracker();
+                    _geolocationService.PositionChanged -= _geolocationService_PositionChanged;
                 }
             });
            
-        }
-
-        ~SightseeingPageViewModel()
-        {
         }
 
         public override async void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
@@ -124,34 +121,23 @@ namespace MyGuide.ViewModels
             CenterMapPositionLocation = new GeoCoordinate(51.104642, 17.073520);
             UserLayerVisibility =  _optionService.ConfigData.userLayerVisibility;
 
-            _animalService = new VisitedAnimalService(_dataService,_optionService);
+            _geolocationService.PositionChanged += new EventHandler < IGeolocationReading > (_geolocationService_PositionChanged);
+			_animalService = new VisitedAnimalService(_dataService,_optionService);
             await _animalService.Initialize();
 
             AnimalsPushpins = new BindableCollection<AnimalPushpin>();
 
-            geolocator = new GeolocationService();
-            geolocator.PositionChanged += new EventHandler < IGeolocationReading > (geolocator_PositionChanged);
-
-            if (Compass.IsSupported)
+            if (_compassService.IsSupported)
             {
-                compass = new RealCompassService();
 
                 //Crucial point
-                compass.TimeBetweenUpdates = TimeSpan.FromMilliseconds(200);
-                compass.Calibrate += new EventHandler<CalibrationEventArgs>(compass_Calibrate);
-                compass.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<ICompassReading>>(compass_CurrentValueChanged);
-                
-                compass.Start();
-            }
-            else
-            {
-                compass = new EmulatedCompassService();
-                compass.TimeBetweenUpdates = TimeSpan.FromMilliseconds(200);
-                compass.Calibrate += new EventHandler<CalibrationEventArgs>(compass_Calibrate);
-                compass.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<ICompassReading>>(compass_CurrentValueChanged);
+                _compassService.TimeBetweenUpdates = TimeSpan.FromMilliseconds(200);
+                _compassService.Calibrate += new EventHandler<CalibrationEventArgs>(compass_Calibrate);
+                _compassService.CurrentValueChanged += new EventHandler<SensorReadingEventArgs<ICompassReading>>(compass_CurrentValueChanged);
 
-                compass.Start();
+                _compassService.Start();
             }
+
         }
 
         
@@ -175,10 +161,10 @@ namespace MyGuide.ViewModels
             }
         }
 
-        private void geolocator_PositionChanged(object sender, IGeolocationReading e)
+        private void _geolocationService_PositionChanged(object sender, IGeolocationReading e)
         {
 
-            UserPositionLocation = new GeoCoordinate(e.Position.Coordinate.Latitude, e.Position.Coordinate.Longitude);
+            UserPositionLocation = new GeoCoordinate(e.Position.Latitude, e.Position.Longitude);
             CenterMapPositionLocation = new GeoCoordinate(e.Position.Coordinate.Latitude, e.Position.Coordinate.Longitude);
             AnimalsPushpins = _animalService.SearchForAnimals(UserPositionLocation);
       
