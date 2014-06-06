@@ -390,7 +390,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="Gx2-Gc-Zza" kind="embed" id="fLN-qm-yI2"/>
+                                    <segue destination="Gx2-Gc-Zza" kind="embed" id="6Vx-Tq-r5b"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -613,10 +613,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Ioj-em-4G3" secondAttribute="bottom" constant="70" id="8K1-TN-NvR"/>
-                                    <constraint firstAttribute="width" constant="320" id="Gec-kX-cew"/>
                                     <constraint firstItem="Ioj-em-4G3" firstAttribute="leading" secondItem="PSt-TR-Seu" secondAttribute="leading" id="LHx-qU-hlJ"/>
                                     <constraint firstItem="Ioj-em-4G3" firstAttribute="top" secondItem="PSt-TR-Seu" secondAttribute="top" id="Yq1-kK-XhW"/>
-                                    <constraint firstAttribute="height" constant="590" id="dRX-bB-mnh"/>
                                     <constraint firstAttribute="trailing" secondItem="Ioj-em-4G3" secondAttribute="trailing" id="vo7-dI-lkb"/>
                                 </constraints>
                             </scrollView>
@@ -658,14 +656,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LJo-nU-H8K" customClass="UIBubbleTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="9" width="320" height="554"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="LJo-nU-H8K" secondAttribute="bottom" id="L34-hD-Pa6"/>
+                            <constraint firstItem="Zri-RI-kcY" firstAttribute="top" secondItem="LJo-nU-H8K" secondAttribute="bottom" constant="5" id="6cA-ZT-VQQ"/>
                             <constraint firstItem="LJo-nU-H8K" firstAttribute="top" secondItem="MuK-iU-AhA" secondAttribute="top" id="Qzh-MJ-Gf5"/>
                             <constraint firstItem="LJo-nU-H8K" firstAttribute="leading" secondItem="MuK-iU-AhA" secondAttribute="leading" id="UaZ-US-VSh"/>
                             <constraint firstAttribute="trailing" secondItem="LJo-nU-H8K" secondAttribute="trailing" id="rWq-3a-985"/>
@@ -1229,8 +1227,94 @@
             </objects>
             <point key="canvasLocation" x="85" y="1626"/>
         </scene>
+        <!--Access View Controller-->
+        <scene sceneID="TFo-2z-nwm">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uie-n1-wO0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="accessViewController" id="eXb-oC-Bn3" customClass="AccessViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4VD-nW-6hi"/>
+                        <viewControllerLayoutGuide type="bottom" id="QIC-Ai-f4o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4WQ-ee-mhf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MM6-Em-VR1">
+                                <rect key="frame" x="11" y="0.0" width="299" height="238"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                            <view alpha="0.84999999999999987" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VCr-BG-7sm">
+                                <rect key="frame" x="10" y="181" width="309" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="oOy-eD-3wm">
+                                        <rect key="frame" x="20" y="8" width="260" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">ul. Wróblewskiego 1-5
+51-618 WROCŁAW</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WvV-3l-msF">
+                                <rect key="frame" x="0.0" y="246" width="320" height="322"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="access_bus.png" translatesAutoresizingMaskIntoConstraints="NO" id="UUu-Nt-2H4">
+                                        <rect key="frame" x="11" y="0.0" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="access_tram.png" translatesAutoresizingMaskIntoConstraints="NO" id="3bE-xD-2Le">
+                                        <rect key="frame" x="11" y="40" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLL-aW-Sdr">
+                                        <rect key="frame" x="51" y="77" width="261" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="access_park.png" translatesAutoresizingMaskIntoConstraints="NO" id="W4P-HF-LOc">
+                                        <rect key="frame" x="11" y="83" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4I-r4-tmh">
+                                        <rect key="frame" x="51" y="0.0" width="261" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </scrollView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owa-re-YFd">
+                                        <rect key="frame" x="51" y="40" width="261" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <size key="freeformSize" width="320" height="500"/>
+                    <connections>
+                        <outlet property="labelAddress" destination="oOy-eD-3wm" id="QAY-Xc-rbn"/>
+                        <outlet property="mapView" destination="MM6-Em-VR1" id="rcc-Jn-5G0"/>
+                        <outlet property="scrollViewBuses" destination="C4I-r4-tmh" id="ISl-iZ-rsn"/>
+                        <outlet property="scrollViewTrams" destination="owa-re-YFd" id="ozc-D7-0bH"/>
+                        <outlet property="textViewPark" destination="hLL-aW-Sdr" id="Aal-R0-vXa"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="85" y="-387"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="access_bus.png" width="128" height="128"/>
+        <image name="access_park.png" width="128" height="128"/>
+        <image name="access_tram.png" width="128" height="128"/>
         <image name="animals" width="26" height="26"/>
         <image name="arrowUp" width="252" height="84"/>
         <image name="events" width="26" height="26"/>

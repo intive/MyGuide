@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface AccessViewController : UIViewController
+@interface AccessViewController : UIViewController <MKMapViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel      *labelAddress;
+@property (weak, nonatomic) IBOutlet UITextView   *textViewPark;
+@property (weak, nonatomic) IBOutlet MKMapView    *mapView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewBuses;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewTrams;
 
 @end
