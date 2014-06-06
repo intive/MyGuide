@@ -44,7 +44,7 @@ namespace MyGuideTests.Mocks
             return 180.0;
         }
 
-        private void SimmulateValueChange(object state)
+        public void SimmulateValueChange(object state)
         {
             var fakeCompassReading = new FakeCompassReading()
             {
@@ -70,6 +70,13 @@ namespace MyGuideTests.Mocks
         public void Stop()
         {
             simulatorTimer = null;
+        }
+
+
+
+        public bool IsSupported
+        {
+            get { return true; }
         }
     }
 }

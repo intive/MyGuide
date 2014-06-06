@@ -53,6 +53,7 @@ namespace MyGuide
             container.PerRequest<IMessageDialogService, MessageDialogService>();
             container.Singleton<LittleWatson>();
             container.PerRequest<ICompassService, RealCompassService>();
+            container.PerRequest<IGeolocationService, GeolocationService>();
 
             //uncomment this when ( and comment RealCompassService) when testing on emulator
             //container.PerRequest<ICompassService, EmulatedCompassService>();

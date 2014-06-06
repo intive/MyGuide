@@ -25,11 +25,19 @@ namespace MyGuideTests.Tests
             var dataService = new Mock<IDataService>(MockBehavior.Strict);
             var optionService = new Mock<IOptionsService>(MockBehavior.Strict);
             optionService.SetupGet(x => x.ConfigData.userLayerVisibility).Returns(true);
+            var compassService = new FakeCompassService();
+            var geolocationService = new FakeGeolocationService();
 
-            var SightPViewModel = new SightseeingPageViewModel(navService.Object, messageDialogService.Object, dataService.Object, optionService.Object,new FakeCompassService());
+            var SightPViewModel = new SightseeingPageViewModel(navService.Object, messageDialogService.Object, dataService.Object, optionService.Object, compassService, geolocationService);
             SightPViewModel.OnNavigatedTo(NavigationMode.New,true);
-            
-            Assert.IsFalse(false);
+            compassService.SimmulateValueChange(null);
+            geolocationService.SimmulateValueChange(null);
+
+            Assert.AreEqual(180.0,SightPViewModel.HeadingAngle);
+            Assert.AreEqual(0.0, SightPViewModel.HeadingAccuracy);
+
+            Assert.AreEqual(51.1047078, SightPViewModel.UserPositionLocation.Latitude);
+            Assert.AreEqual(17.0784479, SightPViewModel.UserPositionLocation.Longitude);
         }
     }
 }

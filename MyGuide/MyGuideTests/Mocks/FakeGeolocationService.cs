@@ -20,7 +20,7 @@ namespace MyGuideTests.Mocks
             simulatorTimer.Change((long)_timeBetweenUpdates.TotalMilliseconds, (long)_timeBetweenUpdates.TotalMilliseconds);
         }
 
-        private void SimmulateValueChange(object state)
+        public void SimmulateValueChange(object state)
         {
             var fakeGeolocationReading = new GeolocationReading()
             {

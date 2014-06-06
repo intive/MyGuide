@@ -24,13 +24,14 @@ namespace MyGuide.ViewModels
         private double _headingAngle;
         private GeoCoordinate _userPositionLocation;
         private ICompassService _compassService { get; set; }
-        private IGeolocationService geolocator { get; set; }
+        private IGeolocationService _geolocationService { get; set; }
 
         public SightseeingPageViewModel(INavigationService navigationService,
-            IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService, ICompassService compassService)
+            IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService, ICompassService compassService, IGeolocationService geolocationService)
             : base(navigationService, messageDialogService, dataService, optionService)
         {
             _compassService = compassService;
+            _geolocationService = geolocationService;
         }
 
         public double HeadingAngle
@@ -96,9 +97,9 @@ namespace MyGuide.ViewModels
                     _compassService.Calibrate -= compass_Calibrate;
                     _compassService.CurrentValueChanged -= compass_CurrentValueChanged;
 
-                    //Geolocator don't want to unsubscribe when start button clicked sometimes
-                    geolocator.StopGeolocationTracker();
-                    geolocator.PositionChanged -= geolocator_PositionChanged;
+                    //_geolocationService don't want to unsubscribe when start button clicked sometimes
+                    _geolocationService.StopGeolocationTracker();
+                    _geolocationService.PositionChanged -= _geolocationService_PositionChanged;
                 }
             });
            
@@ -109,10 +110,9 @@ namespace MyGuide.ViewModels
             UserPositionLocation = new GeoCoordinate(51.104642, 17.073520);
             UserLayerVisibility = _optionService.ConfigData.userLayerVisibility;
 
-            geolocator = new GeolocationService();
-            geolocator.PositionChanged += new EventHandler < IGeolocationReading > (geolocator_PositionChanged);
+            _geolocationService.PositionChanged += new EventHandler < IGeolocationReading > (_geolocationService_PositionChanged);
 
-            if (Compass.IsSupported)
+            if (_compassService.IsSupported)
             {
 
                 //Crucial point
@@ -146,7 +146,7 @@ namespace MyGuide.ViewModels
             }
         }
 
-        private void geolocator_PositionChanged(object sender, IGeolocationReading e)
+        private void _geolocationService_PositionChanged(object sender, IGeolocationReading e)
         {
             UserPositionLocation = new GeoCoordinate(e.Position.Latitude, e.Position.Longitude);
         }
