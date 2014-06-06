@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using Microsoft.Devices.Sensors;
 using Microsoft.Phone.Controls.Maps;
+using MyGuide.DataServices;
 using MyGuide.DataServices.Interfaces;
 using MyGuide.Models;
 using MyGuide.Models.MapModels;
@@ -23,12 +24,13 @@ namespace MyGuide.ViewModels
         private GeoCoordinate _centerMapPositionLocation;
         private ICompassService compass { get; set; }
         private IGeolocationService geolocator { get; set; }
+        private IAnimalService _animalService;
 
         public SightseeingPageViewModel(INavigationService navigationService,
             IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService)
             : base(navigationService, messageDialogService, dataService, optionService)
         {
-            AnimalsPushpins = new BindableCollection<AnimalPushpin>();
+            
         }
 
         public double HeadingAngle
@@ -81,9 +83,11 @@ namespace MyGuide.ViewModels
 
         #endregion Commands
 
-        public override void OnNavigatedFrom(NavigationMode navigationMode)
+        public override async void OnNavigatedFrom(NavigationMode navigationMode)
         {
-            Task.Run(() =>
+            await _animalService.SaveList();
+
+            await Task.Run(() =>
             {
 
                 try
@@ -114,11 +118,16 @@ namespace MyGuide.ViewModels
         {
         }
 
-        public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
+        public override async void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
         {
             UserPositionLocation = new GeoCoordinate(51.104642, 17.073520);
             CenterMapPositionLocation = new GeoCoordinate(51.104642, 17.073520);
-            UserLayerVisibility = _optionService.ConfigData.userLayerVisibility;
+            UserLayerVisibility =  _optionService.ConfigData.userLayerVisibility;
+
+            _animalService = new VisitedAnimalService(_dataService,_optionService);
+            await _animalService.Initialize();
+
+            AnimalsPushpins = new BindableCollection<AnimalPushpin>();
 
             geolocator = new GeolocationService();
             geolocator.PositionChanged += new EventHandler < IGeolocationReading > (geolocator_PositionChanged);
@@ -171,7 +180,7 @@ namespace MyGuide.ViewModels
 
             UserPositionLocation = new GeoCoordinate(e.Position.Coordinate.Latitude, e.Position.Coordinate.Longitude);
             CenterMapPositionLocation = new GeoCoordinate(e.Position.Coordinate.Latitude, e.Position.Coordinate.Longitude);
-            SearchForAnimals();
+            AnimalsPushpins = _animalService.SearchForAnimals(UserPositionLocation);
       
         }
 
@@ -262,31 +271,9 @@ namespace MyGuide.ViewModels
             }
         }
 
-        public void SearchForAnimals()
-        {
-            foreach(Animal a in _dataService.Datas.AnimalsList.Items)
-            {
-                GeoCoordinate animalPosition = new GeoCoordinate(a.Latitude, a.Longitude);
-                double dist = UserPositionLocation.GetDistanceTo(animalPosition);
-                if (dist <= _optionService.ConfigData.internalObjectRadius && !isAnimalPushpinExist(a.Name))
-                {
-                    AnimalsPushpins.Add(new AnimalPushpin() { Coordinate = animalPosition, Description = "description", Name = a.Name });
-                }
-            }   
-        }
+        
 
-        private bool isAnimalPushpinExist(string animalName)
-        {
-            bool result = false;
-            foreach (AnimalPushpin ap in AnimalsPushpins)
-            {
-                if (ap.Name != null && ap.Name.Equals(animalName))
-                {
-                    result = true;
-                }
-            }
-            return result;
-        }
+        
 
         public void WritePushpinList()
         {

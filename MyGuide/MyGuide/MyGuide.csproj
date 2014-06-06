@@ -98,7 +98,9 @@
     <Compile Include="Caliburn\Micro\Logging\IsolatedStorageTarget.cs" />
     <Compile Include="Caliburn\Micro\Logging\LittleWatson.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="DataServices\Interfaces\IAnimalService.cs" />
     <Compile Include="DataServices\Interfaces\IXmlParser.cs" />
+    <Compile Include="DataServices\VisitedAnimalService.cs" />
     <Compile Include="DataServices\XmlParser.cs" />
     <Compile Include="DesignData\LoremImpusGenerator.cs" />
     <Compile Include="LocalizedStrings.cs" />
@@ -106,7 +108,7 @@
     <Compile Include="DataServices\Interfaces\IDataService.cs" />
     <Compile Include="DataServices\Interfaces\IOptionsService.cs" />
     <Compile Include="Models\LackOfXmlFileException.cs" />
-    <Compile Include="Models\MapModels\AnimalPushpin.cs" />
+    <Compile Include="Models\MapModels\AnimalPushpinModels.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="DataServices\OptionsService.cs" />
     <Compile Include="Models\XmlSerializationOptionModels.cs" />
