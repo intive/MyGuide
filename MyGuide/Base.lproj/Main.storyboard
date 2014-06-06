@@ -1183,27 +1183,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsw-Sw-Q3J">
-                                <rect key="frame" x="0.0" y="133" width="320" height="324"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6N-jA-2hW">
+                                <rect key="frame" x="0.0" y="130" width="320" height="235"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Vsw-Sw-Q3J" secondAttribute="trailing" id="091-9o-cBx"/>
-                            <constraint firstAttribute="bottom" secondItem="Vsw-Sw-Q3J" secondAttribute="bottom" id="0Qn-bL-tX1"/>
-                            <constraint firstAttribute="trailing" secondItem="nzX-2y-wwf" secondAttribute="trailing" id="LCt-VA-zaq"/>
-                            <constraint firstItem="Vsw-Sw-Q3J" firstAttribute="leading" secondItem="ggO-Ey-P8s" secondAttribute="leading" id="O7w-E2-YmD"/>
-                            <constraint firstItem="nzX-2y-wwf" firstAttribute="leading" secondItem="ggO-Ey-P8s" secondAttribute="leading" id="Skl-ZB-l2o"/>
-                            <constraint firstItem="nzX-2y-wwf" firstAttribute="top" secondItem="ggO-Ey-P8s" secondAttribute="top" id="TPu-MR-AH2"/>
-                            <constraint firstItem="Vsw-Sw-Q3J" firstAttribute="top" secondItem="nzX-2y-wwf" secondAttribute="bottom" constant="8" symbolic="YES" id="zHI-WE-mKb"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="webView" destination="D6N-jA-2hW" id="pIJ-h0-GCO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0d-XC-5f4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
