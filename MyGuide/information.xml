@@ -116,12 +116,8 @@
         <buses>145, 146, 253, 255, 701</buses>
         <trams>2, 10</trams>
         <parking_information>
-            <pl>
-                ZOO nie posiada miejsc parkingowych dla gości. Można poszukiwać miejsca do parkowania wzdłuż ulicy Zygmunta Wróblewskiego. Najbiższym parkingiem jest parking naprzeciwko Hali Stulecia.
-            </pl>
-            <en>
-                ZOO doesn't have parking dedicated for visitors. You can look for parking slots along Zygmunta Wroblewskiego street. The nearest parking is in front of Hala Ludowa
-            </en>
+            <pl>ZOO nie posiada miejsc parkingowych dla gości. Można poszukiwać miejsca do parkowania wzdłuż ulicy Zygmunta Wróblewskiego. Najbiższym parkingiem jest parking naprzeciwko Hali Stulecia.</pl>
+            <en>ZOO doesn't have parking dedicated for visitors. You can look for parking slots along Zygmunta Wroblewskiego street. The nearest parking is in front of Hala Stulecia.</en>
         </parking_information>
 	</access_information>
 </root>
