@@ -99,7 +99,7 @@
                       toViewController: newController
                               duration: .6
                                options: animation ?
-UIViewAnimationOptionTransitionFlipFromLeft :
+UIViewAnimationOptionTransitionFlipFromTop :
      UIViewAnimationOptionTransitionNone
                             animations: nil
                             completion: ^(BOOL finished) {
