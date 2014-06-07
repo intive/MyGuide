@@ -218,8 +218,12 @@ public class XmlObjectDetailsMapFragment extends Fragment implements Parcelable 
 				.title(animal.getName())
 				.icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.ic_animal)));
+        if (animal.getClass().equals(Animal.class)) {
+            Animal a = (Animal) animal;
+            mCheckMarker = marker;
+            if (a.getVisited()) changeAnimalMarkerIcon(R.drawable.ic_animal_visited);
+        }
 		mMarkerIDsXmlObject.put(marker.getId(), animal);
-
 	}
 
 	private void drawAllWays() {
@@ -242,8 +246,8 @@ public class XmlObjectDetailsMapFragment extends Fragment implements Parcelable 
 	/**
 	 * Added by Agnieszka for marking close animals. Reads user's position,
 <<<<<<< HEAD:src/com/blstream/myguide/AnimalDetailsMapFragment.java
-	 * checks closest Animals using {@link AnimalFinderHelper} and marks them on
-	 * the map using {@link XmlDetailsMapFragment#markPosition(Animal)}
+	 * checks closest Animals using {@link XmlObjectFinderHelper} and marks them on
+	 * the map using {@link XmlDetailsMapFragment#markPosition(XmlObject)}
 =======
 	 * checks closest Animals using {@link XmlObjectFinderHelper} and marks them on
 	 * the map using
@@ -258,10 +262,10 @@ public class XmlObjectDetailsMapFragment extends Fragment implements Parcelable 
 		mXmlObjectOnMap.add(mXmlObject);
 
 		if (markClosestAnimals) {
-			XmlObjectFinderHelper animalFinder = new XmlObjectFinderHelper(location,
+			XmlObjectFinderHelper xmlObjectFinder = new XmlObjectFinderHelper(location,
 					(MyGuideApp) this.getActivity().getApplication(), this
 							.getActivity().getApplicationContext(), new Animal());
-			ArrayList<XmlObjectDistance> allAnimals = animalFinder
+			ArrayList<XmlObjectDistance> allAnimals = xmlObjectFinder
 					.allXmlObjectsWithDistances();
 
 			for (int i = 0; i < 4; i++) {
@@ -426,9 +430,6 @@ public class XmlObjectDetailsMapFragment extends Fragment implements Parcelable 
 		// please note that GoogleMap object will not be available at the spot
 		// so GoogleMap object will be requested in the next Fragment's
 		// lifecycle method
-		
-		if(mXmlObject != null)
-			getActivity().getActionBar().setTitle(mXmlObject.getName());
 
 		return mRootView;
 	}
