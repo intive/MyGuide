@@ -1,2122 +1,2432 @@
 ﻿<root>
-	<contact_information>
-		<openings>
-			<opening>
-				<description>
-					<pl>Wiosna (1 Marzec - 31 Marzec)</pl>
-					<en>Spring (1 March - 31 March)</en>
-				</description>
-				<hours>
-					<weekdays>9:00 - 17:00</weekdays>
-					<weekends>9:00 - 17:00</weekends>
-				</hours>
-			</opening>
-			<opening>
-				<description>
-					<pl>Lato (1 Kwiecień - 30 Wrzesień)</pl>
-					<en>Summer (1 April - 30 September)</en>
-				</description>
-				<hours>
-					<weekdays>9:00 - 18:00</weekdays>
-					<weekends>9:00 - 19:00 </weekends>
-				</hours>
-			</opening>
-			<opening>
-				<description>
-					<pl>Jesień (1  Październik - 31 Październik)</pl>
-					<en>Autumn (1 October - 31 October)</en>
-				</description>
-				<hours>
-					<weekdays>9:00 - 17:00</weekdays>
-					<weekends>9:00 - 17:00</weekends>
-				</hours>
-			</opening>
-			<opening>
-				<description>
-					<pl>Zima (1 listopad - 28/29 Luty)</pl>
-					<en>Winter (1 November - 28/29 February)</en>
-				</description>
-				<hours>
-					<weekdays>9:00 - 16:00</weekdays>
-					<weekends>9:00 - 16:00</weekends>
-				</hours>
-			</opening>
-		</openings>
-		<website>http://www.zoo.wroclaw.pl/</website>
-		<emails>
-			<email>lutra@zoo.wroc.pl</email>
-			<email>zoo-sekretariat@zoo.wroc.pl</email>
-			<email>zamowienia@zoo.wroc.pl</email>
-			<email>zoo-marketing@zoo.wroc.pl</email>
-			<email>zoo-edukacja@zoo.wroc.pl</email>
-		</emails>
-		<telephone>+48/71 348 30 24</telephone>
-		<address>
-			ZOO Wrocław sp.z o.o.
-			ul. Wróblewskiego 1-5
-			51-618 WROCŁAW
-			POLSKA
-		</address>
-	</contact_information>
-	
-	<tickets_information>
-		<individual>
-			<ticket>
-				<description>
-					<pl>Dorosły</pl>
-					<en>Adult</en>
-				</description>
-				<price>30</price>
-			</ticket>
-			<ticket>
-				<description>
-					<pl>Dziecko</pl>
-					<en>Child</en>
-				</description>
-				<price>20</price>
-			</ticket>
-			<ticket>
-				<description>
-					<pl>Student</pl>
-					<en>Student</en>
-				</description>
-				<price>25</price>
-			</ticket>
-		</individual>
-		<group>
-			<ticket>
-				<description>
-					<pl>Bilet rodzinny (2 dorosłych + maksymalnie 3 dzieci)</pl>
-					<en>Family ticket (2 adult + max 3 children)</en>
-				</description>
-				<price>85</price>
-			</ticket>
-			<ticket>
-				<description>
-					<pl>Osoba dorosła/os</pl>
-					<en>Adult</en>
-				</description>
-				<price>25</price>
-			</ticket>			
-			<ticket>
-				<description>
-					<pl>Dziecko/os</pl>
-					<en>Child</en>
-				</description>
-				<price>12</price>
-			</ticket>
-		</group>
-		<information>
-			<pl>Dzieci do lat 3 wchodzą bezpłatnie. Bilety ulgowe obowiązują do 18 roku życia</pl>
-			<en>Children under 3 can go for free. Reduced tickets are valid until 18 years old</en>
-		</information>
-	</tickets_information>
-	
-	<access_information>
-		<buses>145, 146, 253, 255, 701</buses>
-		<trams>2, 10</trams>
-		<parking_information>
-			<pl>ZOO nie posiada miejsc parkingowych dla gości. Można poszukiwać miejsca do parkowania wzdłuż ulicy Zygmunta Wróblewskiego. Najbiższym parkingiem jest parking naprzeciwko Hali Stulecia.</pl>
-			<en>ZOO doesn't have parking dedicated for visitors. You can look for parking slots along Zygmunta Wroblewskiego street. The nearest parking is in front of Hala Ludowa</en>
-		</parking_information>
-	</access_information>
-	
-	<visiting_tracks>
-		<track>
-			<name>
-				<pl>Afryka</pl>
-				<en>Africa</en>
-			</name>
-			<description>
-				<pl>Trasa prowadzi przez zwierzęta afrykańskie dzięki czemu poczujesz się jak na prawdziwym safari.</pl>
-				<en>This track takes you through all african animals so you can feel like being on a safari.</en>
-			</description>
-			<image>img/africa.jpg</image>
-			<animals>
-				<animal_id>56</animal_id> <!-- antylopa kama -->
-				<animal_id>19</animal_id> <!-- fenek -->
-				<animal_id>6</animal_id>  <!-- gnu -->
-				<animal_id>10</animal_id> <!-- kob -->
-				<animal_id>3</animal_id>  <!-- lew -->
-				<animal_id>7</animal_id>  <!-- oryks -->
-				<animal_id>8</animal_id>  <!-- perlica -->
-				<animal_id>11</animal_id> <!-- sitatunga -->
-				<animal_id>1</animal_id>  <!-- zyrafa -->
-				<animal_id>4</animal_id>  <!-- zebra-->
-			</animals>
-		</track>
-		<track>
-			<name>
-				<pl>Drapieżniki</pl>
-				<en>Predators</en>
-			</name>
-			<description>
-				<pl>Trasa dla odważnych i szukających przygód. Czy nie wystraszysz się Lwa?</pl>
-				<en>Track for brave and looking for an adventure. Wouldn't the Lion scare You?</en>
-			</description>
-			<image>img/predators.jpg</image>
-			<animals>
-				<animal_id>3</animal_id>  <!-- lew -->
-				<animal_id>19</animal_id> <!-- fenek -->
-				<animal_id>2</animal_id>  <!-- foka -->
-			</animals>
-		</track>
-		<track>
-			<name>
-				<pl>Rogate</pl>
-				<en>Horned</en>
-			</name>
-			<description>
-				<pl>Trasa na której wszystko jest rogate duże i małe.</pl>
-				<en>Everything is horned on this track, big and small.</en>
-			</description>
-			<image>img/horned.jpg</image>
-			<animals>
-				<animal_id>6</animal_id>  <!-- gnu -->
-				<animal_id>56</animal_id> <!-- antylopa -->
-				<animal_id>10</animal_id> <!-- kob -->
-				<animal_id>7</animal_id>  <!-- oryks -->
-				<animal_id>11</animal_id> <!-- sitatunga -->
-			</animals>
-		</track>
-	</visiting_tracks>
-	
-	<gastronomy>
-		<restaurant lat="51.1052072" lon="17.0754498"> <!-- these lat and long are fakes at the moment -->
-			<image>img/letnia.png</image>
-			<name>
-				<pl>Restauracja Letnia</pl>
-				<en>Restauracja Letnia EN</en>
-			</name>
-			<open>9:00-18:00</open>
-			<dishes>
-				<dish>
-					<price>7.50</price>
-					<name>
-						<pl>Kiełbasa</pl>
-						<en>EN (Kiełbasa)</en>
-					</name>
-				</dish>
-				<dish>
-					<price>5.00</price>
-					<name>
-						<pl>Kawa</pl>
-						<en>EN (Kawa)</en>
-					</name>
-				</dish>
-				<dish>
-					<price>16.00</price>
-					<name>
-						<pl>Sałatka grecka</pl>
-						<en>EN (Sałatka grecka)</en>
-					</name>
-				</dish>
-				<dish>
-					<price>11.00</price>
-					<name>
-						<pl>Klopsiki</pl>
-						<en>EN (Klopsiki)</en>
-					</name>
-				</dish>
-				<dish>
-					<price>12.00</price>
-					<name>
-						<pl>Karczek</pl>
-						<en>EN (Karczek)</en>
-					</name>
-				</dish>
-				<dish>
-					<price>7.00</price>
-					<name>
-						<pl>Parówka</pl>
-						<en>EN (Parówka)</en>
-					</name>
-				</dish>
-				<dish>
-					<price>5.50</price>
-					<name>
-						<pl>Frytki</pl>
-						<en>EN (Frytki)</en>
-					</name>
-				</dish>
-			</dishes>
-		</restaurant>
-		<restaurant lat="51.1052072" lon="17.0754498">
-		<image>img/pod_papugami.png</image>
-			<name>
-				<pl>Restauracja Pod Papugami</pl>
-				<en>Restauracja Pod Papugami EN</en>
-			</name>
-			<open>10:00-17:00</open>
-			<dishes>
-				<dish>
-					<price>7.50</price>
-					<name>
-						<pl>Kiełbasa</pl>
-						<en>EN (Kiełbasa)</en>
-					</name>
-				</dish>
-			</dishes>
-		</restaurant>
-		<restaurant lat="51.1052072" lon="17.0754498">
-			<image>img/przystanek_zoo.png</image>
-			<name>
-				<pl>Przystanek ZOO</pl>
-				<en>Przystanek ZOO EN</en>
-			</name>
-			<open>9:00-22:00</open>
-			<dishes>
-				<dish>
-					<price>7.50</price>
-					<name>
-						<pl>Kiełbasa</pl>
-						<en>EN (Kiełbasa)</en>
-					</name>
-				</dish>
-			</dishes>
-		</restaurant>
-		<restaurant lat="51.1052072" lon="17.0754498">
-			<image>img/karczma_koala.png</image>
-			<name>
-				<pl>Karczma Koala</pl>
-				<en>Karczma Koala EN</en>
-			</name>
-			<open>9:00-18:00</open>
-			<dishes>
-				<dish>
-					<price>7.50</price>
-					<name>
-						<pl>Kiełbasa</pl>
-						<en>EN (Kiełbasa)</en>
-					</name>
-				</dish>
-			</dishes>
-		</restaurant>
-		<restaurant lat="51.1052072" lon="17.0754498">
-			<image>img/karczma_lwa.png</image>
-			<name>
-				<pl>Karczma Lwa</pl>
-				<en>Karczma Lwa EN</en>
-			</name>
-			<open>9:00-18:00</open>
-			<dishes>
-				<dish>
-					<price>7.50</price>
-					<name>
-						<pl>Kiełbasa</pl>
-						<en>EN (Kiełbasa)</en>
-					</name>
-				</dish>
-			</dishes>
-		</restaurant>
-	</gastronomy>
-	<events>
-		<event>
-			<name>
-				<pl>Kotiki afrykańkie</pl>
-				<en>African Kotik</en>
-			</name>
-			<time>11:00;14:00</time>
-			<time_weekends>11:00;14:00;17:00</time_weekends>
-			<time_christmas>11:00;14:00;17:00</time_christmas>
-			<image>img/kotiki.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Żyrafy siatkowane</pl>
-				<en>Reticulated Giraffe</en>
-			</name>
-			<time>9:15</time>
-			<image>img/zyrafa.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Niedźwiedzie brunatne</pl>
-				<en>Brown Bear</en>
-			</name>
-			<time>9:30</time>
-			<image>img/niedzwiedz.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Pawiany masajskie</pl>
-				<en>Maasai Baboons</en>
-			</name>
-			<time>11:00</time>
-			<image>img/pawiany.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Hipopotamy</pl>
-				<en>Hippos</en>
-			</name>
-			<time>11:00</time>
-			<image>img/hipo.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Ptaki (ptaszarnia)</pl>
-				<en>Birds (aviary)</en>
-			</name>
-			<time>12:00</time>
-			<image>img/ptaki.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Lemury</pl>
-				<en>Lemurs</en>
-			</name>
-			<time>13:00</time>
-			<image>img/lemury.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Słonie indyjskie</pl>
-				<en>Indian Elephants</en>
-			</name>
-			<time>12:30</time>
-			<image>img/slonie.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Żółwie pustynne</pl>
-				<en>Desert Turtles</en>
-			</name>
-			<time>12:00</time>
-			<start>1.06</start>
-			<image>img/zolwie.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Pelikany</pl>
-				<en>Pelicans</en>
-			</name>
-			<time>13:00</time>
-			<image>img/pelikany.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Mrówniki</pl>
-				<en>Earth Hogs</en>
-			</name>
-			<time>13:30</time>
-			<image>img/mrownik.jpg</image>
-		</event>
-		<event>
-			<name>
-				<pl>Piranie lub płaszczki</pl>
-				<en>Piranie lub płaszczki EN</en>
-			</name>
-			<time>16:00</time>
-			<image>img/plaszczka.jpg</image>
-		</event>
-	</events>
-	<history>
-		<history_event>
-			<date>10.07.1865</date> <!-- please inform me if some other format would be better for you -->
-			<image>img/placeholder_history.jpg</image>
-			<heading>
-				<pl>Otwarcie ogrodu zoologicznego we Wrocławiu</pl>
-				<en>Opening of a zoological garden in Wroclaw</en>
-			</heading>
-		</history_event>
-		<history_event>
-			<date>1880</date> 
-			<image>img/placeholder_history.jpg</image>
-			<heading>
-				<pl>Rozkwit ogrodu, zaliczanego w tym czasie do wiodących placówek na świecie</pl>
-				<en>Expansion of Wroclaw ZOO, which is one of the biggest in the World at the time</en>
-			</heading>
-		</history_event>
-		<history_event>
-			<date>1921</date> 
-			<image>img/placeholder_history.jpg</image>
-			<heading>
-				<pl>Zamknięcie ZOO po kryzysie lat powojennych</pl>
-				<en>ZOO got closed because of after - war crysis</en>
-			</heading>
-		</history_event>
-		<history_event>
-			<date>1.05.1927</date> 
-			<image>img/placeholder_history.jpg</image>
-			<heading>
-				<pl>Ponowne udostępnienie ogrodu dla publiczności</pl>
-				<en>ZOO is open to public again</en>
-			</heading>
-		</history_event>
-		<history_event>
-			<date>05.1945</date> 
-			<image>img/placeholder_history.jpg</image>
-			<heading>
-				<pl>Zniszczenie ogrodu podczas oblężenia miasta przez wojska radzieckie</pl>
-				<en>Wroclaw zoological garden got destroyed by soviet armed forces</en>
-			</heading>
-		</history_event>
-		<history_event>
-			<date>18.07.1948</date> 
-			<image>img/placeholder_history.jpg</image>
-			<heading>
-				<pl>Otwarcie ZOO po II Wojnie Światowej</pl>
-				<en>Reopening of Wroclaw ZOO after the II World War</en>
-			</heading>
-		</history_event>
-		<history_event>
-			<date>1957</date> 
-			<image>img/placeholder_history.jpg</image>
-			<heading>
-				<pl>Podwojenie dotychczasowego obszaru ogrodu poprzez zajęcie terenów po Wystawie Ziem Odzyskanych</pl>
-				<en>Doubling actual ZOO area by acquiring terrains after Recovered Land Display</en>
-			</heading>
-		</history_event>
-		<history_event>
-			<date>1970 - 1980</date> <!-- 1970 - 1979 should we put it some other way or can you handle this? -->
-			<image>img/placeholder_history.jpg</image>
-			<heading>
-				<pl>Kolekcja zwierząt należy do większych w Europie, a dzięki medialnemu sukcesowi "Z kamerą wśród zwierząt", prowadzonego przez Hannę i Antoniego Gucwińskich, ZOO przez wiele lat pozostaje najbardziej znanym ogrodem w Polsce</pl>
-				<en>Animals collection is among the biggest in Europe thanks to a big medial success "Z kamerą wśród zwierząt" (eng. With camera among animals), created by Hanna and Antoni Gucwinski, for many years Worclaw ZOO is the best known in Poland</en>
-			</heading>
-		</history_event>
-		<history_event>
-			<date>01.2007</date> 
-			<image>img/placeholder_history.jpg</image>
-			<heading>
-				<pl>Dyrektorem zostaje Radosław Ratajszczak, który zapoczątkowuje proces zmian mających wprowadzić ogród w XXI wiek </pl>
-				<en>Radoslaw Ratajszczak becomes ZOO director and started a process of changes thet will move ZOO to the XXI century</en>
-			</heading>
-		</history_event>
-		<history_event>
-			<date>01.2010</date> 
-			<image>img/placeholder_history.jpg</image>
-			<heading>
-				<pl>Wrocławskie ZOO jako pierwsze w Polsce przekształca się w spółkę</pl>
-				<en>Wroclaw ZOO is the first in Poland that got transformed into a company</en>
-			</heading>
-		</history_event>
-	</history>
-	<animals>
-		<animal lat="51.1052072" lon="17.0754498" id="1">
-			<name>
-				<pl>Żyrafa siatkowana</pl>
-				<en>Żyrafa EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>zyrafa_siatkowana_pl.html</pl>
-				<en>zyrafa_siatkowana_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1050185" lon="17.0759970" id="2">
-			<name>
-				<pl>Struś</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>strus_pl.html</pl>
-				<en>strus_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1050185" lon="17.0759970" id="2">
-			<name>
-				<pl>Foka zwyczajna</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>foka_zwyczajna_pl.html</pl>
-				<en>foka_zwyczajna_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1046625" lon="17.0771680" id="3">
-			<name>
-				<pl>Lew angolański</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>lew_angolanski_pl.html</pl>
-				<en>lew_angolanski_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1053988" lon="17.0737940" id="4">
-			<name>
-				<pl>Zebra chapmana</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>zebra_chapmana_pl.html</pl>
-				<en>zebra_chapmana_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1031447" lon="17.0756473" id="5">
-			<name>
-				<pl>Żubr</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1042875" lon="17.0786295" id="6">
-			<name>
-				<pl>Gnu białobrode</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>gnu_bialobrode_pl.html</pl>
-				<en>gnu_bialobrode_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1042875" lon="17.0786295" id="6">
-			<name>
-				<pl>Kangur rudy</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>kangur_rudy_pl.html</pl>
-				<en>kangur_rudy_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1047078" lon="17.0784479" id="7">
-			<name>
-				<pl>Oryks szablorogi</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>oryks_szablorogi_pl.html</pl>
-				<en>oryks_szablorogi_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1049038" lon="17.0778135" id="8">
-			<name>
-				<pl>Osioł Domowy</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>osiol_domowy_pl.html</pl>
-				<en>osiol_domowy_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1049038" lon="17.0778135" id="8">
-			<name>
-				<pl>Perlica sępia</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>perlica_sepia_pl.html</pl>
-				<en>perlica_sepia_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1051282" lon="17.0774613" id="9">
-			<name>
-				<pl>Wielbłąd jednogarbny</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1040432" lon="17.0774597" id="10">
-			<name>
-				<pl>Kob Singsing</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>kob_pl.html</pl>
-				<en>kob_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1039061" lon="17.0773532" id="11">
-			<name>
-				<pl>Sitatunga</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>sitatunga_pl.html</pl>
-				<en>sitatunga_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1016737" lon="17.0785009" id="12">
-			<name>
-				<pl>Niedźwiedź brunatny</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1015091" lon="17.0778810" id="13">
-			<name>
-				<pl>Magot</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1024655" lon="17.0756415" id="15">
-			<name>
-				<pl>Pelikan różowy</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1061405" lon="17.0741774" id="16">
-			<name>
-				<pl>Kotik afrykański</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1017737" lon="17.0779163" id="17">
-			<name>
-				<pl>Muflon</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1042374" lon="17.0777086" id="18">
-			<name>
-				<pl>Nilgau</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1047396" lon="17.0782172" id="19">
-			<name>
-				<pl>Fenek</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>fenek_pl.html</pl>
-				<en>fenek_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1042030" lon="17.0767175" id="20">
-			<name>
-				<pl>Likaon</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1042048" lon="17.0731681" id="21">
-			<name>
-				<pl>Kapibara</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1037581" lon="17.0728256" id="22">
-			<name>
-				<pl>Aguti złociste</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1064215" lon="17.0732379" id="26">
-			<name>
-				<pl>Wilk</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1060238" lon="17.0716045" id="27">
-			<name>
-				<pl>Słoń indyjski</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>slon_indyjski_pl.html</pl>
-				<en>slon_indyjski_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1039169" lon="17.0729268" id="28">
-			<name>
-				<pl>Lama</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1035765" lon="17.0726617" id="29">
-			<name>
-				<pl>Mara patagońska</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1040441" lon="17.0734620" id="30">
-			<name>
-				<pl>Nandu szare</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1040605" lon="17.0706544" id="31">
-			<name>
-				<pl>Daniel mezopotamski</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1034744" lon="17.0728319" id="32">
-			<name>
-				<pl>Alpaka</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1063327" lon="17.0740033" id="33">
-			<name>
-				<pl>Niedźwiedź himalajski</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1068418" lon="17.0723794" id="34">
-			<name>
-				<pl>Makak czubaty</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1067633" lon="17.0724229" id="35">
-			<name>
-				<pl>Mangaba rudoczelna</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1040646" lon="17.0731295" id="37">
-			<name>
-				<pl>Gwanako</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1035167" lon="17.0766332" id="38">
-			<name>
-				<pl>Marabut afrykański</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1063553" lon="17.0722136" id="39">
-			<name>
-				<pl>Hipopotam nilowy</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>desc/hipopotam_nilowy_pl.html</pl>
-				<en>desc/hipopotam_nilowy_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1050439" lon="17.0696709" id="40">
-			<name>
-				<pl>Jeleń aksis</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1043066" lon="17.0717151" id="42">
-			<name>
-				<pl>Lemur katta</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1042855" lon="17.0699521" id="43">
-			<name>
-				<pl>Sika Dybowskiego</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1053321" lon="17.0695383" id="44">
-			<name>
-				<pl>Jeleń milu</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1034212" lon="17.0725676" id="45">
-			<name>
-				<pl>Skrzydłoszpon obrożny</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1016967" lon="17.0771516" id="46">
-			<name>
-				<pl>Żbik</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1032748" lon="17.0750735" id="47">
-			<name>
-				<pl>Banteng</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1068641" lon="17.0702596" id="48">
-			<name>
-				<pl>Czerwonak różowy</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1048820" lon="17.0693605" id="50">
-			<name>
-				<pl>Renifer</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1019258" lon="17.0771623" id="51">
-			<name>
-				<pl>Ryś</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1061018" lon="17.0721245" id="53">
-			<name>
-				<pl>Tapir anta</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-		</animal>
-		<animal lat="51.1058351" lon="17.0732203" id="56">
-			<name>
-				<pl>Antylopa kama</pl>
-				<en> EN</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>desc/antylopa_kama_pl.html</pl>
-				<en>desc/antylopa_kama_en.html</en>
-			</desc>
-		</animal>
-		<animal lat="51.1058351" lon="17.0732203" id="57">
-			<name>
-				<pl>Flaming</pl>
-				<en>Flaming</en>
-			</name>
-			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_adult>
-			<description_child>
-				<image>img/placeholder_child.jpg</image>
-				<pl>PL </pl>
-				<en>EN </en>
-			</description_child>
-			<desc>
-				<pl>desc/flaming_pl.html</pl>
-				<en>desc/flaming_en.html</en>
-			</desc>
-		</animal>
-	</animals>
-		<ways>
-		<way id="35948032">
-			<node lat="51.1057838" lon="17.0751055" />
-			<node lat="51.1051115" lon="17.0745007" />
-			<node lat="51.1048329" lon="17.0742639" />
-		</way>
-		<way id="35948033">
-			<node lat="51.1043248" lon="17.0730844" />
-			<node lat="51.1041113" lon="17.0735988" />
-			<node lat="51.1038212" lon="17.0742998" />
-			<node lat="51.1037915" lon="17.0743716" />
-			<node lat="51.1037649" lon="17.0744360" />
-			<node lat="51.1035680" lon="17.0748020" />
-			<node lat="51.1034818" lon="17.0751670" />
-			<node lat="51.1034298" lon="17.0754222" />
-			<node lat="51.1034032" lon="17.0755088" />
-			<node lat="51.1032945" lon="17.0758619" />
-			<node lat="51.1032117" lon="17.0760313" />
-			<node lat="51.1029696" lon="17.0762011" />
-			<node lat="51.1025467" lon="17.0762221" />
-			<node lat="51.1022959" lon="17.0763656" />
-			<node lat="51.1020118" lon="17.0766983" />
-			<node lat="51.1017045" lon="17.0769202" />
-			<node lat="51.1015795" lon="17.0771257" />
-			<node lat="51.1013608" lon="17.0775643" />
-			<node lat="51.1010164" lon="17.0783504" />
-			<node lat="51.1011521" lon="17.0785114" />
-			<node lat="51.1018118" lon="17.0783018" />
-			<node lat="51.1019555" lon="17.0779164" />
-			<node lat="51.1020168" lon="17.0777265" />
-			<node lat="51.1020504" lon="17.0775621" />
-			<node lat="51.1020184" lon="17.0772879" />
-			<node lat="51.1020139" lon="17.0770501" />
-			<node lat="51.1020113" lon="17.0769637" />
-			<node lat="51.1020112" lon="17.0769382" />
-			<node lat="51.1020118" lon="17.0766983" />
-		</way>
-		<way id="61374786">
-			<node lat="51.1045253" lon="17.0767239" />
-			<node lat="51.1044532" lon="17.0769467" />
-			<node lat="51.1043845" lon="17.0770049" />
-			<node lat="51.1043754" lon="17.0770158" />
-			<node lat="51.1043547" lon="17.0770190" />
-		</way>
-		<way id="68195073">
-			<node lat="51.1048329" lon="17.0742639" />
-			<node lat="51.1045324" lon="17.0739732" />
-			<node lat="51.1043738" lon="17.0738287" />
-			<node lat="51.1041327" lon="17.0736176" />
-			<node lat="51.1041113" lon="17.0735988" />
-		</way>
-		<way id="108756435">
-			<node lat="51.1032945" lon="17.0758619" />
-			<node lat="51.1034766" lon="17.0760830" />
-			<node lat="51.1035435" lon="17.0763587" />
-			<node lat="51.1036282" lon="17.0765563" />
-			<node lat="51.1036907" lon="17.0767178" />
-			<node lat="51.1037765" lon="17.0769146" />
-			<node lat="51.1038499" lon="17.0769998" />
-			<node lat="51.1040032" lon="17.0771779" />
-			<node lat="51.1041538" lon="17.0773265" />
-		</way>
-		<way id="108756434">
-			<node lat="51.1054978" lon="17.0700067" />
-			<node lat="51.1051023" lon="17.0698932" />
-			<node lat="51.1045318" lon="17.0695421" />
-		</way>
-		<way id="108756433">
-			<node lat="51.1061962" lon="17.0726934" />
-			<node lat="51.1062927" lon="17.0723599" />
-			<node lat="51.1064503" lon="17.0723207" />
-			<node lat="51.1064903" lon="17.0722062" />
-			<node lat="51.1066450" lon="17.0722064" />
-			<node lat="51.1066899" lon="17.0723046" />
-			<node lat="51.1071520" lon="17.0720352" />
-			<node lat="51.1072125" lon="17.0715711" />
-			<node lat="51.1073491" lon="17.0715983" />
-			<node lat="51.1074015" lon="17.0716468" />
-			<node lat="51.1074751" lon="17.0714899" />
-			<node lat="51.1075736" lon="17.0713916" />
-			<node lat="51.1077120" lon="17.0709837" />
-			<node lat="51.1078573" lon="17.0704062" />
-		</way>
-		<way id="108757465">
-			<node lat="51.1054905" lon="17.0741483" />
-			<node lat="51.1056182" lon="17.0737014" />
-			<node lat="51.1058622" lon="17.0738891" />
-			<node lat="51.1059162" lon="17.0739902" />
-			<node lat="51.1060058" lon="17.0741080" />
-			<node lat="51.1060747" lon="17.0740974" />
-			<node lat="51.1062042" lon="17.0740214" />
-			<node lat="51.1062616" lon="17.0738566" />
-			<node lat="51.1063419" lon="17.0736259" />
-			<node lat="51.1063970" lon="17.0733884" />
-			<node lat="51.1062731" lon="17.0731762" />
-			<node lat="51.1062021" lon="17.0730064" />
-			<node lat="51.1061700" lon="17.0728862" />
-			<node lat="51.1061863" lon="17.0728000" />
-			<node lat="51.1061962" lon="17.0726934" />
-		</way>
-		<way id="108801536">
-			<node lat="51.1042403" lon="17.0712383" />
-			<node lat="51.1040671" lon="17.0720594" />
-			<node lat="51.1042589" lon="17.0722297" />
-			<node lat="51.1045467" lon="17.0721156" />
-			<node lat="51.1047797" lon="17.0719301" />
-			<node lat="51.1047060" lon="17.0712434" />
-		</way>
-		<way id="108801550">
-			<node lat="51.1056182" lon="17.0737014" />
-			<node lat="51.1051669" lon="17.0733005" />
-			<node lat="51.1047728" lon="17.0730132" />
-			<node lat="51.1048054" lon="17.0727276" />
-		</way>
-		<way id="108801546">
-			<node lat="51.1055979" lon="17.0717313" />
-			<node lat="51.1056381" lon="17.0719197" />
-			<node lat="51.1056627" lon="17.0720348" />
-			<node lat="51.1056476" lon="17.0721964" />
-			<node lat="51.1055564" lon="17.0724696" />
-		</way>
-		<way id="108801547">
-			<node lat="51.1057718" lon="17.0710414" />
-			<node lat="51.1058232" lon="17.0710240" />
-			<node lat="51.1060476" lon="17.0710683" />
-			<node lat="51.1062402" lon="17.0711568" />
-			<node lat="51.1063943" lon="17.0713184" />
-			<node lat="51.1064358" lon="17.0714028" />
-			<node lat="51.1064688" lon="17.0716052" />
-			<node lat="51.1065438" lon="17.0718374" />
-			<node lat="51.1065575" lon="17.0719504" />
-			<node lat="51.1064903" lon="17.0722062" />
-		</way>
-		<way id="108801538">
-			<node lat="51.1047797" lon="17.0719301" />
-			<node lat="51.1048611" lon="17.0719749" />
-			<node lat="51.1048887" lon="17.0719900" />
-			<node lat="51.1050618" lon="17.0719272" />
-		</way>
-		<way id="108800346">
-			<node lat="51.1057741" lon="17.0714289" />
-			<node lat="51.1058365" lon="17.0715088" />
-			<node lat="51.1059776" lon="17.0712508" />
-			<node lat="51.1062402" lon="17.0711568" />
-			<node lat="51.1063483" lon="17.0709378" />
-			<node lat="51.1064287" lon="17.0708024" />
-			<node lat="51.1064628" lon="17.0707449" />
-			<node lat="51.1066724" lon="17.0707173" />
-			<node lat="51.1068851" lon="17.0707501" />
-			<node lat="51.1071687" lon="17.0709803" />
-			<node lat="51.1071980" lon="17.0709162" />
-		</way>
-		<way id="108801543">
-			<node lat="51.1040671" lon="17.0720594" />
-			<node lat="51.1039950" lon="17.0720520" />
-			<node lat="51.1039230" lon="17.0722383" />
-			<node lat="51.1039717" lon="17.0723174" />
-			<node lat="51.1040358" lon="17.0723748" />
-			<node lat="51.1041265" lon="17.0724846" />
-			<node lat="51.1041674" lon="17.0727029" />
-			<node lat="51.1042360" lon="17.0727487" />
-			<node lat="51.1042663" lon="17.0728996" />
-			<node lat="51.1042792" lon="17.0729638" />
-			<node lat="51.1043248" lon="17.0730844" />
-		</way>
-		<way id="108810887">
-			<node lat="51.1039717" lon="17.0723174" />
-			<node lat="51.1039364" lon="17.0723687" />
-			<node lat="51.1038309" lon="17.0727016" />
-		</way>
-		<way id="108813212">
-			<node lat="51.1050455" lon="17.0720156" />
-			<node lat="51.1050954" lon="17.0722288" />
-			<node lat="51.1052032" lon="17.0722826" />
-			<node lat="51.1053090" lon="17.0723946" />
-			<node lat="51.1053429" lon="17.0724630" />
-		</way>
-		<way id="108813213">
-			<node lat="51.1045318" lon="17.0695421" />
-			<node lat="51.1044111" lon="17.0694180" />
-			<node lat="51.1039757" lon="17.0703117" />
-			<node lat="51.1038725" lon="17.0705120" />
-			<node lat="51.1039112" lon="17.0707020" />
-			<node lat="51.1041004" lon="17.0710542" />
-			<node lat="51.1041209" lon="17.0710923" />
-			<node lat="51.1042403" lon="17.0712383" />
-			<node lat="51.1044741" lon="17.0712434" />
-			<node lat="51.1047060" lon="17.0712434" />
-		</way>
-		<way id="108813214">
-			<node lat="51.1047060" lon="17.0712434" />
-			<node lat="51.1048931" lon="17.0712096" />
-			<node lat="51.1050069" lon="17.0711761" />
-			<node lat="51.1050415" lon="17.0711262" />
-			<node lat="51.1051490" lon="17.0710993" />
-			<node lat="51.1052182" lon="17.0710558" />
-			<node lat="51.1053012" lon="17.0710358" />
-			<node lat="51.1055076" lon="17.0709588" />
-			<node lat="51.1056721" lon="17.0709472" />
-			<node lat="51.1057718" lon="17.0710414" />
-			<node lat="51.1057987" lon="17.0711122" />
-			<node lat="51.1057909" lon="17.0712841" />
-			<node lat="51.1057741" lon="17.0714289" />
-			<node lat="51.1056763" lon="17.0715296" />
-			<node lat="51.1055965" lon="17.0715938" />
-			<node lat="51.1055979" lon="17.0717313" />
-			<node lat="51.1054294" lon="17.0716961" />
-			<node lat="51.1051536" lon="17.0717954" />
-			<node lat="51.1050943" lon="17.0718527" />
-			<node lat="51.1050618" lon="17.0719272" />
-			<node lat="51.1050455" lon="17.0720156" />
-		</way>
-		<way id="108812984">
-			<node lat="51.1054978" lon="17.0700067" />
-			<node lat="51.1056518" lon="17.0698813" />
-			<node lat="51.1057953" lon="17.0699034" />
-			<node lat="51.1058988" lon="17.0699402" />
-			<node lat="51.1060310" lon="17.0698728" />
-		</way>
-		<way id="108852507">
-			<node lat="51.1072125" lon="17.0715711" />
-			<node lat="51.1072033" lon="17.0714855" />
-			<node lat="51.1071867" lon="17.0713321" />
-			<node lat="51.1071670" lon="17.0711062" />
-			<node lat="51.1071687" lon="17.0709803" />
-		</way>
-		<way id="110364637">
-			<node lat="51.1072835" lon="17.0705058" />
-			<node lat="51.1073528" lon="17.0701881" />
-		</way>
-		<way id="110364638">
-			<node lat="51.1071980" lon="17.0709162" />
-			<node lat="51.1072835" lon="17.0705058" />
-		</way>
-		<way id="133484626">
-			<node lat="51.1056721" lon="17.0709472" />
-			<node lat="51.1057241" lon="17.0707842" />
-			<node lat="51.1058717" lon="17.0705322" />
-			<node lat="51.1059741" lon="17.0703573" />
-			<node lat="51.1060405" lon="17.0702188" />
-		</way>
-		<way id="133484616">
-			<node lat="51.1047189" lon="17.0781616" />
-			<node lat="51.1045140" lon="17.0778731" />
-			<node lat="51.1044672" lon="17.0778073" />
-			<node lat="51.1043713" lon="17.0776723" />
-		</way>
-		<way id="133484611">
-			<node lat="51.1062616" lon="17.0738566" />
-			<node lat="51.1062326" lon="17.0738396" />
-		</way>
-		<way id="133484612">
-			<node lat="51.1060535" lon="17.0740514" />
-			<node lat="51.1061900" lon="17.0739630" />
-		</way>
-		<way id="133484614">
-			<node lat="51.1059162" lon="17.0739902" />
-			<node lat="51.1059760" lon="17.0740027" />
-		</way>
-		<way id="133484615">
-			<node lat="51.1043489" lon="17.0783721" />
-			<node lat="51.1045915" lon="17.0785887" />
-		</way>
-		<way id="133484619">
-			<node lat="51.1060310" lon="17.0698728" />
-			<node lat="51.1060769" lon="17.0697319" />
-		</way>
-		<way id="133484622">
-			<node lat="51.1056381" lon="17.0719197" />
-			<node lat="51.1057521" lon="17.0718804" />
-			<node lat="51.1058212" lon="17.0718572" />
-		</way>
-		<way id="133484625">
-			<node lat="51.1066450" lon="17.0722064" />
-			<node lat="51.1066272" lon="17.0721087" />
-			<node lat="51.1065895" lon="17.0720105" />
-			<node lat="51.1065575" lon="17.0719504" />
-		</way>
-		<way id="133484627">
-			<node lat="51.1060405" lon="17.0702188" />
-			<node lat="51.1060463" lon="17.0701649" />
-			<node lat="51.1060227" lon="17.0699902" />
-			<node lat="51.1060194" lon="17.0699371" />
-			<node lat="51.1060310" lon="17.0698728" />
-		</way>
-		<way id="133475400">
-			<node lat="51.1025467" lon="17.0762221" />
-			<node lat="51.1026375" lon="17.0758276" />
-			<node lat="51.1026627" lon="17.0757541" />
-			<node lat="51.1026908" lon="17.0757376" />
-			<node lat="51.1029358" lon="17.0758226" />
-			<node lat="51.1029654" lon="17.0759003" />
-			<node lat="51.1030168" lon="17.0759688" />
-			<node lat="51.1031617" lon="17.0758716" />
-			<node lat="51.1032117" lon="17.0760313" />
-		</way>
-		<way id="133484620">
-			<node lat="51.1064503" lon="17.0723207" />
-			<node lat="51.1065054" lon="17.0724075" />
-			<node lat="51.1065321" lon="17.0724088" />
-			<node lat="51.1066212" lon="17.0723837" />
-			<node lat="51.1066899" lon="17.0723046" />
-		</way>
-		<way id="133484631">
-			<node lat="51.1058365" lon="17.0715088" />
-			<node lat="51.1057854" lon="17.0716274" />
-			<node lat="51.1057854" lon="17.0717990" />
-			<node lat="51.1058212" lon="17.0718572" />
-			<node lat="51.1058420" lon="17.0718910" />
-			<node lat="51.1059209" lon="17.0719512" />
-			<node lat="51.1059633" lon="17.0720169" />
-			<node lat="51.1059778" lon="17.0722338" />
-			<node lat="51.1060846" lon="17.0722998" />
-			<node lat="51.1061904" lon="17.0723279" />
-			<node lat="51.1062209" lon="17.0723342" />
-			<node lat="51.1062927" lon="17.0723599" />
-		</way>
-		<way id="108852508">
-			<node lat="51.1078573" lon="17.0704062" />
-			<node lat="51.1073528" lon="17.0701881" />
-			<node lat="51.1072083" lon="17.0701234" />
-			<node lat="51.1068523" lon="17.0699976" />
-			<node lat="51.1067911" lon="17.0701300" />
-			<node lat="51.1065852" lon="17.0701913" />
-			<node lat="51.1060769" lon="17.0697319" />
-			<node lat="51.1057894" lon="17.0694721" />
-			<node lat="51.1055814" lon="17.0692841" />
-			<node lat="51.1055098" lon="17.0692194" />
-			<node lat="51.1051556" lon="17.0689815" />
-			<node lat="51.1049294" lon="17.0689815" />
-			<node lat="51.1047629" lon="17.0690359" />
-			<node lat="51.1046280" lon="17.0692809" />
-			<node lat="51.1045318" lon="17.0695421" />
-		</way>
-		<way id="133655257">
-			<node lat="51.1048291" lon="17.0777317" />
-			<node lat="51.1047821" lon="17.0777321" />
-			<node lat="51.1047347" lon="17.0777255" />
-			<node lat="51.1047006" lon="17.0777136" />
-			<node lat="51.1046465" lon="17.0776553" />
-			<node lat="51.1045608" lon="17.0775546" />
-			<node lat="51.1045267" lon="17.0775241" />
-			<node lat="51.1044569" lon="17.0775533" />
-			<node lat="51.1044169" lon="17.0775851" />
-			<node lat="51.1043713" lon="17.0776723" />
-		</way>
-		<way id="133655262">
-			<node lat="51.1043655" lon="17.0782328" />
-			<node lat="51.1042024" lon="17.0782765" />
-		</way>
-		<way id="133655265">
-			<node lat="51.1038499" lon="17.0769998" />
-			<node lat="51.1038165" lon="17.0770950" />
-			<node lat="51.1037757" lon="17.0771639" />
-			<node lat="51.1037316" lon="17.0772102" />
-		</way>
-		<way id="133655260">
-			<node lat="51.1037865" lon="17.0761095" />
-			<node lat="51.1037770" lon="17.0761233" />
-			<node lat="51.1037599" lon="17.0761479" />
-			<node lat="51.1037366" lon="17.0761559" />
-			<node lat="51.1037158" lon="17.0761969" />
-			<node lat="51.1037042" lon="17.0762631" />
-			<node lat="51.1036767" lon="17.0763545" />
-			<node lat="51.1036694" lon="17.0763736" />
-			<node lat="51.1036443" lon="17.0764393" />
-			<node lat="51.1036282" lon="17.0765563" />
-		</way>
-		<way id="133655266">
-			<node lat="51.1044169" lon="17.0775851" />
-			<node lat="51.1044419" lon="17.0775149" />
-			<node lat="51.1044510" lon="17.0774023" />
-			<node lat="51.1044482" lon="17.0771974" />
-			<node lat="51.1044174" lon="17.0771357" />
-			<node lat="51.1043834" lon="17.0771158" />
-		</way>
-		<way id="61374787">
-			<node lat="51.1042855" lon="17.0775096" />
-			<node lat="51.1043729" lon="17.0773281" />
-			<node lat="51.1043995" lon="17.0772261" />
-			<node lat="51.1043834" lon="17.0771158" />
-			<node lat="51.1043776" lon="17.0770757" />
-			<node lat="51.1043547" lon="17.0770190" />
-			<node lat="51.1042840" lon="17.0770010" />
-		</way>
-		<way id="133659810">
-			<node lat="51.1049325" lon="17.0708438" />
-			<node lat="51.1049433" lon="17.0707816" />
-			<node lat="51.1049716" lon="17.0708014" />
-			<node lat="51.1049973" lon="17.0708451" />
-			<node lat="51.1050015" lon="17.0709180" />
-		</way>
-		<way id="133659811">
-			<node lat="51.1047060" lon="17.0712434" />
-			<node lat="51.1047079" lon="17.0711299" />
-			<node lat="51.1047229" lon="17.0710240" />
-			<node lat="51.1047828" lon="17.0709008" />
-			<node lat="51.1048485" lon="17.0708425" />
-			<node lat="51.1049325" lon="17.0708438" />
-			<node lat="51.1050015" lon="17.0709180" />
-			<node lat="51.1050190" lon="17.0710213" />
-			<node lat="51.1050415" lon="17.0711262" />
-		</way>
-		<way id="133659808">
-			<node lat="51.1041165" lon="17.0747334" />
-			<node lat="51.1041095" lon="17.0744495" />
-			<node lat="51.1041073" lon="17.0743616" />
-			<node lat="51.1041080" lon="17.0738342" />
-			<node lat="51.1041194" lon="17.0736933" />
-			<node lat="51.1041327" lon="17.0736176" />
-		</way>
-		<way id="133484623">
-			<node lat="51.1041165" lon="17.0747334" />
-			<node lat="51.1040263" lon="17.0746515" />
-			<node lat="51.1039887" lon="17.0746457" />
-			<node lat="51.1039637" lon="17.0746038" />
-			<node lat="51.1040093" lon="17.0745382" />
-			<node lat="51.1041095" lon="17.0744495" />
-		</way>
-		<way id="133730538">
-			<node lat="51.1034766" lon="17.0760830" />
-			<node lat="51.1034354" lon="17.0758365" />
-			<node lat="51.1034216" lon="17.0755858" />
-			<node lat="51.1034032" lon="17.0755088" />
-		</way>
-		<way id="133730539">
-			<node lat="51.1042663" lon="17.0728996" />
-			<node lat="51.1042305" lon="17.0729021" />
-			<node lat="51.1041525" lon="17.0728463" />
-			<node lat="51.1041220" lon="17.0728245" />
-			<node lat="51.1040600" lon="17.0727699" />
-		</way>
-		<way id="133730540">
-			<node lat="51.1041347" lon="17.0729375" />
-			<node lat="51.1041525" lon="17.0728463" />
-			<node lat="51.1041674" lon="17.0727029" />
-			<node lat="51.1040788" lon="17.0726412" />
-			<node lat="51.1040356" lon="17.0725054" />
-			<node lat="51.1040358" lon="17.0723748" />
-		</way>
-		<way id="133731844">
-			<node lat="51.1066212" lon="17.0723837" />
-			<node lat="51.1066441" lon="17.0725348" />
-			<node lat="51.1066868" lon="17.0728346" />
-		</way>
-		<way id="133731845">
-			<node lat="51.1040788" lon="17.0726412" />
-			<node lat="51.1040600" lon="17.0727699" />
-			<node lat="51.1040416" lon="17.0728652" />
-		</way>
-		<way id="133731846">
-			<node lat="51.1065054" lon="17.0724075" />
-			<node lat="51.1065012" lon="17.0725240" />
-			<node lat="51.1064938" lon="17.0727791" />
-		</way>
-		<way id="133731847">
-			<node lat="51.1036690" lon="17.0725744" />
-			<node lat="51.1037071" lon="17.0723869" />
-			<node lat="51.1037381" lon="17.0722810" />
-			<node lat="51.1037910" lon="17.0721991" />
-			<node lat="51.1038507" lon="17.0721738" />
-			<node lat="51.1039230" lon="17.0722383" />
-		</way>
-		<way id="133739900">
-			<node lat="51.1056476" lon="17.0721964" />
-			<node lat="51.1058015" lon="17.0722024" />
-			<node lat="51.1059778" lon="17.0722338" />
-		</way>
-		<way id="133744213">
-			<node lat="51.1039637" lon="17.0746038" />
-			<node lat="51.1037915" lon="17.0743716" />
-		</way>
-		<way id="133744214">
-			<node lat="51.1049460" lon="17.0724246" />
-			<node lat="51.1049795" lon="17.0726444" />
-		</way>
-		<way id="133744215">
-			<node lat="51.1064688" lon="17.0716052" />
-			<node lat="51.1065324" lon="17.0714875" />
-			<node lat="51.1065822" lon="17.0714153" />
-			<node lat="51.1066164" lon="17.0713531" />
-		</way>
-		<way id="133744216">
-			<node lat="51.1060405" lon="17.0702188" />
-			<node lat="51.1061229" lon="17.0702006" />
-			<node lat="51.1061811" lon="17.0702231" />
-			<node lat="51.1062344" lon="17.0703291" />
-			<node lat="51.1063458" lon="17.0706351" />
-			<node lat="51.1064287" lon="17.0708024" />
-		</way>
-		<way id="133744217">
-			<node lat="51.1072033" lon="17.0714855" />
-			<node lat="51.1070217" lon="17.0714223" />
-			<node lat="51.1068324" lon="17.0713712" />
-			<node lat="51.1066164" lon="17.0713531" />
-			<node lat="51.1065800" lon="17.0713500" />
-			<node lat="51.1064772" lon="17.0713447" />
-			<node lat="51.1064287" lon="17.0713356" />
-			<node lat="51.1063943" lon="17.0713184" />
-		</way>
-		<way id="133744218">
-			<node lat="51.1050954" lon="17.0722288" />
-			<node lat="51.1050130" lon="17.0723761" />
-			<node lat="51.1049460" lon="17.0724246" />
-			<node lat="51.1048839" lon="17.0724110" />
-			<node lat="51.1048072" lon="17.0723490" />
-			<node lat="51.1047780" lon="17.0722171" />
-			<node lat="51.1047938" lon="17.0721046" />
-			<node lat="51.1048340" lon="17.0720329" />
-			<node lat="51.1048611" lon="17.0719749" />
-		</way>
-		<way id="133745055">
-			<node lat="51.1051556" lon="17.0689815" />
-			<node lat="51.1050952" lon="17.0688600" />
-			<node lat="51.1050014" lon="17.0687669" />
-			<node lat="51.1049223" lon="17.0687592" />
-			<node lat="51.1048078" lon="17.0688232" />
-			<node lat="51.1047579" lon="17.0689337" />
-			<node lat="51.1047629" lon="17.0690359" />
-		</way>
-		<way id="133745054">
-			<node lat="51.1054978" lon="17.0700067" />
-			<node lat="51.1055187" lon="17.0698217" />
-			<node lat="51.1055273" lon="17.0697516" />
-			<node lat="51.1055445" lon="17.0695989" />
-			<node lat="51.1055749" lon="17.0693836" />
-			<node lat="51.1055814" lon="17.0692841" />
-		</way>
-		<way id="223378603">
-			<node lat="51.1036227" lon="17.0706950" />
-			<node lat="51.1037055" lon="17.0707087" />
-			<node lat="51.1037640" lon="17.0707643" />
-			<node lat="51.1039196" lon="17.0709198" />
-			<node lat="51.1041004" lon="17.0710542" />
-		</way>
-		<way id="225121365">
-			<node lat="51.1038212" lon="17.0742998" />
-			<node lat="51.1034343" lon="17.0739317" />
-			<node lat="51.1035513" lon="17.0734803" />
-		</way>
-		<way id="225277033">
-			<node lat="51.1061170" lon="17.0704797" />
-			<node lat="51.1060335" lon="17.0705759" />
-			<node lat="51.1059739" lon="17.0706177" />
-			<node lat="51.1059223" lon="17.0705911" />
-			<node lat="51.1058717" lon="17.0705322" />
-		</way>
-		<way id="226244353">
-			<node lat="51.1051115" lon="17.0745007" />
-			<node lat="51.1052806" lon="17.0739809" />
-		</way>
-		<way id="226233345">
-			<node lat="51.1050720" lon="17.0771950" />
-			<node lat="51.1050044" lon="17.0774085" />
-			<node lat="51.1049181" lon="17.0775203" />
-			<node lat="51.1048545" lon="17.0776097" />
-			<node lat="51.1048291" lon="17.0777317" />
-			<node lat="51.1048203" lon="17.0778424" />
-			<node lat="51.1047189" lon="17.0781616" />
-			<node lat="51.1046654" lon="17.0783678" />
-			<node lat="51.1045915" lon="17.0785887" />
-			<node lat="51.1045042" lon="17.0788369" />
-			<node lat="51.1044079" lon="17.0789108" />
-			<node lat="51.1043514" lon="17.0788266" />
-			<node lat="51.1043378" lon="17.0786878" />
-			<node lat="51.1043489" lon="17.0783721" />
-			<node lat="51.1043655" lon="17.0782328" />
-			<node lat="51.1043870" lon="17.0780354" />
-			<node lat="51.1043957" lon="17.0778384" />
-			<node lat="51.1043713" lon="17.0776723" />
-			<node lat="51.1042855" lon="17.0775096" />
-			<node lat="51.1041538" lon="17.0773265" />
-			<node lat="51.1042840" lon="17.0770010" />
-			<node lat="51.1044298" lon="17.0765962" />
-		</way>
-		<way id="226233346">
-			<node lat="51.1043870" lon="17.0743751" />
-			<node lat="51.1043578" lon="17.0742142" />
-			<node lat="51.1043571" lon="17.0739701" />
-			<node lat="51.1043738" lon="17.0738287" />
-		</way>
-		<way id="226233347">
-			<node lat="51.1044298" lon="17.0765962" />
-			<node lat="51.1047584" lon="17.0755861" />
-			<node lat="51.1048099" lon="17.0754279" />
-			<node lat="51.1051115" lon="17.0745007" />
-		</way>
-		<way id="35948031">
-			<node lat="51.1059714" lon="17.0745802" />
-			<node lat="51.1057838" lon="17.0751055" />
-			<node lat="51.1054214" lon="17.0761497" />
-			<node lat="51.1053449" lon="17.0763785" />
-		</way>
-		<way id="61374785">
-			<node lat="51.1050720" lon="17.0771950" />
-			<node lat="51.1045253" lon="17.0767239" />
-		</way>
-		<way id="237637434">
-			<node lat="51.1020530" lon="17.0769605" />
-			<node lat="51.1020113" lon="17.0769637" />
-			<node lat="51.1020139" lon="17.0770501" />
-			<node lat="51.1020556" lon="17.0770468" />
-			<node lat="51.1020530" lon="17.0769605" />
-		</way>
-		<way id="237636211">
-			<node lat="51.1043844" lon="17.0739602" />
-			<node lat="51.1043468" lon="17.0739466" />
-			<node lat="51.1043454" lon="17.0740069" />
-			<node lat="51.1043716" lon="17.0740149" />
-			<node lat="51.1043844" lon="17.0739602" />
-		</way>
-		<way id="237681767">
-			<node lat="51.1055742" lon="17.0697662" />
-			<node lat="51.1055273" lon="17.0697516" />
-			<node lat="51.1055187" lon="17.0698217" />
-			<node lat="51.1055656" lon="17.0698363" />
-			<node lat="51.1055742" lon="17.0697662" />
-		</way>
-		<way id="237681768">
-			<node lat="51.1044672" lon="17.0778073" />
-			<node lat="51.1044951" lon="17.0777551" />
-			<node lat="51.1045414" lon="17.0778161" />
-			<node lat="51.1045140" lon="17.0778731" />
-			<node lat="51.1044672" lon="17.0778073" />
-		</way>
-		<way id="241508573">
-			<node lat="51.1057119" lon="17.0763470" />
-			<node lat="51.1055623" lon="17.0761805" />
-			<node lat="51.1054847" lon="17.0764008" />
-			<node lat="51.1054727" lon="17.0764350" />
-			<node lat="51.1054615" lon="17.0764570" />
-			<node lat="51.1053449" lon="17.0763785" />
-		</way>
-		<way id="241508572">
-			<node lat="51.1053449" lon="17.0763785" />
-			<node lat="51.1050720" lon="17.0771950" />
-		</way>
-		<way id="242454179">
-			<node lat="51.1054615" lon="17.0764570" />
-			<node lat="51.1054888" lon="17.0764479" />
-			<node lat="51.1054954" lon="17.0764245" />
-			<node lat="51.1054847" lon="17.0764008" />
-		</way>
-	</ways>
-	<junctions>
-		<junction lat="51.1050455" lon="17.0720156">
-			<way id="108813212" />
-			<way id="108813214" />
-		</junction>
-		<junction lat="51.1043713" lon="17.0776723">
-			<way id="133484616" />
-			<way id="133655257" />
-		</junction>
-		<junction lat="51.1044298" lon="17.0765962">
-			<way id="226233345" />
-			<way id="226233347" />
-		</junction>
-		<junction lat="51.1041165" lon="17.0747334">
-			<way id="133659808" />
-			<way id="133484623" />
-		</junction>
-		<junction lat="51.1053449" lon="17.0763785">
-			<way id="35948031" />
-			<way id="241508573" />
-			<way id="35948031" />
-			<way id="241508572" />
-			<way id="241508573" />
-			<way id="241508572" />
-		</junction>
-		<junction lat="51.1078573" lon="17.0704062">
-			<way id="108756433" />
-			<way id="108852508" />
-		</junction>
-		<junction lat="51.1054978" lon="17.0700067">
-			<way id="108756434" />
-			<way id="108812984" />
-			<way id="108756434" />
-			<way id="133745054" />
-			<way id="108812984" />
-			<way id="133745054" />
-		</junction>
-		<junction lat="51.1045318" lon="17.0695421">
-			<way id="108756434" />
-			<way id="108813213" />
-			<way id="108756434" />
-			<way id="108852508" />
-			<way id="108813213" />
-			<way id="108852508" />
-		</junction>
-		<junction lat="51.1047060" lon="17.0712434">
-			<way id="108801536" />
-			<way id="108813213" />
-			<way id="108801536" />
-			<way id="108813214" />
-			<way id="108801536" />
-			<way id="133659811" />
-			<way id="108813213" />
-			<way id="108813214" />
-			<way id="108813213" />
-			<way id="133659811" />
-			<way id="108813214" />
-			<way id="133659811" />
-		</junction>
-		<junction lat="51.1048329" lon="17.0742639">
-			<way id="35948032" />
-			<way id="68195073" />
-		</junction>
-		<junction lat="51.1061962" lon="17.0726934">
-			<way id="108756433" />
-			<way id="108757465" />
-		</junction>
-		<junction lat="51.1060405" lon="17.0702188">
-			<way id="133484626" />
-			<way id="133484627" />
-			<way id="133484626" />
-			<way id="133744216" />
-			<way id="133484627" />
-			<way id="133744216" />
-		</junction>
-		<junction lat="51.1072835" lon="17.0705058">
-			<way id="110364637" />
-			<way id="110364638" />
-		</junction>
-		<junction lat="51.1050720" lon="17.0771950">
-			<way id="226233345" />
-			<way id="61374785" />
-			<way id="226233345" />
-			<way id="241508572" />
-			<way id="61374785" />
-			<way id="241508572" />
-		</junction>
-		<junction lat="51.1071980" lon="17.0709162">
-			<way id="108800346" />
-			<way id="110364638" />
-		</junction>
-		<junction lat="51.1045253" lon="17.0767239">
-			<way id="61374786" />
-			<way id="61374785" />
-		</junction>
-		<junction lat="51.1060310" lon="17.0698728">
-			<way id="108812984" />
-			<way id="133484619" />
-			<way id="108812984" />
-			<way id="133484627" />
-			<way id="133484619" />
-			<way id="133484627" />
-		</junction>
-		<junction lat="51.1043248" lon="17.0730844">
-			<way id="35948033" />
-			<way id="108801543" />
-		</junction>
-		<junction lat="51.1051115" lon="17.0745007">
-			<way id="226244353" />
-			<way id="226233347" />
-		</junction>
-	</junctions>
+    <contact_information>
+        <openings>
+            <opening>
+                <description>
+                    <pl>Wiosna (1 Marzec - 31 Marzec)</pl>
+                    <en>Spring (1 March - 31 March)</en>
+                </description>
+                <hours>
+                    <weekdays>9:00 - 17:00</weekdays>
+                    <weekends>9:00 - 17:00</weekends>
+                </hours>
+            </opening>
+            <opening>
+                <description>
+                    <pl>Lato (1 Kwiecień - 30 Wrzesień)</pl>
+                    <en>Summer (1 April - 30 September)</en>
+                </description>
+                <hours>
+                    <weekdays>9:00 - 18:00</weekdays>
+                    <weekends>9:00 - 19:00</weekends>
+                </hours>
+            </opening>
+            <opening>
+                <description>
+                    <pl>Jesień (1 Październik - 31 Październik)</pl>
+                    <en>Autumn (1 October - 31 October)</en>
+                </description>
+                <hours>
+                    <weekdays>9:00 - 17:00</weekdays>
+                    <weekends>9:00 - 17:00</weekends>
+                </hours>
+            </opening>
+            <opening>
+                <description>
+                    <pl>Zima (1 listopad - 28/29 Luty)</pl>
+                    <en>Winter (1 November - 28/29 February)</en>
+                </description>
+                <hours>
+                    <weekdays>9:00 - 16:00</weekdays>
+                    <weekends>9:00 - 16:00</weekends>
+                </hours>
+            </opening>
+        </openings>
+        <website>http://www.zoo.wroclaw.pl/</website>
+        <emails>
+            <email>lutra@zoo.wroc.pl</email>
+            <email>zoo-sekretariat@zoo.wroc.pl</email>
+            <email>zamowienia@zoo.wroc.pl</email>
+            <email>zoo-marketing@zoo.wroc.pl</email>
+            <email>zoo-edukacja@zoo.wroc.pl</email>
+        </emails>
+        <telephone>+48/71 348 30 24</telephone>
+        <address>
+            ZOO Wrocław sp.z o.o.
+            ul. Wróblewskiego 1-5
+            51-618 WROCŁAW
+            POLSKA
+        </address>
+    </contact_information>
+
+    <tickets_information>
+        <individual>
+            <ticket>
+                <description>
+                    <pl>Dorosły</pl>
+                    <en>Adult</en>
+                </description>
+                <price>30</price>
+            </ticket>
+            <ticket>
+                <description>
+                    <pl>Dziecko</pl>
+                    <en>Child</en>
+                </description>
+                <price>20</price>
+            </ticket>
+            <ticket>
+                <description>
+                    <pl>Student</pl>
+                    <en>Student</en>
+                </description>
+                <price>25</price>
+            </ticket>
+        </individual>
+        <group>
+            <ticket>
+                <description>
+                    <pl>Bilet rodzinny (2 dorosłych + maksymalnie 3 dzieci)</pl>
+                    <en>Family ticket (2 adult + max 3 children)</en>
+                </description>
+                <price>85</price>
+            </ticket>
+            <ticket>
+                <description>
+                    <pl>Osoba dorosła/os</pl>
+                    <en>Adult</en>
+                </description>
+                <price>25</price>
+            </ticket>
+            <ticket>
+                <description>
+                    <pl>Dziecko/os</pl>
+                    <en>Child</en>
+                </description>
+                <price>12</price>
+            </ticket>
+        </group>
+        <information>
+            <pl>Dzieci do lat 3 wchodzą bezpłatnie. Bilety ulgowe obowiązują do 18 roku życia</pl>
+            <en>Children under 3 can go for free. Reduced tickets are valid until 18 years old</en>
+        </information>
+    </tickets_information>
+
+    <access_information>
+        <buses>145, 146, 253, 255, 701</buses>
+        <trams>2, 10</trams>
+        <parking_information>
+            <pl>ZOO nie posiada miejsc parkingowych dla gości. Można poszukiwać miejsca do
+                parkowania wzdłuż ulicy Zygmunta Wróblewskiego. Najbiższym parkingiem jest parking
+                naprzeciwko Hali Stulecia.
+            </pl>
+            <en>ZOO doesn't have parking dedicated for visitors. You can look for parking slots
+                along Zygmunta Wroblewskiego street. The nearest parking is in front of Hala Ludowa
+            </en>
+        </parking_information>
+    </access_information>
+
+    <visiting_tracks>
+        <track>
+            <name>
+                <pl>Afryka</pl>
+                <en>Africa</en>
+            </name>
+            <description>
+                <pl>Trasa prowadzi przez zwierzęta afrykańskie dzięki czemu poczujesz się jak na
+                    prawdziwym safari.
+                </pl>
+                <en>This track takes you through all african animals so you can feel like being on a
+                    safari.
+                </en>
+            </description>
+            <image>img/africa.jpg</image>
+            <animals>
+                <animal_id>56</animal_id>
+                <!-- antylopa kama -->
+                <animal_id>19</animal_id>
+                <!-- fenek -->
+                <animal_id>6</animal_id>
+                <!-- gnu -->
+                <animal_id>10</animal_id>
+                <!-- kob -->
+                <animal_id>3</animal_id>
+                <!-- lew -->
+                <animal_id>7</animal_id>
+                <!-- oryks -->
+                <animal_id>8</animal_id>
+                <!-- perlica -->
+                <animal_id>11</animal_id>
+                <!-- sitatunga -->
+                <animal_id>1</animal_id>
+                <!-- zyrafa -->
+                <animal_id>4</animal_id>
+                <!-- zebra-->
+            </animals>
+        </track>
+        <track>
+            <name>
+                <pl>Drapieżniki</pl>
+                <en>Predators</en>
+            </name>
+            <description>
+                <pl>Trasa dla odważnych i szukających przygód. Czy nie wystraszysz się Lwa?</pl>
+                <en>Track for brave and looking for an adventure. Wouldn't the Lion scare You?</en>
+            </description>
+            <image>img/predators.jpg</image>
+            <animals>
+                <animal_id>3</animal_id>
+                <!-- lew -->
+                <animal_id>19</animal_id>
+                <!-- fenek -->
+                <animal_id>2</animal_id>
+                <!-- foka -->
+            </animals>
+        </track>
+        <track>
+            <name>
+                <pl>Rogate</pl>
+                <en>Horned</en>
+            </name>
+            <description>
+                <pl>Trasa na której wszystko jest rogate duże i małe.</pl>
+                <en>Everything is horned on this track, big and small.</en>
+            </description>
+            <image>img/horned.jpg</image>
+            <animals>
+                <animal_id>6</animal_id>
+                <!-- gnu -->
+                <animal_id>56</animal_id>
+                <!-- antylopa -->
+                <animal_id>10</animal_id>
+                <!-- kob -->
+                <animal_id>7</animal_id>
+                <!-- oryks -->
+                <animal_id>11</animal_id>
+                <!-- sitatunga -->
+            </animals>
+        </track>
+    </visiting_tracks>
+    <gastronomy>
+        <restaurant lat="51.1026471" lon="17.0764934">
+            <image>img/letnia.png</image>
+            <name>
+                <pl>Restauracja Letnia</pl>
+                <en>Restauracja Letnia</en>
+            </name>
+            <open>9:00-18:00</open>
+            <dishes>
+                <dish>
+                    <price>5</price>
+                    <name>
+                        <pl>Ziemniaki</pl>
+                        <en>Potatoes</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Kurczak</pl>
+                        <en>Chicken</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>14</price>
+                    <name>
+                        <pl>Kotlety schabowy</pl>
+                        <en>Pork chop</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>17</price>
+                    <name>
+                        <pl>Kotlety De Volaille</pl>
+                        <en>De volaille</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>16</price>
+                    <name>
+                        <pl>Karkówka</pl>
+                        <en>Pork neck</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>16</price>
+                    <name>
+                        <pl>Tagiatelle po bolońsku</pl>
+                        <en>Bologna style tagiatelle</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>24</price>
+                    <name>
+                        <pl>Łosoś na parze</pl>
+                        <en>Steamed salmon</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>16</price>
+                    <name>
+                        <pl>Filet z kurczaka w prażonych migdałach</pl>
+                        <en>Chicken breast in fired almonds</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>16</price>
+                    <name>
+                        <pl>Filet z kurczaka ze szpinakiem i serem</pl>
+                        <en>Chicken breast with spinach and cheese</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>16</price>
+                    <name>
+                        <pl>Filet z kurczaka w sosie grzybowym</pl>
+                        <en>Chicken breast with mushroom sauce</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>16</price>
+                    <name>
+                        <pl>Filet z kurczaka z pomidorami, bazylią i serem</pl>
+                        <en>Chicken breast with tomatoes, basil and cheese</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>18</price>
+                    <name>
+                        <pl>Pieróg schabowy nadziewany serami</pl>
+                        <en>Pork loin roll filled with cheese</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>18</price>
+                    <name>
+                        <pl>Schab w sosie myśliwskim</pl>
+                        <en>Pork loin with hunter’s sauce</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>18</price>
+                    <name>
+                        <pl>Karkówka pieczona w sosie</pl>
+                        <en>Roast pork neck in sauce</en>
+                    </name>
+                </dish>
+
+            </dishes>
+        </restaurant>
+        <restaurant lat="51.1052072" lon="17.0754498">
+            <image>img/pod_papugami.png</image>
+            <name>
+                <pl>Restauracja Pod Papugami</pl>
+                <en>Restauracja Pod Papugami</en>
+            </name>
+            <open>10:00-17:00</open>
+            <dishes>
+                <dish>
+                    <price>18</price>
+                    <name>
+                        <pl>Placki z gulaszem</pl>
+                        <en>Potato pancake with goulash</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>16</price>
+                    <name>
+                        <pl>Kotlet schabowy</pl>
+                        <en>Pork chop in bread crumbles</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>14</price>
+                    <name>
+                        <pl>Pierś panierowana</pl>
+                        <en>Chicken breast in bread crumbles</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Pierogi Ruskie</pl>
+                        <en>Dumplings</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Pierogi z kapustą</pl>
+                        <en>Dumplings with sour cabbage</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>6</price>
+                    <name>
+                        <pl>Ziemniaki po chłopsku</pl>
+                        <en>Peasant style potatoes</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>5</price>
+                    <name>
+                        <pl>Frytki</pl>
+                        <en>Chips</en>
+                    </name>
+                </dish>
+            </dishes>
+        </restaurant>
+        <restaurant lat="51.107531" lon="17.071724">
+            <image>img/przystanek_zoo.png</image>
+            <name>
+                <pl>Przystanek ZOO</pl>
+                <en>Przystanek ZOO EN</en>
+            </name>
+            <open>9:00-22:00</open>
+            <dishes>
+
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Camembert z żurawiną</pl>
+                        <en>Camembert with cranberry</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Łosoś wędzony</pl>
+                        <en>Smoked salmon</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>10</price>
+                    <name>
+                        <pl>Krążki cebulowe</pl>
+                        <en>Onion rings</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Nachos Beefankulo</pl>
+                        <en>Nachos Beefankulo</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>9</price>
+                    <name>
+                        <pl>Smalec wiejski</pl>
+                        <en>Lard</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>22</price>
+                    <name>
+                        <pl>Sałatka Cezar</pl>
+                        <en>Cesar Salat</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>18</price>
+                    <name>
+                        <pl>Sałatka Grecka</pl>
+                        <en>Greek salad</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>15</price>
+                    <name>
+                        <pl>Tagiatelle ze szpinakiem</pl>
+                        <en>Tagiatelle with spinach</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>15</price>
+                    <name>
+                        <pl>Tagiatelle ze szpinakiem</pl>
+                        <en>Tagiatelle with spinach</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>24</price>
+                    <name>
+                        <pl>Sandacz na parze</pl>
+                        <en>Steamed pike perch</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>24</price>
+                    <name>
+                        <pl>Halibut na parze</pl>
+                        <en>Steamed halibut</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>24</price>
+                    <name>
+                        <pl>Pstrąg smażony z masłem czosnkowym</pl>
+                        <en>Fried trout with garlic butter</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>24</price>
+                    <name>
+                        <pl>Dorsz smażony w cieście piwnym</pl>
+                        <en>Fried cod in beer dough</en>
+                    </name>
+                </dish>
+
+                <dish>
+                    <price>18</price>
+                    <name>
+                        <pl>Polędwiczki wieprzowe zawijane w boczku</pl>
+                        <en>Pork tenderloin steak rolled with beckon</en>
+                    </name>
+                </dish>
+            </dishes>
+        </restaurant>
+        <restaurant lat="51.1035388" lon="17.0744902">
+            <image>img/karczma_koala.png</image>
+            <name>
+                <pl>Karczma Koala</pl>
+                <en>Karczma Koala</en>
+            </name>
+            <open>9:00-18:00</open>
+            <dishes>
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Kiełbasa</pl>
+                        <en>Sausage</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Kiełbasa biała</pl>
+                        <en>White sausage</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Kiełbasa wieprzowa cienka</pl>
+                        <en>Pork sausage</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Kaszanka grillowana na ruszcie</pl>
+                        <en>Black pudding</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>16</price>
+                    <name>
+                        <pl>Szaszłyk</pl>
+                        <en>Shish</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>14</price>
+                    <name>
+                        <pl>Kurczak</pl>
+                        <en>Chicken</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>15</price>
+                    <name>
+                        <pl>Kotlety schabowy</pl>
+                        <en>Pork chop</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>16</price>
+                    <name>
+                        <pl>Kotlety De Volaille</pl>
+                        <en>De volaille</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>15</price>
+                    <name>
+                        <pl>Karkówka</pl>
+                        <en>Pork neck</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>16</price>
+                    <name>
+                        <pl>Golonka</pl>
+                        <en>Knuckle</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>12</price>
+                    <name>
+                        <pl>Filet rybny</pl>
+                        <en>Fish fillet</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>7</price>
+                    <name>
+                        <pl>Zapiekanka</pl>
+                        <en>Casserole</en>
+                    </name>
+                </dish>
+                <dish>
+                    <price>8</price>
+                    <name>
+                        <pl>Hot-dog</pl>
+                        <en>Hot-dog</en>
+                    </name>
+                </dish>
+            </dishes>
+        </restaurant>
+    </gastronomy>
+    <events>
+        <event>
+            <name>
+                <pl>Kotiki afrykańkie</pl>
+                <en>African Kotik</en>
+            </name>
+            <time>11:00;14:00</time>
+            <time_weekends>11:00;14:00;17:00</time_weekends>
+            <time_christmas>11:00;14:00;17:00</time_christmas>
+            <image>img/kotiki.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Żyrafy siatkowane</pl>
+                <en>Reticulated Giraffe</en>
+            </name>
+            <time>9:15</time>
+            <image>img/zyrafa.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Niedźwiedzie brunatne</pl>
+                <en>Brown Bear</en>
+            </name>
+            <time>9:30</time>
+            <image>img/niedzwiedz.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Pawiany masajskie</pl>
+                <en>Maasai Baboons</en>
+            </name>
+            <time>11:00</time>
+            <image>img/pawiany.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Hipopotamy</pl>
+                <en>Hippos</en>
+            </name>
+            <time>11:00</time>
+            <image>img/hipo.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Ptaki (ptaszarnia)</pl>
+                <en>Birds (aviary)</en>
+            </name>
+            <time>12:00</time>
+            <image>img/ptaki.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Lemury</pl>
+                <en>Lemurs</en>
+            </name>
+            <time>13:00</time>
+            <image>img/lemury.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Słonie indyjskie</pl>
+                <en>Indian Elephants</en>
+            </name>
+            <time>12:30</time>
+            <image>img/slonie.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Żółwie pustynne</pl>
+                <en>Desert Turtles</en>
+            </name>
+            <time>12:00</time>
+            <start>1.06</start>
+            <image>img/zolwie.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Pelikany</pl>
+                <en>Pelicans</en>
+            </name>
+            <time>13:00</time>
+            <image>img/pelikany.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Mrówniki</pl>
+                <en>Earth Hogs</en>
+            </name>
+            <time>13:30</time>
+            <image>img/mrownik.jpg</image>
+        </event>
+        <event>
+            <name>
+                <pl>Piranie lub płaszczki</pl>
+                <en>Piranie lub płaszczki EN</en>
+            </name>
+            <time>16:00</time>
+            <image>img/plaszczka.jpg</image>
+        </event>
+    </events>
+    <history>
+        <history_event>
+            <date>10.07.1865</date>
+            <!-- please inform me if some other format would be better for you -->
+            <image>img/placeholder_history.jpg</image>
+            <heading>
+                <pl>Otwarcie ogrodu zoologicznego we Wrocławiu</pl>
+                <en>Opening of a zoological garden in Wroclaw</en>
+            </heading>
+        </history_event>
+        <history_event>
+            <date>1880</date>
+            <image>img/placeholder_history.jpg</image>
+            <heading>
+                <pl>Rozkwit ogrodu, zaliczanego w tym czasie do wiodących placówek na świecie</pl>
+                <en>Expansion of Wroclaw ZOO, which is one of the biggest in the World at the time
+                </en>
+            </heading>
+        </history_event>
+        <history_event>
+            <date>1921</date>
+            <image>img/placeholder_history.jpg</image>
+            <heading>
+                <pl>Zamknięcie ZOO po kryzysie lat powojennych</pl>
+                <en>ZOO got closed because of after - war crysis</en>
+            </heading>
+        </history_event>
+        <history_event>
+            <date>1.05.1927</date>
+            <image>img/placeholder_history.jpg</image>
+            <heading>
+                <pl>Ponowne udostępnienie ogrodu dla publiczności</pl>
+                <en>ZOO is open to public again</en>
+            </heading>
+        </history_event>
+        <history_event>
+            <date>05.1945</date>
+            <image>img/placeholder_history.jpg</image>
+            <heading>
+                <pl>Zniszczenie ogrodu podczas oblężenia miasta przez wojska radzieckie</pl>
+                <en>Wroclaw zoological garden got destroyed by soviet armed forces</en>
+            </heading>
+        </history_event>
+        <history_event>
+            <date>18.07.1948</date>
+            <image>img/placeholder_history.jpg</image>
+            <heading>
+                <pl>Otwarcie ZOO po II Wojnie Światowej</pl>
+                <en>Reopening of Wroclaw ZOO after the II World War</en>
+            </heading>
+        </history_event>
+        <history_event>
+            <date>1957</date>
+            <image>img/placeholder_history.jpg</image>
+            <heading>
+                <pl>Podwojenie dotychczasowego obszaru ogrodu poprzez zajęcie terenów po Wystawie
+                    Ziem Odzyskanych
+                </pl>
+                <en>Doubling actual ZOO area by acquiring terrains after Recovered Land Display</en>
+            </heading>
+        </history_event>
+        <history_event>
+            <date>1970 - 1980</date>
+            <!-- 1970 - 1979 should we put it some other way or can you handle this? -->
+            <image>img/placeholder_history.jpg</image>
+            <heading>
+                <pl>Kolekcja zwierząt należy do większych w Europie, a dzięki medialnemu sukcesowi
+                    "Z kamerą wśród zwierząt", prowadzonego przez Hannę i Antoniego Gucwińskich, ZOO
+                    przez wiele lat pozostaje najbardziej znanym ogrodem w Polsce
+                </pl>
+                <en>Animals collection is among the biggest in Europe thanks to a big medial success
+                    "Z kamerą wśród zwierząt" (eng. With camera among animals), created by Hanna and
+                    Antoni Gucwinski, for many years Worclaw ZOO is the best known in Poland
+                </en>
+            </heading>
+        </history_event>
+        <history_event>
+            <date>01.2007</date>
+            <image>img/placeholder_history.jpg</image>
+            <heading>
+                <pl>Dyrektorem zostaje Radosław Ratajszczak, który zapoczątkowuje proces zmian
+                    mających wprowadzić ogród w XXI wiek
+                </pl>
+                <en>Radoslaw Ratajszczak becomes ZOO director and started a process of changes thet
+                    will move ZOO to the XXI century
+                </en>
+            </heading>
+        </history_event>
+        <history_event>
+            <date>01.2010</date>
+            <image>img/placeholder_history.jpg</image>
+            <heading>
+                <pl>Wrocławskie ZOO jako pierwsze w Polsce przekształca się w spółkę</pl>
+                <en>Wroclaw ZOO is the first in Poland that got transformed into a company</en>
+            </heading>
+        </history_event>
+    </history>
+    <animals>
+        <animal id="1" lat="51.1052072" lon="17.0754498">
+            <name>
+                <pl>Żyrafa siatkowana</pl>
+                <en>Żyrafa EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>zyrafa_siatkowana_pl.html</pl>
+                <en>zyrafa_siatkowana_en.html</en>
+            </desc>
+        </animal>
+        <animal id="2" lat="51.1050185" lon="17.0759970">
+            <name>
+                <pl>Struś</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>strus_pl.html</pl>
+                <en>strus_en.html</en>
+            </desc>
+        </animal>
+        <animal id="2" lat="51.1050185" lon="17.0759970">
+            <name>
+                <pl>Foka zwyczajna</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>foka_zwyczajna_pl.html</pl>
+                <en>foka_zwyczajna_en.html</en>
+            </desc>
+        </animal>
+        <animal id="3" lat="51.1046625" lon="17.0771680">
+            <name>
+                <pl>Lew angolański</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>lew_angolanski_pl.html</pl>
+                <en>lew_angolanski_en.html</en>
+            </desc>
+        </animal>
+        <animal id="4" lat="51.1053988" lon="17.0737940">
+            <name>
+                <pl>Zebra chapmana</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>zebra_chapmana_pl.html</pl>
+                <en>zebra_chapmana_en.html</en>
+            </desc>
+        </animal>
+        <animal id="5" lat="51.1031447" lon="17.0756473">
+            <name>
+                <pl>Żubr</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="6" lat="51.1042875" lon="17.0786295">
+            <name>
+                <pl>Gnu białobrode</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>gnu_bialobrode_pl.html</pl>
+                <en>gnu_bialobrode_en.html</en>
+            </desc>
+        </animal>
+        <animal id="6" lat="51.1042875" lon="17.0786295">
+            <name>
+                <pl>Kangur rudy</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>kangur_rudy_pl.html</pl>
+                <en>kangur_rudy_en.html</en>
+            </desc>
+        </animal>
+        <animal id="7" lat="51.1047078" lon="17.0784479">
+            <name>
+                <pl>Oryks szablorogi</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>oryks_szablorogi_pl.html</pl>
+                <en>oryks_szablorogi_en.html</en>
+            </desc>
+        </animal>
+        <animal id="8" lat="51.1049038" lon="17.0778135">
+            <name>
+                <pl>Osioł Domowy</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>osiol_domowy_pl.html</pl>
+                <en>osiol_domowy_en.html</en>
+            </desc>
+        </animal>
+        <animal id="8" lat="51.1049038" lon="17.0778135">
+            <name>
+                <pl>Perlica sępia</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>perlica_sepia_pl.html</pl>
+                <en>perlica_sepia_en.html</en>
+            </desc>
+        </animal>
+        <animal id="9" lat="51.1051282" lon="17.0774613">
+            <name>
+                <pl>Wielbłąd jednogarbny</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="10" lat="51.1040432" lon="17.0774597">
+            <name>
+                <pl>Kob Singsing</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>kob_pl.html</pl>
+                <en>kob_en.html</en>
+            </desc>
+        </animal>
+        <animal id="11" lat="51.1039061" lon="17.0773532">
+            <name>
+                <pl>Sitatunga</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>sitatunga_pl.html</pl>
+                <en>sitatunga_en.html</en>
+            </desc>
+        </animal>
+        <animal id="12" lat="51.1016737" lon="17.0785009">
+            <name>
+                <pl>Niedźwiedź brunatny</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="13" lat="51.1015091" lon="17.0778810">
+            <name>
+                <pl>Magot</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="15" lat="51.1024655" lon="17.0756415">
+            <name>
+                <pl>Pelikan różowy</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="16" lat="51.1061405" lon="17.0741774">
+            <name>
+                <pl>Kotik afrykański</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="17" lat="51.1017737" lon="17.0779163">
+            <name>
+                <pl>Muflon</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="18" lat="51.1042374" lon="17.0777086">
+            <name>
+                <pl>Nilgau</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="19" lat="51.1047396" lon="17.0782172">
+            <name>
+                <pl>Fenek</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>fenek_pl.html</pl>
+                <en>fenek_en.html</en>
+            </desc>
+        </animal>
+        <animal id="20" lat="51.1042030" lon="17.0767175">
+            <name>
+                <pl>Likaon</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="21" lat="51.1042048" lon="17.0731681">
+            <name>
+                <pl>Kapibara</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="22" lat="51.1037581" lon="17.0728256">
+            <name>
+                <pl>Aguti złociste</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="26" lat="51.1064215" lon="17.0732379">
+            <name>
+                <pl>Wilk</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="27" lat="51.1060238" lon="17.0716045">
+            <name>
+                <pl>Słoń indyjski</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>slon_indyjski_pl.html</pl>
+                <en>slon_indyjski_en.html</en>
+            </desc>
+        </animal>
+        <animal id="28" lat="51.1039169" lon="17.0729268">
+            <name>
+                <pl>Lama</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="29" lat="51.1035765" lon="17.0726617">
+            <name>
+                <pl>Mara patagońska</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="30" lat="51.1040441" lon="17.0734620">
+            <name>
+                <pl>Nandu szare</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="31" lat="51.1040605" lon="17.0706544">
+            <name>
+                <pl>Daniel mezopotamski</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="32" lat="51.1034744" lon="17.0728319">
+            <name>
+                <pl>Alpaka</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="33" lat="51.1063327" lon="17.0740033">
+            <name>
+                <pl>Niedźwiedź himalajski</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="34" lat="51.1068418" lon="17.0723794">
+            <name>
+                <pl>Makak czubaty</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="35" lat="51.1067633" lon="17.0724229">
+            <name>
+                <pl>Mangaba rudoczelna</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="37" lat="51.1040646" lon="17.0731295">
+            <name>
+                <pl>Gwanako</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="38" lat="51.1035167" lon="17.0766332">
+            <name>
+                <pl>Marabut afrykański</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="39" lat="51.1063553" lon="17.0722136">
+            <name>
+                <pl>Hipopotam nilowy</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>desc/hipopotam_nilowy_pl.html</pl>
+                <en>desc/hipopotam_nilowy_en.html</en>
+            </desc>
+        </animal>
+        <animal id="40" lat="51.1050439" lon="17.0696709">
+            <name>
+                <pl>Jeleń aksis</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="42" lat="51.1043066" lon="17.0717151">
+            <name>
+                <pl>Lemur katta</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="43" lat="51.1042855" lon="17.0699521">
+            <name>
+                <pl>Sika Dybowskiego</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="44" lat="51.1053321" lon="17.0695383">
+            <name>
+                <pl>Jeleń milu</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="45" lat="51.1034212" lon="17.0725676">
+            <name>
+                <pl>Skrzydłoszpon obrożny</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="46" lat="51.1016967" lon="17.0771516">
+            <name>
+                <pl>Żbik</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="47" lat="51.1032748" lon="17.0750735">
+            <name>
+                <pl>Banteng</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="48" lat="51.1068641" lon="17.0702596">
+            <name>
+                <pl>Czerwonak różowy</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="50" lat="51.1048820" lon="17.0693605">
+            <name>
+                <pl>Renifer</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="51" lat="51.1019258" lon="17.0771623">
+            <name>
+                <pl>Ryś</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="53" lat="51.1061018" lon="17.0721245">
+            <name>
+                <pl>Tapir anta</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+        </animal>
+        <animal id="56" lat="51.1058351" lon="17.0732203">
+            <name>
+                <pl>Antylopa kama</pl>
+                <en>EN</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>desc/antylopa_kama_pl.html</pl>
+                <en>desc/antylopa_kama_en.html</en>
+            </desc>
+        </animal>
+        <animal id="57" lat="51.1058351" lon="17.0732203">
+            <name>
+                <pl>Flaming</pl>
+                <en>Flaming</en>
+            </name>
+            <description_adult>
+                <image>img/placeholder_adult.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_adult>
+            <description_child>
+                <image>img/placeholder_child.jpg</image>
+                <pl>PL</pl>
+                <en>EN</en>
+            </description_child>
+            <desc>
+                <pl>desc/flaming_pl.html</pl>
+                <en>desc/flaming_en.html</en>
+            </desc>
+        </animal>
+    </animals>
+    <ways>
+        <way id="35948032">
+            <node lat="51.1057838" lon="17.0751055" />
+            <node lat="51.1051115" lon="17.0745007" />
+            <node lat="51.1048329" lon="17.0742639" />
+        </way>
+        <way id="35948033">
+            <node lat="51.1043248" lon="17.0730844" />
+            <node lat="51.1041113" lon="17.0735988" />
+            <node lat="51.1038212" lon="17.0742998" />
+            <node lat="51.1037915" lon="17.0743716" />
+            <node lat="51.1037649" lon="17.0744360" />
+            <node lat="51.1035680" lon="17.0748020" />
+            <node lat="51.1034818" lon="17.0751670" />
+            <node lat="51.1034298" lon="17.0754222" />
+            <node lat="51.1034032" lon="17.0755088" />
+            <node lat="51.1032945" lon="17.0758619" />
+            <node lat="51.1032117" lon="17.0760313" />
+            <node lat="51.1029696" lon="17.0762011" />
+            <node lat="51.1025467" lon="17.0762221" />
+            <node lat="51.1022959" lon="17.0763656" />
+            <node lat="51.1020118" lon="17.0766983" />
+            <node lat="51.1017045" lon="17.0769202" />
+            <node lat="51.1015795" lon="17.0771257" />
+            <node lat="51.1013608" lon="17.0775643" />
+            <node lat="51.1010164" lon="17.0783504" />
+            <node lat="51.1011521" lon="17.0785114" />
+            <node lat="51.1018118" lon="17.0783018" />
+            <node lat="51.1019555" lon="17.0779164" />
+            <node lat="51.1020168" lon="17.0777265" />
+            <node lat="51.1020504" lon="17.0775621" />
+            <node lat="51.1020184" lon="17.0772879" />
+            <node lat="51.1020139" lon="17.0770501" />
+            <node lat="51.1020113" lon="17.0769637" />
+            <node lat="51.1020112" lon="17.0769382" />
+            <node lat="51.1020118" lon="17.0766983" />
+        </way>
+        <way id="61374786">
+            <node lat="51.1045253" lon="17.0767239" />
+            <node lat="51.1044532" lon="17.0769467" />
+            <node lat="51.1043845" lon="17.0770049" />
+            <node lat="51.1043754" lon="17.0770158" />
+            <node lat="51.1043547" lon="17.0770190" />
+        </way>
+        <way id="68195073">
+            <node lat="51.1048329" lon="17.0742639" />
+            <node lat="51.1045324" lon="17.0739732" />
+            <node lat="51.1043738" lon="17.0738287" />
+            <node lat="51.1041327" lon="17.0736176" />
+            <node lat="51.1041113" lon="17.0735988" />
+        </way>
+        <way id="108756435">
+            <node lat="51.1032945" lon="17.0758619" />
+            <node lat="51.1034766" lon="17.0760830" />
+            <node lat="51.1035435" lon="17.0763587" />
+            <node lat="51.1036282" lon="17.0765563" />
+            <node lat="51.1036907" lon="17.0767178" />
+            <node lat="51.1037765" lon="17.0769146" />
+            <node lat="51.1038499" lon="17.0769998" />
+            <node lat="51.1040032" lon="17.0771779" />
+            <node lat="51.1041538" lon="17.0773265" />
+        </way>
+        <way id="108756434">
+            <node lat="51.1054978" lon="17.0700067" />
+            <node lat="51.1051023" lon="17.0698932" />
+            <node lat="51.1045318" lon="17.0695421" />
+        </way>
+        <way id="108756433">
+            <node lat="51.1061962" lon="17.0726934" />
+            <node lat="51.1062927" lon="17.0723599" />
+            <node lat="51.1064503" lon="17.0723207" />
+            <node lat="51.1064903" lon="17.0722062" />
+            <node lat="51.1066450" lon="17.0722064" />
+            <node lat="51.1066899" lon="17.0723046" />
+            <node lat="51.1071520" lon="17.0720352" />
+            <node lat="51.1072125" lon="17.0715711" />
+            <node lat="51.1073491" lon="17.0715983" />
+            <node lat="51.1074015" lon="17.0716468" />
+            <node lat="51.1074751" lon="17.0714899" />
+            <node lat="51.1075736" lon="17.0713916" />
+            <node lat="51.1077120" lon="17.0709837" />
+            <node lat="51.1078573" lon="17.0704062" />
+        </way>
+        <way id="108757465">
+            <node lat="51.1054905" lon="17.0741483" />
+            <node lat="51.1056182" lon="17.0737014" />
+            <node lat="51.1058622" lon="17.0738891" />
+            <node lat="51.1059162" lon="17.0739902" />
+            <node lat="51.1060058" lon="17.0741080" />
+            <node lat="51.1060747" lon="17.0740974" />
+            <node lat="51.1062042" lon="17.0740214" />
+            <node lat="51.1062616" lon="17.0738566" />
+            <node lat="51.1063419" lon="17.0736259" />
+            <node lat="51.1063970" lon="17.0733884" />
+            <node lat="51.1062731" lon="17.0731762" />
+            <node lat="51.1062021" lon="17.0730064" />
+            <node lat="51.1061700" lon="17.0728862" />
+            <node lat="51.1061863" lon="17.0728000" />
+            <node lat="51.1061962" lon="17.0726934" />
+        </way>
+        <way id="108801536">
+            <node lat="51.1042403" lon="17.0712383" />
+            <node lat="51.1040671" lon="17.0720594" />
+            <node lat="51.1042589" lon="17.0722297" />
+            <node lat="51.1045467" lon="17.0721156" />
+            <node lat="51.1047797" lon="17.0719301" />
+            <node lat="51.1047060" lon="17.0712434" />
+        </way>
+        <way id="108801550">
+            <node lat="51.1056182" lon="17.0737014" />
+            <node lat="51.1051669" lon="17.0733005" />
+            <node lat="51.1047728" lon="17.0730132" />
+            <node lat="51.1048054" lon="17.0727276" />
+        </way>
+        <way id="108801546">
+            <node lat="51.1055979" lon="17.0717313" />
+            <node lat="51.1056381" lon="17.0719197" />
+            <node lat="51.1056627" lon="17.0720348" />
+            <node lat="51.1056476" lon="17.0721964" />
+            <node lat="51.1055564" lon="17.0724696" />
+        </way>
+        <way id="108801547">
+            <node lat="51.1057718" lon="17.0710414" />
+            <node lat="51.1058232" lon="17.0710240" />
+            <node lat="51.1060476" lon="17.0710683" />
+            <node lat="51.1062402" lon="17.0711568" />
+            <node lat="51.1063943" lon="17.0713184" />
+            <node lat="51.1064358" lon="17.0714028" />
+            <node lat="51.1064688" lon="17.0716052" />
+            <node lat="51.1065438" lon="17.0718374" />
+            <node lat="51.1065575" lon="17.0719504" />
+            <node lat="51.1064903" lon="17.0722062" />
+        </way>
+        <way id="108801538">
+            <node lat="51.1047797" lon="17.0719301" />
+            <node lat="51.1048611" lon="17.0719749" />
+            <node lat="51.1048887" lon="17.0719900" />
+            <node lat="51.1050618" lon="17.0719272" />
+        </way>
+        <way id="108800346">
+            <node lat="51.1057741" lon="17.0714289" />
+            <node lat="51.1058365" lon="17.0715088" />
+            <node lat="51.1059776" lon="17.0712508" />
+            <node lat="51.1062402" lon="17.0711568" />
+            <node lat="51.1063483" lon="17.0709378" />
+            <node lat="51.1064287" lon="17.0708024" />
+            <node lat="51.1064628" lon="17.0707449" />
+            <node lat="51.1066724" lon="17.0707173" />
+            <node lat="51.1068851" lon="17.0707501" />
+            <node lat="51.1071687" lon="17.0709803" />
+            <node lat="51.1071980" lon="17.0709162" />
+        </way>
+        <way id="108801543">
+            <node lat="51.1040671" lon="17.0720594" />
+            <node lat="51.1039950" lon="17.0720520" />
+            <node lat="51.1039230" lon="17.0722383" />
+            <node lat="51.1039717" lon="17.0723174" />
+            <node lat="51.1040358" lon="17.0723748" />
+            <node lat="51.1041265" lon="17.0724846" />
+            <node lat="51.1041674" lon="17.0727029" />
+            <node lat="51.1042360" lon="17.0727487" />
+            <node lat="51.1042663" lon="17.0728996" />
+            <node lat="51.1042792" lon="17.0729638" />
+            <node lat="51.1043248" lon="17.0730844" />
+        </way>
+        <way id="108810887">
+            <node lat="51.1039717" lon="17.0723174" />
+            <node lat="51.1039364" lon="17.0723687" />
+            <node lat="51.1038309" lon="17.0727016" />
+        </way>
+        <way id="108813212">
+            <node lat="51.1050455" lon="17.0720156" />
+            <node lat="51.1050954" lon="17.0722288" />
+            <node lat="51.1052032" lon="17.0722826" />
+            <node lat="51.1053090" lon="17.0723946" />
+            <node lat="51.1053429" lon="17.0724630" />
+        </way>
+        <way id="108813213">
+            <node lat="51.1045318" lon="17.0695421" />
+            <node lat="51.1044111" lon="17.0694180" />
+            <node lat="51.1039757" lon="17.0703117" />
+            <node lat="51.1038725" lon="17.0705120" />
+            <node lat="51.1039112" lon="17.0707020" />
+            <node lat="51.1041004" lon="17.0710542" />
+            <node lat="51.1041209" lon="17.0710923" />
+            <node lat="51.1042403" lon="17.0712383" />
+            <node lat="51.1044741" lon="17.0712434" />
+            <node lat="51.1047060" lon="17.0712434" />
+        </way>
+        <way id="108813214">
+            <node lat="51.1047060" lon="17.0712434" />
+            <node lat="51.1048931" lon="17.0712096" />
+            <node lat="51.1050069" lon="17.0711761" />
+            <node lat="51.1050415" lon="17.0711262" />
+            <node lat="51.1051490" lon="17.0710993" />
+            <node lat="51.1052182" lon="17.0710558" />
+            <node lat="51.1053012" lon="17.0710358" />
+            <node lat="51.1055076" lon="17.0709588" />
+            <node lat="51.1056721" lon="17.0709472" />
+            <node lat="51.1057718" lon="17.0710414" />
+            <node lat="51.1057987" lon="17.0711122" />
+            <node lat="51.1057909" lon="17.0712841" />
+            <node lat="51.1057741" lon="17.0714289" />
+            <node lat="51.1056763" lon="17.0715296" />
+            <node lat="51.1055965" lon="17.0715938" />
+            <node lat="51.1055979" lon="17.0717313" />
+            <node lat="51.1054294" lon="17.0716961" />
+            <node lat="51.1051536" lon="17.0717954" />
+            <node lat="51.1050943" lon="17.0718527" />
+            <node lat="51.1050618" lon="17.0719272" />
+            <node lat="51.1050455" lon="17.0720156" />
+        </way>
+        <way id="108812984">
+            <node lat="51.1054978" lon="17.0700067" />
+            <node lat="51.1056518" lon="17.0698813" />
+            <node lat="51.1057953" lon="17.0699034" />
+            <node lat="51.1058988" lon="17.0699402" />
+            <node lat="51.1060310" lon="17.0698728" />
+        </way>
+        <way id="108852507">
+            <node lat="51.1072125" lon="17.0715711" />
+            <node lat="51.1072033" lon="17.0714855" />
+            <node lat="51.1071867" lon="17.0713321" />
+            <node lat="51.1071670" lon="17.0711062" />
+            <node lat="51.1071687" lon="17.0709803" />
+        </way>
+        <way id="110364637">
+            <node lat="51.1072835" lon="17.0705058" />
+            <node lat="51.1073528" lon="17.0701881" />
+        </way>
+        <way id="110364638">
+            <node lat="51.1071980" lon="17.0709162" />
+            <node lat="51.1072835" lon="17.0705058" />
+        </way>
+        <way id="133484626">
+            <node lat="51.1056721" lon="17.0709472" />
+            <node lat="51.1057241" lon="17.0707842" />
+            <node lat="51.1058717" lon="17.0705322" />
+            <node lat="51.1059741" lon="17.0703573" />
+            <node lat="51.1060405" lon="17.0702188" />
+        </way>
+        <way id="133484616">
+            <node lat="51.1047189" lon="17.0781616" />
+            <node lat="51.1045140" lon="17.0778731" />
+            <node lat="51.1044672" lon="17.0778073" />
+            <node lat="51.1043713" lon="17.0776723" />
+        </way>
+        <way id="133484611">
+            <node lat="51.1062616" lon="17.0738566" />
+            <node lat="51.1062326" lon="17.0738396" />
+        </way>
+        <way id="133484612">
+            <node lat="51.1060535" lon="17.0740514" />
+            <node lat="51.1061900" lon="17.0739630" />
+        </way>
+        <way id="133484614">
+            <node lat="51.1059162" lon="17.0739902" />
+            <node lat="51.1059760" lon="17.0740027" />
+        </way>
+        <way id="133484615">
+            <node lat="51.1043489" lon="17.0783721" />
+            <node lat="51.1045915" lon="17.0785887" />
+        </way>
+        <way id="133484619">
+            <node lat="51.1060310" lon="17.0698728" />
+            <node lat="51.1060769" lon="17.0697319" />
+        </way>
+        <way id="133484622">
+            <node lat="51.1056381" lon="17.0719197" />
+            <node lat="51.1057521" lon="17.0718804" />
+            <node lat="51.1058212" lon="17.0718572" />
+        </way>
+        <way id="133484625">
+            <node lat="51.1066450" lon="17.0722064" />
+            <node lat="51.1066272" lon="17.0721087" />
+            <node lat="51.1065895" lon="17.0720105" />
+            <node lat="51.1065575" lon="17.0719504" />
+        </way>
+        <way id="133484627">
+            <node lat="51.1060405" lon="17.0702188" />
+            <node lat="51.1060463" lon="17.0701649" />
+            <node lat="51.1060227" lon="17.0699902" />
+            <node lat="51.1060194" lon="17.0699371" />
+            <node lat="51.1060310" lon="17.0698728" />
+        </way>
+        <way id="133475400">
+            <node lat="51.1025467" lon="17.0762221" />
+            <node lat="51.1026375" lon="17.0758276" />
+            <node lat="51.1026627" lon="17.0757541" />
+            <node lat="51.1026908" lon="17.0757376" />
+            <node lat="51.1029358" lon="17.0758226" />
+            <node lat="51.1029654" lon="17.0759003" />
+            <node lat="51.1030168" lon="17.0759688" />
+            <node lat="51.1031617" lon="17.0758716" />
+            <node lat="51.1032117" lon="17.0760313" />
+        </way>
+        <way id="133484620">
+            <node lat="51.1064503" lon="17.0723207" />
+            <node lat="51.1065054" lon="17.0724075" />
+            <node lat="51.1065321" lon="17.0724088" />
+            <node lat="51.1066212" lon="17.0723837" />
+            <node lat="51.1066899" lon="17.0723046" />
+        </way>
+        <way id="133484631">
+            <node lat="51.1058365" lon="17.0715088" />
+            <node lat="51.1057854" lon="17.0716274" />
+            <node lat="51.1057854" lon="17.0717990" />
+            <node lat="51.1058212" lon="17.0718572" />
+            <node lat="51.1058420" lon="17.0718910" />
+            <node lat="51.1059209" lon="17.0719512" />
+            <node lat="51.1059633" lon="17.0720169" />
+            <node lat="51.1059778" lon="17.0722338" />
+            <node lat="51.1060846" lon="17.0722998" />
+            <node lat="51.1061904" lon="17.0723279" />
+            <node lat="51.1062209" lon="17.0723342" />
+            <node lat="51.1062927" lon="17.0723599" />
+        </way>
+        <way id="108852508">
+            <node lat="51.1078573" lon="17.0704062" />
+            <node lat="51.1073528" lon="17.0701881" />
+            <node lat="51.1072083" lon="17.0701234" />
+            <node lat="51.1068523" lon="17.0699976" />
+            <node lat="51.1067911" lon="17.0701300" />
+            <node lat="51.1065852" lon="17.0701913" />
+            <node lat="51.1060769" lon="17.0697319" />
+            <node lat="51.1057894" lon="17.0694721" />
+            <node lat="51.1055814" lon="17.0692841" />
+            <node lat="51.1055098" lon="17.0692194" />
+            <node lat="51.1051556" lon="17.0689815" />
+            <node lat="51.1049294" lon="17.0689815" />
+            <node lat="51.1047629" lon="17.0690359" />
+            <node lat="51.1046280" lon="17.0692809" />
+            <node lat="51.1045318" lon="17.0695421" />
+        </way>
+        <way id="133655257">
+            <node lat="51.1048291" lon="17.0777317" />
+            <node lat="51.1047821" lon="17.0777321" />
+            <node lat="51.1047347" lon="17.0777255" />
+            <node lat="51.1047006" lon="17.0777136" />
+            <node lat="51.1046465" lon="17.0776553" />
+            <node lat="51.1045608" lon="17.0775546" />
+            <node lat="51.1045267" lon="17.0775241" />
+            <node lat="51.1044569" lon="17.0775533" />
+            <node lat="51.1044169" lon="17.0775851" />
+            <node lat="51.1043713" lon="17.0776723" />
+        </way>
+        <way id="133655262">
+            <node lat="51.1043655" lon="17.0782328" />
+            <node lat="51.1042024" lon="17.0782765" />
+        </way>
+        <way id="133655265">
+            <node lat="51.1038499" lon="17.0769998" />
+            <node lat="51.1038165" lon="17.0770950" />
+            <node lat="51.1037757" lon="17.0771639" />
+            <node lat="51.1037316" lon="17.0772102" />
+        </way>
+        <way id="133655260">
+            <node lat="51.1037865" lon="17.0761095" />
+            <node lat="51.1037770" lon="17.0761233" />
+            <node lat="51.1037599" lon="17.0761479" />
+            <node lat="51.1037366" lon="17.0761559" />
+            <node lat="51.1037158" lon="17.0761969" />
+            <node lat="51.1037042" lon="17.0762631" />
+            <node lat="51.1036767" lon="17.0763545" />
+            <node lat="51.1036694" lon="17.0763736" />
+            <node lat="51.1036443" lon="17.0764393" />
+            <node lat="51.1036282" lon="17.0765563" />
+        </way>
+        <way id="133655266">
+            <node lat="51.1044169" lon="17.0775851" />
+            <node lat="51.1044419" lon="17.0775149" />
+            <node lat="51.1044510" lon="17.0774023" />
+            <node lat="51.1044482" lon="17.0771974" />
+            <node lat="51.1044174" lon="17.0771357" />
+            <node lat="51.1043834" lon="17.0771158" />
+        </way>
+        <way id="61374787">
+            <node lat="51.1042855" lon="17.0775096" />
+            <node lat="51.1043729" lon="17.0773281" />
+            <node lat="51.1043995" lon="17.0772261" />
+            <node lat="51.1043834" lon="17.0771158" />
+            <node lat="51.1043776" lon="17.0770757" />
+            <node lat="51.1043547" lon="17.0770190" />
+            <node lat="51.1042840" lon="17.0770010" />
+        </way>
+        <way id="133659810">
+            <node lat="51.1049325" lon="17.0708438" />
+            <node lat="51.1049433" lon="17.0707816" />
+            <node lat="51.1049716" lon="17.0708014" />
+            <node lat="51.1049973" lon="17.0708451" />
+            <node lat="51.1050015" lon="17.0709180" />
+        </way>
+        <way id="133659811">
+            <node lat="51.1047060" lon="17.0712434" />
+            <node lat="51.1047079" lon="17.0711299" />
+            <node lat="51.1047229" lon="17.0710240" />
+            <node lat="51.1047828" lon="17.0709008" />
+            <node lat="51.1048485" lon="17.0708425" />
+            <node lat="51.1049325" lon="17.0708438" />
+            <node lat="51.1050015" lon="17.0709180" />
+            <node lat="51.1050190" lon="17.0710213" />
+            <node lat="51.1050415" lon="17.0711262" />
+        </way>
+        <way id="133659808">
+            <node lat="51.1041165" lon="17.0747334" />
+            <node lat="51.1041095" lon="17.0744495" />
+            <node lat="51.1041073" lon="17.0743616" />
+            <node lat="51.1041080" lon="17.0738342" />
+            <node lat="51.1041194" lon="17.0736933" />
+            <node lat="51.1041327" lon="17.0736176" />
+        </way>
+        <way id="133484623">
+            <node lat="51.1041165" lon="17.0747334" />
+            <node lat="51.1040263" lon="17.0746515" />
+            <node lat="51.1039887" lon="17.0746457" />
+            <node lat="51.1039637" lon="17.0746038" />
+            <node lat="51.1040093" lon="17.0745382" />
+            <node lat="51.1041095" lon="17.0744495" />
+        </way>
+        <way id="133730538">
+            <node lat="51.1034766" lon="17.0760830" />
+            <node lat="51.1034354" lon="17.0758365" />
+            <node lat="51.1034216" lon="17.0755858" />
+            <node lat="51.1034032" lon="17.0755088" />
+        </way>
+        <way id="133730539">
+            <node lat="51.1042663" lon="17.0728996" />
+            <node lat="51.1042305" lon="17.0729021" />
+            <node lat="51.1041525" lon="17.0728463" />
+            <node lat="51.1041220" lon="17.0728245" />
+            <node lat="51.1040600" lon="17.0727699" />
+        </way>
+        <way id="133730540">
+            <node lat="51.1041347" lon="17.0729375" />
+            <node lat="51.1041525" lon="17.0728463" />
+            <node lat="51.1041674" lon="17.0727029" />
+            <node lat="51.1040788" lon="17.0726412" />
+            <node lat="51.1040356" lon="17.0725054" />
+            <node lat="51.1040358" lon="17.0723748" />
+        </way>
+        <way id="133731844">
+            <node lat="51.1066212" lon="17.0723837" />
+            <node lat="51.1066441" lon="17.0725348" />
+            <node lat="51.1066868" lon="17.0728346" />
+        </way>
+        <way id="133731845">
+            <node lat="51.1040788" lon="17.0726412" />
+            <node lat="51.1040600" lon="17.0727699" />
+            <node lat="51.1040416" lon="17.0728652" />
+        </way>
+        <way id="133731846">
+            <node lat="51.1065054" lon="17.0724075" />
+            <node lat="51.1065012" lon="17.0725240" />
+            <node lat="51.1064938" lon="17.0727791" />
+        </way>
+        <way id="133731847">
+            <node lat="51.1036690" lon="17.0725744" />
+            <node lat="51.1037071" lon="17.0723869" />
+            <node lat="51.1037381" lon="17.0722810" />
+            <node lat="51.1037910" lon="17.0721991" />
+            <node lat="51.1038507" lon="17.0721738" />
+            <node lat="51.1039230" lon="17.0722383" />
+        </way>
+        <way id="133739900">
+            <node lat="51.1056476" lon="17.0721964" />
+            <node lat="51.1058015" lon="17.0722024" />
+            <node lat="51.1059778" lon="17.0722338" />
+        </way>
+        <way id="133744213">
+            <node lat="51.1039637" lon="17.0746038" />
+            <node lat="51.1037915" lon="17.0743716" />
+        </way>
+        <way id="133744214">
+            <node lat="51.1049460" lon="17.0724246" />
+            <node lat="51.1049795" lon="17.0726444" />
+        </way>
+        <way id="133744215">
+            <node lat="51.1064688" lon="17.0716052" />
+            <node lat="51.1065324" lon="17.0714875" />
+            <node lat="51.1065822" lon="17.0714153" />
+            <node lat="51.1066164" lon="17.0713531" />
+        </way>
+        <way id="133744216">
+            <node lat="51.1060405" lon="17.0702188" />
+            <node lat="51.1061229" lon="17.0702006" />
+            <node lat="51.1061811" lon="17.0702231" />
+            <node lat="51.1062344" lon="17.0703291" />
+            <node lat="51.1063458" lon="17.0706351" />
+            <node lat="51.1064287" lon="17.0708024" />
+        </way>
+        <way id="133744217">
+            <node lat="51.1072033" lon="17.0714855" />
+            <node lat="51.1070217" lon="17.0714223" />
+            <node lat="51.1068324" lon="17.0713712" />
+            <node lat="51.1066164" lon="17.0713531" />
+            <node lat="51.1065800" lon="17.0713500" />
+            <node lat="51.1064772" lon="17.0713447" />
+            <node lat="51.1064287" lon="17.0713356" />
+            <node lat="51.1063943" lon="17.0713184" />
+        </way>
+        <way id="133744218">
+            <node lat="51.1050954" lon="17.0722288" />
+            <node lat="51.1050130" lon="17.0723761" />
+            <node lat="51.1049460" lon="17.0724246" />
+            <node lat="51.1048839" lon="17.0724110" />
+            <node lat="51.1048072" lon="17.0723490" />
+            <node lat="51.1047780" lon="17.0722171" />
+            <node lat="51.1047938" lon="17.0721046" />
+            <node lat="51.1048340" lon="17.0720329" />
+            <node lat="51.1048611" lon="17.0719749" />
+        </way>
+        <way id="133745055">
+            <node lat="51.1051556" lon="17.0689815" />
+            <node lat="51.1050952" lon="17.0688600" />
+            <node lat="51.1050014" lon="17.0687669" />
+            <node lat="51.1049223" lon="17.0687592" />
+            <node lat="51.1048078" lon="17.0688232" />
+            <node lat="51.1047579" lon="17.0689337" />
+            <node lat="51.1047629" lon="17.0690359" />
+        </way>
+        <way id="133745054">
+            <node lat="51.1054978" lon="17.0700067" />
+            <node lat="51.1055187" lon="17.0698217" />
+            <node lat="51.1055273" lon="17.0697516" />
+            <node lat="51.1055445" lon="17.0695989" />
+            <node lat="51.1055749" lon="17.0693836" />
+            <node lat="51.1055814" lon="17.0692841" />
+        </way>
+        <way id="223378603">
+            <node lat="51.1036227" lon="17.0706950" />
+            <node lat="51.1037055" lon="17.0707087" />
+            <node lat="51.1037640" lon="17.0707643" />
+            <node lat="51.1039196" lon="17.0709198" />
+            <node lat="51.1041004" lon="17.0710542" />
+        </way>
+        <way id="225121365">
+            <node lat="51.1038212" lon="17.0742998" />
+            <node lat="51.1034343" lon="17.0739317" />
+            <node lat="51.1035513" lon="17.0734803" />
+        </way>
+        <way id="225277033">
+            <node lat="51.1061170" lon="17.0704797" />
+            <node lat="51.1060335" lon="17.0705759" />
+            <node lat="51.1059739" lon="17.0706177" />
+            <node lat="51.1059223" lon="17.0705911" />
+            <node lat="51.1058717" lon="17.0705322" />
+        </way>
+        <way id="226244353">
+            <node lat="51.1051115" lon="17.0745007" />
+            <node lat="51.1052806" lon="17.0739809" />
+        </way>
+        <way id="226233345">
+            <node lat="51.1050720" lon="17.0771950" />
+            <node lat="51.1050044" lon="17.0774085" />
+            <node lat="51.1049181" lon="17.0775203" />
+            <node lat="51.1048545" lon="17.0776097" />
+            <node lat="51.1048291" lon="17.0777317" />
+            <node lat="51.1048203" lon="17.0778424" />
+            <node lat="51.1047189" lon="17.0781616" />
+            <node lat="51.1046654" lon="17.0783678" />
+            <node lat="51.1045915" lon="17.0785887" />
+            <node lat="51.1045042" lon="17.0788369" />
+            <node lat="51.1044079" lon="17.0789108" />
+            <node lat="51.1043514" lon="17.0788266" />
+            <node lat="51.1043378" lon="17.0786878" />
+            <node lat="51.1043489" lon="17.0783721" />
+            <node lat="51.1043655" lon="17.0782328" />
+            <node lat="51.1043870" lon="17.0780354" />
+            <node lat="51.1043957" lon="17.0778384" />
+            <node lat="51.1043713" lon="17.0776723" />
+            <node lat="51.1042855" lon="17.0775096" />
+            <node lat="51.1041538" lon="17.0773265" />
+            <node lat="51.1042840" lon="17.0770010" />
+            <node lat="51.1044298" lon="17.0765962" />
+        </way>
+        <way id="226233346">
+            <node lat="51.1043870" lon="17.0743751" />
+            <node lat="51.1043578" lon="17.0742142" />
+            <node lat="51.1043571" lon="17.0739701" />
+            <node lat="51.1043738" lon="17.0738287" />
+        </way>
+        <way id="226233347">
+            <node lat="51.1044298" lon="17.0765962" />
+            <node lat="51.1047584" lon="17.0755861" />
+            <node lat="51.1048099" lon="17.0754279" />
+            <node lat="51.1051115" lon="17.0745007" />
+        </way>
+        <way id="35948031">
+            <node lat="51.1059714" lon="17.0745802" />
+            <node lat="51.1057838" lon="17.0751055" />
+            <node lat="51.1054214" lon="17.0761497" />
+            <node lat="51.1053449" lon="17.0763785" />
+        </way>
+        <way id="61374785">
+            <node lat="51.1050720" lon="17.0771950" />
+            <node lat="51.1045253" lon="17.0767239" />
+        </way>
+        <way id="237637434">
+            <node lat="51.1020530" lon="17.0769605" />
+            <node lat="51.1020113" lon="17.0769637" />
+            <node lat="51.1020139" lon="17.0770501" />
+            <node lat="51.1020556" lon="17.0770468" />
+            <node lat="51.1020530" lon="17.0769605" />
+        </way>
+        <way id="237636211">
+            <node lat="51.1043844" lon="17.0739602" />
+            <node lat="51.1043468" lon="17.0739466" />
+            <node lat="51.1043454" lon="17.0740069" />
+            <node lat="51.1043716" lon="17.0740149" />
+            <node lat="51.1043844" lon="17.0739602" />
+        </way>
+        <way id="237681767">
+            <node lat="51.1055742" lon="17.0697662" />
+            <node lat="51.1055273" lon="17.0697516" />
+            <node lat="51.1055187" lon="17.0698217" />
+            <node lat="51.1055656" lon="17.0698363" />
+            <node lat="51.1055742" lon="17.0697662" />
+        </way>
+        <way id="237681768">
+            <node lat="51.1044672" lon="17.0778073" />
+            <node lat="51.1044951" lon="17.0777551" />
+            <node lat="51.1045414" lon="17.0778161" />
+            <node lat="51.1045140" lon="17.0778731" />
+            <node lat="51.1044672" lon="17.0778073" />
+        </way>
+        <way id="241508573">
+            <node lat="51.1057119" lon="17.0763470" />
+            <node lat="51.1055623" lon="17.0761805" />
+            <node lat="51.1054847" lon="17.0764008" />
+            <node lat="51.1054727" lon="17.0764350" />
+            <node lat="51.1054615" lon="17.0764570" />
+            <node lat="51.1053449" lon="17.0763785" />
+        </way>
+        <way id="241508572">
+            <node lat="51.1053449" lon="17.0763785" />
+            <node lat="51.1050720" lon="17.0771950" />
+        </way>
+        <way id="242454179">
+            <node lat="51.1054615" lon="17.0764570" />
+            <node lat="51.1054888" lon="17.0764479" />
+            <node lat="51.1054954" lon="17.0764245" />
+            <node lat="51.1054847" lon="17.0764008" />
+        </way>
+    </ways>
+    <junctions>
+        <junction lat="51.1050455" lon="17.0720156">
+            <way id="108813212" />
+            <way id="108813214" />
+        </junction>
+        <junction lat="51.1043713" lon="17.0776723">
+            <way id="133484616" />
+            <way id="133655257" />
+        </junction>
+        <junction lat="51.1044298" lon="17.0765962">
+            <way id="226233345" />
+            <way id="226233347" />
+        </junction>
+        <junction lat="51.1041165" lon="17.0747334">
+            <way id="133659808" />
+            <way id="133484623" />
+        </junction>
+        <junction lat="51.1053449" lon="17.0763785">
+            <way id="35948031" />
+            <way id="241508573" />
+            <way id="35948031" />
+            <way id="241508572" />
+            <way id="241508573" />
+            <way id="241508572" />
+        </junction>
+        <junction lat="51.1078573" lon="17.0704062">
+            <way id="108756433" />
+            <way id="108852508" />
+        </junction>
+        <junction lat="51.1054978" lon="17.0700067">
+            <way id="108756434" />
+            <way id="108812984" />
+            <way id="108756434" />
+            <way id="133745054" />
+            <way id="108812984" />
+            <way id="133745054" />
+        </junction>
+        <junction lat="51.1045318" lon="17.0695421">
+            <way id="108756434" />
+            <way id="108813213" />
+            <way id="108756434" />
+            <way id="108852508" />
+            <way id="108813213" />
+            <way id="108852508" />
+        </junction>
+        <junction lat="51.1047060" lon="17.0712434">
+            <way id="108801536" />
+            <way id="108813213" />
+            <way id="108801536" />
+            <way id="108813214" />
+            <way id="108801536" />
+            <way id="133659811" />
+            <way id="108813213" />
+            <way id="108813214" />
+            <way id="108813213" />
+            <way id="133659811" />
+            <way id="108813214" />
+            <way id="133659811" />
+        </junction>
+        <junction lat="51.1048329" lon="17.0742639">
+            <way id="35948032" />
+            <way id="68195073" />
+        </junction>
+        <junction lat="51.1061962" lon="17.0726934">
+            <way id="108756433" />
+            <way id="108757465" />
+        </junction>
+        <junction lat="51.1060405" lon="17.0702188">
+            <way id="133484626" />
+            <way id="133484627" />
+            <way id="133484626" />
+            <way id="133744216" />
+            <way id="133484627" />
+            <way id="133744216" />
+        </junction>
+        <junction lat="51.1072835" lon="17.0705058">
+            <way id="110364637" />
+            <way id="110364638" />
+        </junction>
+        <junction lat="51.1050720" lon="17.0771950">
+            <way id="226233345" />
+            <way id="61374785" />
+            <way id="226233345" />
+            <way id="241508572" />
+            <way id="61374785" />
+            <way id="241508572" />
+        </junction>
+        <junction lat="51.1071980" lon="17.0709162">
+            <way id="108800346" />
+            <way id="110364638" />
+        </junction>
+        <junction lat="51.1045253" lon="17.0767239">
+            <way id="61374786" />
+            <way id="61374785" />
+        </junction>
+        <junction lat="51.1060310" lon="17.0698728">
+            <way id="108812984" />
+            <way id="133484619" />
+            <way id="108812984" />
+            <way id="133484627" />
+            <way id="133484619" />
+            <way id="133484627" />
+        </junction>
+        <junction lat="51.1043248" lon="17.0730844">
+            <way id="35948033" />
+            <way id="108801543" />
+        </junction>
+        <junction lat="51.1051115" lon="17.0745007">
+            <way id="226244353" />
+            <way id="226233347" />
+        </junction>
+    </junctions>
 </root>
