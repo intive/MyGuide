@@ -235,18 +235,18 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tracks_afryka.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q36-dE-BAv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="tracks_afryka.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q36-dE-BAv">
                                 <rect key="frame" x="10" y="30" width="300" height="195"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="195" id="4j9-z8-nxZ"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="195" id="4j9-z8-nxZ"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tracks_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="v48-eU-bfh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tracks_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="v48-eU-bfh">
                                 <rect key="frame" x="70" y="340" width="181" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="v48-eU-bfh" secondAttribute="height" multiplier="181:140" id="mMK-cu-fM1"/>
+                                    <constraint firstAttribute="width" secondItem="v48-eU-bfh" secondAttribute="height" multiplier="181:140" priority="900" id="mMK-cu-fM1"/>
                                 </constraints>
                             </imageView>
                         </subviews>
