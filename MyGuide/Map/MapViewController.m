@@ -72,8 +72,6 @@
 #pragma mark - Initial configuration
 - (void)configureMapView
 {
-    _mapView.translatesAutoresizingMaskIntoConstraints = YES;
-    _mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.mapView.delegate = self;
     _lastGoodCamera = [self.mapView.camera copy];
 
