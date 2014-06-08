@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem*rightSidebarButton;
 @property (nonatomic) NSUInteger trackRow;
+@property (weak, nonatomic) IBOutlet UIImageView *trackImage;
 
 @end
