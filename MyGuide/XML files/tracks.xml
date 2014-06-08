@@ -1,6 +1,6 @@
 <root>
     <visiting_tracks>
-        <version>24</version>
+        <version>27</version>
         <track>
             <name>
                 <pl>Afryka</pl>
@@ -16,25 +16,61 @@
             </description>
             <image>img/africa.jpg</image>
             <animals>
-                <animal_id>56</animal_id>
+                <!-- <animal_id>56</animal_id> -->
                 <!--  antylopa kama  -->
-                <animal_id>19</animal_id>
+                <animal_id>18</animal_id>
                 <!--  fenek  -->
-                <animal_id>6</animal_id>
+                <animal_id>5</animal_id>
                 <!--  gnu  -->
-                <animal_id>10</animal_id>
+                <animal_id>9</animal_id>
                 <!--  kob  -->
-                <animal_id>3</animal_id>
+                <animal_id>2</animal_id>
                 <!--  lew  -->
-                <animal_id>7</animal_id>
+                <animal_id>6</animal_id>
                 <!--  oryks  -->
-                <animal_id>8</animal_id>
+                <!-- <animal_id>7</animal_id> -->
                 <!--  perlica  -->
-                <animal_id>11</animal_id>
+                <animal_id>10</animal_id>
                 <!--  sitatunga  -->
-                <animal_id>1</animal_id>
+                <animal_id>0</animal_id>
                 <!--  zyrafa  -->
-                <animal_id>4</animal_id>
+                <animal_id>3</animal_id>
+                <!--  zebra -->
+            </animals>
+        </track><track>
+            <name>
+                <pl>Afryka</pl>
+                <en>Africa</en>
+            </name>
+            <description>
+                <pl>
+                    Trasa prowadzi przez zwierzęta afrykańskie dzięki czemu poczujesz się jak na prawdziwym safari.
+                </pl>
+                <en>
+                    This track takes you through all african animals so you can feel like being on a safari.
+                </en>
+            </description>
+            <image>img/africa.jpg</image>
+            <animals>
+                <!-- <animal_id>56</animal_id> -->
+                <!--  antylopa kama  -->
+                <animal_id>18</animal_id>
+                <!--  fenek  -->
+                <animal_id>5</animal_id>
+                <!--  gnu  -->
+                <animal_id>9</animal_id>
+                <!--  kob  -->
+                <animal_id>2</animal_id>
+                <!--  lew  -->
+                <animal_id>6</animal_id>
+                <!--  oryks  -->
+                <!-- <animal_id>7</animal_id> -->
+                <!--  perlica  -->
+                <animal_id>10</animal_id>
+                <!--  sitatunga  -->
+                <animal_id>0</animal_id>
+                <!--  zyrafa  -->
+                <animal_id>3</animal_id>
                 <!--  zebra -->
             </animals>
         </track>
@@ -53,12 +89,14 @@
             </description>
             <image>img/predators.jpg</image>
             <animals>
-                <animal_id>3</animal_id>
-                <!--  lew  -->
-                <animal_id>19</animal_id>
-                <!--  fenek  -->
                 <animal_id>2</animal_id>
+                <!--  lew  -->
+                <animal_id>18</animal_id>
+                <!--  fenek  -->
+                <!-- <animal_id>1</animal_id> -->
                 <!--  foka  -->
+                <animal_id>11</animal_id>
+                <!-- niedźwiedź -->
             </animals>
         </track>
         <track>
@@ -72,15 +110,15 @@
             </description>
             <image>img/horned.jpg</image>
             <animals>
-                <animal_id>6</animal_id>
+                <animal_id>5</animal_id>
                 <!--  gnu  -->
-                <animal_id>56</animal_id>
+                <!-- <animal_id>56</animal_id> -->
                 <!--  antylopa  -->
-                <animal_id>10</animal_id>
+                <animal_id>9</animal_id>
                 <!--  kob  -->
-                <animal_id>7</animal_id>
+                <animal_id>6</animal_id>
                 <!--  oryks  -->
-                <animal_id>11</animal_id>
+                <animal_id>10</animal_id>
                 <!--  sitatunga  -->
             </animals>
         </track>
