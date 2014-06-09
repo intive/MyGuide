@@ -45,8 +45,9 @@
                 Margin="10"
                 CredentialsProvider="Aqzt3lCfs-qg6pzuvrW7qCuGToXeff-Ii_ELq7piZ4HcKe6uLE2SHKuKJgZXZwTF"
                 LogoVisibility="Collapsed"
-                Center="51.104642, 17.073520"
-                ZoomLevel="15">
+                Center="{Binding CenterMapPositionLocation, Mode=TwoWay}"
+                ZoomLevel="18">
+                
                 
                 <maps:Map.Mode>
                     <mapsCore:MercatorMode />
@@ -58,6 +59,30 @@
                         </maps:MapTileLayer.TileSources>
                     </maps:MapTileLayer>
 
+                                        <maps:MapLayer x:Name="VisitedAnimals" Visibility="{Binding Path=UserLayerVisibility, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <maps:MapItemsControl  x:Name="AnimalsPushpinsControl" ItemsSource="{Binding AnimalsPushpins}">
+                            <maps:MapItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <maps:Pushpin PositionOrigin="0.5,0.88" Location="{Binding Coordinate,Mode=TwoWay}" >
+                                        <maps:Pushpin.Template>
+                                            <ControlTemplate>
+                                                <Grid Width="78" Height="104" RenderTransformOrigin="0.5,0.5">
+                                                    <Border  RenderTransformOrigin="0.5,0.5" Margin="0,0" Padding="0,0" UseLayoutRounding="False">
+                                                        <Grid Width="78" Height="104" RenderTransformOrigin="0.5,0.5">
+                                                            <Grid.Background>
+                                                                <ImageBrush ImageSource="/Assets/MapOverlays/VisitedAnimal.png" />
+                                                            </Grid.Background>
+                                                        </Grid>
+                                                    </Border>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </maps:Pushpin.Template>
+                                    </maps:Pushpin>
+                                </DataTemplate>
+                            </maps:MapItemsControl.ItemTemplate>
+                        </maps:MapItemsControl>
+                    </maps:MapLayer>
+                    
                     <maps:MapLayer x:Name="UserPositionLayer" Visibility="{Binding Path=UserLayerVisibility, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <maps:Pushpin PositionOrigin="0.5,0.5" Location="{Binding UserPositionLocation, Mode=TwoWay}">
                             <maps:Pushpin.Template>
@@ -71,19 +96,6 @@
                                                 <Grid.Background>
                                                     <ImageBrush ImageSource="/Assets/MapOverlays/UsMark.png" />
                                                 </Grid.Background>
-
-                                                <!--<Rectangle Width="24" Height="24" Fill="Black" RenderTransformOrigin="0.5,0.5">
-                                                    <Rectangle.RenderTransform>
-                                                        <CompositeTransform Rotation="45" />
-                                                    </Rectangle.RenderTransform>
-
-                                                </Rectangle>
-                                                <Ellipse Width="18" Height="18" Fill="Red" />-->
-                                                <!--<Rectangle Fill="Black" Height="10" Width="20">
-                                                    <Rectangle.RenderTransform>
-                                                        <CompositeTransform Rotation="90" TranslateX="15" TranslateY="-30" />
-                                                    </Rectangle.RenderTransform>
-                                                </Rectangle>-->
                                             </Grid>
                                         </Border>
                                     </Grid>
@@ -92,6 +104,8 @@
                             
                         </maps:Pushpin>
                     </maps:MapLayer>
+
+
                 </maps:Map.Children>
             </maps:Map>
 
@@ -140,6 +154,9 @@
             <bindappbar:BindableAppBarMenuItem
                 x:Name="ShowPreferences"
                 Text="{Binding LocalizedResources.Preferences, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
+            <bindappbar:BindableAppBarMenuItem
+                x:Name="DeleteVisitedAnimals"
+                Text="{Binding LocalizedResources.DeleteVisitedAnimal, Mode=OneWay, Source={StaticResource LocalizedStrings}}" />
         </bindappbar:BindableAppBar>
     </Grid>
 </views:PageViewBase>

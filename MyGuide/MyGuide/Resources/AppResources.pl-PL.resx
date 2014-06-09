@@ -132,6 +132,9 @@
   <data name="DebugOptions" xml:space="preserve">
     <value>Opcje debug</value>
   </data>
+  <data name="DeleteVisitedAnimal" xml:space="preserve">
+    <value>usuń znaczniki odwiedzeń</value>
+  </data>
   <data name="DenayButton" xml:space="preserve">
     <value>zabroń</value>
   </data>

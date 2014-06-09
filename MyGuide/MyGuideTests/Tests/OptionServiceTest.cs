@@ -74,7 +74,7 @@ namespace MyGuideTests.Tests
             await ds.Initialize();
             Debug.WriteLine(ds.ConfigData.externalObjectRadius);
             Assert.AreEqual("pl", ds.ConfigData.langFallback);
-            Assert.AreEqual(1, ds.ConfigData.internalObjectRadius);
+            Assert.AreEqual(10, ds.ConfigData.internalObjectRadius);
             Assert.AreEqual(2, ds.ConfigData.externalObjectRadius);
         }
 
@@ -102,7 +102,7 @@ namespace MyGuideTests.Tests
 
             //If we will add some other parameters in Configuration class
             //we should change this tes too...
-            string expectedString = "\nName: externalObjectRadius, Value: 2\nName: internalObjectRadius, Value: 1\nName: langFallback, Value: pl\nName: userLayerVisibility, Value: True";
+            string expectedString = "\nName: externalObjectRadius, Value: 2\nName: internalObjectRadius, Value: 10\nName: langFallback, Value: pl\nName: userLayerVisibility, Value: True";
             string resultString = ds.WritePropertiesToString();
             Assert.AreEqual(expectedString, resultString);
         }

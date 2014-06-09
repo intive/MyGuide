@@ -6,6 +6,8 @@ namespace MyGuide.DataServices.Interfaces
 {
     public interface IDataService
     {
+        Root Datas { get; set; }
+
         int AnimalsSize();
 
         string CollectionsSizes();

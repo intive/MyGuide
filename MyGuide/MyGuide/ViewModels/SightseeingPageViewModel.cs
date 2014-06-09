@@ -1,21 +1,19 @@
 ﻿using Caliburn.Micro;
 using Microsoft.Devices.Sensors;
-using Microsoft.Xna.Framework;
+using Microsoft.Phone.Controls.Maps;
+using MyGuide.DataServices;
 using MyGuide.DataServices.Interfaces;
+using MyGuide.Models;
+using MyGuide.Models.MapModels;
 using MyGuide.Services;
 using MyGuide.Services.Interfaces;
 using System;
 using System.Device.Location;
 using System.Diagnostics;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Navigation;
-using System.Windows.Threading;
-using Windows.Devices.Geolocation;
-using Windows.Foundation;
-using Windows.UI.Core;
 
 namespace MyGuide.ViewModels
 {
@@ -25,6 +23,8 @@ namespace MyGuide.ViewModels
         private GeoCoordinate _userPositionLocation;
         private ICompassService _compassService { get; set; }
         private IGeolocationService _geolocationService { get; set; }
+		 private GeoCoordinate _centerMapPositionLocation;
+        private IAnimalService _animalService;
 
         public SightseeingPageViewModel(INavigationService navigationService,
             IMessageDialogService messageDialogService, IDataService dataService, IOptionsService optionService, ICompassService compassService, IGeolocationService geolocationService)
@@ -46,16 +46,30 @@ namespace MyGuide.ViewModels
             set { _userPositionLocation = value; NotifyOfPropertyChange(() => UserPositionLocation); }
         }
 
+        public GeoCoordinate CenterMapPositionLocation
+        {
+            get { return _centerMapPositionLocation; }
+            set { _centerMapPositionLocation = value; NotifyOfPropertyChange(() => CenterMapPositionLocation); }
+        }
+
         #region Commands
         //Uncomment all method and set some instructions when we'll implement appbar clickable
         //Remeber to add icons for appbar buttons!
 
-        //public void ShowAnimals()
-        //{
-        //}
+        public void ShowAnimals()
+        {
+            WritePushpinList();
+        }
+
+        public void DeleteVisitedAnimals()
+        {
+            _animalService.DeleteVisitedAnimalsMark();
+            AnimalsPushpins = new BindableCollection<AnimalPushpin>();
+        }
 
         //public void ShowMap()
         //{
+           
         //}
 
         //public void ShowInformation()
@@ -78,6 +92,8 @@ namespace MyGuide.ViewModels
 
         public override void OnNavigatedFrom(NavigationMode navigationMode)
         {
+            _animalService.SaveList();
+
             Task.Run(() =>
             {
 
@@ -105,12 +121,22 @@ namespace MyGuide.ViewModels
            
         }
 
-        public override void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
+        public override async void OnNavigatedTo(NavigationMode navigationMode, bool isNewPageInstance)
         {
             UserPositionLocation = new GeoCoordinate(51.104642, 17.073520);
-            UserLayerVisibility = _optionService.ConfigData.userLayerVisibility;
-
+            CenterMapPositionLocation = new GeoCoordinate(51.104642, 17.073520);
+            UserLayerVisibility =  _optionService.ConfigData.userLayerVisibility;
+            
             _geolocationService.PositionChanged += new EventHandler < IGeolocationReading > (_geolocationService_PositionChanged);
+            _geolocationService.StartGeolocationTracker();
+            _animalService = new VisitedAnimalService(_dataService,_optionService);
+            try
+            {
+                await _animalService.Initialize();
+            }
+            catch { }
+
+            AnimalsPushpins = new BindableCollection<AnimalPushpin>();
 
             if (_compassService.IsSupported)
             {
@@ -146,9 +172,13 @@ namespace MyGuide.ViewModels
             }
         }
 
-        private void _geolocationService_PositionChanged(object sender, IGeolocationReading e)
+        private async void _geolocationService_PositionChanged(object sender, IGeolocationReading e)
         {
+
             UserPositionLocation = new GeoCoordinate(e.Position.Latitude, e.Position.Longitude);
+            CenterMapPositionLocation = new GeoCoordinate(e.Position.Latitude, e.Position.Longitude);
+            AnimalsPushpins = await _animalService.SearchForAnimals(UserPositionLocation);
+      
         }
 
         private bool userLayerVisibility;
@@ -222,5 +252,35 @@ namespace MyGuide.ViewModels
             
         }
         #endregion CalibrationStackPanel
+
+        #region AnimalsPushpins
+        private IObservableCollection<AnimalPushpin> animalsPushpins { get; set; }
+        public IObservableCollection<AnimalPushpin> AnimalsPushpins
+        {
+            get
+            {
+                return animalsPushpins;
+            }
+            set
+            {
+                animalsPushpins = value; 
+                NotifyOfPropertyChange(() => AnimalsPushpins);
+            }
+        }
+
+        
+
+        
+
+        public void WritePushpinList()
+        {
+            foreach (AnimalPushpin ap in AnimalsPushpins)
+            {
+                Debug.WriteLine(ap.Name + " " + ap.Coordinate.Latitude + " " + ap.Coordinate.Longitude);
+            }
+        }
+
+       
+        #endregion AnimalsPushpins
     }
 }

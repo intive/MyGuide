@@ -14,11 +14,7 @@ namespace MyGuide.Services
     {
         Geolocator _geolocator; 
         public GeolocationService()
-        {
-            _geolocator = new Geolocator();
-            _geolocator.MovementThreshold = 1;
-            _geolocator.DesiredAccuracy = PositionAccuracy.High;
-            _geolocator.PositionChanged += _geolocator_PositionChanged;
+        {   
         }
 
         public event EventHandler<IGeolocationReading> PositionChanged;
@@ -31,13 +27,22 @@ namespace MyGuide.Services
                 PositionChanged(this, new GeolocationReading() { Position = new GeoCoordinate(args.Position.Coordinate.Latitude, args.Position.Coordinate.Longitude) });
             }
         }
-
+        
+        public void StartGeolocationTracker()
+        {
+            _geolocator = new Geolocator();
+            _geolocator.MovementThreshold = 1;
+            _geolocator.DesiredAccuracy = PositionAccuracy.High;
+            Task.Run(() =>
+            {
+                _geolocator.PositionChanged += _geolocator_PositionChanged;
+            });
+        }
 
         public void StopGeolocationTracker()
         {
             Task.Run(() =>
             {
-
                 _geolocator.PositionChanged -= _geolocator_PositionChanged;
                 _geolocator = null;
             });

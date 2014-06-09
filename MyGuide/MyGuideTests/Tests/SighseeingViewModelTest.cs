@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Navigation;
 using Caliburn.Micro;
 using MyGuideTests.Mocks;
+using MyGuide.Models;
 
 namespace MyGuideTests.Tests
 {
@@ -22,13 +23,16 @@ namespace MyGuideTests.Tests
         {
             var navService = new Mock<INavigationService>(MockBehavior.Strict);
             var messageDialogService = new Mock<IMessageDialogService>(MockBehavior.Strict);
-            var dataService = new Mock<IDataService>(MockBehavior.Strict);
+            var dataService = new DataServiceMock();
             var optionService = new Mock<IOptionsService>(MockBehavior.Strict);
-            optionService.SetupGet(x => x.ConfigData.userLayerVisibility).Returns(true);
             var compassService = new FakeCompassService();
             var geolocationService = new FakeGeolocationService();
 
-            var SightPViewModel = new SightseeingPageViewModel(navService.Object, messageDialogService.Object, dataService.Object, optionService.Object, compassService, geolocationService);
+            optionService.SetupGet(x => x.ConfigData.userLayerVisibility).Returns(true);
+            //dataService.SetupGet(x => x.Datas.AnimalsList.Items).Returns(new List<Animal>());
+            
+
+            var SightPViewModel = new SightseeingPageViewModel(navService.Object, messageDialogService.Object, dataService, optionService.Object, compassService, geolocationService);
             SightPViewModel.OnNavigatedTo(NavigationMode.New,true);
             compassService.SimmulateValueChange(null);
             geolocationService.SimmulateValueChange(null);

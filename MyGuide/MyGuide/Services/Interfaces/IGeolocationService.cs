@@ -12,5 +12,7 @@ namespace MyGuide.Services.Interfaces
         event EventHandler<IGeolocationReading> PositionChanged;
 
         void StopGeolocationTracker();
+
+        void StartGeolocationTracker();
     }
 }
