@@ -173,6 +173,10 @@
     if([self shouldShowAlertDistance:distance]) {
         [_alertDistance show];
     }
+    if( [[[AFTracksData sharedParsedData] currentTrackForMap] count] != 0){
+        [self.mapView removeOverlay: self.mapView.overlays.lastObject];
+        [self drawTrack];
+    }
 }
 
 - (double)calculateUserDistance:(MKUserLocation *)userLocation
@@ -238,26 +242,28 @@
 {
 //    zostawiam tu ten komentarz, bo nad tym obecnie pracuję, żeby działało dużo lepiej, ale mimo to,
 //    niech obecna wersja tej metody będzie w appce (ze świadomością, że jest chwilowa)
-    
     GraphDrawer *graphDrawer = [GraphDrawer sharedInstance];
     NSMutableArray *trackPolylines = [NSMutableArray new];
     NSArray *currentTrackAnimalsArray = [[AFTracksData sharedParsedData] currentTrackForMap];
-    for(int i=0; i<currentTrackAnimalsArray.count-1; i++){
-        AFAnimal *startAnimal = _data.animalsArray[[[currentTrackAnimalsArray objectAtIndex:i] integerValue]];
-        AFAnimal *endAnimal   = _data.animalsArray[[[currentTrackAnimalsArray objectAtIndex:i+1] integerValue]];
-        CLLocation *startNode = [[CLLocation alloc] initWithLatitude:startAnimal.getLocationCoordinate.latitude longitude:startAnimal.getLocationCoordinate.longitude];
-        CLLocation *endNode   = [[CLLocation alloc] initWithLatitude:endAnimal.getLocationCoordinate.latitude longitude:endAnimal.getLocationCoordinate.longitude];
+    if(currentTrackAnimalsArray.count < 20){
         
-        [trackPolylines addObject:[graphDrawer findShortestPathBetweenLocation:startNode andLocation:endNode]];
-    }
-    AFAnimal *startAnimal = _data.animalsArray[[[currentTrackAnimalsArray lastObject] integerValue]];
-    AFAnimal *endAnimal   = _data.animalsArray[[[currentTrackAnimalsArray firstObject] integerValue]];
-    CLLocation *startNode = [[CLLocation alloc] initWithLatitude:startAnimal.getLocationCoordinate.latitude longitude:startAnimal.getLocationCoordinate.longitude];
-    CLLocation *endNode   = [[CLLocation alloc] initWithLatitude:endAnimal.getLocationCoordinate.latitude longitude:endAnimal.getLocationCoordinate.longitude];    [trackPolylines addObject:[graphDrawer findShortestPathBetweenLocation:startNode andLocation:endNode]];
-    
-    for(MKPolyline *trackFragment in trackPolylines){
-        trackFragment.title = @"trackPolyline";
-        [self.mapView addOverlay:trackFragment];
+        for(int i=0; i<currentTrackAnimalsArray.count-1; i++){
+            AFAnimal *startAnimal = _data.animalsArray[[[currentTrackAnimalsArray objectAtIndex:i] integerValue]];
+            AFAnimal *endAnimal   = _data.animalsArray[[[currentTrackAnimalsArray objectAtIndex:i+1] integerValue]];
+            CLLocation *startNode = [[CLLocation alloc] initWithLatitude:startAnimal.getLocationCoordinate.latitude longitude:startAnimal.getLocationCoordinate.longitude];
+            CLLocation *endNode   = [[CLLocation alloc] initWithLatitude:endAnimal.getLocationCoordinate.latitude longitude:endAnimal.getLocationCoordinate.longitude];
+            
+            [trackPolylines addObject:[graphDrawer findShortestPathBetweenLocation:startNode andLocation:endNode]];
+        }
+        AFAnimal *lastAnimal   = _data.animalsArray[[[currentTrackAnimalsArray lastObject] integerValue]];
+        CLLocation *lastNode = [[CLLocation alloc] initWithLatitude:lastAnimal.getLocationCoordinate.latitude longitude:lastAnimal.getLocationCoordinate.longitude];
+        CLLocation *userLocation = self.mapView.userLocation.location;
+        [trackPolylines addObject:[graphDrawer findShortestPathBetweenLocation:lastNode andLocation:userLocation]];
+        
+        for(MKPolyline *trackFragment in trackPolylines){
+            trackFragment.title = @"trackPolyline";
+            [self.mapView addOverlay:trackFragment];
+        }
     }
 }
 #pragma mark - Drawing junctions on the map
@@ -285,6 +291,13 @@
                 routeRenderer.lineCap     = kCGLineCapRound;
                 routeRenderer.lineJoin    = kCGLineJoinRound;
                 routeRenderer.lineWidth   = 4;
+                routeRenderer.alpha       = 0.9;
+            }
+            else if([route.title isEqualToString:@"single path"]){
+                routeRenderer.strokeColor = [UIColor greenColor];
+                routeRenderer.lineCap     = kCGLineCapRound;
+                routeRenderer.lineJoin    = kCGLineJoinRound;
+                routeRenderer.lineWidth   = 5;
                 routeRenderer.alpha       = 0.9;
             }
             else{
@@ -429,11 +442,25 @@
     AFNode* coordinates = [[_nearestAnimals objectAtIndex:indexPath.section] coordinates];
     double lat = coordinates.latitude;
     double lon = coordinates.longitude;
-    CLLocationCoordinate2D selectedAnimalLocation =  CLLocationCoordinate2DMake(lat, lon);
+    CLLocationCoordinate2D selectedAnimalLocationCoord =  CLLocationCoordinate2DMake(lat, lon);
+    CLLocation *selectedAnimalLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
+    CLLocation *userLocation = self.mapView.userLocation.location;
+    MKPolyline *path = [[GraphDrawer sharedInstance] findShortestPathBetweenLocation:selectedAnimalLocation andLocation:userLocation];
+    path.title = @"single path";
+    [self.mapView addOverlay:path];
+    
     for(MKAnnotationAnimal *annotation in _mapView.annotations){
-        if([self compareCoordinate:selectedAnimalLocation withCoordinate:annotation.coordinate]){
+        if([self compareCoordinate:selectedAnimalLocationCoord withCoordinate:annotation.coordinate]){
             [self.mapView selectAnnotation:annotation animated:YES];
             break;
+        }
+    }
+}
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    for(MKPolyline *polyline in self.mapView.overlays){
+        if([polyline.title isEqualToString:@"single path"]){
+            [self.mapView removeOverlay:polyline];
         }
     }
 }
@@ -463,12 +490,16 @@
 }
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
 {
-    view.image = [UIImage imageNamed:@"pinGreen"];
+    if(![[NSString stringWithFormat:@"%@", view.class] isEqualToString:@"MKModernUserLocationView"]){
+        view.image = [UIImage imageNamed:@"pinGreen"];
+    }
 }
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKPinAnnotationView *)view
 {
     MKAnnotationAnimal *annotation = view.annotation;
-    view.image = [UIImage imageNamed:annotation.isOnTrack ? @"pinOrange" : (annotation.visited ? @"pinGreen" : @"pinBlack")];
+    if(![[NSString stringWithFormat:@"%@", view.class] isEqualToString:@"MKModernUserLocationView"]){
+        view.image = [UIImage imageNamed:annotation.isOnTrack ? @"pinOrange" : (annotation.visited ? @"pinGreen" : @"pinBlack")];
+    }
 }
 
 @end

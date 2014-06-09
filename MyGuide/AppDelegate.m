@@ -51,12 +51,6 @@
     [userDefaults setBool:YES forKey:@"isInBackground"];
     [userDefaults synchronize];
 }
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    [[LocationManager sharedLocationManager] clearMonitoredTrack];
-    [self archiveTracks];
-}
-
 
 #pragma mark - helper methods
 - (void)loadXMLs

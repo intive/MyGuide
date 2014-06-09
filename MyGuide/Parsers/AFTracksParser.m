@@ -99,18 +99,30 @@ didStartElement: (NSString *)     elementName
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     AFTracksData *sharedData = [AFTracksData sharedParsedData];
 
-    if([[userDefaults valueForKey:@"tracks xml version"] integerValue] < self.tracksXmlVersion.integerValue) {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path;
+    path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracks.plist"];
+
+    NSFileManager *manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:path]) {
+        NSDictionary *attributes = [manager attributesOfItemAtPath:path error:nil];
+        unsigned long long size = [attributes fileSize];
+    
+        if((attributes && size == 0) || [[userDefaults valueForKey:@"tracks xml version"] integerValue] < self.tracksXmlVersion.integerValue) {
+            [userDefaults setObject:[[self.tracks objectAtIndex:0] getName] forKey:@"current track"];
+            [userDefaults setObject:self.tracksXmlVersion forKey:@"tracks xml version"];
+        
+            sharedData.tracks = self.tracks;
+        }
+        else{
+            sharedData.tracks = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        }
+    }
+    else{
         [userDefaults setObject:[[self.tracks objectAtIndex:0] getName] forKey:@"current track"];
         [userDefaults setObject:self.tracksXmlVersion forKey:@"tracks xml version"];
         
         sharedData.tracks = self.tracks;
-    }
-    else{
-        NSString *path;
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Tracks.plist"];
-
-        sharedData.tracks = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     }
     [userDefaults synchronize];
 
