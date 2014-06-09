@@ -245,7 +245,7 @@
     GraphDrawer *graphDrawer = [GraphDrawer sharedInstance];
     NSMutableArray *trackPolylines = [NSMutableArray new];
     NSArray *currentTrackAnimalsArray = [[AFTracksData sharedParsedData] currentTrackForMap];
-    if(currentTrackAnimalsArray.count < 20){
+    if(currentTrackAnimalsArray.count != _data.animalsArray.count){
         
         for(int i=0; i<currentTrackAnimalsArray.count-1; i++){
             AFAnimal *startAnimal = _data.animalsArray[[[currentTrackAnimalsArray objectAtIndex:i] integerValue]];
