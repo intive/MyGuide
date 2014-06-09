@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AFq-2d-P2X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AFq-2d-P2X">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -381,7 +381,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="o8H-0S-uza">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="menu.png" id="5PM-mz-KeS">
+                        <barButtonItem key="rightBarButtonItem" image="tracksMenu" id="5PM-mz-KeS">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
@@ -1462,6 +1462,7 @@
         <image name="placeholder_event" width="226" height="227"/>
         <image name="restaurants" width="26" height="26"/>
         <image name="settings" width="26" height="26"/>
+        <image name="tracksMenu" width="88" height="88"/>
         <image name="tracks_afryka.png" width="300" height="200"/>
         <image name="tracks_logo.png" width="320" height="247"/>
     </resources>

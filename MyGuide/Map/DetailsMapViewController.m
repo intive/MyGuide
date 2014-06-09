@@ -133,9 +133,12 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
     CLLocation *destinationLocation = [[CLLocation alloc] initWithLatitude:self.destinationCoordinates.latitude longitude:self.destinationCoordinates.longitude];
     CLLocation *userLocation = self.mapView.userLocation.location;
     MKPolyline *path = [self.graphDrawer findShortestPathBetweenLocation: userLocation andLocation: destinationLocation];
+    MKPolyline *path2 = [self.graphDrawer findShortestPathBetweenLocation: destinationLocation andLocation: userLocation];
     if(path) {
         [self.mapView removeOverlays:self.mapView.overlays];
         [self.mapView addOverlay: path];
+        path2.title = @"path2";
+        [self.mapView addOverlay: path2];
         [self showPaths];
     }
 }
@@ -225,6 +228,12 @@ didUpdateUserLocation: (MKUserLocation *) userLocation
         renderer.lineJoin    = kCGLineJoinRound;
         renderer.lineWidth   = 3;
         renderer.alpha       = 0.7;
+    }
+    else if([path.title isEqualToString:@"path2"]){
+        renderer.strokeColor = [UIColor greenColor];
+        renderer.lineCap     = kCGLineCapRound;
+        renderer.lineJoin    = kCGLineJoinRound;
+        renderer.lineWidth   = 4.0;
     }
     else{
         renderer.strokeColor = [UIColor orangeColor];
