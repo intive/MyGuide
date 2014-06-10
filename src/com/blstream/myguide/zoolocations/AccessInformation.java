@@ -9,6 +9,7 @@ import java.util.Map;
 public class AccessInformation {
 
 	private String mTrams = new String();
+	private String mBuses = new String();
 	private HashMap<String, String> mParkingInfo = new HashMap<String, String>();
 
 	private List<String> parseCommaSeparatedValuesRow(String values) {
@@ -20,6 +21,10 @@ public class AccessInformation {
 
 	protected void setTrams(String trams) {
 		mTrams = trams;
+	}
+	
+	protected void setBuses(String buses){
+		mBuses = buses;
 	}
 
 	protected void setParkingInformation(Map<String, String> map) {
@@ -33,10 +38,9 @@ public class AccessInformation {
 	public List<String> splitTrams() {
 		return parseCommaSeparatedValuesRow(mTrams);
 	}
-
-	// TODO: use buses data
+	
 	public List<String> splitBuses() {
-		return java.util.Arrays.asList("brak informacji/no data");
+		return parseCommaSeparatedValuesRow(mBuses);
 	}
 
 	public Map<String, String> getAllParkingInformation() {

@@ -1,6 +1,7 @@
 package com.blstream.myguide;
 
 import java.util.List;
+import java.util.Locale;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -128,7 +129,7 @@ public class HistoryFragment extends Fragment {
 					maxBackgroungAlpha - (mHistory.indexOf(history) + 1) * alphaDecreaseRate);
 
 			viewHolder.mDate.setText(history.getDate());
-			viewHolder.mInformation.setText(history.getInformation());
+			viewHolder.mInformation.setText(history.getInformation(Locale.getDefault().getLanguage()));
 
 			return convertView;
 		}
