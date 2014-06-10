@@ -106,13 +106,11 @@
 		05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DA78D418B969BF005D6C5F /* libOCMock.a */; };
 		05DAA5B8194742B5005A836B /* restaurant_karczma_koala.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B3194742B5005A836B /* restaurant_karczma_koala.png */; };
 		05DAA5B9194742B5005A836B /* restaurant_karczma_lwa.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B4194742B5005A836B /* restaurant_karczma_lwa.png */; };
-		05DAA5BA194742B5005A836B /* restaurant_letnia.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B5194742B5005A836B /* restaurant_letnia.png */; };
-		05DAA5BB194742B5005A836B /* restaurant_pod_papugami.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B6194742B5005A836B /* restaurant_pod_papugami.png */; };
+		05DAA5BA194742B5005A836B /* restaurant_restauracja_letnia.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B5194742B5005A836B /* restaurant_restauracja_letnia.png */; };
+		05DAA5BB194742B5005A836B /* restaurant_restauracja_pod_papugami.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B6194742B5005A836B /* restaurant_restauracja_pod_papugami.png */; };
 		05DAA5BC194742B5005A836B /* restaurant_przystanek_zoo.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B7194742B5005A836B /* restaurant_przystanek_zoo.png */; };
 		05E0209118C1D38000AE76EC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E0209018C1D38000AE76EC /* MapKit.framework */; };
 		05E0209818C23B7100AE76EC /* MKAnnotationAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E0209718C23B7100AE76EC /* MKAnnotationAnimal.m */; };
-		05E1654F18F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E1654818F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m */; };
-		05E1655018F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E1654A18F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.m */; };
 		05E1655118F1B51100DA3BD7 /* GastronomyDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E1654C18F1B51100DA3BD7 /* GastronomyDetailsViewController.m */; };
 		05E1655218F1B51100DA3BD7 /* GastronomyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E1654E18F1B51100DA3BD7 /* GastronomyListViewController.m */; };
 		05E375C918BA872B00A31630 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E375C418BA872B00A31630 /* main.m */; };
@@ -334,16 +332,12 @@
 		05DA78D418B969BF005D6C5F /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		05DAA5B3194742B5005A836B /* restaurant_karczma_koala.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_karczma_koala.png; sourceTree = "<group>"; };
 		05DAA5B4194742B5005A836B /* restaurant_karczma_lwa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_karczma_lwa.png; sourceTree = "<group>"; };
-		05DAA5B5194742B5005A836B /* restaurant_letnia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_letnia.png; sourceTree = "<group>"; };
-		05DAA5B6194742B5005A836B /* restaurant_pod_papugami.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_pod_papugami.png; sourceTree = "<group>"; };
+		05DAA5B5194742B5005A836B /* restaurant_restauracja_letnia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_restauracja_letnia.png; sourceTree = "<group>"; };
+		05DAA5B6194742B5005A836B /* restaurant_restauracja_pod_papugami.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_restauracja_pod_papugami.png; sourceTree = "<group>"; };
 		05DAA5B7194742B5005A836B /* restaurant_przystanek_zoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_przystanek_zoo.png; sourceTree = "<group>"; };
 		05E0209018C1D38000AE76EC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		05E0209618C23B7100AE76EC /* MKAnnotationAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAnnotationAnimal.h; sourceTree = "<group>"; };
 		05E0209718C23B7100AE76EC /* MKAnnotationAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAnnotationAnimal.m; sourceTree = "<group>"; };
-		05E1654718F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyDetailsInfoViewController.h; sourceTree = "<group>"; };
-		05E1654818F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastronomyDetailsInfoViewController.m; sourceTree = "<group>"; };
-		05E1654918F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyDetailsMenuTableViewController.h; sourceTree = "<group>"; };
-		05E1654A18F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastronomyDetailsMenuTableViewController.m; sourceTree = "<group>"; };
 		05E1654B18F1B51100DA3BD7 /* GastronomyDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyDetailsViewController.h; sourceTree = "<group>"; };
 		05E1654C18F1B51100DA3BD7 /* GastronomyDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastronomyDetailsViewController.m; sourceTree = "<group>"; };
 		05E1654D18F1B51100DA3BD7 /* GastronomyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastronomyListViewController.h; sourceTree = "<group>"; };
@@ -616,8 +610,8 @@
 				05F36EBB19411072000949E4 /* event_hipo.png */,
 				05DAA5B3194742B5005A836B /* restaurant_karczma_koala.png */,
 				05DAA5B4194742B5005A836B /* restaurant_karczma_lwa.png */,
-				05DAA5B5194742B5005A836B /* restaurant_letnia.png */,
-				05DAA5B6194742B5005A836B /* restaurant_pod_papugami.png */,
+				05DAA5B5194742B5005A836B /* restaurant_restauracja_letnia.png */,
+				05DAA5B6194742B5005A836B /* restaurant_restauracja_pod_papugami.png */,
 				05DAA5B7194742B5005A836B /* restaurant_przystanek_zoo.png */,
 				05F36EBC19411072000949E4 /* event_kotiki.png */,
 				05F36EBD19411072000949E4 /* event_lemury.png */,
@@ -696,10 +690,6 @@
 		05E1654618F1B4DE00DA3BD7 /* Gastronomy */ = {
 			isa = PBXGroup;
 			children = (
-				05E1654718F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.h */,
-				05E1654818F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m */,
-				05E1654918F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.h */,
-				05E1654A18F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.m */,
 				05E1654B18F1B51100DA3BD7 /* GastronomyDetailsViewController.h */,
 				05E1654C18F1B51100DA3BD7 /* GastronomyDetailsViewController.m */,
 				05E1654D18F1B51100DA3BD7 /* GastronomyListViewController.h */,
@@ -1064,7 +1054,7 @@
 				05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */,
 				05985275194049FA0089FC34 /* kangur_rudy_en.html in Resources */,
 				05F36EBA19409520000949E4 /* 404_pl.html in Resources */,
-				05DAA5BB194742B5005A836B /* restaurant_pod_papugami.png in Resources */,
+				05DAA5BB194742B5005A836B /* restaurant_restauracja_pod_papugami.png in Resources */,
 				050E852D190B94CE00B13473 /* information.xml in Resources */,
 				0598520B194049F90089FC34 /* gnu_bialobrode_pl.html in Resources */,
 				0598527C194049FA0089FC34 /* lemur_katta_pl.html in Resources */,
@@ -1085,7 +1075,7 @@
 				05F76E4A1941868700FCB4B5 /* access_bus.png in Resources */,
 				05F76E4C1941868700FCB4B5 /* access_tram.png in Resources */,
 				0598528F194049FA0089FC34 /* zyrafa_siatkowana_en.html in Resources */,
-				05DAA5BA194742B5005A836B /* restaurant_letnia.png in Resources */,
+				05DAA5BA194742B5005A836B /* restaurant_restauracja_letnia.png in Resources */,
 				059851FE194049F90089FC34 /* banteng_en.html in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				05985201194049F90089FC34 /* czerwonak_rozowy_pl.html in Resources */,
@@ -1182,7 +1172,6 @@
 				8460875A18BDFA8A00620219 /* Settings.m in Sources */,
 				84BA95EC1912F79F008A4237 /* TrackDetailsViewController.m in Sources */,
 				84DDCB3318BA917800A2F720 /* AFNode.m in Sources */,
-				05E1655018F1B51100DA3BD7 /* GastronomyDetailsMenuTableViewController.m in Sources */,
 				051A8A30190084720012B096 /* ContactViewController.m in Sources */,
 				84DDCB3218BA917800A2F720 /* AFJunction.m in Sources */,
 				05A1C14E18FAC7F2008FE0CB /* SWRevealViewController.m in Sources */,
@@ -1190,7 +1179,6 @@
 				84DDCB3418BA917800A2F720 /* AFWay.m in Sources */,
 				05C9265918DDDF1800C2F746 /* LocationManager.m in Sources */,
 				84DDCB3C18BA919600A2F720 /* AFXMLParser.m in Sources */,
-				05E1654F18F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m in Sources */,
 				05243272190B9DC500FC3242 /* InformationData.m in Sources */,
 				84BA95DB191121E8008A4237 /* AFEventsData.m in Sources */,
 				84BA95E51912C6CF008A4237 /* TrackSlideMenuViewController.m in Sources */,

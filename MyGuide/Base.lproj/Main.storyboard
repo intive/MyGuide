@@ -44,46 +44,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="DS1-xr-SEf">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DS1-xr-SEf">
                                 <rect key="frame" x="8" y="28" width="304" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="304" id="IlY-JQ-kFt"/>
-                                    <constraint firstAttribute="height" constant="28" id="m9t-db-KcR"/>
-                                </constraints>
                                 <segments>
                                     <segment title="Information"/>
                                     <segment title="Menu"/>
-                                    <segment title="Map"/>
                                 </segments>
                                 <color key="tintColor" red="0.8862745098" green="0.46274509800000002" blue="0.13725490200000001" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="switchControllers:" destination="DSz-JZ-KzA" eventType="valueChanged" id="V92-5W-qUv"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zr4-uZ-Dwh">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="tdK-Ye-NGc" kind="embed" id="Tvj-sy-XKz"/>
-                                </connections>
-                            </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_adult" translatesAutoresizingMaskIntoConstraints="NO" id="nzX-2y-wwf">
+                                <rect key="frame" x="60" y="64" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="DZg-9q-S6S"/>
+                                    <constraint firstAttribute="width" constant="200" id="G5G-1Y-lSf"/>
+                                </constraints>
+                            </imageView>
+                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7MO-7X-7Ie">
+                                <rect key="frame" x="0.0" y="276" width="320" height="292"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vZO-7G-fUH" firstAttribute="top" secondItem="Zr4-uZ-Dwh" secondAttribute="bottom" id="23k-zl-0iy"/>
-                            <constraint firstAttribute="trailing" secondItem="DS1-xr-SEf" secondAttribute="trailing" constant="8" id="7al-S7-J4V"/>
-                            <constraint firstItem="DS1-xr-SEf" firstAttribute="leading" secondItem="9f7-Ge-XZI" secondAttribute="leading" constant="8" id="9RU-NO-Nsm"/>
-                            <constraint firstAttribute="trailing" secondItem="Zr4-uZ-Dwh" secondAttribute="trailing" id="Jdp-DL-JmP"/>
-                            <constraint firstItem="DS1-xr-SEf" firstAttribute="top" secondItem="08m-t3-H5f" secondAttribute="bottom" constant="8" id="Zdt-Zq-S3U"/>
-                            <constraint firstItem="Zr4-uZ-Dwh" firstAttribute="top" secondItem="08m-t3-H5f" secondAttribute="bottom" constant="44" id="hqh-yi-KIL"/>
-                            <constraint firstItem="Zr4-uZ-Dwh" firstAttribute="leading" secondItem="9f7-Ge-XZI" secondAttribute="leading" id="olD-pU-Usv"/>
+                            <constraint firstAttribute="trailing" secondItem="7MO-7X-7Ie" secondAttribute="trailing" id="1Gh-1R-UOe"/>
+                            <constraint firstItem="vZO-7G-fUH" firstAttribute="top" secondItem="7MO-7X-7Ie" secondAttribute="bottom" id="1Ng-ir-cTL"/>
+                            <constraint firstItem="DS1-xr-SEf" firstAttribute="leading" secondItem="9f7-Ge-XZI" secondAttribute="leading" constant="8" id="BRR-rP-cbO"/>
+                            <constraint firstAttribute="trailing" secondItem="nzX-2y-wwf" secondAttribute="trailing" constant="60" id="IOw-5s-u1X"/>
+                            <constraint firstItem="nzX-2y-wwf" firstAttribute="top" secondItem="DS1-xr-SEf" secondAttribute="bottom" constant="8" id="N9l-94-1jx"/>
+                            <constraint firstItem="7MO-7X-7Ie" firstAttribute="leading" secondItem="9f7-Ge-XZI" secondAttribute="leading" id="gqO-Uf-Gu6"/>
+                            <constraint firstItem="7MO-7X-7Ie" firstAttribute="top" secondItem="DS1-xr-SEf" secondAttribute="bottom" constant="220" id="hgf-aY-DMq"/>
+                            <constraint firstItem="DS1-xr-SEf" firstAttribute="top" secondItem="08m-t3-H5f" secondAttribute="bottom" constant="8" id="lG1-Ld-os4"/>
+                            <constraint firstItem="nzX-2y-wwf" firstAttribute="leading" secondItem="9f7-Ge-XZI" secondAttribute="leading" constant="60" id="st7-gf-PXl"/>
+                            <constraint firstAttribute="trailing" secondItem="DS1-xr-SEf" secondAttribute="trailing" constant="8" id="x1t-Hg-7Vn"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="containerView" destination="Zr4-uZ-Dwh" id="w7v-hJ-C8f"/>
+                        <outlet property="imageView" destination="nzX-2y-wwf" id="GlG-Qb-COZ"/>
                         <outlet property="segmentedControl" destination="DS1-xr-SEf" id="oJf-IP-edz"/>
+                        <outlet property="tableView" destination="7MO-7X-7Ie" id="Xbg-xX-NPw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECY-no-5QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1242,69 +1246,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edA-Uz-5Uf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2487" y="835"/>
-        </scene>
-        <!--Gastronomy Details Info View Controller-->
-        <scene sceneID="wOn-ez-rJH">
-            <objects>
-                <viewController storyboardIdentifier="gastronomyDetailsInfo" automaticallyAdjustsScrollViewInsets="NO" id="tdK-Ye-NGc" customClass="GastronomyDetailsInfoViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Vu0-p7-LGi"/>
-                        <viewControllerLayoutGuide type="bottom" id="ubA-yW-Hz6"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ggO-Ey-P8s">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_adult" translatesAutoresizingMaskIntoConstraints="NO" id="nzX-2y-wwf">
-                                <rect key="frame" x="0.0" y="2" width="320" height="125"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="H5H-fX-Qzy"/>
-                                </constraints>
-                            </imageView>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6N-jA-2hW">
-                                <rect key="frame" x="0.0" y="131" width="320" height="368"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ubA-yW-Hz6" firstAttribute="top" secondItem="D6N-jA-2hW" secondAttribute="bottom" constant="5" id="2Ac-4S-isV"/>
-                            <constraint firstItem="D6N-jA-2hW" firstAttribute="leading" secondItem="ggO-Ey-P8s" secondAttribute="leading" id="2Up-iv-rUo"/>
-                            <constraint firstAttribute="trailing" secondItem="nzX-2y-wwf" secondAttribute="trailing" id="Q5N-4D-2Nz"/>
-                            <constraint firstItem="D6N-jA-2hW" firstAttribute="top" secondItem="nzX-2y-wwf" secondAttribute="bottom" constant="4" id="QHu-nv-uct"/>
-                            <constraint firstItem="nzX-2y-wwf" firstAttribute="leading" secondItem="ggO-Ey-P8s" secondAttribute="leading" id="bdS-85-LBU"/>
-                            <constraint firstItem="nzX-2y-wwf" firstAttribute="top" secondItem="Vu0-p7-LGi" secondAttribute="bottom" constant="2" id="bqN-J1-khS"/>
-                            <constraint firstAttribute="trailing" secondItem="D6N-jA-2hW" secondAttribute="trailing" id="lNd-wg-Wj8"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <connections>
-                        <outlet property="webView" destination="D6N-jA-2hW" id="pIJ-h0-GCO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h0d-XC-5f4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-315" y="1626"/>
-        </scene>
-        <!--Gastronomy Details Menu Table View Controller-->
-        <scene sceneID="Rjw-xW-d47">
-            <objects>
-                <tableViewController storyboardIdentifier="gastronomyDetailsMenu" id="bzK-Xo-NMn" customClass="GastronomyDetailsMenuTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="7MO-7X-7Ie">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="bzK-Xo-NMn" id="dig-wS-aja"/>
-                            <outlet property="delegate" destination="bzK-Xo-NMn" id="HX8-qN-FPZ"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ng8-bw-RLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="85" y="1626"/>
         </scene>
         <!--Access View Controller-->
         <scene sceneID="TFo-2z-nwm">
