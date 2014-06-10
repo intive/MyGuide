@@ -95,6 +95,7 @@
 		05A1C15118FAC7F2008FE0CB /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14A18FAC7F2008FE0CB /* UIBubbleTableView.m */; };
 		05A1C15218FAC7F2008FE0CB /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C14C18FAC7F2008FE0CB /* UIBubbleTableViewCell.m */; };
 		05A1C15518FACB3E008FE0CB /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A1C15418FACB3E008FE0CB /* HistoryViewController.m */; };
+		05BCB9881946E8850084D92E /* tracks_eksploracja.png in Resources */ = {isa = PBXBuildFile; fileRef = 05BCB9871946E8850084D92E /* tracks_eksploracja.png */; };
 		05C335E8190C02DB000B705B /* info_contact_address.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C335E5190C02DB000B705B /* info_contact_address.png */; };
 		05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C335E6190C02DB000B705B /* info_contact_phone.png */; };
 		05C335EA190C02DB000B705B /* info_contact_url.png in Resources */ = {isa = PBXBuildFile; fileRef = 05C335E7190C02DB000B705B /* info_contact_url.png */; };
@@ -308,6 +309,7 @@
 		05A1C14D18FAC7F2008FE0CB /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
 		05A1C15318FACB3E008FE0CB /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		05A1C15418FACB3E008FE0CB /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		05BCB9871946E8850084D92E /* tracks_eksploracja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tracks_eksploracja.png; sourceTree = "<group>"; };
 		05C335E2190BFFAE000B705B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		05C335E5190C02DB000B705B /* info_contact_address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_address.png; sourceTree = "<group>"; };
 		05C335E6190C02DB000B705B /* info_contact_phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_contact_phone.png; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				05F36EC419411072000949E4 /* event_slonie_indyjskie.png */,
 				05F36EC519411072000949E4 /* event_zolwie_pustynne.png */,
 				05F36EC619411072000949E4 /* event_zyrafa_siatkowana.png */,
+				05BCB9871946E8850084D92E /* tracks_eksploracja.png */,
 				05F76E551942446200FCB4B5 /* tracks_afryka.png */,
 				05F76E561942446200FCB4B5 /* tracks_rogate.png */,
 				05F76E571942446200FCB4B5 /* tracks_logo.png */,
@@ -1041,6 +1044,7 @@
 				05C925D318DDAFAD00C2F746 /* GPS.md in Resources */,
 				05985284194049FA0089FC34 /* perlica_sepia_en.html in Resources */,
 				059851FF194049F90089FC34 /* banteng_pl.html in Resources */,
+				05BCB9881946E8850084D92E /* tracks_eksploracja.png in Resources */,
 				05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */,
 				05985275194049FA0089FC34 /* kangur_rudy_en.html in Resources */,
 				05F36EBA19409520000949E4 /* 404_pl.html in Resources */,

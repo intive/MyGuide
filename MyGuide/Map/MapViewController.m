@@ -240,8 +240,6 @@
 }
 - (void)drawTrack
 {
-//    zostawiam tu ten komentarz, bo nad tym obecnie pracuję, żeby działało dużo lepiej, ale mimo to,
-//    niech obecna wersja tej metody będzie w appce (ze świadomością, że jest chwilowa)
     GraphDrawer *graphDrawer = [GraphDrawer sharedInstance];
     NSMutableArray *trackPolylines = [NSMutableArray new];
     NSArray *currentTrackAnimalsArray = [[AFTracksData sharedParsedData] currentTrackForMap];
@@ -387,14 +385,14 @@
     [UIView beginAnimations:@"move" context:nil];
     [UIView setAnimationDuration:0.5];
     if(self.slidingViewIsDown) {
-        _nearestAnimalImageView.frame=CGRectMake(75, self.view.frame.size.height - _nearestAnimalImageView.frame.size.height, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
+        self.nearestAnimalImageView.frame=CGRectMake(75, self.view.frame.size.height - self.nearestAnimalImageView.frame.size.height, self.nearestAnimalImageView.frame.size.width, self.nearestAnimalImageView.frame.size.height);
         self.slidingViewIsDown = NO;
     }
     else {
-        _nearestAnimalImageView.frame=CGRectMake(75, 60, _nearestAnimalImageView.frame.size.width, _nearestAnimalImageView.frame.size.height);
+        self.nearestAnimalImageView.frame=CGRectMake(75, 60, self.nearestAnimalImageView.frame.size.width, self.nearestAnimalImageView.frame.size.height);
         self.slidingViewIsDown = YES;
     }
-    _nearestAnimalsList.frame=CGRectMake(0, _nearestAnimalImageView.frame.origin.y + _nearestAnimalImageView.frame.size.height, _nearestAnimalsList.frame.size.width, _nearestAnimalsList.frame.size.height);
+    self.nearestAnimalsList.frame=CGRectMake(0, self.nearestAnimalImageView.frame.origin.y + self.nearestAnimalImageView.frame.size.height, self.nearestAnimalsList.frame.size.width, self.nearestAnimalsList.frame.size.height);
     if([self.nearestAnimalImageView.image isEqualToImage:[UIImage imageNamed:@"arrowDown"]]){
         self.nearestAnimalImageView.image = [UIImage imageNamed:@"arrowUp"];
     }
