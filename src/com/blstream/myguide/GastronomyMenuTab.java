@@ -17,6 +17,7 @@ import com.blstream.myguide.zoolocations.Dish;
 import com.blstream.myguide.zoolocations.Restaurant;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Piotrek on 2014-04-09.
@@ -114,7 +115,7 @@ public class GastronomyMenuTab extends Fragment implements Parcelable {
 
 			Dish dish = mDishes.get(position);
 
-			viewHolder.mTxtvDishName.setText(dish.getName() + "");
+			viewHolder.mTxtvDishName.setText(dish.getName(Locale.getDefault().getLanguage()) + "");
 			viewHolder.mTxtvDishPrice.setText(dish.getPrice() + "");
 
 			return convertView;
