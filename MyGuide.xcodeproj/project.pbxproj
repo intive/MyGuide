@@ -104,6 +104,11 @@
 		05CD409918DF6FD60065C04F /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CD409818DF6FD60065C04F /* MapViewController.m */; };
 		05DA78C018B968E5005D6C5F /* SettingsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DA78BF18B968E5005D6C5F /* SettingsParserTest.m */; };
 		05DA78D718B96A07005D6C5F /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DA78D418B969BF005D6C5F /* libOCMock.a */; };
+		05DAA5B8194742B5005A836B /* restaurant_karczma_koala.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B3194742B5005A836B /* restaurant_karczma_koala.png */; };
+		05DAA5B9194742B5005A836B /* restaurant_karczma_lwa.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B4194742B5005A836B /* restaurant_karczma_lwa.png */; };
+		05DAA5BA194742B5005A836B /* restaurant_letnia.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B5194742B5005A836B /* restaurant_letnia.png */; };
+		05DAA5BB194742B5005A836B /* restaurant_pod_papugami.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B6194742B5005A836B /* restaurant_pod_papugami.png */; };
+		05DAA5BC194742B5005A836B /* restaurant_przystanek_zoo.png in Resources */ = {isa = PBXBuildFile; fileRef = 05DAA5B7194742B5005A836B /* restaurant_przystanek_zoo.png */; };
 		05E0209118C1D38000AE76EC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E0209018C1D38000AE76EC /* MapKit.framework */; };
 		05E0209818C23B7100AE76EC /* MKAnnotationAnimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E0209718C23B7100AE76EC /* MKAnnotationAnimal.m */; };
 		05E1654F18F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05E1654818F1B51100DA3BD7 /* GastronomyDetailsInfoViewController.m */; };
@@ -327,6 +332,11 @@
 		05DA78D218B969BF005D6C5F /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
 		05DA78D318B969BF005D6C5F /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		05DA78D418B969BF005D6C5F /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		05DAA5B3194742B5005A836B /* restaurant_karczma_koala.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_karczma_koala.png; sourceTree = "<group>"; };
+		05DAA5B4194742B5005A836B /* restaurant_karczma_lwa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_karczma_lwa.png; sourceTree = "<group>"; };
+		05DAA5B5194742B5005A836B /* restaurant_letnia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_letnia.png; sourceTree = "<group>"; };
+		05DAA5B6194742B5005A836B /* restaurant_pod_papugami.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_pod_papugami.png; sourceTree = "<group>"; };
+		05DAA5B7194742B5005A836B /* restaurant_przystanek_zoo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restaurant_przystanek_zoo.png; sourceTree = "<group>"; };
 		05E0209018C1D38000AE76EC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		05E0209618C23B7100AE76EC /* MKAnnotationAnimal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAnnotationAnimal.h; sourceTree = "<group>"; };
 		05E0209718C23B7100AE76EC /* MKAnnotationAnimal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAnnotationAnimal.m; sourceTree = "<group>"; };
@@ -604,6 +614,11 @@
 				05F76E481941868700FCB4B5 /* access_park.png */,
 				05F76E491941868700FCB4B5 /* access_tram.png */,
 				05F36EBB19411072000949E4 /* event_hipo.png */,
+				05DAA5B3194742B5005A836B /* restaurant_karczma_koala.png */,
+				05DAA5B4194742B5005A836B /* restaurant_karczma_lwa.png */,
+				05DAA5B5194742B5005A836B /* restaurant_letnia.png */,
+				05DAA5B6194742B5005A836B /* restaurant_pod_papugami.png */,
+				05DAA5B7194742B5005A836B /* restaurant_przystanek_zoo.png */,
 				05F36EBC19411072000949E4 /* event_kotiki.png */,
 				05F36EBD19411072000949E4 /* event_lemury.png */,
 				05F36EBE19411072000949E4 /* event_mrownik.png */,
@@ -1027,6 +1042,7 @@
 				059851F9194049F90089FC34 /* aguti_zlocisty_pl.html in Resources */,
 				05985283194049FA0089FC34 /* osiol_domowy_pl.html in Resources */,
 				0598527D194049FA0089FC34 /* lew_angolanski_en.html in Resources */,
+				05DAA5B8194742B5005A836B /* restaurant_karczma_koala.png in Resources */,
 				059851FA194049F90089FC34 /* alpaka_en.html in Resources */,
 				05985206194049F90089FC34 /* flaming_en.html in Resources */,
 				0598528C194049FA0089FC34 /* szablon_pl.html in Resources */,
@@ -1048,6 +1064,7 @@
 				05C335E9190C02DB000B705B /* info_contact_phone.png in Resources */,
 				05985275194049FA0089FC34 /* kangur_rudy_en.html in Resources */,
 				05F36EBA19409520000949E4 /* 404_pl.html in Resources */,
+				05DAA5BB194742B5005A836B /* restaurant_pod_papugami.png in Resources */,
 				050E852D190B94CE00B13473 /* information.xml in Resources */,
 				0598520B194049F90089FC34 /* gnu_bialobrode_pl.html in Resources */,
 				0598527C194049FA0089FC34 /* lemur_katta_pl.html in Resources */,
@@ -1068,6 +1085,7 @@
 				05F76E4A1941868700FCB4B5 /* access_bus.png in Resources */,
 				05F76E4C1941868700FCB4B5 /* access_tram.png in Resources */,
 				0598528F194049FA0089FC34 /* zyrafa_siatkowana_en.html in Resources */,
+				05DAA5BA194742B5005A836B /* restaurant_letnia.png in Resources */,
 				059851FE194049F90089FC34 /* banteng_en.html in Resources */,
 				84DD035B18BA8C7A00DE7178 /* config.xml in Resources */,
 				05985201194049F90089FC34 /* czerwonak_rozowy_pl.html in Resources */,
@@ -1095,6 +1113,7 @@
 				05985205194049F90089FC34 /* fenek_pl.html in Resources */,
 				0598528E194049FA0089FC34 /* zebra_chapmana_pl.html in Resources */,
 				05F36ED119411072000949E4 /* event_zolwie_pustynne.png in Resources */,
+				05DAA5BC194742B5005A836B /* restaurant_przystanek_zoo.png in Resources */,
 				3DDE538818C705B20062D217 /* Main.storyboard in Resources */,
 				05F36EB919409520000949E4 /* 404_en.html in Resources */,
 				05985288194049FA0089FC34 /* slon_indyjski_en.html in Resources */,
@@ -1108,6 +1127,7 @@
 				059851FB194049F90089FC34 /* alpaka_pl.html in Resources */,
 				059851FC194049F90089FC34 /* antylopa_kama_en.html in Resources */,
 				0598528A194049FA0089FC34 /* strus_en.html in Resources */,
+				05DAA5B9194742B5005A836B /* restaurant_karczma_lwa.png in Resources */,
 				05985279194049FA0089FC34 /* kob_pl.html in Resources */,
 				0598527A194049FA0089FC34 /* kotik_afrykanski_pl.html in Resources */,
 				05406E4118F313A7001656FC /* gastronomy.xml in Resources */,

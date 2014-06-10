@@ -28,10 +28,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 44.0f)];
     headerView.backgroundColor = [UIColor colorWithRed:1.0f green:0.584f blue:0.0f alpha:1.0f];
     self.tableView.tableHeaderView = headerView;
-    
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320.0f, 1.0f)];
-    footerView.backgroundColor = [UIColor whiteColor];
-    self.tableView.tableFooterView = footerView;
+    self.tableView.tableFooterView = [[UIView alloc] init];
     
     CALayer *bgLayer = [CALayer layer];
     bgLayer.backgroundColor = headerView.backgroundColor.CGColor;
