@@ -724,7 +724,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 
 	@Override
 	public void onDestinationChange(Animal newDestination) {
-		Toast.makeText(getActivity(), getString(R.string.navigate_to) + newDestination.getName(),
+		Toast.makeText(getActivity(), getString(R.string.navigate_to) + newDestination.getName(Locale.getDefault().getLanguage()),
 				Toast.LENGTH_SHORT).show();
 
 	}
