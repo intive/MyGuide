@@ -135,10 +135,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 		mNavigationToggleButton = (ToggleButton) rootView.findViewById(
 				R.id.tgbtn_navigationOnOff);
 
-		mLocationUpdater = LocationUpdater.getInstance();
-		mLocationUpdater.startUpdating(this);
-		mLastAnimalDistance = null;
-		mBottomAnimalFragment = new BottomAnimalFragment();
+        setUpBottomAnimalFragment();
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(
@@ -273,7 +270,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 
 	/**
 	 * Method change marker color where animal.id == id
-	 * 
+	 *
 	 * @param id animal id to change marker color
 	 */
 	public void updateAnimalVisitedMarker(int id) {
@@ -676,6 +673,13 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 		}
 	}
 
+    private void setUpBottomAnimalFragment() {
+        mLocationUpdater = LocationUpdater.getInstance();
+        mLocationUpdater.startUpdating(this);
+        mLastAnimalDistance = null;
+        mBottomAnimalFragment = new BottomAnimalFragment();
+    }
+
 	@Override
 	public void onPause() {
 		destroyBottomFragment();
@@ -694,6 +698,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 			mNavigationToggleButton.setVisibility(View.VISIBLE);
 		}
 		super.onResume();
+        setUpBottomAnimalFragment();
 	}
 
 	@Override

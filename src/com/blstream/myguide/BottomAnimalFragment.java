@@ -57,6 +57,10 @@ public class BottomAnimalFragment extends Fragment {
 		mAnimalName.setText(a.getName(Locale.getDefault().getLanguage()));
 		mAnimalFunfact.setText(a.getDescriptionAdult()
 				.getText());
+        String[] name = a.getDescriptionAdult().getImageName().substring(4).split("\\.");
+        int id = getResources().getIdentifier(name[0], "drawable",
+                getActivity().getPackageName());
+        mAnimalImage.setImageResource(id);
 		mDistance.setText(Integer.toString(animal.getDistance()) + " m");
 	}
 
