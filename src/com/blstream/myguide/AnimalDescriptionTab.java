@@ -62,8 +62,8 @@ public class AnimalDescriptionTab extends Fragment implements Parcelable {
 				@Override
 				public void onReceivedError(WebView view, int errorCode, String description,
 						String failingUrl) {
-					mBrowser.loadData(getResources().getString(R.string.animal_info_not_found),
-							"text/plain", "utf-8");
+					
+					mBrowser.loadUrl("file:///android_asset/nodata/nodata.html");
 				}
 			});
 			mBrowser.loadUrl("file:///android_asset/animals/"
