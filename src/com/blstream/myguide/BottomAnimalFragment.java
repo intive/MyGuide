@@ -1,6 +1,8 @@
 
 package com.blstream.myguide;
 
+import java.util.Locale;
+
 import com.blstream.myguide.fragments.FragmentHelper;
 import com.blstream.myguide.zoolocations.XmlObjectDistance;
 import com.blstream.myguide.zoolocations.Animal;
@@ -52,7 +54,7 @@ public class BottomAnimalFragment extends Fragment {
 		XmlObjectDistance animal = (XmlObjectDistance) data
 				.getSerializable(BundleConstants.CLOSEST_ANIMAL);
 		Animal a = (Animal) animal.getXmlObject();
-		mAnimalName.setText(a.getName());
+		mAnimalName.setText(a.getName(Locale.getDefault().getLanguage()));
 		mAnimalFunfact.setText(a.getDescriptionAdult()
 				.getText());
 		mDistance.setText(Integer.toString(animal.getDistance()) + " m");
