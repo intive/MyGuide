@@ -4,6 +4,7 @@ package com.blstream.myguide;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 import android.app.ActionBar;
 import android.content.Context;
@@ -138,7 +139,7 @@ public class EventsFragment extends Fragment {
 
 			Event event = mEvents.get(position);
 
-			viewHolder.mEventName.setText(event.getName());
+			viewHolder.mEventName.setText(event.getName(Locale.getDefault().getLanguage()));
 			viewHolder.mTime.setText(event.getTime().replaceAll(";", " "));
 			String[] name = event.getImagePath().substring(4).split("\\.");
 			int id = getResources().getIdentifier(name[0], "drawable",

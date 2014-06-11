@@ -101,7 +101,7 @@
 				android:src="@drawable/ic_information_access_parking"/>
 			<TextView
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
+				android:layout_height="wrap_content"
 				android:id="@+id/txtv_parking"
 				android:text="Parkingi"
 				style="@style/information_basic_text"/>
