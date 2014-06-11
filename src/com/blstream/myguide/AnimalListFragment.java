@@ -11,6 +11,7 @@ import com.blstream.myguide.zoolocations.ZooLocationsData;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -94,8 +95,9 @@ public class AnimalListFragment extends Fragment {
 				boolean findAnimal = false;
 				ArrayList<Animal> animals = new ArrayList<Animal>();
 
+				String language = Locale.getDefault().getLanguage();
 				for (Animal animal : mZooData.getAnimals()) {
-					if (replacePolishChar(animal.getName().toLowerCase()).contains(
+					if (replacePolishChar(animal.getName(language).toLowerCase()).contains(
 							replacePolishChar(s.toLowerCase())))
 					{
 						animals.add(animal);
@@ -156,7 +158,7 @@ public class AnimalListFragment extends Fragment {
 		String[] animalNames = new String[animals.size()];
 		for (int i = 0; i < animalNames.length; i++) {
 			animalNames[i] = animals.get(i).getName(
-					Locale.getDefault().getDisplayLanguage());
+					Locale.getDefault().getLanguage());
 		}
 		return animalNames;
 	}

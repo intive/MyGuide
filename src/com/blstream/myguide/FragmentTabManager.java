@@ -1,6 +1,8 @@
 
 package com.blstream.myguide;
 
+import java.util.Locale;
+
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -54,7 +56,7 @@ public class FragmentTabManager extends Fragment {
 		bundle.putInt(BundleConstants.STRING_ARRAY, stringArray);
 		bundle.putSerializable(BundleConstants.SELECTED_OBJECT, object);
 		bundle.putSerializable(BundleConstants.TAB_FRAGMENTS, fragment);
-		bundle.putCharSequence(BundleConstants.TAB_TITLE, object.getName());
+		bundle.putCharSequence(BundleConstants.TAB_TITLE, object.getName(Locale.getDefault().getLanguage()));
 		fragmentTab.setArguments(bundle);
 
 		return fragmentTab;
