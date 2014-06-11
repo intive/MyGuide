@@ -245,15 +245,10 @@ public class XmlObjectDetailsMapFragment extends Fragment implements Parcelable 
 
 	/**
 	 * Added by Agnieszka for marking close animals. Reads user's position,
-<<<<<<< HEAD:src/com/blstream/myguide/AnimalDetailsMapFragment.java
-	 * checks closest Animals using {@link XmlObjectFinderHelper} and marks them on
-	 * the map using {@link XmlDetailsMapFragment#markPosition(XmlObject)}
-=======
 	 * checks closest Animals using {@link XmlObjectFinderHelper} and marks them on
 	 * the map using
 	 * {@link XmlObjectDetailsMapFragment#markPosition(XmlObject)}
->>>>>>> upstream/android:src/com/blstream/myguide/XmlObjectDetailsMapFragment.java
-	 * 
+	 *
 	 * @param location Location of application user
 	 */
 	private void markXmlObjects(Location location) {
