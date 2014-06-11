@@ -1,6 +1,7 @@
 package com.blstream.myguide;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -165,7 +166,7 @@ public class NearestAnimalsListFragment extends Fragment implements
 			if (animal != null) {
 				viewHolder.animalDistance.setText(Integer.toString(distance)
 						+ "m");
-				viewHolder.animalName.setText(animal.getName());
+				viewHolder.animalName.setText(animal.getName(Locale.getDefault().getLanguage()));
 				viewHolder.animalFact.setText(animal.getDescriptionAdult()
 						.getText());
 			}

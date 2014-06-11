@@ -700,11 +700,11 @@ public class StartActivity extends FragmentActivity implements NavigationConfirm
 
 			Track track = mTracks.get(position);
 			if (track.getVisited() == -1) {
-				viewHolder.mTxtvName.setText(track.getName() + "");
+				viewHolder.mTxtvName.setText(track.getName(Locale.getDefault().getLanguage()) + "");
 				viewHolder.mTxtvProgress.setVisibility(View.GONE);
 				viewHolder.mProgressBar.setVisibility(View.GONE);
 			} else {
-				viewHolder.mTxtvName.setText(track.getName() + "");
+				viewHolder.mTxtvName.setText(track.getName(Locale.getDefault().getLanguage()) + "");
 				viewHolder.mTxtvProgress.setText(track.getVisited() + "/"
 						+ track.getAnimals().size());
 				viewHolder.mProgressBar.setMax(track.getAnimals().size());

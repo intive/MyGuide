@@ -1,6 +1,8 @@
 
 package com.blstream.myguide;
 
+import java.util.Locale;
+
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -41,7 +43,7 @@ public class FragmentTrackDetails extends Fragment {
 		Bundle args = getArguments();
 		if (args != null) {
 			mTrack = (Track) args.getSerializable(BundleConstants.SELECTED_TRACK);
-			mTitle = mTrack.getName();
+			mTitle = mTrack.getName(Locale.getDefault().getLanguage());
 		}
 	}
 
@@ -78,7 +80,7 @@ public class FragmentTrackDetails extends Fragment {
 		txtvTrackProgress.setText(mTrack.getVisited() + "/" + mTrack.getAnimals().size());
 		pbTrackDetails.setProgress(mTrack.getVisited());
 		pbTrackDetails.setMax(mTrack.getAnimals().size());
-		txtvTrackDescription.setText(mTrack.getDescription() + "");
+		txtvTrackDescription.setText(mTrack.getDescription(Locale.getDefault().getLanguage()) + "");
 	}
 
 	@Override

@@ -42,6 +42,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -215,7 +216,7 @@ public class XmlObjectDetailsMapFragment extends Fragment implements Parcelable 
 
 		Marker marker = mMap.addMarker(new MarkerOptions()
 				.position(position)
-				.title(animal.getName())
+				.title(animal.getName(Locale.getDefault().getLanguage()))
 				.icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.ic_animal)));
         if (animal.getClass().equals(Animal.class)) {
@@ -431,7 +432,7 @@ public class XmlObjectDetailsMapFragment extends Fragment implements Parcelable 
 
 	private void setActionBar() {
 		mActionBar = getActivity().getActionBar();
-		mActionBar.setTitle(mXmlObject.getName());
+		mActionBar.setTitle(mXmlObject.getName(Locale.getDefault().getLanguage()));
 	}
 
 	private void changeAnimalMarkerIcon(int icon) {

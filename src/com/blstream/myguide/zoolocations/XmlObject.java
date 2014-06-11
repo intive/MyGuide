@@ -11,6 +11,8 @@ public abstract class XmlObject implements Serializable {
 	abstract void addName(String lang, String name);
 
 	public abstract String getName();
+	
+	public abstract String getName(String language);
 
 	public abstract Node getNode();
 
