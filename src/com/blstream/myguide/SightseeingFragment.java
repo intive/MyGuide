@@ -401,29 +401,31 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 	private void setUpClosestAnimal() {
 		if (mBottomAnimalFragment == null) mBottomAnimalFragment = new BottomAnimalFragment();
 
-		XmlObjectFinderHelper animalFinderHelper = new XmlObjectFinderHelper(
-				mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
-						.getApplication(), getActivity(), new Animal());
+        if (getActivity() != null) {
+            XmlObjectFinderHelper animalFinderHelper = new XmlObjectFinderHelper(
+                    mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
+                    .getApplication(), getActivity(), new Animal()
+            );
 
-		XmlObjectDistance closestAnimal = animalFinderHelper.closestXmlObject();
+            XmlObjectDistance closestAnimal = animalFinderHelper.closestXmlObject();
 
-		if (closestAnimal != null) {
+            if (closestAnimal != null) {
 
-			if (sameAnimalNewDistance(closestAnimal)) {
-				mBottomAnimalFragment.setDistance(closestAnimal.getDistance());
-			}
-			else if (!sameAsLastAnimal(closestAnimal)) {
-				Bundle data = new Bundle();
-				data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
-				mBottomAnimalFragment = new BottomAnimalFragment();
-				mBottomAnimalFragment.setArguments(data);
-				FragmentManager manager = getChildFragmentManager();
-				FragmentHelper.swapFragment(R.id.closestAnimal,
-						mBottomAnimalFragment, manager,
-						BundleConstants.FRAGMENT_BOTTOM_ANIMAL);
-				mLastAnimalDistance = closestAnimal;
-			}
-		}
+                if (sameAnimalNewDistance(closestAnimal)) {
+                    mBottomAnimalFragment.setDistance(closestAnimal.getDistance());
+                } else if (!sameAsLastAnimal(closestAnimal)) {
+                    Bundle data = new Bundle();
+                    data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
+                    mBottomAnimalFragment = new BottomAnimalFragment();
+                    mBottomAnimalFragment.setArguments(data);
+                    FragmentManager manager = getChildFragmentManager();
+                    FragmentHelper.swapFragment(R.id.closestAnimal,
+                            mBottomAnimalFragment, manager,
+                            BundleConstants.FRAGMENT_BOTTOM_ANIMAL);
+                    mLastAnimalDistance = closestAnimal;
+                }
+            }
+        }
 	}
 
 	private boolean sameAnimalNewDistance(XmlObjectDistance closest) {
