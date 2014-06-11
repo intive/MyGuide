@@ -66,7 +66,7 @@ public class AnimalDescriptionTab extends Fragment implements Parcelable {
 							"text/plain", "utf-8");
 				}
 			});
-			mBrowser.loadUrl("file:///android_asset/animals/"
+			mBrowser.loadUrl("file:///android_asset/"
 					+ mAnimal.getInfoWeb(Locale.getDefault().getLanguage()));
 		}
 
