@@ -479,6 +479,11 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 						R.layout.info_window_animal, null);
 				TextView txtvHeader = (TextView) infoWindow.findViewById(R.id.txtvHeaderInfoWindow);
 				txtvHeader.setText(marker.getTitle());
+                ImageView image = (ImageView) infoWindow.findViewById(R.id.imgvInfoWindowAnimal);
+                String[] name = mAnimalMarkersMap.get(marker).getDescriptionAdult().getImageName().substring(4).split("\\.");
+                int id = getResources().getIdentifier(name[0], "drawable",
+                        getActivity().getPackageName());
+                image.setImageResource(id);
 
 				return infoWindow;
 			}

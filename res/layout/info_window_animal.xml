@@ -23,6 +23,7 @@
         android:paddingLeft="5dp"
         android:paddingTop="10dp"
         android:text="Koala"
+        android:maxLines="2"
         android:textColor="@color/main_accent"
         android:textSize="@dimen/Item_text_size" />
 
@@ -35,7 +36,7 @@
         android:maxHeight="30dip"
         android:maxWidth="80dip"
         android:paddingLeft="5dp"
-        android:text="@string/text"
+        android:text="\n"
         android:textSize="@dimen/info_window_description" />
 
     <TextView
