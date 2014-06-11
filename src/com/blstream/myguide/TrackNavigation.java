@@ -84,12 +84,13 @@ public class TrackNavigation implements LocationUser {
 
 	public void startNavigate() {
 		mMap.setMyLocationEnabled(false);
+		mMarker.setVisible(true);
 		LocationUpdater.getInstance().startUpdating(this);
 	}
 
 	public void stopNavigate() {
 		LocationUpdater.getInstance().stopUpdating(this);
-		if (mMarker != null) mMarker.remove();
+		if (mMarker != null) mMarker.setVisible(false);
 	}
 
 	@Override
