@@ -172,6 +172,16 @@
 #pragma mark - Showing AlertView depending on user distance
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+    for(MKAnnotationAnimal *annotation in self.mapView.annotations){
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+        CLLocation *currentLocation = self.mapView.userLocation.location;
+        if(![[NSString stringWithFormat:@"%@", annotation.class] isEqualToString:@"MKUserLocation"] && [location distanceFromLocation:currentLocation] <= annotation.animal.radius){
+            if(! annotation.visited){
+                annotation.visited = YES;
+                [self.mapView selectAnnotation:annotation animated:YES];
+            }
+        }
+    }
     [self updateNearestAnimalsArrayWithLocation:userLocation.location];
     [_nearestAnimalsTableView reloadData];
     double distance = [self calculateUserDistance:userLocation];
