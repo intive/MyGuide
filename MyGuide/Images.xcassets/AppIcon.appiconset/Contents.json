@@ -1,27 +1,42 @@
 {
-    "images": [{
-        "size": "29x29",
-        "idiom": "iphone",
-        "filename": "appSettingsIcon_58px.png",
-        "scale": "2x"
-    }, {
-        "size": "57x57",
-        "idiom": "iphone",
-        "filename": "appIcon_57px.png",
-        "scale": "1x"
-    }, {
-        "size": "57x57",
-        "idiom": "iphone",
-        "filename": "appIcon_104px.png",
-        "scale": "2x"
-    }, {
-        "size": "60x60",
-        "idiom": "iphone",
-        "filename": "appIcon_120px.png",
-        "scale": "2x"
-    }],
-    "info": {
-        "version": 1,
-        "author": "xcode"
+  "images" : [
+    {
+      "idiom" : "iphone",
+      "size" : "29x29",
+      "scale" : "1x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "appSettingsIcon_58px.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "40x40",
+      "scale" : "2x"
+    },
+    {
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "appIcon_57px.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "appIcon_104px.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "appIcon_120px.png",
+      "scale" : "2x"
     }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
 }

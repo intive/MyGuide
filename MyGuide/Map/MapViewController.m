@@ -64,8 +64,19 @@
     [self.mapToolbar.items.firstObject setEnabled:NO];
     [self updateVisitedLocations];
     if([[AFTracksData sharedParsedData] shouldShowTrackOnMap]){
-        NSLog(@"should draw track");
         [self drawTrack];
+    }
+    else{
+        for(MKPolyline *trackFragment in self.mapView.overlays){
+            if([trackFragment.title isEqualToString:@"trackPolyline"]){
+                [self.mapView removeOverlay:trackFragment];
+            }
+        }
+        for(MKAnnotationAnimal *annotation in self.mapView.annotations){
+            if(![[NSString stringWithFormat:@"%@", annotation.class] isEqualToString:@"MKUserLocation"] && annotation.isOnTrack){
+                annotation.isOnTrack = NO;
+            }
+        }
     }
 }
 
@@ -166,9 +177,11 @@
     double distance = [self calculateUserDistance:userLocation];
     if(distance <= _settings.maxUserDistance){
         [[self.mapToolbar.items firstObject] setEnabled:YES];
+        self.nearestAnimalImageView.userInteractionEnabled = YES;
     }
     else if(distance > _settings.maxUserDistance){
         [[self.mapToolbar.items firstObject] setEnabled:NO];
+        self.nearestAnimalImageView.userInteractionEnabled = NO;
     }
     if([self shouldShowAlertDistance:distance]) {
         [_alertDistance show];
@@ -240,8 +253,6 @@
 }
 - (void)drawTrack
 {
-//    zostawiam tu ten komentarz, bo nad tym obecnie pracuję, żeby działało dużo lepiej, ale mimo to,
-//    niech obecna wersja tej metody będzie w appce (ze świadomością, że jest chwilowa)
     GraphDrawer *graphDrawer = [GraphDrawer sharedInstance];
     NSMutableArray *trackPolylines = [NSMutableArray new];
     NSArray *currentTrackAnimalsArray = [[AFTracksData sharedParsedData] currentTrackForMap];
@@ -259,6 +270,14 @@
         CLLocation *lastNode = [[CLLocation alloc] initWithLatitude:lastAnimal.getLocationCoordinate.latitude longitude:lastAnimal.getLocationCoordinate.longitude];
         CLLocation *userLocation = self.mapView.userLocation.location;
         [trackPolylines addObject:[graphDrawer findShortestPathBetweenLocation:lastNode andLocation:userLocation]];
+        
+        for(NSString *animal in currentTrackAnimalsArray){
+            for(MKAnnotationAnimal *annotation in self.mapView.annotations){
+                if(![[NSString stringWithFormat:@"%@", annotation.class] isEqualToString:@"MKUserLocation"] && annotation.animal.animalID == animal.integerValue){
+                    annotation.isOnTrack = YES;
+                }
+            }
+        }
         
         for(MKPolyline *trackFragment in trackPolylines){
             trackFragment.title = @"trackPolyline";
