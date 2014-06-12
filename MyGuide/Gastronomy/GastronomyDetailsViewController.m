@@ -28,16 +28,7 @@
     
     self.segmentedControl.selectedSegmentIndex = 0;
     [self prepareTableView];
-    [self prepareMapController];
     [self prepareImage];
-}
-
-- (void) prepareMapController
-{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main" bundle: [NSBundle mainBundle]];
-    self.detailsMapController = [storyboard instantiateViewControllerWithIdentifier: @"detailsMap"];
-    self.detailsMapController.latitude  = self.restaurant.latitude;
-    self.detailsMapController.longitude = self.restaurant.longitude;
 }
 
 - (void) prepareImage
@@ -53,16 +44,18 @@
 - (void) prepareTableView
 {
     self.tableView.allowsSelection = NO;
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    self.tableView.dataSource      = self;
+    self.tableView.delegate        = self;
     [self.tableView reloadData];
 }
 
 - (IBAction) switchControllers: (UISegmentedControl *)segmentControl
 {
-    if([segmentControl selectedSegmentIndex] == 1) {
-        [self.navigationController pushViewController: self.detailsMapController animated: YES];
-    }
+    UIStoryboard *storyboard  = [UIStoryboard storyboardWithName: @"Main" bundle: [NSBundle mainBundle]];
+    self.detailsMapController = [storyboard instantiateViewControllerWithIdentifier: @"detailsMap"];
+    self.detailsMapController.latitude  = self.restaurant.latitude;
+    self.detailsMapController.longitude = self.restaurant.longitude;
+    [self.navigationController pushViewController: self.detailsMapController animated: YES];
 }
 
 - (NSInteger)tableView: (UITableView *)tableView numberOfRowsInSection: (NSInteger)section
@@ -80,7 +73,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
     
-    Dish *dish = self.restaurant.dishes[indexPath.row];
+    Dish *dish                = self.restaurant.dishes[indexPath.row];
     cell.textLabel.text       = [dish getName];
     cell.detailTextLabel.text = [NSString stringWithFormat: @"%.2fzł", [dish.price doubleValue]];
     

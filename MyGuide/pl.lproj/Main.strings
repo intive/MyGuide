@@ -11,10 +11,7 @@
 /* Class = "IBUISegmentedControl"; DS1-xr-SEf.segmentTitles[0] = "Informacje"; ObjectID = "DS1-xr-SEf"; */
 "DS1-xr-SEf.segmentTitles[0]" = "Informacje";
 
-/* Class = "IBUISegmentedControl"; DS1-xr-SEf.segmentTitles[1] = "Menu"; ObjectID = "DS1-xr-SEf"; */
-"DS1-xr-SEf.segmentTitles[1]" = "Menu";
-
-/* Class = "IBUISegmentedControl"; DS1-xr-SEf.segmentTitles[2] = "Mapa"; ObjectID = "DS1-xr-SEf"; */
+/* Class = "IBUISegmentedControl"; DS1-xr-SEf.segmentTitles[1] = "Mapa"; ObjectID = "DS1-xr-SEf"; */
 "DS1-xr-SEf.segmentTitles[2]" = "Mapa";
 
 /* Class = "IBUILabel"; text = "Name"; ObjectID = "IWx-2s-DSw"; */

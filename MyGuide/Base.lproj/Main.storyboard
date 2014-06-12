@@ -49,7 +49,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Information"/>
-                                    <segment title="Menu"/>
+                                    <segment title="Mapa"/>
                                 </segments>
                                 <color key="tintColor" red="0.8862745098" green="0.46274509800000002" blue="0.13725490200000001" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
