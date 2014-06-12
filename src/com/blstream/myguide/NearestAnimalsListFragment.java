@@ -32,7 +32,7 @@ import com.blstream.myguide.zoolocations.XmlObjectDistance;
  * Fragment showing the list of nearest animals. Uses user's current location,
  * XmlObjectFinderHelper {@link XmlObjectFinderHelper} and
  * NearestAnimalsAdapter
- * {@link com.blstream.myguide.adapters.NearestAnimalsAdapter} to create and
+ * {@link com.blstream.myguide.NearestAnimalsListFragment.NearestAnimalsAdapter} to create and
  * display the list of nearest animals.
  * 
  * @author Agnieszka
@@ -122,9 +122,12 @@ public class NearestAnimalsListFragment extends Fragment implements
 	private static class NearestAnimalsAdapter extends
 			ArrayAdapter<XmlObjectDistance> {
 
+        private Context mContext;
+
 		public NearestAnimalsAdapter(Context context, int resource,
 				ArrayList<XmlObjectDistance> objects) {
 			super(context, resource, objects);
+            mContext = context;
 		}
 
 		private class ViewHolder {
@@ -169,6 +172,10 @@ public class NearestAnimalsListFragment extends Fragment implements
 				viewHolder.animalName.setText(animal.getName(Locale.getDefault().getLanguage()));
 				viewHolder.animalFact.setText(animal.getDescriptionAdult()
 						.getText());
+                String[] name = animal.getDescriptionAdult().getImageName().substring(4).split("\\.");
+                int id = mContext.getResources().getIdentifier(name[0], "drawable",
+                        mContext.getPackageName());
+                viewHolder.animalImage.setImageResource(id);
 			}
 
 			return convertView;

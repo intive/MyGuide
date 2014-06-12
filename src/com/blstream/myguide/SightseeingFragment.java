@@ -135,10 +135,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 		mNavigationToggleButton = (ToggleButton) rootView.findViewById(
 				R.id.tgbtn_navigationOnOff);
 
-		mLocationUpdater = LocationUpdater.getInstance();
-		mLocationUpdater.startUpdating(this);
-		mLastAnimalDistance = null;
-		mBottomAnimalFragment = new BottomAnimalFragment();
+        setUpBottomAnimalFragment();
 
 		getActivity().getActionBar().setTitle("");
 		getActivity().getActionBar().setNavigationMode(
@@ -273,7 +270,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 
 	/**
 	 * Method change marker color where animal.id == id
-	 * 
+	 *
 	 * @param id animal id to change marker color
 	 */
 	public void updateAnimalVisitedMarker(int id) {
@@ -404,29 +401,31 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 	private void setUpClosestAnimal() {
 		if (mBottomAnimalFragment == null) mBottomAnimalFragment = new BottomAnimalFragment();
 
-		XmlObjectFinderHelper animalFinderHelper = new XmlObjectFinderHelper(
-				mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
-						.getApplication(), getActivity(), new Animal());
+        if (getActivity() != null) {
+            XmlObjectFinderHelper animalFinderHelper = new XmlObjectFinderHelper(
+                    mLocationUpdater.getLocation(), (MyGuideApp) getActivity()
+                    .getApplication(), getActivity(), new Animal()
+            );
 
-		XmlObjectDistance closestAnimal = animalFinderHelper.closestXmlObject();
+            XmlObjectDistance closestAnimal = animalFinderHelper.closestXmlObject();
 
-		if (closestAnimal != null) {
+            if (closestAnimal != null) {
 
-			if (sameAnimalNewDistance(closestAnimal)) {
-				mBottomAnimalFragment.setDistance(closestAnimal.getDistance());
-			}
-			else if (!sameAsLastAnimal(closestAnimal)) {
-				Bundle data = new Bundle();
-				data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
-				mBottomAnimalFragment = new BottomAnimalFragment();
-				mBottomAnimalFragment.setArguments(data);
-				FragmentManager manager = getChildFragmentManager();
-				FragmentHelper.swapFragment(R.id.closestAnimal,
-						mBottomAnimalFragment, manager,
-						BundleConstants.FRAGMENT_BOTTOM_ANIMAL);
-				mLastAnimalDistance = closestAnimal;
-			}
-		}
+                if (sameAnimalNewDistance(closestAnimal)) {
+                    mBottomAnimalFragment.setDistance(closestAnimal.getDistance());
+                } else if (!sameAsLastAnimal(closestAnimal)) {
+                    Bundle data = new Bundle();
+                    data.putSerializable(BundleConstants.CLOSEST_ANIMAL, closestAnimal);
+                    mBottomAnimalFragment = new BottomAnimalFragment();
+                    mBottomAnimalFragment.setArguments(data);
+                    FragmentManager manager = getChildFragmentManager();
+                    FragmentHelper.swapFragment(R.id.closestAnimal,
+                            mBottomAnimalFragment, manager,
+                            BundleConstants.FRAGMENT_BOTTOM_ANIMAL);
+                    mLastAnimalDistance = closestAnimal;
+                }
+            }
+        }
 	}
 
 	private boolean sameAnimalNewDistance(XmlObjectDistance closest) {
@@ -479,6 +478,11 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 						R.layout.info_window_animal, null);
 				TextView txtvHeader = (TextView) infoWindow.findViewById(R.id.txtvHeaderInfoWindow);
 				txtvHeader.setText(marker.getTitle());
+                ImageView image = (ImageView) infoWindow.findViewById(R.id.imgvInfoWindowAnimal);
+                String[] name = mAnimalMarkersMap.get(marker).getDescriptionAdult().getImageName().substring(4).split("\\.");
+                int id = getResources().getIdentifier(name[0], "drawable",
+                        getActivity().getPackageName());
+                image.setImageResource(id);
 
 				return infoWindow;
 			}
@@ -671,6 +675,13 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 		}
 	}
 
+    private void setUpBottomAnimalFragment() {
+        mLocationUpdater = LocationUpdater.getInstance();
+        mLocationUpdater.startUpdating(this);
+        mLastAnimalDistance = null;
+        mBottomAnimalFragment = new BottomAnimalFragment();
+    }
+
 	@Override
 	public void onPause() {
 		destroyBottomFragment();
@@ -689,6 +700,7 @@ public class SightseeingFragment extends Fragment implements LocationUser, Navig
 			mNavigationToggleButton.setVisibility(View.VISIBLE);
 		}
 		super.onResume();
+        setUpBottomAnimalFragment();
 	}
 
 	@Override

@@ -588,7 +588,7 @@
 			<time>11:00;14:00</time>
 			<time_weekends>11:00;14:00;17:00</time_weekends>
 			<time_christmas>11:00;14:00;17:00</time_christmas>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/kotiki.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -596,7 +596,7 @@
 				<en>Reticulated Giraffe</en>
 			</name>
 			<time>9:15</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/zyrafy.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -604,7 +604,7 @@
 				<en>Brown Bear</en>
 			</name>
 			<time>9:30</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/niedzwiedz.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -612,7 +612,7 @@
 				<en>Maasai Baboons</en>
 			</name>
 			<time>11:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/pawiany.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -620,7 +620,7 @@
 				<en>Hippos</en>
 			</name>
 			<time>11:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/hipopotam.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -628,7 +628,7 @@
 				<en>Birds (aviary)</en>
 			</name>
 			<time>12:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/ptaki.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -636,7 +636,7 @@
 				<en>Lemurs</en>
 			</name>
 			<time>13:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/lemury.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -644,7 +644,7 @@
 				<en>Indian Elephants</en>
 			</name>
 			<time>12:30</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/slonie.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -653,7 +653,7 @@
 			</name>
 			<time>12:00</time>
 			<start>1.06</start>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/zolwie.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -661,7 +661,7 @@
 				<en>Pelicans</en>
 			</name>
 			<time>13:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/pelikany.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -669,7 +669,7 @@
 				<en>Earth Hogs</en>
 			</name>
 			<time>13:30</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/mrownik.jpg</image>
 		</event>
 		<event>
 			<name>
@@ -677,7 +677,7 @@
 				<en>Piranie lub płaszczki EN</en>
 			</name>
 			<time>16:00</time>
-			<image>img/placeholder_event.jpg</image>
+			<image>img/plaszczka.jpg</image>
 		</event>
 	</events>
 	<history>
@@ -769,7 +769,7 @@
 				<en>Giraffe</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/zyrafa.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -789,7 +789,7 @@
 				<en>Ostrich</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -809,7 +809,7 @@
 				<en>Seal</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/foka.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -829,7 +829,7 @@
 				<en>Lion</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/lew.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -849,7 +849,7 @@
 				<en>Zebra</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/zebra.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -869,7 +869,7 @@
 				<en>Gnu</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/gnu.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -889,7 +889,7 @@
 				<en>Kangoroo</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/kangur.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -909,7 +909,7 @@
 				<en>Oryx</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/oryks.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -929,7 +929,7 @@
 				<en>Donkey</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/osiol.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -949,7 +949,7 @@
 				<en>Guinea fowl</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/perlica.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -969,7 +969,7 @@
 				<en>Kob</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/kob.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -989,7 +989,7 @@
 				<en>Sitatunga</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/sitatunga.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1009,7 +1009,7 @@
 				<en>Magot</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1029,7 +1029,7 @@
 				<en>Cape fur seal</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1049,7 +1049,7 @@
 				<en>Fennec</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/fenek.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1069,7 +1069,7 @@
 				<en>African wild dog</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1089,7 +1089,7 @@
 				<en>Water pig</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1109,7 +1109,7 @@
 				<en>Aguti</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/agatui.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1129,7 +1129,7 @@
 				<en>Elephant</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/slon.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1149,7 +1149,7 @@
 				<en>Llama</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1169,7 +1169,7 @@
 				<en>Persian deer</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1189,7 +1189,7 @@
 				<en>Alpaca</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1209,7 +1209,7 @@
 				<en>Celebes macaque</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1229,7 +1229,7 @@
 				<en>Red crowned mangabey</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1249,7 +1249,7 @@
 				<en>Gwanako</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1270,7 +1270,7 @@
 				<en>Hippopotamus</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/hipo.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1290,7 +1290,7 @@
 				<en>Axis deer</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1310,7 +1310,7 @@
 				<en>Ring tailed lamur</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/lemur.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1330,7 +1330,7 @@
 				<en>Milu deer</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1350,7 +1350,7 @@
 				<en>Banteng</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/placeholder_info.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1370,7 +1370,7 @@
 				<en>Greater flamingo</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/czerwonak.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1390,7 +1390,7 @@
 				<en>Antelope</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/antylopa.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>
@@ -1410,7 +1410,7 @@
 				<en>Flaming</en>
 			</name>
 			<description_adult>
-				<image>img/placeholder_adult.jpg</image>
+				<image>img/flaming.jpg</image>
 				<pl>PL </pl>
 				<en>EN </en>
 			</description_adult>

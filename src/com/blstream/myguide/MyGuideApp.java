@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
@@ -34,8 +36,19 @@ public class MyGuideApp extends Application {
 
 	private void showNotification() {
 		// display notification
-		((NotificationManager) getSystemService(NOTIFICATION_SERVICE))
-				.notify(NOTIFICATION_ID, createNotification());
+		NotificationManager notificationManager = ((NotificationManager) getSystemService(NOTIFICATION_SERVICE));
+
+        Intent notificationIntent = new Intent(this, StartActivity.class);
+
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        PendingIntent intent = PendingIntent.getActivity(this, 0,
+                notificationIntent, 0);
+        Notification notification = createNotification(intent);
+
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        notificationManager.notify(NOTIFICATION_ID, notification);
 	}
 
 	private void hideNotification() {
@@ -44,13 +57,14 @@ public class MyGuideApp extends Application {
 				.cancel(NOTIFICATION_ID);
 	}
 
-	protected Notification createNotification() {
+	protected Notification createNotification(PendingIntent intent) {
 		return new NotificationCompat.Builder(this)
 				.setSmallIcon(R.drawable.ic_launcher)
 				.setContentTitle(getString(R.string.app_name))
 				.setContentText(getString(R.string.notif_text))
 				.setOngoing(true)   // cannot be cancelled
 				.setAutoCancel(true)
+                .setContentIntent(intent)
 				.build();
 	}
 
@@ -75,7 +89,10 @@ public class MyGuideApp extends Application {
 
 			@Override
 			public void onActivityResumed(Activity activity) {
+                if (!(activity instanceof StartActivity)) return;
 
+                hideNotification();
+                showNotification();
 			}
 
 			@Override
