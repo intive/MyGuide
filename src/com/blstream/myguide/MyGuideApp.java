@@ -37,7 +37,6 @@ public class MyGuideApp extends Application {
 	private void showNotification() {
 		// display notification
 		NotificationManager notificationManager = ((NotificationManager) getSystemService(NOTIFICATION_SERVICE));
-        Notification notification = createNotification();
 
         Intent notificationIntent = new Intent(this, StartActivity.class);
 
@@ -46,8 +45,8 @@ public class MyGuideApp extends Application {
 
         PendingIntent intent = PendingIntent.getActivity(this, 0,
                 notificationIntent, 0);
+        Notification notification = createNotification(intent);
 
-        notification.setLatestEventInfo(this, getString(R.string.app_name), getString(R.string.notif_text), intent);
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
         notificationManager.notify(NOTIFICATION_ID, notification);
 	}
@@ -58,13 +57,14 @@ public class MyGuideApp extends Application {
 				.cancel(NOTIFICATION_ID);
 	}
 
-	protected Notification createNotification() {
+	protected Notification createNotification(PendingIntent intent) {
 		return new NotificationCompat.Builder(this)
 				.setSmallIcon(R.drawable.ic_launcher)
 				.setContentTitle(getString(R.string.app_name))
 				.setContentText(getString(R.string.notif_text))
 				.setOngoing(true)   // cannot be cancelled
 				.setAutoCancel(true)
+                .setContentIntent(intent)
 				.build();
 	}
 
