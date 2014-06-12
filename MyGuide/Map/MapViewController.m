@@ -64,8 +64,19 @@
     [self.mapToolbar.items.firstObject setEnabled:NO];
     [self updateVisitedLocations];
     if([[AFTracksData sharedParsedData] shouldShowTrackOnMap]){
-        NSLog(@"should draw track");
         [self drawTrack];
+    }
+    else{
+        for(MKPolyline *trackFragment in self.mapView.overlays){
+            if([trackFragment.title isEqualToString:@"trackPolyline"]){
+                [self.mapView removeOverlay:trackFragment];
+            }
+        }
+        for(MKAnnotationAnimal *annotation in self.mapView.annotations){
+            if(![[NSString stringWithFormat:@"%@", annotation.class] isEqualToString:@"MKUserLocation"] && annotation.isOnTrack){
+                annotation.isOnTrack = NO;
+            }
+        }
     }
 }
 
@@ -161,14 +172,26 @@
 #pragma mark - Showing AlertView depending on user distance
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+    for(MKAnnotationAnimal *annotation in self.mapView.annotations){
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+        CLLocation *currentLocation = self.mapView.userLocation.location;
+        if(![[NSString stringWithFormat:@"%@", annotation.class] isEqualToString:@"MKUserLocation"] && [location distanceFromLocation:currentLocation] <= annotation.animal.radius){
+            if(! annotation.visited){
+                annotation.visited = YES;
+                [self.mapView selectAnnotation:annotation animated:YES];
+            }
+        }
+    }
     [self updateNearestAnimalsArrayWithLocation:userLocation.location];
     [_nearestAnimalsTableView reloadData];
     double distance = [self calculateUserDistance:userLocation];
     if(distance <= _settings.maxUserDistance){
         [[self.mapToolbar.items firstObject] setEnabled:YES];
+        self.nearestAnimalImageView.userInteractionEnabled = YES;
     }
     else if(distance > _settings.maxUserDistance){
         [[self.mapToolbar.items firstObject] setEnabled:NO];
+        self.nearestAnimalImageView.userInteractionEnabled = NO;
     }
     if([self shouldShowAlertDistance:distance]) {
         [_alertDistance show];
@@ -257,6 +280,14 @@
         CLLocation *lastNode = [[CLLocation alloc] initWithLatitude:lastAnimal.getLocationCoordinate.latitude longitude:lastAnimal.getLocationCoordinate.longitude];
         CLLocation *userLocation = self.mapView.userLocation.location;
         [trackPolylines addObject:[graphDrawer findShortestPathBetweenLocation:lastNode andLocation:userLocation]];
+        
+        for(NSString *animal in currentTrackAnimalsArray){
+            for(MKAnnotationAnimal *annotation in self.mapView.annotations){
+                if(![[NSString stringWithFormat:@"%@", annotation.class] isEqualToString:@"MKUserLocation"] && annotation.animal.animalID == animal.integerValue){
+                    annotation.isOnTrack = YES;
+                }
+            }
+        }
         
         for(MKPolyline *trackFragment in trackPolylines){
             trackFragment.title = @"trackPolyline";
