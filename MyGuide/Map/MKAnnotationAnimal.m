@@ -15,10 +15,11 @@
     self = [super init];
     if (self) {
         _coordinate = [self buildCoordinate:animal];
-        _title = animal.name;
-        _animal = animal;
-        _visited = NO;
-        _isOnTrack = NO;
+        _title      = animal.name;
+        _subtitle   = [animal.animalInfoDictionary valueForKey:@"adultDescription"];
+        _animal     = animal;
+        _visited    = NO;
+        _isOnTrack  = NO;
     }
     return self;
 }
@@ -33,10 +34,9 @@
     annotationView.enabled = YES;
     annotationView.canShowCallout = YES;
     annotationView.image = [UIImage imageNamed:self.isOnTrack ? @"pinOrange" : (self.visited ? @"pinGreen" : @"pinBlack")];
-    annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[self.animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
-    UITextView *annotationRightView = [[UITextView alloc] init];
-    annotationRightView.text = [self.animal.animalInfoDictionary valueForKey:@"adultDescription"];
-    annotationView.rightCalloutAccessoryView = annotationRightView;
+   UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[self.animal.animalInfoDictionary valueForKey:@"adultImageName"]]];
+    imageView.frame = CGRectMake(0,0,40,40);
+    annotationView.leftCalloutAccessoryView = imageView;
     
     return annotationView;
 }

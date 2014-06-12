@@ -43,7 +43,7 @@ static CGFloat sEmptyCellHeight;
 {
     [super viewDidLoad];
     [self setupControls];
-    self.menuItems = @[@"map", @"animals", @"events", @"info", @"history", @"gastronomy", @"empty", @"preferences"];
+    self.menuItems = @[@"map", @"animals", @"events", @"info", @"history", @"gastronomy", @"empty"];
 }
 
 #pragma mark - Table view data source

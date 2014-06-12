@@ -10,7 +10,7 @@
 #import "SegmentedViewController.h"
 #import "Restaurant.h"
 
-@interface GastronomyDetailsViewController : SegmentedViewController
+@interface GastronomyDetailsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) Restaurant *restaurant;
 

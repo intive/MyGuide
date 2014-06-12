@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     self.track = [[[AFTracksData sharedParsedData] tracks] objectAtIndex:self.trackRow];
-    self.trackImage.image = [UIImage imageNamed: [NSString stringWithFormat:@"tracks_%@", [[self.track getName] lowercaseString]]];
+    self.trackImage.image = [UIImage imageNamed: [NSString stringWithFormat:@"tracks_%@", [[self.track getNameForLanguage:@"pl"] lowercaseString]]];
     [self loadMenuBar];
 }
 
