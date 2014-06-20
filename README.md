@@ -26,7 +26,7 @@ example: version = 0.1.12
 
 - [Rafał Korżyński](mailto:r.korzynski@gazeta.pl) - Team Leader
 - [Andrzej Filipowicz](mailto:afilipowicz.4@gmail.com) - iOS Developer
-- [Kamil Lelonek](http://squixy.zz.mu) - iOS Developer
+- [Kamil Lelonek](http://kamil.lelonek.me) - iOS Developer
 - [Krzysiek Wojtyła](mailto:kfwojtyla@gmail.com) - iOS Tester
 - [Wojtek Filipczak](mailto:Wojciech.Filipczak@wp.pl) - iOS Tester
 - [Małgosia Tuszyńska](mailto:go.tuszynska@gmail.com) - iOS Graphics Designer
